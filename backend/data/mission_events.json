@@ -578,5 +578,33 @@
     },
     "previousEventHash": "4f05c7c16cf8afd8f2278bb1dafcb2baeff4be7ea7c3852b867470b8a2280468",
     "eventHash": "329a280cfd2557373c3b7bf16a500027bbe10afa0ce18bfe7c589473ede98d46"
+  },
+  {
+    "eventId": "mevt-1794661730682-23-zfxu",
+    "sequenceNumber": 23,
+    "missionId": "MARSWALK-001",
+    "timestamp": "2026-11-14T13:08:50.682Z",
+    "actor": "DIGITAL_TWIN",
+    "entityId": "snap-operator-checkpoint-1794661730611",
+    "eventType": "SNAPSHOT_CREATED",
+    "payload": {
+      "snapshotId": "snap-operator-checkpoint-1794661730611",
+      "tag": "OPERATOR_CHECKPOINT",
+      "stateHash": "32824c981000fb2865a28aa3149578a40505c8443850c88c7a34bb7e136a1128",
+      "simTimeMinutes": 45
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
+      }
+    },
+    "previousEventHash": "329a280cfd2557373c3b7bf16a500027bbe10afa0ce18bfe7c589473ede98d46",
+    "eventHash": "59c1810d017ebe1225e03c368010e86dffd796c07c86010fa516bc3ff6f6999a"
   }
 ]

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Camera, Sparkles, ZoomIn, X } from "lucide-react";
+import { Camera, Sparkles, ZoomIn, X, ExternalLink, Mountain } from "lucide-react";
 
 interface OpticalProduct {
   id: string;
@@ -32,6 +32,7 @@ export const SurfacePhotoViewer: React.FC<SurfacePhotoViewerProps> = ({
   const [photos, setPhotos] = useState<OpticalProduct[]>([]);
   const [selectedPhoto, setSelectedPhoto] = useState<OpticalProduct | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     let isMounted = true;
@@ -98,17 +99,57 @@ export const SurfacePhotoViewer: React.FC<SurfacePhotoViewerProps> = ({
 
       {selectedPhoto && (
         <div className="space-y-3">
-          <div className="relative rounded-lg overflow-hidden border border-atlas-border bg-black/60 aspect-video group">
-            <img
-              src={selectedPhoto.thumbnailUrl}
-              alt={selectedPhoto.name}
-              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-              onError={(e) => {
-                // Fallback if external image is blocked
-                (e.target as HTMLElement).style.display = "none";
-              }}
-            />
-            <div className="absolute top-2 left-2 px-2 py-1 rounded bg-black/70 backdrop-blur text-[11px] font-mono text-white flex items-center space-x-1.5 border border-white/10">
+          <div className="relative rounded-lg overflow-hidden border border-atlas-border bg-atlas-elevated aspect-video group flex items-center justify-center">
+            {!failedImages[selectedPhoto.id] ? (
+              <img
+                src={selectedPhoto.thumbnailUrl}
+                alt={selectedPhoto.name}
+                referrerPolicy="no-referrer"
+                crossOrigin="anonymous"
+                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                onError={() => {
+                  setFailedImages((prev) => ({ ...prev, [selectedPhoto.id]: true }));
+                }}
+              />
+            ) : (
+              <div className="w-full h-full p-6 bg-gradient-to-br from-[#1c120c] via-[#2a170e] to-[#0c0d12] flex flex-col items-center justify-center text-center space-y-3 relative overflow-hidden">
+                {/* Stratigraphic Layer Pattern Background */}
+                <div className="absolute inset-0 opacity-15 pointer-events-none flex flex-col justify-between py-4">
+                  <div className="border-b border-amber-500/40 w-full" />
+                  <div className="border-b border-amber-500/30 w-full border-dashed" />
+                  <div className="border-b border-amber-500/50 w-full" />
+                  <div className="border-b border-amber-500/20 w-full border-dotted" />
+                </div>
+
+                <div className="w-12 h-12 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+                  <Mountain className="w-6 h-6" />
+                </div>
+
+                <div className="space-y-1 max-w-md z-10">
+                  <h4 className="text-sm font-bold text-atlas-text font-mono">
+                    {selectedPhoto.name}
+                  </h4>
+                  <p className="text-[11px] text-atlas-muted">
+                    NASA In-Situ Ground Camera Perspective ({selectedPhoto.instrument})
+                  </p>
+                  <p className="text-[10px] text-amber-400/90 font-mono">
+                    Calibrated PDS Product · Sol {selectedPhoto.sol ?? "Ground"}
+                  </p>
+                </div>
+
+                <a
+                  href={selectedPhoto.pdsProductUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="z-10 inline-flex items-center space-x-1.5 px-3 py-1.5 rounded bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-xs font-mono transition-colors"
+                >
+                  <span>Open NASA Planetary Data System Record</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            )}
+
+            <div className="absolute top-2 left-2 px-2 py-1 rounded bg-black/70 backdrop-blur text-[11px] font-mono text-white flex items-center space-x-1.5 border border-white/10 pointer-events-none">
               <Sparkles className="w-3.5 h-3.5 text-amber-400" />
               <span>{selectedPhoto.mission} {selectedPhoto.sol !== undefined ? `• Sol ${selectedPhoto.sol}` : ""}</span>
             </div>
@@ -116,10 +157,11 @@ export const SurfacePhotoViewer: React.FC<SurfacePhotoViewerProps> = ({
               href={selectedPhoto.pdsProductUrl}
               target="_blank"
               rel="noreferrer"
+              title="Open official NASA JPL Photojournal catalog entry & high-res downloads"
               className="absolute bottom-2 right-2 px-2.5 py-1 rounded bg-black/70 hover:bg-black/90 text-[11px] text-white flex items-center space-x-1 border border-white/20 transition-colors"
             >
               <ZoomIn className="w-3.5 h-3.5 text-amber-400" />
-              <span>Inspect PDS Record</span>
+              <span>Inspect NASA Archive</span>
             </a>
           </div>
 
