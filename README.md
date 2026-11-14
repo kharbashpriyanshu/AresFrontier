@@ -7,7 +7,7 @@
 [![React](https://img.shields.io/badge/React-18.3-61dafb?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![Node.js](https://img.shields.io/badge/Node.js-24-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
 [![Leaflet](https://img.shields.io/badge/Leaflet-1.9-199900?style=for-the-badge&logo=leaflet&logoColor=white)](https://leafletjs.com/)
-[![Tests](https://img.shields.io/badge/Tests-217%2F217%20Passing-34d399?style=for-the-badge&logo=vitest&logoColor=white)](#-automated-testing--validation)
+[![Tests](https://img.shields.io/badge/Tests-256%2F256%20Passing-34d399?style=for-the-badge&logo=vitest&logoColor=white)](#-automated-testing--validation)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue?style=for-the-badge)](LICENSE)
 
 > **Martian Map is a reproducible planetary mission digital twin that combines terrain intelligence, multi-agent operations, sensor uncertainty, communication modeling, safety invariants, human authorization, cryptographic mission auditing, deterministic replay, and what-if decision analysis.**
@@ -215,6 +215,19 @@ Delta Scarp Base Camp (Destination Outpost)
 - **NASA Judging Demo Console (`/demo`)**:
   - 4 one-click evaluation scenarios (`MARSWALK-001`, `COMM-BLACKOUT-001`, `SENSOR-HAZARD-001`, `EMERGENCY-001`) with structured 5-point judge reports.
 
+### 🚀 Advanced NASA Challenge Capabilities
+- **Dynamic Regional Dust Storm Hazard Simulator**:
+  - 1-click storm trigger modeling atmospheric optical depth ($\tau = 2.45$), $65\%$ solar array output drop, and automated long-leg ($>1.2\text{ km}$) exposure alerts.
+  - A* pathfinding router dynamically penalizes high-altitude exposed ridges ($>-2500\text{ m}$) and directs rovers/astronauts into sheltered canyon corridors.
+- **Aerospace-Grade Mission Briefing Dossier (Printable PDF & Markdown)**:
+  - Generates an executive briefing sheet with NASA Flight Directorate header, SHA-256 cryptographic audit verification, MOLA altimetric cross-section SVG chart, consumables depletion curve, and PDS dataset provenance citations.
+  - Includes a one-click "Print / Save PDF" (`@media print`) and markdown export.
+- **NASA MEPAG (Mars Exploration Program Analysis Group) Science Badges**:
+  - Color-coded badges mapping every outcrop to official NASA science objectives: Goal I (Life & Biosignatures), Goal II (Climate History), Goal III (Crustal Geology & Volcanism), and Goal IV (Human Exploration).
+- **Simulated 2.5D Orbit-to-Ground Route Flyover & Tactical Reconnaissance HUD**:
+  - Replicates NASA Space Apps Challenge Resource 3 (Curiosity lower Mount Sharp flyover).
+  - Smoothly tracks traversals with a dynamic CSS 3D perspective viewport, flight attitude indicators, pitch ladder ($-75^\circ$ down to $-32^\circ$), radar altimeter ($180\text{ km} \to 650\text{ m}$), true heading azimuth, and target formation callouts.
+
 ---
 
 ## 🏛️ System Architecture
@@ -345,7 +358,7 @@ The codebase includes comprehensive unit, mathematical, and end-to-end integrati
 npm test
 ```
 
-### Test Suite Results: 121 / 121 Passing (100%) Across 30 Test Files
+### Test Suite Results: 256 / 256 Passing (100%) Across 51 Test Files
 
 - `tests/backend/missionReplay.test.ts` (4 tests):
   - Initializes replay cursor and loads chronological mission event stream.
