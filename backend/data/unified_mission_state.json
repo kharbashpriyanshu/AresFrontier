@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "missionId": "MARSWALK-001",
-  "savedAt": "2026-11-14T08:56:59.955Z",
+  "savedAt": "2026-11-14T09:07:04.616Z",
   "metadata": {
     "id": "MARSWALK-001",
     "name": "Marswalk-001: Jezero Delta Astrobiology Traverse",
@@ -10,7 +10,7 @@
     "status": "APPROVED",
     "commanderId": "ASTRONAUT-01",
     "createdAt": "2026-11-14T07:19:26.787Z",
-    "updatedAt": "2026-11-14T08:56:59.955Z",
+    "updatedAt": "2026-11-14T09:07:04.616Z",
     "activeRouteId": "route-jezero-delta-sol100",
     "parameters": {
       "routeId": "route-jezero-delta-sol100",
@@ -424,9 +424,9 @@
           "energyConsumptionRateWhPerKm": 120,
           "suitOxygenPercent": 88,
           "heartRateBpm": 110,
-          "lastHeartbeat": "2026-11-14T08:56:59.926Z"
+          "lastHeartbeat": "2026-11-14T09:07:04.552Z"
         },
-        "lastUpdated": "2026-11-14T08:56:59.956Z",
+        "lastUpdated": "2026-11-14T09:07:04.617Z",
         "provenance": {
           "sourceType": "DERIVED",
           "sourceName": "Martian Map Planetary Computation — Astronaut Telemetry Model",
@@ -504,7 +504,7 @@
           "lineOfSightToRelay": true,
           "activeRelayId": "agent-rover-03",
           "energyConsumptionRateWhPerKm": 95,
-          "lastHeartbeat": "2026-11-14T08:56:59.926Z"
+          "lastHeartbeat": "2026-11-14T09:07:04.552Z"
         },
         "currentTask": {
           "id": "task-scout-recon-01",
@@ -525,7 +525,7 @@
           "riskLevel": "MODERATE",
           "status": "IN_PROGRESS"
         },
-        "lastUpdated": "2026-11-14T08:56:59.956Z",
+        "lastUpdated": "2026-11-14T09:07:04.617Z",
         "provenance": {
           "sourceType": "DERIVED",
           "sourceName": "Martian Map Planetary Computation — Scout Autonomous Vehicle Model",
@@ -600,9 +600,9 @@
           "lineOfSightToRelay": true,
           "activeRelayId": "agent-rover-03",
           "energyConsumptionRateWhPerKm": 160,
-          "lastHeartbeat": "2026-11-14T08:56:59.926Z"
+          "lastHeartbeat": "2026-11-14T09:07:04.552Z"
         },
-        "lastUpdated": "2026-11-14T08:56:59.956Z",
+        "lastUpdated": "2026-11-14T09:07:04.617Z",
         "provenance": {
           "sourceType": "DERIVED",
           "sourceName": "Martian Map Planetary Computation — Science Rover Model",
@@ -675,9 +675,9 @@
           "signalStrengthPercent": 98,
           "lineOfSightToRelay": true,
           "energyConsumptionRateWhPerKm": 80,
-          "lastHeartbeat": "2026-11-14T08:56:59.926Z"
+          "lastHeartbeat": "2026-11-14T09:07:04.552Z"
         },
-        "lastUpdated": "2026-11-14T08:56:59.956Z",
+        "lastUpdated": "2026-11-14T09:07:04.617Z",
         "provenance": {
           "sourceType": "DERIVED",
           "sourceName": "Martian Map Planetary Computation — Relay Rover Model",
@@ -736,7 +736,7 @@
         "orbitalPeriodMinutes": 112,
         "coverageRadiusKm": 850,
         "bandwidthKbps": 2048,
-        "nextPassWindowStart": "2026-11-14T09:14:59.926Z",
+        "nextPassWindowStart": "2026-11-14T09:25:04.552Z",
         "nextPassDurationMinutes": 14,
         "telemetry": {
           "batteryPercent": 96,
@@ -747,9 +747,9 @@
           "signalStrengthPercent": 100,
           "lineOfSightToRelay": true,
           "energyConsumptionRateWhPerKm": 0,
-          "lastHeartbeat": "2026-11-14T08:56:59.926Z"
+          "lastHeartbeat": "2026-11-14T09:07:04.552Z"
         },
-        "lastUpdated": "2026-11-14T08:56:59.926Z",
+        "lastUpdated": "2026-11-14T09:07:04.552Z",
         "provenance": {
           "sourceType": "DERIVED",
           "sourceName": "Martian Map Planetary Computation — MRO Orbital Relay Model",
@@ -770,7 +770,7 @@
       "agent-rover-03",
       "agent-orbiter-01"
     ],
-    "lastTelemetrySync": "2026-11-14T08:56:59.950Z"
+    "lastTelemetrySync": "2026-11-14T09:07:04.604Z"
   },
   "routes": {
     "activeRouteId": "route-jezero-delta-sol100",
@@ -1485,7 +1485,7 @@
   },
   "communication": {
     "networkTopology": {
-      "timestamp": "2026-11-14T08:56:59.954Z",
+      "timestamp": "2026-11-14T09:07:04.614Z",
       "links": [
         {
           "sourceAgentId": "agent-astronaut-01",
@@ -1633,8 +1633,8 @@
       "unconnectedAgents": [],
       "orbitalVisibility": {
         "orbiterId": "agent-orbiter-01",
-        "startTime": "2026-11-14T08:53:59.954Z",
-        "endTime": "2026-11-14T09:13:59.954Z",
+        "startTime": "2026-11-14T09:04:04.614Z",
+        "endTime": "2026-11-14T09:24:04.614Z",
         "maxElevationDeg": 48.5,
         "slantRangeKm": 523.4,
         "visibilityQuality": "GOOD",
@@ -1789,8 +1789,8 @@
     ],
     "orbitalPass": {
       "orbiterId": "agent-orbiter-01",
-      "startTime": "2026-11-14T08:53:59.954Z",
-      "endTime": "2026-11-14T09:13:59.954Z",
+      "startTime": "2026-11-14T09:04:04.614Z",
+      "endTime": "2026-11-14T09:24:04.614Z",
       "maxElevationDeg": 48.5,
       "slantRangeKm": 523.4,
       "visibilityQuality": "GOOD",
@@ -1807,7 +1807,7 @@
         "priority": "CRITICAL",
         "type": "TELEMETRY",
         "payloadSizeKb": 12,
-        "createdAt": "2026-11-14T08:41:59.827Z",
+        "createdAt": "2026-11-14T08:52:04.373Z",
         "status": "DELIVERED",
         "attempts": 1,
         "storeAndForward": true,
@@ -1819,7 +1819,7 @@
         "priority": "BULK",
         "type": "SCIENCE_DATA",
         "payloadSizeKb": 4500,
-        "createdAt": "2026-11-14T08:51:59.827Z",
+        "createdAt": "2026-11-14T09:02:04.373Z",
         "status": "BUFFERED",
         "attempts": 0,
         "storeAndForward": true,
@@ -1831,7 +1831,7 @@
         "priority": "CRITICAL",
         "type": "HAZARD_ALERT",
         "payloadSizeKb": 8,
-        "createdAt": "2026-11-14T08:55:59.827Z",
+        "createdAt": "2026-11-14T09:06:04.373Z",
         "status": "TRANSMITTING",
         "attempts": 1,
         "storeAndForward": true,
@@ -1868,7 +1868,7 @@
           "2001 Mars Odyssey THEMIS Daytime Thermal Regolith Bedrock",
           "Mars 2020 Perseverance SuperCam In-Situ Spectroscopy"
         ],
-        "assignedAt": "2026-11-14T08:31:59.825Z",
+        "assignedAt": "2026-11-14T08:42:04.369Z",
         "provenance": {
           "sourceType": "ROVER",
           "sourceName": "NASA Planetary Data System — Mars 2020 (Perseverance)",
@@ -1904,7 +1904,7 @@
           "MRO HiRISE Sub-Meter Foreset Dip Strata",
           "MGS MOLA Regional Elevation Differential (-2540m areoid)"
         ],
-        "assignedAt": "2026-11-14T08:46:59.825Z",
+        "assignedAt": "2026-11-14T08:57:04.370Z",
         "provenance": {
           "sourceType": "NASA",
           "sourceName": "NASA MRO High Resolution Imaging Science Experiment (HiRISE)",
@@ -2040,9 +2040,9 @@
             "energyConsumptionRateWhPerKm": 120,
             "suitOxygenPercent": 88,
             "heartRateBpm": 110,
-            "lastHeartbeat": "2026-11-14T08:56:59.926Z"
+            "lastHeartbeat": "2026-11-14T09:07:04.552Z"
           },
-          "lastUpdated": "2026-11-14T08:56:59.926Z",
+          "lastUpdated": "2026-11-14T09:07:04.552Z",
           "provenance": {
             "sourceType": "DERIVED",
             "sourceName": "Martian Map Planetary Computation — Astronaut Telemetry Model",
@@ -2118,7 +2118,7 @@
             "lineOfSightToRelay": true,
             "activeRelayId": "agent-rover-03",
             "energyConsumptionRateWhPerKm": 95,
-            "lastHeartbeat": "2026-11-14T08:56:59.926Z"
+            "lastHeartbeat": "2026-11-14T09:07:04.552Z"
           },
           "currentTask": {
             "id": "task-scout-recon-01",
@@ -2139,7 +2139,7 @@
             "riskLevel": "MODERATE",
             "status": "IN_PROGRESS"
           },
-          "lastUpdated": "2026-11-14T08:56:59.947Z",
+          "lastUpdated": "2026-11-14T09:07:04.597Z",
           "provenance": {
             "sourceType": "DERIVED",
             "sourceName": "Martian Map Planetary Computation — Scout Autonomous Vehicle Model",
@@ -2214,9 +2214,9 @@
             "lineOfSightToRelay": true,
             "activeRelayId": "agent-rover-03",
             "energyConsumptionRateWhPerKm": 160,
-            "lastHeartbeat": "2026-11-14T08:56:59.926Z"
+            "lastHeartbeat": "2026-11-14T09:07:04.552Z"
           },
-          "lastUpdated": "2026-11-14T08:56:59.926Z",
+          "lastUpdated": "2026-11-14T09:07:04.552Z",
           "provenance": {
             "sourceType": "DERIVED",
             "sourceName": "Martian Map Planetary Computation — Science Rover Model",
@@ -2289,9 +2289,9 @@
             "signalStrengthPercent": 98,
             "lineOfSightToRelay": true,
             "energyConsumptionRateWhPerKm": 80,
-            "lastHeartbeat": "2026-11-14T08:56:59.926Z"
+            "lastHeartbeat": "2026-11-14T09:07:04.552Z"
           },
-          "lastUpdated": "2026-11-14T08:56:59.926Z",
+          "lastUpdated": "2026-11-14T09:07:04.552Z",
           "provenance": {
             "sourceType": "DERIVED",
             "sourceName": "Martian Map Planetary Computation — Relay Rover Model",
@@ -2348,7 +2348,7 @@
           "orbitalPeriodMinutes": 112,
           "coverageRadiusKm": 850,
           "bandwidthKbps": 2048,
-          "nextPassWindowStart": "2026-11-14T09:14:59.926Z",
+          "nextPassWindowStart": "2026-11-14T09:25:04.552Z",
           "nextPassDurationMinutes": 14,
           "telemetry": {
             "batteryPercent": 96,
@@ -2359,9 +2359,9 @@
             "signalStrengthPercent": 100,
             "lineOfSightToRelay": true,
             "energyConsumptionRateWhPerKm": 0,
-            "lastHeartbeat": "2026-11-14T08:56:59.926Z"
+            "lastHeartbeat": "2026-11-14T09:07:04.552Z"
           },
-          "lastUpdated": "2026-11-14T08:56:59.926Z",
+          "lastUpdated": "2026-11-14T09:07:04.552Z",
           "provenance": {
             "sourceType": "DERIVED",
             "sourceName": "Martian Map Planetary Computation — MRO Orbital Relay Model",
@@ -2399,19 +2399,19 @@
         "packetsDeliveredCount": 0,
         "packetsBufferedCount": 0
       },
-      "lastUpdated": "2026-11-14T08:56:59.955Z"
+      "lastUpdated": "2026-11-14T09:07:04.616Z"
     },
     "telemetryDeviationScore": 0.02,
-    "lastSynchronizedAt": "2026-11-14T08:56:59.955Z"
+    "lastSynchronizedAt": "2026-11-14T09:07:04.616Z"
   },
   "lineage": {
     "decisionLineageGraphs": {},
     "latestDecisionNode": null,
     "auditChainVerification": {
       "isValid": true,
-      "chainLength": 192,
-      "verifiedAt": "2026-11-14T08:56:59.955Z",
-      "message": "Audit chain cryptographically verified. All 192 blocks valid and tamper-free."
+      "chainLength": 226,
+      "verifiedAt": "2026-11-14T09:07:04.616Z",
+      "message": "Audit chain cryptographically verified. All 226 blocks valid and tamper-free."
     }
   },
   "provenance": {
@@ -2535,7 +2535,7 @@
         "id": "S7",
         "name": "TAMPER-EVIDENT AUDIT CHAIN",
         "status": "PASS",
-        "evaluatedMetric": "192 blocks verified",
+        "evaluatedMetric": "226 blocks verified",
         "threshold": "100% cryptographic SHA-256 validity across all audit blocks",
         "scientificReference": "NIST SP 800-92 Guide to Computer Security Log Management"
       },
@@ -2554,10 +2554,10 @@
     "totalEvents": 21,
     "recentEvents": [
       {
-        "eventId": "mevt-1794646599629-2-18n5",
+        "eventId": "mevt-1794647175805-2-pdox",
         "sequenceNumber": 2,
         "missionId": "MARSWALK-001",
-        "timestamp": "2026-11-14T08:06:39.626Z",
+        "timestamp": "2026-11-14T08:16:15.766Z",
         "simulationTime": 600,
         "actor": "agent-rover-01",
         "eventType": "AGENT_ASSIGNED",
@@ -2573,14 +2573,14 @@
           "sourceName": "Ares Scout Telemetry",
           "dataMode": "SIMULATED"
         },
-        "previousEventHash": "50aefb651738aabe7390a964d3539fce5edaa15028dce06fa51f0a162391e023",
-        "eventHash": "48a476fc03213b272eaeb4535417a0ee776cca11b882764ab12809f54a820687"
+        "previousEventHash": "e481302a0f9843f41ede3aef00378adffcf8a29dfa2d6eb88455e7e4e6d8b37d",
+        "eventHash": "55ee634b3358dbdcab98540d459273a90885815b02f81d3dc794208e299dfa8c"
       },
       {
-        "eventId": "mevt-1794646599631-3-z0wm",
+        "eventId": "mevt-1794647175834-3-ozp5",
         "sequenceNumber": 3,
         "missionId": "MARSWALK-001",
-        "timestamp": "2026-11-14T08:16:39.626Z",
+        "timestamp": "2026-11-14T08:26:15.766Z",
         "simulationTime": 1200,
         "actor": "agent-rover-01",
         "eventType": "SENSOR_OBSERVATION",
@@ -2594,14 +2594,14 @@
           "sourceName": "Stereo HazCam",
           "dataMode": "SIMULATED"
         },
-        "previousEventHash": "48a476fc03213b272eaeb4535417a0ee776cca11b882764ab12809f54a820687",
-        "eventHash": "33cecdab88d96c391d895ff4a586057ca72b4454e6f7ac505b4fec4292c35c23"
+        "previousEventHash": "55ee634b3358dbdcab98540d459273a90885815b02f81d3dc794208e299dfa8c",
+        "eventHash": "9f8306d84fe96bc83e7918172fa7c25e0a4a50fe315b30127acd99e21dc3dbf9"
       },
       {
-        "eventId": "mevt-1794646599633-4-u3ny",
+        "eventId": "mevt-1794647175869-4-nupg",
         "sequenceNumber": 4,
         "missionId": "MARSWALK-001",
-        "timestamp": "2026-11-14T08:26:39.626Z",
+        "timestamp": "2026-11-14T08:36:15.766Z",
         "simulationTime": 1800,
         "actor": "agent-rover-01",
         "eventType": "HAZARD_DETECTED",
@@ -2618,14 +2618,14 @@
           "sourceName": "ObservationHazardFusion",
           "dataMode": "DERIVED"
         },
-        "previousEventHash": "33cecdab88d96c391d895ff4a586057ca72b4454e6f7ac505b4fec4292c35c23",
-        "eventHash": "7a1c7ca3a8dc004c4a866715a6a9ed410561d3444be6d532618e0fc2e4dfbaa5"
+        "previousEventHash": "9f8306d84fe96bc83e7918172fa7c25e0a4a50fe315b30127acd99e21dc3dbf9",
+        "eventHash": "c44042a1971ea858af2fbe6ac40290992cfb876041191daa63668405c7fb2773"
       },
       {
-        "eventId": "mevt-1794646599635-5-sovs",
+        "eventId": "mevt-1794647175896-5-jinw",
         "sequenceNumber": 5,
         "missionId": "MARSWALK-001",
-        "timestamp": "2026-11-14T08:31:39.626Z",
+        "timestamp": "2026-11-14T08:41:15.766Z",
         "simulationTime": 2100,
         "actor": "agent-rover-01",
         "eventType": "COMMAND_EXECUTED",
@@ -2638,14 +2638,14 @@
           "sourceName": "DecisionEngine",
           "dataMode": "SIMULATED"
         },
-        "previousEventHash": "7a1c7ca3a8dc004c4a866715a6a9ed410561d3444be6d532618e0fc2e4dfbaa5",
-        "eventHash": "f33546bbb0e7d4f0e5db4a748dbee547edc8ba1d37f19f7dc7eb295f015bfa8d"
+        "previousEventHash": "c44042a1971ea858af2fbe6ac40290992cfb876041191daa63668405c7fb2773",
+        "eventHash": "2fe9de18d6a9787c657d697335642fe3faee2bd9a9b8266a01ae060f3fec367e"
       },
       {
-        "eventId": "mevt-1794646599636-6-jmaq",
+        "eventId": "mevt-1794647175910-6-buek",
         "sequenceNumber": 6,
         "missionId": "MARSWALK-001",
-        "timestamp": "2026-11-14T08:36:39.626Z",
+        "timestamp": "2026-11-14T08:46:15.766Z",
         "simulationTime": 2400,
         "actor": "MISSION_CONTROL",
         "eventType": "REPLAN_PROPOSED",
@@ -2671,14 +2671,14 @@
           "sourceName": "ReplanningEngine",
           "dataMode": "DERIVED"
         },
-        "previousEventHash": "f33546bbb0e7d4f0e5db4a748dbee547edc8ba1d37f19f7dc7eb295f015bfa8d",
-        "eventHash": "a140942cabf990ce364f27fab4ba84c7664d1b336f08a79d984201c263306d97"
+        "previousEventHash": "2fe9de18d6a9787c657d697335642fe3faee2bd9a9b8266a01ae060f3fec367e",
+        "eventHash": "eba28fe6a3eb4f2400c235e3ae4898f8fee330161031958e32823140fbdbd371"
       },
       {
-        "eventId": "mevt-1794646599638-7-o5fl",
+        "eventId": "mevt-1794647175975-7-pgwg",
         "sequenceNumber": 7,
         "missionId": "MARSWALK-001",
-        "timestamp": "2026-11-14T08:41:39.626Z",
+        "timestamp": "2026-11-14T08:51:15.767Z",
         "simulationTime": 2700,
         "actor": "MISSION_CONTROL",
         "eventType": "REPLAN_APPROVED",
@@ -2691,14 +2691,14 @@
           "sourceName": "AuditChainService",
           "dataMode": "BENCHMARK"
         },
-        "previousEventHash": "a140942cabf990ce364f27fab4ba84c7664d1b336f08a79d984201c263306d97",
-        "eventHash": "7413a170073b35c844544c60a28157692b6d45e12b52c1cab659db315b39e63f"
+        "previousEventHash": "eba28fe6a3eb4f2400c235e3ae4898f8fee330161031958e32823140fbdbd371",
+        "eventHash": "09cf7c9d28860e4c154d406b9ffd36884d1bf391f1341af8a2a8fb9fbbb398a2"
       },
       {
-        "eventId": "mevt-1794646599640-8-3zhu",
+        "eventId": "mevt-1794647176005-8-80ga",
         "sequenceNumber": 8,
         "missionId": "MARSWALK-001",
-        "timestamp": "2026-11-14T08:51:39.626Z",
+        "timestamp": "2026-11-14T09:01:15.767Z",
         "simulationTime": 3300,
         "actor": "agent-rover-02",
         "eventType": "SCIENCE_TARGET_COMPLETED",
@@ -2711,21 +2711,21 @@
           "sourceName": "Raman Spectrometer",
           "dataMode": "SIMULATED"
         },
-        "previousEventHash": "7413a170073b35c844544c60a28157692b6d45e12b52c1cab659db315b39e63f",
-        "eventHash": "770dfd95dc1cb268c37fe6859ee96edce01345c73b6ca924396641d5ec120a66"
+        "previousEventHash": "09cf7c9d28860e4c154d406b9ffd36884d1bf391f1341af8a2a8fb9fbbb398a2",
+        "eventHash": "0eb22fe554dcc3f7f22db2688d2ecfd61a1e4dd889b493388f811f96d877d345"
       },
       {
-        "eventId": "mevt-1794646602613-9-8ce4",
+        "eventId": "mevt-1794647188688-9-2dht",
         "sequenceNumber": 9,
         "missionId": "MARSWALK-DRAFT-TEST",
-        "timestamp": "2026-11-14T08:56:42.614Z",
+        "timestamp": "2026-11-14T09:06:28.688Z",
         "actor": "SCIENCE_LEAD",
         "entityId": "tgt-oxia-planum",
-        "auditRef": "971f3d147fde493e93ad2bbccaa3da0bbf7efb4aebef7b9a45c67f276910ec0d",
+        "auditRef": "b0579143d08667234f8327d3123519d0b6fe4dea92caa5a925c72a54ef100854",
         "eventType": "MISSION_UPDATED",
         "payload": {
           "action": "SCIENCE_TARGET_ASSIGNED",
-          "decisionId": "scidec-7d0755e8",
+          "decisionId": "scidec-62c7d2db",
           "targetId": "tgt-oxia-planum",
           "targetName": "Oxia Planum Fe/Mg-Phyllosilicate Plain",
           "region": "Oxia Planum",
@@ -2743,14 +2743,14 @@
             "methodology": "Propagated uncertainty from input layers [NASA MRO CRISM / HiRISE & ESA Mars Express OMEGA]"
           }
         },
-        "previousEventHash": "770dfd95dc1cb268c37fe6859ee96edce01345c73b6ca924396641d5ec120a66",
-        "eventHash": "ff83fb73680c5244854d9f5b2114cd1261e5c22abaa95c9406dd117710dc33c2"
+        "previousEventHash": "0eb22fe554dcc3f7f22db2688d2ecfd61a1e4dd889b493388f811f96d877d345",
+        "eventHash": "16c728ac99118de0966ad80f60eb73cdcc5ae4d658a266b1f2d06e188353ab60"
       },
       {
-        "eventId": "mevt-1794646603676-10-73xk",
+        "eventId": "mevt-1794647202952-10-409b",
         "sequenceNumber": 10,
         "missionId": "MARSWALK-001",
-        "timestamp": "2026-11-14T08:56:43.676Z",
+        "timestamp": "2026-11-14T09:06:42.952Z",
         "actor": "agent-rover-01",
         "eventType": "TELEMETRY_LOGGED",
         "payload": {
@@ -2769,14 +2769,14 @@
             "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
           }
         },
-        "previousEventHash": "ff83fb73680c5244854d9f5b2114cd1261e5c22abaa95c9406dd117710dc33c2",
-        "eventHash": "afddb76c323bfb3a04678184f822ca22dc7b868dd304de65825a46be68bdb602"
+        "previousEventHash": "16c728ac99118de0966ad80f60eb73cdcc5ae4d658a266b1f2d06e188353ab60",
+        "eventHash": "3acce76720e1a5a1db37fdba1e0b80a36de1afdefb3157369a20c33043b9c362"
       },
       {
-        "eventId": "mevt-1794646605721-11-r22n",
+        "eventId": "mevt-1794647209484-11-dmin",
         "sequenceNumber": 11,
         "missionId": "USER-TEST-B7-001",
-        "timestamp": "2026-11-14T08:56:45.721Z",
+        "timestamp": "2026-11-14T09:06:49.484Z",
         "actor": "TEST_HARNESS",
         "entityId": "USER-TEST-B7-001",
         "eventType": "TELEMETRY_UPDATED",
@@ -2795,16 +2795,16 @@
             "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
           }
         },
-        "previousEventHash": "afddb76c323bfb3a04678184f822ca22dc7b868dd304de65825a46be68bdb602",
-        "eventHash": "cd471485d0800fb2659dbcefdae3c04cb28545f558f74c4a97e9a63d02133d80"
+        "previousEventHash": "3acce76720e1a5a1db37fdba1e0b80a36de1afdefb3157369a20c33043b9c362",
+        "eventHash": "4970f4366821ff7a071dccd4406fb6a42ea8f497b9e9c9d77b0ccae63e0959b4"
       },
       {
-        "eventId": "mevt-1794646605884-12-7f43",
+        "eventId": "mevt-1794647209676-12-hs3e",
         "sequenceNumber": 12,
-        "missionId": "DEMO-NOMINAL-391613",
-        "timestamp": "2026-11-14T08:56:45.884Z",
+        "missionId": "DEMO-NOMINAL-87F361",
+        "timestamp": "2026-11-14T09:06:49.676Z",
         "actor": "JUDGING_DEMO_ENGINE",
-        "entityId": "DEMO-NOMINAL-391613",
+        "entityId": "DEMO-NOMINAL-87F361",
         "eventType": "MISSION_CREATED",
         "payload": {
           "simulated": true,
@@ -2824,21 +2824,21 @@
             "methodology": "Propagated uncertainty from input layers [JudgingDemoService]"
           }
         },
-        "previousEventHash": "cd471485d0800fb2659dbcefdae3c04cb28545f558f74c4a97e9a63d02133d80",
-        "eventHash": "d6259fdac468b10d11bcb917e510f720bb2482b90b938615dcd6f765d3a85c90"
+        "previousEventHash": "4970f4366821ff7a071dccd4406fb6a42ea8f497b9e9c9d77b0ccae63e0959b4",
+        "eventHash": "92826a73f2fbb74e690d875fbba7aa316fca3aeb1a01ed85bc90b9812a2df95b"
       },
       {
-        "eventId": "mevt-1794646605887-13-2dxu",
+        "eventId": "mevt-1794647209679-13-ae40",
         "sequenceNumber": 13,
-        "missionId": "DEMO-NOMINAL-391613",
-        "timestamp": "2026-11-14T08:56:45.887Z",
+        "missionId": "DEMO-NOMINAL-87F361",
+        "timestamp": "2026-11-14T09:06:49.679Z",
         "actor": "SIMULATED_SCIENCE_LEAD",
         "entityId": "tgt-kodiak-butte",
-        "auditRef": "543cc90c08abe57eb246437fb638cc85fbbaa9c5e2065345213364fa940e3baa",
+        "auditRef": "f61751ab2533d7ff11dfba955099596b77ada67537be17a4a1c68046450312e4",
         "eventType": "MISSION_UPDATED",
         "payload": {
           "action": "SCIENCE_TARGET_ASSIGNED",
-          "decisionId": "scidec-155ec89a",
+          "decisionId": "scidec-0d4998ab",
           "targetId": "tgt-kodiak-butte",
           "targetName": "Kodiak Butte Delta Remnant",
           "region": "Jezero Crater",
@@ -2856,16 +2856,16 @@
             "methodology": "Propagated uncertainty from input layers [NASA Perseverance Rover Mastcam-Z Long Distance Imaging & CRISM]"
           }
         },
-        "previousEventHash": "d6259fdac468b10d11bcb917e510f720bb2482b90b938615dcd6f765d3a85c90",
-        "eventHash": "3ae9f6834123352c63f40b75f9b1f1da3eb51e1c0138e787090bedec307f2b02"
+        "previousEventHash": "92826a73f2fbb74e690d875fbba7aa316fca3aeb1a01ed85bc90b9812a2df95b",
+        "eventHash": "632d3694f54cdd02ce40c4b6023acbf301948d134d026d18d0838329d560582b"
       },
       {
-        "eventId": "mevt-1794646605933-14-ajb9",
+        "eventId": "mevt-1794647209718-14-939g",
         "sequenceNumber": 14,
-        "missionId": "DEMO-NOMINAL-391613",
-        "timestamp": "2026-11-14T08:56:45.933Z",
+        "missionId": "DEMO-NOMINAL-87F361",
+        "timestamp": "2026-11-14T09:06:49.718Z",
         "actor": "SIMULATED_ROUTE_OPTIMIZER",
-        "entityId": "route-demo-391613",
+        "entityId": "route-demo-87f361",
         "eventType": "ROUTE_SELECTED",
         "payload": {
           "simulated": true,
@@ -2885,18 +2885,18 @@
             "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
           }
         },
-        "previousEventHash": "3ae9f6834123352c63f40b75f9b1f1da3eb51e1c0138e787090bedec307f2b02",
-        "eventHash": "01504754c5d158651109c33a0785281c54333ffd908dd26beb0fa0e4e80bee69"
+        "previousEventHash": "632d3694f54cdd02ce40c4b6023acbf301948d134d026d18d0838329d560582b",
+        "eventHash": "312a45e9de306d894e8e0947ce07e1ff8e2e43dedecd45df5dcf549f92b442ea"
       },
       {
-        "eventId": "mevt-1794646605942-15-3kgz",
+        "eventId": "mevt-1794647209723-15-1xn7",
         "sequenceNumber": 15,
-        "missionId": "DEMO-NOMINAL-391613",
-        "timestamp": "2026-11-14T08:56:45.942Z",
+        "missionId": "DEMO-NOMINAL-87F361",
+        "timestamp": "2026-11-14T09:06:49.723Z",
         "actor": "ASTRONAUT-01",
         "eventType": "COMMAND_EXECUTED",
         "payload": {
-          "evaSessionId": "eva-1794646605935-0ssn",
+          "evaSessionId": "eva-1794647209720-l4yf",
           "action": "START",
           "previousStatus": "PLANNED",
           "nextStatus": "ACTIVE",
@@ -2913,18 +2913,18 @@
             "methodology": "Propagated uncertainty from input layers [Suit Telemetry Model, S1-S8 Invariants]"
           }
         },
-        "previousEventHash": "01504754c5d158651109c33a0785281c54333ffd908dd26beb0fa0e4e80bee69",
-        "eventHash": "2b8dd8aa2c23f9026d3b1f91fb6f9575e6930358581554aa7ff7811b99b97a88"
+        "previousEventHash": "312a45e9de306d894e8e0947ce07e1ff8e2e43dedecd45df5dcf549f92b442ea",
+        "eventHash": "5b878331f3e4f8fae86e5b1e1ae8721f467bb65e12e6b0dcd3bdcaf923cb819d"
       },
       {
-        "eventId": "mevt-1794646606021-16-admy",
+        "eventId": "mevt-1794647209774-16-u9ua",
         "sequenceNumber": 16,
-        "missionId": "DEMO-NOMINAL-391613",
-        "timestamp": "2026-11-14T08:56:46.021Z",
+        "missionId": "DEMO-NOMINAL-87F361",
+        "timestamp": "2026-11-14T09:06:49.774Z",
         "actor": "ASTRONAUT-01",
         "eventType": "COMMAND_EXECUTED",
         "payload": {
-          "evaSessionId": "eva-1794646605935-0ssn",
+          "evaSessionId": "eva-1794647209720-l4yf",
           "action": "COMPLETE",
           "previousStatus": "ACTIVE",
           "nextStatus": "COMPLETED",
@@ -2941,21 +2941,21 @@
             "methodology": "Propagated uncertainty from input layers [Suit Telemetry Model, S1-S8 Invariants]"
           }
         },
-        "previousEventHash": "2b8dd8aa2c23f9026d3b1f91fb6f9575e6930358581554aa7ff7811b99b97a88",
-        "eventHash": "2e95d19ac8c8071af0c7ddf99615d78904585db5c25b42e392dd8ed0ef78ea19"
+        "previousEventHash": "5b878331f3e4f8fae86e5b1e1ae8721f467bb65e12e6b0dcd3bdcaf923cb819d",
+        "eventHash": "a3644970a1ce0fa7a0588ad8ced35db914f094fdafcd8a6b01debcdf8c2e6d4b"
       },
       {
-        "eventId": "mevt-1794646606082-17-u0a2",
+        "eventId": "mevt-1794647209818-17-tsn1",
         "sequenceNumber": 17,
-        "missionId": "DEMO-NOMINAL-391613",
-        "timestamp": "2026-11-14T08:56:46.082Z",
+        "missionId": "DEMO-NOMINAL-87F361",
+        "timestamp": "2026-11-14T09:06:49.818Z",
         "actor": "SIMULATED_EVA_CREW",
-        "entityId": "eva-1794646605935-0ssn",
+        "entityId": "eva-1794647209720-l4yf",
         "eventType": "TASK_TRANSITION",
         "payload": {
           "simulated": true,
           "status": "COMPLETED",
-          "evaSessionId": "eva-1794646605935-0ssn",
+          "evaSessionId": "eva-1794647209720-l4yf",
           "elapsedMinutes": 0,
           "batteryPercent": 88
         },
@@ -2970,16 +2970,16 @@
             "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
           }
         },
-        "previousEventHash": "2e95d19ac8c8071af0c7ddf99615d78904585db5c25b42e392dd8ed0ef78ea19",
-        "eventHash": "31ca794b4cf9230521c95eb148f73e5c8703613e716beb00e74e84188a4a7d92"
+        "previousEventHash": "a3644970a1ce0fa7a0588ad8ced35db914f094fdafcd8a6b01debcdf8c2e6d4b",
+        "eventHash": "51689fa188a576cd5de095b97238eeb6e0e1a85ec85dced45a9dd46fa33b23f1"
       },
       {
-        "eventId": "mevt-1794646606084-18-c5ba",
+        "eventId": "mevt-1794647209819-18-sit9",
         "sequenceNumber": 18,
-        "missionId": "DEMO-NOMINAL-391613",
-        "timestamp": "2026-11-14T08:56:46.084Z",
+        "missionId": "DEMO-NOMINAL-87F361",
+        "timestamp": "2026-11-14T09:06:49.819Z",
         "actor": "SIMULATED_COMMS_RELAY",
-        "entityId": "DEMO-NOMINAL-391613",
+        "entityId": "DEMO-NOMINAL-87F361",
         "eventType": "PACKET_DELIVERED",
         "payload": {
           "simulated": true,
@@ -2998,16 +2998,16 @@
             "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
           }
         },
-        "previousEventHash": "31ca794b4cf9230521c95eb148f73e5c8703613e716beb00e74e84188a4a7d92",
-        "eventHash": "3c29a2877587d0149e62b154a054f8457231bbcc47489c3df353969685236412"
+        "previousEventHash": "51689fa188a576cd5de095b97238eeb6e0e1a85ec85dced45a9dd46fa33b23f1",
+        "eventHash": "4429e25b475038f6e75b6b799c2de4c545991b652eba9cd154688144d50209e9"
       },
       {
-        "eventId": "mevt-1794646606146-19-gw9k",
+        "eventId": "mevt-1794647209881-19-7xez",
         "sequenceNumber": 19,
-        "missionId": "DEMO-FAILURE-A59586",
-        "timestamp": "2026-11-14T08:56:46.146Z",
+        "missionId": "DEMO-FAILURE-6D83E5",
+        "timestamp": "2026-11-14T09:06:49.881Z",
         "actor": "JUDGING_DEMO_ENGINE",
-        "entityId": "DEMO-FAILURE-A59586",
+        "entityId": "DEMO-FAILURE-6D83E5",
         "eventType": "MISSION_CREATED",
         "payload": {
           "simulated": true,
@@ -3027,16 +3027,16 @@
             "methodology": "Propagated uncertainty from input layers [JudgingDemoService]"
           }
         },
-        "previousEventHash": "3c29a2877587d0149e62b154a054f8457231bbcc47489c3df353969685236412",
-        "eventHash": "c29a98eceea92cd4576cb5e08bbb618aa307776447217a0cb4f5a7cf19d0800e"
+        "previousEventHash": "4429e25b475038f6e75b6b799c2de4c545991b652eba9cd154688144d50209e9",
+        "eventHash": "5f3459b15fc12229772564cb2a19f293442ac16612ce2560e452353bfcabfde9"
       },
       {
-        "eventId": "mevt-1794646606161-20-86x8",
+        "eventId": "mevt-1794647209896-20-eq8e",
         "sequenceNumber": 20,
-        "missionId": "DEMO-FAILURE-A59586",
-        "timestamp": "2026-11-14T08:56:46.161Z",
+        "missionId": "DEMO-FAILURE-6D83E5",
+        "timestamp": "2026-11-14T09:06:49.896Z",
         "actor": "SIMULATED_FAILURE_ENGINE",
-        "entityId": "DEMO-FAILURE-A59586",
+        "entityId": "DEMO-FAILURE-6D83E5",
         "eventType": "HAZARD_DETECTED",
         "payload": {
           "simulated": true,
@@ -3059,16 +3059,16 @@
             "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
           }
         },
-        "previousEventHash": "c29a98eceea92cd4576cb5e08bbb618aa307776447217a0cb4f5a7cf19d0800e",
-        "eventHash": "fea1e343fc73338bc63144ec09af6d90215fab3e5f13451fc0bd76fd5ff88a32"
+        "previousEventHash": "5f3459b15fc12229772564cb2a19f293442ac16612ce2560e452353bfcabfde9",
+        "eventHash": "4f5341ac859040d1b9cf556e243d2abe14c15cb8f1051c52a5ed92eb5366aa89"
       },
       {
-        "eventId": "mevt-1794646606162-21-i2jv",
+        "eventId": "mevt-1794647209897-21-7gq4",
         "sequenceNumber": 21,
-        "missionId": "DEMO-FAILURE-A59586",
-        "timestamp": "2026-11-14T08:56:46.162Z",
+        "missionId": "DEMO-FAILURE-6D83E5",
+        "timestamp": "2026-11-14T09:06:49.897Z",
         "actor": "SIMULATED_COMMS_RELAY",
-        "entityId": "DEMO-FAILURE-A59586",
+        "entityId": "DEMO-FAILURE-6D83E5",
         "eventType": "COMMUNICATION_LOST",
         "payload": {
           "simulated": true,
@@ -3085,10 +3085,10 @@
             "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
           }
         },
-        "previousEventHash": "fea1e343fc73338bc63144ec09af6d90215fab3e5f13451fc0bd76fd5ff88a32",
-        "eventHash": "b9493650a311dcc3d0623f1a9ef3cd11fa3798f105f87c4b3e1e5e61fe611039"
+        "previousEventHash": "4f5341ac859040d1b9cf556e243d2abe14c15cb8f1051c52a5ed92eb5366aa89",
+        "eventHash": "3373510a32fcb88627525092e780a74e863952dfbcc70c715f6adbcbacbac0d9"
       }
     ],
-    "latestEventHash": "b9493650a311dcc3d0623f1a9ef3cd11fa3798f105f87c4b3e1e5e61fe611039"
+    "latestEventHash": "3373510a32fcb88627525092e780a74e863952dfbcc70c715f6adbcbacbac0d9"
   }
 }

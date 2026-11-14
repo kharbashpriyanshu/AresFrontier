@@ -45,6 +45,8 @@ interface MarsMapProps {
     segments: [number, number][][];
     currentPosition?: { latitude: number; longitude: number; sol: number; totalDistanceKm: number } | null;
   } | null;
+  showMolaHeatmap?: boolean;
+  showCrismOverlay?: boolean;
 }
 
 export type MarsLayerType = "viking" | "mola" | "shaded";
@@ -68,6 +70,8 @@ export const MarsMap: React.FC<MarsMapProps> = ({
   focusCoord = null,
   layoutTrigger,
   ingestedM20Traverse = null,
+  showMolaHeatmap = false,
+  showCrismOverlay = false,
 }) => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
@@ -78,6 +82,8 @@ export const MarsMap: React.FC<MarsMapProps> = ({
   const hazardLayerGroupRef = useRef<L.LayerGroup | null>(null);
   const coverageLayerGroupRef = useRef<L.LayerGroup | null>(null);
   const m20LayerGroupRef = useRef<L.LayerGroup | null>(null);
+  const molaLayerGroupRef = useRef<L.LayerGroup | null>(null);
+  const crismLayerGroupRef = useRef<L.LayerGroup | null>(null);
   const failedTilesRef = useRef<Set<string>>(new Set());
 
   const [activeLayer, setActiveLayer] = useState<MarsLayerType>("viking");
@@ -145,6 +151,8 @@ export const MarsMap: React.FC<MarsMapProps> = ({
     hazardLayerGroupRef.current = L.layerGroup().addTo(map);
     coverageLayerGroupRef.current = L.layerGroup().addTo(map);
     m20LayerGroupRef.current = L.layerGroup().addTo(map);
+    molaLayerGroupRef.current = L.layerGroup().addTo(map);
+    crismLayerGroupRef.current = L.layerGroup().addTo(map);
 
     mapInstanceRef.current = map;
 
@@ -638,6 +646,102 @@ export const MarsMap: React.FC<MarsMapProps> = ({
       }
     }
   }, [showM20Traverse, ingestedM20Traverse]);
+
+  // Update MOLA Elevation Heatmap Layer
+  useEffect(() => {
+    const molaGroup = molaLayerGroupRef.current;
+    if (!molaGroup) return;
+    molaGroup.clearLayers();
+
+    if (showMolaHeatmap) {
+      const MOLA_GRID_POINTS = [
+        { lat: 18.4447, lon: 77.4508, elev: -2565, label: "Octavia E. Butler Landing" },
+        { lat: 18.4200, lon: 77.4200, elev: -2580, label: "Séítah Inter-Dune Low" },
+        { lat: 18.4400, lon: 77.3800, elev: -2520, label: "Western Delta Scarp" },
+        { lat: 18.4600, lon: 77.4600, elev: -2545, label: "Crater Floor Smooth Unit" },
+        { lat: 18.4000, lon: 77.4500, elev: -2610, label: "Southern Depression" },
+        { lat: 18.4300, lon: 77.5200, elev: -2490, label: "Eastern Crater Wall Foothills" },
+        { lat: 18.4700, lon: 77.4000, elev: -2515, label: "Northern Delta Remnant" },
+        { lat: 18.4100, lon: 77.5000, elev: -2600, label: "Séítah Basin Low" },
+        { lat: 18.4500, lon: 77.3500, elev: -2480, label: "Nerretva Vallis Inlet Apex" },
+        { lat: 18.3800, lon: 77.4400, elev: -2630, label: "Deep Floor Basal Unit" },
+        { lat: 18.4230, lon: 77.4110, elev: -2530, label: "Kodiak Butte Isolated Mesa" },
+        { lat: 18.4380, lon: 77.4180, elev: -2540, label: "Delta Front Fan Outcrop" },
+      ];
+
+      MOLA_GRID_POINTS.forEach((pt) => {
+        let color = "#06b6d4";
+        if (pt.elev > -2500) color = "#ef4444";
+        else if (pt.elev > -2540) color = "#f97316";
+        else if (pt.elev > -2570) color = "#eab308";
+        else if (pt.elev > -2600) color = "#06b6d4";
+        else color = "#3b82f6";
+
+        const circle = L.circle([pt.lat, pt.lon], {
+          radius: 1200,
+          color,
+          fillColor: color,
+          fillOpacity: 0.35,
+          weight: 1.5,
+          dashArray: "3 3",
+        });
+
+        circle.bindTooltip(
+          `<b>MOLA Laser Elevation</b><br/>${pt.label}<br/>Elevation: <b>${pt.elev} m</b> areoid`,
+          { direction: "top" }
+        );
+        molaGroup.addLayer(circle);
+      });
+    }
+  }, [showMolaHeatmap]);
+
+  // Update CRISM Hyperspectral Mineralogy Layer
+  useEffect(() => {
+    const crismGroup = crismLayerGroupRef.current;
+    if (!crismGroup) return;
+    crismGroup.clearLayers();
+
+    if (showCrismOverlay) {
+      const CRISM_MINERAL_POINTS = [
+        { lat: 18.4220, lon: 77.4000, mineral: "Fe/Mg-Smectite Clay", color: "#8b5cf6", mepag: "Goal I (Biosignatures)", formula: "(Fe,Mg)3Si4O10(OH)2" },
+        { lat: 18.4400, lon: 77.4180, mineral: "Mg-Carbonate", color: "#10b981", mepag: "Goal I & II (Ancient Climate)", formula: "MgCO3 (Magnesite)" },
+        { lat: 18.4550, lon: 77.4320, mineral: "Hydrated Silica", color: "#06b6d4", mepag: "Goal I (Preservation)", formula: "SiO2 · nH2O (Opaline)" },
+        { lat: 18.4150, lon: 77.4480, mineral: "Olivine Cumulate", color: "#f59e0b", mepag: "Goal III (Volcanic/Crustal)", formula: "(Mg,Fe)2SiO4 (Fo70)" },
+        { lat: 18.4480, lon: 77.3900, mineral: "Ferric Oxide (Hematite)", color: "#ef4444", mepag: "Goal II (Aqueous Alteration)", formula: "α-Fe2O3" },
+        { lat: 18.4280, lon: 77.4120, mineral: "Carbonate-Bearing Delta Clay", color: "#ec4899", mepag: "Goal I (Sample Return Cache)", formula: "Clay + Carbonate Matrix" },
+      ];
+
+      CRISM_MINERAL_POINTS.forEach((min) => {
+        const marker = L.circleMarker([min.lat, min.lon], {
+          radius: 12,
+          color: "#ffffff",
+          fillColor: min.color,
+          fillOpacity: 0.8,
+          weight: 2,
+        });
+
+        marker.bindPopup(`
+          <div style="font-family: monospace; font-size: 11px; color: var(--atlas-text); max-width: 240px; padding: 4px;">
+            <div style="font-weight: bold; color: ${min.color}; text-transform: uppercase;">
+              CRISM: ${min.mineral}
+            </div>
+            <div style="margin-top: 3px; color: var(--atlas-muted); font-size: 10px;">
+              Formula: <code>${min.formula}</code>
+            </div>
+            <div style="margin-top: 4px; font-weight: bold; color: var(--atlas-teal);">
+              NASA MEPAG: ${min.mepag}
+            </div>
+            <div style="margin-top: 6px; font-size: 9px; color: var(--atlas-muted); border-top: 1px solid var(--atlas-border); padding-top: 2px;">
+              Instrument: MRO CRISM Target Observation
+            </div>
+          </div>
+        `);
+
+        marker.bindTooltip(`<b>CRISM: ${min.mineral}</b> (${min.mepag.split(" ")[0]})`, { direction: "top" });
+        crismGroup.addLayer(marker);
+      });
+    }
+  }, [showCrismOverlay]);
 
   const handleTeleport = (coord: MarsCoordinate, zoom: number = 7) => {
     if (mapInstanceRef.current) {

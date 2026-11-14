@@ -78,5 +78,21 @@
     "createdAt": "2026-11-14T08:56:42.611Z",
     "auditBlockHash": "971f3d147fde493e93ad2bbccaa3da0bbf7efb4aebef7b9a45c67f276910ec0d",
     "eventId": "mevt-1794646602613-9-8ce4"
+  },
+  {
+    "id": "scidec-62c7d2db",
+    "targetId": "tgt-oxia-planum",
+    "targetName": "Oxia Planum Fe/Mg-Phyllosilicate Plain",
+    "region": "Oxia Planum",
+    "missionId": "MARSWALK-DRAFT-TEST",
+    "objectiveId": "ASTROBIOLOGY_RELEVANCE",
+    "rationale": "Investigate Oxia Planum Fe/Mg phyllosilicates",
+    "actor": "SCIENCE_LEAD",
+    "provenanceClassification": "DERIVED",
+    "evidenceStatus": "orbital_only",
+    "dataSource": "NASA MRO CRISM / HiRISE & ESA Mars Express OMEGA",
+    "createdAt": "2026-11-14T09:06:28.660Z",
+    "auditBlockHash": "b0579143d08667234f8327d3123519d0b6fe4dea92caa5a925c72a54ef100854",
+    "eventId": "mevt-1794647188688-9-2dht"
   }
 ]

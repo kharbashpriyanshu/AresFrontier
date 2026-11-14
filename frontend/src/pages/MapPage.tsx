@@ -23,6 +23,7 @@ import { HyperlocalTacticalGrid } from "../components/HyperlocalTacticalGrid.js"
 import { SamplingProtocolPanel } from "../components/SamplingProtocolPanel.js";
 import { SurfacePhotoViewer } from "../components/SurfacePhotoViewer.js";
 import { MissionNarrativePanel } from "../components/MissionNarrativePanel.js";
+import { EvaPlaybackAnimation } from "../components/EvaPlaybackAnimation.js";
 import {
   Navigation,
   Info,
@@ -37,6 +38,7 @@ import {
   Camera,
   Compass,
   Sparkles,
+  Mountain,
 } from "lucide-react";
 
 export const MapPage: React.FC = () => {
@@ -94,6 +96,10 @@ export const MapPage: React.FC = () => {
   const [showWaypointPreview, setShowWaypointPreview] = useState<boolean>(false);
   const [showSamplingPanel, setShowSamplingPanel] = useState<boolean>(false);
   const [showNarrative, setShowNarrative] = useState<boolean>(false);
+  const [showEvaPlayback, setShowEvaPlayback] = useState<boolean>(false);
+  const [isEvaPlaying, setIsEvaPlaying] = useState<boolean>(false);
+  const [showMolaHeatmap, setShowMolaHeatmap] = useState<boolean>(false);
+  const [showCrismOverlay, setShowCrismOverlay] = useState<boolean>(false);
   const [hudCoord, setHudCoord] = useState<MarsCoordinate>({ latitude: 18.4447, longitude: 77.4508 });
   const [hudLabel, setHudLabel] = useState<string>("Octavia E. Butler Landing (Jezero)");
   const [ingestedM20Traverse, setIngestedM20Traverse] = useState<{
@@ -460,6 +466,8 @@ export const MapPage: React.FC = () => {
           focusCoord={focusCoord}
           layoutTrigger={activeDrawer || "none"}
           ingestedM20Traverse={ingestedM20Traverse}
+          showMolaHeatmap={showMolaHeatmap}
+          showCrismOverlay={showCrismOverlay}
         />
 
         {/* Unified Floating Controls Bar (Top Right) */}
@@ -608,10 +616,54 @@ export const MapPage: React.FC = () => {
 
           <button
             onClick={() => setShowNarrative((v) => !v)}
-            className="flex items-center gap-1.5 px-3 py-2 bg-atlas-surface border border-atlas-border hover:border-atlas-accent text-xs font-mono transition-colors"
+            className={`px-2.5 py-1 flex items-center space-x-1.5 border backdrop-blur-md transition-colors ${
+              showNarrative
+                ? "bg-atlas-accent text-white font-bold border-atlas-accent shadow-md"
+                : "bg-atlas-surface/95 hover:bg-atlas-elevated text-atlas-text border-atlas-border"
+            }`}
+            title="Toggle Mission Narrative & Scientific Storytelling"
           >
             <Sparkles className="w-3.5 h-3.5 text-atlas-accent" />
-            <span className="hidden sm:inline">Mission Story</span>
+            <span>Mission Story</span>
+          </button>
+
+          <button
+            onClick={() => setShowEvaPlayback((v) => !v)}
+            className={`px-2.5 py-1 flex items-center space-x-1.5 border backdrop-blur-md transition-colors ${
+              showEvaPlayback
+                ? "bg-atlas-teal text-slate-950 font-bold border-atlas-teal shadow-md"
+                : "bg-atlas-surface/95 hover:bg-atlas-elevated text-atlas-text border-atlas-border"
+            }`}
+            title="Toggle Real-Time Animated EVA Traverse & Bioenergetics Playback"
+          >
+            <Play className="w-3.5 h-3.5 text-atlas-teal" />
+            <span>EVA Playback</span>
+          </button>
+
+          <button
+            onClick={() => setShowMolaHeatmap((v) => !v)}
+            className={`px-2.5 py-1 flex items-center space-x-1.5 border backdrop-blur-md transition-colors ${
+              showMolaHeatmap
+                ? "bg-blue-600 text-white font-bold border-blue-500 shadow-md"
+                : "bg-atlas-surface/95 hover:bg-atlas-elevated text-atlas-text border-atlas-border"
+            }`}
+            title="Toggle MOLA Altimetry Elevation Contour Heatmap Overlay"
+          >
+            <Mountain className="w-3.5 h-3.5 text-blue-400" />
+            <span>MOLA Heatmap</span>
+          </button>
+
+          <button
+            onClick={() => setShowCrismOverlay((v) => !v)}
+            className={`px-2.5 py-1 flex items-center space-x-1.5 border backdrop-blur-md transition-colors ${
+              showCrismOverlay
+                ? "bg-purple-600 text-white font-bold border-purple-500 shadow-md"
+                : "bg-atlas-surface/95 hover:bg-atlas-elevated text-atlas-text border-atlas-border"
+            }`}
+            title="Toggle CRISM Hyperspectral Mineralogy & MEPAG Target Overlay"
+          >
+            <Database className="w-3.5 h-3.5 text-purple-400" />
+            <span>CRISM Mineralogy</span>
           </button>
         </div>
 
@@ -622,6 +674,21 @@ export const MapPage: React.FC = () => {
               route={points}
               location={selectedLocation?.name}
               onClose={() => setShowNarrative(false)}
+            />
+          </div>
+        )}
+
+        {showEvaPlayback && (
+          <div className="absolute top-20 left-4 right-4 sm:left-auto sm:right-4 sm:w-[640px] z-40 max-h-[85vh] overflow-y-auto">
+            <EvaPlaybackAnimation
+              route={points}
+              isPlaying={isEvaPlaying}
+              onTogglePlay={() => setIsEvaPlaying((v) => !v)}
+              onComplete={() => setIsEvaPlaying(false)}
+              onClose={() => {
+                setShowEvaPlayback(false);
+                setIsEvaPlaying(false);
+              }}
             />
           </div>
         )}
