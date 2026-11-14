@@ -18,6 +18,8 @@ import { mepagTargetPrioritizer } from "../services/science/mepagTargetPrioritiz
 import { comprehensiveParetoPlanner } from "../services/intelligence/comprehensiveParetoPlanner.js";
 import { observationPlanningService } from "../services/science/observationPlanningService.js";
 import { hazardAvoidanceRouter } from "../services/intelligence/hazardAvoidanceRouter.js";
+import { commWindowScheduler } from "../services/comms/commWindowScheduler.js";
+import { dustStormSimulationService } from "../services/planetary/dustStormSimulationService.js";
 import { APIResponse, DataSourceInfo, SystemPipelineStatus } from "../types/index.js";
 
 export function getDataSources(_req: Request, res: Response): void {
@@ -511,6 +513,58 @@ export function getSafeHazardAvoidanceRoute(req: Request, res: Response): void {
     data: result,
     metadata: {
       algorithm: "A* Tangent Corridor Cost-Gradient",
+      timestamp: new Date().toISOString(),
+    },
+  });
+}
+
+// ============================================================================
+// Communication Window Scheduling & Dust Storm Simulation (Upgrades U6 & U7)
+// ============================================================================
+
+export function getCommWindowSchedule(req: Request, res: Response): void {
+  const startOffset = req.query.startMinute ? Number(req.query.startMinute) : 0;
+  const dwell = req.query.dwellMinutes ? Number(req.query.dwellMinutes) : 25;
+
+  const points = (req.body?.points && Array.isArray(req.body.points) && req.body.points.length > 0)
+    ? req.body.points
+    : [
+        { id: "p1", coordinate: { latitude: 18.4447, longitude: 77.4508 }, type: "start", label: "Octavia E. Butler Base" },
+        { id: "p2", coordinate: { latitude: 18.4230, longitude: 77.4110 }, type: "science", label: "Kodiak Delta Outcrop" },
+        { id: "p3", coordinate: { latitude: 18.4400, longitude: 77.3950 }, type: "destination", label: "Delta Scarp Camp" },
+      ];
+
+  const schedule = commWindowScheduler.scheduleTraverse(points, startOffset, dwell);
+
+  res.json({
+    success: true,
+    data: schedule,
+    metadata: {
+      framework: "NASA Multi-Orbiter Relay Visibility (MRO / TGO / MAVEN)",
+      timestamp: new Date().toISOString(),
+    },
+  });
+}
+
+export function simulateDustStormImpact(req: Request, res: Response): void {
+  const lat = req.body?.latitude ?? 18.4447;
+  const lon = req.body?.longitude ?? 77.4508;
+  const sol = req.body?.sol ?? 100;
+  const tau = req.body?.tau ? Number(req.body.tau) : undefined;
+  const stormType = req.body?.stormType || "REGIONAL_STORM";
+
+  const impact = dustStormSimulationService.evaluateDustStormImpact({
+    coordinate: { latitude: lat, longitude: lon },
+    sol,
+    simulatedTau: tau,
+    stormType,
+  });
+
+  res.json({
+    success: true,
+    data: impact,
+    metadata: {
+      calibration: "NASA Perseverance MEDA & Mars Climate Database",
       timestamp: new Date().toISOString(),
     },
   });

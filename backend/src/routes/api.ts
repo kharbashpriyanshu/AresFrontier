@@ -59,6 +59,8 @@ import {
   getParetoRoutePlans,
   getObservationPlan,
   getSafeHazardAvoidanceRoute,
+  getCommWindowSchedule,
+  simulateDustStormImpact,
 } from "../controllers/dataController.js";
 import {
   getHazards,
@@ -177,6 +179,8 @@ apiRouter.get("/data/authentic/pareto-plans", getParetoRoutePlans);
 apiRouter.get("/data/authentic/observation-plan", getObservationPlan);
 apiRouter.get("/data/authentic/safe-route", getSafeHazardAvoidanceRoute);
 apiRouter.post("/intelligence/safe-route", getSafeHazardAvoidanceRoute);
+apiRouter.all("/data/authentic/comm-schedule", getCommWindowSchedule);
+apiRouter.post("/simulation/dust-storm", simulateDustStormImpact);
 
 // 10. Multi-Agent Planetary Field Operations (Phase 4)
 import { operationsController } from "../controllers/operationsController.js";
