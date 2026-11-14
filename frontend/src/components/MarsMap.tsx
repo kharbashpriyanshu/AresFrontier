@@ -144,7 +144,7 @@ export const MarsMap: React.FC<MarsMapProps> = ({
       zoomControl: false,
     });
 
-    L.control.zoom({ position: "topright" }).addTo(map);
+    L.control.zoom({ position: "bottomright" }).addTo(map);
 
     routeLayerGroupRef.current = L.layerGroup().addTo(map);
     markersLayerGroupRef.current = L.layerGroup().addTo(map);
