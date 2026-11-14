@@ -58,6 +58,7 @@ import {
   getMepagPrioritizedTargets,
   getParetoRoutePlans,
   getObservationPlan,
+  getSafeHazardAvoidanceRoute,
 } from "../controllers/dataController.js";
 import {
   getHazards,
@@ -174,6 +175,8 @@ apiRouter.get("/data/authentic/buddy-pair", getBuddyPairState);
 apiRouter.get("/data/authentic/mepag-targets", getMepagPrioritizedTargets);
 apiRouter.get("/data/authentic/pareto-plans", getParetoRoutePlans);
 apiRouter.get("/data/authentic/observation-plan", getObservationPlan);
+apiRouter.get("/data/authentic/safe-route", getSafeHazardAvoidanceRoute);
+apiRouter.post("/intelligence/safe-route", getSafeHazardAvoidanceRoute);
 
 // 10. Multi-Agent Planetary Field Operations (Phase 4)
 import { operationsController } from "../controllers/operationsController.js";

@@ -17,6 +17,7 @@ import { buddyProtocolService } from "../services/astronaut/buddyProtocolService
 import { mepagTargetPrioritizer } from "../services/science/mepagTargetPrioritizer.js";
 import { comprehensiveParetoPlanner } from "../services/intelligence/comprehensiveParetoPlanner.js";
 import { observationPlanningService } from "../services/science/observationPlanningService.js";
+import { hazardAvoidanceRouter } from "../services/intelligence/hazardAvoidanceRouter.js";
 import { APIResponse, DataSourceInfo, SystemPipelineStatus } from "../types/index.js";
 
 export function getDataSources(_req: Request, res: Response): void {
@@ -482,6 +483,34 @@ export function getObservationPlan(req: Request, res: Response): void {
     data: plan,
     metadata: {
       protocol: "NASA Planetary Sampling & Hermetic Caching Specification",
+      timestamp: new Date().toISOString(),
+    },
+  });
+}
+
+// ============================================================================
+// Hazard Avoidance Routing (Upgrade U4: A* Cost Map)
+// ============================================================================
+
+export function getSafeHazardAvoidanceRoute(req: Request, res: Response): void {
+  const startLat = req.query.startLat ? Number(req.query.startLat) : 18.4447;
+  const startLon = req.query.startLon ? Number(req.query.startLon) : 77.4508;
+  const destLat = req.query.destLat ? Number(req.query.destLat) : 18.4230;
+  const destLon = req.query.destLon ? Number(req.query.destLon) : 77.4110;
+  const bufferM = req.query.bufferM ? Number(req.query.bufferM) : 150;
+  const maxSlope = req.query.maxSlope ? Number(req.query.maxSlope) : 15;
+
+  const result = hazardAvoidanceRouter.planSafeRoute(
+    { latitude: startLat, longitude: startLon },
+    { latitude: destLat, longitude: destLon },
+    { safetyBufferM: bufferM, maxAllowableSlopeDegrees: maxSlope }
+  );
+
+  res.json({
+    success: true,
+    data: result,
+    metadata: {
+      algorithm: "A* Tangent Corridor Cost-Gradient",
       timestamp: new Date().toISOString(),
     },
   });

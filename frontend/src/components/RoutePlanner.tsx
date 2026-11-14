@@ -10,6 +10,7 @@ import {
 } from "../types/index.js";
 import { formatMarsCoordinate } from "../utils/marsCoordinates.js";
 import { ElevationProfileChart } from "./ElevationProfileChart.js";
+import { api } from "../services/api.js";
 import {
   Navigation,
   Plus,
@@ -19,6 +20,7 @@ import {
   Target,
   Sparkles,
   Cpu,
+  ShieldCheck,
 } from "lucide-react";
 
 interface RoutePlannerProps {
@@ -99,6 +101,52 @@ export const RoutePlanner: React.FC<RoutePlannerProps> = ({
       await onGenerateRoute(points);
     } finally {
       setIsGenerating(false);
+    }
+  };
+
+  const [isReroutingSafe, setIsReroutingSafe] = useState<boolean>(false);
+  const [hazardAvoidanceMsg, setHazardAvoidanceMsg] = useState<string | null>(null);
+
+  const handleApplyHazardAvoidance = async () => {
+    if (points.length < 2) return;
+    try {
+      setIsReroutingSafe(true);
+      setHazardAvoidanceMsg(null);
+      const start = points[0].coordinate;
+      const dest = points[points.length - 1].coordinate;
+
+      const res = await api.getSafeHazardAvoidanceRoute(
+        start.latitude,
+        start.longitude,
+        dest.latitude,
+        dest.longitude,
+        150
+      );
+
+      if (res && res.routePoints && res.routePoints.length > 2) {
+        const intermediatePoints = res.routePoints.slice(1, -1);
+        const newPts: RoutePoint[] = [
+          points[0],
+          ...intermediatePoints.map((pt: MarsCoordinate, idx: number) => ({
+            id: `pt-detour-${idx + 1}`,
+            coordinate: pt,
+            type: "waypoint" as const,
+            label: `A* Detour Pass ${idx + 1}`,
+          })),
+          points[points.length - 1],
+        ];
+        setPoints(newPts);
+        await onGenerateRoute(newPts);
+        setHazardAvoidanceMsg(
+          `A* Safe Reroute: Bypassed ${res.hazardsBypassed?.length || 1} obstacle envelope(s) with >=100m buffer.`
+        );
+      } else {
+        setHazardAvoidanceMsg("Direct path verified safe: Zero scarp or obstacle conflicts detected.");
+      }
+    } catch (err: any) {
+      setHazardAvoidanceMsg(err?.message || "Failed to compute hazard avoidance path.");
+    } finally {
+      setIsReroutingSafe(false);
     }
   };
 
@@ -337,15 +385,34 @@ export const RoutePlanner: React.FC<RoutePlannerProps> = ({
           </div>
         )}
 
-        {/* Generate Route Action Button */}
-        <button
-          onClick={handleGenerate}
-          disabled={isGenerating || points.length < 2}
-          className="w-full py-2.5 bg-atlas-surface hover:bg-atlas-elevated text-atlas-text border border-atlas-border font-bold flex items-center justify-center space-x-2 transition-all disabled:opacity-40 shadow-sm"
-        >
-          <Navigation className="w-4 h-4 text-atlas-accent" />
-          <span>{isGenerating ? "Evaluating Terrain Grids..." : "Compute Custom Route"}</span>
-        </button>
+        {/* Generate Route Action Buttons */}
+        <div className="grid grid-cols-2 gap-2">
+          <button
+            onClick={handleGenerate}
+            disabled={isGenerating || points.length < 2}
+            className="w-full py-2 bg-atlas-surface hover:bg-atlas-elevated text-atlas-text border border-atlas-border font-bold flex items-center justify-center space-x-1.5 transition-all disabled:opacity-40 shadow-sm text-xs"
+          >
+            <Navigation className="w-3.5 h-3.5 text-atlas-accent" />
+            <span>{isGenerating ? "Evaluating..." : "Custom Route"}</span>
+          </button>
+
+          <button
+            onClick={handleApplyHazardAvoidance}
+            disabled={isReroutingSafe || points.length < 2}
+            className="w-full py-2 bg-atlas-surface hover:bg-atlas-elevated text-atlas-text border border-atlas-border hover:border-atlas-teal font-bold flex items-center justify-center space-x-1.5 transition-all disabled:opacity-40 shadow-sm text-xs"
+            title="Compute A* Terrain Detour to bypass scarps, boulder fields, and steep inclines"
+          >
+            <ShieldCheck className="w-3.5 h-3.5 text-atlas-teal" />
+            <span>{isReroutingSafe ? "Routing A*..." : "Avoid Hazards (A*)"}</span>
+          </button>
+        </div>
+
+        {hazardAvoidanceMsg && (
+          <div className="p-2 bg-atlas-elevated border border-atlas-border text-[10px] font-mono text-atlas-teal flex items-center space-x-1.5">
+            <ShieldCheck className="w-3.5 h-3.5 text-atlas-teal flex-shrink-0" />
+            <span>{hazardAvoidanceMsg}</span>
+          </div>
+        )}
 
         {/* Calculated Route Summary Card */}
         {activeRoute && (

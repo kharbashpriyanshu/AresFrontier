@@ -1595,5 +1595,60 @@
     },
     "previousEventHash": "b479c003871b91e7803a707493f5863b413d5bd3b33e7bba2fa29c9a7f1ddfa8",
     "eventHash": "c35d8eb0009448490514c8211821621247e35c3ba99ebf3d53e105bc1f3fcc38"
+  },
+  {
+    "eventId": "mevt-1794647833392-58-nekl",
+    "sequenceNumber": 58,
+    "missionId": "MARSWALK-001",
+    "timestamp": "2026-11-14T09:17:13.393Z",
+    "actor": "DIGITAL_TWIN",
+    "entityId": "snap-operator-checkpoint-1794647833078",
+    "eventType": "SNAPSHOT_CREATED",
+    "payload": {
+      "snapshotId": "snap-operator-checkpoint-1794647833078",
+      "tag": "OPERATOR_CHECKPOINT",
+      "stateHash": "4d5af146e2cc1078c69dcaf96be7bc7107de32557dc388552640976e24195d92",
+      "simTimeMinutes": 45
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
+      }
+    },
+    "previousEventHash": "c35d8eb0009448490514c8211821621247e35c3ba99ebf3d53e105bc1f3fcc38",
+    "eventHash": "04fa9d44f99f98dad6aeaf194efbb4d64964d5d297a402e074577d5c929e29fc"
+  },
+  {
+    "eventId": "mevt-1794647841938-59-9yqw",
+    "sequenceNumber": 59,
+    "missionId": "MARSWALK-001",
+    "timestamp": "2026-11-14T09:17:21.938Z",
+    "actor": "MONTE_CARLO_ENGINE",
+    "entityId": "mc-20261107-100",
+    "eventType": "MONTE_CARLO_EXECUTED",
+    "payload": {
+      "runCount": 100,
+      "seed": 20261107,
+      "successProbabilityPercent": 100
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
+      }
+    },
+    "previousEventHash": "04fa9d44f99f98dad6aeaf194efbb4d64964d5d297a402e074577d5c929e29fc",
+    "eventHash": "a5fd3509124f33a498c13cdaefb64a55244bf0c8048a65d2d08fcea39c7fa29c"
   }
 ]
