@@ -791,9 +791,9 @@ export const MapPage: React.FC = () => {
 
         {showSamplingPanel && (
           <SamplingProtocolPanel
-            targetId="tgt-kodiak-delta"
-            targetName={hudLabel}
-            targetType="LACUSTRINE_FAN"
+            targetId={selectedLocation?.id || "tgt-kodiak-delta"}
+            targetName={selectedLocation?.name || hudLabel}
+            targetType={selectedLocation?.terrainType || "LACUSTRINE_FAN"}
             formation="Shenandoah (Ns)"
             onClose={() => setShowSamplingPanel(false)}
           />

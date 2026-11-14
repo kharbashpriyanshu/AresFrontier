@@ -748,11 +748,18 @@ export const MarsMap: React.FC<MarsMapProps> = ({
     if (mapInstanceRef.current) {
       mapInstanceRef.current.setView([coord.latitude, coord.longitude], zoom, { animate: false });
     }
+    if (onMapClickCoordRef.current) {
+      onMapClickCoordRef.current(coord);
+    }
   };
 
   const handleResetView = () => {
+    const defaultCoord = { latitude: 18.4447, longitude: 77.4508 };
     if (mapInstanceRef.current) {
-      mapInstanceRef.current.setView([18.4447, 77.4508], 6, { animate: false });
+      mapInstanceRef.current.setView([defaultCoord.latitude, defaultCoord.longitude], 6, { animate: false });
+    }
+    if (onMapClickCoordRef.current) {
+      onMapClickCoordRef.current(defaultCoord);
     }
   };
 
