@@ -17,6 +17,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { api } from "../services/api.js";
+import { getMepagGoalForCategory } from "../utils/mepag.js";
 import type {
   IceAssessmentResult,
   MineralClassificationResult,
@@ -472,7 +473,10 @@ export const SciencePage: React.FC = () => {
                         <p className="text-xs text-atlas-muted line-clamp-2 mb-3 leading-relaxed">{tgt.description}</p>
 
                         <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] pt-2 border-t border-atlas-border">
-                          <div className="flex items-center gap-1.5">
+                          <div className="flex items-center gap-1.5 flex-wrap">
+                            <span className={`px-2 py-0.5 rounded border text-[10px] font-mono font-bold ${getMepagGoalForCategory(tgt.category || tgt.name).badgeClass}`}>
+                              {getMepagGoalForCategory(tgt.category || tgt.name).shortLabel}
+                            </span>
                             <span className={`px-2 py-0.5 rounded border text-[10px] font-mono ${evidenceBadge(tgt.evidenceStatus)}`}>
                               {(tgt.evidenceStatus || "orbital_only").replace(/_/g, " ")}
                             </span>
@@ -517,6 +521,14 @@ export const SciencePage: React.FC = () => {
                         </span>
                         <span>•</span>
                         <span>{activeTarget.associatedFormation || activeTarget.category}</span>
+                        <span>•</span>
+                        <span
+                          className={`px-2 py-0.5 rounded border text-[10px] font-bold ${
+                            getMepagGoalForCategory(activeTarget.category || activeTarget.name).badgeClass
+                          }`}
+                        >
+                          {getMepagGoalForCategory(activeTarget.category || activeTarget.name).label}
+                        </span>
                       </div>
                       <h2 className="text-xl font-bold font-display text-white">{activeTarget.name}</h2>
                     </div>

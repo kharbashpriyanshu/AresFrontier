@@ -1,6 +1,7 @@
 import React from "react";
 import { LocationData, ScienceTarget } from "../types/index.js";
 import { formatMarsCoordinate } from "../utils/marsCoordinates.js";
+import { getMepagGoalForCategory } from "../utils/mepag.js";
 import {
   X,
   Compass,
@@ -194,25 +195,39 @@ export const LocationExplorer: React.FC<LocationExplorerProps> = ({
               <span>Nearby Science Targets ({location.nearbyScienceTargets.length})</span>
             </div>
             <div className="space-y-1.5">
-              {location.nearbyScienceTargets.map((target) => (
-                <div
-                  key={target.id}
-                  className="p-2.5 bg-atlas-elevated border border-atlas-border flex items-center justify-between"
-                >
-                  <div className="space-y-0.5 max-w-[200px]">
-                    <div className="font-bold text-atlas-text truncate text-xs font-sans">{target.name}</div>
-                    <div className="text-[10px] text-atlas-muted capitalize font-sans">{target.category}</div>
-                  </div>
-                  <button
-                    onClick={() => onAddScienceStop(target)}
-                    className="p-1.5 bg-atlas-surface hover:bg-atlas-elevated text-atlas-accent border border-atlas-border transition-colors text-[10px] flex items-center space-x-1"
-                    title="Add to Traverse Sequence"
+              {location.nearbyScienceTargets.map((target) => {
+                const mepag = getMepagGoalForCategory(target.category || target.name);
+                return (
+                  <div
+                    key={target.id}
+                    className="p-2.5 bg-atlas-elevated border border-atlas-border flex items-center justify-between"
                   >
-                    <Plus className="w-3.5 h-3.5" />
-                    <span>Add</span>
-                  </button>
-                </div>
-              ))}
+                    <div className="space-y-1 max-w-[200px]">
+                      <div className="font-bold text-atlas-text truncate text-xs font-sans">
+                        {target.name}
+                      </div>
+                      <div className="flex items-center space-x-1.5 flex-wrap">
+                        <span
+                          className={`text-[9px] px-1.5 py-0.5 rounded border font-mono font-bold ${mepag.badgeClass}`}
+                        >
+                          {mepag.shortLabel}
+                        </span>
+                        <span className="text-[10px] text-atlas-muted capitalize font-sans">
+                          {target.category}
+                        </span>
+                      </div>
+                    </div>
+                    <button
+                      onClick={() => onAddScienceStop(target)}
+                      className="p-1.5 bg-atlas-surface hover:bg-atlas-elevated text-atlas-accent border border-atlas-border transition-colors text-[10px] flex items-center space-x-1 shrink-0 ml-2"
+                      title="Add to Traverse Sequence"
+                    >
+                      <Plus className="w-3.5 h-3.5" />
+                      <span>Add</span>
+                    </button>
+                  </div>
+                );
+              })}
             </div>
           </div>
         )}

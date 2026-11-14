@@ -10,6 +10,7 @@ import {
   Hazard,
 } from "../types/index.js";
 import { formatMarsCoordinate } from "../utils/marsCoordinates.js";
+import { getMepagGoalForCategory } from "../utils/mepag.js";
 import {
   Layers,
   Crosshair,
@@ -335,11 +336,11 @@ export const MarsMap: React.FC<MarsMapProps> = ({
       });
     }
 
-    // 2. Science Targets
+    // 2. Science Targets with MEPAG Goal Badges & Color Encoding
     if (showScienceTargets) {
       scienceTargets.forEach((tgt) => {
-        const valColor =
-          tgt.scientificValue === "high" ? "var(--atlas-teal)" : tgt.scientificValue === "medium" ? "var(--atlas-blue)" : "var(--atlas-amber)";
+        const mepag = getMepagGoalForCategory(tgt.category || tgt.name || tgt.description);
+        const valColor = mepag.colorHex;
 
         const iconHtml = `
           <div class="relative flex items-center justify-center">
@@ -361,7 +362,15 @@ export const MarsMap: React.FC<MarsMapProps> = ({
         });
 
         marker.bindTooltip(
-          `<b>${tgt.name}</b><br/><span style="color:var(--atlas-teal)">${tgt.category.toUpperCase()} (${tgt.scientificValue} priority)</span>`,
+          `<div style="font-family:monospace;font-size:11px;padding:2px;">
+            <b>${tgt.name}</b><br/>
+            <span style="display:inline-block;margin-top:2px;padding:1px 4px;font-size:9px;font-weight:bold;color:${mepag.colorHex};border:1px solid ${mepag.colorHex};background:rgba(0,0,0,0.7);border-radius:2px;">
+              ${mepag.shortLabel}
+            </span>
+            <div style="color:var(--atlas-muted);font-size:10px;margin-top:2px;">
+              ${tgt.category.toUpperCase()} (${tgt.scientificValue} priority)
+            </div>
+          </div>`,
           { direction: "top", offset: [0, -8] }
         );
 

@@ -9,6 +9,7 @@ import {
   ScienceObjectiveId,
 } from "../types/index.js";
 import { formatMarsCoordinate, calculateMarsDistanceKm } from "../utils/marsCoordinates.js";
+import { getMepagGoalForCategory } from "../utils/mepag.js";
 import { ElevationProfileChart } from "./ElevationProfileChart.js";
 import { api } from "../services/api.js";
 import {
@@ -246,11 +247,14 @@ export const RoutePlanner: React.FC<RoutePlannerProps> = ({
               className="flex-1 bg-atlas-surface border border-atlas-border text-atlas-text text-xs p-2 focus:outline-none focus:border-atlas-accent"
             >
               <option value="">Choose Science Outcrop...</option>
-              {scienceTargets.map((t) => (
-                <option key={t.id} value={t.id}>
-                  {t.name} ({t.category})
-                </option>
-              ))}
+              {scienceTargets.map((t) => {
+                const mepag = getMepagGoalForCategory(t.category || t.name);
+                return (
+                  <option key={t.id} value={t.id}>
+                    [{mepag.shortLabel}] {t.name} ({t.category})
+                  </option>
+                );
+              })}
             </select>
 
             <button
@@ -335,7 +339,18 @@ export const RoutePlanner: React.FC<RoutePlannerProps> = ({
 
                   <div className="text-[10px] text-atlas-muted mt-1.5 flex items-center justify-between">
                     <span>{formatMarsCoordinate(point.coordinate)}</span>
-                    <span className="capitalize text-atlas-muted">{point.type}</span>
+                    <div className="flex items-center space-x-1.5">
+                      {isScience && (
+                        <span
+                          className={`text-[9px] px-1.5 py-0.5 rounded border font-mono font-bold ${
+                            getMepagGoalForCategory(point.label).badgeClass
+                          }`}
+                        >
+                          {getMepagGoalForCategory(point.label).shortLabel}
+                        </span>
+                      )}
+                      <span className="capitalize text-atlas-muted">{point.type}</span>
+                    </div>
                   </div>
 
                   {isDustStormActive && isLongLeg && (
