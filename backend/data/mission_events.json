@@ -1,9 +1,9 @@
 [
   {
-    "eventId": "mevt-1794647175767-1-8rt1",
+    "eventId": "mevt-1794646599626-1-1opv",
     "sequenceNumber": 1,
     "missionId": "MARSWALK-001",
-    "timestamp": "2026-11-14T08:06:15.766Z",
+    "timestamp": "2026-11-14T07:56:39.626Z",
     "simulationTime": 0,
     "actor": "MISSION_CONTROL",
     "eventType": "MISSION_STARTED",
@@ -17,13 +17,13 @@
       "dataMode": "BENCHMARK"
     },
     "previousEventHash": "0000000000000000000000000000000000000000000000000000000000000000",
-    "eventHash": "e481302a0f9843f41ede3aef00378adffcf8a29dfa2d6eb88455e7e4e6d8b37d"
+    "eventHash": "50aefb651738aabe7390a964d3539fce5edaa15028dce06fa51f0a162391e023"
   },
   {
-    "eventId": "mevt-1794647175805-2-pdox",
+    "eventId": "mevt-1794646599629-2-18n5",
     "sequenceNumber": 2,
     "missionId": "MARSWALK-001",
-    "timestamp": "2026-11-14T08:16:15.766Z",
+    "timestamp": "2026-11-14T08:06:39.626Z",
     "simulationTime": 600,
     "actor": "agent-rover-01",
     "eventType": "AGENT_ASSIGNED",
@@ -39,14 +39,14 @@
       "sourceName": "Ares Scout Telemetry",
       "dataMode": "SIMULATED"
     },
-    "previousEventHash": "e481302a0f9843f41ede3aef00378adffcf8a29dfa2d6eb88455e7e4e6d8b37d",
-    "eventHash": "55ee634b3358dbdcab98540d459273a90885815b02f81d3dc794208e299dfa8c"
+    "previousEventHash": "50aefb651738aabe7390a964d3539fce5edaa15028dce06fa51f0a162391e023",
+    "eventHash": "48a476fc03213b272eaeb4535417a0ee776cca11b882764ab12809f54a820687"
   },
   {
-    "eventId": "mevt-1794647175834-3-ozp5",
+    "eventId": "mevt-1794646599631-3-z0wm",
     "sequenceNumber": 3,
     "missionId": "MARSWALK-001",
-    "timestamp": "2026-11-14T08:26:15.766Z",
+    "timestamp": "2026-11-14T08:16:39.626Z",
     "simulationTime": 1200,
     "actor": "agent-rover-01",
     "eventType": "SENSOR_OBSERVATION",
@@ -60,14 +60,14 @@
       "sourceName": "Stereo HazCam",
       "dataMode": "SIMULATED"
     },
-    "previousEventHash": "55ee634b3358dbdcab98540d459273a90885815b02f81d3dc794208e299dfa8c",
-    "eventHash": "9f8306d84fe96bc83e7918172fa7c25e0a4a50fe315b30127acd99e21dc3dbf9"
+    "previousEventHash": "48a476fc03213b272eaeb4535417a0ee776cca11b882764ab12809f54a820687",
+    "eventHash": "33cecdab88d96c391d895ff4a586057ca72b4454e6f7ac505b4fec4292c35c23"
   },
   {
-    "eventId": "mevt-1794647175869-4-nupg",
+    "eventId": "mevt-1794646599633-4-u3ny",
     "sequenceNumber": 4,
     "missionId": "MARSWALK-001",
-    "timestamp": "2026-11-14T08:36:15.766Z",
+    "timestamp": "2026-11-14T08:26:39.626Z",
     "simulationTime": 1800,
     "actor": "agent-rover-01",
     "eventType": "HAZARD_DETECTED",
@@ -84,14 +84,14 @@
       "sourceName": "ObservationHazardFusion",
       "dataMode": "DERIVED"
     },
-    "previousEventHash": "9f8306d84fe96bc83e7918172fa7c25e0a4a50fe315b30127acd99e21dc3dbf9",
-    "eventHash": "c44042a1971ea858af2fbe6ac40290992cfb876041191daa63668405c7fb2773"
+    "previousEventHash": "33cecdab88d96c391d895ff4a586057ca72b4454e6f7ac505b4fec4292c35c23",
+    "eventHash": "7a1c7ca3a8dc004c4a866715a6a9ed410561d3444be6d532618e0fc2e4dfbaa5"
   },
   {
-    "eventId": "mevt-1794647175896-5-jinw",
+    "eventId": "mevt-1794646599635-5-sovs",
     "sequenceNumber": 5,
     "missionId": "MARSWALK-001",
-    "timestamp": "2026-11-14T08:41:15.766Z",
+    "timestamp": "2026-11-14T08:31:39.626Z",
     "simulationTime": 2100,
     "actor": "agent-rover-01",
     "eventType": "COMMAND_EXECUTED",
@@ -104,14 +104,14 @@
       "sourceName": "DecisionEngine",
       "dataMode": "SIMULATED"
     },
-    "previousEventHash": "c44042a1971ea858af2fbe6ac40290992cfb876041191daa63668405c7fb2773",
-    "eventHash": "2fe9de18d6a9787c657d697335642fe3faee2bd9a9b8266a01ae060f3fec367e"
+    "previousEventHash": "7a1c7ca3a8dc004c4a866715a6a9ed410561d3444be6d532618e0fc2e4dfbaa5",
+    "eventHash": "f33546bbb0e7d4f0e5db4a748dbee547edc8ba1d37f19f7dc7eb295f015bfa8d"
   },
   {
-    "eventId": "mevt-1794647175910-6-buek",
+    "eventId": "mevt-1794646599636-6-jmaq",
     "sequenceNumber": 6,
     "missionId": "MARSWALK-001",
-    "timestamp": "2026-11-14T08:46:15.766Z",
+    "timestamp": "2026-11-14T08:36:39.626Z",
     "simulationTime": 2400,
     "actor": "MISSION_CONTROL",
     "eventType": "REPLAN_PROPOSED",
@@ -137,14 +137,14 @@
       "sourceName": "ReplanningEngine",
       "dataMode": "DERIVED"
     },
-    "previousEventHash": "2fe9de18d6a9787c657d697335642fe3faee2bd9a9b8266a01ae060f3fec367e",
-    "eventHash": "eba28fe6a3eb4f2400c235e3ae4898f8fee330161031958e32823140fbdbd371"
+    "previousEventHash": "f33546bbb0e7d4f0e5db4a748dbee547edc8ba1d37f19f7dc7eb295f015bfa8d",
+    "eventHash": "a140942cabf990ce364f27fab4ba84c7664d1b336f08a79d984201c263306d97"
   },
   {
-    "eventId": "mevt-1794647175975-7-pgwg",
+    "eventId": "mevt-1794646599638-7-o5fl",
     "sequenceNumber": 7,
     "missionId": "MARSWALK-001",
-    "timestamp": "2026-11-14T08:51:15.767Z",
+    "timestamp": "2026-11-14T08:41:39.626Z",
     "simulationTime": 2700,
     "actor": "MISSION_CONTROL",
     "eventType": "REPLAN_APPROVED",
@@ -157,14 +157,14 @@
       "sourceName": "AuditChainService",
       "dataMode": "BENCHMARK"
     },
-    "previousEventHash": "eba28fe6a3eb4f2400c235e3ae4898f8fee330161031958e32823140fbdbd371",
-    "eventHash": "09cf7c9d28860e4c154d406b9ffd36884d1bf391f1341af8a2a8fb9fbbb398a2"
+    "previousEventHash": "a140942cabf990ce364f27fab4ba84c7664d1b336f08a79d984201c263306d97",
+    "eventHash": "7413a170073b35c844544c60a28157692b6d45e12b52c1cab659db315b39e63f"
   },
   {
-    "eventId": "mevt-1794647176005-8-80ga",
+    "eventId": "mevt-1794646599640-8-3zhu",
     "sequenceNumber": 8,
     "missionId": "MARSWALK-001",
-    "timestamp": "2026-11-14T09:01:15.767Z",
+    "timestamp": "2026-11-14T08:51:39.626Z",
     "simulationTime": 3300,
     "actor": "agent-rover-02",
     "eventType": "SCIENCE_TARGET_COMPLETED",
@@ -177,21 +177,21 @@
       "sourceName": "Raman Spectrometer",
       "dataMode": "SIMULATED"
     },
-    "previousEventHash": "09cf7c9d28860e4c154d406b9ffd36884d1bf391f1341af8a2a8fb9fbbb398a2",
-    "eventHash": "0eb22fe554dcc3f7f22db2688d2ecfd61a1e4dd889b493388f811f96d877d345"
+    "previousEventHash": "7413a170073b35c844544c60a28157692b6d45e12b52c1cab659db315b39e63f",
+    "eventHash": "770dfd95dc1cb268c37fe6859ee96edce01345c73b6ca924396641d5ec120a66"
   },
   {
-    "eventId": "mevt-1794647188688-9-2dht",
+    "eventId": "mevt-1794646602613-9-8ce4",
     "sequenceNumber": 9,
     "missionId": "MARSWALK-DRAFT-TEST",
-    "timestamp": "2026-11-14T09:06:28.688Z",
+    "timestamp": "2026-11-14T08:56:42.614Z",
     "actor": "SCIENCE_LEAD",
     "entityId": "tgt-oxia-planum",
-    "auditRef": "b0579143d08667234f8327d3123519d0b6fe4dea92caa5a925c72a54ef100854",
+    "auditRef": "971f3d147fde493e93ad2bbccaa3da0bbf7efb4aebef7b9a45c67f276910ec0d",
     "eventType": "MISSION_UPDATED",
     "payload": {
       "action": "SCIENCE_TARGET_ASSIGNED",
-      "decisionId": "scidec-62c7d2db",
+      "decisionId": "scidec-7d0755e8",
       "targetId": "tgt-oxia-planum",
       "targetName": "Oxia Planum Fe/Mg-Phyllosilicate Plain",
       "region": "Oxia Planum",
@@ -209,14 +209,14 @@
         "methodology": "Propagated uncertainty from input layers [NASA MRO CRISM / HiRISE & ESA Mars Express OMEGA]"
       }
     },
-    "previousEventHash": "0eb22fe554dcc3f7f22db2688d2ecfd61a1e4dd889b493388f811f96d877d345",
-    "eventHash": "16c728ac99118de0966ad80f60eb73cdcc5ae4d658a266b1f2d06e188353ab60"
+    "previousEventHash": "770dfd95dc1cb268c37fe6859ee96edce01345c73b6ca924396641d5ec120a66",
+    "eventHash": "ff83fb73680c5244854d9f5b2114cd1261e5c22abaa95c9406dd117710dc33c2"
   },
   {
-    "eventId": "mevt-1794647202952-10-409b",
+    "eventId": "mevt-1794646603676-10-73xk",
     "sequenceNumber": 10,
     "missionId": "MARSWALK-001",
-    "timestamp": "2026-11-14T09:06:42.952Z",
+    "timestamp": "2026-11-14T08:56:43.676Z",
     "actor": "agent-rover-01",
     "eventType": "TELEMETRY_LOGGED",
     "payload": {
@@ -235,14 +235,14 @@
         "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
       }
     },
-    "previousEventHash": "16c728ac99118de0966ad80f60eb73cdcc5ae4d658a266b1f2d06e188353ab60",
-    "eventHash": "3acce76720e1a5a1db37fdba1e0b80a36de1afdefb3157369a20c33043b9c362"
+    "previousEventHash": "ff83fb73680c5244854d9f5b2114cd1261e5c22abaa95c9406dd117710dc33c2",
+    "eventHash": "afddb76c323bfb3a04678184f822ca22dc7b868dd304de65825a46be68bdb602"
   },
   {
-    "eventId": "mevt-1794647209484-11-dmin",
+    "eventId": "mevt-1794646605721-11-r22n",
     "sequenceNumber": 11,
     "missionId": "USER-TEST-B7-001",
-    "timestamp": "2026-11-14T09:06:49.484Z",
+    "timestamp": "2026-11-14T08:56:45.721Z",
     "actor": "TEST_HARNESS",
     "entityId": "USER-TEST-B7-001",
     "eventType": "TELEMETRY_UPDATED",
@@ -261,16 +261,16 @@
         "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
       }
     },
-    "previousEventHash": "3acce76720e1a5a1db37fdba1e0b80a36de1afdefb3157369a20c33043b9c362",
-    "eventHash": "4970f4366821ff7a071dccd4406fb6a42ea8f497b9e9c9d77b0ccae63e0959b4"
+    "previousEventHash": "afddb76c323bfb3a04678184f822ca22dc7b868dd304de65825a46be68bdb602",
+    "eventHash": "cd471485d0800fb2659dbcefdae3c04cb28545f558f74c4a97e9a63d02133d80"
   },
   {
-    "eventId": "mevt-1794647209676-12-hs3e",
+    "eventId": "mevt-1794646605884-12-7f43",
     "sequenceNumber": 12,
-    "missionId": "DEMO-NOMINAL-87F361",
-    "timestamp": "2026-11-14T09:06:49.676Z",
+    "missionId": "DEMO-NOMINAL-391613",
+    "timestamp": "2026-11-14T08:56:45.884Z",
     "actor": "JUDGING_DEMO_ENGINE",
-    "entityId": "DEMO-NOMINAL-87F361",
+    "entityId": "DEMO-NOMINAL-391613",
     "eventType": "MISSION_CREATED",
     "payload": {
       "simulated": true,
@@ -290,21 +290,21 @@
         "methodology": "Propagated uncertainty from input layers [JudgingDemoService]"
       }
     },
-    "previousEventHash": "4970f4366821ff7a071dccd4406fb6a42ea8f497b9e9c9d77b0ccae63e0959b4",
-    "eventHash": "92826a73f2fbb74e690d875fbba7aa316fca3aeb1a01ed85bc90b9812a2df95b"
+    "previousEventHash": "cd471485d0800fb2659dbcefdae3c04cb28545f558f74c4a97e9a63d02133d80",
+    "eventHash": "d6259fdac468b10d11bcb917e510f720bb2482b90b938615dcd6f765d3a85c90"
   },
   {
-    "eventId": "mevt-1794647209679-13-ae40",
+    "eventId": "mevt-1794646605887-13-2dxu",
     "sequenceNumber": 13,
-    "missionId": "DEMO-NOMINAL-87F361",
-    "timestamp": "2026-11-14T09:06:49.679Z",
+    "missionId": "DEMO-NOMINAL-391613",
+    "timestamp": "2026-11-14T08:56:45.887Z",
     "actor": "SIMULATED_SCIENCE_LEAD",
     "entityId": "tgt-kodiak-butte",
-    "auditRef": "f61751ab2533d7ff11dfba955099596b77ada67537be17a4a1c68046450312e4",
+    "auditRef": "543cc90c08abe57eb246437fb638cc85fbbaa9c5e2065345213364fa940e3baa",
     "eventType": "MISSION_UPDATED",
     "payload": {
       "action": "SCIENCE_TARGET_ASSIGNED",
-      "decisionId": "scidec-0d4998ab",
+      "decisionId": "scidec-155ec89a",
       "targetId": "tgt-kodiak-butte",
       "targetName": "Kodiak Butte Delta Remnant",
       "region": "Jezero Crater",
@@ -322,16 +322,16 @@
         "methodology": "Propagated uncertainty from input layers [NASA Perseverance Rover Mastcam-Z Long Distance Imaging & CRISM]"
       }
     },
-    "previousEventHash": "92826a73f2fbb74e690d875fbba7aa316fca3aeb1a01ed85bc90b9812a2df95b",
-    "eventHash": "632d3694f54cdd02ce40c4b6023acbf301948d134d026d18d0838329d560582b"
+    "previousEventHash": "d6259fdac468b10d11bcb917e510f720bb2482b90b938615dcd6f765d3a85c90",
+    "eventHash": "3ae9f6834123352c63f40b75f9b1f1da3eb51e1c0138e787090bedec307f2b02"
   },
   {
-    "eventId": "mevt-1794647209718-14-939g",
+    "eventId": "mevt-1794646605933-14-ajb9",
     "sequenceNumber": 14,
-    "missionId": "DEMO-NOMINAL-87F361",
-    "timestamp": "2026-11-14T09:06:49.718Z",
+    "missionId": "DEMO-NOMINAL-391613",
+    "timestamp": "2026-11-14T08:56:45.933Z",
     "actor": "SIMULATED_ROUTE_OPTIMIZER",
-    "entityId": "route-demo-87f361",
+    "entityId": "route-demo-391613",
     "eventType": "ROUTE_SELECTED",
     "payload": {
       "simulated": true,
@@ -351,18 +351,18 @@
         "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
       }
     },
-    "previousEventHash": "632d3694f54cdd02ce40c4b6023acbf301948d134d026d18d0838329d560582b",
-    "eventHash": "312a45e9de306d894e8e0947ce07e1ff8e2e43dedecd45df5dcf549f92b442ea"
+    "previousEventHash": "3ae9f6834123352c63f40b75f9b1f1da3eb51e1c0138e787090bedec307f2b02",
+    "eventHash": "01504754c5d158651109c33a0785281c54333ffd908dd26beb0fa0e4e80bee69"
   },
   {
-    "eventId": "mevt-1794647209723-15-1xn7",
+    "eventId": "mevt-1794646605942-15-3kgz",
     "sequenceNumber": 15,
-    "missionId": "DEMO-NOMINAL-87F361",
-    "timestamp": "2026-11-14T09:06:49.723Z",
+    "missionId": "DEMO-NOMINAL-391613",
+    "timestamp": "2026-11-14T08:56:45.942Z",
     "actor": "ASTRONAUT-01",
     "eventType": "COMMAND_EXECUTED",
     "payload": {
-      "evaSessionId": "eva-1794647209720-l4yf",
+      "evaSessionId": "eva-1794646605935-0ssn",
       "action": "START",
       "previousStatus": "PLANNED",
       "nextStatus": "ACTIVE",
@@ -379,18 +379,18 @@
         "methodology": "Propagated uncertainty from input layers [Suit Telemetry Model, S1-S8 Invariants]"
       }
     },
-    "previousEventHash": "312a45e9de306d894e8e0947ce07e1ff8e2e43dedecd45df5dcf549f92b442ea",
-    "eventHash": "5b878331f3e4f8fae86e5b1e1ae8721f467bb65e12e6b0dcd3bdcaf923cb819d"
+    "previousEventHash": "01504754c5d158651109c33a0785281c54333ffd908dd26beb0fa0e4e80bee69",
+    "eventHash": "2b8dd8aa2c23f9026d3b1f91fb6f9575e6930358581554aa7ff7811b99b97a88"
   },
   {
-    "eventId": "mevt-1794647209774-16-u9ua",
+    "eventId": "mevt-1794646606021-16-admy",
     "sequenceNumber": 16,
-    "missionId": "DEMO-NOMINAL-87F361",
-    "timestamp": "2026-11-14T09:06:49.774Z",
+    "missionId": "DEMO-NOMINAL-391613",
+    "timestamp": "2026-11-14T08:56:46.021Z",
     "actor": "ASTRONAUT-01",
     "eventType": "COMMAND_EXECUTED",
     "payload": {
-      "evaSessionId": "eva-1794647209720-l4yf",
+      "evaSessionId": "eva-1794646605935-0ssn",
       "action": "COMPLETE",
       "previousStatus": "ACTIVE",
       "nextStatus": "COMPLETED",
@@ -407,21 +407,21 @@
         "methodology": "Propagated uncertainty from input layers [Suit Telemetry Model, S1-S8 Invariants]"
       }
     },
-    "previousEventHash": "5b878331f3e4f8fae86e5b1e1ae8721f467bb65e12e6b0dcd3bdcaf923cb819d",
-    "eventHash": "a3644970a1ce0fa7a0588ad8ced35db914f094fdafcd8a6b01debcdf8c2e6d4b"
+    "previousEventHash": "2b8dd8aa2c23f9026d3b1f91fb6f9575e6930358581554aa7ff7811b99b97a88",
+    "eventHash": "2e95d19ac8c8071af0c7ddf99615d78904585db5c25b42e392dd8ed0ef78ea19"
   },
   {
-    "eventId": "mevt-1794647209818-17-tsn1",
+    "eventId": "mevt-1794646606082-17-u0a2",
     "sequenceNumber": 17,
-    "missionId": "DEMO-NOMINAL-87F361",
-    "timestamp": "2026-11-14T09:06:49.818Z",
+    "missionId": "DEMO-NOMINAL-391613",
+    "timestamp": "2026-11-14T08:56:46.082Z",
     "actor": "SIMULATED_EVA_CREW",
-    "entityId": "eva-1794647209720-l4yf",
+    "entityId": "eva-1794646605935-0ssn",
     "eventType": "TASK_TRANSITION",
     "payload": {
       "simulated": true,
       "status": "COMPLETED",
-      "evaSessionId": "eva-1794647209720-l4yf",
+      "evaSessionId": "eva-1794646605935-0ssn",
       "elapsedMinutes": 0,
       "batteryPercent": 88
     },
@@ -436,16 +436,16 @@
         "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
       }
     },
-    "previousEventHash": "a3644970a1ce0fa7a0588ad8ced35db914f094fdafcd8a6b01debcdf8c2e6d4b",
-    "eventHash": "51689fa188a576cd5de095b97238eeb6e0e1a85ec85dced45a9dd46fa33b23f1"
+    "previousEventHash": "2e95d19ac8c8071af0c7ddf99615d78904585db5c25b42e392dd8ed0ef78ea19",
+    "eventHash": "31ca794b4cf9230521c95eb148f73e5c8703613e716beb00e74e84188a4a7d92"
   },
   {
-    "eventId": "mevt-1794647209819-18-sit9",
+    "eventId": "mevt-1794646606084-18-c5ba",
     "sequenceNumber": 18,
-    "missionId": "DEMO-NOMINAL-87F361",
-    "timestamp": "2026-11-14T09:06:49.819Z",
+    "missionId": "DEMO-NOMINAL-391613",
+    "timestamp": "2026-11-14T08:56:46.084Z",
     "actor": "SIMULATED_COMMS_RELAY",
-    "entityId": "DEMO-NOMINAL-87F361",
+    "entityId": "DEMO-NOMINAL-391613",
     "eventType": "PACKET_DELIVERED",
     "payload": {
       "simulated": true,
@@ -464,16 +464,16 @@
         "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
       }
     },
-    "previousEventHash": "51689fa188a576cd5de095b97238eeb6e0e1a85ec85dced45a9dd46fa33b23f1",
-    "eventHash": "4429e25b475038f6e75b6b799c2de4c545991b652eba9cd154688144d50209e9"
+    "previousEventHash": "31ca794b4cf9230521c95eb148f73e5c8703613e716beb00e74e84188a4a7d92",
+    "eventHash": "3c29a2877587d0149e62b154a054f8457231bbcc47489c3df353969685236412"
   },
   {
-    "eventId": "mevt-1794647209881-19-7xez",
+    "eventId": "mevt-1794646606146-19-gw9k",
     "sequenceNumber": 19,
-    "missionId": "DEMO-FAILURE-6D83E5",
-    "timestamp": "2026-11-14T09:06:49.881Z",
+    "missionId": "DEMO-FAILURE-A59586",
+    "timestamp": "2026-11-14T08:56:46.146Z",
     "actor": "JUDGING_DEMO_ENGINE",
-    "entityId": "DEMO-FAILURE-6D83E5",
+    "entityId": "DEMO-FAILURE-A59586",
     "eventType": "MISSION_CREATED",
     "payload": {
       "simulated": true,
@@ -493,16 +493,16 @@
         "methodology": "Propagated uncertainty from input layers [JudgingDemoService]"
       }
     },
-    "previousEventHash": "4429e25b475038f6e75b6b799c2de4c545991b652eba9cd154688144d50209e9",
-    "eventHash": "5f3459b15fc12229772564cb2a19f293442ac16612ce2560e452353bfcabfde9"
+    "previousEventHash": "3c29a2877587d0149e62b154a054f8457231bbcc47489c3df353969685236412",
+    "eventHash": "c29a98eceea92cd4576cb5e08bbb618aa307776447217a0cb4f5a7cf19d0800e"
   },
   {
-    "eventId": "mevt-1794647209896-20-eq8e",
+    "eventId": "mevt-1794646606161-20-86x8",
     "sequenceNumber": 20,
-    "missionId": "DEMO-FAILURE-6D83E5",
-    "timestamp": "2026-11-14T09:06:49.896Z",
+    "missionId": "DEMO-FAILURE-A59586",
+    "timestamp": "2026-11-14T08:56:46.161Z",
     "actor": "SIMULATED_FAILURE_ENGINE",
-    "entityId": "DEMO-FAILURE-6D83E5",
+    "entityId": "DEMO-FAILURE-A59586",
     "eventType": "HAZARD_DETECTED",
     "payload": {
       "simulated": true,
@@ -525,16 +525,16 @@
         "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
       }
     },
-    "previousEventHash": "5f3459b15fc12229772564cb2a19f293442ac16612ce2560e452353bfcabfde9",
-    "eventHash": "4f5341ac859040d1b9cf556e243d2abe14c15cb8f1051c52a5ed92eb5366aa89"
+    "previousEventHash": "c29a98eceea92cd4576cb5e08bbb618aa307776447217a0cb4f5a7cf19d0800e",
+    "eventHash": "fea1e343fc73338bc63144ec09af6d90215fab3e5f13451fc0bd76fd5ff88a32"
   },
   {
-    "eventId": "mevt-1794647209897-21-7gq4",
+    "eventId": "mevt-1794646606162-21-i2jv",
     "sequenceNumber": 21,
-    "missionId": "DEMO-FAILURE-6D83E5",
-    "timestamp": "2026-11-14T09:06:49.897Z",
+    "missionId": "DEMO-FAILURE-A59586",
+    "timestamp": "2026-11-14T08:56:46.162Z",
     "actor": "SIMULATED_COMMS_RELAY",
-    "entityId": "DEMO-FAILURE-6D83E5",
+    "entityId": "DEMO-FAILURE-A59586",
     "eventType": "COMMUNICATION_LOST",
     "payload": {
       "simulated": true,
@@ -551,14 +551,14 @@
         "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
       }
     },
-    "previousEventHash": "4f5341ac859040d1b9cf556e243d2abe14c15cb8f1051c52a5ed92eb5366aa89",
-    "eventHash": "3373510a32fcb88627525092e780a74e863952dfbcc70c715f6adbcbacbac0d9"
+    "previousEventHash": "fea1e343fc73338bc63144ec09af6d90215fab3e5f13451fc0bd76fd5ff88a32",
+    "eventHash": "b9493650a311dcc3d0623f1a9ef3cd11fa3798f105f87c4b3e1e5e61fe611039"
   },
   {
-    "eventId": "mevt-1794647229867-22-92fp",
+    "eventId": "mevt-1794646622358-22-15zg",
     "sequenceNumber": 22,
     "missionId": "MARSWALK-001",
-    "timestamp": "2026-11-14T09:07:09.867Z",
+    "timestamp": "2026-11-14T08:57:02.358Z",
     "actor": "SIMULATION_ENGINE",
     "entityId": "sim-whatif-marswalk-001-battery_failure-1-a9000d07",
     "eventType": "WHAT_IF_EXECUTED",
@@ -576,7 +576,1024 @@
         "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
       }
     },
-    "previousEventHash": "3373510a32fcb88627525092e780a74e863952dfbcc70c715f6adbcbacbac0d9",
-    "eventHash": "278c3fdb96becfabc8f8ca8fdeffa7b434d809d23dbf43cf2f331326f6ce1b2e"
+    "previousEventHash": "b9493650a311dcc3d0623f1a9ef3cd11fa3798f105f87c4b3e1e5e61fe611039",
+    "eventHash": "4cc464a34ded33dc8d96244420cef8e27ca1c4312bc217a1a8e3fc6a588d0e9e"
+  },
+  {
+    "eventId": "mevt-1794647045349-23-korj",
+    "sequenceNumber": 23,
+    "missionId": "DEMO-FAILURE-DC7657",
+    "timestamp": "2026-11-14T09:04:05.349Z",
+    "actor": "JUDGING_DEMO_ENGINE",
+    "entityId": "DEMO-FAILURE-DC7657",
+    "eventType": "MISSION_CREATED",
+    "payload": {
+      "simulated": true,
+      "scenarioId": "OPERATIONAL_FAILURE",
+      "seed": 20261199,
+      "batteryPercent": 88,
+      "distanceKm": 0
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — SIMULATED Judging Demo Engine",
+      "processingMethod": "Mathematical calculation derived from [JudgingDemoService]: Isolated demo mission creation (SIMULATED)",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [JudgingDemoService]"
+      }
+    },
+    "previousEventHash": "4cc464a34ded33dc8d96244420cef8e27ca1c4312bc217a1a8e3fc6a588d0e9e",
+    "eventHash": "6e8e489d83eacb508d16d5e489024c2b227c3858aceb2fd3238dbf2111e0dc86"
+  },
+  {
+    "eventId": "mevt-1794647045359-24-9s1u",
+    "sequenceNumber": 24,
+    "missionId": "DEMO-FAILURE-DC7657",
+    "timestamp": "2026-11-14T09:04:05.359Z",
+    "actor": "SIMULATED_FAILURE_ENGINE",
+    "entityId": "DEMO-FAILURE-DC7657",
+    "eventType": "HAZARD_DETECTED",
+    "payload": {
+      "simulated": true,
+      "scenarios": [
+        "BATTERY_FAILURE",
+        "COMMUNICATION_BLACKOUT"
+      ],
+      "batteryPercent": 52,
+      "distanceKm": 1.4,
+      "simulationId": "sim-whatif-marswalk-001-battery_failure-1-1b3e3128"
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
+      }
+    },
+    "previousEventHash": "6e8e489d83eacb508d16d5e489024c2b227c3858aceb2fd3238dbf2111e0dc86",
+    "eventHash": "0231ca2e401a3b98ea14b3f54fd50d7c5b7b37d57e4d3c9c8785adf59177ab44"
+  },
+  {
+    "eventId": "mevt-1794647045362-25-8mtf",
+    "sequenceNumber": 25,
+    "missionId": "DEMO-FAILURE-DC7657",
+    "timestamp": "2026-11-14T09:04:05.362Z",
+    "actor": "SIMULATED_COMMS_RELAY",
+    "entityId": "DEMO-FAILURE-DC7657",
+    "eventType": "COMMUNICATION_LOST",
+    "payload": {
+      "simulated": true,
+      "reason": "Injected comms blackout during contingency ridge traverse"
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
+      }
+    },
+    "previousEventHash": "0231ca2e401a3b98ea14b3f54fd50d7c5b7b37d57e4d3c9c8785adf59177ab44",
+    "eventHash": "c85e9f8f2fbc1f67fa7f0a6a775bd1aa0e327223160654b9132f3e8c4cb5ccf0"
+  },
+  {
+    "eventId": "mevt-1794647045376-26-0kai",
+    "sequenceNumber": 26,
+    "missionId": "DEMO-FAILURE-DC7657",
+    "timestamp": "2026-11-14T09:04:05.376Z",
+    "actor": "SIMULATED_MONTE_CARLO",
+    "entityId": "mc-20261199",
+    "eventType": "MONTE_CARLO_EXECUTED",
+    "payload": {
+      "simulated": true,
+      "runCount": 50,
+      "seed": 20261199,
+      "missionCompletionCount": 31,
+      "safeRecoveryCount": 19,
+      "failureCount": 0,
+      "missionCompletionRatePercent": 62,
+      "overallSurvivalRatePercent": 100,
+      "completionRateCI95Percent": [
+        48.2,
+        74.1
+      ],
+      "survivalRateCI95Percent": [
+        92.9,
+        100
+      ],
+      "successProbabilityPercent": 62,
+      "batteryPercent": 50
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
+      }
+    },
+    "previousEventHash": "c85e9f8f2fbc1f67fa7f0a6a775bd1aa0e327223160654b9132f3e8c4cb5ccf0",
+    "eventHash": "884c8aaddb3ce1e26329cac27a3b42055518295ff806184fbe1cf8bcf4d804ac"
+  },
+  {
+    "eventId": "mevt-1794647045384-27-3glm",
+    "sequenceNumber": 27,
+    "missionId": "DEMO-FAILURE-DC7657",
+    "timestamp": "2026-11-14T09:04:05.384Z",
+    "actor": "ASTRONAUT-01",
+    "eventType": "COMMAND_EXECUTED",
+    "payload": {
+      "evaSessionId": "eva-1794647045379-7c3y",
+      "action": "START",
+      "previousStatus": "PLANNED",
+      "nextStatus": "ACTIVE",
+      "reason": "SIMULATED sortie started"
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — EVA Session Safety Controller",
+      "processingMethod": "Mathematical calculation derived from [Suit Telemetry Model, S1-S8 Invariants]: EVA START",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Suit Telemetry Model, S1-S8 Invariants]"
+      }
+    },
+    "previousEventHash": "884c8aaddb3ce1e26329cac27a3b42055518295ff806184fbe1cf8bcf4d804ac",
+    "eventHash": "2948ef8996a05b5d5a0e8ab61f09a6ed99c05a6cdb776014e4c21e8479da13ac"
+  },
+  {
+    "eventId": "mevt-1794647045485-28-ye07",
+    "sequenceNumber": 28,
+    "missionId": "DEMO-FAILURE-DC7657",
+    "timestamp": "2026-11-14T09:04:05.485Z",
+    "actor": "ASTRONAUT-01",
+    "eventType": "HAZARD_DETECTED",
+    "payload": {
+      "evaSessionId": "eva-1794647045379-7c3y",
+      "action": "EMERGENCY_RETURN",
+      "previousStatus": "ACTIVE",
+      "nextStatus": "EMERGENCY_RETURN",
+      "reason": "SIMULATED comms blackout + battery drop triggered emergency return"
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — EVA Session Safety Controller",
+      "processingMethod": "Mathematical calculation derived from [Suit Telemetry Model, S1-S8 Invariants]: EVA EMERGENCY_RETURN",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Suit Telemetry Model, S1-S8 Invariants]"
+      }
+    },
+    "previousEventHash": "2948ef8996a05b5d5a0e8ab61f09a6ed99c05a6cdb776014e4c21e8479da13ac",
+    "eventHash": "44bfc7a5becd3b7c3ca13d756552bbddd9eb78eb54769ff1fad8fe0588d04328"
+  },
+  {
+    "eventId": "mevt-1794647045579-29-0d2p",
+    "sequenceNumber": 29,
+    "missionId": "DEMO-FAILURE-DC7657",
+    "timestamp": "2026-11-14T09:04:05.579Z",
+    "actor": "ASTRONAUT-01",
+    "eventType": "COMMAND_EXECUTED",
+    "payload": {
+      "evaSessionId": "eva-1794647045379-7c3y",
+      "action": "COMPLETE",
+      "previousStatus": "EMERGENCY_RETURN",
+      "nextStatus": "COMPLETED",
+      "reason": "SIMULATED crew reached habitat airlock safely via emergency return"
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — EVA Session Safety Controller",
+      "processingMethod": "Mathematical calculation derived from [Suit Telemetry Model, S1-S8 Invariants]: EVA COMPLETE",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Suit Telemetry Model, S1-S8 Invariants]"
+      }
+    },
+    "previousEventHash": "44bfc7a5becd3b7c3ca13d756552bbddd9eb78eb54769ff1fad8fe0588d04328",
+    "eventHash": "5279e712b932c048cc6d5603a1991e29acc6c3f1bacd0da75564432d36143f07"
+  },
+  {
+    "eventId": "mevt-1794647045634-30-u3ok",
+    "sequenceNumber": 30,
+    "missionId": "DEMO-FAILURE-DC7657",
+    "timestamp": "2026-11-14T09:04:05.634Z",
+    "actor": "SIMULATED_SAFETY_OFFICER",
+    "entityId": "eva-1794647045379-7c3y",
+    "eventType": "EVA_EMERGENCY_RETURN",
+    "payload": {
+      "simulated": true,
+      "evaSessionId": "eva-1794647045379-7c3y",
+      "outcome": "SAFE_RETURN",
+      "finalSessionStatus": "COMPLETED",
+      "elapsedMinutes": 12,
+      "batteryPercent": 46
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
+      }
+    },
+    "previousEventHash": "5279e712b932c048cc6d5603a1991e29acc6c3f1bacd0da75564432d36143f07",
+    "eventHash": "5044159eb9dcb8fdc491eecd39b60901adce0cc8add2453bb82fcea6624f79e4"
+  },
+  {
+    "eventId": "mevt-1794647045637-31-oq5g",
+    "sequenceNumber": 31,
+    "missionId": "DEMO-FAILURE-DC7657",
+    "timestamp": "2026-11-14T09:04:05.637Z",
+    "actor": "SIMULATED_AUTONOMOUS_RELAY",
+    "entityId": "DEMO-FAILURE-DC7657",
+    "eventType": "PACKET_DELIVERED",
+    "payload": {
+      "simulated": true,
+      "status": "COMPLETED",
+      "reassignedAgent": "agent-drone-01",
+      "batteryPercent": 44,
+      "distanceKm": 1.65,
+      "latencyMs": 195
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
+      }
+    },
+    "previousEventHash": "5044159eb9dcb8fdc491eecd39b60901adce0cc8add2453bb82fcea6624f79e4",
+    "eventHash": "90ea26aec6c6f30fae2725afe3228d30e8e6b9ce0574408234b4ed61b21dcbc5"
+  },
+  {
+    "eventId": "mevt-1794647045773-32-r7w3",
+    "sequenceNumber": 32,
+    "missionId": "USER-B8-A-1794647044698",
+    "timestamp": "2026-11-14T09:04:05.773Z",
+    "actor": "TEST_SCIENTIST",
+    "entityId": "tgt-kodiak-butte",
+    "auditRef": "1aaebca3574b3093a7274622c42b7b87f1055a318839a080c07df7aa456d6e43",
+    "eventType": "MISSION_UPDATED",
+    "payload": {
+      "action": "SCIENCE_TARGET_ASSIGNED",
+      "decisionId": "scidec-a79cb11e",
+      "targetId": "tgt-kodiak-butte",
+      "targetName": "Kodiak Butte Delta Remnant",
+      "region": "Jezero Crater",
+      "objectiveId": "ANCIENT_WATER_ACTIVITY",
+      "rationale": "Independent science decision for Mission A"
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — Science Target Assignment: Kodiak Butte Delta Remnant",
+      "processingMethod": "Mathematical calculation derived from [NASA Perseverance Rover Mastcam-Z Long Distance Imaging & CRISM]: Human-approved scientific target association with mission planning workspace",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [NASA Perseverance Rover Mastcam-Z Long Distance Imaging & CRISM]"
+      }
+    },
+    "previousEventHash": "90ea26aec6c6f30fae2725afe3228d30e8e6b9ce0574408234b4ed61b21dcbc5",
+    "eventHash": "e925e3aaf1b97256184d07edd3120d5adad28a431853d1f59af112cb104b94ad"
+  },
+  {
+    "eventId": "mevt-1794647045790-33-zgpg",
+    "sequenceNumber": 33,
+    "missionId": "USER-B8-A-1794647044698",
+    "timestamp": "2026-11-14T09:04:05.790Z",
+    "actor": "ROVER_A",
+    "entityId": "USER-B8-A-1794647044698",
+    "eventType": "PACKET_DELIVERED",
+    "payload": {
+      "batteryPercent": 78,
+      "latencyMs": 120
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
+      }
+    },
+    "previousEventHash": "e925e3aaf1b97256184d07edd3120d5adad28a431853d1f59af112cb104b94ad",
+    "eventHash": "52ffa501721cc1067d94b3439fd3052bba12ead3b4f1e5c02d0e77fb1bc0b6c0"
+  },
+  {
+    "eventId": "mevt-1794647045795-34-dovs",
+    "sequenceNumber": 34,
+    "missionId": "USER-B8-A-1794647044698",
+    "timestamp": "2026-11-14T09:04:05.795Z",
+    "actor": "ROVER_A",
+    "entityId": "USER-B8-A-1794647044698",
+    "eventType": "PACKET_DELIVERED",
+    "payload": {
+      "latencyMs": 140
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
+      }
+    },
+    "previousEventHash": "52ffa501721cc1067d94b3439fd3052bba12ead3b4f1e5c02d0e77fb1bc0b6c0",
+    "eventHash": "3ea2ebc577f75e16c08e508d5dce2b6479dbbc1e481295b83ce2c7bc2f2ab26e"
+  },
+  {
+    "eventId": "mevt-1794647045796-35-gu8k",
+    "sequenceNumber": 35,
+    "missionId": "USER-B8-A-1794647044698",
+    "timestamp": "2026-11-14T09:04:05.796Z",
+    "actor": "ROVER_A",
+    "entityId": "USER-B8-A-1794647044698",
+    "eventType": "COMMUNICATION_LOST",
+    "payload": {},
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
+      }
+    },
+    "previousEventHash": "3ea2ebc577f75e16c08e508d5dce2b6479dbbc1e481295b83ce2c7bc2f2ab26e",
+    "eventHash": "cc25d8ecf9a20ff172bc7945ee3659b2bc0dfe477e6847b8b4aac9de686936f2"
+  },
+  {
+    "eventId": "mevt-1794647045877-36-xyld",
+    "sequenceNumber": 36,
+    "missionId": "DEMO-NOMINAL-E90B97",
+    "timestamp": "2026-11-14T09:04:05.877Z",
+    "actor": "JUDGING_DEMO_ENGINE",
+    "entityId": "DEMO-NOMINAL-E90B97",
+    "eventType": "MISSION_CREATED",
+    "payload": {
+      "simulated": true,
+      "scenarioId": "NOMINAL_EXPLORATION",
+      "seed": 20261112,
+      "batteryPercent": 94,
+      "distanceKm": 0
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — SIMULATED Judging Demo Engine",
+      "processingMethod": "Mathematical calculation derived from [JudgingDemoService]: Isolated demo mission creation (SIMULATED)",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [JudgingDemoService]"
+      }
+    },
+    "previousEventHash": "cc25d8ecf9a20ff172bc7945ee3659b2bc0dfe477e6847b8b4aac9de686936f2",
+    "eventHash": "ca581c97193ee45db36aa5eaf822bd3b8971c36401d862fefd45a09171b52084"
+  },
+  {
+    "eventId": "mevt-1794647045880-37-3q7l",
+    "sequenceNumber": 37,
+    "missionId": "DEMO-NOMINAL-E90B97",
+    "timestamp": "2026-11-14T09:04:05.880Z",
+    "actor": "SIMULATED_SCIENCE_LEAD",
+    "entityId": "tgt-kodiak-butte",
+    "auditRef": "ce55d85573d0bbc9c24fba99a5d81292e153f9d6c9dd8f23e2e923f716808b39",
+    "eventType": "MISSION_UPDATED",
+    "payload": {
+      "action": "SCIENCE_TARGET_ASSIGNED",
+      "decisionId": "scidec-ad27efd6",
+      "targetId": "tgt-kodiak-butte",
+      "targetName": "Kodiak Butte Delta Remnant",
+      "region": "Jezero Crater",
+      "objectiveId": "ANCIENT_WATER_ACTIVITY",
+      "rationale": "SIMULATED demo selection of Kodiak Butte Delta Remnant for Jezero Delta sampling."
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — Science Target Assignment: Kodiak Butte Delta Remnant",
+      "processingMethod": "Mathematical calculation derived from [NASA Perseverance Rover Mastcam-Z Long Distance Imaging & CRISM]: Human-approved scientific target association with mission planning workspace",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [NASA Perseverance Rover Mastcam-Z Long Distance Imaging & CRISM]"
+      }
+    },
+    "previousEventHash": "ca581c97193ee45db36aa5eaf822bd3b8971c36401d862fefd45a09171b52084",
+    "eventHash": "7871c2db660f06e64d217ece5842eb5545b03dd97056f63f8b30e93caf49144d"
+  },
+  {
+    "eventId": "mevt-1794647045909-38-82xz",
+    "sequenceNumber": 38,
+    "missionId": "DEMO-NOMINAL-E90B97",
+    "timestamp": "2026-11-14T09:04:05.909Z",
+    "actor": "SIMULATED_ROUTE_OPTIMIZER",
+    "entityId": "route-demo-e90b97",
+    "eventType": "ROUTE_SELECTED",
+    "payload": {
+      "simulated": true,
+      "distanceKm": 1.85,
+      "batteryPercent": 91,
+      "maxSlopeDeg": 7.8,
+      "feasible": true
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
+      }
+    },
+    "previousEventHash": "7871c2db660f06e64d217ece5842eb5545b03dd97056f63f8b30e93caf49144d",
+    "eventHash": "1f4af2a5286e6d5c02e7432ad2e35846c769836651ec314ee4c257c5067ec24d"
+  },
+  {
+    "eventId": "mevt-1794647045913-39-unjy",
+    "sequenceNumber": 39,
+    "missionId": "DEMO-NOMINAL-E90B97",
+    "timestamp": "2026-11-14T09:04:05.913Z",
+    "actor": "ASTRONAUT-01",
+    "eventType": "COMMAND_EXECUTED",
+    "payload": {
+      "evaSessionId": "eva-1794647045911-p20z",
+      "action": "START",
+      "previousStatus": "PLANNED",
+      "nextStatus": "ACTIVE",
+      "reason": "SIMULATED nominal demo start"
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — EVA Session Safety Controller",
+      "processingMethod": "Mathematical calculation derived from [Suit Telemetry Model, S1-S8 Invariants]: EVA START",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Suit Telemetry Model, S1-S8 Invariants]"
+      }
+    },
+    "previousEventHash": "1f4af2a5286e6d5c02e7432ad2e35846c769836651ec314ee4c257c5067ec24d",
+    "eventHash": "f6b65b2da5f429e7da0345340f5dfad7ae6757085d084275e41ed25d6666a7d3"
+  },
+  {
+    "eventId": "mevt-1794647045992-40-uo1k",
+    "sequenceNumber": 40,
+    "missionId": "DEMO-NOMINAL-E90B97",
+    "timestamp": "2026-11-14T09:04:05.992Z",
+    "actor": "ASTRONAUT-01",
+    "eventType": "COMMAND_EXECUTED",
+    "payload": {
+      "evaSessionId": "eva-1794647045911-p20z",
+      "action": "COMPLETE",
+      "previousStatus": "ACTIVE",
+      "nextStatus": "COMPLETED",
+      "reason": "SIMULATED nominal EVA objectives completed"
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — EVA Session Safety Controller",
+      "processingMethod": "Mathematical calculation derived from [Suit Telemetry Model, S1-S8 Invariants]: EVA COMPLETE",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Suit Telemetry Model, S1-S8 Invariants]"
+      }
+    },
+    "previousEventHash": "f6b65b2da5f429e7da0345340f5dfad7ae6757085d084275e41ed25d6666a7d3",
+    "eventHash": "4498163f023d02ea5e6aaf465da0716a119ecbc32861e8b71cafd12ea85fc65b"
+  },
+  {
+    "eventId": "mevt-1794647046589-41-a4sv",
+    "sequenceNumber": 41,
+    "missionId": "DEMO-NOMINAL-E90B97",
+    "timestamp": "2026-11-14T09:04:06.589Z",
+    "actor": "SIMULATED_EVA_CREW",
+    "entityId": "eva-1794647045911-p20z",
+    "eventType": "TASK_TRANSITION",
+    "payload": {
+      "simulated": true,
+      "status": "COMPLETED",
+      "evaSessionId": "eva-1794647045911-p20z",
+      "elapsedMinutes": 0,
+      "batteryPercent": 88
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
+      }
+    },
+    "previousEventHash": "4498163f023d02ea5e6aaf465da0716a119ecbc32861e8b71cafd12ea85fc65b",
+    "eventHash": "3a60b8925a53459e025e04b43f01efeaf77b3e63e93d47f4fb1c26139a57e441"
+  },
+  {
+    "eventId": "mevt-1794647046659-42-333a",
+    "sequenceNumber": 42,
+    "missionId": "DEMO-NOMINAL-E90B97",
+    "timestamp": "2026-11-14T09:04:06.659Z",
+    "actor": "SIMULATED_COMMS_RELAY",
+    "entityId": "DEMO-NOMINAL-E90B97",
+    "eventType": "PACKET_DELIVERED",
+    "payload": {
+      "simulated": true,
+      "distanceKm": 1.85,
+      "batteryPercent": 86,
+      "latencyMs": 142
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
+      }
+    },
+    "previousEventHash": "3a60b8925a53459e025e04b43f01efeaf77b3e63e93d47f4fb1c26139a57e441",
+    "eventHash": "f4e2ab0ab042c7f6b0e3905f179c9a7b239f14aeb26a71152d62b68c8fe0bded"
+  },
+  {
+    "eventId": "mevt-1794647386498-43-abb7",
+    "sequenceNumber": 43,
+    "missionId": "DEMO-NOMINAL-610E8D",
+    "timestamp": "2026-11-14T09:09:46.498Z",
+    "actor": "JUDGING_DEMO_ENGINE",
+    "entityId": "DEMO-NOMINAL-610E8D",
+    "eventType": "MISSION_CREATED",
+    "payload": {
+      "simulated": true,
+      "scenarioId": "NOMINAL_EXPLORATION",
+      "seed": 20261112,
+      "batteryPercent": 94,
+      "distanceKm": 0
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — SIMULATED Judging Demo Engine",
+      "processingMethod": "Mathematical calculation derived from [JudgingDemoService]: Isolated demo mission creation (SIMULATED)",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [JudgingDemoService]"
+      }
+    },
+    "previousEventHash": "f4e2ab0ab042c7f6b0e3905f179c9a7b239f14aeb26a71152d62b68c8fe0bded",
+    "eventHash": "76446fcb20d38952732200dd69944c0bae7d3bee88fd2fbd8697c3bda810a1a8"
+  },
+  {
+    "eventId": "mevt-1794647386505-44-30vi",
+    "sequenceNumber": 44,
+    "missionId": "DEMO-NOMINAL-610E8D",
+    "timestamp": "2026-11-14T09:09:46.505Z",
+    "actor": "SIMULATED_SCIENCE_LEAD",
+    "entityId": "tgt-kodiak-butte",
+    "auditRef": "4ab8666aa55d2e250ac1fb1014313cbde5de611cc3f304a3d4d0c8b36cce5aff",
+    "eventType": "MISSION_UPDATED",
+    "payload": {
+      "action": "SCIENCE_TARGET_ASSIGNED",
+      "decisionId": "scidec-a931e133",
+      "targetId": "tgt-kodiak-butte",
+      "targetName": "Kodiak Butte Delta Remnant",
+      "region": "Jezero Crater",
+      "objectiveId": "ANCIENT_WATER_ACTIVITY",
+      "rationale": "SIMULATED demo selection of Kodiak Butte Delta Remnant for Jezero Delta sampling."
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — Science Target Assignment: Kodiak Butte Delta Remnant",
+      "processingMethod": "Mathematical calculation derived from [NASA Perseverance Rover Mastcam-Z Long Distance Imaging & CRISM]: Human-approved scientific target association with mission planning workspace",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [NASA Perseverance Rover Mastcam-Z Long Distance Imaging & CRISM]"
+      }
+    },
+    "previousEventHash": "76446fcb20d38952732200dd69944c0bae7d3bee88fd2fbd8697c3bda810a1a8",
+    "eventHash": "177ac1d415a9ffe42d557aaf520a133cb7d992af50088ab8bded9cca14e36965"
+  },
+  {
+    "eventId": "mevt-1794647386563-45-y6fu",
+    "sequenceNumber": 45,
+    "missionId": "DEMO-NOMINAL-610E8D",
+    "timestamp": "2026-11-14T09:09:46.563Z",
+    "actor": "SIMULATED_ROUTE_OPTIMIZER",
+    "entityId": "route-demo-610e8d",
+    "eventType": "ROUTE_SELECTED",
+    "payload": {
+      "simulated": true,
+      "distanceKm": 1.85,
+      "batteryPercent": 91,
+      "maxSlopeDeg": 7.8,
+      "feasible": true
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
+      }
+    },
+    "previousEventHash": "177ac1d415a9ffe42d557aaf520a133cb7d992af50088ab8bded9cca14e36965",
+    "eventHash": "304a7872f14b2109fcb2d6b6ccd27aaa8d3fcde91387dbd84d2734b85fa74418"
+  },
+  {
+    "eventId": "mevt-1794647386600-46-yewj",
+    "sequenceNumber": 46,
+    "missionId": "DEMO-NOMINAL-610E8D",
+    "timestamp": "2026-11-14T09:09:46.600Z",
+    "actor": "ASTRONAUT-01",
+    "eventType": "COMMAND_EXECUTED",
+    "payload": {
+      "evaSessionId": "eva-1794647386569-n6jt",
+      "action": "START",
+      "previousStatus": "PLANNED",
+      "nextStatus": "ACTIVE",
+      "reason": "SIMULATED nominal demo start"
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — EVA Session Safety Controller",
+      "processingMethod": "Mathematical calculation derived from [Suit Telemetry Model, S1-S8 Invariants]: EVA START",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Suit Telemetry Model, S1-S8 Invariants]"
+      }
+    },
+    "previousEventHash": "304a7872f14b2109fcb2d6b6ccd27aaa8d3fcde91387dbd84d2734b85fa74418",
+    "eventHash": "5ca11c99f609898bbe529310d3a30cea8db28ec480034ff40b2ff4eb622de3ff"
+  },
+  {
+    "eventId": "mevt-1794647386680-47-j3hg",
+    "sequenceNumber": 47,
+    "missionId": "DEMO-NOMINAL-610E8D",
+    "timestamp": "2026-11-14T09:09:46.680Z",
+    "actor": "ASTRONAUT-01",
+    "eventType": "COMMAND_EXECUTED",
+    "payload": {
+      "evaSessionId": "eva-1794647386569-n6jt",
+      "action": "COMPLETE",
+      "previousStatus": "ACTIVE",
+      "nextStatus": "COMPLETED",
+      "reason": "SIMULATED nominal EVA objectives completed"
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — EVA Session Safety Controller",
+      "processingMethod": "Mathematical calculation derived from [Suit Telemetry Model, S1-S8 Invariants]: EVA COMPLETE",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Suit Telemetry Model, S1-S8 Invariants]"
+      }
+    },
+    "previousEventHash": "5ca11c99f609898bbe529310d3a30cea8db28ec480034ff40b2ff4eb622de3ff",
+    "eventHash": "b11b1844de46170f0720bcd3fe8b1be252e14de42553f15c8fe6db2b0b9d1e18"
+  },
+  {
+    "eventId": "mevt-1794647386754-48-7e03",
+    "sequenceNumber": 48,
+    "missionId": "DEMO-NOMINAL-610E8D",
+    "timestamp": "2026-11-14T09:09:46.754Z",
+    "actor": "SIMULATED_EVA_CREW",
+    "entityId": "eva-1794647386569-n6jt",
+    "eventType": "TASK_TRANSITION",
+    "payload": {
+      "simulated": true,
+      "status": "COMPLETED",
+      "evaSessionId": "eva-1794647386569-n6jt",
+      "elapsedMinutes": 0,
+      "batteryPercent": 88
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
+      }
+    },
+    "previousEventHash": "b11b1844de46170f0720bcd3fe8b1be252e14de42553f15c8fe6db2b0b9d1e18",
+    "eventHash": "a30bfdba29e14c2a23aa37d68f74328b4ea6342717966d6ba6ca65f2b11eee22"
+  },
+  {
+    "eventId": "mevt-1794647386759-49-2jnz",
+    "sequenceNumber": 49,
+    "missionId": "DEMO-NOMINAL-610E8D",
+    "timestamp": "2026-11-14T09:09:46.759Z",
+    "actor": "SIMULATED_COMMS_RELAY",
+    "entityId": "DEMO-NOMINAL-610E8D",
+    "eventType": "PACKET_DELIVERED",
+    "payload": {
+      "simulated": true,
+      "distanceKm": 1.85,
+      "batteryPercent": 86,
+      "latencyMs": 142
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
+      }
+    },
+    "previousEventHash": "a30bfdba29e14c2a23aa37d68f74328b4ea6342717966d6ba6ca65f2b11eee22",
+    "eventHash": "0d758028b20f2e002681f2e7eff6782383215dbd1a1e469d6f96d9dbd8f1b09c"
+  },
+  {
+    "eventId": "mevt-1794647390083-50-7ec8",
+    "sequenceNumber": 50,
+    "missionId": "DEMO-NOMINAL-0220B9",
+    "timestamp": "2026-11-14T09:09:50.083Z",
+    "actor": "JUDGING_DEMO_ENGINE",
+    "entityId": "DEMO-NOMINAL-0220B9",
+    "eventType": "MISSION_CREATED",
+    "payload": {
+      "simulated": true,
+      "scenarioId": "NOMINAL_EXPLORATION",
+      "seed": 20261112,
+      "batteryPercent": 94,
+      "distanceKm": 0
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — SIMULATED Judging Demo Engine",
+      "processingMethod": "Mathematical calculation derived from [JudgingDemoService]: Isolated demo mission creation (SIMULATED)",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [JudgingDemoService]"
+      }
+    },
+    "previousEventHash": "0d758028b20f2e002681f2e7eff6782383215dbd1a1e469d6f96d9dbd8f1b09c",
+    "eventHash": "0c242781df6e1ec9af06f195c416ab967665f4b49be83b9ff17fe0fc32e30bc7"
+  },
+  {
+    "eventId": "mevt-1794647391928-51-mimt",
+    "sequenceNumber": 51,
+    "missionId": "DEMO-NOMINAL-3E0D87",
+    "timestamp": "2026-11-14T09:09:51.928Z",
+    "actor": "JUDGING_DEMO_ENGINE",
+    "entityId": "DEMO-NOMINAL-3E0D87",
+    "eventType": "MISSION_CREATED",
+    "payload": {
+      "simulated": true,
+      "scenarioId": "NOMINAL_EXPLORATION",
+      "seed": 20261112,
+      "batteryPercent": 94,
+      "distanceKm": 0
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — SIMULATED Judging Demo Engine",
+      "processingMethod": "Mathematical calculation derived from [JudgingDemoService]: Isolated demo mission creation (SIMULATED)",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [JudgingDemoService]"
+      }
+    },
+    "previousEventHash": "0c242781df6e1ec9af06f195c416ab967665f4b49be83b9ff17fe0fc32e30bc7",
+    "eventHash": "78c2d84d986c2b34551f41cb94fbde53611044aad78099ea2c8f9860a15d4bcd"
+  },
+  {
+    "eventId": "mevt-1794647391936-52-m2r6",
+    "sequenceNumber": 52,
+    "missionId": "DEMO-NOMINAL-3E0D87",
+    "timestamp": "2026-11-14T09:09:51.936Z",
+    "actor": "SIMULATED_SCIENCE_LEAD",
+    "entityId": "tgt-kodiak-butte",
+    "auditRef": "c3854961a6cfe3c60342e99b316a003de65760a97eec7fbf860037eab9084dd3",
+    "eventType": "MISSION_UPDATED",
+    "payload": {
+      "action": "SCIENCE_TARGET_ASSIGNED",
+      "decisionId": "scidec-d0fef776",
+      "targetId": "tgt-kodiak-butte",
+      "targetName": "Kodiak Butte Delta Remnant",
+      "region": "Jezero Crater",
+      "objectiveId": "ANCIENT_WATER_ACTIVITY",
+      "rationale": "SIMULATED demo selection of Kodiak Butte Delta Remnant for Jezero Delta sampling."
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — Science Target Assignment: Kodiak Butte Delta Remnant",
+      "processingMethod": "Mathematical calculation derived from [NASA Perseverance Rover Mastcam-Z Long Distance Imaging & CRISM]: Human-approved scientific target association with mission planning workspace",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [NASA Perseverance Rover Mastcam-Z Long Distance Imaging & CRISM]"
+      }
+    },
+    "previousEventHash": "78c2d84d986c2b34551f41cb94fbde53611044aad78099ea2c8f9860a15d4bcd",
+    "eventHash": "d560079760a53b5cfa5c1880e9d03a3efbcd647e5d7f592f7dff449cd857a653"
+  },
+  {
+    "eventId": "mevt-1794647391996-53-r88j",
+    "sequenceNumber": 53,
+    "missionId": "DEMO-NOMINAL-3E0D87",
+    "timestamp": "2026-11-14T09:09:51.996Z",
+    "actor": "SIMULATED_ROUTE_OPTIMIZER",
+    "entityId": "route-demo-3e0d87",
+    "eventType": "ROUTE_SELECTED",
+    "payload": {
+      "simulated": true,
+      "distanceKm": 1.85,
+      "batteryPercent": 91,
+      "maxSlopeDeg": 7.8,
+      "feasible": true
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
+      }
+    },
+    "previousEventHash": "d560079760a53b5cfa5c1880e9d03a3efbcd647e5d7f592f7dff449cd857a653",
+    "eventHash": "25ee57e20e3590ba55cb39bbcd60528e6015939ab618c2ae3e0ed6302a440ed9"
+  },
+  {
+    "eventId": "mevt-1794647392009-54-pchi",
+    "sequenceNumber": 54,
+    "missionId": "DEMO-NOMINAL-3E0D87",
+    "timestamp": "2026-11-14T09:09:52.009Z",
+    "actor": "ASTRONAUT-01",
+    "eventType": "COMMAND_EXECUTED",
+    "payload": {
+      "evaSessionId": "eva-1794647392000-8dbb",
+      "action": "START",
+      "previousStatus": "PLANNED",
+      "nextStatus": "ACTIVE",
+      "reason": "SIMULATED nominal demo start"
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — EVA Session Safety Controller",
+      "processingMethod": "Mathematical calculation derived from [Suit Telemetry Model, S1-S8 Invariants]: EVA START",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Suit Telemetry Model, S1-S8 Invariants]"
+      }
+    },
+    "previousEventHash": "25ee57e20e3590ba55cb39bbcd60528e6015939ab618c2ae3e0ed6302a440ed9",
+    "eventHash": "f2c5db37d07913567e4c65505bdc73e7119e12d77c24083dc19d230681edc91c"
+  },
+  {
+    "eventId": "mevt-1794647392072-55-1cyr",
+    "sequenceNumber": 55,
+    "missionId": "DEMO-NOMINAL-3E0D87",
+    "timestamp": "2026-11-14T09:09:52.072Z",
+    "actor": "ASTRONAUT-01",
+    "eventType": "COMMAND_EXECUTED",
+    "payload": {
+      "evaSessionId": "eva-1794647392000-8dbb",
+      "action": "COMPLETE",
+      "previousStatus": "ACTIVE",
+      "nextStatus": "COMPLETED",
+      "reason": "SIMULATED nominal EVA objectives completed"
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — EVA Session Safety Controller",
+      "processingMethod": "Mathematical calculation derived from [Suit Telemetry Model, S1-S8 Invariants]: EVA COMPLETE",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Suit Telemetry Model, S1-S8 Invariants]"
+      }
+    },
+    "previousEventHash": "f2c5db37d07913567e4c65505bdc73e7119e12d77c24083dc19d230681edc91c",
+    "eventHash": "3fb9895d6fbdabe8166fb4d34499de3d4e6555b3474131252067e6f212109d70"
+  },
+  {
+    "eventId": "mevt-1794647392130-56-byms",
+    "sequenceNumber": 56,
+    "missionId": "DEMO-NOMINAL-3E0D87",
+    "timestamp": "2026-11-14T09:09:52.130Z",
+    "actor": "SIMULATED_EVA_CREW",
+    "entityId": "eva-1794647392000-8dbb",
+    "eventType": "TASK_TRANSITION",
+    "payload": {
+      "simulated": true,
+      "status": "COMPLETED",
+      "evaSessionId": "eva-1794647392000-8dbb",
+      "elapsedMinutes": 0,
+      "batteryPercent": 88
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
+      }
+    },
+    "previousEventHash": "3fb9895d6fbdabe8166fb4d34499de3d4e6555b3474131252067e6f212109d70",
+    "eventHash": "b479c003871b91e7803a707493f5863b413d5bd3b33e7bba2fa29c9a7f1ddfa8"
+  },
+  {
+    "eventId": "mevt-1794647392133-57-tl88",
+    "sequenceNumber": 57,
+    "missionId": "DEMO-NOMINAL-3E0D87",
+    "timestamp": "2026-11-14T09:09:52.133Z",
+    "actor": "SIMULATED_COMMS_RELAY",
+    "entityId": "DEMO-NOMINAL-3E0D87",
+    "eventType": "PACKET_DELIVERED",
+    "payload": {
+      "simulated": true,
+      "distanceKm": 1.85,
+      "batteryPercent": 86,
+      "latencyMs": 142
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
+      }
+    },
+    "previousEventHash": "b479c003871b91e7803a707493f5863b413d5bd3b33e7bba2fa29c9a7f1ddfa8",
+    "eventHash": "c35d8eb0009448490514c8211821621247e35c3ba99ebf3d53e105bc1f3fcc38"
   }
 ]

@@ -863,5 +863,107 @@
         "reason": "EVA session created"
       }
     ]
+  },
+  {
+    "id": "eva-1794647386569-n6jt",
+    "missionId": "DEMO-NOMINAL-610E8D",
+    "title": "SIMULATED Nominal EVA (DEMO-NOMINAL-610E8D)",
+    "status": "COMPLETED",
+    "crewAgentId": "agent-astronaut-01",
+    "routeId": "route-demo-610e8d",
+    "plannedDurationMinutes": 75,
+    "elapsedMinutes": 0,
+    "remainingMinutes": 75,
+    "updatedAt": "2026-11-14T09:09:46.677Z",
+    "safetyChecks": {
+      "overallSafe": true,
+      "reserveMarginMinutes": 165,
+      "suitOxygenReserveMinutes": 240,
+      "crewBatteryPercent": 92,
+      "roverBatteryPercent": null,
+      "violations": [],
+      "warnings": []
+    },
+    "telemetryProvenance": {
+      "sourceType": "SIMULATED",
+      "label": "Modeled Suit & Rover Telemetry (Not Live Medical Hardware)",
+      "updatedAt": "2026-11-14T09:09:46.677Z"
+    },
+    "history": [
+      {
+        "timestamp": "2026-11-14T09:09:46.569Z",
+        "fromStatus": null,
+        "toStatus": "PLANNED",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA session created"
+      },
+      {
+        "timestamp": "2026-11-14T09:09:46.574Z",
+        "fromStatus": "PLANNED",
+        "toStatus": "ACTIVE",
+        "actor": "MISSION_COMMAND",
+        "reason": "SIMULATED nominal demo start"
+      },
+      {
+        "timestamp": "2026-11-14T09:09:46.677Z",
+        "fromStatus": "ACTIVE",
+        "toStatus": "COMPLETED",
+        "actor": "MISSION_COMMAND",
+        "reason": "SIMULATED nominal EVA objectives completed"
+      }
+    ],
+    "startedAt": "2026-11-14T09:09:46.574Z",
+    "endedAt": "2026-11-14T09:09:46.677Z"
+  },
+  {
+    "id": "eva-1794647392000-8dbb",
+    "missionId": "DEMO-NOMINAL-3E0D87",
+    "title": "SIMULATED Nominal EVA (DEMO-NOMINAL-3E0D87)",
+    "status": "COMPLETED",
+    "crewAgentId": "agent-astronaut-01",
+    "routeId": "route-demo-3e0d87",
+    "plannedDurationMinutes": 75,
+    "elapsedMinutes": 0,
+    "remainingMinutes": 75,
+    "updatedAt": "2026-11-14T09:09:52.070Z",
+    "safetyChecks": {
+      "overallSafe": true,
+      "reserveMarginMinutes": 165,
+      "suitOxygenReserveMinutes": 240,
+      "crewBatteryPercent": 92,
+      "roverBatteryPercent": null,
+      "violations": [],
+      "warnings": []
+    },
+    "telemetryProvenance": {
+      "sourceType": "SIMULATED",
+      "label": "Modeled Suit & Rover Telemetry (Not Live Medical Hardware)",
+      "updatedAt": "2026-11-14T09:09:52.070Z"
+    },
+    "history": [
+      {
+        "timestamp": "2026-11-14T09:09:52.000Z",
+        "fromStatus": null,
+        "toStatus": "PLANNED",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA session created"
+      },
+      {
+        "timestamp": "2026-11-14T09:09:52.004Z",
+        "fromStatus": "PLANNED",
+        "toStatus": "ACTIVE",
+        "actor": "MISSION_COMMAND",
+        "reason": "SIMULATED nominal demo start"
+      },
+      {
+        "timestamp": "2026-11-14T09:09:52.070Z",
+        "fromStatus": "ACTIVE",
+        "toStatus": "COMPLETED",
+        "actor": "MISSION_COMMAND",
+        "reason": "SIMULATED nominal EVA objectives completed"
+      }
+    ],
+    "startedAt": "2026-11-14T09:09:52.004Z",
+    "endedAt": "2026-11-14T09:09:52.070Z"
   }
 ]
