@@ -1,0 +1,463 @@
+[
+  {
+    "id": "mission-1794464117884",
+    "routeId": "route-1794464117850-485",
+    "parameters": {
+      "routeId": "route-1794464117850-485",
+      "maxDurationMinutes": 240,
+      "startCoordinate": {
+        "latitude": 18.4447,
+        "longitude": 77.4508
+      },
+      "returnRequired": true
+    },
+    "evaAssessment": {
+      "estimatedDurationMinutes": 200,
+      "totalDistanceKm": 3.94,
+      "terrainDifficulty": "low",
+      "returnMarginMinutes": 40,
+      "feasible": true,
+      "warnings": [],
+      "oxygenReserveRemainingPercent": 41,
+      "recommendations": [
+        "Route passes all baseline safety limits. Proceed to flight director sign-off."
+      ],
+      "status": "GREEN",
+      "statusReason": "Nominal mission parameters. All life-support reserves and slope thresholds satisfied.",
+      "returnFeasibility": true,
+      "emergencyReserveMinutes": 40,
+      "terrainStressFactor": 0.07,
+      "hazardExposureFactor": 0,
+      "dataUncertaintyFactor": 0.15
+    },
+    "createdAt": "2026-11-12T09:35:25.814Z"
+  },
+  {
+    "id": "mission-1794467153103",
+    "routeId": "route-1794467153087-150",
+    "parameters": {
+      "routeId": "route-1794467153087-150",
+      "maxDurationMinutes": 240,
+      "startCoordinate": {
+        "latitude": 18.4447,
+        "longitude": 77.4508
+      },
+      "returnRequired": true
+    },
+    "evaAssessment": {
+      "estimatedDurationMinutes": 200,
+      "totalDistanceKm": 3.94,
+      "terrainDifficulty": "low",
+      "returnMarginMinutes": 40,
+      "feasible": true,
+      "warnings": [],
+      "oxygenReserveRemainingPercent": 41,
+      "recommendations": [
+        "Route passes all baseline safety limits. Proceed to flight director sign-off."
+      ],
+      "status": "GREEN",
+      "statusReason": "Nominal mission parameters. All life-support reserves and slope thresholds satisfied.",
+      "returnFeasibility": true,
+      "emergencyReserveMinutes": 40,
+      "terrainStressFactor": 0.07,
+      "hazardExposureFactor": 0,
+      "dataUncertaintyFactor": 0.15
+    },
+    "createdAt": "2026-11-12T09:35:25.814Z"
+  },
+  {
+    "id": "mission-1794468476481",
+    "routeId": "route-1794468476462-855",
+    "parameters": {
+      "routeId": "route-1794468476462-855",
+      "maxDurationMinutes": 240,
+      "startCoordinate": {
+        "latitude": 18.4447,
+        "longitude": 77.4508
+      },
+      "returnRequired": true
+    },
+    "evaAssessment": {
+      "estimatedDurationMinutes": 200,
+      "totalDistanceKm": 3.94,
+      "terrainDifficulty": "low",
+      "returnMarginMinutes": 40,
+      "feasible": true,
+      "warnings": [],
+      "oxygenReserveRemainingPercent": 41,
+      "recommendations": [
+        "Route passes all baseline safety limits. Proceed to flight director sign-off."
+      ],
+      "status": "GREEN",
+      "statusReason": "Nominal mission parameters. All life-support reserves and slope thresholds satisfied.",
+      "returnFeasibility": true,
+      "emergencyReserveMinutes": 40,
+      "terrainStressFactor": 0.07,
+      "hazardExposureFactor": 0,
+      "dataUncertaintyFactor": 0.15
+    },
+    "createdAt": "2026-11-12T09:35:25.814Z"
+  },
+  {
+    "id": "mission-1794468546402",
+    "routeId": "route-1794468546393-988",
+    "parameters": {
+      "routeId": "route-1794468546393-988",
+      "maxDurationMinutes": 240,
+      "startCoordinate": {
+        "latitude": 18.4447,
+        "longitude": 77.4508
+      },
+      "returnRequired": true
+    },
+    "evaAssessment": {
+      "estimatedDurationMinutes": 200,
+      "totalDistanceKm": 3.94,
+      "terrainDifficulty": "low",
+      "returnMarginMinutes": 40,
+      "feasible": true,
+      "warnings": [],
+      "oxygenReserveRemainingPercent": 41,
+      "recommendations": [
+        "Route passes all baseline safety limits. Proceed to flight director sign-off."
+      ],
+      "status": "GREEN",
+      "statusReason": "Nominal mission parameters. All life-support reserves and slope thresholds satisfied.",
+      "returnFeasibility": true,
+      "emergencyReserveMinutes": 40,
+      "terrainStressFactor": 0.07,
+      "hazardExposureFactor": 0,
+      "dataUncertaintyFactor": 0.15
+    },
+    "createdAt": "2026-11-12T09:35:25.814Z"
+  },
+  {
+    "id": "mission-1794472197497",
+    "routeId": "route-1794472197479-694",
+    "parameters": {
+      "routeId": "route-1794472197479-694",
+      "maxDurationMinutes": 240,
+      "startCoordinate": {
+        "latitude": 18.4447,
+        "longitude": 77.4508
+      },
+      "returnRequired": true
+    },
+    "evaAssessment": {
+      "estimatedDurationMinutes": 200,
+      "totalDistanceKm": 3.94,
+      "terrainDifficulty": "low",
+      "returnMarginMinutes": 40,
+      "feasible": true,
+      "warnings": [],
+      "oxygenReserveRemainingPercent": 41,
+      "recommendations": [
+        "Route passes all baseline safety limits. Proceed to flight director sign-off."
+      ],
+      "status": "GREEN",
+      "statusReason": "Nominal mission parameters. All life-support reserves and slope thresholds satisfied.",
+      "returnFeasibility": true,
+      "emergencyReserveMinutes": 40,
+      "terrainStressFactor": 0.07,
+      "hazardExposureFactor": 0,
+      "dataUncertaintyFactor": 0.15
+    },
+    "createdAt": "2026-11-12T09:35:25.814Z"
+  },
+  {
+    "id": "mission-1794474004055",
+    "routeId": "route-1794474004035-463",
+    "parameters": {
+      "routeId": "route-1794474004035-463",
+      "maxDurationMinutes": 240,
+      "startCoordinate": {
+        "latitude": 18.4447,
+        "longitude": 77.4508
+      },
+      "returnRequired": true
+    },
+    "evaAssessment": {
+      "estimatedDurationMinutes": 200,
+      "totalDistanceKm": 3.94,
+      "terrainDifficulty": "low",
+      "returnMarginMinutes": 40,
+      "feasible": true,
+      "warnings": [],
+      "oxygenReserveRemainingPercent": 41,
+      "recommendations": [
+        "Route passes all baseline safety limits. Proceed to flight director sign-off."
+      ],
+      "status": "GREEN",
+      "statusReason": "Nominal mission parameters. All life-support reserves and slope thresholds satisfied.",
+      "returnFeasibility": true,
+      "emergencyReserveMinutes": 40,
+      "terrainStressFactor": 0.07,
+      "hazardExposureFactor": 0,
+      "dataUncertaintyFactor": 0.15
+    },
+    "createdAt": "2026-11-12T09:35:25.814Z"
+  },
+  {
+    "id": "mission-1794474069949",
+    "routeId": "route-1794474069937-186",
+    "parameters": {
+      "routeId": "route-1794474069937-186",
+      "maxDurationMinutes": 240,
+      "startCoordinate": {
+        "latitude": 18.4447,
+        "longitude": 77.4508
+      },
+      "returnRequired": true
+    },
+    "evaAssessment": {
+      "estimatedDurationMinutes": 200,
+      "totalDistanceKm": 3.94,
+      "terrainDifficulty": "low",
+      "returnMarginMinutes": 40,
+      "feasible": true,
+      "warnings": [],
+      "oxygenReserveRemainingPercent": 41,
+      "recommendations": [
+        "Route passes all baseline safety limits. Proceed to flight director sign-off."
+      ],
+      "status": "GREEN",
+      "statusReason": "Nominal mission parameters. All life-support reserves and slope thresholds satisfied.",
+      "returnFeasibility": true,
+      "emergencyReserveMinutes": 40,
+      "terrainStressFactor": 0.07,
+      "hazardExposureFactor": 0,
+      "dataUncertaintyFactor": 0.15
+    },
+    "createdAt": "2026-11-12T09:35:25.814Z"
+  },
+  {
+    "id": "mission-1794474366849",
+    "routeId": "route-jezero-delta-sol100",
+    "parameters": {
+      "name": "WS9 Restart Persistence Test",
+      "routeId": "route-jezero-delta-sol100",
+      "parameters": {
+        "maxDurationMinutes": 120,
+        "returnRequired": true
+      }
+    },
+    "evaAssessment": {
+      "estimatedDurationMinutes": 129,
+      "totalDistanceKm": 4.14,
+      "terrainDifficulty": "low",
+      "returnMarginMinutes": 111,
+      "feasible": true,
+      "warnings": [],
+      "oxygenReserveRemainingPercent": 62,
+      "recommendations": [
+        "Route passes all baseline safety limits. Proceed to flight director sign-off."
+      ],
+      "status": "GREEN",
+      "statusReason": "Nominal mission parameters. All life-support reserves and slope thresholds satisfied.",
+      "returnFeasibility": true,
+      "emergencyReserveMinutes": 111,
+      "terrainStressFactor": 0.16,
+      "hazardExposureFactor": 0,
+      "dataUncertaintyFactor": 0.15
+    },
+    "createdAt": "2026-11-12T09:35:25.814Z"
+  },
+  {
+    "id": "mission-1794474705784",
+    "routeId": "route-jezero-delta-sol100",
+    "parameters": {
+      "routeId": "route-jezero-delta-sol100",
+      "maxDurationMinutes": 240,
+      "startCoordinate": {
+        "latitude": 18.4447,
+        "longitude": 77.4508
+      },
+      "returnRequired": true
+    },
+    "evaAssessment": {
+      "estimatedDurationMinutes": 192,
+      "totalDistanceKm": 4.14,
+      "terrainDifficulty": "low",
+      "returnMarginMinutes": 48,
+      "feasible": true,
+      "warnings": [],
+      "oxygenReserveRemainingPercent": 43,
+      "recommendations": [
+        "Route passes all baseline safety limits. Proceed to flight director sign-off."
+      ],
+      "status": "GREEN",
+      "statusReason": "Nominal mission parameters. All life-support reserves and slope thresholds satisfied.",
+      "returnFeasibility": true,
+      "emergencyReserveMinutes": 48,
+      "terrainStressFactor": 0.16,
+      "hazardExposureFactor": 0,
+      "dataUncertaintyFactor": 0.15
+    },
+    "createdAt": "2026-11-12T09:35:25.814Z"
+  },
+  {
+    "id": "mission-1794474705798",
+    "routeId": "route-jezero-delta-sol100",
+    "parameters": {
+      "routeId": "route-jezero-delta-sol100",
+      "maxDurationMinutes": 240,
+      "startCoordinate": {
+        "latitude": 18.4447,
+        "longitude": 77.4508
+      },
+      "returnRequired": true
+    },
+    "evaAssessment": {
+      "estimatedDurationMinutes": 192,
+      "totalDistanceKm": 4.14,
+      "terrainDifficulty": "low",
+      "returnMarginMinutes": 48,
+      "feasible": true,
+      "warnings": [],
+      "oxygenReserveRemainingPercent": 43,
+      "recommendations": [
+        "Route passes all baseline safety limits. Proceed to flight director sign-off."
+      ],
+      "status": "GREEN",
+      "statusReason": "Nominal mission parameters. All life-support reserves and slope thresholds satisfied.",
+      "returnFeasibility": true,
+      "emergencyReserveMinutes": 48,
+      "terrainStressFactor": 0.16,
+      "hazardExposureFactor": 0,
+      "dataUncertaintyFactor": 0.15
+    },
+    "createdAt": "2026-11-12T09:35:25.814Z"
+  },
+  {
+    "id": "mission-1794474709445",
+    "routeId": "route-jezero-delta-sol100",
+    "parameters": {
+      "routeId": "route-jezero-delta-sol100",
+      "maxDurationMinutes": 240,
+      "startCoordinate": {
+        "latitude": 18.4447,
+        "longitude": 77.4508
+      },
+      "returnRequired": true
+    },
+    "evaAssessment": {
+      "estimatedDurationMinutes": 192,
+      "totalDistanceKm": 4.14,
+      "terrainDifficulty": "low",
+      "returnMarginMinutes": 48,
+      "feasible": true,
+      "warnings": [],
+      "oxygenReserveRemainingPercent": 43,
+      "recommendations": [
+        "Route passes all baseline safety limits. Proceed to flight director sign-off."
+      ],
+      "status": "GREEN",
+      "statusReason": "Nominal mission parameters. All life-support reserves and slope thresholds satisfied.",
+      "returnFeasibility": true,
+      "emergencyReserveMinutes": 48,
+      "terrainStressFactor": 0.16,
+      "hazardExposureFactor": 0,
+      "dataUncertaintyFactor": 0.15
+    },
+    "createdAt": "2026-11-12T09:35:25.814Z"
+  },
+  {
+    "id": "mission-1794475042718",
+    "routeId": "route-1794475042706-444",
+    "parameters": {
+      "routeId": "route-1794475042706-444",
+      "maxDurationMinutes": 240,
+      "startCoordinate": {
+        "latitude": 18.4447,
+        "longitude": 77.4508
+      },
+      "returnRequired": true
+    },
+    "evaAssessment": {
+      "estimatedDurationMinutes": 200,
+      "totalDistanceKm": 3.94,
+      "terrainDifficulty": "low",
+      "returnMarginMinutes": 40,
+      "feasible": true,
+      "warnings": [],
+      "oxygenReserveRemainingPercent": 41,
+      "recommendations": [
+        "Route passes all baseline safety limits. Proceed to flight director sign-off."
+      ],
+      "status": "GREEN",
+      "statusReason": "Nominal mission parameters. All life-support reserves and slope thresholds satisfied.",
+      "returnFeasibility": true,
+      "emergencyReserveMinutes": 40,
+      "terrainStressFactor": 0.07,
+      "hazardExposureFactor": 0,
+      "dataUncertaintyFactor": 0.15
+    },
+    "createdAt": "2026-11-12T09:35:25.814Z"
+  },
+  {
+    "id": "mission-1794476073318",
+    "routeId": "route-1794467153087-150",
+    "parameters": {
+      "routeId": "route-1794467153087-150",
+      "maxDurationMinutes": 240,
+      "startCoordinate": {
+        "latitude": 18.4447,
+        "longitude": 77.4508
+      },
+      "returnRequired": true
+    },
+    "evaAssessment": {
+      "estimatedDurationMinutes": 200,
+      "totalDistanceKm": 3.94,
+      "terrainDifficulty": "low",
+      "returnMarginMinutes": 40,
+      "feasible": true,
+      "warnings": [],
+      "oxygenReserveRemainingPercent": 41,
+      "recommendations": [
+        "Route passes all baseline safety limits. Proceed to flight director sign-off."
+      ],
+      "status": "GREEN",
+      "statusReason": "Nominal mission parameters. All life-support reserves and slope thresholds satisfied.",
+      "returnFeasibility": true,
+      "emergencyReserveMinutes": 40,
+      "terrainStressFactor": 0.07,
+      "hazardExposureFactor": 0,
+      "dataUncertaintyFactor": 0.15
+    },
+    "createdAt": "2026-11-12T09:35:25.814Z"
+  },
+  {
+    "id": "mission-1794476131718",
+    "routeId": "route-1794476131704-405",
+    "parameters": {
+      "routeId": "route-1794476131704-405",
+      "maxDurationMinutes": 240,
+      "startCoordinate": {
+        "latitude": 18.4447,
+        "longitude": 77.4508
+      },
+      "returnRequired": true
+    },
+    "evaAssessment": {
+      "estimatedDurationMinutes": 200,
+      "totalDistanceKm": 3.94,
+      "terrainDifficulty": "low",
+      "returnMarginMinutes": 40,
+      "feasible": true,
+      "warnings": [],
+      "oxygenReserveRemainingPercent": 41,
+      "recommendations": [
+        "Route passes all baseline safety limits. Proceed to flight director sign-off."
+      ],
+      "status": "GREEN",
+      "statusReason": "Nominal mission parameters. All life-support reserves and slope thresholds satisfied.",
+      "returnFeasibility": true,
+      "emergencyReserveMinutes": 40,
+      "terrainStressFactor": 0.07,
+      "hazardExposureFactor": 0,
+      "dataUncertaintyFactor": 0.15
+    },
+    "createdAt": "2026-11-12T09:35:31.718Z"
+  }
+]

@@ -1,6 +1,7 @@
 import crypto from "crypto";
 import fs from "fs";
 import path from "path";
+import { CANONICAL_BACKEND_DATA_DIR } from "../../utils/dataDir.js";
 import {
   AuditChainBlock,
   AuditVerificationResult,
@@ -21,7 +22,7 @@ export class AuditChainService {
   private static readonly GENESIS_HASH = "0000000000000000000000000000000000000000000000000000000000000000";
 
   constructor(storageDir?: string) {
-    const dir = storageDir || path.resolve(process.cwd(), "data");
+    const dir = storageDir || CANONICAL_BACKEND_DATA_DIR;
     if (!fs.existsSync(dir)) {
       try {
         fs.mkdirSync(dir, { recursive: true });

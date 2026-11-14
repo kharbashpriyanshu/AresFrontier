@@ -26,8 +26,14 @@ export const ElevationProfileChart: React.FC<ElevationProfileChartProps> = ({
 
   if (!profile || profile.length === 0) {
     return (
-      <div className="h-44 flex items-center justify-center text-slate-500 font-mono text-xs border border-space-800 rounded bg-space-900/50">
-        No topographic route profile data available.
+      <div className="p-6 flex flex-col items-center justify-center text-center border border-atlas-border bg-atlas-surface/60 space-y-2">
+        <div className="flex items-center gap-2 text-atlas-amber font-mono text-xs font-bold uppercase">
+          <AlertTriangle className="w-4 h-4" />
+          <span>UNAVAILABLE — SOURCE TOPOGRAPHIC SAMPLES NOT ATTACHED</span>
+        </div>
+        <p className="text-xs text-atlas-muted font-mono max-w-xl">
+          This route record does not contain persisted waypoint elevation samples. Select a route with derived terrain samples (e.g. E2E Jezero Delta Traversal Mission) to view its cross-section.
+        </p>
       </div>
     );
   }
@@ -41,40 +47,40 @@ export const ElevationProfileChart: React.FC<ElevationProfileChartProps> = ({
   const yDomainPadding = Math.max(40, Math.round((maxElevation - minElevation) * 0.15));
 
   return (
-    <div className="w-full bg-space-900/95 border border-space-800 rounded p-3 flex flex-col font-mono text-xs space-y-2 shadow-xl">
+    <div className="w-full bg-atlas-surface border border-atlas-border p-4 flex flex-col font-mono text-xs space-y-3 shadow-xl transition-colors">
       {/* Top Header & Slope Stats */}
-      <div className="flex flex-wrap items-center justify-between pb-2 border-b border-space-800 text-[10px] gap-2">
+      <div className="flex flex-wrap items-center justify-between pb-2.5 border-b border-atlas-border text-[11px] gap-2">
         <div className="flex items-center space-x-2">
-          <span className="uppercase tracking-wider font-bold text-slate-300">
-            MOLA Topographic Cross-Section
+          <span className="font-display font-bold uppercase tracking-wider text-atlas-text">
+            Derived Route Topographic Cross-Section (Benchmark Model)
           </span>
           {maxSlope > 15 && (
-            <span className="px-1.5 py-0.5 rounded bg-rose-950/60 border border-rose-500/40 text-rose-300 text-[9px] flex items-center space-x-1">
-              <AlertTriangle className="w-3 h-3 text-rose-400" />
-              <span>STEEP SECTIONS</span>
+            <span className="px-2 py-0.5 bg-atlas-elevated border border-atlas-border text-atlas-red text-[10px] flex items-center space-x-1">
+              <AlertTriangle className="w-3 h-3 text-atlas-red" />
+              <span>Steep Incline Sections</span>
             </span>
           )}
         </div>
 
-        <div className="flex items-center space-x-3 text-slate-400">
+        <div className="flex items-center space-x-4 text-atlas-muted">
           <span className="flex items-center space-x-1">
             {elevationDelta >= 0 ? (
-              <TrendingUp className="w-3 h-3 text-telemetry-cyan" />
+              <TrendingUp className="w-3.5 h-3.5 text-atlas-blue" />
             ) : (
-              <TrendingDown className="w-3 h-3 text-telemetry-rose" />
+              <TrendingDown className="w-3.5 h-3.5 text-atlas-red" />
             )}
-            <span>NET: <span className="text-slate-200">{elevationDelta > 0 ? `+${elevationDelta}` : elevationDelta}m</span></span>
+            <span>Net: <span className="text-atlas-text font-bold">{elevationDelta > 0 ? `+${elevationDelta}` : elevationDelta} m</span></span>
           </span>
-          <span>MAX SLOPE: <span className="text-telemetry-amber font-bold">{maxSlope}°</span></span>
+          <span>Max Slope: <span className="text-atlas-amber font-bold">{maxSlope}°</span></span>
         </div>
       </div>
 
       {/* Chart Canvas */}
-      <div className="h-40 w-full pt-1">
+      <div className="h-44 w-full pt-1">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
             data={profile}
-            margin={{ top: 5, right: 10, left: -20, bottom: 0 }}
+            margin={{ top: 8, right: 12, left: -16, bottom: 0 }}
             onMouseMove={(state) => {
               if (state && state.activePayload && state.activePayload.length > 0) {
                 const pt = state.activePayload[0].payload as TerrainProfilePoint;
@@ -89,65 +95,81 @@ export const ElevationProfileChart: React.FC<ElevationProfileChartProps> = ({
           >
             <defs>
               <linearGradient id="molaGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#e26d46" stopOpacity={0.65} />
-                <stop offset="95%" stopColor="#c1440e" stopOpacity={0.05} />
+                <stop offset="5%" stopColor="var(--atlas-accent)" stopOpacity={0.55} />
+                <stop offset="95%" stopColor="var(--atlas-accent-dark)" stopOpacity={0.05} />
               </linearGradient>
             </defs>
-            <CartesianGrid strokeDasharray="3 3" stroke="#1f293d" vertical={false} />
+            <CartesianGrid strokeDasharray="2 2" stroke="var(--atlas-border)" vertical={false} />
             <XAxis
               dataKey="distanceKm"
-              tick={{ fill: "#64748b", fontSize: 10 }}
-              tickLine={{ stroke: "#334155" }}
-              axisLine={{ stroke: "#334155" }}
-              tickFormatter={(val) => `${val} km`}
+              tick={{ fill: "var(--atlas-muted)", fontSize: 10, fontFamily: "Inter" }}
+              tickLine={{ stroke: "var(--atlas-border)" }}
+              unit=" km"
             />
             <YAxis
               domain={[minElevation - yDomainPadding, maxElevation + yDomainPadding]}
-              tick={{ fill: "#64748b", fontSize: 10 }}
-              tickLine={{ stroke: "#334155" }}
-              axisLine={{ stroke: "#334155" }}
-              tickFormatter={(val) => `${val}m`}
+              tick={{ fill: "var(--atlas-muted)", fontSize: 10, fontFamily: "Inter" }}
+              tickLine={{ stroke: "var(--atlas-border)" }}
+              unit=" m"
+              width={50}
             />
             <Tooltip
               content={({ active, payload }) => {
-                if (active && payload && payload.length) {
-                  const data = payload[0].payload as TerrainProfilePoint;
-                  return (
-                    <div className="bg-space-950/95 border border-space-700 p-2.5 rounded shadow-2xl text-[10px] space-y-1">
-                      <div className="text-mars-accent font-bold">DISTANCE: {data.distanceKm} km</div>
-                      <div className="text-slate-100 font-semibold">ELEVATION: {data.elevationM} m datum</div>
-                      <div className="flex items-center space-x-1.5 text-telemetry-amber">
-                        <span>LOCAL INCLINE:</span>
-                        <span className="font-bold">{data.slopeDegrees}°</span>
-                      </div>
-                      <div className="text-slate-400 font-mono text-[9px] pt-0.5 border-t border-space-800">
-                        {formatMarsCoordinate(data.coordinate)}
-                      </div>
+                if (!active || !payload || !payload.length) return null;
+                const pt = payload[0].payload as TerrainProfilePoint;
+                return (
+                  <div className="bg-atlas-elevated border border-atlas-border p-2.5 shadow-2xl font-mono text-[11px] space-y-1">
+                    <div className="text-atlas-accent font-bold">
+                      {pt.distanceKm.toFixed(2)} km along traverse
                     </div>
-                  );
-                }
-                return null;
+                    <div className="text-atlas-text">
+                      Elevation: <b className="text-atlas-blue">{pt.elevationM > 0 ? `+${pt.elevationM}` : pt.elevationM} m</b>
+                    </div>
+                    <div className="text-atlas-muted">
+                      Local Slope: <b className="text-atlas-amber">{pt.slopeDegrees}°</b>
+                    </div>
+                    {pt.coordinate && (
+                      <div className="text-[10px] text-atlas-muted border-t border-atlas-border pt-1">
+                        {formatMarsCoordinate(pt.coordinate)}
+                      </div>
+                    )}
+                  </div>
+                );
               }}
             />
             <Area
               type="monotone"
               dataKey="elevationM"
-              stroke="#e26d46"
+              stroke="var(--atlas-accent)"
               strokeWidth={2}
               fillOpacity={1}
               fill="url(#molaGradient)"
+              isAnimationActive={false}
             />
           </AreaChart>
         </ResponsiveContainer>
       </div>
 
-      {/* Point Telemetry Sub-bar */}
-      {activePoint && (
-        <div className="p-1.5 bg-space-850 rounded border border-space-800 text-[10px] flex items-center justify-between text-slate-300">
-          <span>AT {activePoint.distanceKm} KM</span>
-          <span className="text-telemetry-cyan font-bold">{activePoint.elevationM}m</span>
-          <span className="text-telemetry-amber font-bold">{activePoint.slopeDegrees}° slope</span>
-          <span className="text-slate-400">{formatMarsCoordinate(activePoint.coordinate)}</span>
+      {/* Active Inspector Footer */}
+      {activePoint ? (
+        <div className="flex items-center justify-between text-[11px] bg-atlas-elevated p-2 border border-atlas-border">
+          <span className="text-atlas-muted">
+            Distance: <span className="text-atlas-text font-bold">{activePoint.distanceKm.toFixed(2)} km</span>
+          </span>
+          <span className="text-atlas-muted">
+            Elevation: <span className="text-atlas-blue font-bold">{activePoint.elevationM} m</span>
+          </span>
+          <span className="text-atlas-muted">
+            Slope: <span className="text-atlas-amber font-bold">{activePoint.slopeDegrees}°</span>
+          </span>
+          <span className="text-atlas-muted hidden sm:inline">
+            Coords: <span className="text-atlas-text">{formatMarsCoordinate(activePoint.coordinate)}</span>
+          </span>
+        </div>
+      ) : (
+        <div className="flex items-center justify-between text-[10px] text-atlas-muted border-t border-atlas-border pt-2">
+          <span>Datum: IAU/IAG Mars 2000 Areoid (0m elevation datum)</span>
+          <span>Hover over profile to trace coordinate elevation</span>
         </div>
       )}
     </div>

@@ -1,27 +1,167 @@
 [
   {
-    "eventId": "mevt-1794076771008-7s0m",
+    "eventId": "mevt-1794476134965-9uyv",
     "missionId": "MARSWALK-001",
-    "timestamp": "2026-11-07T18:39:31.008Z",
-    "actor": "agent-rover-01",
-    "eventType": "TELEMETRY_LOGGED",
+    "timestamp": "2026-11-12T09:35:34.965Z",
+    "actor": "MISSION_CONTROL",
+    "eventType": "MISSION_STARTED",
     "payload": {
-      "lat": 18.38,
-      "lon": 77.58,
-      "battery": 94
+      "objective": "Jezero Delta Front Traverse",
+      "crewCommander": "Alex Vance"
     },
     "provenance": {
-      "sourceType": "DERIVED",
-      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
-      "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
-      "dataMode": "FALLBACK",
-      "uncertainty": {
-        "value": 1,
-        "unit": "score",
-        "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
-      }
+      "sourceType": "BENCHMARK",
+      "sourceName": "Flight Director",
+      "dataMode": "BENCHMARK"
     },
     "previousEventHash": "0000000000000000000000000000000000000000000000000000000000000000",
-    "eventHash": "0cbba373b368b08d48881616b0ba8246b242d789e06ac1cd0bff34d69040ed65"
+    "eventHash": "c0687de2c35f512acc0a3243aec07e71149796d0d407dcc5bea22965540da13d"
+  },
+  {
+    "eventId": "mevt-1794476134966-nsuh",
+    "missionId": "MARSWALK-001",
+    "timestamp": "2026-11-12T09:35:34.966Z",
+    "actor": "agent-rover-01",
+    "eventType": "AGENT_ASSIGNED",
+    "payload": {
+      "task": "RECONNAISSANCE",
+      "coordinate": {
+        "latitude": 18.4485,
+        "longitude": 77.432
+      }
+    },
+    "provenance": {
+      "sourceType": "ROVER",
+      "sourceName": "Ares Scout Telemetry",
+      "dataMode": "SIMULATED"
+    },
+    "previousEventHash": "c0687de2c35f512acc0a3243aec07e71149796d0d407dcc5bea22965540da13d",
+    "eventHash": "babc964c6fa0adc97ad12e111f4edadcb7bed534d34bfb12c341c7e01ddc79c8"
+  },
+  {
+    "eventId": "mevt-1794476134966-2hle",
+    "missionId": "MARSWALK-001",
+    "timestamp": "2026-11-12T09:35:34.966Z",
+    "actor": "agent-rover-01",
+    "eventType": "SENSOR_OBSERVATION",
+    "payload": {
+      "sensor": "HAZCAM",
+      "measuredSlopeDeg": 21.8,
+      "uncertaintyDeg": 1.1
+    },
+    "provenance": {
+      "sourceType": "ROVER",
+      "sourceName": "Stereo HazCam",
+      "dataMode": "SIMULATED"
+    },
+    "previousEventHash": "babc964c6fa0adc97ad12e111f4edadcb7bed534d34bfb12c341c7e01ddc79c8",
+    "eventHash": "b02717ddce8a3488e266c2e8c85ab0871196648b8ab0b21bf892758a5806f8ef"
+  },
+  {
+    "eventId": "mevt-1794476134967-5377",
+    "missionId": "MARSWALK-001",
+    "timestamp": "2026-11-12T09:35:34.967Z",
+    "actor": "agent-rover-01",
+    "eventType": "HAZARD_DETECTED",
+    "payload": {
+      "hazardType": "SLOPE_EXCESSIVE",
+      "coordinate": {
+        "latitude": 18.452,
+        "longitude": 77.418
+      },
+      "slopeDeg": 21.8
+    },
+    "provenance": {
+      "sourceType": "MODEL",
+      "sourceName": "ObservationHazardFusion",
+      "dataMode": "DERIVED"
+    },
+    "previousEventHash": "b02717ddce8a3488e266c2e8c85ab0871196648b8ab0b21bf892758a5806f8ef",
+    "eventHash": "83423a862c8401bd13b045b52445e48703813d76394c0467199c8fb643e0088d"
+  },
+  {
+    "eventId": "mevt-1794476134967-ofq5",
+    "missionId": "MARSWALK-001",
+    "timestamp": "2026-11-12T09:35:34.967Z",
+    "actor": "agent-rover-01",
+    "eventType": "COMMAND_EXECUTED",
+    "payload": {
+      "command": "PAUSE",
+      "reason": "Autonomous safety stop on corroborated hazard"
+    },
+    "provenance": {
+      "sourceType": "ROVER",
+      "sourceName": "DecisionEngine",
+      "dataMode": "SIMULATED"
+    },
+    "previousEventHash": "83423a862c8401bd13b045b52445e48703813d76394c0467199c8fb643e0088d",
+    "eventHash": "00a00478775a663db65a54318d6498f394f867a803ef31bd8b0ec3323d88fad7"
+  },
+  {
+    "eventId": "mevt-1794476134968-mm8n",
+    "missionId": "MARSWALK-001",
+    "timestamp": "2026-11-12T09:35:34.968Z",
+    "actor": "MISSION_CONTROL",
+    "eventType": "REPLAN_PROPOSED",
+    "payload": {
+      "replanId": "replan-benchmark-01",
+      "proposedWaypoints": [
+        {
+          "latitude": 18.4485,
+          "longitude": 77.432
+        },
+        {
+          "latitude": 18.454,
+          "longitude": 77.425
+        },
+        {
+          "latitude": 18.458,
+          "longitude": 77.412
+        }
+      ]
+    },
+    "provenance": {
+      "sourceType": "MODEL",
+      "sourceName": "ReplanningEngine",
+      "dataMode": "DERIVED"
+    },
+    "previousEventHash": "00a00478775a663db65a54318d6498f394f867a803ef31bd8b0ec3323d88fad7",
+    "eventHash": "53ea2bcc5b2370b9f5d2486f9c960de9cdfd800af69a304d16ad31b5f5ac6e64"
+  },
+  {
+    "eventId": "mevt-1794476134968-btp9",
+    "missionId": "MARSWALK-001",
+    "timestamp": "2026-11-12T09:35:34.968Z",
+    "actor": "MISSION_CONTROL",
+    "eventType": "REPLAN_APPROVED",
+    "payload": {
+      "approvedBy": "Flight Director Vance",
+      "role": "MISSION_COMMAND"
+    },
+    "provenance": {
+      "sourceType": "AUDIT",
+      "sourceName": "AuditChainService",
+      "dataMode": "BENCHMARK"
+    },
+    "previousEventHash": "53ea2bcc5b2370b9f5d2486f9c960de9cdfd800af69a304d16ad31b5f5ac6e64",
+    "eventHash": "11ddc4a3d3250120984f5b407760e0c0d1e0d683b4a135bf8ff614d04bb296ce"
+  },
+  {
+    "eventId": "mevt-1794476134968-6b6n",
+    "missionId": "MARSWALK-001",
+    "timestamp": "2026-11-12T09:35:34.968Z",
+    "actor": "agent-rover-02",
+    "eventType": "SCIENCE_TARGET_COMPLETED",
+    "payload": {
+      "targetId": "sci-delta-silt",
+      "targetName": "Delta Foreset Carbonate Bed"
+    },
+    "provenance": {
+      "sourceType": "ROVER",
+      "sourceName": "Raman Spectrometer",
+      "dataMode": "SIMULATED"
+    },
+    "previousEventHash": "11ddc4a3d3250120984f5b407760e0c0d1e0d683b4a135bf8ff614d04bb296ce",
+    "eventHash": "b2ef587f3fc157d643809442502ba61827d6b7f27bd505fdd595d97fac84ba86"
   }
 ]

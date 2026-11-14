@@ -7,6 +7,8 @@ export type AgentStatus =
   | "PLANNING"
   | "EXECUTING"
   | "PAUSED"
+  | "RETURNING"
+  | "UNAVAILABLE"
   | "COMMS_LOST"
   | "EMERGENCY"
   | "COMPLETE";
@@ -21,6 +23,28 @@ export type AgentCapability =
   | "HIGH_SPEED_DRIVE"
   | "ORBITAL_IMAGERY";
 
+export interface StructuredAgentCapabilities {
+  mobility: {
+    maxSlopeDeg: number;
+    speedKph: number;
+    maxRangeKm: number;
+    roughnessTolerance: number; // 0.0 - 1.0
+  };
+  scientificInstruments: string[];
+  hasDrill: boolean;
+  hasSpectrometer: boolean;
+  hasLidar: boolean;
+  sampleTubeCapacity: number;
+  sampleTubesRemaining: number;
+  communicationRelay: {
+    isRelay: boolean;
+    relayRangeKm: number;
+    relayBandwidthKbps: number;
+  };
+  resourceCapacityWh: number;
+  enduranceMinutes: number;
+}
+
 export type TaskType =
   | "SURVEY_TERRAIN"
   | "INSPECT_HAZARD"
@@ -33,10 +57,11 @@ export type TaskType =
 
 export type TaskPriority = "CRITICAL" | "HIGH" | "MEDIUM" | "LOW";
 
-export type TaskStatus = "PENDING" | "IN_PROGRESS" | "COMPLETED" | "BLOCKED" | "CANCELLED";
+export type TaskStatus = "PENDING" | "IN_PROGRESS" | "PAUSED" | "COMPLETED" | "BLOCKED" | "CANCELLED" | "FAILED";
 
 export interface AgentTask {
   id: string;
+  missionId?: string;
   agentId: string;
   taskType: TaskType;
   priority: TaskPriority;
@@ -49,12 +74,21 @@ export interface AgentTask {
   estimatedDurationMin: number;
   requiredBatteryPercent: number;
   requiredCommunication: boolean;
+  requiredCapabilities?: AgentCapability[];
   scienceObjective?: ScienceObjectiveId;
   riskLevel: "LOW" | "MODERATE" | "HIGH" | "CRITICAL";
   status: TaskStatus;
+  assignedAt?: string;
   startedAt?: string;
+  pausedAt?: string;
   completedAt?: string;
+  statusReason?: string;
   outcome?: string;
+  dependencies?: string[];           // Task IDs that must be COMPLETED before this starts
+  collaboratingAgentIds?: string[];  // Multi-agent collaborative support
+  deadlineMinutes?: number;          // Operational MET ceiling
+  workloadUnits?: number;            // Normalized complexity units (1-10)
+  failureReason?: string;
 }
 
 export interface AgentTelemetry {
@@ -80,6 +114,7 @@ export interface PlanetaryAgent {
   status: AgentStatus;
   position: MarsCoordinate;
   capabilities: AgentCapability[];
+  structuredCapabilities?: StructuredAgentCapabilities;
   telemetry: AgentTelemetry;
   currentTask?: AgentTask;
   assignedRouteId?: string;

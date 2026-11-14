@@ -1,4 +1,4 @@
-import { DataProvenance, SourceType } from "../../types/index.js";
+import { DataProvenance, SourceType, DataMode } from "../../types/index.js";
 
 /**
  * Provenance Construction & Scientific Grounding Service
@@ -130,6 +130,55 @@ export class ProvenanceService {
         relative: 0.1,
         unit: "K",
         methodology: "Multi-band Radiometric Calibration and Atmospheric Dust Deconvolution",
+      },
+    };
+  }
+
+  /**
+   * Constructs an MRO CRISM mineralogical spectral provenance record.
+   */
+  public static createCrismProvenance(
+    observationId: string = "CRISM-FRT00005850_07",
+    dataMode: DataMode = "BENCHMARK"
+  ): DataProvenance {
+    return {
+      sourceType: "NASA",
+      sourceName: "NASA MRO Compact Reconnaissance Imaging Spectrometer for Mars (CRISM)",
+      datasetId: "MRO-M-CRISM-3-RDR-V1.0",
+      observationId,
+      sourceUrl: "https://pds-geosciences.wustl.edu/missions/mro/crism.htm",
+      spatialResolutionM: 18.0,
+      processingMethod: "Atmospheric Transmission Ratio and Mineral Summary Spectral Parameter Mapping",
+      dataMode,
+      confidence: 0.94,
+      uncertainty: {
+        value: 0.05,
+        relative: 0.05,
+        unit: "reflectance_I_over_F",
+        methodology: "Photometrically and atmospherically corrected Volcano-Scan calibration",
+      },
+    };
+  }
+
+  /**
+   * Constructs a Subsurface Water Ice Mapping (SWIM) resource provenance record.
+   */
+  public static createSwimIceProvenance(dataMode: DataMode = "BENCHMARK"): DataProvenance {
+    return {
+      sourceType: "NASA",
+      sourceName: "Planetary Science Institute / NASA Subsurface Water Ice Mapping (SWIM)",
+      datasetId: "SWIM-ICE-CONSISTENCY-V1.0",
+      observationId: "SWIM-GLOBAL-ARC-01",
+      sourceUrl: "https://swim.psi.edu/",
+      spatialResolutionM: 1000.0,
+      processingMethod: "Multi-dataset integration (SHARAD, Neutron Spectrometer, Thermal Inertia, Geomorphology)",
+      dataMode,
+      confidence: 0.88,
+      uncertainty: {
+        value: 0.15,
+        relative: 0.15,
+        unit: "ice_consistency_index",
+        methodology: "Joint Bayesian multi-sensor evidence integration",
       },
     };
   }

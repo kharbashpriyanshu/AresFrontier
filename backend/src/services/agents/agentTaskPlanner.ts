@@ -122,6 +122,10 @@ export class AgentTaskPlanner {
     requiredBatteryPercent: number;
     requiredCommunication?: boolean;
     riskLevel?: "LOW" | "MODERATE" | "HIGH" | "CRITICAL";
+    dependencies?: string[];
+    collaboratingAgentIds?: string[];
+    deadlineMinutes?: number;
+    workloadUnits?: number;
   }): AgentTask {
     return {
       id: `task-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`,
@@ -136,10 +140,93 @@ export class AgentTaskPlanner {
       },
       estimatedDurationMin: params.estimatedDurationMin,
       requiredBatteryPercent: params.requiredBatteryPercent,
-      requiredCommunication: params.requiredCommunication ?? true,
+      requiredCommunication: params.requiredCommunication ?? false,
       scienceObjective: params.scienceObjective,
       riskLevel: params.riskLevel || "LOW",
       status: "PENDING",
+      dependencies: params.dependencies || [],
+      collaboratingAgentIds: params.collaboratingAgentIds || [],
+      deadlineMinutes: params.deadlineMinutes,
+      workloadUnits: params.workloadUnits || 1,
+    };
+  }
+
+  /**
+   * Verifies capability alignment and dependency satisfaction for a planned task.
+   */
+  public static checkTaskEligibility(
+    agent: PlanetaryAgent,
+    task: AgentTask,
+    activeTasks: AgentTask[] = []
+  ): { eligible: boolean; reasons: string[]; blockedByDependency?: string } {
+    const reasons: string[] = [];
+
+    // 1. Dependency satisfaction check
+    if (task.dependencies && task.dependencies.length > 0) {
+      for (const depId of task.dependencies) {
+        const depTask = activeTasks.find((t) => t.id === depId);
+        if (!depTask || depTask.status !== "COMPLETED") {
+          return {
+            eligible: false,
+            blockedByDependency: depId,
+            reasons: [`Task depends on uncompleted task '${depId}' (status: ${depTask?.status || "UNKNOWN"})`],
+          };
+        }
+      }
+    }
+
+    // 2. Structured capabilities verification
+    const caps = agent.structuredCapabilities;
+    if (caps) {
+      if (task.taskType === "COLLECT_SCIENCE") {
+        if (task.target.description?.toLowerCase().includes("drill") && !caps.hasDrill) {
+          reasons.push(`${agent.callsign} lacks rotary abrasion core drill required for target`);
+        }
+        if (task.target.description?.toLowerCase().includes("sample") && caps.sampleTubesRemaining <= 0) {
+          reasons.push(`${agent.callsign} has exhausted available physical sample tubes`);
+        }
+      }
+
+      if (task.taskType === "RELAY_SIGNAL" && !caps.communicationRelay.isRelay) {
+        reasons.push(`${agent.callsign} lacks high-gain tactical communication relay payload`);
+      }
+
+      if (task.taskType === "SURVEY_TERRAIN" && !caps.hasLidar && !caps.scientificInstruments.some((i) => i.toLowerCase().includes("hazcam") || i.toLowerCase().includes("laser"))) {
+        reasons.push(`${agent.callsign} lacks terrain laser profiling payload`);
+      }
+
+      // Mobility slope ceiling
+      const terrain = terrainEngine.assessPoint(task.target.coordinate);
+      if (terrain.maxSlopeDeg > caps.mobility.maxSlopeDeg) {
+        reasons.push(`Target slope (${terrain.maxSlopeDeg.toFixed(1)}°) exceeds ${agent.callsign} mobility ceiling (${caps.mobility.maxSlopeDeg.toFixed(1)}°)`);
+      }
+    }
+
+    // 3. Human EVA Specific Constraints
+    if (agent.type === "ASTRONAUT") {
+      if (task.estimatedDurationMin > 180) {
+        reasons.push(`Task duration (${task.estimatedDurationMin} min) breaches nominal EVA safe ceiling of 180 min`);
+      }
+      const terrain = terrainEngine.assessPoint(task.target.coordinate);
+      if (terrain.maxSlopeDeg > 20.0) {
+        reasons.push(`Terrain slope (${terrain.maxSlopeDeg.toFixed(1)}°) breaches spacesuit 20° walking ceiling`);
+      }
+    }
+
+    // 4. Battery / Power Reserve Check
+    const currentSoc = agent.telemetry.batteryPercent;
+    if (currentSoc - task.requiredBatteryPercent < 20.0) {
+      reasons.push(`Task depletes battery to ${(currentSoc - task.requiredBatteryPercent).toFixed(1)}%, breaching 20% emergency reserve (Invariant S1)`);
+    }
+
+    // 5. Workload capacity
+    if (agent.status === "EMERGENCY" || agent.status === "COMMS_LOST") {
+      reasons.push(`${agent.callsign} is in non-operational state: ${agent.status}`);
+    }
+
+    return {
+      eligible: reasons.length === 0,
+      reasons,
     };
   }
 }

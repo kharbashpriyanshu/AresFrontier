@@ -7,6 +7,7 @@ import {
 import { DEFAULT_SCIENCE_SCORING_CONFIG } from "../../config/scienceScoring.js";
 import { VERIFIED_NASA_SCIENCE_TARGETS } from "../nasa/adapters/benchmarkData.js";
 import { ProvenanceService } from "../planetary/provenanceService.js";
+import { scienceEngineAdapter } from "./scienceEngineAdapter.js";
 
 export const MARS_SCIENCE_OBJECTIVES: Record<ScienceObjectiveId, ScienceObjective> = {
   ANCIENT_WATER_ACTIVITY: {
@@ -252,6 +253,13 @@ export class ScienceObjectiveEngine {
         relevance: this.evaluateTargetRelevance(t, objective),
       }))
       .sort((a, b) => b.relevance - a.relevance);
+  }
+
+  /**
+   * Evaluates deep planetary geology for a science target via Science microservice or local baseline.
+   */
+  public async assessTargetGeology(target: ScienceTarget) {
+    return scienceEngineAdapter.getScientificAssessment(target.coordinate);
   }
 }
 

@@ -47,9 +47,9 @@ export interface ProcessedCommandRecord {
   processedAt: string;
 }
 
-const baseDataDir = process.cwd().endsWith("backend")
-  ? path.resolve(process.cwd(), "data")
-  : path.resolve(process.cwd(), "backend", "data");
+import { CANONICAL_BACKEND_DATA_DIR } from "../../utils/dataDir.js";
+
+const baseDataDir = CANONICAL_BACKEND_DATA_DIR;
 
 export class CommandSecurityService {
   private static processedCommands: Map<string, number> = new Map(); // commandId -> expiresAt

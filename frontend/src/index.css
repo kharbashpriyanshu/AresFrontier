@@ -4,73 +4,140 @@
 
 @layer base {
   :root {
+    --atlas-bg: #080F19;
+    --atlas-surface: #101C2B;
+    --atlas-elevated: #172638;
+    --atlas-border: #29384B;
+    --atlas-border-light: #344860;
+    --atlas-text: #F0F4F8;
+    --atlas-muted: #9BAEC1;
+    --atlas-accent: #ED7143;
+    --atlas-accent-dark: #C4512A;
+    --atlas-accent-glow: rgba(237, 113, 67, 0.22);
+    --atlas-teal: #36B9AF;
+    --atlas-amber: #E7A83E;
+    --atlas-red: #D85B64;
+    --atlas-blue: #549ED8;
+    --atlas-violet: #9784CD;
     color-scheme: dark;
   }
-  
-  body {
-    @apply bg-space-950 text-slate-100 font-sans antialiased overflow-x-hidden;
+
+  html.light,
+  :root[data-theme="light"],
+  body.light {
+    --atlas-bg: #F5F6F4;
+    --atlas-surface: #FFFFFF;
+    --atlas-elevated: #EAEFEE;
+    --atlas-border: #D8E0E1;
+    --atlas-border-light: #C5D0D2;
+    --atlas-text: #172633;
+    --atlas-muted: #536677;
+    --atlas-accent: #C4512A;
+    --atlas-accent-dark: #A43F1C;
+    --atlas-accent-glow: rgba(196, 81, 42, 0.15);
+    --atlas-teal: #087F78;
+    --atlas-amber: #C98218;
+    --atlas-red: #C33E47;
+    --atlas-blue: #2E79B5;
+    --atlas-violet: #7864B3;
+    color-scheme: light;
   }
 
-  /* Custom scrollbar for tactical telemetry */
+  * {
+    border-radius: 0px !important;
+  }
+
+  /* Allow circular geometry strictly for specific pinpoint or pulse items */
+  .rounded-circle,
+  .rounded-full.pulse-indicator,
+  .map-pin-circle {
+    border-radius: 9999px !important;
+  }
+
+  body {
+    background-color: var(--atlas-bg);
+    color: var(--atlas-text);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: 'Manrope', system-ui, sans-serif;
+  }
+
+  .font-editorial {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+
+  /* Tabular numbers for telemetry, clocks, and coordinates */
+  .tabular-nums, .font-mono, .telemetry-val {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #0b0f19;
+    background: var(--atlas-bg);
   }
   ::-webkit-scrollbar-thumb {
-    background: #222f4b;
-    border-radius: 3px;
+    background: var(--atlas-border);
+    border-radius: 0px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #c1440e;
+    background: var(--atlas-accent);
   }
 }
 
-/* Leaflet dark styling */
+/* Leaflet map theme styling */
 .leaflet-container {
-  background-color: #07090e !important;
-  font-family: inherit;
+  background-color: #161210 !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
 }
 
 .leaflet-bar {
-  border: 1px solid #222f4b !important;
-  border-radius: 4px !important;
+  border: 1px solid var(--atlas-border) !important;
+  border-radius: 0px !important;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4) !important;
 }
 
 .leaflet-bar a {
-  background-color: #111726 !important;
-  color: #94a3b8 !important;
-  border-bottom: 1px solid #172033 !important;
+  background-color: var(--atlas-surface) !important;
+  color: var(--atlas-muted) !important;
+  border-bottom: 1px solid var(--atlas-border) !important;
+  border-radius: 0px !important;
   transition: all 0.15s ease;
 }
 
 .leaflet-bar a:hover {
-  background-color: #172033 !important;
-  color: #e26d46 !important;
+  background-color: var(--atlas-elevated) !important;
+  color: var(--atlas-accent) !important;
 }
 
 .leaflet-popup-content-wrapper {
-  background-color: #111726 !important;
-  color: #e2e8f0 !important;
-  border: 1px solid #334466 !important;
-  border-radius: 6px !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7) !important;
+  background-color: var(--atlas-surface) !important;
+  color: var(--atlas-text) !important;
+  border: 1px solid var(--atlas-border) !important;
+  border-radius: 0px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6) !important;
 }
 
 .leaflet-popup-tip {
-  background-color: #111726 !important;
+  background-color: var(--atlas-surface) !important;
 }
 
 .leaflet-control-attribution {
-  background-color: rgba(11, 15, 25, 0.85) !important;
-  color: #64748b !important;
+  background-color: var(--atlas-bg) !important;
+  opacity: 0.9;
+  color: var(--atlas-muted) !important;
   font-size: 10px !important;
+  border-radius: 0px !important;
 }
 
 .leaflet-control-attribution a {
-  color: #38bdf8 !important;
+  color: var(--atlas-blue) !important;
 }

@@ -36,6 +36,8 @@ import {
   Server,
   Zap,
   Award,
+  X,
+  Send,
 } from "lucide-react";
 
 export const OperationsPage: React.FC = () => {
@@ -76,6 +78,24 @@ export const OperationsPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [notification, setNotification] = useState<string | null>(null);
 
+  // WS5 + WS6 Operational State Extensions
+  const [isTaskModalOpen, setIsTaskModalOpen] = useState<boolean>(false);
+  const [targetReassignAgentId, setTargetReassignAgentId] = useState<string>("ROVER-01 SCOUT");
+  const [reassignReason, setReassignReason] = useState<string>("Optimizing task allocation based on agent mobility & instrument capability.");
+  const [isReassigning, setIsReassigning] = useState<boolean>(false);
+
+  // Digital Twin state
+  const [digitalTwinSnapshot, setDigitalTwinSnapshot] = useState<any | null>(null);
+  const [inconsistencyReport, setInconsistencyReport] = useState<any | null>(null);
+  const [isSnapshotting, setIsSnapshotting] = useState<boolean>(false);
+  const [isCheckingConsistency, setIsCheckingConsistency] = useState<boolean>(false);
+
+  // Monte Carlo state
+  const [mcRuns, setMcRuns] = useState<number>(100);
+  const [mcSeed, setMcSeed] = useState<number>(20261107);
+  const [mcResult, setMcResult] = useState<any | null>(null);
+  const [isMcLoading, setIsMcLoading] = useState<boolean>(false);
+
   const fetchState = async () => {
     try {
       const stateRes = await api.getOperationsState();
@@ -86,7 +106,6 @@ export const OperationsPage: React.FC = () => {
       setEvents(stateRes.events);
       setSimState(stateRes.simState);
 
-      // Orbital pass & observations
       if (stateRes.network?.orbitalVisibility) {
         setOrbitalWindow(stateRes.network.orbitalVisibility);
       }
@@ -96,6 +115,8 @@ export const OperationsPage: React.FC = () => {
       if ((stateRes as any).commQueue) {
         setCommQueue((stateRes as any).commQueue);
       }
+      const fetchedTasks = await api.getOperationsTasks().catch(() => []);
+      setOpsTasks(fetchedTasks);
 
       if (stateRes.replanProposals && stateRes.replanProposals.length > 0) {
         setActiveReplan(stateRes.replanProposals[0]);
@@ -114,18 +135,47 @@ export const OperationsPage: React.FC = () => {
     fetchState();
   }, []);
 
-  // Auto-trigger demo if URL has query (execute once)
+  const showNotification = (msg: string) => {
+    setNotification(msg);
+    setTimeout(() => setNotification(null), 5000);
+  };
+
+  const handleAskCopilot = async (queryText?: string) => {
+    const text = queryText || copilotQuery;
+    if (!text.trim()) return;
+    setIsCopilotLoading(true);
+    try {
+      const res = await api.copilotOperationsQuery(text);
+      setCopilotResponse(res);
+    } catch (err: any) {
+      showNotification(`Copilot query failed: ${err.message}`);
+    } finally {
+      setIsCopilotLoading(false);
+    }
+  };
+
+  // Flagship Demo: Scout Hazard Detection & Replanning
+  const handleTriggerDemo = async () => {
+    setIsLoading(true);
+    try {
+      setActiveScenario("MARSWALK-001");
+      const res = await api.triggerDemoHazardRecon();
+      setActiveReplan(res.replanProposal);
+      await fetchState();
+      showNotification("Flagship Demo MARSWALK-001: ROVER-01 laser altimeter & HazCam detected 22.4° scarp. Autonomous safety pause engaged.");
+      handleAskCopilot("Send Scout to investigate the steep region.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Auto-trigger demo if URL has query
   useEffect(() => {
     if (autoDemo && !isLoading && !hasTriggeredDemoRef.current) {
       hasTriggeredDemoRef.current = true;
       handleTriggerDemo();
     }
   }, [autoDemo, isLoading]);
-
-  const showNotification = (msg: string) => {
-    setNotification(msg);
-    setTimeout(() => setNotification(null), 5000);
-  };
 
   // Simulation Controls
   const handleToggleSim = async () => {
@@ -154,18 +204,60 @@ export const OperationsPage: React.FC = () => {
     showNotification("Simulation clock reset to 00:30.");
   };
 
-  // Flagship Demo: Scout Hazard Detection & Replanning
-  const handleTriggerDemo = async () => {
-    setIsLoading(true);
+  const handleReassignTask = async (taskId: string) => {
+    setIsReassigning(true);
     try {
-      setActiveScenario("MARSWALK-001");
-      const res = await api.triggerDemoHazardRecon();
-      setActiveReplan(res.replanProposal);
+      await api.reassignAgentTask(taskId, targetReassignAgentId, reassignReason);
+      showNotification(`Task successfully reassigned to ${targetReassignAgentId}.`);
       await fetchState();
-      showNotification("Flagship Demo MARSWALK-001: ROVER-01 laser altimeter & HazCam detected 22.4° scarp. Autonomous safety pause engaged.");
-      handleAskCopilot("Send Scout to investigate the steep region.");
+      setIsTaskModalOpen(false);
+    } catch (err: any) {
+      showNotification(`Task reassignment failed: ${err.message}`);
     } finally {
-      setIsLoading(false);
+      setIsReassigning(false);
+    }
+  };
+
+  const handleCaptureSnapshot = async () => {
+    setIsSnapshotting(true);
+    try {
+      const snap = await api.createDigitalTwinSnapshot("OPERATOR_CHECKPOINT");
+      setDigitalTwinSnapshot(snap);
+      showNotification(`Captured Digital Twin Snapshot: ${snap.stateHash?.slice(0, 10)}... (SHA-256)`);
+    } catch (err: any) {
+      showNotification(`Snapshot error: ${err.message}`);
+    } finally {
+      setIsSnapshotting(false);
+    }
+  };
+
+  const handleCheckConsistency = async () => {
+    setIsCheckingConsistency(true);
+    try {
+      const rep = await api.getDigitalTwinInconsistencies();
+      setInconsistencyReport(rep);
+      if (rep.isConsistent) {
+        showNotification("State Invariant: Digital Twin is 100% consistent with canonical truth.");
+      } else {
+        showNotification(`State Alert: ${rep.discrepancies.length} discrepancies detected.`);
+      }
+    } catch (err: any) {
+      showNotification(`Consistency audit failed: ${err.message}`);
+    } finally {
+      setIsCheckingConsistency(false);
+    }
+  };
+
+  const handleRunMonteCarlo = async () => {
+    setIsMcLoading(true);
+    try {
+      const mc = await api.runMonteCarlo(mcRuns, mcSeed);
+      setMcResult(mc);
+      showNotification(`Calculated ${mcRuns}-run Monte Carlo distribution (P50: ${mc.durationDistributionMinutes?.p50}m).`);
+    } catch (err: any) {
+      showNotification(`Monte Carlo run failed: ${err.message}`);
+    } finally {
+      setIsMcLoading(false);
     }
   };
 
@@ -210,15 +302,13 @@ export const OperationsPage: React.FC = () => {
         issuer: "Flight Director",
       };
 
-      // 1st transmission
       await api.submitSecureCommand(envelope);
       showNotification("SECURITY-001: Initial command executed and signed into cryptographic audit chain.");
 
-      // 2nd transmission (Replay Attack)
       try {
         await api.submitSecureCommand(envelope);
       } catch (replayErr: any) {
-        showNotification("SECURITY-001: REPLAY ATTACK BLOCKED! Duplicate commandId & nonce rejected by server.");
+        showNotification("SECURITY-001: Replay attack blocked! Duplicate commandId & nonce rejected by server.");
       }
       await fetchState();
     } catch (err: any) {
@@ -233,24 +323,9 @@ export const OperationsPage: React.FC = () => {
       const res = await api.approveReplan(activeReplan.replanId, "Flight Director (Mission Command Console)");
       setActiveReplan(res);
       await fetchState();
-      showNotification("Replan Approved by MISSION_COMMAND. Scout rover resuming along valley detour.");
+      showNotification("Replan approved by MISSION_COMMAND. Scout rover resuming along valley detour.");
     } catch (err: any) {
       showNotification(`Approval failed: ${err.message}`);
-    }
-  };
-
-  // Copilot Query
-  const handleAskCopilot = async (queryText?: string) => {
-    const text = queryText || copilotQuery;
-    if (!text.trim()) return;
-    setIsCopilotLoading(true);
-    try {
-      const res = await api.copilotOperationsQuery(text);
-      setCopilotResponse(res);
-    } catch (err: any) {
-      showNotification(`Copilot query failed: ${err.message}`);
-    } finally {
-      setIsCopilotLoading(false);
     }
   };
 
@@ -262,90 +337,200 @@ export const OperationsPage: React.FC = () => {
     showNotification(`Command '${command}' transmitted to agent.`);
   };
 
+  // Recovery Batch 3: Task Lifecycle, Agent Status, Telemetry & Comms
+  const [opsTasks, setOpsTasks] = useState<any[]>([]);
+  const [isAssignOpen, setIsAssignOpen] = useState<boolean>(false);
+  const [newTaskName, setNewTaskName] = useState<string>("");
+  const [newTaskType, setNewTaskType] = useState<string>("VERIFY_ROUTE");
+  const [newTaskPriority, setNewTaskPriority] = useState<"CRITICAL" | "HIGH" | "MEDIUM" | "LOW">("HIGH");
+  const [newTaskDepId, setNewTaskDepId] = useState<string>("");
+  const [taskFeedback, setTaskFeedback] = useState<string | null>(null);
+  const [commPacketType, setCommPacketType] = useState<"TELEMETRY" | "HAZARD_ALERT" | "SCIENCE_DATA">("TELEMETRY");
+  const [commPacketPriority, setCommPacketPriority] = useState<"CRITICAL" | "HIGH" | "MEDIUM" | "BULK">("HIGH");
+
+  const handleCreateTask = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!selectedAgent || !newTaskName.trim()) return;
+    setTaskFeedback(null);
+    try {
+      await api.createOperationsTask({
+        agentId: selectedAgent.id,
+        name: newTaskName.trim(),
+        taskType: newTaskType,
+        priority: newTaskPriority,
+        targetCoordinate: {
+          latitude: Number((selectedAgent.position.latitude + 0.005).toFixed(4)),
+          longitude: Number((selectedAgent.position.longitude + 0.005).toFixed(4)),
+        },
+        dependencies: newTaskDepId ? [newTaskDepId] : undefined,
+      });
+      setNewTaskName("");
+      setNewTaskDepId("");
+      setIsAssignOpen(false);
+      await fetchState();
+      showNotification(`Task assigned to ${selectedAgent.callsign}.`);
+    } catch (err: any) {
+      setTaskFeedback(err.message || "Failed to assign task");
+    }
+  };
+
+  const handleTransitionTask = async (taskId: string, action: "START" | "PAUSE" | "RESUME" | "COMPLETE" | "CANCEL") => {
+    setTaskFeedback(null);
+    try {
+      await api.transitionOperationsTask(taskId, action);
+      await fetchState();
+      showNotification(`Task ${action} executed.`);
+    } catch (err: any) {
+      setTaskFeedback(err.message || `Task ${action} rejected`);
+    }
+  };
+
+  const handleAgentStatusChange = async (nextStatus: string) => {
+    if (!selectedAgent) return;
+    try {
+      const res = await api.transitionAgentStatus(selectedAgent.id, nextStatus, `Operator status transition to ${nextStatus}`);
+      await fetchState();
+      if (res.reassignedToAgent) {
+        showNotification(`${selectedAgent.callsign} marked ${nextStatus}. Active task auto-reassigned to ${res.reassignedToAgent.callsign}.`);
+      } else if (res.reassignedTask) {
+        showNotification(`${selectedAgent.callsign} marked ${nextStatus}. Task marked BLOCKED (no capable replacement).`);
+      } else {
+        showNotification(`${selectedAgent.callsign} status updated to ${nextStatus}.`);
+      }
+    } catch (err: any) {
+      showNotification(`Status update failed: ${err.message}`);
+    }
+  };
+
+  const handleSimulateTelemetryStep = async (deltaPercent: number) => {
+    if (!selectedAgent) return;
+    const nextBatt = Math.max(0, Math.min(100, Number((selectedAgent.telemetry.batteryPercent + deltaPercent).toFixed(1))));
+    try {
+      const res = await api.updateAgentTelemetry(selectedAgent.id, { batteryPercent: nextBatt });
+      await fetchState();
+      if (res.safetyWarnings?.length > 0) {
+        showNotification(res.safetyWarnings[0]);
+      } else {
+        showNotification(`Simulated telemetry updated for ${selectedAgent.callsign}: ${nextBatt}% battery (SIMULATED).`);
+      }
+    } catch (err: any) {
+      showNotification(`Telemetry update failed: ${err.message}`);
+    }
+  };
+
+  const handleEnqueuePacket = async () => {
+    const sourceId = selectedAgent?.id || "agent-rover-01";
+    try {
+      const res = await api.enqueueCommPacket({
+        sourceAgentId: sourceId,
+        priority: commPacketPriority,
+        type: commPacketType,
+        payloadSizeKb: commPacketType === "SCIENCE_DATA" ? 1200 : 24,
+        storeAndForward: true,
+      });
+      await fetchState();
+      showNotification(`Packet ${res.packet.packetId} enqueued (${res.packet.status}).`);
+    } catch (err: any) {
+      showNotification(`Enqueue failed: ${err.message}`);
+    }
+  };
+
+  const handleFlushQueue = async () => {
+    try {
+      const res = await api.flushCommQueue(true);
+      await fetchState();
+      showNotification(`Queue processed: ${res.transmittedCount} delivered, ${res.bufferedCount} buffered.`);
+    } catch (err: any) {
+      showNotification(`Flush failed: ${err.message}`);
+    }
+  };
+
   const selectedAgent = agents.find((a) => a.id === selectedAgentId) || agents[0];
 
   if (isLoading && agents.length === 0) {
     return (
-      <div className="h-[calc(100vh-3.5rem)] bg-space-950 flex flex-col items-center justify-center space-y-4 font-mono text-xs text-slate-300">
-        <div className="w-10 h-10 border-2 border-mars-accent border-t-transparent rounded-full animate-spin"></div>
-        <div className="tracking-widest uppercase">Initializing Verified Planetary Simulation Bus...</div>
+      <div className="h-[calc(100vh-3.5rem)] bg-atlas-bg flex flex-col items-center justify-center space-y-4 font-mono text-xs text-atlas-muted">
+        <div className="w-8 h-8 border-2 border-atlas-accent border-t-transparent animate-spin" />
+        <div className="tracking-widest uppercase font-semibold text-atlas-text">
+          Initializing Planetary Simulation Bus...
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-[calc(100vh-3.5rem)] bg-space-950 text-slate-100 p-3 md:p-6 font-mono text-xs selection:bg-mars-rust selection:text-white flex flex-col space-y-4">
+    <div className="min-h-[calc(100vh-3.5rem)] bg-atlas-bg text-atlas-text p-4 md:p-6 font-mono text-xs selection:bg-atlas-accent selection:text-white flex flex-col space-y-4 transition-colors">
       {/* Top Banner / Notification */}
       {notification && (
-        <div className="p-3 bg-cyan-950/90 border border-cyan-500 text-cyan-200 rounded flex items-center justify-between shadow-xl animate-fade-in">
+        <div className="p-3 bg-atlas-surface border border-atlas-teal text-atlas-teal flex items-center justify-between shadow-xl">
           <div className="flex items-center space-x-2">
-            <Radio className="w-4 h-4 text-cyan-400 shrink-0 animate-pulse" />
-            <span>{notification}</span>
+            <Radio className="w-4 h-4 text-atlas-teal shrink-0 animate-pulse" />
+            <span className="font-sans text-xs">{notification}</span>
           </div>
-          <button onClick={() => setNotification(null)} className="text-cyan-400 hover:text-white font-bold ml-4">
-            ×
+          <button onClick={() => setNotification(null)} className="text-atlas-teal hover:text-atlas-text ml-4">
+            <X className="w-4 h-4" />
           </button>
         </div>
       )}
 
       {/* Flagship Replan Alert Banner if Active */}
       {activeReplan && activeReplan.status === "PROPOSED" && (
-        <div className="p-4 bg-amber-950/90 border-2 border-amber-500 text-amber-100 rounded-lg shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-4 animate-pulse">
+        <div className="p-4 bg-atlas-surface border-2 border-atlas-amber text-atlas-text shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="space-y-1">
-            <div className="flex items-center space-x-2 text-amber-400 font-bold uppercase tracking-wider text-xs">
+            <div className="flex items-center space-x-2 text-atlas-amber font-bold uppercase tracking-wider text-xs">
               <AlertTriangle className="w-4 h-4" />
-              <span>SENSOR-CORROBORATED REPLAN PENDING MISSION COMMAND APPROVAL</span>
+              <span>Sensor-Corroborated Replan Pending Mission Command Approval</span>
             </div>
-            <div className="text-sm font-bold text-white">
+            <div className="text-sm font-bold text-atlas-text font-display">
               {activeReplan.trigger.hazardDescription || activeReplan.trigger.reason}
             </div>
-            <div className="text-[11px] text-amber-200/90">
-              Proposed Detour: <b className="text-white">Safest Valley Corridor</b> | Safety Score:{" "}
-              <b className="text-emerald-400">+{activeReplan.comparison.safetyScoreDiff} pts</b> | Dist Diff:{" "}
-              <b>{activeReplan.comparison.distanceDiffKm} km</b>
+            <div className="text-[11px] text-atlas-muted font-sans">
+              Proposed Detour: <b className="text-atlas-text">Safest Valley Corridor</b> | Safety Score:{" "}
+              <b className="text-atlas-teal">+{activeReplan.comparison.safetyScoreDiff} pts</b> | Dist Diff:{" "}
+              <b className="text-atlas-text">{activeReplan.comparison.distanceDiffKm} km</b>
             </div>
           </div>
 
           <div className="flex items-center space-x-2 shrink-0">
             <button
               onClick={handleApproveReplan}
-              className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded shadow-lg text-xs flex items-center space-x-1.5 transition-all"
+              className="px-4 py-2 bg-atlas-teal hover:bg-atlas-teal/90 text-white font-bold text-xs flex items-center space-x-1.5 transition-all shadow-md"
             >
               <CheckCircle className="w-4 h-4" />
-              <span>APPROVE REPLAN (FLIGHT DIRECTOR GATE)</span>
+              <span>Approve Replan (Flight Director Gate)</span>
             </button>
           </div>
         </div>
       )}
 
       {/* Header & Simulation Control Console */}
-      <div className="p-3.5 bg-space-900 border border-space-800 rounded-lg flex flex-wrap items-center justify-between gap-3 shadow-lg">
+      <div className="p-4 bg-atlas-surface border border-atlas-border flex flex-wrap items-center justify-between gap-3 shadow-lg">
         <div className="flex items-center space-x-3 flex-wrap gap-2">
-          <div className="flex items-center space-x-2 text-mars-accent font-bold text-sm">
-            <Radio className="w-4 h-4 text-telemetry-emerald animate-pulse" />
-            <span className="font-sans">PLANETARY OPERATIONS COMMAND CONSOLE</span>
+          <div className="flex items-center space-x-2 text-atlas-accent font-bold text-sm">
+            <Radio className="w-4 h-4 text-atlas-teal animate-pulse" />
+            <span className="font-display">Planetary Operations Command Console</span>
           </div>
 
-          <span className="px-2 py-0.5 rounded bg-space-800 border border-space-700 text-slate-300 text-[11px]">
-            SCENARIO: <b className="text-white">{activeScenario}</b>
+          <span className="px-2.5 py-0.5 bg-atlas-elevated border border-atlas-border text-atlas-muted text-[11px]">
+            Scenario: <b className="text-atlas-text">{activeScenario}</b>
           </span>
 
-          <span className="px-2 py-0.5 rounded bg-emerald-950/80 border border-emerald-500/50 text-emerald-300 text-[10px] font-bold">
-            AGENTS: {agents.length} ACTIVE
+          <span className="px-2 py-0.5 bg-atlas-elevated border border-atlas-border text-atlas-teal text-[10px] font-bold">
+            Agents: {agents.length} Active
           </span>
 
-          <span className="px-2 py-0.5 rounded bg-blue-950/80 border border-blue-500/50 text-blue-300 text-[10px] font-bold flex items-center space-x-1">
+          <span className="px-2 py-0.5 bg-atlas-elevated border border-atlas-border text-atlas-blue text-[10px] font-bold flex items-center space-x-1">
             <Lock className="w-3 h-3" />
-            <span>AUTH: {securityStatus.role}</span>
+            <span>Auth: {securityStatus.role}</span>
           </span>
         </div>
 
         {/* Simulation Controls */}
         <div className="flex items-center space-x-2 flex-wrap gap-1">
-          <div className="flex items-center space-x-1.5 bg-space-850 px-2.5 py-1 rounded border border-space-700 text-[11px]">
-            <Clock className="w-3.5 h-3.5 text-telemetry-cyan" />
-            <span className="text-slate-400">MET:</span>
-            <span className="text-white font-bold font-mono">
+          <div className="flex items-center space-x-1.5 bg-atlas-elevated px-2.5 py-1 border border-atlas-border text-[11px]">
+            <Clock className="w-3.5 h-3.5 text-atlas-blue" />
+            <span className="text-atlas-muted">MET:</span>
+            <span className="text-atlas-text font-bold font-mono">
               {Math.floor(simState.simulationTimeMinutes / 60)
                 .toString()
                 .padStart(2, "0")}
@@ -355,28 +540,28 @@ export const OperationsPage: React.FC = () => {
 
           <button
             onClick={handleToggleSim}
-            className={`px-3 py-1 rounded font-bold border text-[11px] flex items-center space-x-1 transition-all ${
+            className={`px-3 py-1 font-bold border text-[11px] flex items-center space-x-1 transition-all ${
               simState.isRunning
-                ? "bg-amber-600 text-white border-amber-500"
-                : "bg-space-800 hover:bg-space-750 text-emerald-400 border-space-700"
+                ? "bg-atlas-amber text-black border-atlas-amber"
+                : "bg-atlas-elevated hover:bg-atlas-surface text-atlas-teal border-atlas-border"
             }`}
           >
             {simState.isRunning ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
-            <span>{simState.isRunning ? "PAUSE" : "RESUME"}</span>
+            <span>{simState.isRunning ? "Pause" : "Resume"}</span>
           </button>
 
           <button
             onClick={() => handleAdvanceSim(15)}
-            className="px-2.5 py-1 bg-space-800 hover:bg-space-750 text-slate-200 rounded border border-space-700 text-[11px] flex items-center space-x-1"
+            className="px-2.5 py-1 bg-atlas-elevated hover:bg-atlas-surface text-atlas-text border border-atlas-border text-[11px] flex items-center space-x-1 transition-colors"
             title="Step simulation forward 15 minutes"
           >
-            <FastForward className="w-3.5 h-3.5 text-telemetry-cyan" />
+            <FastForward className="w-3.5 h-3.5 text-atlas-blue" />
             <span>+15m</span>
           </button>
 
           <button
             onClick={handleResetSim}
-            className="px-2 py-1 bg-space-800 hover:bg-space-750 text-slate-400 hover:text-white rounded border border-space-700"
+            className="px-2 py-1 bg-atlas-elevated hover:bg-atlas-surface text-atlas-muted hover:text-atlas-text border border-atlas-border transition-colors"
             title="Reset simulation clock"
           >
             <RotateCcw className="w-3.5 h-3.5" />
@@ -384,99 +569,99 @@ export const OperationsPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Provenance & Truthfulness Strip (Section 22A) */}
-      <div className="flex flex-wrap items-center gap-2 text-[10px] text-slate-400 bg-space-900/90 px-3.5 py-2 rounded-lg border border-space-800 shadow">
-        <span className="text-slate-500 font-bold uppercase tracking-wider flex items-center space-x-1">
-          <Server className="w-3 h-3 text-telemetry-cyan" />
-          <span>PROVENANCE:</span>
+      {/* Provenance & Truthfulness Strip */}
+      <div className="flex flex-wrap items-center gap-2 text-[10px] text-atlas-muted bg-atlas-surface px-3.5 py-2 border border-atlas-border shadow-sm">
+        <span className="text-atlas-muted font-bold uppercase tracking-wider flex items-center space-x-1">
+          <Server className="w-3 h-3 text-atlas-blue" />
+          <span>Provenance:</span>
         </span>
-        <span className="bg-space-850 px-2 py-0.5 rounded text-amber-300 border border-amber-900/50">DATA MODE: BENCHMARK</span>
-        <span className="bg-space-850 px-2 py-0.5 rounded text-cyan-300 border border-cyan-900/50">OBSERVATIONS: SIMULATED (NOISE MODEL)</span>
-        <span className="bg-space-850 px-2 py-0.5 rounded text-emerald-300 border border-emerald-900/50">TERRAIN: MOLA MEGDR 128 px/deg</span>
-        <span className="bg-space-850 px-2 py-0.5 rounded text-purple-300 border border-purple-900/50">ORBIT: 112m KEPLERIAN APPROX</span>
-        <span className="bg-space-850 px-2 py-0.5 rounded text-rose-300 border border-rose-900/50">RBAC: SERVER ENFORCED</span>
+        <span className="bg-atlas-elevated px-2 py-0.5 text-atlas-amber border border-atlas-border">Data Mode: Benchmark</span>
+        <span className="bg-atlas-elevated px-2 py-0.5 text-atlas-blue border border-atlas-border">Observations: Simulated (Noise Model)</span>
+        <span className="bg-atlas-elevated px-2 py-0.5 text-atlas-teal border border-atlas-border">Terrain: Benchmark / Synthetic Model</span>
+        <span className="bg-atlas-elevated px-2 py-0.5 text-atlas-violet border border-atlas-border">Orbit: 112m Keplerian Approx</span>
+        <span className="bg-atlas-elevated px-2 py-0.5 text-atlas-red border border-atlas-border">RBAC: Server Enforced</span>
       </div>
 
       {/* Deterministic Scenario Execution Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-2 bg-space-900 p-2.5 rounded-lg border border-space-800 text-[11px]">
-        <div className="flex items-center space-x-1.5 text-slate-400 font-bold uppercase tracking-wider text-[10px]">
-          <Zap className="w-3.5 h-3.5 text-mars-accent" />
-          <span>DETERMINISTIC VERIFICATION SCENARIOS:</span>
+      <div className="flex flex-wrap items-center justify-between gap-2 bg-atlas-surface p-3 border border-atlas-border text-[11px]">
+        <div className="flex items-center space-x-1.5 text-atlas-muted font-bold uppercase tracking-wider text-[10px]">
+          <Zap className="w-3.5 h-3.5 text-atlas-accent" />
+          <span>Deterministic Scenarios:</span>
         </div>
         <div className="flex flex-wrap gap-1.5">
           <button
             onClick={handleTriggerDemo}
-            className="px-2.5 py-1 bg-space-850 hover:bg-space-800 text-amber-300 border border-amber-800/50 rounded font-bold text-[10px]"
+            className="px-2.5 py-1 bg-atlas-elevated hover:bg-atlas-surface text-atlas-amber border border-atlas-border font-bold text-[10px] transition-colors"
           >
-            MARSWALK-001 (Flagship Recon)
+            Marswalk-001 (Flagship Recon)
           </button>
           <button
             onClick={handleTriggerBlackoutScenario}
-            className="px-2.5 py-1 bg-space-850 hover:bg-space-800 text-purple-300 border border-purple-800/50 rounded font-bold text-[10px]"
+            className="px-2.5 py-1 bg-atlas-elevated hover:bg-atlas-surface text-atlas-violet border border-atlas-border font-bold text-[10px] transition-colors"
           >
-            COMM-BLACKOUT-001 (Orbital Loss)
+            Comm-Blackout-001 (Orbital Loss)
           </button>
           <button
             onClick={handleTriggerBatteryScenario}
-            className="px-2.5 py-1 bg-space-850 hover:bg-space-800 text-rose-300 border border-rose-800/50 rounded font-bold text-[10px]"
+            className="px-2.5 py-1 bg-atlas-elevated hover:bg-atlas-surface text-atlas-red border border-atlas-border font-bold text-[10px] transition-colors"
           >
-            EMERGENCY-001 (Battery Critical)
+            Emergency-001 (Battery Critical)
           </button>
           <button
             onClick={handleTriggerSecurityScenario}
-            className="px-2.5 py-1 bg-space-850 hover:bg-space-800 text-cyan-300 border border-cyan-800/50 rounded font-bold text-[10px]"
+            className="px-2.5 py-1 bg-atlas-elevated hover:bg-atlas-surface text-atlas-blue border border-atlas-border font-bold text-[10px] transition-colors"
           >
-            SECURITY-001 (Replay Attack Block)
+            Security-001 (Replay Defense)
           </button>
           <Link
             to="/replay"
-            className="px-2.5 py-1 bg-mars-rust/20 hover:bg-mars-rust/30 text-mars-accent border border-mars-rust/50 rounded font-bold text-[10px] flex items-center space-x-1"
+            className="px-2.5 py-1 bg-atlas-elevated hover:bg-atlas-surface text-atlas-accent border border-atlas-border font-bold text-[10px] flex items-center space-x-1 transition-colors"
           >
             <RotateCcw className="w-3 h-3" />
-            <span>MISSION REPLAY</span>
+            <span>Mission Replay</span>
           </Link>
           <Link
             to="/demo"
-            className="px-2.5 py-1 bg-purple-950/80 hover:bg-purple-900/80 text-purple-300 border border-purple-500/50 rounded font-bold text-[10px] flex items-center space-x-1"
+            className="px-2.5 py-1 bg-atlas-elevated hover:bg-atlas-surface text-atlas-violet border border-atlas-border font-bold text-[10px] flex items-center space-x-1 transition-colors"
           >
             <Award className="w-3 h-3" />
-            <span>JUDGING DEMO</span>
+            <span>Judging Demo</span>
           </Link>
         </div>
       </div>
 
       {/* Main Grid: Left Map + Comms + Timeline, Right Agent Sidebar + Telemetry */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 flex-1">
-        {/* Left Column (2 Cols wide on desktop): Map View & Network & Timeline */}
+        {/* Left Column (2 Cols wide on desktop) */}
         <div className="lg:col-span-2 space-y-4">
           {/* Surface Map Viewport */}
-          <div className="p-4 bg-space-900 border border-space-800 rounded-lg shadow-xl space-y-3">
-            <div className="flex items-center justify-between border-b border-space-800 pb-2">
-              <div className="flex items-center space-x-2 text-slate-200 font-bold">
-                <Compass className="w-4 h-4 text-telemetry-cyan" />
-                <span>JEZERO CRATER SURFACE TACTICAL MAP</span>
+          <div className="p-4 bg-atlas-surface border border-atlas-border shadow-xl space-y-3">
+            <div className="flex items-center justify-between border-b border-atlas-border pb-2">
+              <div className="flex items-center space-x-2 text-atlas-text font-bold font-display">
+                <Compass className="w-4 h-4 text-atlas-blue" />
+                <span>Jezero Crater Surface Tactical Map</span>
               </div>
-              <div className="flex items-center space-x-3 text-[10px] text-slate-400">
-                <span>CENTER: 18.4447°N, 77.4508°E</span>
-                <span>DATUM: AREOID 3396.2 KM</span>
+              <div className="flex items-center space-x-3 text-[10px] text-atlas-muted">
+                <span>Center: 18.4447°N, 77.4508°E</span>
+                <span>Datum: Areoid 3396.2 km</span>
               </div>
             </div>
 
             {/* Tactical Grid Visualization */}
-            <div className="h-72 bg-space-950 rounded border border-space-800 relative overflow-hidden flex items-center justify-center">
-              <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:16px_16px] opacity-40"></div>
+            <div className="h-72 bg-atlas-bg border border-atlas-border relative overflow-hidden flex items-center justify-center">
+              <div className="absolute inset-0 bg-[radial-gradient(#29384b_1px,transparent_1px)] [background-size:16px_16px] opacity-40" />
 
               {/* Jezero Delta Rim Contour Line */}
               <svg className="absolute inset-0 w-full h-full pointer-events-none">
                 <path
                   d="M 50 180 Q 150 120 280 140 T 500 200"
                   fill="none"
-                  stroke="#c1440e"
+                  stroke="var(--atlas-accent)"
                   strokeWidth="2"
                   strokeDasharray="4 4"
                   opacity="0.6"
                 />
-                <text x="70" y="170" fill="#f97316" fontSize="9" fontFamily="monospace">
+                <text x="70" y="170" fill="var(--atlas-accent)" fontSize="10" fontFamily="Inter">
                   Jezero Delta Front Scarp (22.4° gradient hazard)
                 </text>
               </svg>
@@ -498,25 +683,25 @@ export const OperationsPage: React.FC = () => {
                       }`}
                     >
                       <div
-                        className={`w-6 h-6 rounded-full flex items-center justify-center shadow-lg border-2 ${
+                        className={`w-7 h-7 flex items-center justify-center shadow-lg border-2 ${
                           ag.status === "EMERGENCY"
-                            ? "bg-rose-900 border-rose-500 animate-pulse"
+                            ? "bg-atlas-surface border-atlas-red animate-pulse"
                             : ag.status === "PAUSED"
-                            ? "bg-amber-900 border-amber-500"
+                            ? "bg-atlas-surface border-atlas-amber"
                             : isSelected
-                            ? "bg-telemetry-cyan border-white"
-                            : "bg-space-800 border-telemetry-cyan"
+                            ? "bg-atlas-accent border-white"
+                            : "bg-atlas-surface border-atlas-blue"
                         }`}
                       >
                         {ag.type === "ASTRONAUT" ? (
-                          <User className="w-3 h-3 text-white" />
+                          <User className="w-3.5 h-3.5 text-atlas-text" />
                         ) : ag.type === "ORBITER" ? (
-                          <Satellite className="w-3 h-3 text-white" />
+                          <Satellite className="w-3.5 h-3.5 text-atlas-text" />
                         ) : (
-                          <Bot className="w-3 h-3 text-white" />
+                          <Bot className="w-3.5 h-3.5 text-atlas-text" />
                         )}
                       </div>
-                      <div className="absolute top-6 left-1/2 -translate-x-1/2 whitespace-nowrap bg-space-950/90 px-1 rounded text-[8px] border border-space-700 text-slate-300">
+                      <div className="absolute top-8 left-1/2 -translate-x-1/2 whitespace-nowrap bg-atlas-surface px-1.5 py-0.5 text-[9px] border border-atlas-border text-atlas-text font-bold">
                         {ag.callsign}
                       </div>
                     </div>
@@ -526,22 +711,22 @@ export const OperationsPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Two-Column Mid-Row: Orbiter Status & Sensor Observations (Section 22B & 22C) */}
+          {/* Two-Column Mid-Row: Orbiter Status & Sensor Observations */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Orbiter Pass Status Card (Section 22C) */}
-            <div className="p-4 bg-space-900 border border-space-800 rounded-lg shadow-xl space-y-2">
-              <div className="flex items-center justify-between border-b border-space-800 pb-2">
-                <div className="flex items-center space-x-2 text-slate-200 font-bold">
-                  <Satellite className="w-4 h-4 text-purple-400" />
-                  <span>ORBITAL RELAY PASS MONITOR</span>
+            {/* Orbiter Pass Status Card */}
+            <div className="p-4 bg-atlas-surface border border-atlas-border shadow-xl space-y-2.5">
+              <div className="flex items-center justify-between border-b border-atlas-border pb-2">
+                <div className="flex items-center space-x-2 text-atlas-text font-bold font-display">
+                  <Satellite className="w-4 h-4 text-atlas-violet" />
+                  <span>Orbital Relay Pass Monitor</span>
                 </div>
                 <span
-                  className={`px-1.5 py-0.5 rounded text-[9px] font-bold ${
+                  className={`px-2 py-0.5 text-[9px] font-bold border ${
                     orbitalWindow?.state === "PASS_ACTIVE"
-                      ? "bg-emerald-950 text-emerald-300 border border-emerald-500 animate-pulse"
+                      ? "bg-atlas-elevated text-atlas-teal border-atlas-teal animate-pulse"
                       : orbitalWindow?.state === "PASS_APPROACHING"
-                      ? "bg-amber-950 text-amber-300 border border-amber-500"
-                      : "bg-space-950 text-slate-400"
+                      ? "bg-atlas-elevated text-atlas-amber border-atlas-amber"
+                      : "bg-atlas-elevated text-atlas-muted border-atlas-border"
                   }`}
                 >
                   {orbitalWindow?.state || "PASS ACTIVE"}
@@ -549,96 +734,134 @@ export const OperationsPage: React.FC = () => {
               </div>
 
               <div className="grid grid-cols-2 gap-2 text-[10px]">
-                <div className="bg-space-850 p-2 rounded border border-space-800">
-                  <div className="text-slate-400">ELEVATION ANGLE</div>
-                  <div className="text-sm font-bold text-white">{orbitalWindow?.currentElevationDeg || 37.4}°</div>
-                  <div className="text-[9px] text-slate-400">Mask threshold: &ge;15.0°</div>
+                <div className="bg-atlas-elevated p-2.5 border border-atlas-border">
+                  <div className="text-atlas-muted uppercase">Elevation Angle</div>
+                  <div className="text-sm font-bold text-atlas-text mt-0.5">{orbitalWindow?.currentElevationDeg || 37.4}°</div>
+                  <div className="text-[9px] text-atlas-muted mt-0.5">Mask threshold: &ge;15.0°</div>
                 </div>
 
-                <div className="bg-space-850 p-2 rounded border border-space-800">
-                  <div className="text-slate-400">THROUGHPUT BANDWIDTH</div>
-                  <div className="text-sm font-bold text-purple-300">{orbitalWindow?.bandwidthKbps || 2048} kbps</div>
-                  <div className="text-[9px] text-slate-400">Slant Range: {orbitalWindow?.slantRangeKm || 385} km</div>
+                <div className="bg-atlas-elevated p-2.5 border border-atlas-border">
+                  <div className="text-atlas-muted uppercase">Throughput Bandwidth</div>
+                  <div className="text-sm font-bold text-atlas-violet mt-0.5">{orbitalWindow?.bandwidthKbps || 2048} kbps</div>
+                  <div className="text-[9px] text-atlas-muted mt-0.5">Slant Range: {orbitalWindow?.slantRangeKm || 385} km</div>
                 </div>
               </div>
 
-              <div className="text-[10px] text-slate-300 flex items-center justify-between bg-space-950 p-2 rounded">
-                <span>Pass Remaining: <b className="text-white">{orbitalWindow?.remainingSeconds ? `${Math.round(orbitalWindow.remainingSeconds / 60)}m ${orbitalWindow.remainingSeconds % 60}s` : "08m 42s"}</b></span>
-                <span>Next Window: <b className="text-purple-300">{orbitalWindow?.nextPassInSeconds ? `${Math.round(orbitalWindow.nextPassInSeconds / 60)}m` : "112m Cycle"}</b></span>
+              <div className="text-[10px] text-atlas-muted flex items-center justify-between bg-atlas-elevated p-2 border border-atlas-border">
+                <span>Pass Remaining: <b className="text-atlas-text">{orbitalWindow?.remainingSeconds ? `${Math.round(orbitalWindow.remainingSeconds / 60)}m ${orbitalWindow.remainingSeconds % 60}s` : "08m 42s"}</b></span>
+                <span>Next Window: <b className="text-atlas-violet">{orbitalWindow?.nextPassInSeconds ? `${Math.round(orbitalWindow.nextPassInSeconds / 60)}m` : "112m Cycle"}</b></span>
               </div>
             </div>
 
-            {/* Sensor Observation Panel (Section 22B) */}
-            <div className="p-4 bg-space-900 border border-space-800 rounded-lg shadow-xl space-y-2">
-              <div className="flex items-center justify-between border-b border-space-800 pb-2">
-                <div className="flex items-center space-x-2 text-slate-200 font-bold">
-                  <Activity className="w-4 h-4 text-telemetry-cyan" />
-                  <span>ONBOARD SENSOR OBSERVATIONS</span>
+            {/* Sensor Observation Panel */}
+            <div className="p-4 bg-atlas-surface border border-atlas-border shadow-xl space-y-2.5">
+              <div className="flex items-center justify-between border-b border-atlas-border pb-2">
+                <div className="flex items-center space-x-2 text-atlas-text font-bold font-display">
+                  <Activity className="w-4 h-4 text-atlas-blue" />
+                  <span>Onboard Sensor Observations</span>
                 </div>
-                <span className="text-[9px] bg-cyan-950 text-cyan-300 px-1.5 py-0.5 rounded font-bold">
-                  FUSED QUALITY: GOOD ({observations.length} SAMPLES)
+                <span className="text-[9px] bg-atlas-elevated text-atlas-teal px-2 py-0.5 border border-atlas-border font-bold">
+                  Quality: Nominal ({observations.length} Samples)
                 </span>
               </div>
 
               <div className="grid grid-cols-2 gap-2 text-[10px]">
-                <div className="bg-space-850 p-2 rounded border border-space-800">
-                  <div className="text-slate-400">LASER ALTIMETER</div>
-                  <div className="text-sm font-bold text-cyan-300">-2534.2 m &plusmn; 0.15m</div>
-                  <div className="text-[9px] text-slate-400">Slope: 21.8° &plusmn; 1.2°</div>
+                <div className="bg-atlas-elevated p-2.5 border border-atlas-border">
+                  <div className="text-atlas-muted uppercase">Laser Altimeter</div>
+                  <div className="text-sm font-bold text-atlas-blue mt-0.5">-2534.2 m &plusmn; 0.15m</div>
+                  <div className="text-[9px] text-atlas-muted mt-0.5">Slope: 21.8° &plusmn; 1.2°</div>
                 </div>
 
-                <div className="bg-space-850 p-2 rounded border border-space-800">
-                  <div className="text-slate-400">STEREO HAZCAM</div>
-                  <div className="text-sm font-bold text-amber-300">OBSTACLE: 87%</div>
-                  <div className="text-[9px] text-slate-400">Confidence: 0.94 (Corroborated)</div>
+                <div className="bg-atlas-elevated p-2.5 border border-atlas-border">
+                  <div className="text-atlas-muted uppercase">Stereo HazCam</div>
+                  <div className="text-sm font-bold text-atlas-amber mt-0.5">Obstacle: 87%</div>
+                  <div className="text-[9px] text-atlas-muted mt-0.5">Confidence: 0.94 (Corroborated)</div>
                 </div>
               </div>
 
-              <div className="text-[10px] text-slate-400 bg-space-950 p-2 rounded truncate">
-                Raman: Mineral Match <b className="text-slate-200">Carbonate 0.88</b> | Bio Evidence: <b className="text-emerald-400">NONE (Clean)</b>
+              <div className="text-[10px] text-atlas-muted bg-atlas-elevated p-2 border border-atlas-border truncate">
+                Raman: Mineral Match <b className="text-atlas-text">Carbonate 0.88</b> | Bio Signature: <b className="text-atlas-teal">None (Clean)</b>
               </div>
             </div>
           </div>
 
-          {/* Communication Priority Queue (Section 22D) */}
-          <div className="p-4 bg-space-900 border border-space-800 rounded-lg shadow-xl space-y-2">
-            <div className="flex items-center justify-between border-b border-space-800 pb-2">
-              <div className="flex items-center space-x-2 text-slate-200 font-bold">
-                <Wifi className="w-4 h-4 text-emerald-400" />
-                <span>TACTICAL COMMUNICATION PACKET QUEUE</span>
+          {/* Communication Priority Queue */}
+          <div className="p-4 bg-atlas-surface border border-atlas-border shadow-xl space-y-2.5">
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-atlas-border pb-2">
+              <div className="flex items-center space-x-2 text-atlas-text font-bold font-display">
+                <Wifi className="w-4 h-4 text-atlas-teal" />
+                <span>Tactical Communication Packet Queue</span>
               </div>
-              <span className="text-[10px] text-slate-400">{commQueue.length} Packets Buffered/Queued</span>
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] text-atlas-muted font-mono">
+                  {commQueue.filter((p) => p.status === "BUFFERED" || p.status === "QUEUED").length} Pending / {commQueue.length} Total
+                </span>
+                <button
+                  onClick={handleFlushQueue}
+                  className="px-2 py-0.5 bg-atlas-teal hover:bg-atlas-teal/90 text-white font-bold text-[10px] rounded transition-colors"
+                >
+                  Deliver / Flush Queue
+                </button>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-2 bg-atlas-elevated/50 p-2 border border-atlas-border text-[10px]">
+              <select
+                value={commPacketType}
+                onChange={(e) => setCommPacketType(e.target.value as any)}
+                className="bg-atlas-elevated border border-atlas-border text-atlas-text px-1.5 py-1 rounded"
+              >
+                <option value="TELEMETRY">TELEMETRY</option>
+                <option value="HAZARD_ALERT">HAZARD_ALERT</option>
+                <option value="SCIENCE_DATA">SCIENCE_DATA</option>
+              </select>
+              <select
+                value={commPacketPriority}
+                onChange={(e) => setCommPacketPriority(e.target.value as any)}
+                className="bg-atlas-elevated border border-atlas-border text-atlas-text px-1.5 py-1 rounded"
+              >
+                <option value="CRITICAL">CRITICAL</option>
+                <option value="HIGH">HIGH</option>
+                <option value="MEDIUM">MEDIUM</option>
+                <option value="BULK">BULK</option>
+              </select>
+              <button
+                onClick={handleEnqueuePacket}
+                className="px-2.5 py-1 bg-atlas-accent hover:bg-atlas-accent/90 text-white font-bold rounded transition-colors"
+              >
+                Send Packet
+              </button>
             </div>
 
             <div className="space-y-1.5 max-h-32 overflow-y-auto pr-1">
               {commQueue.map((pkt) => (
-                <div key={pkt.packetId} className="p-2 bg-space-850 rounded border border-space-800 flex items-center justify-between text-[10px]">
+                <div key={pkt.packetId} className="p-2 bg-atlas-elevated border border-atlas-border flex items-center justify-between text-[10px]">
                   <div className="flex items-center space-x-2">
                     <span
-                      className={`px-1.5 py-0.2 rounded font-bold uppercase ${
+                      className={`px-1.5 py-0.2 font-bold uppercase border ${
                         pkt.priority === "CRITICAL"
-                          ? "bg-rose-950 text-rose-300 border border-rose-500/50"
-                          : "bg-space-800 text-slate-300"
+                          ? "bg-atlas-surface text-atlas-red border-atlas-red"
+                          : "bg-atlas-surface text-atlas-muted border-atlas-border"
                       }`}
                     >
                       {pkt.priority}
                     </span>
-                    <span className="font-bold text-white">{pkt.type}</span>
-                    <span className="text-slate-400">({pkt.payloadSizeKb} KB)</span>
+                    <span className="font-bold text-atlas-text">{pkt.type}</span>
+                    <span className="text-atlas-muted">({pkt.payloadSizeKb} KB)</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <span
-                      className={`px-1.5 py-0.2 rounded font-bold ${
+                      className={`font-bold ${
                         pkt.status === "DELIVERED"
-                          ? "text-emerald-400"
+                          ? "text-atlas-teal"
                           : pkt.status === "TRANSMITTING"
-                          ? "text-cyan-400 animate-pulse"
-                          : "text-amber-400"
+                          ? "text-atlas-blue animate-pulse"
+                          : "text-atlas-amber"
                       }`}
                     >
                       {pkt.status}
                     </span>
-                    <span className="text-slate-500">{pkt.sourceAgentId}</span>
+                    <span className="text-atlas-muted">{pkt.sourceAgentId}</span>
                   </div>
                 </div>
               ))}
@@ -646,47 +869,195 @@ export const OperationsPage: React.FC = () => {
           </div>
 
           {/* Mission Timeline & Operational Events Stream */}
-          <div className="p-4 bg-space-900 border border-space-800 rounded-lg shadow-xl space-y-2">
-            <div className="flex items-center justify-between border-b border-space-800 pb-2">
-              <div className="flex items-center space-x-2 text-slate-200 font-bold">
-                <Clock className="w-4 h-4 text-telemetry-cyan" />
-                <span>MISSION TIMELINE & EVENT AUDIT STREAM</span>
+          <div className="p-4 bg-atlas-surface border border-atlas-border shadow-xl space-y-2">
+            <div className="flex items-center justify-between border-b border-atlas-border pb-2">
+              <div className="flex items-center space-x-2 text-atlas-text font-bold font-display">
+                <Clock className="w-4 h-4 text-atlas-blue" />
+                <span>Mission Timeline & Event Audit Stream</span>
               </div>
-              <span className="text-[10px] text-slate-400">
+              <span className="text-[10px] text-atlas-muted">
                 Network: {network?.links.filter((l) => l.status === "CONNECTED").length || 0} active links
               </span>
             </div>
 
             <div className="space-y-1.5 max-h-36 overflow-y-auto pr-1">
               {events.slice(0, 8).map((ev) => (
-                <div key={ev.id} className="p-2 bg-space-850 rounded border border-space-800 flex items-center justify-between text-[10px]">
+                <div key={ev.id} className="p-2 bg-atlas-elevated border border-atlas-border flex items-center justify-between text-[10px]">
                   <div className="flex items-center space-x-2">
-                    <span className="font-mono text-mars-accent">{ev.timestamp.substring(11, 19)}</span>
-                    <span className="font-bold text-white">[{ev.eventType}]</span>
-                    <span className="text-slate-300 truncate max-w-xs">{ev.message}</span>
+                    <span className="font-mono text-atlas-accent">{ev.timestamp.substring(11, 19)}</span>
+                    <span className="font-bold text-atlas-text">[{ev.eventType}]</span>
+                    <span className="text-atlas-muted truncate max-w-xs">{ev.message}</span>
                   </div>
-                  <span className="text-[9px] text-slate-500 font-mono">{ev.agentId}</span>
+                  <span className="text-[9px] text-atlas-muted font-mono">{ev.agentId}</span>
                 </div>
               ))}
               {timeline.slice(0, 2).map((tm) => (
-                <div key={tm.id} className="text-[9px] text-slate-400 italic">
+                <div key={tm.id} className="text-[9px] text-atlas-muted italic">
                   Scheduled: {tm.timeLabel} - {tm.title} ({tm.status})
                 </div>
               ))}
             </div>
           </div>
+
+          {/* Digital Twin Synchronization & Inconsistency Auditor */}
+          <div className="p-4 bg-atlas-surface border border-atlas-border shadow-xl space-y-3 font-mono text-xs">
+            <div className="flex items-center justify-between border-b border-atlas-border pb-2">
+              <div className="flex items-center space-x-2 text-atlas-text font-bold font-display">
+                <Server className="w-4 h-4 text-atlas-teal" />
+                <span>Digital Twin State Synchronization & Inconsistency Auditor</span>
+              </div>
+              <span className="text-[10px] px-2 py-0.5 rounded bg-atlas-elevated text-atlas-teal border border-atlas-border font-bold">
+                Canonical Mirror
+              </span>
+            </div>
+
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 bg-atlas-elevated/40 border border-atlas-border rounded">
+              <div>
+                <span className="text-[10px] text-atlas-muted uppercase block">Cryptographic State Hash</span>
+                <span className="text-xs font-bold text-atlas-text">
+                  {digitalTwinSnapshot ? `${digitalTwinSnapshot.stateHash?.slice(0, 24)}...` : "Active SHA-256 Event Chain"}
+                </span>
+                <span className="text-[10px] text-atlas-muted block mt-0.5">
+                  Synchronized with canonical fleet, routes, hazards, resources & comms
+                </span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={handleCaptureSnapshot}
+                  disabled={isSnapshotting}
+                  className="px-3 py-1.5 bg-atlas-elevated hover:bg-atlas-elevated/80 border border-atlas-border text-atlas-text rounded text-xs font-bold transition-colors"
+                >
+                  {isSnapshotting ? "Snapshotting..." : "Capture Snapshot"}
+                </button>
+                <button
+                  onClick={handleCheckConsistency}
+                  disabled={isCheckingConsistency}
+                  className="px-3 py-1.5 bg-atlas-accent hover:bg-atlas-accent/90 disabled:opacity-50 text-white rounded text-xs font-bold transition-colors"
+                >
+                  {isCheckingConsistency ? "Auditing..." : "Audit State Consistency"}
+                </button>
+              </div>
+            </div>
+
+            {inconsistencyReport && (
+              <div
+                className={`p-3 rounded border text-xs ${
+                  inconsistencyReport.isConsistent
+                    ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-300"
+                    : "bg-red-500/10 border-red-500/30 text-red-300"
+                }`}
+              >
+                <div className="font-bold flex items-center gap-1.5">
+                  <CheckCircle className="w-4 h-4" />
+                  <span>
+                    {inconsistencyReport.isConsistent
+                      ? "Zero Discrepancies Detected. Digital Twin matches ground truth 1:1."
+                      : `State Alert: ${inconsistencyReport.discrepancies.length} Discrepancies Detected.`}
+                  </span>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Stochastic Monte Carlo Uncertainty Explorer */}
+          <div className="p-4 bg-atlas-surface border border-atlas-border shadow-xl space-y-3 font-mono text-xs">
+            <div className="flex items-center justify-between border-b border-atlas-border pb-2">
+              <div className="flex items-center space-x-2 text-atlas-text font-bold font-display">
+                <Activity className="w-4 h-4 text-atlas-accent" />
+                <span>Stochastic Monte Carlo Uncertainty Explorer</span>
+              </div>
+              <span className="text-[10px] text-atlas-muted">
+                Deterministic LCG with Box-Muller Transforms
+              </span>
+            </div>
+
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 bg-atlas-elevated/40 border border-atlas-border rounded">
+              <div className="flex items-center gap-4">
+                <div>
+                  <span className="text-[10px] text-atlas-muted uppercase block">Run Count</span>
+                  <input
+                    type="number"
+                    min={50}
+                    max={500}
+                    step={50}
+                    value={mcRuns}
+                    onChange={(e) => setMcRuns(Number(e.target.value))}
+                    className="w-20 bg-atlas-elevated border border-atlas-border text-atlas-text text-xs p-1 rounded font-bold"
+                  />
+                </div>
+                <div>
+                  <span className="text-[10px] text-atlas-muted uppercase block">PRNG Seed</span>
+                  <input
+                    type="number"
+                    value={mcSeed}
+                    onChange={(e) => setMcSeed(Number(e.target.value))}
+                    className="w-28 bg-atlas-elevated border border-atlas-border text-atlas-text text-xs p-1 rounded font-bold"
+                  />
+                </div>
+              </div>
+
+              <button
+                onClick={handleRunMonteCarlo}
+                disabled={isMcLoading}
+                className="px-4 py-2 bg-atlas-accent hover:bg-atlas-accent/90 disabled:opacity-50 text-white rounded text-xs font-bold transition-all shadow"
+              >
+                {isMcLoading ? "Computing 100 Runs..." : "Run Monte Carlo Analysis"}
+              </button>
+            </div>
+
+            {mcResult && (
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
+                <div className="p-2.5 bg-atlas-elevated border border-atlas-border rounded">
+                  <span className="text-[9px] text-atlas-muted uppercase block">Success Rate</span>
+                  <span className="text-base font-bold text-emerald-400">
+                    {mcResult.successProbabilityPercent}%
+                  </span>
+                </div>
+                <div className="p-2.5 bg-atlas-elevated border border-atlas-border rounded">
+                  <span className="text-[9px] text-atlas-muted uppercase block">Duration P50</span>
+                  <span className="text-base font-bold text-atlas-text">
+                    {mcResult.durationDistributionMinutes?.p50}m
+                  </span>
+                  <span className="text-[9px] text-atlas-muted block">
+                    P10: {mcResult.durationDistributionMinutes?.p10}m | P90: {mcResult.durationDistributionMinutes?.p90}m
+                  </span>
+                </div>
+                <div className="p-2.5 bg-atlas-elevated border border-atlas-border rounded">
+                  <span className="text-[9px] text-atlas-muted uppercase block">95% Confidence</span>
+                  <span className="text-xs font-bold text-atlas-teal mt-1 block">
+                    [{mcResult.durationDistributionMinutes?.confidenceInterval95?.[0]} - {mcResult.durationDistributionMinutes?.confidenceInterval95?.[1]}]m
+                  </span>
+                </div>
+                <div className="p-2.5 bg-atlas-elevated border border-atlas-border rounded">
+                  <span className="text-[9px] text-atlas-muted uppercase block">Battery P50</span>
+                  <span className="text-base font-bold text-atlas-text">
+                    {mcResult.batteryReserveDistribution?.p50}%
+                  </span>
+                  <span className="text-[9px] text-atlas-muted block">
+                    P10: {mcResult.batteryReserveDistribution?.p10}%
+                  </span>
+                </div>
+              </div>
+            )}
+
+            <div className="text-[10px] text-atlas-muted pt-1 border-t border-atlas-border flex items-center justify-between">
+              <span>Classification: SIMULATED / MONTE CARLO</span>
+              <span className="text-atlas-teal">Models terrain roughness, energy discharge, and comms variance</span>
+            </div>
+          </div>
         </div>
 
-        {/* Right Column: Agent Status List + Telemetry Drawer + Science Queue + Copilot */}
+        {/* Right Column: Agent Roster + Telemetry + Science Queue + Copilot */}
         <div className="space-y-4">
           {/* Agent Status Selector List */}
-          <div className="p-4 bg-space-900 border border-space-800 rounded-lg shadow-xl space-y-3">
-            <div className="flex items-center justify-between border-b border-space-800 pb-2">
-              <div className="flex items-center space-x-2 text-slate-200 font-bold">
-                <Shield className="w-4 h-4 text-telemetry-cyan" />
-                <span>PLANETARY AGENT ROSTER</span>
+          <div className="p-4 bg-atlas-surface border border-atlas-border shadow-xl space-y-3">
+            <div className="flex items-center justify-between border-b border-atlas-border pb-2">
+              <div className="flex items-center space-x-2 text-atlas-text font-bold font-display">
+                <Shield className="w-4 h-4 text-atlas-blue" />
+                <span>Planetary Agent Roster</span>
               </div>
-              <span className="text-[10px] text-slate-400">{agents.length} Deployed</span>
+              <span className="text-[10px] text-atlas-muted">{agents.length} Deployed</span>
             </div>
 
             <div className="space-y-2">
@@ -696,41 +1067,41 @@ export const OperationsPage: React.FC = () => {
                   <div
                     key={ag.id}
                     onClick={() => setSelectedAgentId(ag.id)}
-                    className={`p-3 rounded border cursor-pointer transition-all ${
+                    className={`p-3 border cursor-pointer transition-all ${
                       isSelected
-                        ? "bg-space-800 border-telemetry-cyan shadow-md"
-                        : "bg-space-850 border-space-800 hover:border-space-700"
+                        ? "bg-atlas-elevated border-atlas-accent shadow-md"
+                        : "bg-atlas-elevated/60 border-atlas-border hover:border-atlas-border-light"
                     }`}
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-2">
                         {ag.type === "ASTRONAUT" ? (
-                          <User className="w-4 h-4 text-emerald-400" />
+                          <User className="w-4 h-4 text-atlas-teal" />
                         ) : ag.type === "ORBITER" ? (
-                          <Satellite className="w-4 h-4 text-purple-400" />
+                          <Satellite className="w-4 h-4 text-atlas-violet" />
                         ) : (
-                          <Bot className="w-4 h-4 text-amber-400" />
+                          <Bot className="w-4 h-4 text-atlas-amber" />
                         )}
-                        <span className="font-bold text-slate-200 text-xs">{ag.callsign}</span>
+                        <span className="font-bold text-atlas-text text-xs">{ag.callsign}</span>
                       </div>
                       <span
-                        className={`px-1.5 py-0.5 rounded text-[9px] font-bold uppercase ${
+                        className={`px-2 py-0.5 text-[9px] font-bold uppercase border ${
                           ag.status === "EXECUTING"
-                            ? "bg-emerald-950 text-emerald-300"
+                            ? "bg-atlas-surface text-atlas-teal border-atlas-teal"
                             : ag.status === "PAUSED"
-                            ? "bg-amber-950 text-amber-300 border border-amber-500/50"
+                            ? "bg-atlas-surface text-atlas-amber border-atlas-amber"
                             : ag.status === "EMERGENCY"
-                            ? "bg-rose-950 text-rose-300 border border-rose-500/50"
-                            : "bg-space-900 text-slate-400"
+                            ? "bg-atlas-surface text-atlas-red border-atlas-red"
+                            : "bg-atlas-surface text-atlas-muted border-atlas-border"
                         }`}
                       >
                         {ag.status}
                       </span>
                     </div>
 
-                    <div className="mt-2 grid grid-cols-2 gap-2 text-[10px] text-slate-400">
-                      <div>BATTERY: <b className="text-white">{ag.telemetry.batteryPercent}%</b></div>
-                      <div>SPEED: <b className="text-white">{ag.telemetry.speedKph} km/h</b></div>
+                    <div className="mt-2 grid grid-cols-2 gap-2 text-[10px] text-atlas-muted">
+                      <div>Battery: <b className="text-atlas-text">{ag.telemetry.batteryPercent}%</b></div>
+                      <div>Speed: <b className="text-atlas-text">{ag.telemetry.speedKph} km/h</b></div>
                     </div>
                   </div>
                 );
@@ -738,30 +1109,271 @@ export const OperationsPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Teleoperation Commands for Selected Agent */}
+          {/* Teleoperation Commands & Structured Capabilities for Selected Agent */}
           {selectedAgent && (
-            <div className="p-4 bg-space-900 border border-space-800 rounded-lg shadow-xl space-y-3">
-              <div className="flex items-center justify-between border-b border-space-800 pb-2">
-                <span className="font-bold text-slate-200">TELEOPERATIONS: {selectedAgent.callsign}</span>
-                <span className="text-[10px] text-slate-400">Role: {selectedAgent.type}</span>
+            <div className="p-4 bg-atlas-surface border border-atlas-border shadow-xl space-y-3">
+              <div className="flex items-center justify-between border-b border-atlas-border pb-2">
+                <div>
+                  <span className="font-bold text-atlas-text font-display block">Teleoperations: {selectedAgent.callsign}</span>
+                  <span className="text-[9px] text-atlas-muted">
+                    Telemetry: <b className="text-atlas-amber">SIMULATED</b> | Updated: {new Date(selectedAgent.telemetry.lastHeartbeat).toLocaleTimeString()}
+                  </span>
+                </div>
+                <span className="text-[10px] text-atlas-muted">Role: {selectedAgent.type}</span>
+              </div>
+
+              {/* Agent Status & Simulated Telemetry Controls */}
+              <div className="p-2 bg-atlas-elevated border border-atlas-border space-y-2 text-[10px]">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-atlas-muted uppercase font-bold">Operational Status:</span>
+                  <select
+                    aria-label="Agent operational status"
+                    value={selectedAgent.status}
+                    onChange={(e) => handleAgentStatusChange(e.target.value)}
+                    className="bg-atlas-surface border border-atlas-border text-atlas-text px-2 py-0.5 rounded font-bold"
+                  >
+                    <option value="IDLE">IDLE</option>
+                    <option value="PLANNING">PLANNING</option>
+                    <option value="EXECUTING">EXECUTING</option>
+                    <option value="PAUSED">PAUSED</option>
+                    <option value="RETURNING">RETURNING</option>
+                    <option value="UNAVAILABLE">UNAVAILABLE (Auto-Reassign)</option>
+                    <option value="COMMS_LOST">COMMS_LOST</option>
+                    <option value="EMERGENCY">EMERGENCY</option>
+                  </select>
+                </div>
+                <div className="flex items-center justify-between gap-2 pt-1 border-t border-atlas-border">
+                  <span className="text-atlas-muted">Simulated Telemetry:</span>
+                  <div className="flex items-center gap-1">
+                    <button
+                      onClick={() => handleSimulateTelemetryStep(-5)}
+                      className="px-2 py-0.5 bg-atlas-surface hover:bg-atlas-bg border border-atlas-border text-atlas-amber font-bold rounded"
+                    >
+                      -5% Batt
+                    </button>
+                    <button
+                      onClick={() => handleSimulateTelemetryStep(10)}
+                      className="px-2 py-0.5 bg-atlas-surface hover:bg-atlas-bg border border-atlas-border text-atlas-teal font-bold rounded"
+                    >
+                      +10% Batt
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {selectedAgent.structuredCapabilities && (
+                <div className="p-2 bg-atlas-elevated border border-atlas-border text-[9px] font-mono space-y-1">
+                  <div className="text-atlas-muted uppercase tracking-wider font-bold">Structured Capabilities:</div>
+                  <div className="grid grid-cols-2 gap-1 text-atlas-text">
+                    <div>Max Slope: <b className="text-atlas-teal">{selectedAgent.structuredCapabilities.mobility.maxSlopeDeg}°</b></div>
+                    <div>Speed: <b className="text-atlas-text">{selectedAgent.structuredCapabilities.mobility.speedKph} km/h</b></div>
+                    <div>Drill: <b className={selectedAgent.structuredCapabilities.hasDrill ? "text-atlas-teal" : "text-atlas-muted"}>{selectedAgent.structuredCapabilities.hasDrill ? "YES" : "NO"}</b></div>
+                    <div>Sample Tubes: <b className="text-atlas-blue">{selectedAgent.structuredCapabilities.sampleTubesRemaining}/{selectedAgent.structuredCapabilities.sampleTubeCapacity}</b></div>
+                    <div>Relay Mast: <b className={selectedAgent.structuredCapabilities.communicationRelay.isRelay ? "text-atlas-amber" : "text-atlas-muted"}>{selectedAgent.structuredCapabilities.communicationRelay.isRelay ? `${selectedAgent.structuredCapabilities.communicationRelay.relayRangeKm}km` : "NO"}</b></div>
+                    <div>Endurance: <b className="text-atlas-text">{selectedAgent.structuredCapabilities.enduranceMinutes} min</b></div>
+                  </div>
+                </div>
+              )}
+
+              {/* Active Assigned Task & Lifecycle Controls */}
+              {taskFeedback && (
+                <div className="p-2 bg-red-500/10 border border-red-500/40 text-red-300 text-[10px] rounded">
+                  {taskFeedback}
+                </div>
+              )}
+
+              {selectedAgent.currentTask ? (
+                <div className="p-2.5 bg-atlas-elevated border border-atlas-border rounded text-[10px] font-mono space-y-1.5">
+                  <div className="flex items-center justify-between gap-1">
+                    <span className="font-bold text-atlas-text">{selectedAgent.currentTask.name}</span>
+                    <div className="flex items-center gap-1">
+                      <span className="px-1.5 py-0.2 rounded bg-atlas-surface border border-atlas-border text-atlas-teal font-bold">
+                        {(selectedAgent.currentTask as any).status || "IN_PROGRESS"}
+                      </span>
+                      <span className="px-1.5 py-0.2 rounded bg-atlas-accent/20 text-atlas-accent font-bold">
+                        {selectedAgent.currentTask.priority}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="text-atlas-muted text-[9px]">
+                    Est: {selectedAgent.currentTask.estimatedDurationMin}m | Target: ({selectedAgent.currentTask.target.coordinate.latitude.toFixed(3)}, {selectedAgent.currentTask.target.coordinate.longitude.toFixed(3)})
+                  </div>
+                  {selectedAgent.currentTask.dependencies && selectedAgent.currentTask.dependencies.length > 0 && (
+                    <div className="text-[9px] text-amber-400">
+                      Dependencies: {selectedAgent.currentTask.dependencies.join(", ")}
+                    </div>
+                  )}
+
+                  {/* Task Lifecycle Transitions */}
+                  <div className="flex flex-wrap gap-1 pt-1">
+                    {((selectedAgent.currentTask as any).status === "PENDING" || (selectedAgent.currentTask as any).status === "BLOCKED") && (
+                      <button
+                        onClick={() => handleTransitionTask(selectedAgent.currentTask!.id, "START")}
+                        className="px-2 py-0.5 bg-atlas-teal text-white font-bold rounded text-[9px]"
+                      >
+                        Start Task
+                      </button>
+                    )}
+                    {(selectedAgent.currentTask as any).status === "IN_PROGRESS" && (
+                      <button
+                        onClick={() => handleTransitionTask(selectedAgent.currentTask!.id, "PAUSE")}
+                        className="px-2 py-0.5 bg-atlas-amber text-black font-bold rounded text-[9px]"
+                      >
+                        Pause Task
+                      </button>
+                    )}
+                    {(selectedAgent.currentTask as any).status === "PAUSED" && (
+                      <button
+                        onClick={() => handleTransitionTask(selectedAgent.currentTask!.id, "RESUME")}
+                        className="px-2 py-0.5 bg-atlas-teal text-white font-bold rounded text-[9px]"
+                      >
+                        Resume Task
+                      </button>
+                    )}
+                    {((selectedAgent.currentTask as any).status === "IN_PROGRESS" || (selectedAgent.currentTask as any).status === "PAUSED") && (
+                      <button
+                        onClick={() => handleTransitionTask(selectedAgent.currentTask!.id, "COMPLETE")}
+                        className="px-2 py-0.5 bg-emerald-600 text-white font-bold rounded text-[9px]"
+                      >
+                        Complete Task
+                      </button>
+                    )}
+                    <button
+                      onClick={() => handleTransitionTask(selectedAgent.currentTask!.id, "CANCEL")}
+                      className="px-2 py-0.5 bg-atlas-surface border border-atlas-border text-atlas-muted hover:text-atlas-red font-bold rounded text-[9px]"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+
+                  <button
+                    onClick={() => setIsTaskModalOpen(!isTaskModalOpen)}
+                    className="w-full py-1 bg-atlas-elevated hover:bg-atlas-accent hover:text-white border border-atlas-border text-atlas-text font-bold text-[10px] rounded transition-colors"
+                  >
+                    {isTaskModalOpen ? "Close Reassignment" : "Reassign Task To Agent"}
+                  </button>
+
+                  {/* Reassignment Dropdown Panel */}
+                  {isTaskModalOpen && (
+                    <div className="p-2 bg-atlas-surface border border-atlas-border rounded space-y-2 mt-2">
+                      <label className="text-[9px] text-atlas-muted uppercase block">Select Target Agent:</label>
+                      <select
+                        value={targetReassignAgentId}
+                        onChange={(e) => setTargetReassignAgentId(e.target.value)}
+                        className="w-full bg-atlas-elevated border border-atlas-border text-atlas-text text-[10px] p-1 rounded font-mono"
+                      >
+                        {agents.filter((a) => a.id !== selectedAgent.id).map((a) => (
+                          <option key={a.id} value={a.callsign}>
+                            {a.callsign} ({a.type} - Battery {a.telemetry.batteryPercent}%)
+                          </option>
+                        ))}
+                      </select>
+
+                      <label className="text-[9px] text-atlas-muted uppercase block">Operational Rationale:</label>
+                      <input
+                        type="text"
+                        value={reassignReason}
+                        onChange={(e) => setReassignReason(e.target.value)}
+                        className="w-full bg-atlas-elevated border border-atlas-border text-atlas-text text-[10px] p-1 rounded font-mono"
+                      />
+
+                      <button
+                        onClick={() => handleReassignTask(selectedAgent.currentTask!.id)}
+                        disabled={isReassigning}
+                        className="w-full py-1 bg-atlas-accent hover:bg-atlas-accent/90 disabled:opacity-50 text-white font-bold text-[10px] rounded"
+                      >
+                        {isReassigning ? "Executing Reassignment..." : "Confirm & Commit Reassignment"}
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="p-2 bg-atlas-elevated border border-atlas-border rounded text-[10px] font-mono text-atlas-muted text-center space-y-2">
+                  <div>No active task assigned. Agent standing by.</div>
+                </div>
+              )}
+
+              {/* Assign New Task Drawer */}
+              <div className="space-y-2">
+                <button
+                  onClick={() => setIsAssignOpen((v) => !v)}
+                  className="w-full py-1.5 bg-atlas-elevated hover:bg-atlas-surface border border-atlas-border text-atlas-accent font-bold text-[10px] rounded transition-colors"
+                >
+                  {isAssignOpen ? "Close New Task Form" : "+ Assign New Task to Agent"}
+                </button>
+                {isAssignOpen && (
+                  <form onSubmit={handleCreateTask} className="p-2.5 bg-atlas-elevated border border-atlas-border rounded space-y-2 text-[10px]">
+                    <input
+                      type="text"
+                      required
+                      placeholder="Task name (e.g. Core Sample Kodiak Rim)"
+                      value={newTaskName}
+                      onChange={(e) => setNewTaskName(e.target.value)}
+                      className="w-full bg-atlas-surface border border-atlas-border text-atlas-text p-1.5 rounded"
+                    />
+                    <div className="grid grid-cols-2 gap-2">
+                      <select
+                        value={newTaskType}
+                        onChange={(e) => setNewTaskType(e.target.value)}
+                        className="bg-atlas-surface border border-atlas-border text-atlas-text p-1 rounded"
+                      >
+                        <option value="VERIFY_ROUTE">VERIFY_ROUTE</option>
+                        <option value="SURVEY_TERRAIN">SURVEY_TERRAIN (Reqs TERRAIN_RECON)</option>
+                        <option value="COLLECT_SCIENCE">COLLECT_SCIENCE (Reqs SPECTROMETER)</option>
+                        <option value="RELAY_SIGNAL">RELAY_SIGNAL (Reqs COMM_RELAY)</option>
+                        <option value="INSPECT_HAZARD">INSPECT_HAZARD</option>
+                      </select>
+                      <select
+                        value={newTaskPriority}
+                        onChange={(e) => setNewTaskPriority(e.target.value as any)}
+                        className="bg-atlas-surface border border-atlas-border text-atlas-text p-1 rounded"
+                      >
+                        <option value="CRITICAL">CRITICAL</option>
+                        <option value="HIGH">HIGH</option>
+                        <option value="MEDIUM">MEDIUM</option>
+                        <option value="LOW">LOW</option>
+                      </select>
+                    </div>
+                    {opsTasks.length > 0 && (
+                      <select
+                        value={newTaskDepId}
+                        onChange={(e) => setNewTaskDepId(e.target.value)}
+                        className="w-full bg-atlas-surface border border-atlas-border text-atlas-text p-1 rounded"
+                      >
+                        <option value="">No Prerequisite Dependency</option>
+                        {opsTasks.map((t) => (
+                          <option key={t.id} value={t.id}>
+                            Depends on: {t.name} ({t.status})
+                          </option>
+                        ))}
+                      </select>
+                    )}
+                    <button
+                      type="submit"
+                      className="w-full py-1.5 bg-atlas-accent hover:bg-atlas-accent/90 text-white font-bold rounded"
+                    >
+                      Assign Task (Validate Capabilities & S1-S8)
+                    </button>
+                  </form>
+                )}
               </div>
 
               <div className="grid grid-cols-3 gap-2">
                 <button
                   onClick={() => handleAgentCommand("PAUSE")}
-                  className="p-2 bg-space-850 hover:bg-space-800 text-amber-400 border border-space-700 rounded font-bold text-[10px]"
+                  className="p-2 bg-atlas-elevated hover:bg-atlas-surface text-atlas-amber border border-atlas-border font-bold text-[10px] transition-colors"
                 >
-                  PAUSE
+                  Pause
                 </button>
                 <button
                   onClick={() => handleAgentCommand("RESUME")}
-                  className="p-2 bg-space-850 hover:bg-space-800 text-emerald-400 border border-space-700 rounded font-bold text-[10px]"
+                  className="p-2 bg-atlas-elevated hover:bg-atlas-surface text-atlas-teal border border-atlas-border font-bold text-[10px] transition-colors"
                 >
-                  RESUME
+                  Resume
                 </button>
                 <button
                   onClick={() => handleAgentCommand("RETURN_TO_BASE")}
-                  className="p-2 bg-space-850 hover:bg-space-800 text-cyan-400 border border-space-700 rounded font-bold text-[10px]"
+                  className="p-2 bg-atlas-elevated hover:bg-atlas-surface text-atlas-blue border border-atlas-border font-bold text-[10px] transition-colors"
                 >
                   RTB
                 </button>
@@ -769,127 +1381,75 @@ export const OperationsPage: React.FC = () => {
             </div>
           )}
 
-          {/* Collaborative Science Queue */}
-          <div className="p-4 bg-space-900 border border-space-800 rounded-lg shadow-xl space-y-2">
-            <div className="flex items-center justify-between border-b border-space-800 pb-2">
-              <div className="flex items-center space-x-2 text-slate-200 font-bold">
-                <Layers className="w-4 h-4 text-mars-accent" />
-                <span>SHARED SCIENCE QUEUE</span>
+          {/* Shared Science Queue */}
+          <div className="p-4 bg-atlas-surface border border-atlas-border shadow-xl space-y-2">
+            <div className="flex items-center justify-between border-b border-atlas-border pb-2">
+              <div className="flex items-center space-x-2 text-atlas-text font-bold font-display">
+                <Layers className="w-4 h-4 text-atlas-accent" />
+                <span>Shared Science Queue</span>
               </div>
-              <span className="text-[10px] text-slate-400">{scienceQueue.length} Targets</span>
+              <span className="text-[10px] text-atlas-muted">{scienceQueue.length} Targets</span>
             </div>
 
             <div className="space-y-1.5 max-h-36 overflow-y-auto pr-1">
               {scienceQueue.map((item) => (
-                <div key={item.id} className="p-2 bg-space-850 rounded border border-space-800 space-y-1">
+                <div key={item.id} className="p-2 bg-atlas-elevated border border-atlas-border space-y-1">
                   <div className="flex items-center justify-between">
-                    <span className="font-bold text-slate-200 text-xs">{item.targetName}</span>
+                    <span className="font-bold text-atlas-text text-xs">{item.targetName}</span>
                     <span
-                      className={`px-1.5 py-0.5 rounded text-[8px] font-bold uppercase ${
+                      className={`px-1.5 py-0.5 text-[8px] font-bold uppercase border ${
                         item.status === "COMPLETED"
-                          ? "bg-emerald-950 text-emerald-300"
+                          ? "bg-atlas-surface text-atlas-teal border-atlas-teal"
                           : item.status === "ASSIGNED"
-                          ? "bg-cyan-950 text-cyan-300 border border-cyan-500/40"
-                          : "bg-space-900 text-slate-400"
+                          ? "bg-atlas-surface text-atlas-blue border-atlas-blue"
+                          : "bg-atlas-surface text-atlas-muted border-atlas-border"
                       }`}
                     >
                       {item.status}
                     </span>
                   </div>
-                  <div className="text-[10px] text-slate-400">
-                    Agent: <b className="text-slate-300">{item.recommendedAgentCallsign}</b> | {item.requiredInstrument}
+                  <div className="text-[10px] text-atlas-muted">
+                    Agent: <b className="text-atlas-text">{item.recommendedAgentCallsign}</b> | {item.requiredInstrument}
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Operations Copilot & Decision Reasoning */}
-          <div className="p-4 bg-space-900 border border-space-800 rounded-lg shadow-xl space-y-3">
-            <div className="flex items-center justify-between border-b border-space-800 pb-2">
-              <div className="flex items-center space-x-2 text-slate-200 font-bold">
-                <Sparkles className="w-4 h-4 text-telemetry-cyan" />
-                <span>OPERATIONS COPILOT</span>
+          {/* Operations Copilot Terminal */}
+          <div className="p-4 bg-atlas-surface border border-atlas-border shadow-xl space-y-3">
+            <div className="flex items-center justify-between border-b border-atlas-border pb-2">
+              <div className="flex items-center space-x-2 text-atlas-text font-bold font-display">
+                <Sparkles className="w-4 h-4 text-atlas-blue" />
+                <span>Operations Copilot</span>
               </div>
-              <span className="text-[10px] text-telemetry-cyan font-mono">VERIFIED REASONING</span>
+              <span className="text-[10px] text-atlas-teal font-mono">Assisted Reasoning</span>
             </div>
 
-            {/* Prompt Input & Quick Queries */}
-            <div className="space-y-2">
-              <div className="flex space-x-2">
-                <input
-                  type="text"
-                  value={copilotQuery}
-                  onChange={(e) => setCopilotQuery(e.target.value)}
-                  onKeyDown={(e) => e.key === "Enter" && handleAskCopilot()}
-                  placeholder="Ask field operations query..."
-                  className="flex-1 bg-space-950 border border-space-700 rounded px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-telemetry-cyan"
-                />
-                <button
-                  onClick={() => handleAskCopilot()}
-                  disabled={isCopilotLoading}
-                  className="px-3 py-1.5 bg-space-800 hover:bg-space-700 text-telemetry-cyan rounded border border-space-700 font-bold text-xs disabled:opacity-50"
-                >
-                  {isCopilotLoading ? "..." : "QUERY"}
-                </button>
-              </div>
-
-              <div className="flex flex-wrap gap-1">
-                {[
-                  "Send Scout to investigate the steep region.",
-                  "Which rover should inspect the delta?",
-                  "Why did communication fail?",
-                ].map((preset, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => {
-                      setCopilotQuery(preset);
-                      handleAskCopilot(preset);
-                    }}
-                    className="px-2 py-0.5 rounded bg-space-850 hover:bg-space-800 text-[9px] text-slate-300 border border-space-750"
-                  >
-                    {preset}
-                  </button>
-                ))}
-              </div>
+            <div className="flex space-x-2">
+              <input
+                type="text"
+                value={copilotQuery}
+                onChange={(e) => setCopilotQuery(e.target.value)}
+                placeholder="Ask tactical copilot..."
+                className="flex-1 bg-atlas-elevated border border-atlas-border p-2 text-xs text-atlas-text focus:outline-none focus:border-atlas-accent font-sans"
+              />
+              <button
+                onClick={() => handleAskCopilot()}
+                disabled={isCopilotLoading}
+                className="px-3 bg-atlas-accent hover:bg-atlas-accent-dark text-white font-bold transition-colors disabled:opacity-40"
+              >
+                <Send className="w-3.5 h-3.5" />
+              </button>
             </div>
 
-            {/* Copilot Response Card */}
             {copilotResponse && (
-              <div className="p-3 bg-space-950 rounded border border-space-800 space-y-2 text-[11px] animate-fade-in max-h-60 overflow-y-auto">
-                <div className="font-bold text-telemetry-cyan">{copilotResponse.recommendation}</div>
-                <div className="text-slate-300 text-[10px] leading-relaxed">{copilotResponse.assessment}</div>
-
-                {/* Explicit Truth Classification (Section 20) */}
-                {copilotResponse.observedFact && (
-                  <div className="p-1.5 bg-space-900 rounded text-[10px] border border-cyan-900/50">
-                    <span className="text-cyan-400 font-bold">OBSERVED: </span>
-                    <span className="text-slate-200">{copilotResponse.observedFact}</span>
-                  </div>
-                )}
-                {copilotResponse.derivedInsight && (
-                  <div className="p-1.5 bg-space-900 rounded text-[10px] border border-amber-900/50">
-                    <span className="text-amber-400 font-bold">DERIVED: </span>
-                    <span className="text-slate-200">{copilotResponse.derivedInsight}</span>
-                  </div>
-                )}
-                {copilotResponse.simulatedContext && (
-                  <div className="p-1.5 bg-space-900 rounded text-[10px] border border-purple-900/50">
-                    <span className="text-purple-400 font-bold">SIMULATED: </span>
-                    <span className="text-slate-200">{copilotResponse.simulatedContext}</span>
-                  </div>
-                )}
-
-                <div className="space-y-1 pt-1 border-t border-space-800">
-                  <div className="text-[9px] text-slate-500 uppercase font-bold">DIRECTIVES</div>
-                  {copilotResponse.agentDirectives.map((dir, i) => (
-                    <div key={i} className="flex items-start space-x-1.5 text-[10px]">
-                      <span className="text-telemetry-cyan font-bold">•</span>
-                      <span>
-                        <b className="text-white">{dir.agentCallsign}:</b> {dir.directive}
-                      </span>
-                    </div>
-                  ))}
+              <div className="p-3 bg-atlas-elevated border border-atlas-border space-y-2 text-xs font-sans">
+                <div className="text-atlas-text leading-relaxed">
+                  {copilotResponse.assessment}
+                </div>
+                <div className="text-[11px] text-atlas-teal font-bold pt-1 border-t border-atlas-border">
+                  Recommendation: {copilotResponse.recommendation}
                 </div>
               </div>
             )}

@@ -133,6 +133,20 @@ Calculates life-support reserve margins, feasibility, and oxygen consumption.
   ```
 - **Response**: `APIResponse<StoredMission>`
 
+### `GET /api/missions`
+Returns all persisted mission definitions.
+
+### `GET /api/missions/state` or `GET /api/missions/state/:id`
+Retrieves the canonical 18-domain unified mission state (schema version 1.0.0).
+
+- **Response**: `APIResponse<UnifiedMissionState>`
+
+### `PATCH /api/missions/state/:domain` or `PATCH /api/missions/state/:id/domain/:domain`
+Updates a specific domain of the unified mission state with Zod schema validation, synchronizes underlying subsystems, and records a cryptographically hashed audit entry.
+
+- **URL Parameter**: `domain` (`metadata`, `objectives`, `fleet`, `routes`, `resources`, `communication`, `tasks`, etc.)
+- **Response**: `APIResponse<UnifiedMissionState>`
+
 ---
 
 ## 6. AI/ML Safety Scoring (Person 3)

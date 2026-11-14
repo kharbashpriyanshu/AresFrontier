@@ -1,17 +1,84 @@
 import { MarsRoute, MissionAssessment } from "../../types/index.js";
 
+export interface TerrainHazardPrediction {
+  hazard_class: "LOW" | "MODERATE" | "CRITICAL";
+  hazard_score: number;
+  slip_risk_probability: number;
+  confidence: number;
+  factors: Record<string, number>;
+  source: string;
+}
+
+export interface RouteRiskPrediction {
+  risk_score: number;
+  feasibility_status: "MISSION FEASIBLE" | "MISSION RESTRICTED" | "MISSION CONSTRAINT EXCEEDED";
+  feasibility_confidence: number;
+  risk_factors: Record<string, number>;
+  source: string;
+}
+
+export interface TargetPriorityPrediction {
+  ranked_targets: Array<{
+    target_id: string;
+    target_name: string;
+    predicted_priority_score: number;
+    rank: number;
+  }>;
+  evaluation_criteria: string[];
+  source: string;
+}
+
 /**
  * AI/ML Service Adapter (Person 3 Contract)
- * Connects to external machine learning microservice (e.g. Python FastAPI)
- * or executes deterministic fallback scoring.
+ * Connects to external machine learning microservice (Python FastAPI)
+ * with timeout handling, typed fallbacks, and deterministic baseline heuristic scoring.
  */
 export class MLEngineAdapter {
   private mlServiceUrl: string;
   private isExternalServiceEnabled: boolean;
+  private timeoutMs: number;
 
   constructor() {
     this.mlServiceUrl = process.env.ML_SERVICE_URL || "http://localhost:8000";
     this.isExternalServiceEnabled = process.env.ENABLE_ML_SERVICE === "true";
+    this.timeoutMs = parseInt(process.env.ML_SERVICE_TIMEOUT_MS || "3000", 10);
+  }
+
+  public setServiceUrl(url: string): void {
+    this.mlServiceUrl = url;
+  }
+
+  public setEnabled(enabled: boolean): void {
+    this.isExternalServiceEnabled = enabled;
+  }
+
+  public isEnabled(): boolean {
+    return this.isExternalServiceEnabled;
+  }
+
+  public getServiceUrl(): string {
+    return this.mlServiceUrl;
+  }
+
+  /**
+   * Health check for external ML microservice.
+   */
+  public async checkHealth(): Promise<boolean> {
+    try {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), this.timeoutMs);
+      const response = await fetch(`${this.mlServiceUrl}/health`, {
+        signal: controller.signal,
+      });
+      clearTimeout(timer);
+      if (response.ok) {
+        const body = (await response.json()) as { status?: string };
+        return body.status === "healthy";
+      }
+      return false;
+    } catch {
+      return false;
+    }
   }
 
   /**
@@ -23,28 +90,89 @@ export class MLEngineAdapter {
   ): Promise<MissionAssessment> {
     if (this.isExternalServiceEnabled) {
       try {
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), this.timeoutMs);
+
         const response = await fetch(`${this.mlServiceUrl}/api/v1/assess`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ route, parameters }),
+          signal: controller.signal,
         });
+        clearTimeout(timer);
 
         if (response.ok) {
-          const result = await response.json() as MissionAssessment;
+          const result = (await response.json()) as MissionAssessment;
           return {
             ...result,
             scoringSource: "model-generated",
-            scoringExplanation: result.scoringExplanation || "Evaluated by external Person 3 ML inference microservice.",
+            scoringExplanation:
+              result.scoringExplanation || "Evaluated by external Person 3 ML inference microservice.",
           };
         }
-      } catch {
-        // Fall back gracefully to local baseline heuristic model
-        console.warn("[MLEngineAdapter] External ML microservice unreachable. Falling back to baseline heuristic adapter.");
+      } catch (err: unknown) {
+        console.warn(
+          `[MLEngineAdapter] External ML microservice (${this.mlServiceUrl}) unreachable: ${
+            err instanceof Error ? err.message : String(err)
+          }. Falling back to baseline heuristic adapter.`
+        );
       }
     }
 
     // Baseline Model (Person 3 pluggable heuristic)
     return this.calculateBaselineAssessment(route, parameters);
+  }
+
+  /**
+   * Predicts terrain hazard using ML microservice or local heuristic fallback.
+   */
+  public async predictTerrainHazard(params: {
+    slopeDegrees: number;
+    elevationDeltaM?: number;
+    roughnessIndex?: number;
+    rockAbundancePct?: number;
+    dustCoverIndex?: number;
+    thermalInertiaSi?: number;
+  }): Promise<TerrainHazardPrediction> {
+    if (this.isExternalServiceEnabled) {
+      try {
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), this.timeoutMs);
+
+        const response = await fetch(`${this.mlServiceUrl}/api/v1/infer/hazard`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            slope_degrees: params.slopeDegrees,
+            elevation_delta_m: params.elevationDeltaM ?? 0.0,
+            roughness_index: params.roughnessIndex ?? 0.2,
+            rock_abundance_pct: params.rockAbundancePct ?? 5.0,
+            dust_cover_index: params.dustCoverIndex ?? 0.3,
+            thermal_inertia_si: params.thermalInertiaSi ?? 280.0,
+          }),
+          signal: controller.signal,
+        });
+        clearTimeout(timer);
+
+        if (response.ok) {
+          return (await response.json()) as TerrainHazardPrediction;
+        }
+      } catch {
+        // Fall back to heuristic
+      }
+    }
+
+    const slope = params.slopeDegrees;
+    const isCritical = slope > 22 || (params.rockAbundancePct ?? 5) > 30;
+    const isModerate = slope > 12;
+    return {
+      hazard_class: isCritical ? "CRITICAL" : isModerate ? "MODERATE" : "LOW",
+      hazard_score: Math.min(100, Math.round(slope * 2.5 + (params.roughnessIndex ?? 0.2) * 20)),
+      slip_risk_probability: Math.min(1.0, Number((slope / 30.0).toFixed(2))),
+      confidence: 0.85,
+      factors: { slope, roughness: params.roughnessIndex ?? 0.2 },
+      source: "rule-based",
+    };
   }
 
   /**
@@ -74,7 +202,7 @@ export class MLEngineAdapter {
 
     // 2. Science Score
     const scienceStops = route.points.filter((p) => p.type === "science").length;
-    let scienceScore = Math.min(100, scienceStops * 30 + 15);
+    const scienceScore = Math.min(100, scienceStops * 30 + 15);
     if (scienceStops === 0) {
       warnings.push("Route contains zero scientific collection stops.");
     }
@@ -89,10 +217,11 @@ export class MLEngineAdapter {
 
     // 4. Overall Score
     const overallScore = Math.round(
-      safetyScore * 0.45 + scienceScore * 0.35 + accessibilityScore * 0.20
+      safetyScore * 0.45 + scienceScore * 0.35 + accessibilityScore * 0.2
     );
 
-    let missionStatus: "MISSION FEASIBLE" | "MISSION RESTRICTED" | "MISSION CONSTRAINT EXCEEDED" = "MISSION FEASIBLE";
+    let missionStatus: "MISSION FEASIBLE" | "MISSION RESTRICTED" | "MISSION CONSTRAINT EXCEEDED" =
+      "MISSION FEASIBLE";
     if (route.estimatedDurationMinutes > parameters.maxDurationMinutes || route.maxSlopeDegrees > 22) {
       missionStatus = "MISSION CONSTRAINT EXCEEDED";
     } else if (overallScore < 70 || route.maxSlopeDegrees > 14) {
@@ -110,7 +239,8 @@ export class MLEngineAdapter {
       modelIdentifier: "Baseline-Planetary-EVA-v1.0 (Pluggable for Person 3 ML Model)",
       scoringSource: "rule-based",
       missionStatus,
-      scoringExplanation: "Deterministic evaluation combining MOLA slope risk (45%), science stops count (35%), and metabolic traversal distance (20%).",
+      scoringExplanation:
+        "Deterministic evaluation combining MOLA slope risk (45%), science stops count (35%), and metabolic traversal distance (20%).",
     };
   }
 }

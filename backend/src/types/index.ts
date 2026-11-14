@@ -65,12 +65,17 @@ export interface ScienceTarget {
   id: string;
   coordinate: MarsCoordinate;
   name: string;
+  region?: string;
   category: "stratigraphy" | "mineralogy" | "paleohydrology" | "volcanology" | "astrobiology" | "geomorphology";
   scientificValue: ScientificValue;
   description: string;
   dataSource: string;
   potentialSamples?: string[];
   associatedFormation?: string;
+  provenanceClassification?: "MEASURED" | "DERIVED" | "PREDICTED" | "SIMULATED" | "BENCHMARK" | "SYNTHETIC";
+  evidenceStatus?: "verified_in_situ" | "orbital_only" | "partial_coverage" | "missing_in_situ";
+  missingEvidence?: string[];
+  references?: string[];
   isMockData?: boolean;
 }
 
@@ -168,6 +173,15 @@ export interface ScientificAssessment {
   explanation: string;
   sources: string[];
   samplePriorities?: string[];
+  geologicalEpoch?: "Noachian" | "Hesperian" | "Amazonian" | "Noachian-Hesperian Transition";
+  mepagRelevance?: string[];
+  iceProbability?: number;
+  confidence?: number;
+  provenance?: Record<string, unknown>;
+  fallbackUsed?: boolean;
+  provenanceClassification?: "MEASURED" | "DERIVED" | "PREDICTED" | "SIMULATED" | "BENCHMARK" | "SYNTHETIC";
+  methodology?: string;
+  limitations?: string[];
 }
 
 // Data Sources & System Status
@@ -181,6 +195,27 @@ export interface DataSourceInfo {
   lastSync: string;
   attribution: string;
   coverage: string;
+  recordKind?:
+    | "VERIFIED_EXTERNAL_REFERENCE"
+    | "STATIC_BENCHMARK_CATALOG"
+    | "ANALYTICAL_MODEL"
+    | "INGESTED_DATASET"
+    | "SYNTHETIC_DATASET";
+  ingestionStatus?: "NOT_INGESTED_REFERENCE" | "INGESTED_LOCAL" | "INGESTION_FAILED";
+  product?: string;
+  processingStage?: string;
+  validationStatus?:
+    | "METADATA_VERIFIED"
+    | "INGESTED_CHECKSUM_VERIFIED"
+    | "PARTIAL_METADATA"
+    | "PENDING_VERIFICATION"
+    | "UNAVAILABLE";
+  classification?: "MEASURED" | "DERIVED" | "PREDICTED" | "SIMULATED" | "BENCHMARK" | "SYNTHETIC";
+  pipelineName?: string;
+  modelVersion?: string;
+  retrievalTimestamp?: string;
+  limitations?: string;
+  missingSamplesNote?: string;
 }
 
 export interface APIResponse<T> {
@@ -275,17 +310,78 @@ export interface MarsObservation {
     | "imagery"
     | "mineralogy"
     | "geology"
-    | "rover_observation";
+    | "rover_observation"
+    | "subsurface_ice"
+    | "isru_resource";
   value?: number;
   unit?: string;
   confidence?: number;
   timestamp?: string;
+  metadata?: Record<string, unknown>;
+  provenance: DataProvenance;
+}
+
+export type ScientificDatasetCategory =
+  | "ELEVATION"
+  | "GEOLOGY"
+  | "MINERALOGY"
+  | "THERMAL"
+  | "SUBSURFACE_ICE"
+  | "ISRU_RESOURCE"
+  | "IN_SITU_OBSERVATION";
+
+export interface ScientificDatasetMetadata {
+  datasetId: string;
+  category: ScientificDatasetCategory;
+  name: string;
+  mission: string;
+  instrument: string;
+  spatialResolutionM: number;
+  verticalAccuracyM?: number;
+  coverage: string;
+  sourceUrl?: string;
+  dataMode: DataMode;
+  provenance: DataProvenance;
+  associatedDecisionIds?: string[];
+}
+
+export interface MineralogicalObservation {
+  mineralName: string;
+  category: "clay_phyllosilicate" | "carbonate" | "sulfate" | "oxide_hematite" | "olivine_pyroxene" | "hydrated_silica";
+  spectralAbsorptionBandsMicrons: number[];
+  estimatedAbundancePercent: number;
+  confidence: number;
+  provenance: DataProvenance;
+}
+
+export interface IceResourceProfile {
+  iceDepthMinM: number;
+  iceDepthMaxM: number;
+  iceConsistencyIndex: number; // 0.0 - 1.0 (SWIM index)
+  estimatedPurityPercent: number;
+  isruAccessibilityRating: "EXCELLENT" | "MODERATE" | "DIFFICULT" | "INACCESSIBLE";
+  provenance: DataProvenance;
+}
+
+export interface ThermalInertiaProfile {
+  thermalInertiaSI: number; // J m^-2 K^-1 s^-1/2 (THEMIS)
+  inferredSurfaceType: "dust_mantle" | "unconsolidated_sand" | "duricrust" | "rock_outcrop" | "bedrock";
+  rockFractionPercent: number;
   provenance: DataProvenance;
 }
 
 export type HazardSeverity = "LOW" | "MODERATE" | "HIGH" | "CRITICAL";
 
+export type HazardCategory =
+  | "TERRAIN"
+  | "GEOLOGICAL"
+  | "COMMUNICATION"
+  | "RESOURCE"
+  | "MISSION_CONSTRAINT"
+  | "ENVIRONMENTAL";
+
 export type HazardType =
+  // Terrain & Geological
   | "STEEP_SLOPE"
   | "EXTREME_SLOPE"
   | "LARGE_ELEVATION_CHANGE"
@@ -295,7 +391,27 @@ export type HazardType =
   | "ROUTE_BOTTLENECK"
   | "HIGH_RISK_DESCENT"
   | "LOW_DATA_CONFIDENCE"
-  | "SCIENCE_TARGET_PROXIMITY_RISK";
+  | "SCIENCE_TARGET_PROXIMITY_RISK"
+  | "UNSTABLE_REGOLITH"
+  | "ROCK_ABUNDANCE"
+  | "TRAVERSABILITY_LIMIT"
+  | "GEOLOGICAL_INSTABILITY"
+  // Communication
+  | "LINE_OF_SIGHT_LOSS"
+  | "ORBITER_RELAY_UNAVAILABLE"
+  | "COMMUNICATION_BLACKOUT"
+  | "TASK_COMM_INTERRUPT"
+  // Resource
+  | "LOW_BATTERY_RESERVE"
+  | "EXCESSIVE_ENERGY_EXPENDITURE"
+  | "INSUFFICIENT_OXYGEN"
+  | "SAMPLE_STORAGE_EXCEEDED"
+  | "RESOURCE_DEPLETION_RISK"
+  // Mission Constraint
+  | "MISSION_DEADLINE_BREACH"
+  | "EMERGENCY_RETURN_INFEASIBLE"
+  | "AGENT_CAPABILITY_MISMATCH"
+  | "OPERATIONAL_MARGIN_DEFICIT";
 
 export interface HazardEvidenceItem {
   id: string;
@@ -309,6 +425,7 @@ export interface Hazard {
   id: string;
   name?: string;
   type: HazardType;
+  category?: HazardCategory;
   severity: HazardSeverity;
   location: MarsCoordinate;
   radiusM?: number;
@@ -316,6 +433,11 @@ export interface Hazard {
   reason: string;
   recommendation?: string;
   confidence?: number;
+  probability?: number; // 0.0 - 1.0
+  impactDescription?: string;
+  detectionSource?: string;
+  provenanceClassification?: "MEASURED" | "DERIVED" | "PREDICTED" | "SIMULATED";
+  recommendedMitigation?: string;
   sourceType: SourceType;
   evidence?: HazardEvidenceItem[];
   uncertainty?: {
@@ -395,12 +517,16 @@ export interface MultiObjectiveRouteScore {
   science: number;          // 0-100
   accessibility: number;    // 0-100
   efficiency: number;       // 0-100
+  communication?: number;   // 0-100 (Modeled communication availability)
+  energyEfficiency?: number; // 0-100 (Energy budget compliance)
+  resourceFeasibility?: number; // 0-100 (Combined battery, O2, sample capacity)
   evidenceConfidence: number; // 0-100
   evaFeasibility: number;   // 0-100
   uncertaintyPenalty: number; // 0-100
   riskAdjustedScore: number;  // Expected Value - Uncertainty Penalty
   isParetoEfficient: boolean;
   paretoDominatedBy?: string[];
+  hardConstraintsSatisfied?: boolean;
 }
 
 export interface RouteCandidate {
@@ -415,6 +541,31 @@ export interface RouteCandidate {
   safetyScore: number;        // 0-100
   accessibilityScore: number; // 0-100
   overallScore: number;       // 0-100
+  communicationScore?: number; // 0-100
+  energyWhConsumed?: number;   // Total estimated Wh
+  projectedBatteryPercent?: number; // Projected remaining SoC %
+  projectedOxygenMinutes?: number;  // Projected remaining O2 minutes
+  hardConstraintViolations?: string[]; // Empty if feasible, lists violations if infeasible
+  tradeoffExplanation?: string; // Detailed human-readable trade-off reasoning
+  mlRiskScore?: number;         // Predicted risk from ML service
+  communicationMetrics?: {
+    losCoveragePercent: number;
+    maxBlackoutDurationMin: number;
+    orbiterPassAvailable: boolean;
+    commContinuitySatisfied: boolean;
+  };
+  resourceMetrics?: {
+    initialBatteryPercent: number;
+    projectedRemainingPercent: number;
+    energyExpenditureWh: number;
+    energyBudgetWh: number;
+    batteryMarginPercent: number;
+    sampleTubesNeeded: number;
+    sampleTubesAvailable: number;
+    estimatedDataMb: number;
+    oxygenRemainingMin?: number;
+    emergencyReturnFeasible: boolean;
+  };
   hazards: Hazard[];
   scienceTargets: string[];
   recommendationReason: string;
@@ -557,6 +708,11 @@ export interface CopilotMissionPlanRequest {
   returnRequired?: boolean;
   traverseMode?: "standard" | "utv";
   userRole?: UserRole;
+  agentId?: string;
+  agentType?: "ASTRONAUT" | "ROVER";
+  initialBatteryPercent?: number;
+  initialOxygenMinutes?: number;
+  requireContinuousCommunication?: boolean;
 }
 
 export interface AuditEvent {
@@ -634,7 +790,24 @@ export interface MissionCommandEnvelope {
 
 export type MissionEventType =
   | "MISSION_STARTED"
+  | "MISSION_CREATED"
+  | "MISSION_UPDATED"
+  | "MISSION_APPROVED"
+  | "MISSION_LOCKED"
+  | "ROUTE_CREATED"
+  | "ROUTE_SELECTED"
   | "AGENT_ASSIGNED"
+  | "AGENT_STATUS_CHANGED"
+  | "TASK_CREATED"
+  | "TASK_TRANSITION"
+  | "TASK_REASSIGNED"
+  | "TELEMETRY_UPDATED"
+  | "RESOURCE_UPDATED"
+  | "PACKET_QUEUED"
+  | "PACKET_BUFFERED"
+  | "PACKET_DELIVERED"
+  | "EVA_TRANSITION"
+  | "EVA_EMERGENCY_RETURN"
   | "SENSOR_OBSERVATION"
   | "HAZARD_DETECTED"
   | "COMMUNICATION_LOST"
@@ -645,18 +818,29 @@ export type MissionEventType =
   | "COMMAND_EXECUTED"
   | "COMMAND_REJECTED"
   | "SCIENCE_TARGET_COMPLETED"
-  | "MISSION_LOCKED"
+  | "WHAT_IF_EXECUTED"
+  | "MONTE_CARLO_EXECUTED"
+  | "SNAPSHOT_CREATED"
+  | "CONSISTENCY_AUDITED"
+  | "SAFETY_EVALUATED"
   | "CHECKPOINT_SAVED"
   | "CHECKPOINT_RESTORED";
 
 export interface MissionEventRecord {
   eventId: string;
+  sequenceNumber?: number;
   missionId: string;
   timestamp: string; // Wall-clock UTC timestamp
   simulationTime?: number; // Mission Elapsed Time (MET) in seconds
   actor: string;
   agentId?: string;
+  entityId?: string;
+  correlationId?: string;
+  auditRef?: string;
+  idempotencyKey?: string;
   eventType: MissionEventType;
+  previousState?: Record<string, unknown>;
+  resultingState?: Record<string, unknown>;
   payload: Record<string, unknown>;
   provenance: DataProvenance;
   previousEventHash: string;
@@ -678,15 +862,33 @@ export interface FusedHazardReport {
   provenance: DataProvenance;
 }
 
+export type MessagePriorityClass =
+  | "EMERGENCY_SAFETY"
+  | "MISSION_CRITICAL_OPS"
+  | "NAVIGATION_TELEMETRY"
+  | "SCIENTIFIC_OBSERVATIONS"
+  | "ROUTINE_STATUS"
+  | "CRITICAL"
+  | "HIGH"
+  | "MEDIUM"
+  | "BULK";
+
 export interface CommunicationPacket {
   packetId: string;
   sourceAgentId: string;
-  priority: "CRITICAL" | "HIGH" | "MEDIUM" | "BULK";
-  type: "TELEMETRY" | "HAZARD_ALERT" | "COMMAND" | "SCIENCE_DATA" | "SPECTRAL_CUBE";
+  destinationAgentId?: string;
+  priority: MessagePriorityClass;
+  priorityClass?: 1 | 2 | 3 | 4 | 5; // 5: Emergency/Safety, 4: Mission Critical, 3: Nav/Telemetry, 2: Science, 1: Routine
+  type: "TELEMETRY" | "HAZARD_ALERT" | "COMMAND" | "SCIENCE_DATA" | "SPECTRAL_CUBE" | "EMERGENCY_SOS" | "STATUS_UPDATE";
   payloadSizeKb: number;
   createdAt: string;
-  status: "TRANSMITTING" | "BUFFERED" | "DELIVERED" | "DROPPED";
+  status: "QUEUED" | "TRANSMITTING" | "BUFFERED" | "DELIVERED" | "DROPPED" | "EXPIRED" | "FAILED_BLACKOUT" | "FAILED";
   attempts: number;
+  ttlMinutes?: number;
+  transmissionDelaySeconds?: number;
+  storeAndForward?: boolean;
+  deliveredAt?: string;
+  payloadSummary?: string;
 }
 
 

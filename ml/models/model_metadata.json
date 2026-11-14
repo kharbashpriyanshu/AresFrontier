@@ -1,0 +1,88 @@
+{
+  "model_version": "1.0.0",
+  "trained_at_utc": "2026-11-12T06:24:40.179818+00:00",
+  "data_provenance": {
+    "classification": "synthetic-physics-constrained",
+    "description": "Synthetic Martian traverse data parameterized by MOLA topography distributions, THEMIS thermal inertia ranges, and Apollo/Artemis metabolic traverse physics.",
+    "disclaimer": "Synthetic training data only. Not validated on real-world Martian EVA missions without in-situ ground truthing."
+  },
+  "models": {
+    "terrain_hazard_classifier": {
+      "algorithm": "RandomForestClassifier",
+      "features": [
+        "slope_degrees",
+        "elevation_delta_m",
+        "roughness_index",
+        "rock_abundance_pct",
+        "dust_cover_index",
+        "thermal_inertia_si"
+      ],
+      "classes": [
+        "LOW",
+        "MODERATE",
+        "CRITICAL"
+      ],
+      "metrics": {
+        "accuracy": 0.9163,
+        "f1_weighted": 0.915
+      },
+      "file": "terrain_hazard_classifier.joblib"
+    },
+    "route_risk_regressor": {
+      "algorithm": "GradientBoostingRegressor",
+      "features": [
+        "total_distance_km",
+        "max_slope_degrees",
+        "avg_slope_degrees",
+        "elevation_gain_m",
+        "elevation_loss_m",
+        "duration_ratio",
+        "critical_hazard_count",
+        "science_point_count"
+      ],
+      "metrics": {
+        "mae": 2.9745,
+        "r2": 0.9829
+      },
+      "file": "route_risk_regressor.joblib"
+    },
+    "mission_feasibility_classifier": {
+      "algorithm": "RandomForestClassifier",
+      "features": [
+        "total_distance_km",
+        "max_slope_degrees",
+        "avg_slope_degrees",
+        "elevation_gain_m",
+        "elevation_loss_m",
+        "duration_ratio",
+        "critical_hazard_count",
+        "science_point_count"
+      ],
+      "classes": [
+        "MISSION FEASIBLE",
+        "MISSION RESTRICTED",
+        "MISSION CONSTRAINT EXCEEDED"
+      ],
+      "metrics": {
+        "accuracy": 0.9986,
+        "f1_weighted": 0.9986
+      },
+      "file": "mission_feasibility_classifier.joblib"
+    },
+    "target_priority_regressor": {
+      "algorithm": "GradientBoostingRegressor",
+      "features": [
+        "distance_from_ingress_km",
+        "slope_to_target_degrees",
+        "base_scientific_value",
+        "terrain_roughness",
+        "accessibility_index"
+      ],
+      "metrics": {
+        "mae": 2.4225,
+        "r2": 0.9666
+      },
+      "file": "target_priority_regressor.joblib"
+    }
+  }
+}

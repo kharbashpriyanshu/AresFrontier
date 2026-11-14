@@ -1,14 +1,26 @@
 [
   {
-    "commandId": "cmd-preempt-1794076770976",
-    "nonce": "nonce-1794076770976",
-    "issuer": "flight-dir-alpha",
+    "commandId": "cmd-restart-test-006",
+    "nonce": "nonce-restart-006",
+    "issuer": "usr-cmdr",
     "role": "MISSION_COMMAND",
-    "agentId": "agent-rover-02",
+    "agentId": "agent-rover-01",
     "command": "PAUSE",
-    "issuedAt": 1794076770976,
-    "expiresAt": 1794076830976,
+    "issuedAt": 1794476127813,
+    "expiresAt": 1794476187813,
     "status": "EXECUTED",
-    "processedAt": "2026-11-07T18:39:30.976Z"
+    "processedAt": "2026-11-12T09:35:27.813Z"
+  },
+  {
+    "commandId": "cmd-restart-test-006",
+    "nonce": "nonce-restart-006",
+    "issuer": "usr-cmdr",
+    "role": "MISSION_COMMAND",
+    "agentId": "agent-rover-01",
+    "command": "PAUSE",
+    "issuedAt": 1794476127813,
+    "expiresAt": 1794476187813,
+    "status": "REJECTED",
+    "processedAt": "2026-11-12T09:35:27.832Z"
   }
 ]

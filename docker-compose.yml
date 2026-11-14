@@ -15,6 +15,28 @@ services:
       - pgdata:/var/lib/postgresql/data
       - ./backend/src/models/schema.sql:/docker-entrypoint-initdb.d/init.sql
 
+  ml-service:
+    build:
+      context: ./ml
+      dockerfile: Dockerfile
+    container_name: martian_map_ml
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+
+  science-service:
+    build:
+      context: ./science
+      dockerfile: Dockerfile
+    container_name: martian_map_science
+    restart: unless-stopped
+    ports:
+      - "8001:8001"
+    environment:
+      - PORT=8001
+
   backend:
     build:
       context: ./backend
@@ -26,9 +48,15 @@ services:
     environment:
       - PORT=5000
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/martian_map
+      - ML_SERVICE_URL=http://ml-service:8000
+      - ENABLE_ML_SERVICE=true
+      - SCIENCE_SERVICE_URL=http://science-service:8001
+      - ENABLE_SCIENCE_SERVICE=true
       - NODE_ENV=production
     depends_on:
       - db
+      - ml-service
+      - science-service
 
   frontend:
     build:

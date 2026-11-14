@@ -1,0 +1,2215 @@
+{
+  "schemaVersion": "1.0.0",
+  "missionId": "MARSWALK-TEST-001",
+  "savedAt": "2026-11-12T09:35:22.144Z",
+  "metadata": {
+    "id": "MARSWALK-TEST-001",
+    "name": "Marswalk-001 (Jezero Crater Astrobiology Traverse)",
+    "sol": 100,
+    "missionPhase": "SURFACE_TRAVERSE",
+    "status": "APPROVED",
+    "commanderId": "ASTRONAUT-01",
+    "createdAt": "2026-11-12T05:35:21.993Z",
+    "updatedAt": "2026-11-12T09:35:22.144Z",
+    "activeRouteId": "route-jezero-delta-sol100",
+    "parameters": {
+      "routeId": "route-jezero-delta-sol100",
+      "startCoordinate": {
+        "latitude": 18.4447,
+        "longitude": 77.4508
+      },
+      "maxDurationMinutes": 240,
+      "astronautSkillLevel": "standard",
+      "returnRequired": true
+    },
+    "tags": [
+      "EVA",
+      "Astrobiology",
+      "Jezero-Western-Delta",
+      "Multi-Agent"
+    ]
+  },
+  "objectives": {
+    "primaryScienceObjective": "PAST_HABITABILITY",
+    "secondaryScienceObjectives": [
+      "PAST_HABITABILITY",
+      "MINERALOGICAL_DIVERSITY"
+    ],
+    "operationalObjectives": [
+      {
+        "id": "op-obj-01",
+        "type": "SAMPLE_RETURN_CACHING",
+        "title": "Collect Bottomset Mudstone Core at Kodiak Remnant",
+        "priority": "CRITICAL",
+        "status": "IN_PROGRESS",
+        "assignedAgentCallsign": "ROVER-02 SCIENCE",
+        "successCriteria": "Extract 1 hermetically sealed drill core tube with >20g rock sample"
+      },
+      {
+        "id": "op-obj-02",
+        "type": "LONG_RANGE_SCOUTING",
+        "title": "Scout Northern Delta Front Scarp Incline",
+        "priority": "HIGH",
+        "status": "IN_PROGRESS",
+        "assignedAgentCallsign": "ROVER-01 SCOUT",
+        "successCriteria": "Map slope gradients below 20 degrees with 0.25m lidar resolution"
+      },
+      {
+        "id": "op-obj-03",
+        "type": "COMMUNICATION_RELAY_DEPLOYMENT",
+        "title": "Maintain Line-of-Sight UHF Relay for Surface Crew",
+        "priority": "HIGH",
+        "status": "ACHIEVED",
+        "assignedAgentCallsign": "ROVER-03 RELAY",
+        "successCriteria": "Zero surface crew communication blackout duration during EVA egress"
+      }
+    ],
+    "scienceWeight": 0.45,
+    "safetyWeight": 0.4,
+    "efficiencyWeight": 0.15
+  },
+  "scienceTargets": {
+    "targets": [
+      {
+        "id": "tgt-kodiak-butte",
+        "name": "Kodiak Butte Delta Remnant",
+        "coordinate": {
+          "latitude": 18.423,
+          "longitude": 77.411
+        },
+        "category": "stratigraphy",
+        "scientificValue": "high",
+        "description": "Isolated erosional remnant exhibiting textbook Gilbert-type delta bottomsets and foresets. Highest priority evidence of ancient high-energy lake stage.",
+        "dataSource": "NASA Perseverance Rover Mastcam-Z Long Distance Imaging & CRISM",
+        "potentialSamples": [
+          "Fine-grained silts",
+          "Bottomset clay layers"
+        ],
+        "associatedFormation": "Deltaic Fan Complex",
+        "isMockData": false
+      },
+      {
+        "id": "tgt-seitah-olivine",
+        "name": "South Séítah Cumulate Outcrop",
+        "coordinate": {
+          "latitude": 18.435,
+          "longitude": 77.438
+        },
+        "category": "mineralogy",
+        "scientificValue": "high",
+        "description": "Coarse-grained olivine cumulate rock representing planetary magma ocean or thick layered intrusion. Key for radiometric dating of Jezero basin floor.",
+        "dataSource": "NASA Mars 2020 PIXL / SHERLOC Elemental Core Sample 'Dourbes'",
+        "potentialSamples": [
+          "Olivine cumulate core",
+          "Carbonate cement"
+        ],
+        "associatedFormation": "Séítah Formation",
+        "isMockData": false
+      },
+      {
+        "id": "tgt-belva-crater-rim",
+        "name": "Belva Crater Impact Rim & Ejecta",
+        "coordinate": {
+          "latitude": 18.485,
+          "longitude": 77.442
+        },
+        "category": "geomorphology",
+        "scientificValue": "medium",
+        "description": "Younger impact into delta deposit exposing 3D cross-sections of sedimentary beds and deep megabreccia blocks.",
+        "dataSource": "NASA MRO HiRISE (PSP_002172_1985) & Perseverance Recon",
+        "potentialSamples": [
+          "Impact melt glass",
+          "Excavated deep basement breccia"
+        ],
+        "associatedFormation": "Belva Impact Structure",
+        "isMockData": false
+      },
+      {
+        "id": "tgt-neretva-inflow",
+        "name": "Neretva Vallis Inflow Channel Breach",
+        "coordinate": {
+          "latitude": 18.52,
+          "longitude": 77.38
+        },
+        "category": "paleohydrology",
+        "scientificValue": "high",
+        "description": "Channel canyon through which violent catastrophic floods carved the Jezero crater rim and deposited boulder conglomerates.",
+        "dataSource": "NASA MGS MOLA & Mars Express HRSC Elevation Surveys",
+        "potentialSamples": [
+          "Alluvial boulder clasts",
+          "Bimodal sandstones"
+        ],
+        "associatedFormation": "Neretva Fluvial Channel",
+        "isMockData": false
+      },
+      {
+        "id": "tgt-vera-rubin-ridge",
+        "name": "Vera Rubin Ridge (Hematite Crest)",
+        "coordinate": {
+          "latitude": -4.68,
+          "longitude": 137.38
+        },
+        "category": "mineralogy",
+        "scientificValue": "high",
+        "description": "Narrow topographic ridge rich in crystalline hematite, indicating an ancient redox interface where groundwater met lake water.",
+        "dataSource": "NASA MSL Curiosity CheMin XRD & APXS Analysis",
+        "potentialSamples": [
+          "Crystalline gray hematite",
+          "Calcium sulfate veins"
+        ],
+        "associatedFormation": "Murray Formation / Vera Rubin Unit",
+        "isMockData": false
+      },
+      {
+        "id": "tgt-greenheugh-pediment",
+        "name": "Greenheugh Pediment Unconformity",
+        "coordinate": {
+          "latitude": -4.72,
+          "longitude": 137.35
+        },
+        "category": "stratigraphy",
+        "scientificValue": "medium",
+        "description": "Major regional angular unconformity separating ancient wet lake mudstones from younger wind-blown Stimson sandstones.",
+        "dataSource": "NASA MSL Curiosity Mastcam Gigapixel Panorama",
+        "potentialSamples": [
+          "Eolian cross-bedded sandstone",
+          "Erosional unconformity contact"
+        ],
+        "associatedFormation": "Stimson Sandstone Formation",
+        "isMockData": false
+      }
+    ],
+    "selectedTargetIds": [
+      "tgt-kodiak-butte",
+      "tgt-seitah-olivine",
+      "tgt-belva-crater-rim"
+    ],
+    "samplePriorities": {
+      "tgt-kodiak-butte": [
+        "Fine-grained silts",
+        "Bottomset clay layers"
+      ],
+      "tgt-seitah-olivine": [
+        "Olivine cumulate core",
+        "Carbonate cement"
+      ],
+      "tgt-belva-crater-rim": [
+        "Impact melt glass",
+        "Basement megabreccia"
+      ]
+    },
+    "targetsCollectedCount": 1
+  },
+  "fleet": {
+    "astronauts": [
+      {
+        "id": "agent-astronaut-01",
+        "name": "Astronaut Alex Vance (Commander)",
+        "callsign": "ASTRONAUT-01",
+        "type": "ASTRONAUT",
+        "status": "EXECUTING",
+        "position": {
+          "latitude": 18.4447,
+          "longitude": 77.4508
+        },
+        "capabilities": [
+          "PRESSURE_SUIT",
+          "EMERGENCY_SUPPORT",
+          "TERRAIN_RECON"
+        ],
+        "structuredCapabilities": {
+          "mobility": {
+            "maxSlopeDeg": 20,
+            "speedKph": 3.2,
+            "maxRangeKm": 8,
+            "roughnessTolerance": 0.65
+          },
+          "scientificInstruments": [
+            "Handheld XRF Gun",
+            "Geological Hammer",
+            "High-Resolution Hazcam"
+          ],
+          "hasDrill": false,
+          "hasSpectrometer": true,
+          "hasLidar": false,
+          "sampleTubeCapacity": 4,
+          "sampleTubesRemaining": 4,
+          "communicationRelay": {
+            "isRelay": false,
+            "relayRangeKm": 1,
+            "relayBandwidthKbps": 256
+          },
+          "resourceCapacityWh": 1200,
+          "enduranceMinutes": 240
+        },
+        "suitType": "xEMU_PLANETARY",
+        "suitOxygenReserveMinutes": 240,
+        "maxContinuousEVAMinutes": 360,
+        "metabolicEnergyWatts": 280,
+        "safeStandbyLocation": {
+          "latitude": 18.4447,
+          "longitude": 77.4508
+        },
+        "telemetry": {
+          "batteryPercent": 92,
+          "batteryStatus": "GREEN",
+          "speedKph": 2.8,
+          "headingDeg": 285,
+          "internalTempC": 20.5,
+          "signalStrengthPercent": 95,
+          "lineOfSightToRelay": true,
+          "energyConsumptionRateWhPerKm": 120,
+          "suitOxygenPercent": 88,
+          "heartRateBpm": 110,
+          "lastHeartbeat": "2026-11-12T09:35:21.987Z"
+        },
+        "lastUpdated": "2026-11-12T09:35:21.987Z",
+        "provenance": {
+          "sourceType": "DERIVED",
+          "sourceName": "Martian Map Planetary Computation — Astronaut Telemetry Model",
+          "processingMethod": "Mathematical calculation derived from [Apollo Lunar EVA Telemetry, xEMU Metabolic Standard]: Deterministic Biomechanical Simulation",
+          "dataMode": "FALLBACK",
+          "uncertainty": {
+            "value": 1,
+            "unit": "score",
+            "methodology": "Propagated uncertainty from input layers [Apollo Lunar EVA Telemetry, xEMU Metabolic Standard]"
+          }
+        }
+      }
+    ],
+    "rovers": [
+      {
+        "id": "agent-rover-01",
+        "name": "Ares Scout Rover (Reconnaissance)",
+        "callsign": "ROVER-01 SCOUT",
+        "type": "ROVER",
+        "profileRole": "SCOUT",
+        "status": "EXECUTING",
+        "position": {
+          "latitude": 18.4485,
+          "longitude": 77.432
+        },
+        "capabilities": [
+          "TERRAIN_RECON",
+          "HIGH_SPEED_DRIVE",
+          "EMERGENCY_SUPPORT"
+        ],
+        "structuredCapabilities": {
+          "mobility": {
+            "maxSlopeDeg": 20,
+            "speedKph": 4.8,
+            "maxRangeKm": 25,
+            "roughnessTolerance": 0.88
+          },
+          "scientificInstruments": [
+            "Terrain Laser Scanner",
+            "Forward Hazard Hazcams",
+            "Slip Odometry"
+          ],
+          "hasDrill": false,
+          "hasSpectrometer": false,
+          "hasLidar": true,
+          "sampleTubeCapacity": 0,
+          "sampleTubesRemaining": 0,
+          "communicationRelay": {
+            "isRelay": false,
+            "relayRangeKm": 6,
+            "relayBandwidthKbps": 512
+          },
+          "resourceCapacityWh": 2400,
+          "enduranceMinutes": 480
+        },
+        "maxRangeKm": 25,
+        "speedKph": 4.8,
+        "communicationRangeKm": 6,
+        "scientificPayloads": [
+          "Terrain Laser Scanner",
+          "Forward Hazard Hazcams",
+          "Slip Odometry"
+        ],
+        "mobilityRating": 0.88,
+        "hazardTolerance": 20,
+        "batteryCapacityWh": 2400,
+        "currentBatteryWh": 2040,
+        "telemetry": {
+          "batteryPercent": 85,
+          "batteryStatus": "GREEN",
+          "speedKph": 4.2,
+          "headingDeg": 275,
+          "internalTempC": -15,
+          "signalStrengthPercent": 90,
+          "lineOfSightToRelay": true,
+          "activeRelayId": "agent-rover-03",
+          "energyConsumptionRateWhPerKm": 95,
+          "lastHeartbeat": "2026-11-12T09:35:21.987Z"
+        },
+        "currentTask": {
+          "id": "task-scout-recon-01",
+          "agentId": "agent-rover-01",
+          "taskType": "VERIFY_ROUTE",
+          "priority": "HIGH",
+          "name": "Delta Front Scarp Traverse Reconnaissance",
+          "target": {
+            "coordinate": {
+              "latitude": 18.455,
+              "longitude": 77.41
+            },
+            "description": "Inspect slope stability along Kodiak Butte northern corridor"
+          },
+          "estimatedDurationMin": 45,
+          "requiredBatteryPercent": 18,
+          "requiredCommunication": true,
+          "riskLevel": "MODERATE",
+          "status": "IN_PROGRESS"
+        },
+        "lastUpdated": "2026-11-12T09:35:21.987Z",
+        "provenance": {
+          "sourceType": "DERIVED",
+          "sourceName": "Martian Map Planetary Computation — Scout Autonomous Vehicle Model",
+          "processingMethod": "Mathematical calculation derived from [Mars 2020 AutoNav Telemetry, JPL Rocker-Bogie Dynamics]: Deterministic Surface Traverse Simulation",
+          "dataMode": "FALLBACK",
+          "uncertainty": {
+            "value": 1,
+            "unit": "score",
+            "methodology": "Propagated uncertainty from input layers [Mars 2020 AutoNav Telemetry, JPL Rocker-Bogie Dynamics]"
+          }
+        }
+      },
+      {
+        "id": "agent-rover-02",
+        "name": "Ares Mineralogy & Sample Rover",
+        "callsign": "ROVER-02 SCIENCE",
+        "type": "ROVER",
+        "profileRole": "SCIENCE",
+        "status": "PLANNING",
+        "position": {
+          "latitude": 18.445,
+          "longitude": 77.44
+        },
+        "capabilities": [
+          "SPECTROMETER",
+          "SAMPLE_DRILL"
+        ],
+        "structuredCapabilities": {
+          "mobility": {
+            "maxSlopeDeg": 14,
+            "speedKph": 2.5,
+            "maxRangeKm": 15,
+            "roughnessTolerance": 0.72
+          },
+          "scientificInstruments": [
+            "Deep UV Raman Spectrometer (SHERLOC)",
+            "X-Ray Fluorescence (PIXL)",
+            "Abrasion Rotary Core Drill"
+          ],
+          "hasDrill": true,
+          "hasSpectrometer": true,
+          "hasLidar": false,
+          "sampleTubeCapacity": 15,
+          "sampleTubesRemaining": 12,
+          "communicationRelay": {
+            "isRelay": false,
+            "relayRangeKm": 5,
+            "relayBandwidthKbps": 1024
+          },
+          "resourceCapacityWh": 3200,
+          "enduranceMinutes": 360
+        },
+        "maxRangeKm": 15,
+        "speedKph": 2.2,
+        "communicationRangeKm": 5,
+        "scientificPayloads": [
+          "Deep UV Raman Spectrometer",
+          "Abrasion Rotary Core Drill",
+          "Micro-Imaging Camera"
+        ],
+        "mobilityRating": 0.72,
+        "hazardTolerance": 14,
+        "batteryCapacityWh": 3200,
+        "currentBatteryWh": 2880,
+        "telemetry": {
+          "batteryPercent": 90,
+          "batteryStatus": "GREEN",
+          "speedKph": 1.8,
+          "headingDeg": 260,
+          "internalTempC": -10,
+          "signalStrengthPercent": 92,
+          "lineOfSightToRelay": true,
+          "activeRelayId": "agent-rover-03",
+          "energyConsumptionRateWhPerKm": 160,
+          "lastHeartbeat": "2026-11-12T09:35:21.987Z"
+        },
+        "lastUpdated": "2026-11-12T09:35:21.987Z",
+        "provenance": {
+          "sourceType": "DERIVED",
+          "sourceName": "Martian Map Planetary Computation — Science Rover Model",
+          "processingMethod": "Mathematical calculation derived from [Perseverance Science Payload Specs, CheMin / PIXL Documentation]: Deterministic Instrument Simulation",
+          "dataMode": "FALLBACK",
+          "uncertainty": {
+            "value": 1,
+            "unit": "score",
+            "methodology": "Propagated uncertainty from input layers [Perseverance Science Payload Specs, CheMin / PIXL Documentation]"
+          }
+        }
+      },
+      {
+        "id": "agent-rover-03",
+        "name": "Ares Telemetry & Tactical Relay",
+        "callsign": "ROVER-03 RELAY",
+        "type": "ROVER",
+        "profileRole": "RELAY",
+        "status": "EXECUTING",
+        "position": {
+          "latitude": 18.446,
+          "longitude": 77.445
+        },
+        "capabilities": [
+          "COMM_RELAY",
+          "EMERGENCY_SUPPORT"
+        ],
+        "structuredCapabilities": {
+          "mobility": {
+            "maxSlopeDeg": 15,
+            "speedKph": 3.5,
+            "maxRangeKm": 18,
+            "roughnessTolerance": 0.78
+          },
+          "scientificInstruments": [
+            "Electra UHF Relay Mast",
+            "Emergency Radio Beacon",
+            "Mastcam"
+          ],
+          "hasDrill": false,
+          "hasSpectrometer": false,
+          "hasLidar": false,
+          "sampleTubeCapacity": 0,
+          "sampleTubesRemaining": 0,
+          "communicationRelay": {
+            "isRelay": true,
+            "relayRangeKm": 12,
+            "relayBandwidthKbps": 4096
+          },
+          "resourceCapacityWh": 4000,
+          "enduranceMinutes": 720
+        },
+        "maxRangeKm": 18,
+        "speedKph": 3.2,
+        "communicationRangeKm": 12,
+        "scientificPayloads": [
+          "Ultra-High Frequency (UHF) Electra Relay Mast",
+          "Emergency Radio Beacon"
+        ],
+        "mobilityRating": 0.78,
+        "hazardTolerance": 15,
+        "batteryCapacityWh": 4000,
+        "currentBatteryWh": 3520,
+        "telemetry": {
+          "batteryPercent": 88,
+          "batteryStatus": "GREEN",
+          "speedKph": 0,
+          "headingDeg": 0,
+          "internalTempC": -12,
+          "signalStrengthPercent": 98,
+          "lineOfSightToRelay": true,
+          "energyConsumptionRateWhPerKm": 80,
+          "lastHeartbeat": "2026-11-12T09:35:21.987Z"
+        },
+        "lastUpdated": "2026-11-12T09:35:21.987Z",
+        "provenance": {
+          "sourceType": "DERIVED",
+          "sourceName": "Martian Map Planetary Computation — Relay Rover Model",
+          "processingMethod": "Mathematical calculation derived from [Electra UHF Transceiver Specs, Line-of-Sight Waveguide Propagation]: Radio Wave Propagation Model",
+          "dataMode": "FALLBACK",
+          "uncertainty": {
+            "value": 1,
+            "unit": "score",
+            "methodology": "Propagated uncertainty from input layers [Electra UHF Transceiver Specs, Line-of-Sight Waveguide Propagation]"
+          }
+        }
+      }
+    ],
+    "orbiters": [
+      {
+        "id": "agent-orbiter-01",
+        "name": "Mars Reconnaissance Relay Orbiter (MRO-Relay)",
+        "callsign": "ORBITER-01",
+        "type": "ORBITER",
+        "status": "EXECUTING",
+        "position": {
+          "latitude": 18.44,
+          "longitude": 77.45
+        },
+        "capabilities": [
+          "COMM_RELAY",
+          "ORBITAL_IMAGERY"
+        ],
+        "structuredCapabilities": {
+          "mobility": {
+            "maxSlopeDeg": 0,
+            "speedKph": 12400,
+            "maxRangeKm": 100000,
+            "roughnessTolerance": 1
+          },
+          "scientificInstruments": [
+            "HiRISE 0.25m Stereo Camera",
+            "CRISM Infrared Spectrometer",
+            "SHARAD Sounding Radar"
+          ],
+          "hasDrill": false,
+          "hasSpectrometer": true,
+          "hasLidar": true,
+          "sampleTubeCapacity": 0,
+          "sampleTubesRemaining": 0,
+          "communicationRelay": {
+            "isRelay": true,
+            "relayRangeKm": 850,
+            "relayBandwidthKbps": 2048
+          },
+          "resourceCapacityWh": 15000,
+          "enduranceMinutes": 60000
+        },
+        "orbitalAltitudeKm": 320,
+        "inclinationDeg": 92.8,
+        "orbitalPeriodMinutes": 112,
+        "coverageRadiusKm": 850,
+        "bandwidthKbps": 2048,
+        "nextPassWindowStart": "2026-11-12T09:53:21.987Z",
+        "nextPassDurationMinutes": 14,
+        "telemetry": {
+          "batteryPercent": 96,
+          "batteryStatus": "GREEN",
+          "speedKph": 12400,
+          "headingDeg": 180,
+          "internalTempC": 15,
+          "signalStrengthPercent": 100,
+          "lineOfSightToRelay": true,
+          "energyConsumptionRateWhPerKm": 0,
+          "lastHeartbeat": "2026-11-12T09:35:21.987Z"
+        },
+        "lastUpdated": "2026-11-12T09:35:21.987Z",
+        "provenance": {
+          "sourceType": "DERIVED",
+          "sourceName": "Martian Map Planetary Computation — MRO Orbital Relay Model",
+          "processingMethod": "Mathematical calculation derived from [NASA Deep Space Network Relays, MRO Sun-Synchronous Orbit Elements]: Two-Body Keplerian Orbit Approximation",
+          "dataMode": "FALLBACK",
+          "uncertainty": {
+            "value": 1,
+            "unit": "score",
+            "methodology": "Propagated uncertainty from input layers [NASA Deep Space Network Relays, MRO Sun-Synchronous Orbit Elements]"
+          }
+        }
+      }
+    ],
+    "activeAgentIds": [
+      "agent-astronaut-01",
+      "agent-rover-01",
+      "agent-rover-02",
+      "agent-rover-03",
+      "agent-orbiter-01"
+    ],
+    "lastTelemetrySync": "2026-11-12T09:35:21.993Z"
+  },
+  "routes": {
+    "activeRouteId": "route-jezero-delta-sol100",
+    "routes": {
+      "route-jezero-delta-sol100": {
+        "id": "route-jezero-delta-sol100",
+        "name": "Jezero Delta Front & Séítah Exploration Traverse",
+        "points": [],
+        "segments": [],
+        "totalDistanceKm": 4.14,
+        "estimatedDurationMinutes": 129,
+        "elevationProfile": [],
+        "elevationGainM": 65,
+        "elevationLossM": 45,
+        "maxSlopeDegrees": 3.8,
+        "overallDifficulty": "low",
+        "createdAt": "2026-11-12T09:35:21.993Z"
+      }
+    },
+    "candidateProfiles": [],
+    "activeWaypoints": [],
+    "totalTraverseDistanceKm": 4.14,
+    "totalEstimatedMinutes": 129
+  },
+  "geology": {
+    "siteName": "Jezero Crater Western Fan (Octavia E. Butler Landing)",
+    "geologicalUnit": "Nf-ld (Noachian-Hesperian Fluvial-Lacustrine Deltaic Unit)",
+    "stratigraphicContext": "Gilbert-type delta foreset/bottomset succession overlying olivine floor unit",
+    "mineralogyContext": "Fe/Mg smectite clays, magnesium carbonates, olivine phenocrysts (CRISM/PIXL)",
+    "thermalInertiaContext": "Bedrock outcrops ~450 J m^-2 K^-1 s^-1/2; sand dunes ~180 J m^-2 K^-1 s^-1/2",
+    "iceResourceProspects": "Low direct near-surface ice; high potential for clay mineral structural bound water",
+    "regionalElevationDatumM": -2530,
+    "averageRoughnessIndex": 0.35,
+    "dataSourceAttribution": "NASA Mars 2020 Mission Archive & MGS MOLA MEGDR"
+  },
+  "hazards": {
+    "catalogHazards": [
+      {
+        "id": "hzd-jezero-delta-scarp",
+        "name": "Jezero Delta Front Scarp",
+        "type": "SCARP",
+        "category": "TERRAIN",
+        "severity": "HIGH",
+        "location": {
+          "latitude": 18.448,
+          "longitude": 77.402
+        },
+        "radiusM": 450,
+        "reason": "Steep 60m vertical drop along the western delta front with loose boulder talus.",
+        "recommendation": "Maintain minimum 100m standoff from cliff edge; descend via mapped gentle ramps only.",
+        "confidence": 0.95,
+        "probability": 0.85,
+        "impactDescription": "Risk of catastrophic vehicle roll-over or astronaut fall down 60m cliff scarp.",
+        "detectionSource": "MRO HiRISE Stereo DTM & MGS MOLA 128ppd Altimetry",
+        "provenanceClassification": "MEASURED",
+        "recommendedMitigation": "Enforce 100m geofenced buffer standoff distance around scarp lip.",
+        "sourceType": "NASA",
+        "evidence": [
+          {
+            "id": "ev-jezero-scarp-mola",
+            "description": "60m vertical elevation drop measured over 120m horizontal distance",
+            "dataset": "NASA MGS MOLA 128ppd Altimetry",
+            "observedMetric": "Slope: 26.5°",
+            "provenance": {
+              "sourceType": "BENCHMARK_DATA",
+              "sourceName": "NASA Mars Global Surveyor (MGS) MOLA",
+              "datasetId": "MGS-M-MOLA-5-MEGDR-L3-V1.0",
+              "observationId": "MOLA-PEDR-AREOID-DATUM",
+              "sourceUrl": "https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/",
+              "spatialResolutionM": 463,
+              "processingMethod": "Calibrated NASA Landing Site Ground Truth Altimetry",
+              "dataMode": "BENCHMARK",
+              "confidence": 0.98,
+              "uncertainty": {
+                "value": 2.5,
+                "absolute": 2.5,
+                "relative": 0.05,
+                "unit": "m",
+                "methodology": "MGS Laser Pulse Timing to Mars Center of Mass Reference Ellipsoid (R=3396.19km)"
+              }
+            }
+          },
+          {
+            "id": "ev-jezero-scarp-hirise",
+            "description": "Exposed vertical delta foreset cliff with boulder collapse apron",
+            "dataset": "MRO HiRISE Stereo DTM PSP_002172_1985",
+            "observedMetric": "Resolution: 0.25m/pixel",
+            "provenance": {
+              "sourceType": "NASA",
+              "sourceName": "NASA MRO High Resolution Imaging Science Experiment (HiRISE)",
+              "datasetId": "MRO-M-HIRISE-3-RDR-V1.0",
+              "observationId": "PSP_002172_1985",
+              "sourceUrl": "https://hirise.lpl.arizona.edu/",
+              "spatialResolutionM": 0.25,
+              "processingMethod": "Photogrammetric Stereo DTM Elevation Modeling",
+              "dataMode": "BENCHMARK",
+              "confidence": 0.96,
+              "uncertainty": {
+                "value": 0.5,
+                "absolute": 0.5,
+                "unit": "m",
+                "methodology": "Stereo-pair Bundle Adjustment and Epipolar Resampling"
+              }
+            }
+          }
+        ],
+        "uncertainty": {
+          "absolute": 25,
+          "unit": "m",
+          "methodology": "HiRISE stereo DTM edge triangulation and MOLA pulse margin"
+        },
+        "provenance": {
+          "sourceType": "NASA",
+          "sourceName": "NASA MRO High Resolution Imaging Science Experiment (HiRISE)",
+          "datasetId": "MRO-M-HIRISE-3-RDR-V1.0",
+          "observationId": "PSP_002172_1985",
+          "sourceUrl": "https://hirise.lpl.arizona.edu/",
+          "spatialResolutionM": 0.25,
+          "processingMethod": "Photogrammetric Stereo DTM Elevation Modeling",
+          "dataMode": "BENCHMARK",
+          "confidence": 0.96,
+          "uncertainty": {
+            "value": 0.5,
+            "absolute": 0.5,
+            "unit": "m",
+            "methodology": "Stereo-pair Bundle Adjustment and Epipolar Resampling"
+          }
+        }
+      },
+      {
+        "id": "hzd-belva-crater-rim",
+        "name": "Belva Crater Structural Rim",
+        "type": "STEEP_SLOPE",
+        "category": "GEOLOGICAL",
+        "severity": "MODERATE",
+        "location": {
+          "latitude": 18.485,
+          "longitude": 77.442
+        },
+        "radiusM": 500,
+        "reason": "Impact rim slope exceeding 16 degrees with perched megabreccia blocks.",
+        "recommendation": "Avoid traversing directly over perched boulders; follow low-gradient rim gaps.",
+        "confidence": 0.9,
+        "probability": 0.65,
+        "impactDescription": "Elevated motor current draw and increased traction slip on steep impact megabreccia.",
+        "detectionSource": "MRO CTX & HiRISE Orthomosaic",
+        "provenanceClassification": "MEASURED",
+        "recommendedMitigation": "Reduce speed to 0.5 km/h and engage differential wheel locking.",
+        "sourceType": "NASA",
+        "evidence": [
+          {
+            "id": "ev-belva-slope",
+            "description": "Rim crest slope incline exceeds nominal EVA walking boundary",
+            "dataset": "MRO CTX & HiRISE Orthomosaic",
+            "observedMetric": "Measured Slope: 16.8°",
+            "provenance": {
+              "sourceType": "NASA",
+              "sourceName": "NASA MRO High Resolution Imaging Science Experiment (HiRISE)",
+              "datasetId": "MRO-M-HIRISE-3-RDR-V1.0",
+              "observationId": "ESP_037146_1985",
+              "sourceUrl": "https://hirise.lpl.arizona.edu/",
+              "spatialResolutionM": 0.25,
+              "processingMethod": "Photogrammetric Stereo DTM Elevation Modeling",
+              "dataMode": "BENCHMARK",
+              "confidence": 0.96,
+              "uncertainty": {
+                "value": 0.5,
+                "absolute": 0.5,
+                "unit": "m",
+                "methodology": "Stereo-pair Bundle Adjustment and Epipolar Resampling"
+              }
+            }
+          }
+        ],
+        "uncertainty": {
+          "absolute": 50,
+          "unit": "m",
+          "methodology": "Crater structural rim delineation from orbital optical imagery"
+        },
+        "provenance": {
+          "sourceType": "NASA",
+          "sourceName": "NASA MRO High Resolution Imaging Science Experiment (HiRISE)",
+          "datasetId": "MRO-M-HIRISE-3-RDR-V1.0",
+          "observationId": "ESP_037146_1985",
+          "sourceUrl": "https://hirise.lpl.arizona.edu/",
+          "spatialResolutionM": 0.25,
+          "processingMethod": "Photogrammetric Stereo DTM Elevation Modeling",
+          "dataMode": "BENCHMARK",
+          "confidence": 0.96,
+          "uncertainty": {
+            "value": 0.5,
+            "absolute": 0.5,
+            "unit": "m",
+            "methodology": "Stereo-pair Bundle Adjustment and Epipolar Resampling"
+          }
+        }
+      },
+      {
+        "id": "hzd-neretva-chokepoint",
+        "name": "Neretva Fluvial Breach Bottleneck",
+        "type": "ROUTE_BOTTLENECK",
+        "category": "TERRAIN",
+        "severity": "MODERATE",
+        "location": {
+          "latitude": 18.428,
+          "longitude": 77.482
+        },
+        "radiusM": 350,
+        "reason": "Narrow 80m incised canyon corridor bounded by boulder-mantled bedrock terraces.",
+        "recommendation": "Establish line-of-sight radio relay at entrance before committing to canyon interior.",
+        "confidence": 0.92,
+        "probability": 0.6,
+        "impactDescription": "RF shadow and loss of direct line-of-sight to base station.",
+        "detectionSource": "MRO CTX Digital Elevation Model",
+        "provenanceClassification": "DERIVED",
+        "recommendedMitigation": "Drop solar-powered radio relay beacon at canyon entrance.",
+        "sourceType": "NASA",
+        "evidence": [
+          {
+            "id": "ev-neretva-geometry",
+            "description": "Incised river cut with 80m channel width and 35m flanking walls",
+            "dataset": "MRO CTX Digital Elevation Model",
+            "observedMetric": "Channel Width: 82m",
+            "provenance": {
+              "sourceType": "NASA",
+              "sourceName": "NASA MRO High Resolution Imaging Science Experiment (HiRISE)",
+              "datasetId": "MRO-M-HIRISE-3-RDR-V1.0",
+              "observationId": "ESP_045860_1985",
+              "sourceUrl": "https://hirise.lpl.arizona.edu/",
+              "spatialResolutionM": 0.25,
+              "processingMethod": "Photogrammetric Stereo DTM Elevation Modeling",
+              "dataMode": "BENCHMARK",
+              "confidence": 0.96,
+              "uncertainty": {
+                "value": 0.5,
+                "absolute": 0.5,
+                "unit": "m",
+                "methodology": "Stereo-pair Bundle Adjustment and Epipolar Resampling"
+              }
+            }
+          }
+        ],
+        "uncertainty": {
+          "absolute": 20,
+          "unit": "m",
+          "methodology": "Orthorectified CTX stereo pair extraction"
+        },
+        "provenance": {
+          "sourceType": "NASA",
+          "sourceName": "NASA MRO High Resolution Imaging Science Experiment (HiRISE)",
+          "datasetId": "MRO-M-HIRISE-3-RDR-V1.0",
+          "observationId": "ESP_045860_1985",
+          "sourceUrl": "https://hirise.lpl.arizona.edu/",
+          "spatialResolutionM": 0.25,
+          "processingMethod": "Photogrammetric Stereo DTM Elevation Modeling",
+          "dataMode": "BENCHMARK",
+          "confidence": 0.96,
+          "uncertainty": {
+            "value": 0.5,
+            "absolute": 0.5,
+            "unit": "m",
+            "methodology": "Stereo-pair Bundle Adjustment and Epipolar Resampling"
+          }
+        }
+      },
+      {
+        "id": "hzd-seitah-dunes",
+        "name": "Séítah Eolian Megaripple Field",
+        "type": "UNSTABLE_REGOLITH",
+        "category": "GEOLOGICAL",
+        "severity": "HIGH",
+        "location": {
+          "latitude": 18.435,
+          "longitude": 77.44
+        },
+        "radiusM": 600,
+        "reason": "Active transverse eolian megaripples with low-bearing-strength basaltic sand (wheel-sink risk).",
+        "recommendation": "Bypass transverse sand ridges; traverse only on exposed olivine-carbonate bedrock pavements.",
+        "confidence": 0.94,
+        "probability": 0.8,
+        "impactDescription": "Deep wheel sinkage, excessive motor torque overload, and chassis entrapment.",
+        "detectionSource": "Mars 2020 Perseverance Rover Navcam / Mastcam-Z",
+        "provenanceClassification": "MEASURED",
+        "recommendedMitigation": "Avoid driving over dune crests; route exclusively across bedrock ribbons.",
+        "sourceType": "NASA",
+        "evidence": [
+          {
+            "id": "ev-seitah-sinkage",
+            "description": "Rover wheel slippage exceeding 40% observed during Sol 175 Séítah ingress",
+            "dataset": "Mars 2020 Engineering Telemetry Archive",
+            "observedMetric": "Wheel Slip: 42%",
+            "provenance": {
+              "sourceType": "ROVER",
+              "sourceName": "NASA Planetary Data System — Perseverance",
+              "datasetId": "MSL-CHEMIN-APXS-ARCHIVE",
+              "observationId": "PERSEVERANCE-Mobility Subsystem-SOL175",
+              "sourceUrl": "https://an.rsl.wustl.edu/",
+              "spatialResolutionM": 0.01,
+              "processingMethod": "Calibrated In-Situ Science Payload Spectral & Micro-imaging Analysis",
+              "dataMode": "BENCHMARK",
+              "confidence": 0.99,
+              "uncertainty": {
+                "value": 0.05,
+                "absolute": 0.05,
+                "unit": "m",
+                "methodology": "Rover Mastcam-Z Stereo Triangulation and Wheel Odometry"
+              }
+            }
+          }
+        ],
+        "provenance": {
+          "sourceType": "ROVER",
+          "sourceName": "NASA Planetary Data System — Perseverance",
+          "datasetId": "MSL-CHEMIN-APXS-ARCHIVE",
+          "observationId": "PERSEVERANCE-Mastcam-Z-SOL175",
+          "sourceUrl": "https://an.rsl.wustl.edu/",
+          "spatialResolutionM": 0.01,
+          "processingMethod": "Calibrated In-Situ Science Payload Spectral & Micro-imaging Analysis",
+          "dataMode": "BENCHMARK",
+          "confidence": 0.99,
+          "uncertainty": {
+            "value": 0.05,
+            "absolute": 0.05,
+            "unit": "m",
+            "methodology": "Rover Mastcam-Z Stereo Triangulation and Wheel Odometry"
+          }
+        }
+      },
+      {
+        "id": "hzd-gale-gillespie-boulders",
+        "name": "Gillespie Lake Boulder Field",
+        "type": "ROCK_ABUNDANCE",
+        "category": "GEOLOGICAL",
+        "severity": "HIGH",
+        "location": {
+          "latitude": -4.65,
+          "longitude": 137.42
+        },
+        "radiusM": 400,
+        "reason": "Dense boulder concentration (>35% CFA rock abundance) exceeding 0.5m wheel-clearance threshold.",
+        "recommendation": "Throttle maximum speed to 0.4 km/h; utilize Hazcam auto-nav obstacle avoidance.",
+        "confidence": 0.91,
+        "probability": 0.75,
+        "impactDescription": "Chassis underbody high-centering or wheel rim puncture.",
+        "detectionSource": "MSL Curiosity Rover Mastcam / Navcam",
+        "provenanceClassification": "MEASURED",
+        "recommendedMitigation": "Engage autonomous visual odometry and point-by-point rock navigation.",
+        "sourceType": "NASA",
+        "evidence": [
+          {
+            "id": "ev-gale-rocks",
+            "description": "Cumulative Fractional Area (CFA) rock distribution exceeds nominal Mars model",
+            "dataset": "MSL Mastcam Image Mosaic Sol 3100",
+            "observedMetric": "Rock Coverage: 38%",
+            "provenance": {
+              "sourceType": "ROVER",
+              "sourceName": "NASA Planetary Data System — MSL (Curiosity)",
+              "datasetId": "MSL-CHEMIN-APXS-ARCHIVE",
+              "observationId": "MSL-Mastcam-SOL3100",
+              "sourceUrl": "https://an.rsl.wustl.edu/",
+              "spatialResolutionM": 0.01,
+              "processingMethod": "Calibrated In-Situ Science Payload Spectral & Micro-imaging Analysis",
+              "dataMode": "BENCHMARK",
+              "confidence": 0.99,
+              "uncertainty": {
+                "value": 0.05,
+                "absolute": 0.05,
+                "unit": "m",
+                "methodology": "Rover Mastcam-Z Stereo Triangulation and Wheel Odometry"
+              }
+            }
+          }
+        ],
+        "provenance": {
+          "sourceType": "ROVER",
+          "sourceName": "NASA Planetary Data System — MSL (Curiosity)",
+          "datasetId": "MSL-CHEMIN-APXS-ARCHIVE",
+          "observationId": "MSL-Mastcam-SOL3100",
+          "sourceUrl": "https://an.rsl.wustl.edu/",
+          "spatialResolutionM": 0.01,
+          "processingMethod": "Calibrated In-Situ Science Payload Spectral & Micro-imaging Analysis",
+          "dataMode": "BENCHMARK",
+          "confidence": 0.99,
+          "uncertainty": {
+            "value": 0.05,
+            "absolute": 0.05,
+            "unit": "m",
+            "methodology": "Rover Mastcam-Z Stereo Triangulation and Wheel Odometry"
+          }
+        }
+      },
+      {
+        "id": "hzd-olympus-caldera-fault",
+        "name": "Olympus Mons Ring Fault System",
+        "type": "SCARP",
+        "category": "TERRAIN",
+        "severity": "CRITICAL",
+        "location": {
+          "latitude": 18.65,
+          "longitude": -133.8
+        },
+        "radiusM": 1200,
+        "reason": "Nested collapse cliff with 2 km vertical cliff face.",
+        "recommendation": "Strict EVA no-traverse zone. Observation from designated vantage point only.",
+        "confidence": 0.98,
+        "probability": 0.99,
+        "impactDescription": "Catastrophic 2000m sheer vertical drop; 100% loss of mission asset upon breach.",
+        "detectionSource": "MGS MOLA Gridded Elevation Model",
+        "provenanceClassification": "MEASURED",
+        "recommendedMitigation": "Hard exclusion boundary: enforce 500m mandatory standoff radius.",
+        "sourceType": "USGS",
+        "evidence": [
+          {
+            "id": "ev-olympus-fault",
+            "description": "Caldera boundary fault cliff with 2000m vertical drop",
+            "dataset": "MGS MOLA Gridded Elevation Model",
+            "observedMetric": "Vertical Drop: 2100m",
+            "provenance": {
+              "sourceType": "BENCHMARK_DATA",
+              "sourceName": "NASA Mars Global Surveyor (MGS) MOLA",
+              "datasetId": "MGS-M-MOLA-5-MEGDR-L3-V1.0",
+              "observationId": "MOLA-PEDR-AREOID-DATUM",
+              "sourceUrl": "https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/",
+              "spatialResolutionM": 463,
+              "processingMethod": "Calibrated NASA Landing Site Ground Truth Altimetry",
+              "dataMode": "BENCHMARK",
+              "confidence": 0.98,
+              "uncertainty": {
+                "value": 10,
+                "absolute": 10,
+                "relative": 0.05,
+                "unit": "m",
+                "methodology": "MGS Laser Pulse Timing to Mars Center of Mass Reference Ellipsoid (R=3396.19km)"
+              }
+            }
+          }
+        ],
+        "provenance": {
+          "sourceType": "USGS",
+          "sourceName": "USGS Astrogeology Viking MDIM 2.1 Mosaic",
+          "datasetId": "VO-M-VIS-5-DIM-V2.1",
+          "sourceUrl": "https://astrogeology.usgs.gov/search/map/Mars/Viking/MDIM21",
+          "spatialResolutionM": 232,
+          "processingMethod": "Orthorectified Controlled Digital Image Mosaic",
+          "dataMode": "LIVE",
+          "confidence": 0.95,
+          "uncertainty": {
+            "value": 200,
+            "absolute": 200,
+            "unit": "m",
+            "methodology": "Geodetic Control Network Tie-Point Residuals"
+          }
+        }
+      },
+      {
+        "id": "hzd-melas-chasma-cliff",
+        "name": "Melas Chasma Wall Scarp",
+        "type": "LARGE_ELEVATION_CHANGE",
+        "category": "TERRAIN",
+        "severity": "CRITICAL",
+        "location": {
+          "latitude": -9.8,
+          "longitude": -76.5
+        },
+        "radiusM": 1500,
+        "reason": "Catastrophic 3.5 km elevation drop with frequent rockfalls and active landslides.",
+        "recommendation": "Unfeasible for surface pedestrian EVA. Aerial or tethered traversal only.",
+        "confidence": 0.96,
+        "probability": 0.95,
+        "impactDescription": "Immediate catastrophic descent into canyon chasma; active scree rockfalls.",
+        "detectionSource": "MGS MOLA / THEMIS Daytime Thermal Infrared",
+        "provenanceClassification": "MEASURED",
+        "recommendedMitigation": "Reject ground traverse; consider orbital or tethered drone reconnaissance only.",
+        "sourceType": "USGS",
+        "evidence": [
+          {
+            "id": "ev-melas-cliff",
+            "description": "Tectonic chasma wall with 3500m relief",
+            "dataset": "MGS MOLA / THEMIS Daytime Thermal Infrared",
+            "observedMetric": "Elevation Change: -3500m",
+            "provenance": {
+              "sourceType": "BENCHMARK_DATA",
+              "sourceName": "NASA Mars Global Surveyor (MGS) MOLA",
+              "datasetId": "MGS-M-MOLA-5-MEGDR-L3-V1.0",
+              "observationId": "MOLA-PEDR-AREOID-DATUM",
+              "sourceUrl": "https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/",
+              "spatialResolutionM": 463,
+              "processingMethod": "Calibrated NASA Landing Site Ground Truth Altimetry",
+              "dataMode": "BENCHMARK",
+              "confidence": 0.98,
+              "uncertainty": {
+                "value": 15,
+                "absolute": 15,
+                "relative": 0.05,
+                "unit": "m",
+                "methodology": "MGS Laser Pulse Timing to Mars Center of Mass Reference Ellipsoid (R=3396.19km)"
+              }
+            }
+          }
+        ],
+        "provenance": {
+          "sourceType": "USGS",
+          "sourceName": "USGS Astrogeology Viking MDIM 2.1 Mosaic",
+          "datasetId": "VO-M-VIS-5-DIM-V2.1",
+          "sourceUrl": "https://astrogeology.usgs.gov/search/map/Mars/Viking/MDIM21",
+          "spatialResolutionM": 232,
+          "processingMethod": "Orthorectified Controlled Digital Image Mosaic",
+          "dataMode": "LIVE",
+          "confidence": 0.95,
+          "uncertainty": {
+            "value": 200,
+            "absolute": 200,
+            "unit": "m",
+            "methodology": "Geodetic Control Network Tie-Point Residuals"
+          }
+        }
+      }
+    ],
+    "derivedSlopeHazards": [],
+    "sensorCorroboratedHazards": [],
+    "activeRiskLevel": "MODERATE",
+    "unmitigatedHazardsCount": 0
+  },
+  "resources": {
+    "fleetBatterySoc": {
+      "ROVER-01 SCOUT": 85,
+      "ROVER-02 SCIENCE": 90,
+      "ROVER-03 RELAY": 88,
+      "ASTRONAUT-01": 92
+    },
+    "minBatteryReservePercent": 25,
+    "powerGenerationMode": {
+      "ROVER-01 SCOUT": "SOLAR",
+      "ROVER-02 SCIENCE": "RTG",
+      "ROVER-03 RELAY": "RTG",
+      "ASTRONAUT-01": "BATTERY_ONLY"
+    },
+    "astronautOxygenReserveMinutes": 320,
+    "astronautMetabolicWatts": 280,
+    "sampleTubeStorage": {
+      "totalTubes": 43,
+      "sealedTubes": 24,
+      "remainingCapacity": 19
+    },
+    "onboardDataStorageGb": {
+      "totalCapacityGb": 128,
+      "usedGb": 42.6,
+      "bufferedTelemetryMb": 14.2
+    }
+  },
+  "communication": {
+    "networkTopology": {
+      "timestamp": "2026-11-12T09:35:21.989Z",
+      "links": [
+        {
+          "sourceAgentId": "agent-astronaut-01",
+          "sourceCallsign": "ASTRONAUT-01",
+          "targetAgentId": "agent-rover-01",
+          "targetCallsign": "ROVER-01 SCOUT",
+          "linkType": "DIRECT",
+          "distanceKm": 1.08,
+          "lineOfSight": true,
+          "estimatedLatencyMs": 5,
+          "bandwidthKbps": 128,
+          "reliability": 0.95,
+          "status": "CONNECTED",
+          "notes": "LINE_OF_SIGHT_CLEAR"
+        },
+        {
+          "sourceAgentId": "agent-astronaut-01",
+          "sourceCallsign": "ASTRONAUT-01",
+          "targetAgentId": "agent-rover-02",
+          "targetCallsign": "ROVER-02 SCIENCE",
+          "linkType": "DIRECT",
+          "distanceKm": 0.61,
+          "lineOfSight": true,
+          "estimatedLatencyMs": 5,
+          "bandwidthKbps": 128,
+          "reliability": 0.95,
+          "status": "CONNECTED",
+          "notes": "LINE_OF_SIGHT_CLEAR"
+        },
+        {
+          "sourceAgentId": "agent-astronaut-01",
+          "sourceCallsign": "ASTRONAUT-01",
+          "targetAgentId": "agent-rover-03",
+          "targetCallsign": "ROVER-03 RELAY",
+          "linkType": "ROVER_RELAY",
+          "distanceKm": 0.33,
+          "lineOfSight": true,
+          "estimatedLatencyMs": 5,
+          "bandwidthKbps": 128,
+          "reliability": 0.95,
+          "status": "CONNECTED",
+          "notes": "LINE_OF_SIGHT_CLEAR"
+        },
+        {
+          "sourceAgentId": "agent-rover-01",
+          "sourceCallsign": "ROVER-01 SCOUT",
+          "targetAgentId": "agent-rover-02",
+          "targetCallsign": "ROVER-02 SCIENCE",
+          "linkType": "DIRECT",
+          "distanceKm": 0.49,
+          "lineOfSight": true,
+          "estimatedLatencyMs": 5,
+          "bandwidthKbps": 128,
+          "reliability": 0.95,
+          "status": "CONNECTED",
+          "notes": "LINE_OF_SIGHT_CLEAR"
+        },
+        {
+          "sourceAgentId": "agent-rover-01",
+          "sourceCallsign": "ROVER-01 SCOUT",
+          "targetAgentId": "agent-rover-03",
+          "targetCallsign": "ROVER-03 RELAY",
+          "linkType": "ROVER_RELAY",
+          "distanceKm": 0.74,
+          "lineOfSight": true,
+          "estimatedLatencyMs": 5,
+          "bandwidthKbps": 128,
+          "reliability": 0.95,
+          "status": "CONNECTED",
+          "notes": "LINE_OF_SIGHT_CLEAR"
+        },
+        {
+          "sourceAgentId": "agent-rover-02",
+          "sourceCallsign": "ROVER-02 SCIENCE",
+          "targetAgentId": "agent-rover-03",
+          "targetCallsign": "ROVER-03 RELAY",
+          "linkType": "ROVER_RELAY",
+          "distanceKm": 0.29,
+          "lineOfSight": true,
+          "estimatedLatencyMs": 5,
+          "bandwidthKbps": 128,
+          "reliability": 0.95,
+          "status": "CONNECTED",
+          "notes": "LINE_OF_SIGHT_CLEAR"
+        },
+        {
+          "sourceAgentId": "agent-astronaut-01",
+          "sourceCallsign": "ASTRONAUT-01",
+          "targetAgentId": "agent-orbiter-01",
+          "targetCallsign": "ORBITER-01",
+          "linkType": "ORBITER_RELAY",
+          "distanceKm": 523.4,
+          "lineOfSight": true,
+          "estimatedLatencyMs": 12,
+          "bandwidthKbps": 1024,
+          "reliability": 0.98,
+          "status": "CONNECTED",
+          "notes": "Electra UHF Proximity Link (Elev 30.2°, state PASS_ACTIVE)"
+        },
+        {
+          "sourceAgentId": "agent-rover-01",
+          "sourceCallsign": "ROVER-01 SCOUT",
+          "targetAgentId": "agent-orbiter-01",
+          "targetCallsign": "ORBITER-01",
+          "linkType": "ORBITER_RELAY",
+          "distanceKm": 523.4,
+          "lineOfSight": true,
+          "estimatedLatencyMs": 12,
+          "bandwidthKbps": 1024,
+          "reliability": 0.98,
+          "status": "CONNECTED",
+          "notes": "Electra UHF Proximity Link (Elev 30.2°, state PASS_ACTIVE)"
+        },
+        {
+          "sourceAgentId": "agent-rover-02",
+          "sourceCallsign": "ROVER-02 SCIENCE",
+          "targetAgentId": "agent-orbiter-01",
+          "targetCallsign": "ORBITER-01",
+          "linkType": "ORBITER_RELAY",
+          "distanceKm": 523.4,
+          "lineOfSight": true,
+          "estimatedLatencyMs": 12,
+          "bandwidthKbps": 1024,
+          "reliability": 0.98,
+          "status": "CONNECTED",
+          "notes": "Electra UHF Proximity Link (Elev 30.2°, state PASS_ACTIVE)"
+        },
+        {
+          "sourceAgentId": "agent-rover-03",
+          "sourceCallsign": "ROVER-03 RELAY",
+          "targetAgentId": "agent-orbiter-01",
+          "targetCallsign": "ORBITER-01",
+          "linkType": "ORBITER_RELAY",
+          "distanceKm": 523.4,
+          "lineOfSight": true,
+          "estimatedLatencyMs": 12,
+          "bandwidthKbps": 1024,
+          "reliability": 0.98,
+          "status": "CONNECTED",
+          "notes": "Electra UHF Proximity Link (Elev 30.2°, state PASS_ACTIVE)"
+        }
+      ],
+      "missionControlReachable": true,
+      "activeRelayCount": 1,
+      "unconnectedAgents": [],
+      "orbitalVisibility": {
+        "orbiterId": "agent-orbiter-01",
+        "startTime": "2026-11-12T09:32:21.989Z",
+        "endTime": "2026-11-12T09:52:21.989Z",
+        "maxElevationDeg": 48.5,
+        "slantRangeKm": 523.4,
+        "visibilityQuality": "GOOD",
+        "state": "PASS_ACTIVE",
+        "currentElevationDeg": 30.2,
+        "remainingSeconds": 1020,
+        "nextPassInSeconds": 0,
+        "bandwidthKbps": 1024
+      }
+    },
+    "activeLinks": [
+      {
+        "sourceAgentId": "agent-astronaut-01",
+        "sourceCallsign": "ASTRONAUT-01",
+        "targetAgentId": "agent-rover-01",
+        "targetCallsign": "ROVER-01 SCOUT",
+        "linkType": "DIRECT",
+        "distanceKm": 1.08,
+        "lineOfSight": true,
+        "estimatedLatencyMs": 5,
+        "bandwidthKbps": 128,
+        "reliability": 0.95,
+        "status": "CONNECTED",
+        "notes": "LINE_OF_SIGHT_CLEAR"
+      },
+      {
+        "sourceAgentId": "agent-astronaut-01",
+        "sourceCallsign": "ASTRONAUT-01",
+        "targetAgentId": "agent-rover-02",
+        "targetCallsign": "ROVER-02 SCIENCE",
+        "linkType": "DIRECT",
+        "distanceKm": 0.61,
+        "lineOfSight": true,
+        "estimatedLatencyMs": 5,
+        "bandwidthKbps": 128,
+        "reliability": 0.95,
+        "status": "CONNECTED",
+        "notes": "LINE_OF_SIGHT_CLEAR"
+      },
+      {
+        "sourceAgentId": "agent-astronaut-01",
+        "sourceCallsign": "ASTRONAUT-01",
+        "targetAgentId": "agent-rover-03",
+        "targetCallsign": "ROVER-03 RELAY",
+        "linkType": "ROVER_RELAY",
+        "distanceKm": 0.33,
+        "lineOfSight": true,
+        "estimatedLatencyMs": 5,
+        "bandwidthKbps": 128,
+        "reliability": 0.95,
+        "status": "CONNECTED",
+        "notes": "LINE_OF_SIGHT_CLEAR"
+      },
+      {
+        "sourceAgentId": "agent-rover-01",
+        "sourceCallsign": "ROVER-01 SCOUT",
+        "targetAgentId": "agent-rover-02",
+        "targetCallsign": "ROVER-02 SCIENCE",
+        "linkType": "DIRECT",
+        "distanceKm": 0.49,
+        "lineOfSight": true,
+        "estimatedLatencyMs": 5,
+        "bandwidthKbps": 128,
+        "reliability": 0.95,
+        "status": "CONNECTED",
+        "notes": "LINE_OF_SIGHT_CLEAR"
+      },
+      {
+        "sourceAgentId": "agent-rover-01",
+        "sourceCallsign": "ROVER-01 SCOUT",
+        "targetAgentId": "agent-rover-03",
+        "targetCallsign": "ROVER-03 RELAY",
+        "linkType": "ROVER_RELAY",
+        "distanceKm": 0.74,
+        "lineOfSight": true,
+        "estimatedLatencyMs": 5,
+        "bandwidthKbps": 128,
+        "reliability": 0.95,
+        "status": "CONNECTED",
+        "notes": "LINE_OF_SIGHT_CLEAR"
+      },
+      {
+        "sourceAgentId": "agent-rover-02",
+        "sourceCallsign": "ROVER-02 SCIENCE",
+        "targetAgentId": "agent-rover-03",
+        "targetCallsign": "ROVER-03 RELAY",
+        "linkType": "ROVER_RELAY",
+        "distanceKm": 0.29,
+        "lineOfSight": true,
+        "estimatedLatencyMs": 5,
+        "bandwidthKbps": 128,
+        "reliability": 0.95,
+        "status": "CONNECTED",
+        "notes": "LINE_OF_SIGHT_CLEAR"
+      },
+      {
+        "sourceAgentId": "agent-astronaut-01",
+        "sourceCallsign": "ASTRONAUT-01",
+        "targetAgentId": "agent-orbiter-01",
+        "targetCallsign": "ORBITER-01",
+        "linkType": "ORBITER_RELAY",
+        "distanceKm": 523.4,
+        "lineOfSight": true,
+        "estimatedLatencyMs": 12,
+        "bandwidthKbps": 1024,
+        "reliability": 0.98,
+        "status": "CONNECTED",
+        "notes": "Electra UHF Proximity Link (Elev 30.2°, state PASS_ACTIVE)"
+      },
+      {
+        "sourceAgentId": "agent-rover-01",
+        "sourceCallsign": "ROVER-01 SCOUT",
+        "targetAgentId": "agent-orbiter-01",
+        "targetCallsign": "ORBITER-01",
+        "linkType": "ORBITER_RELAY",
+        "distanceKm": 523.4,
+        "lineOfSight": true,
+        "estimatedLatencyMs": 12,
+        "bandwidthKbps": 1024,
+        "reliability": 0.98,
+        "status": "CONNECTED",
+        "notes": "Electra UHF Proximity Link (Elev 30.2°, state PASS_ACTIVE)"
+      },
+      {
+        "sourceAgentId": "agent-rover-02",
+        "sourceCallsign": "ROVER-02 SCIENCE",
+        "targetAgentId": "agent-orbiter-01",
+        "targetCallsign": "ORBITER-01",
+        "linkType": "ORBITER_RELAY",
+        "distanceKm": 523.4,
+        "lineOfSight": true,
+        "estimatedLatencyMs": 12,
+        "bandwidthKbps": 1024,
+        "reliability": 0.98,
+        "status": "CONNECTED",
+        "notes": "Electra UHF Proximity Link (Elev 30.2°, state PASS_ACTIVE)"
+      },
+      {
+        "sourceAgentId": "agent-rover-03",
+        "sourceCallsign": "ROVER-03 RELAY",
+        "targetAgentId": "agent-orbiter-01",
+        "targetCallsign": "ORBITER-01",
+        "linkType": "ORBITER_RELAY",
+        "distanceKm": 523.4,
+        "lineOfSight": true,
+        "estimatedLatencyMs": 12,
+        "bandwidthKbps": 1024,
+        "reliability": 0.98,
+        "status": "CONNECTED",
+        "notes": "Electra UHF Proximity Link (Elev 30.2°, state PASS_ACTIVE)"
+      }
+    ],
+    "orbitalPass": {
+      "orbiterId": "agent-orbiter-01",
+      "startTime": "2026-11-12T09:32:21.989Z",
+      "endTime": "2026-11-12T09:52:21.989Z",
+      "maxElevationDeg": 48.5,
+      "slantRangeKm": 523.4,
+      "visibilityQuality": "GOOD",
+      "state": "PASS_ACTIVE",
+      "currentElevationDeg": 30.2,
+      "remainingSeconds": 1020,
+      "nextPassInSeconds": 0,
+      "bandwidthKbps": 1024
+    },
+    "packetQueue": [
+      {
+        "packetId": "pkt-crit-001",
+        "sourceAgentId": "agent-rover-01",
+        "priority": "CRITICAL",
+        "type": "TELEMETRY",
+        "payloadSizeKb": 12,
+        "createdAt": "2026-11-12T09:20:21.967Z",
+        "status": "DELIVERED",
+        "attempts": 1,
+        "storeAndForward": true,
+        "ttlMinutes": 120
+      },
+      {
+        "packetId": "pkt-sci-002",
+        "sourceAgentId": "agent-rover-02",
+        "priority": "BULK",
+        "type": "SCIENCE_DATA",
+        "payloadSizeKb": 4500,
+        "createdAt": "2026-11-12T09:30:21.967Z",
+        "status": "BUFFERED",
+        "attempts": 0,
+        "storeAndForward": true,
+        "ttlMinutes": 240
+      },
+      {
+        "packetId": "pkt-haz-003",
+        "sourceAgentId": "agent-rover-01",
+        "priority": "CRITICAL",
+        "type": "HAZARD_ALERT",
+        "payloadSizeKb": 8,
+        "createdAt": "2026-11-12T09:34:21.967Z",
+        "status": "TRANSMITTING",
+        "attempts": 1,
+        "storeAndForward": true,
+        "ttlMinutes": 60
+      }
+    ],
+    "blackoutActive": false,
+    "lineOfSightToRelay": {
+      "ROVER-01 SCOUT": true,
+      "ROVER-02 SCIENCE": true,
+      "ROVER-03 RELAY": true,
+      "ASTRONAUT-01": true
+    }
+  },
+  "tasks": {
+    "tasks": [],
+    "scienceQueue": [
+      {
+        "id": "sci-queue-01",
+        "targetName": "Jezero Delta Front Sedimentary Scarp",
+        "coordinate": {
+          "latitude": 18.4485,
+          "longitude": 77.402
+        },
+        "priority": "CRITICAL",
+        "scienceObjective": "ANCIENT_WATER_ACTIVITY",
+        "recommendedAgentCallsign": "ROVER-02 SCIENCE",
+        "supportingAgentCallsign": "ASTRONAUT-01",
+        "requiredInstrument": "Deep UV Raman + Abrasion Core Drill",
+        "status": "ASSIGNED",
+        "supportingEvidence": [
+          "MGS MOLA MEGDR Lacustrine Deltaic Bottomset Altimetry",
+          "MRO HiRISE Stereo DTM 0.25m/px Cross-Bedding Layers",
+          "2001 Mars Odyssey THEMIS Daytime Thermal Regolith Bedrock",
+          "Mars 2020 Perseverance SuperCam In-Situ Spectroscopy"
+        ],
+        "assignedAt": "2026-11-12T09:10:21.963Z",
+        "provenance": {
+          "sourceType": "ROVER",
+          "sourceName": "NASA Planetary Data System — Mars 2020 (Perseverance)",
+          "datasetId": "M2020-SURFACE-SCIENCE-ARCHIVE",
+          "observationId": "MARS-SUPERCAM-PIXL-SOL100",
+          "sourceUrl": "https://an.rsl.wustl.edu/",
+          "spatialResolutionM": 0.01,
+          "processingMethod": "Calibrated In-Situ Science Payload Spectral & Micro-imaging Analysis",
+          "dataMode": "BENCHMARK",
+          "confidence": 0.99,
+          "uncertainty": {
+            "value": 0.05,
+            "absolute": 0.05,
+            "unit": "m",
+            "methodology": "Rover Mastcam-Z Stereo Triangulation and Wheel Odometry"
+          }
+        }
+      },
+      {
+        "id": "sci-queue-02",
+        "targetName": "Kodiak Butte Isolated Delta Remnant",
+        "coordinate": {
+          "latitude": 18.425,
+          "longitude": 77.415
+        },
+        "priority": "HIGH",
+        "scienceObjective": "SEDIMENTARY_HISTORY",
+        "recommendedAgentCallsign": "ROVER-01 SCOUT",
+        "supportingAgentCallsign": "ROVER-02 SCIENCE",
+        "requiredInstrument": "High-Resolution Laser Profiler + Hazcam",
+        "status": "EN_ROUTE",
+        "supportingEvidence": [
+          "MRO HiRISE Sub-Meter Foreset Dip Strata",
+          "MGS MOLA Regional Elevation Differential (-2540m areoid)"
+        ],
+        "assignedAt": "2026-11-12T09:25:21.964Z",
+        "provenance": {
+          "sourceType": "NASA",
+          "sourceName": "NASA MRO High Resolution Imaging Science Experiment (HiRISE)",
+          "datasetId": "MRO-M-HIRISE-3-RDR-V1.0",
+          "observationId": "PSP_001415_1985",
+          "sourceUrl": "https://hirise.lpl.arizona.edu/",
+          "spatialResolutionM": 0.25,
+          "processingMethod": "Photogrammetric Stereo DTM Elevation Modeling",
+          "dataMode": "BENCHMARK",
+          "confidence": 0.96,
+          "uncertainty": {
+            "value": 0.5,
+            "absolute": 0.5,
+            "unit": "m",
+            "methodology": "Stereo-pair Bundle Adjustment and Epipolar Resampling"
+          }
+        }
+      },
+      {
+        "id": "sci-queue-03",
+        "targetName": "South Séítah Olivine Cumulate Ridge",
+        "coordinate": {
+          "latitude": 18.432,
+          "longitude": 77.448
+        },
+        "priority": "MEDIUM",
+        "scienceObjective": "MINERALOGICAL_DIVERSITY",
+        "recommendedAgentCallsign": "ROVER-02 SCIENCE",
+        "requiredInstrument": "X-Ray Fluorescence Spectrometer (PIXL)",
+        "status": "QUEUED",
+        "supportingEvidence": [
+          "CRISM Spectral Band Absorption at 1.0 & 2.0 Microns",
+          "Mars 2020 Abraded Patch In-Situ Ground Truth"
+        ],
+        "provenance": {
+          "sourceType": "ROVER",
+          "sourceName": "NASA Planetary Data System — Mars 2020 (Perseverance)",
+          "datasetId": "M2020-SURFACE-SCIENCE-ARCHIVE",
+          "observationId": "MARS-PIXL-ABRASION-SOL124",
+          "sourceUrl": "https://an.rsl.wustl.edu/",
+          "spatialResolutionM": 0.01,
+          "processingMethod": "Calibrated In-Situ Science Payload Spectral & Micro-imaging Analysis",
+          "dataMode": "BENCHMARK",
+          "confidence": 0.99,
+          "uncertainty": {
+            "value": 0.05,
+            "absolute": 0.05,
+            "unit": "m",
+            "methodology": "Rover Mastcam-Z Stereo Triangulation and Wheel Odometry"
+          }
+        }
+      }
+    ],
+    "replanProposals": [],
+    "completedTasksCount": 4
+  },
+  "simulation": {
+    "simState": {
+      "isRunning": false,
+      "simulationTimeMinutes": 45,
+      "timeScale": 1,
+      "scenarioSeed": 20261107
+    },
+    "monteCarlo": null,
+    "whatIfBranches": [],
+    "injectedFailures": []
+  },
+  "digitalTwin": {
+    "twinMode": "LIVE_SYNCHRONIZED",
+    "replayCursor": {
+      "missionId": "MARSWALK-001",
+      "status": "IDLE",
+      "currentEventIndex": 0,
+      "currentSimTimeSeconds": 0,
+      "totalEvents": 0,
+      "agents": [
+        {
+          "id": "agent-astronaut-01",
+          "name": "Astronaut Alex Vance (Commander)",
+          "callsign": "ASTRONAUT-01",
+          "type": "ASTRONAUT",
+          "status": "EXECUTING",
+          "position": {
+            "latitude": 18.4447,
+            "longitude": 77.4508
+          },
+          "capabilities": [
+            "PRESSURE_SUIT",
+            "EMERGENCY_SUPPORT",
+            "TERRAIN_RECON"
+          ],
+          "structuredCapabilities": {
+            "mobility": {
+              "maxSlopeDeg": 20,
+              "speedKph": 3.2,
+              "maxRangeKm": 8,
+              "roughnessTolerance": 0.65
+            },
+            "scientificInstruments": [
+              "Handheld XRF Gun",
+              "Geological Hammer",
+              "High-Resolution Hazcam"
+            ],
+            "hasDrill": false,
+            "hasSpectrometer": true,
+            "hasLidar": false,
+            "sampleTubeCapacity": 4,
+            "sampleTubesRemaining": 4,
+            "communicationRelay": {
+              "isRelay": false,
+              "relayRangeKm": 1,
+              "relayBandwidthKbps": 256
+            },
+            "resourceCapacityWh": 1200,
+            "enduranceMinutes": 240
+          },
+          "suitType": "xEMU_PLANETARY",
+          "suitOxygenReserveMinutes": 240,
+          "maxContinuousEVAMinutes": 360,
+          "metabolicEnergyWatts": 280,
+          "safeStandbyLocation": {
+            "latitude": 18.4447,
+            "longitude": 77.4508
+          },
+          "telemetry": {
+            "batteryPercent": 92,
+            "batteryStatus": "GREEN",
+            "speedKph": 2.8,
+            "headingDeg": 285,
+            "internalTempC": 20.5,
+            "signalStrengthPercent": 95,
+            "lineOfSightToRelay": true,
+            "energyConsumptionRateWhPerKm": 120,
+            "suitOxygenPercent": 88,
+            "heartRateBpm": 110,
+            "lastHeartbeat": "2026-11-12T09:35:21.987Z"
+          },
+          "lastUpdated": "2026-11-12T09:35:21.987Z",
+          "provenance": {
+            "sourceType": "DERIVED",
+            "sourceName": "Martian Map Planetary Computation — Astronaut Telemetry Model",
+            "processingMethod": "Mathematical calculation derived from [Apollo Lunar EVA Telemetry, xEMU Metabolic Standard]: Deterministic Biomechanical Simulation",
+            "dataMode": "FALLBACK",
+            "uncertainty": {
+              "value": 1,
+              "unit": "score",
+              "methodology": "Propagated uncertainty from input layers [Apollo Lunar EVA Telemetry, xEMU Metabolic Standard]"
+            }
+          }
+        },
+        {
+          "id": "agent-rover-01",
+          "name": "Ares Scout Rover (Reconnaissance)",
+          "callsign": "ROVER-01 SCOUT",
+          "type": "ROVER",
+          "profileRole": "SCOUT",
+          "status": "EXECUTING",
+          "position": {
+            "latitude": 18.4485,
+            "longitude": 77.432
+          },
+          "capabilities": [
+            "TERRAIN_RECON",
+            "HIGH_SPEED_DRIVE",
+            "EMERGENCY_SUPPORT"
+          ],
+          "structuredCapabilities": {
+            "mobility": {
+              "maxSlopeDeg": 20,
+              "speedKph": 4.8,
+              "maxRangeKm": 25,
+              "roughnessTolerance": 0.88
+            },
+            "scientificInstruments": [
+              "Terrain Laser Scanner",
+              "Forward Hazard Hazcams",
+              "Slip Odometry"
+            ],
+            "hasDrill": false,
+            "hasSpectrometer": false,
+            "hasLidar": true,
+            "sampleTubeCapacity": 0,
+            "sampleTubesRemaining": 0,
+            "communicationRelay": {
+              "isRelay": false,
+              "relayRangeKm": 6,
+              "relayBandwidthKbps": 512
+            },
+            "resourceCapacityWh": 2400,
+            "enduranceMinutes": 480
+          },
+          "maxRangeKm": 25,
+          "speedKph": 4.8,
+          "communicationRangeKm": 6,
+          "scientificPayloads": [
+            "Terrain Laser Scanner",
+            "Forward Hazard Hazcams",
+            "Slip Odometry"
+          ],
+          "mobilityRating": 0.88,
+          "hazardTolerance": 20,
+          "batteryCapacityWh": 2400,
+          "currentBatteryWh": 2040,
+          "telemetry": {
+            "batteryPercent": 85,
+            "batteryStatus": "GREEN",
+            "speedKph": 4.2,
+            "headingDeg": 275,
+            "internalTempC": -15,
+            "signalStrengthPercent": 90,
+            "lineOfSightToRelay": true,
+            "activeRelayId": "agent-rover-03",
+            "energyConsumptionRateWhPerKm": 95,
+            "lastHeartbeat": "2026-11-12T09:35:21.987Z"
+          },
+          "currentTask": {
+            "id": "task-scout-recon-01",
+            "agentId": "agent-rover-01",
+            "taskType": "VERIFY_ROUTE",
+            "priority": "HIGH",
+            "name": "Delta Front Scarp Traverse Reconnaissance",
+            "target": {
+              "coordinate": {
+                "latitude": 18.455,
+                "longitude": 77.41
+              },
+              "description": "Inspect slope stability along Kodiak Butte northern corridor"
+            },
+            "estimatedDurationMin": 45,
+            "requiredBatteryPercent": 18,
+            "requiredCommunication": true,
+            "riskLevel": "MODERATE",
+            "status": "IN_PROGRESS"
+          },
+          "lastUpdated": "2026-11-12T09:35:21.987Z",
+          "provenance": {
+            "sourceType": "DERIVED",
+            "sourceName": "Martian Map Planetary Computation — Scout Autonomous Vehicle Model",
+            "processingMethod": "Mathematical calculation derived from [Mars 2020 AutoNav Telemetry, JPL Rocker-Bogie Dynamics]: Deterministic Surface Traverse Simulation",
+            "dataMode": "FALLBACK",
+            "uncertainty": {
+              "value": 1,
+              "unit": "score",
+              "methodology": "Propagated uncertainty from input layers [Mars 2020 AutoNav Telemetry, JPL Rocker-Bogie Dynamics]"
+            }
+          }
+        },
+        {
+          "id": "agent-rover-02",
+          "name": "Ares Mineralogy & Sample Rover",
+          "callsign": "ROVER-02 SCIENCE",
+          "type": "ROVER",
+          "profileRole": "SCIENCE",
+          "status": "PLANNING",
+          "position": {
+            "latitude": 18.445,
+            "longitude": 77.44
+          },
+          "capabilities": [
+            "SPECTROMETER",
+            "SAMPLE_DRILL"
+          ],
+          "structuredCapabilities": {
+            "mobility": {
+              "maxSlopeDeg": 14,
+              "speedKph": 2.5,
+              "maxRangeKm": 15,
+              "roughnessTolerance": 0.72
+            },
+            "scientificInstruments": [
+              "Deep UV Raman Spectrometer (SHERLOC)",
+              "X-Ray Fluorescence (PIXL)",
+              "Abrasion Rotary Core Drill"
+            ],
+            "hasDrill": true,
+            "hasSpectrometer": true,
+            "hasLidar": false,
+            "sampleTubeCapacity": 15,
+            "sampleTubesRemaining": 12,
+            "communicationRelay": {
+              "isRelay": false,
+              "relayRangeKm": 5,
+              "relayBandwidthKbps": 1024
+            },
+            "resourceCapacityWh": 3200,
+            "enduranceMinutes": 360
+          },
+          "maxRangeKm": 15,
+          "speedKph": 2.2,
+          "communicationRangeKm": 5,
+          "scientificPayloads": [
+            "Deep UV Raman Spectrometer",
+            "Abrasion Rotary Core Drill",
+            "Micro-Imaging Camera"
+          ],
+          "mobilityRating": 0.72,
+          "hazardTolerance": 14,
+          "batteryCapacityWh": 3200,
+          "currentBatteryWh": 2880,
+          "telemetry": {
+            "batteryPercent": 90,
+            "batteryStatus": "GREEN",
+            "speedKph": 1.8,
+            "headingDeg": 260,
+            "internalTempC": -10,
+            "signalStrengthPercent": 92,
+            "lineOfSightToRelay": true,
+            "activeRelayId": "agent-rover-03",
+            "energyConsumptionRateWhPerKm": 160,
+            "lastHeartbeat": "2026-11-12T09:35:21.987Z"
+          },
+          "lastUpdated": "2026-11-12T09:35:21.987Z",
+          "provenance": {
+            "sourceType": "DERIVED",
+            "sourceName": "Martian Map Planetary Computation — Science Rover Model",
+            "processingMethod": "Mathematical calculation derived from [Perseverance Science Payload Specs, CheMin / PIXL Documentation]: Deterministic Instrument Simulation",
+            "dataMode": "FALLBACK",
+            "uncertainty": {
+              "value": 1,
+              "unit": "score",
+              "methodology": "Propagated uncertainty from input layers [Perseverance Science Payload Specs, CheMin / PIXL Documentation]"
+            }
+          }
+        },
+        {
+          "id": "agent-rover-03",
+          "name": "Ares Telemetry & Tactical Relay",
+          "callsign": "ROVER-03 RELAY",
+          "type": "ROVER",
+          "profileRole": "RELAY",
+          "status": "EXECUTING",
+          "position": {
+            "latitude": 18.446,
+            "longitude": 77.445
+          },
+          "capabilities": [
+            "COMM_RELAY",
+            "EMERGENCY_SUPPORT"
+          ],
+          "structuredCapabilities": {
+            "mobility": {
+              "maxSlopeDeg": 15,
+              "speedKph": 3.5,
+              "maxRangeKm": 18,
+              "roughnessTolerance": 0.78
+            },
+            "scientificInstruments": [
+              "Electra UHF Relay Mast",
+              "Emergency Radio Beacon",
+              "Mastcam"
+            ],
+            "hasDrill": false,
+            "hasSpectrometer": false,
+            "hasLidar": false,
+            "sampleTubeCapacity": 0,
+            "sampleTubesRemaining": 0,
+            "communicationRelay": {
+              "isRelay": true,
+              "relayRangeKm": 12,
+              "relayBandwidthKbps": 4096
+            },
+            "resourceCapacityWh": 4000,
+            "enduranceMinutes": 720
+          },
+          "maxRangeKm": 18,
+          "speedKph": 3.2,
+          "communicationRangeKm": 12,
+          "scientificPayloads": [
+            "Ultra-High Frequency (UHF) Electra Relay Mast",
+            "Emergency Radio Beacon"
+          ],
+          "mobilityRating": 0.78,
+          "hazardTolerance": 15,
+          "batteryCapacityWh": 4000,
+          "currentBatteryWh": 3520,
+          "telemetry": {
+            "batteryPercent": 88,
+            "batteryStatus": "GREEN",
+            "speedKph": 0,
+            "headingDeg": 0,
+            "internalTempC": -12,
+            "signalStrengthPercent": 98,
+            "lineOfSightToRelay": true,
+            "energyConsumptionRateWhPerKm": 80,
+            "lastHeartbeat": "2026-11-12T09:35:21.987Z"
+          },
+          "lastUpdated": "2026-11-12T09:35:21.987Z",
+          "provenance": {
+            "sourceType": "DERIVED",
+            "sourceName": "Martian Map Planetary Computation — Relay Rover Model",
+            "processingMethod": "Mathematical calculation derived from [Electra UHF Transceiver Specs, Line-of-Sight Waveguide Propagation]: Radio Wave Propagation Model",
+            "dataMode": "FALLBACK",
+            "uncertainty": {
+              "value": 1,
+              "unit": "score",
+              "methodology": "Propagated uncertainty from input layers [Electra UHF Transceiver Specs, Line-of-Sight Waveguide Propagation]"
+            }
+          }
+        },
+        {
+          "id": "agent-orbiter-01",
+          "name": "Mars Reconnaissance Relay Orbiter (MRO-Relay)",
+          "callsign": "ORBITER-01",
+          "type": "ORBITER",
+          "status": "EXECUTING",
+          "position": {
+            "latitude": 18.44,
+            "longitude": 77.45
+          },
+          "capabilities": [
+            "COMM_RELAY",
+            "ORBITAL_IMAGERY"
+          ],
+          "structuredCapabilities": {
+            "mobility": {
+              "maxSlopeDeg": 0,
+              "speedKph": 12400,
+              "maxRangeKm": 100000,
+              "roughnessTolerance": 1
+            },
+            "scientificInstruments": [
+              "HiRISE 0.25m Stereo Camera",
+              "CRISM Infrared Spectrometer",
+              "SHARAD Sounding Radar"
+            ],
+            "hasDrill": false,
+            "hasSpectrometer": true,
+            "hasLidar": true,
+            "sampleTubeCapacity": 0,
+            "sampleTubesRemaining": 0,
+            "communicationRelay": {
+              "isRelay": true,
+              "relayRangeKm": 850,
+              "relayBandwidthKbps": 2048
+            },
+            "resourceCapacityWh": 15000,
+            "enduranceMinutes": 60000
+          },
+          "orbitalAltitudeKm": 320,
+          "inclinationDeg": 92.8,
+          "orbitalPeriodMinutes": 112,
+          "coverageRadiusKm": 850,
+          "bandwidthKbps": 2048,
+          "nextPassWindowStart": "2026-11-12T09:53:21.987Z",
+          "nextPassDurationMinutes": 14,
+          "telemetry": {
+            "batteryPercent": 96,
+            "batteryStatus": "GREEN",
+            "speedKph": 12400,
+            "headingDeg": 180,
+            "internalTempC": 15,
+            "signalStrengthPercent": 100,
+            "lineOfSightToRelay": true,
+            "energyConsumptionRateWhPerKm": 0,
+            "lastHeartbeat": "2026-11-12T09:35:21.987Z"
+          },
+          "lastUpdated": "2026-11-12T09:35:21.987Z",
+          "provenance": {
+            "sourceType": "DERIVED",
+            "sourceName": "Martian Map Planetary Computation — MRO Orbital Relay Model",
+            "processingMethod": "Mathematical calculation derived from [NASA Deep Space Network Relays, MRO Sun-Synchronous Orbit Elements]: Two-Body Keplerian Orbit Approximation",
+            "dataMode": "FALLBACK",
+            "uncertainty": {
+              "value": 1,
+              "unit": "score",
+              "methodology": "Propagated uncertainty from input layers [NASA Deep Space Network Relays, MRO Sun-Synchronous Orbit Elements]"
+            }
+          }
+        }
+      ],
+      "activeHazards": [],
+      "activeRouteWaypoints": [
+        {
+          "latitude": 18.4447,
+          "longitude": 77.4508
+        },
+        {
+          "latitude": 18.4485,
+          "longitude": 77.432
+        },
+        {
+          "latitude": 18.455,
+          "longitude": 77.41
+        }
+      ],
+      "metrics": {
+        "batteryDepletedPercent": 0,
+        "scienceYieldScore": 0,
+        "hazardsEncountered": 0,
+        "hazardsAvoided": 0,
+        "safetyScore": 95,
+        "packetsDeliveredCount": 0,
+        "packetsBufferedCount": 0
+      },
+      "lastUpdated": "2026-11-12T09:35:21.994Z"
+    },
+    "telemetryDeviationScore": 0.02,
+    "lastSynchronizedAt": "2026-11-12T09:35:21.994Z"
+  },
+  "lineage": {
+    "decisionLineageGraphs": {},
+    "latestDecisionNode": null,
+    "auditChainVerification": {
+      "isValid": true,
+      "chainLength": 423,
+      "verifiedAt": "2026-11-12T09:35:21.994Z",
+      "message": "Audit chain cryptographically verified. All 423 blocks valid and tamper-free."
+    }
+  },
+  "provenance": {
+    "provenanceCatalog": {
+      "crismTest": {
+        "sourceType": "NASA",
+        "sourceName": "NASA MRO Compact Reconnaissance Imaging Spectrometer for Mars (CRISM)",
+        "datasetId": "MRO-M-CRISM-3-RDR-V1.0",
+        "observationId": "CRISM-TEST-SOL100",
+        "sourceUrl": "https://pds-geosciences.wustl.edu/missions/mro/crism.htm",
+        "spatialResolutionM": 18,
+        "processingMethod": "Atmospheric Transmission Ratio and Mineral Summary Spectral Parameter Mapping",
+        "dataMode": "BENCHMARK",
+        "confidence": 0.94,
+        "uncertainty": {
+          "value": 0.05,
+          "relative": 0.05,
+          "unit": "reflectance_I_over_F",
+          "methodology": "Photometrically and atmospherically corrected Volcano-Scan calibration"
+        }
+      },
+      "swimTest": {
+        "sourceType": "NASA",
+        "sourceName": "Planetary Science Institute / NASA Subsurface Water Ice Mapping (SWIM)",
+        "datasetId": "SWIM-ICE-CONSISTENCY-V1.0",
+        "observationId": "SWIM-GLOBAL-ARC-01",
+        "sourceUrl": "https://swim.psi.edu/",
+        "spatialResolutionM": 1000,
+        "processingMethod": "Multi-dataset integration (SHARAD, Neutron Spectrometer, Thermal Inertia, Geomorphology)",
+        "dataMode": "BENCHMARK",
+        "confidence": 0.88,
+        "uncertainty": {
+          "value": 0.15,
+          "relative": 0.15,
+          "unit": "ice_consistency_index",
+          "methodology": "Joint Bayesian multi-sensor evidence integration"
+        }
+      }
+    },
+    "overallDataConfidence": 0.94,
+    "dataModeDistribution": {
+      "BENCHMARK": 12,
+      "CACHED": 8,
+      "LIVE": 3,
+      "FALLBACK": 4,
+      "DERIVED": 9,
+      "SIMULATED": 6,
+      "HEURISTIC": 2,
+      "DEMO": 1
+    }
+  },
+  "validation": {
+    "healthScore": 89,
+    "invariantReports": [
+      {
+        "id": "S1",
+        "name": "BATTERY RESERVE LIMIT",
+        "status": "PASS",
+        "evaluatedMetric": "Lowest rover battery: 85%",
+        "threshold": ">= 20.0% safe return reserve",
+        "scientificReference": "NASA EVA Consumables Standard & MSL Power Margin Flight Rules"
+      },
+      {
+        "id": "S2",
+        "name": "ROUTE SAFETY GATE",
+        "status": "PASS",
+        "evaluatedMetric": "Scout Status: EXECUTING",
+        "threshold": "Safety score >= 40 & Rollover risk bounded",
+        "scientificReference": "MER/Perseverance Mobility Tilt Envelope Guidelines"
+      },
+      {
+        "id": "S3",
+        "name": "HUMAN AUTHORITY GATE",
+        "status": "PASS",
+        "evaluatedMetric": "Zero unauthorized autonomous replan overrides detected",
+        "threshold": "Human MISSION_COMMAND role required for route deviation approval",
+        "scientificReference": "JPL Multi-Agent Planetary Operations Protocols"
+      },
+      {
+        "id": "S4",
+        "name": "EVENT INTEGRITY",
+        "status": "PASS",
+        "evaluatedMetric": "Event ledger count: 0 events",
+        "threshold": "Cryptographic ledger strictly non-decreasing and unbroken",
+        "scientificReference": "Cryptographic Append-Only Ledger Standard RFC-6962"
+      },
+      {
+        "id": "S5",
+        "name": "NO LOST LINK TRANSMISSION",
+        "status": "PASS",
+        "evaluatedMetric": "All unlinked packets buffered",
+        "threshold": "Never transmit packets across link marked LOST",
+        "scientificReference": "CCSDS Space Communications Protocol Standards"
+      },
+      {
+        "id": "S6",
+        "name": "PROVENANCE HONESTY",
+        "status": "PASS",
+        "evaluatedMetric": "All synthetic data correctly labeled SIMULATED",
+        "threshold": "Simulated observations must never claim LIVE status",
+        "scientificReference": "NASA Open Science & Scientific Data Integrity Directives"
+      },
+      {
+        "id": "S7",
+        "name": "TAMPER-EVIDENT AUDIT CHAIN",
+        "status": "PASS",
+        "evaluatedMetric": "423 blocks verified",
+        "threshold": "100% cryptographic SHA-256 validity across all audit blocks",
+        "scientificReference": "NIST SP 800-92 Guide to Computer Security Log Management"
+      },
+      {
+        "id": "S8",
+        "name": "COMMAND FRESHNESS & ANTI-REPLAY",
+        "status": "PASS",
+        "evaluatedMetric": "All command TTLs bounded within 300s window",
+        "threshold": "expiresAt - issuedAt <= 300,000ms & nonces non-reusable",
+        "scientificReference": "NASA Space Mission Command Authentication Standard"
+      }
+    ],
+    "overallSystemStatus": "NOMINAL"
+  },
+  "events": {
+    "totalEvents": 0,
+    "recentEvents": []
+  }
+}

@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
 import { marsDataService } from "../services/nasa/marsDataService.js";
 import { scienceEngineAdapter } from "../services/science/scienceEngineAdapter.js";
-import { APIResponse, ScienceTarget, ScientificAssessment } from "../types/index.js";
+import { scienceDecisionService } from "../services/science/scienceDecisionService.js";
+import { APIResponse, ScienceObjectiveId, ScienceTarget, ScientificAssessment } from "../types/index.js";
 import { validateMarsCoordinate } from "../utils/marsCoordinates.js";
 
 export async function getScienceTargets(req: Request, res: Response): Promise<void> {
@@ -103,4 +104,178 @@ export async function getScientificAssessment(req: Request, res: Response): Prom
     },
   };
   res.json(response);
+}
+
+export async function evaluateTarget(req: Request, res: Response): Promise<void> {
+  const { targetId, name, latitude, longitude, targetType, description, primaryObjective } = req.body || {};
+
+  if (typeof latitude !== "number" || typeof longitude !== "number" || Number.isNaN(latitude) || Number.isNaN(longitude)) {
+    res.status(400).json({
+      success: false,
+      error: { code: "INVALID_COORDINATE", message: "Numeric 'latitude' and 'longitude' are required." },
+    });
+    return;
+  }
+
+  const validation = validateMarsCoordinate({ latitude, longitude });
+  if (!validation.valid) {
+    res.status(400).json({
+      success: false,
+      error: { code: "INVALID_COORDINATE", message: validation.error || "Coordinate out of Martian planetary boundaries." },
+    });
+    return;
+  }
+
+  const result = await scienceEngineAdapter.evaluateTarget({
+    targetId: String(targetId || "custom-target"),
+    name: String(name || "Unnamed Target"),
+    coordinate: { latitude, longitude },
+    targetType: String(targetType || "stratigraphy"),
+    description: typeof description === "string" ? description : undefined,
+    primaryObjective: typeof primaryObjective === "string" ? primaryObjective : undefined,
+  });
+
+  res.json({
+    success: true,
+    data: result,
+    metadata: {
+      source: result.methodology,
+      timestamp: new Date().toISOString(),
+    },
+  });
+}
+
+export async function evaluateObjectives(req: Request, res: Response): Promise<void> {
+  const { objectiveId, targetTypes, waypointsCount, routeLengthKm } = req.body || {};
+  const result = await scienceEngineAdapter.evaluateObjectives({
+    objectiveId: String(objectiveId || "ANCIENT_WATER_ACTIVITY"),
+    targetTypes: Array.isArray(targetTypes) ? targetTypes.map(String) : [],
+    waypointsCount: typeof waypointsCount === "number" ? waypointsCount : 1,
+    routeLengthKm: typeof routeLengthKm === "number" ? routeLengthKm : 2.5,
+  });
+
+  res.json({
+    success: true,
+    data: result,
+    metadata: {
+      source: result.methodology,
+      timestamp: new Date().toISOString(),
+    },
+  });
+}
+
+export async function classifyMineralogy(req: Request, res: Response): Promise<void> {
+  const { latitude, longitude, geologicalContext, observedFeatures } = req.body || {};
+
+  if (typeof latitude !== "number" || typeof longitude !== "number" || Number.isNaN(latitude) || Number.isNaN(longitude)) {
+    res.status(400).json({
+      success: false,
+      error: { code: "INVALID_COORDINATE", message: "Numeric 'latitude' and 'longitude' are required." },
+    });
+    return;
+  }
+
+  const validation = validateMarsCoordinate({ latitude, longitude });
+  if (!validation.valid) {
+    res.status(400).json({
+      success: false,
+      error: { code: "INVALID_COORDINATE", message: validation.error || "Coordinate out of Martian planetary boundaries." },
+    });
+    return;
+  }
+
+  const result = await scienceEngineAdapter.classifyMineralogy({
+    coordinate: { latitude, longitude },
+    geologicalContext: typeof geologicalContext === "string" ? geologicalContext : undefined,
+    observedFeatures: Array.isArray(observedFeatures) ? observedFeatures.map(String) : undefined,
+  });
+
+  res.json({
+    success: true,
+    data: result,
+    metadata: {
+      source: result.methodology,
+      timestamp: new Date().toISOString(),
+    },
+  });
+}
+
+export async function assessIce(req: Request, res: Response): Promise<void> {
+  const { latitude, longitude } = req.body || {};
+
+  if (typeof latitude !== "number" || typeof longitude !== "number" || Number.isNaN(latitude) || Number.isNaN(longitude)) {
+    res.status(400).json({
+      success: false,
+      error: { code: "INVALID_COORDINATE", message: "Numeric 'latitude' and 'longitude' are required." },
+    });
+    return;
+  }
+
+  const validation = validateMarsCoordinate({ latitude, longitude });
+  if (!validation.valid) {
+    res.status(400).json({
+      success: false,
+      error: { code: "INVALID_COORDINATE", message: validation.error || "Coordinate out of Martian planetary boundaries." },
+    });
+    return;
+  }
+
+  const result = await scienceEngineAdapter.assessIceStability({ latitude, longitude });
+  res.json({
+    success: true,
+    data: result,
+    metadata: {
+      source: result.methodology,
+      timestamp: new Date().toISOString(),
+    },
+  });
+}
+
+export function assignTargetToMission(req: Request, res: Response): void {
+  const targetId = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
+  const { missionId, rationale, actor, objectiveId } = req.body || {};
+
+  if (!missionId || typeof missionId !== "string") {
+    res.status(400).json({
+      success: false,
+      error: { code: "MISSING_MISSION_ID", message: "Field 'missionId' is required." },
+    });
+    return;
+  }
+
+  const outcome = scienceDecisionService.assignTargetToMission({
+    targetId,
+    missionId,
+    rationale: typeof rationale === "string" ? rationale : undefined,
+    actor: typeof actor === "string" ? actor : undefined,
+    objectiveId: typeof objectiveId === "string" ? (objectiveId as ScienceObjectiveId) : undefined,
+  });
+
+  if (!outcome.ok) {
+    res.status(outcome.status).json({
+      success: false,
+      error: { code: outcome.code, message: outcome.message },
+    });
+    return;
+  }
+
+  res.status(201).json({
+    success: true,
+    data: outcome.decision,
+    metadata: {
+      timestamp: new Date().toISOString(),
+    },
+  });
+}
+
+export function getScienceDecisions(req: Request, res: Response): void {
+  const missionId = typeof req.query.missionId === "string" ? req.query.missionId : undefined;
+  const decisions = scienceDecisionService.getDecisions(missionId);
+  res.json({
+    success: true,
+    data: decisions,
+    metadata: {
+      timestamp: new Date().toISOString(),
+    },
+  });
 }

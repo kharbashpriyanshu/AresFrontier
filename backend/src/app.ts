@@ -5,8 +5,18 @@ import morgan from "morgan";
 import dotenv from "dotenv";
 import { apiRouter } from "./routes/api.js";
 import { APIResponse } from "./types/index.js";
+import { MissionPersistenceService } from "./services/persistence/missionPersistenceService.js";
+import { MissionStateCoordinator } from "./services/state/missionStateCoordinator.js";
 
 dotenv.config();
+
+// Initialize persistent state and canonical mission state architecture
+try {
+  MissionPersistenceService.initialize();
+  MissionStateCoordinator.initialize();
+} catch (err) {
+  console.warn("[Martian Map Engine] Warning during persistence initialization:", err);
+}
 
 export const app = express();
 const port = process.env.PORT || 5000;
@@ -16,7 +26,7 @@ app.use(helmet());
 app.use(
   cors({
     origin: process.env.CORS_ORIGIN || "*",
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization", "x-martian-integrity-digest"],
   })
 );

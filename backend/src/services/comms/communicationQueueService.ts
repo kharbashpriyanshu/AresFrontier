@@ -1,8 +1,23 @@
-import { CommunicationPacket } from "../../types/index.js";
+import { CommunicationPacket, MarsCoordinate, MessagePriorityClass } from "../../types/index.js";
 import { auditChainService } from "../security/auditChainService.js";
 import { AgentStateStore } from "../agents/agentStateStore.js";
+import { AgentRegistry } from "../agents/agentRegistry.js";
+import { LineOfSightEngine } from "./lineOfSightEngine.js";
+import { OrbitalVisibilityEngine } from "./orbitalVisibilityEngine.js";
 
 export class CommunicationQueueService {
+  private static priorityWeight: Record<MessagePriorityClass, number> = {
+    EMERGENCY_SAFETY: 5,
+    CRITICAL: 5,
+    MISSION_CRITICAL_OPS: 4,
+    HIGH: 4,
+    NAVIGATION_TELEMETRY: 3,
+    MEDIUM: 3,
+    SCIENTIFIC_OBSERVATIONS: 2,
+    BULK: 2,
+    ROUTINE_STATUS: 1,
+  };
+
   private static packetQueue: CommunicationPacket[] = [
     {
       packetId: "pkt-crit-001",
@@ -13,6 +28,8 @@ export class CommunicationQueueService {
       createdAt: new Date(Date.now() - 15 * 60 * 1000).toISOString(),
       status: "DELIVERED",
       attempts: 1,
+      storeAndForward: true,
+      ttlMinutes: 120,
     },
     {
       packetId: "pkt-sci-002",
@@ -23,6 +40,8 @@ export class CommunicationQueueService {
       createdAt: new Date(Date.now() - 5 * 60 * 1000).toISOString(),
       status: "BUFFERED",
       attempts: 0,
+      storeAndForward: true,
+      ttlMinutes: 240,
     },
     {
       packetId: "pkt-haz-003",
@@ -33,6 +52,8 @@ export class CommunicationQueueService {
       createdAt: new Date(Date.now() - 1 * 60 * 1000).toISOString(),
       status: "TRANSMITTING",
       attempts: 1,
+      storeAndForward: true,
+      ttlMinutes: 60,
     },
   ];
 
@@ -44,14 +65,22 @@ export class CommunicationQueueService {
     this.packetQueue = [...queue];
   }
 
-  public static enqueuePacket(packet: Omit<CommunicationPacket, "packetId" | "createdAt" | "status" | "attempts">): CommunicationPacket {
-    const packetId = `pkt-${packet.priority.toLowerCase()}-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`;
+  public static enqueuePacket(
+    packet: Omit<CommunicationPacket, "packetId" | "createdAt" | "status" | "attempts">,
+    initialStatus: "QUEUED" | "BUFFERED" = "BUFFERED"
+  ): CommunicationPacket {
+    const priority = packet.priority;
+    const priWeight = this.priorityWeight[priority] || 1;
+    const packetId = `pkt-${priority.toLowerCase()}-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`;
     const newPacket: CommunicationPacket = {
       ...packet,
+      priorityClass: priWeight as 1 | 2 | 3 | 4 | 5,
       packetId,
       createdAt: new Date().toISOString(),
-      status: "BUFFERED",
+      status: initialStatus,
       attempts: 0,
+      ttlMinutes: packet.ttlMinutes ?? (priWeight >= 4 ? 360 : 120),
+      storeAndForward: packet.storeAndForward ?? true,
     };
     this.packetQueue.push(newPacket);
     return newPacket;
@@ -63,31 +92,50 @@ export class CommunicationQueueService {
   public static flushQueue(isOrbiterAvailable: boolean, bandwidthKbps: number): {
     transmitted: CommunicationPacket[];
     buffered: CommunicationPacket[];
+    expired: CommunicationPacket[];
   } {
     const transmitted: CommunicationPacket[] = [];
     const buffered: CommunicationPacket[] = [];
+    const expired: CommunicationPacket[] = [];
 
-    // Sort: CRITICAL first, then HIGH, MEDIUM, BULK
-    const priorityWeight: Record<string, number> = {
-      CRITICAL: 4,
-      HIGH: 3,
-      MEDIUM: 2,
-      BULK: 1,
-    };
+    // Sort: highest priority first, then older createdAt first (FIFO within priority)
+    this.packetQueue.sort((a, b) => {
+      const weightA = this.priorityWeight[a.priority] || 1;
+      const weightB = this.priorityWeight[b.priority] || 1;
+      if (weightB !== weightA) return weightB - weightA;
+      return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
+    });
 
-    this.packetQueue.sort((a, b) => priorityWeight[b.priority] - priorityWeight[a.priority]);
+    const now = Date.now();
 
     for (const packet of this.packetQueue) {
       if (packet.status === "DELIVERED") continue;
 
+      // Check TTL expiration
+      const ageMinutes = (now - new Date(packet.createdAt).getTime()) / (60 * 1000);
+      if (packet.ttlMinutes && ageMinutes > packet.ttlMinutes) {
+        packet.status = "EXPIRED";
+        expired.push(packet);
+        continue;
+      }
+
       if (!isOrbiterAvailable) {
-        // Blackout: packets remain or become BUFFERED
-        packet.status = "BUFFERED";
-        buffered.push(packet);
+        // Blackout: packets with storeAndForward remain BUFFERED
+        if (packet.storeAndForward !== false) {
+          packet.status = "BUFFERED";
+          buffered.push(packet);
+        } else {
+          packet.status = "FAILED_BLACKOUT";
+        }
       } else {
-        // Contact active: transmit in priority order
+        // Contact active: transmit in priority order with transmission latency
+        const latencySec = bandwidthKbps > 0
+          ? Number(((packet.payloadSizeKb * 8) / bandwidthKbps + 0.3).toFixed(2))
+          : 1.0;
         packet.status = "DELIVERED";
         packet.attempts += 1;
+        packet.deliveredAt = new Date().toISOString();
+        packet.transmissionDelaySeconds = latencySec;
         transmitted.push(packet);
       }
     }
@@ -100,13 +148,84 @@ export class CommunicationQueueService {
         missionPlanId: "ORBITAL_DOWNLINK",
         details: {
           transmittedCount: transmitted.length,
-          criticalCount: transmitted.filter((p) => p.priority === "CRITICAL").length,
+          criticalCount: transmitted.filter((p) => (this.priorityWeight[p.priority] || 1) >= 4).length,
           bandwidthKbps,
         },
       });
     }
 
-    return { transmitted, buffered };
+    return { transmitted, buffered, expired };
+  }
+
+  /**
+   * Evaluates physical communication links for each agent using Line-of-Sight and Orbital Visibility
+   * and processes queued messages accordingly without faking delivery during real blackout windows.
+   */
+  public static processQueueWithPhysics(
+    simulationTimeMinutes: number,
+    baseCoord: MarsCoordinate = { latitude: 18.38, longitude: 77.58 }
+  ): {
+    transmittedCount: number;
+    bufferedCount: number;
+    expiredCount: number;
+    activeRelayAvailable: boolean;
+    agentLinkStates: Record<string, { directLOS: boolean; orbiterPass: boolean; available: boolean }>;
+  } {
+    const orbiterWindow = OrbitalVisibilityEngine.calculateVisibility(baseCoord, simulationTimeMinutes);
+    const isOrbiterActive = orbiterWindow.state === "PASS_ACTIVE" || orbiterWindow.state === "PASS_ENDING";
+    const bandwidthKbps = isOrbiterActive ? orbiterWindow.bandwidthKbps : 0;
+
+    const agents = AgentRegistry.getAllAgents();
+    const agentLinkStates: Record<string, { directLOS: boolean; orbiterPass: boolean; available: boolean }> = {};
+
+    let anyLinkActive = isOrbiterActive;
+
+    for (const agent of agents) {
+      if (agent.type === "ORBITER") {
+        agentLinkStates[agent.id] = { directLOS: true, orbiterPass: true, available: true };
+        continue;
+      }
+
+      const losResult = LineOfSightEngine.calculateLineOfSight(baseCoord, agent.position, 5.0, 2.0);
+      const orbForAgent = OrbitalVisibilityEngine.calculateVisibility(agent.position, simulationTimeMinutes);
+      const orbActiveForAgent = orbForAgent.state === "PASS_ACTIVE" || orbForAgent.state === "PASS_ENDING";
+      const isAvailable = losResult.lineOfSight || orbActiveForAgent;
+
+      if (isAvailable) anyLinkActive = true;
+
+      agentLinkStates[agent.id] = {
+        directLOS: losResult.lineOfSight,
+        orbiterPass: orbActiveForAgent,
+        available: isAvailable,
+      };
+
+      // Synchronize agent telemetry lineOfSightToRelay state
+      const wasCommsLost = !agent.telemetry.lineOfSightToRelay;
+      agent.telemetry.lineOfSightToRelay = isAvailable;
+      agent.telemetry.signalStrengthPercent = isAvailable ? (losResult.lineOfSight ? 95 : 85) : 0;
+
+      // Telemetry synchronization after reconnection event
+      if (wasCommsLost && isAvailable) {
+        AgentStateStore.recordEvent({
+          agentId: agent.callsign,
+          eventType: "COMMUNICATION_RESTORED",
+          severity: "INFO",
+          message: `COMM-RECONNECT: ${agent.callsign} re-established link via ${losResult.lineOfSight ? "Direct RF LOS" : "MRO Orbital Relay"}. Telemetry backlog synchronized.`,
+          details: { agentId: agent.id, simTime: simulationTimeMinutes },
+        });
+      }
+      AgentRegistry.updateAgent(agent);
+    }
+
+    const flushResult = this.flushQueue(anyLinkActive, bandwidthKbps || (anyLinkActive ? 1024 : 0));
+
+    return {
+      transmittedCount: flushResult.transmitted.length,
+      bufferedCount: flushResult.buffered.length,
+      expiredCount: flushResult.expired.length,
+      activeRelayAvailable: anyLinkActive,
+      agentLinkStates,
+    };
   }
 
   /**

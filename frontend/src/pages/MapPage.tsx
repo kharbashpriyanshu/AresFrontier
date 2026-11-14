@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, useRef } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { api } from "../services/api.js";
 import {
@@ -16,7 +16,7 @@ import {
 import { MarsMap } from "../components/MarsMap.js";
 import { LocationExplorer } from "../components/LocationExplorer.js";
 import { RoutePlanner } from "../components/RoutePlanner.js";
-import { Navigation, Info, Play, CheckCircle } from "lucide-react";
+import { Navigation, Info, Play, CheckCircle, AlertTriangle, Database, Activity } from "lucide-react";
 
 export const MapPage: React.FC = () => {
   const navigate = useNavigate();
@@ -27,6 +27,8 @@ export const MapPage: React.FC = () => {
   const [activeRoute, setActiveRoute] = useState<MarsRoute | null>(null);
   const [selectedLocation, setSelectedLocation] = useState<LocationData | null>(null);
   const [pipelineStatus, setPipelineStatus] = useState<SystemPipelineStatus | null>(null);
+  const [showProvenanceModal, setShowProvenanceModal] = useState<boolean>(false);
+  const [showStatusModal, setShowStatusModal] = useState<boolean>(false);
 
   // Phase 2 Mission Intelligence State
   const [hazards, setHazards] = useState<Hazard[]>([]);
@@ -61,101 +63,48 @@ export const MapPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [demoActive, setDemoActive] = useState<boolean>(false);
+  const [focusCoord, setFocusCoord] = useState<MarsCoordinate | null>(null);
+  const [ingestedM20Traverse, setIngestedM20Traverse] = useState<{
+    segments: [number, number][][];
+    currentPosition?: { latitude: number; longitude: number; sol: number; totalDistanceKm: number } | null;
+  } | null>(null);
 
-  // Load initial datasets and pipeline status
-  useEffect(() => {
-    async function loadData() {
-      try {
-        setIsLoading(true);
-        const [locs, targets, routes, statusData, hazardList, objectiveList] = await Promise.all([
-          api.getLocations(),
-          api.getScienceTargets(),
-          api.getAllRoutes(),
-          api.getDataStatus(),
-          api.getHazards().catch(() => [] as Hazard[]),
-          api.getScienceObjectives().catch(() => [] as ScienceObjective[]),
-        ]);
-        setLocations(locs);
-        setScienceTargets(targets);
-        setHazards(hazardList);
-        setObjectives(objectiveList);
-        if (statusData && statusData.pipelines) {
-          setPipelineStatus(statusData.pipelines);
-        }
+  // Add Science Stop handler defined before useEffect (deduplicated by targetId or coordinate)
+  const handleAddScienceStop = useCallback((item: ScienceTarget | LocationData) => {
+    const itemId = "id" in item ? item.id : undefined;
 
-        if (routes.length > 0) {
-          setActiveRoute(routes[0]);
-          if (routes[0].points && routes[0].points.length >= 2) {
-            setPoints(routes[0].points);
-          }
-        }
-        if (locs.length > 0) {
-          setSelectedLocation(locs[0]);
-        }
-
-        // Check if query params requested adding science stop
-        const addScienceId = searchParams.get("addScience");
-        if (addScienceId) {
-          const targetToAdd = targets.find((t) => t.id === addScienceId);
-          if (targetToAdd) {
-            handleAddScienceStop(targetToAdd);
-            setActiveDrawer("planner");
-          }
-        }
-
-        // Check if query param requested demo mode
-        if (searchParams.get("demo") === "marswalk-001") {
-          loadDemoMarswalk(locs, targets);
-        }
-      } catch (err: unknown) {
-        console.error("Failed to load Mars datasets", err);
-        setErrorMsg(err instanceof Error ? err.message : "Error connecting to backend API.");
-      } finally {
-        setIsLoading(false);
+    setPoints((prev) => {
+      const alreadyExists = prev.some(
+        (p) =>
+          (itemId && p.targetId === itemId) ||
+          (Math.abs(p.coordinate.latitude - item.coordinate.latitude) < 0.0005 &&
+            Math.abs(p.coordinate.longitude - item.coordinate.longitude) < 0.0005)
+      );
+      if (alreadyExists) {
+        return prev;
       }
-    }
-    loadData();
-  }, [searchParams]);
 
-  // Mission Intelligence Optimization (Phase 2)
-  const handleRunCopilotOptimizer = async () => {
-    if (points.length < 2) return;
-    try {
-      setIsOptimizing(true);
-      const startCoord = points[0].coordinate;
-      const destCoord = points[points.length - 1].coordinate;
+      const newPoint: RoutePoint = {
+        id: `pt-sci-${Date.now()}`,
+        coordinate: item.coordinate,
+        type: "science",
+        label: item.name,
+        targetId: itemId,
+      };
 
-      const generatedCandidates = await api.optimizeRoute({
-        startCoordinate: startCoord,
-        destinationCoordinate: destCoord,
-        objectiveId: selectedObjectiveId,
-        maxDurationMinutes: 180,
-      });
-
-      setCandidates(generatedCandidates);
-
-      // Default select Balanced candidate if available
-      const balanced = generatedCandidates.find((c) => c.profileType === "balanced") || generatedCandidates[0];
-      if (balanced) {
-        handleSelectCandidate(balanced);
+      const updated = [...prev];
+      if (updated.length >= 2) {
+        updated.splice(updated.length - 1, 0, newPoint);
+      } else {
+        updated.push(newPoint);
       }
-    } catch (err: unknown) {
-      console.error("Optimization failed", err);
-      alert(err instanceof Error ? err.message : "Route optimization failed.");
-    } finally {
-      setIsOptimizing(false);
-    }
-  };
+      return updated;
+    });
+    setFocusCoord(item.coordinate);
+    setActiveDrawer("planner");
+  }, []);
 
-  const handleSelectCandidate = (candidate: RouteCandidate) => {
-    setSelectedCandidateId(candidate.id);
-    setActiveRoute(candidate.route);
-    if (candidate.route.points && candidate.route.points.length >= 2) {
-      setPoints(candidate.route.points);
-    }
-  };
-
-  // Launch Deterministic Demo MARSWALK-001 (Phase 16)
+  // Launch Deterministic Demo MARSWALK-001
   const loadDemoMarswalk = useCallback((locs?: LocationData[], tgts?: ScienceTarget[]) => {
     setDemoActive(true);
     const locList = locs || locations;
@@ -219,7 +168,131 @@ export const MapPage: React.FC = () => {
     });
   }, [locations, scienceTargets]);
 
-  // Set as Start Point (Phase 4 integration)
+  const hasLoadedRef = useRef<boolean>(false);
+  const handledQueryRef = useRef<string>("");
+
+  // Load initial datasets and pipeline status once
+  useEffect(() => {
+    if (hasLoadedRef.current) return;
+    hasLoadedRef.current = true;
+
+    async function loadData() {
+      try {
+        setIsLoading(true);
+        const [locs, targets, routes, statusData, hazardList, objectiveList] = await Promise.all([
+          api.getLocations(),
+          api.getScienceTargets(),
+          api.getAllRoutes(),
+          api.getDataStatus(),
+          api.getHazards().catch(() => [] as Hazard[]),
+          api.getScienceObjectives().catch(() => [] as ScienceObjective[]),
+        ]);
+        setLocations(locs);
+        setScienceTargets(targets);
+        setHazards(hazardList);
+        setObjectives(objectiveList);
+        if (statusData && statusData.pipelines) {
+          setPipelineStatus(statusData.pipelines);
+        }
+
+        // Load ingested M20 traverse overlay if previously ingested
+        fetch("/api/data/ingested")
+          .then((r) => (r.ok ? r.json() : null))
+          .then((body) => {
+            const m20 = body?.data?.find?.((d: any) => d.id === "m20-mmgis-traverse");
+            if (m20?.mapOverlay) {
+              setIngestedM20Traverse(m20.mapOverlay);
+            }
+          })
+          .catch(() => {});
+
+        const requestedRouteId = searchParams.get("routeId");
+        const matchedRoute = requestedRouteId ? routes.find((r) => r.id === requestedRouteId) : undefined;
+        const initialRoute = matchedRoute || routes[0];
+        if (initialRoute) {
+          setActiveRoute(initialRoute);
+          if (initialRoute.points && initialRoute.points.length >= 2) {
+            setPoints(initialRoute.points);
+          }
+        }
+        if (locs.length > 0) {
+          setSelectedLocation(locs[0]);
+        }
+      } catch (err: unknown) {
+        console.error("Failed to load Mars datasets", err);
+        setErrorMsg(err instanceof Error ? err.message : "Error connecting to backend API.");
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    loadData();
+  }, [searchParams]);
+
+  // Apply URL query actions once datasets are ready
+  useEffect(() => {
+    if (isLoading) return;
+    const queryKey = searchParams.toString();
+    if (!queryKey || handledQueryRef.current === queryKey) return;
+    handledQueryRef.current = queryKey;
+
+    const latParam = parseFloat(searchParams.get("lat") || "");
+    const lonParam = parseFloat(searchParams.get("lon") || "");
+    if (!Number.isNaN(latParam) && !Number.isNaN(lonParam)) {
+      setFocusCoord({ latitude: latParam, longitude: lonParam });
+    }
+
+    const addScienceId = searchParams.get("addScience");
+    if (addScienceId) {
+      const targetToAdd = scienceTargets.find((t) => t.id === addScienceId);
+      if (targetToAdd) {
+        handleAddScienceStop(targetToAdd);
+        setActiveDrawer("planner");
+      }
+    }
+
+    if (searchParams.get("demo") === "marswalk-001") {
+      loadDemoMarswalk(locations, scienceTargets);
+    }
+  }, [isLoading, searchParams, locations, scienceTargets, handleAddScienceStop, loadDemoMarswalk]);
+
+  // Mission Intelligence Optimization (Phase 2)
+  const handleRunCopilotOptimizer = async () => {
+    if (points.length < 2) return;
+    try {
+      setIsOptimizing(true);
+      const startCoord = points[0].coordinate;
+      const destCoord = points[points.length - 1].coordinate;
+
+      const generatedCandidates = await api.optimizeRoute({
+        startCoordinate: startCoord,
+        destinationCoordinate: destCoord,
+        objectiveId: selectedObjectiveId,
+        maxDurationMinutes: 180,
+      });
+
+      setCandidates(generatedCandidates);
+
+      const balanced = generatedCandidates.find((c) => c.profileType === "balanced") || generatedCandidates[0];
+      if (balanced) {
+        handleSelectCandidate(balanced);
+      }
+    } catch (err: unknown) {
+      console.error("Optimization failed", err);
+      alert(err instanceof Error ? err.message : "Route optimization failed.");
+    } finally {
+      setIsOptimizing(false);
+    }
+  };
+
+  const handleSelectCandidate = (candidate: RouteCandidate) => {
+    setSelectedCandidateId(candidate.id);
+    setActiveRoute(candidate.route);
+    if (candidate.route.points && candidate.route.points.length >= 2) {
+      setPoints(candidate.route.points);
+    }
+  };
+
+  // Set as Start Point
   const handleSetStart = (loc: LocationData) => {
     const updated = [...points];
     const newStart: RoutePoint = {
@@ -237,7 +310,7 @@ export const MapPage: React.FC = () => {
     setActiveDrawer("planner");
   };
 
-  // Set as Destination Point (Phase 4 integration)
+  // Set as Destination Point
   const handleSetDestination = (loc: LocationData) => {
     const updated = [...points];
     const newDest: RoutePoint = {
@@ -255,26 +328,6 @@ export const MapPage: React.FC = () => {
     setActiveDrawer("planner");
   };
 
-  // Add Science Stop (Phase 4 & 8 integration)
-  const handleAddScienceStop = (item: ScienceTarget | LocationData) => {
-    const newPoint: RoutePoint = {
-      id: `pt-sci-${Date.now()}`,
-      coordinate: item.coordinate,
-      type: "science",
-      label: item.name,
-      targetId: "id" in item ? item.id : undefined,
-    };
-
-    const updated = [...points];
-    if (updated.length >= 2) {
-      updated.splice(updated.length - 1, 0, newPoint);
-    } else {
-      updated.push(newPoint);
-    }
-    setPoints(updated);
-    setActiveDrawer("planner");
-  };
-
   // Plan Mission CTA from Explorer
   const handlePlanMission = (loc: LocationData) => {
     handleSetStart(loc);
@@ -286,7 +339,6 @@ export const MapPage: React.FC = () => {
     setClickedCoord(coord);
 
     if (isPickingOnMap) {
-      // In pick mode: route planner takes coordinate as intermediate waypoint
       setIsPickingOnMap(false);
       const newPoint: RoutePoint = {
         id: `pt-picked-${Date.now()}`,
@@ -306,7 +358,6 @@ export const MapPage: React.FC = () => {
       return;
     }
 
-    // Otherwise inspect clicked location on Mars
     try {
       const locData = await api.getLocationAtCoord(coord.latitude, coord.longitude);
       setSelectedLocation(locData);
@@ -332,23 +383,28 @@ export const MapPage: React.FC = () => {
     }
   };
 
-  // Navigate to EVA assessment screen
+  // Navigate to EVA assessment screen (preserving active missionId if present)
   const handleInspectMission = (route: MarsRoute) => {
-    navigate(`/mission?routeId=${route.id}`);
+    const missionId = searchParams.get("missionId");
+    const qs = new URLSearchParams({ routeId: route.id });
+    if (missionId) qs.set("missionId", missionId);
+    navigate(`/mission?${qs.toString()}`);
   };
 
   if (isLoading) {
     return (
-      <div className="h-[calc(100vh-3.5rem)] bg-space-950 flex flex-col items-center justify-center space-y-4 font-mono text-xs text-slate-300">
-        <div className="w-10 h-10 border-2 border-mars-accent border-t-transparent rounded-full animate-spin"></div>
-        <div className="tracking-widest uppercase">Initializing MOLA Topographic & Telemetry Service...</div>
+      <div className="h-[calc(100vh-3.5rem)] bg-atlas-bg flex flex-col items-center justify-center space-y-4 font-mono text-xs text-atlas-muted">
+        <div className="w-8 h-8 border-2 border-atlas-accent border-t-transparent animate-spin" />
+        <div className="tracking-widest uppercase font-semibold text-atlas-text">
+          Initializing MOLA Topography & Planetary Telemetry...
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="relative h-[calc(100vh-3.5rem)] w-full overflow-hidden flex bg-space-950">
-      {/* Primary Map Viewport */}
+    <div className="relative h-[calc(100vh-3.5rem)] w-full overflow-hidden flex bg-atlas-bg transition-colors">
+      {/* Primary Geospatial Canvas */}
       <div className="flex-1 relative h-full">
         <MarsMap
           locations={locations}
@@ -361,56 +417,84 @@ export const MapPage: React.FC = () => {
           highlightCoord={hoverProfileCoord}
           pipelineStatus={pipelineStatus}
           hazards={hazards}
+          showProvenanceModal={showProvenanceModal}
+          setShowProvenanceModal={setShowProvenanceModal}
+          showStatusModal={showStatusModal}
+          setShowStatusModal={setShowStatusModal}
+          focusCoord={focusCoord}
+          layoutTrigger={activeDrawer || "none"}
+          ingestedM20Traverse={ingestedM20Traverse}
         />
 
-        {/* Floating Controls (Top Right) */}
-        <div className="absolute top-4 right-16 z-20 flex items-center space-x-2 font-mono text-xs shadow-xl">
-          {/* Demo Button (Phase 16) */}
+        {/* Unified Floating Controls Bar (Top Right) */}
+        <div className="absolute top-4 right-4 z-20 flex flex-wrap items-center justify-end gap-2 text-xs font-mono shadow-2xl pointer-events-auto">
+          {/* Data Provenance Modal Trigger */}
+          <button
+            onClick={() => setShowProvenanceModal(true)}
+            className="bg-atlas-surface/95 hover:bg-atlas-elevated border border-atlas-border px-3 py-1.5 text-atlas-text hidden md:flex items-center space-x-1.5 backdrop-blur-md shadow-lg transition-colors"
+            title="Inspect NASA Datasets & Attribution"
+          >
+            <Database className="w-3.5 h-3.5 text-atlas-accent" />
+            <span>Data Provenance</span>
+          </button>
+
+          {/* System Status Modal Trigger */}
+          <button
+            onClick={() => setShowStatusModal(true)}
+            className="bg-atlas-surface/95 hover:bg-atlas-elevated border border-atlas-border px-3 py-1.5 text-atlas-text hidden md:flex items-center space-x-1.5 backdrop-blur-md shadow-lg transition-colors"
+            title="Inspect Data Pipeline Status"
+          >
+            <Activity className="w-3.5 h-3.5 text-atlas-teal" />
+            <span>Pipeline Status</span>
+          </button>
+
+          {/* Demo Button */}
           <button
             onClick={() => loadDemoMarswalk()}
-            className={`px-3 py-1.5 rounded flex items-center space-x-1.5 border transition-all ${
+            className={`px-3 py-1.5 flex items-center space-x-2 border transition-all ${
               demoActive
-                ? "bg-emerald-950/90 text-emerald-300 border-emerald-500/50 shadow-emerald-950/50"
-                : "bg-space-900/90 hover:bg-space-800 text-slate-200 border-space-700"
+                ? "bg-atlas-elevated text-atlas-teal border-atlas-teal font-bold shadow-lg shadow-atlas-teal/10"
+                : "bg-atlas-surface/95 hover:bg-atlas-elevated text-atlas-text border-atlas-border"
             }`}
             title="Load Pre-configured Demo Mission (MARSWALK-001)"
           >
-            {demoActive ? <CheckCircle className="w-3.5 h-3.5 text-telemetry-emerald" /> : <Play className="w-3.5 h-3.5 text-mars-accent" />}
-            <span className="font-bold">DEMO: MARSWALK-001</span>
+            {demoActive ? <CheckCircle className="w-3.5 h-3.5 text-atlas-teal" /> : <Play className="w-3.5 h-3.5 text-atlas-accent" />}
+            <span className="font-semibold">Demo: Marswalk-001</span>
           </button>
 
           {/* Drawer Switcher */}
-          <div className="flex items-center space-x-1 bg-space-900/90 border border-space-800 rounded p-1 backdrop-blur-md">
+          <div className="flex items-center bg-atlas-surface/95 border border-atlas-border p-0.5 backdrop-blur-md">
             <button
               onClick={() => setActiveDrawer(activeDrawer === "planner" ? null : "planner")}
-              className={`px-2.5 py-1.5 rounded flex items-center space-x-1.5 transition-colors ${
+              className={`px-3 py-1.5 flex items-center space-x-1.5 transition-colors ${
                 activeDrawer === "planner"
-                  ? "bg-mars-rust text-white font-bold"
-                  : "text-slate-300 hover:bg-space-800 hover:text-white"
+                  ? "bg-atlas-accent text-white font-bold"
+                  : "text-atlas-muted hover:bg-atlas-elevated hover:text-atlas-text"
               }`}
             >
               <Navigation className="w-3.5 h-3.5" />
-              <span>ROUTE PLANNER</span>
+              <span>Route Planner</span>
             </button>
 
             <button
               onClick={() => setActiveDrawer(activeDrawer === "explorer" ? null : "explorer")}
-              className={`px-2.5 py-1.5 rounded flex items-center space-x-1.5 transition-colors ${
+              className={`px-3 py-1.5 flex items-center space-x-1.5 transition-colors ${
                 activeDrawer === "explorer"
-                  ? "bg-mars-rust text-white font-bold"
-                  : "text-slate-300 hover:bg-space-800 hover:text-white"
+                  ? "bg-atlas-accent text-white font-bold"
+                  : "text-atlas-muted hover:bg-atlas-elevated hover:text-atlas-text"
               }`}
             >
               <Info className="w-3.5 h-3.5" />
-              <span>LOCATION INSPECTOR</span>
+              <span>Location Inspector</span>
             </button>
           </div>
         </div>
 
-        {/* Error Banner if any */}
+        {/* Error Banner */}
         {errorMsg && (
-          <div className="absolute bottom-16 left-4 z-20 bg-rose-950/90 border border-rose-500 text-rose-200 text-xs font-mono p-2.5 rounded shadow-lg max-w-md">
-            ⚠️ {errorMsg}
+          <div className="absolute bottom-16 left-4 z-20 bg-atlas-surface border border-atlas-red text-atlas-red text-xs font-mono p-3 shadow-2xl max-w-md flex items-center space-x-2">
+            <AlertTriangle className="w-4 h-4 text-atlas-red shrink-0" />
+            <span>{errorMsg}</span>
           </div>
         )}
       </div>

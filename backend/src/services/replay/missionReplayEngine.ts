@@ -9,23 +9,44 @@ export class MissionReplayEngine {
   private static events: MissionEventRecord[] = [];
   private static currentIndex: number = 0;
   private static replayStatus: "IDLE" | "PLAYING" | "PAUSED" | "COMPLETED" = "IDLE";
-  private static stateManager: ReplayStateManager = new ReplayStateManager();
+  // Live Digital Twin state manager (kept separate from replay cursor!)
+  private static _stateManager: ReplayStateManager | null = null;
+  // Isolated replay reconstruction state manager
+  private static _replayStateManager: ReplayStateManager | null = null;
+
+  public static get stateManager(): ReplayStateManager {
+    if (!this._stateManager) {
+      this._stateManager = new ReplayStateManager();
+    }
+    return this._stateManager;
+  }
+
+  public static get replayStateManager(): ReplayStateManager {
+    if (!this._replayStateManager) {
+      this._replayStateManager = new ReplayStateManager();
+    }
+    return this._replayStateManager;
+  }
 
   /**
-   * Initializes replay engine with a specific mission ID.
+   * Initializes replay engine with a specific mission ID from persisted MissionEventStore.
    */
   public static loadMission(missionId: string): boolean {
     this.activeMissionId = missionId;
-    this.events = MissionEventStore.getEvents(1000).filter((e) => e.missionId === missionId);
+    this.events = MissionEventStore.getEventsByMission(missionId);
 
-    // If no events exist yet for this mission, seed deterministic benchmark events
+    // Seed deterministic benchmark events only if this mission has zero persisted events
     if (this.events.length === 0) {
       this.seedBenchmarkEvents(missionId);
+      this.events = MissionEventStore.getEventsByMission(missionId);
     }
 
     this.currentIndex = 0;
     this.replayStatus = "IDLE";
-    this.stateManager.reset();
+    this.replayStateManager.reset();
+    if (this.events.length > 0) {
+      this.replayStateManager.applyEvent(this.events[0]);
+    }
     return true;
   }
 
@@ -37,6 +58,8 @@ export class MissionReplayEngine {
       this.loadMission(missionId);
     } else if (this.events.length === 0) {
       this.loadMission(this.activeMissionId);
+    } else {
+      this.events = MissionEventStore.getEventsByMission(this.activeMissionId);
     }
 
     this.replayStatus = "PLAYING";
@@ -44,7 +67,7 @@ export class MissionReplayEngine {
   }
 
   /**
-   * Steps the replay forward or backward by 1 event.
+   * Steps the replay forward or backward by 1 event without mutating live canonical state.
    */
   public static stepReplay(direction: "FORWARD" | "BACKWARD" = "FORWARD"): ReplayState {
     if (this.events.length === 0) {
@@ -54,14 +77,17 @@ export class MissionReplayEngine {
     if (direction === "FORWARD") {
       if (this.currentIndex < this.events.length - 1) {
         this.currentIndex += 1;
-        this.stateManager.applyEvent(this.events[this.currentIndex]);
+        this.replayStateManager.applyEvent(this.events[this.currentIndex]);
+        if (this.currentIndex === this.events.length - 1) {
+          this.replayStatus = "COMPLETED";
+        }
       } else {
         this.replayStatus = "COMPLETED";
       }
     } else {
       if (this.currentIndex > 0) {
         this.currentIndex -= 1;
-        this.stateManager.rebuildStateUpToIndex(this.events, this.currentIndex);
+        this.replayStateManager.rebuildStateUpToIndex(this.events, this.currentIndex);
         this.replayStatus = "PAUSED";
       }
     }
@@ -80,15 +106,16 @@ export class MissionReplayEngine {
   }
 
   /**
-   * Seeks to a specific event index or simulation time (in seconds).
+   * Seeks to a specific event index, timestamp, or simulation time (in seconds).
    */
-  public static seekReplay(target: number): ReplayState {
+  public static seekReplay(target: number, mode?: "INDEX" | "SIM_TIME"): ReplayState {
     if (this.events.length === 0) {
       this.loadMission(this.activeMissionId);
     }
 
     let targetIndex = 0;
-    if (target > 60) {
+    const useSimTime = mode === "SIM_TIME" || (mode === undefined && target > 60);
+    if (useSimTime) {
       let closestIdx = 0;
       let minDiff = Infinity;
       for (let i = 0; i < this.events.length; i++) {
@@ -103,20 +130,21 @@ export class MissionReplayEngine {
       }
       targetIndex = closestIdx;
     } else {
-      targetIndex = Math.max(0, Math.min(Math.floor(target), this.events.length - 1));
+      targetIndex = Math.max(0, Math.min(Math.floor(target), Math.max(0, this.events.length - 1)));
     }
 
     this.currentIndex = targetIndex;
-    this.stateManager.rebuildStateUpToIndex(this.events, this.currentIndex);
+    this.replayStateManager.rebuildStateUpToIndex(this.events, this.currentIndex);
+    this.replayStatus = this.currentIndex === this.events.length - 1 ? "COMPLETED" : "PAUSED";
     return this.getReplayState();
   }
 
   public static resetReplay(): ReplayState {
     this.currentIndex = 0;
     this.replayStatus = "IDLE";
-    this.stateManager.reset();
+    this.replayStateManager.reset();
     if (this.events.length > 0) {
-      this.stateManager.applyEvent(this.events[0]);
+      this.replayStateManager.applyEvent(this.events[0]);
     }
     return this.getReplayState();
   }
@@ -128,7 +156,7 @@ export class MissionReplayEngine {
 
     const simTime = curEvent?.simulationTime !== undefined
       ? curEvent.simulationTime
-      : this.currentIndex * 120; // 2 min per event fallback
+      : this.currentIndex * 120;
 
     return {
       missionId: this.activeMissionId,
@@ -137,10 +165,10 @@ export class MissionReplayEngine {
       currentSimTimeSeconds: simTime,
       totalEvents: this.events.length,
       currentEvent: curEvent,
-      agents: this.stateManager.getAgents(),
-      activeHazards: this.stateManager.getHazards(),
-      activeRouteWaypoints: this.stateManager.getWaypoints(),
-      metrics: this.stateManager.getMetrics(),
+      agents: this.replayStateManager.getAgents(),
+      activeHazards: this.replayStateManager.getHazards(),
+      activeRouteWaypoints: this.replayStateManager.getWaypoints(),
+      metrics: this.replayStateManager.getMetrics(),
       lastUpdated: new Date().toISOString(),
     };
   }

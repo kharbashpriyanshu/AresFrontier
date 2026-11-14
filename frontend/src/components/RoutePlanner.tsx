@@ -15,13 +15,9 @@ import {
   Plus,
   Trash2,
   Clock,
-  Activity,
-  AlertTriangle,
   Send,
-  Flag,
   Target,
   Sparkles,
-  TrendingUp,
   Cpu,
 } from "lucide-react";
 
@@ -68,7 +64,6 @@ export const RoutePlanner: React.FC<RoutePlannerProps> = ({
   const [isGenerating, setIsGenerating] = useState<boolean>(false);
   const [selectedScienceTargetId, setSelectedScienceTargetId] = useState<string>("");
 
-  // Add science target as stop
   const handleAddScienceTarget = () => {
     if (!selectedScienceTargetId) return;
     const tgt = scienceTargets.find((t) => t.id === selectedScienceTargetId);
@@ -82,7 +77,6 @@ export const RoutePlanner: React.FC<RoutePlannerProps> = ({
       targetId: tgt.id,
     };
 
-    // Insert before destination point
     const updated = [...points];
     if (updated.length >= 2) {
       updated.splice(updated.length - 1, 0, newPoint);
@@ -94,7 +88,7 @@ export const RoutePlanner: React.FC<RoutePlannerProps> = ({
   };
 
   const handleRemovePoint = (index: number) => {
-    if (points.length <= 2) return; // Keep at least start & destination
+    if (points.length <= 2) return;
     const updated = points.filter((_, i) => i !== index);
     setPoints(updated);
   };
@@ -118,26 +112,26 @@ export const RoutePlanner: React.FC<RoutePlannerProps> = ({
       : null;
 
   return (
-    <div className="w-96 max-w-full h-full bg-space-900 border-l border-space-800 flex flex-col z-30 shadow-2xl overflow-hidden font-mono text-xs">
+    <div className="w-96 max-w-full h-full bg-atlas-surface border-l border-atlas-border flex flex-col z-30 shadow-2xl overflow-hidden font-mono text-xs transition-colors">
       {/* Header */}
-      <div className="p-4 border-b border-space-800 bg-space-950/60 flex items-center justify-between">
+      <div className="p-4 border-b border-atlas-border bg-atlas-elevated/60 flex items-center justify-between">
         <div className="space-y-1">
-          <div className="text-[10px] text-slate-400 tracking-wider flex items-center space-x-1.5 uppercase">
-            <Navigation className="w-3.5 h-3.5 text-telemetry-cyan" />
-            <span>EVA TRAVERSE ROUTE PLANNER</span>
+          <div className="text-[10px] text-atlas-muted tracking-wider flex items-center space-x-1.5 uppercase">
+            <Navigation className="w-3.5 h-3.5 text-atlas-blue" />
+            <span>EVA Traverse Route Planner</span>
           </div>
-          <h2 className="text-sm font-bold text-slate-100 font-sans">Marswalk Navigator</h2>
+          <h2 className="text-sm font-bold text-atlas-text font-display">Marswalk Navigator</h2>
         </div>
         <button
           onClick={() => onTogglePickMode(!isPickingOnMap)}
-          className={`px-2.5 py-1 rounded text-[11px] font-bold border transition-colors ${
+          className={`px-3 py-1.5 text-[11px] font-semibold border transition-colors ${
             isPickingOnMap
-              ? "bg-amber-500 text-space-950 border-amber-400 animate-pulse"
-              : "bg-space-850 hover:bg-space-800 text-slate-300 border-space-700"
+              ? "bg-atlas-accent text-white border-atlas-accent animate-pulse"
+              : "bg-atlas-elevated hover:bg-atlas-surface text-atlas-text border-atlas-border"
           }`}
           title="Click to place waypoints on the Mars surface"
         >
-          {isPickingOnMap ? "PICKING..." : "+ MAP PIN"}
+          {isPickingOnMap ? "Picking..." : "+ Map Pin"}
         </button>
       </div>
 
@@ -145,51 +139,65 @@ export const RoutePlanner: React.FC<RoutePlannerProps> = ({
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {/* Waypoints Sequence List */}
         <div className="space-y-2">
-          <div className="text-[10px] text-slate-400 uppercase tracking-wider flex items-center justify-between">
-            <span>Traverse Sequence ({points.length} waypoints)</span>
-            <span className="text-slate-500">Tobler Mars Model</span>
+          <div className="text-[10px] text-atlas-muted uppercase tracking-wider flex items-center justify-between">
+            <span>Traverse Sequence ({points.length} waypoints, {scienceStopsCount} science)</span>
+            <span className="text-atlas-muted">Tobler Mars Model</span>
           </div>
 
           <div className="space-y-2">
-            {points.map((pt, idx) => {
-              const isStart = idx === 0;
-              const isDest = idx === points.length - 1;
-              const isSci = pt.type === "science";
+            {points.map((point, index) => {
+              const isStart = index === 0;
+              const isDest = index === points.length - 1;
+              const isScience = point.type === "science";
 
               return (
                 <div
-                  key={pt.id || idx}
-                  className="p-2.5 bg-space-850 rounded border border-space-800 flex items-center justify-between gap-2"
+                  key={point.id}
+                  className={`p-2.5 border transition-all ${
+                    isStart
+                      ? "bg-atlas-elevated border-atlas-teal/50"
+                      : isDest
+                      ? "bg-atlas-elevated border-atlas-accent/50"
+                      : isScience
+                      ? "bg-atlas-elevated border-atlas-blue/50"
+                      : "bg-atlas-elevated border-atlas-border"
+                  }`}
                 >
-                  <div className="flex items-center space-x-2.5 min-w-0">
-                    <div
-                      className={`w-6 h-6 rounded flex items-center justify-center shrink-0 text-[10px] font-bold font-mono text-space-950 ${
-                        isStart
-                          ? "bg-telemetry-emerald"
-                          : isDest
-                          ? "bg-telemetry-rose"
-                          : isSci
-                          ? "bg-telemetry-cyan"
-                          : "bg-amber-400"
-                      }`}
-                    >
-                      {isStart ? "S" : isDest ? "D" : `W${idx}`}
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-2">
+                      <span
+                        className={`w-5 h-5 flex items-center justify-center text-[10px] font-bold ${
+                          isStart
+                            ? "bg-atlas-teal text-white"
+                            : isDest
+                            ? "bg-atlas-accent text-white"
+                            : isScience
+                            ? "bg-atlas-blue text-white"
+                            : "bg-atlas-surface text-atlas-text border border-atlas-border"
+                        }`}
+                      >
+                        {isStart ? "S" : isDest ? "D" : `W${index}`}
+                      </span>
+                      <span className="font-semibold text-atlas-text truncate max-w-[190px]">
+                        {point.label || `Waypoint ${index}`}
+                      </span>
                     </div>
-                    <div className="truncate">
-                      <div className="font-semibold text-slate-200 truncate">{pt.label || `Waypoint ${idx}`}</div>
-                      <div className="text-[10px] text-slate-400">{formatMarsCoordinate(pt.coordinate)}</div>
-                    </div>
+
+                    {!isStart && !isDest && (
+                      <button
+                        onClick={() => handleRemovePoint(index)}
+                        className="text-atlas-muted hover:text-atlas-red p-1 transition-colors"
+                        title="Remove Waypoint"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
+                    )}
                   </div>
 
-                  {!isStart && !isDest && (
-                    <button
-                      onClick={() => handleRemovePoint(idx)}
-                      className="text-slate-500 hover:text-rose-400 p-1 rounded hover:bg-space-800"
-                      title="Remove Waypoint"
-                    >
-                      <Trash2 className="w-3.5 h-3.5" />
-                    </button>
-                  )}
+                  <div className="text-[10px] text-atlas-muted mt-1.5 flex items-center justify-between">
+                    <span>{formatMarsCoordinate(point.coordinate)}</span>
+                    <span className="capitalize text-atlas-muted">{point.type}</span>
+                  </div>
                 </div>
               );
             })}
@@ -197,55 +205,54 @@ export const RoutePlanner: React.FC<RoutePlannerProps> = ({
         </div>
 
         {/* Add Science Stop Selector */}
-        <div className="p-3 bg-space-850/80 rounded border border-space-800 space-y-2">
-          <div className="text-[10px] text-slate-400 uppercase tracking-wider flex items-center space-x-1.5">
-            <Target className="w-3.5 h-3.5 text-telemetry-cyan" />
-            <span>Insert Science Target Stop</span>
+        <div className="p-3 bg-atlas-elevated border border-atlas-border space-y-2">
+          <div className="text-[10px] text-atlas-muted uppercase tracking-wider flex items-center space-x-1">
+            <Target className="w-3.5 h-3.5 text-atlas-accent" />
+            <span>Add Geological Target</span>
           </div>
+
           <div className="flex space-x-2">
             <select
               value={selectedScienceTargetId}
               onChange={(e) => setSelectedScienceTargetId(e.target.value)}
-              className="flex-1 bg-space-900 border border-space-700 rounded px-2.5 py-1.5 text-slate-200 text-xs focus:ring-1 focus:ring-mars-accent focus:outline-none"
+              className="flex-1 bg-atlas-surface border border-atlas-border text-atlas-text text-xs p-1.5 focus:outline-none focus:border-atlas-accent"
             >
               <option value="">Select Science Outcrop...</option>
-              {scienceTargets.map((tgt) => (
-                <option key={tgt.id} value={tgt.id}>
-                  {tgt.name} ({tgt.scientificValue.toUpperCase()})
+              {scienceTargets.map((t) => (
+                <option key={t.id} value={t.id}>
+                  {t.name} ({t.category})
                 </option>
               ))}
             </select>
+
             <button
               onClick={handleAddScienceTarget}
               disabled={!selectedScienceTargetId}
-              className="px-3 py-1.5 bg-space-800 hover:bg-space-700 disabled:opacity-50 text-slate-200 rounded border border-space-700 font-semibold flex items-center space-x-1"
+              className="px-3 bg-atlas-accent hover:bg-atlas-accent-dark text-white font-bold disabled:opacity-40 transition-colors"
+              title="Add Target to Route"
             >
-              <Plus className="w-3.5 h-3.5" />
-              <span>ADD</span>
+              <Plus className="w-4 h-4" />
             </button>
           </div>
         </div>
 
-        {/* Mission Intelligence & Multi-Candidate Optimizer (Phase 2) */}
-        <div className="p-3 bg-space-950/70 border border-space-800 rounded space-y-2.5">
-          <div className="flex items-center justify-between">
-            <div className="text-[10px] text-telemetry-cyan uppercase tracking-wider flex items-center space-x-1.5 font-bold">
-              <Cpu className="w-3.5 h-3.5" />
-              <span>Mission Intelligence Engine</span>
+        {/* Phase 2 Copilot Multi-Objective Optimizer & Science Objective */}
+        {objectives.length > 0 && onSelectObjective && onRunCopilotOptimizer && (
+          <div className="p-3 bg-atlas-elevated border border-atlas-border space-y-2.5">
+            <div className="flex items-center justify-between border-b border-atlas-border pb-1.5">
+              <div className="flex items-center space-x-1.5 text-atlas-text font-bold text-[11px]">
+                <Sparkles className="w-3.5 h-3.5 text-atlas-blue" />
+                <span>Mission Copilot Optimizer</span>
+              </div>
+              <span className="text-[9px] text-atlas-teal font-mono uppercase">Multi-Criteria</span>
             </div>
-            <span className="text-[9px] bg-space-800 text-slate-400 px-1.5 py-0.5 rounded border border-space-700">
-              MEPAG Aligned
-            </span>
-          </div>
 
-          {/* Science Objective Selector */}
-          {objectives.length > 0 && onSelectObjective && (
             <div className="space-y-1">
-              <label className="text-[10px] text-slate-400 uppercase">Science Exploration Goal:</label>
+              <div className="text-[10px] text-atlas-muted">Primary Science Objective:</div>
               <select
-                value={selectedObjectiveId || "ANCIENT_WATER_ACTIVITY"}
+                value={selectedObjectiveId}
                 onChange={(e) => onSelectObjective(e.target.value as ScienceObjectiveId)}
-                className="w-full bg-space-900 border border-space-700 rounded px-2 py-1 text-slate-200 text-xs focus:ring-1 focus:ring-telemetry-cyan focus:outline-none truncate"
+                className="w-full bg-atlas-surface border border-atlas-border text-atlas-text text-xs p-1.5 focus:outline-none focus:border-atlas-accent"
               >
                 {objectives.map((obj) => (
                   <option key={obj.id} value={obj.id}>
@@ -254,196 +261,151 @@ export const RoutePlanner: React.FC<RoutePlannerProps> = ({
                 ))}
               </select>
             </div>
-          )}
 
-          {/* Trigger 4-Candidate Optimization */}
-          {onRunCopilotOptimizer && (
             <button
               onClick={onRunCopilotOptimizer}
-              disabled={isOptimizing}
-              className="w-full py-1.5 px-3 bg-space-850 hover:bg-space-800 text-telemetry-cyan border border-telemetry-cyan/40 hover:border-telemetry-cyan rounded text-[11px] font-bold flex items-center justify-center space-x-1.5 transition-colors disabled:opacity-50"
+              disabled={isOptimizing || points.length < 2}
+              className="w-full py-2 bg-atlas-surface hover:bg-atlas-elevated text-atlas-text border border-atlas-border font-bold flex items-center justify-center space-x-2 text-xs transition-all disabled:opacity-40 shadow-sm"
             >
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>{isOptimizing ? "SOLVING CANDIDATES..." : "EVALUATE 4 ROUTE CANDIDATES"}</span>
+              <Cpu className="w-3.5 h-3.5 text-atlas-teal" />
+              <span>{isOptimizing ? "Optimizing Pareto Candidates..." : "Synthesize Pareto Routes"}</span>
             </button>
-          )}
 
-          {/* Candidate Comparison Matrix */}
-          {candidates.length > 0 && (
-            <div className="space-y-2 pt-2 border-t border-space-800/80">
-              <div className="text-[9px] text-slate-400 uppercase tracking-wider flex items-center justify-between">
-                <span>Select Candidate Profile</span>
-                <span className="text-telemetry-emerald font-bold">{candidates.length} Available</span>
-              </div>
+            {/* Generated Candidates Drawer List */}
+            {candidates.length > 0 && onSelectCandidate && (
+              <div className="space-y-1.5 pt-2 border-t border-atlas-border">
+                <div className="text-[10px] text-atlas-muted uppercase flex items-center justify-between">
+                  <span>Candidate Route Profiles:</span>
+                  <span className="text-atlas-muted">Risk-Adjusted</span>
+                </div>
 
-              <div className="space-y-1.5 max-h-48 overflow-y-auto pr-0.5">
-                {candidates.map((cand) => {
-                  const isSelected = selectedCandidateId === cand.id || (!selectedCandidateId && cand.profileType === "balanced");
-                  return (
-                    <div
-                      key={cand.id}
-                      onClick={() => onSelectCandidate && onSelectCandidate(cand)}
-                      className={`p-2 rounded border cursor-pointer transition-all ${
-                        isSelected
-                          ? "bg-space-800 border-telemetry-cyan shadow-sm"
-                          : "bg-space-900/60 border-space-800 hover:border-space-700"
-                      }`}
-                    >
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-1.5 flex-wrap gap-1">
-                          <span
-                            className={`px-1.5 py-0.5 rounded text-[9px] font-bold uppercase ${
-                              cand.profileType === "balanced"
-                                ? "bg-emerald-950 text-emerald-300 border border-emerald-500/40"
-                                : cand.profileType === "safest"
-                                ? "bg-cyan-950 text-cyan-300 border border-cyan-500/40"
-                                : cand.profileType === "highest_science"
-                                ? "bg-purple-950 text-purple-300 border border-purple-500/40"
-                                : "bg-blue-950 text-blue-300 border border-blue-500/40"
-                            }`}
-                          >
-                            {cand.profileType}
+                <div className="space-y-1">
+                  {candidates.map((cand) => {
+                    const isSelected = cand.id === selectedCandidateId;
+                    const isPareto = cand.multiObjectiveScore?.isParetoEfficient;
+                    const riskAdj = cand.riskAdjustedScore ?? cand.overallScore;
+
+                    return (
+                      <div
+                        key={cand.id}
+                        onClick={() => onSelectCandidate(cand)}
+                        className={`p-2 border cursor-pointer transition-all ${
+                          isSelected
+                            ? "bg-atlas-surface border-atlas-accent shadow-md"
+                            : "bg-atlas-surface/60 border-atlas-border hover:border-atlas-border-light"
+                        }`}
+                      >
+                        <div className="flex items-center justify-between">
+                          <span className="font-bold text-atlas-text text-[11px] capitalize">
+                            {cand.profileType.replace("_", " ")}
                           </span>
-                          {cand.multiObjectiveScore?.isParetoEfficient && (
-                            <span className="px-1.5 py-0.5 rounded text-[8px] font-bold uppercase bg-amber-950 text-amber-300 border border-amber-500/40 tracking-wider">
-                              ★ PARETO
+                          <div className="flex items-center space-x-1.5">
+                            {cand.hardConstraintViolations && cand.hardConstraintViolations.length > 0 ? (
+                              <span className="px-1 py-0.2 text-[8px] font-bold bg-atlas-surface text-atlas-accent border border-atlas-accent uppercase" title={cand.hardConstraintViolations.join(", ")}>
+                                Rejected
+                              </span>
+                            ) : isPareto ? (
+                              <span className="px-1 py-0.2 text-[8px] font-bold bg-atlas-elevated text-atlas-amber border border-atlas-border uppercase">
+                                Pareto
+                              </span>
+                            ) : null}
+                            <span className="font-bold text-atlas-accent text-[11px]">
+                              {riskAdj} pts
                             </span>
-                          )}
-                          <span className="font-bold text-slate-200 text-[11px] truncate">{cand.name}</span>
+                          </div>
                         </div>
-                        <div className="text-right">
-                          <span className="font-bold text-slate-100 text-[11px]">
-                            {cand.riskAdjustedScore !== undefined ? cand.riskAdjustedScore : cand.overallScore}
-                          </span>
-                          <span className="text-[9px] text-slate-400">
-                            {cand.riskAdjustedScore !== undefined ? " risk-adj" : "/100"}
-                          </span>
+
+                        <div className="grid grid-cols-4 gap-1 text-[9px] text-atlas-muted mt-1 pt-1 border-t border-atlas-border">
+                          <div>Dist: <b className="text-atlas-text">{cand.distanceKm.toFixed(1)}k</b></div>
+                          <div>Dur: <b className="text-atlas-text">{cand.estimatedDurationMin}m</b></div>
+                          <div>Safe: <b className="text-atlas-teal">{cand.safetyScore}</b></div>
+                          <div>Sci: <b className="text-atlas-blue">{cand.scienceScore}</b></div>
                         </div>
-                      </div>
 
-                      <div className="mt-1 flex items-center justify-between text-[10px] text-slate-400">
-                        <span>{cand.distanceKm.toFixed(2)} km • {cand.estimatedDurationMin} min</span>
-                        <span className="text-slate-300">
-                          Sci: <b className="text-telemetry-cyan">{cand.scienceScore}</b> | Safe: <b className="text-telemetry-emerald">{cand.safetyScore}</b>
-                        </span>
+                        {(cand.communicationScore !== undefined || cand.projectedBatteryPercent !== undefined) && (
+                          <div className="grid grid-cols-2 gap-1 text-[8px] text-atlas-muted mt-0.5 pt-0.5 border-t border-atlas-border/50">
+                            <div>Comms: <b className="text-atlas-text">{cand.communicationScore ?? 80}%</b></div>
+                            <div>Batt SoC: <b className="text-atlas-teal">{cand.projectedBatteryPercent ?? 85}%</b></div>
+                          </div>
+                        )}
                       </div>
-
-                      <div className="mt-1 text-[10px] text-slate-400 italic line-clamp-1">
-                        {cand.recommendationReason}
-                      </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-          )}
-        </div>
+            )}
+          </div>
+        )}
 
         {/* Generate Route Action Button */}
         <button
           onClick={handleGenerate}
           disabled={isGenerating || points.length < 2}
-          className="w-full py-2.5 px-4 bg-gradient-to-r from-space-800 to-space-700 hover:from-mars-rust hover:to-mars-accent text-slate-100 rounded font-bold border border-space-700 flex items-center justify-center space-x-2 transition-all disabled:opacity-50 shadow-md"
+          className="w-full py-2.5 bg-atlas-surface hover:bg-atlas-elevated text-atlas-text border border-atlas-border font-bold flex items-center justify-center space-x-2 transition-all disabled:opacity-40 shadow-sm"
         >
-          <Sparkles className="w-4 h-4 text-mars-accent" />
-          <span>{isGenerating ? "CALCULATING TRAVERSE..." : "COMPUTE MOLA ROUTE"}</span>
+          <Navigation className="w-4 h-4 text-atlas-accent" />
+          <span>{isGenerating ? "Evaluating Terrain Grids..." : "Compute Custom Route"}</span>
         </button>
 
-        {/* Generated Route Details & Profile */}
+        {/* Calculated Route Summary Card */}
         {activeRoute && (
-          <div className="space-y-3 pt-2 border-t border-space-800">
-            <div className="text-[10px] text-slate-400 uppercase tracking-wider flex items-center justify-between">
-              <span>Traverse Metrics</span>
-              <span className="text-telemetry-emerald font-bold">CALCULATED</span>
-            </div>
-
-            {/* Metrics Grid */}
-            <div className="grid grid-cols-2 gap-2">
-              <div className="p-2.5 bg-space-850 rounded border border-space-800 space-y-0.5">
-                <div className="text-[10px] text-slate-400 flex items-center space-x-1">
-                  <Flag className="w-3 h-3 text-telemetry-cyan" />
-                  <span>TOTAL DISTANCE</span>
-                </div>
-                <div className="text-sm font-bold text-slate-100">{activeRoute.totalDistanceKm} km</div>
-              </div>
-
-              <div className="p-2.5 bg-space-850 rounded border border-space-800 space-y-0.5">
-                <div className="text-[10px] text-slate-400 flex items-center space-x-1">
-                  <Clock className="w-3 h-3 text-telemetry-amber" />
-                  <span>EST. DURATION</span>
-                </div>
-                <div className="text-sm font-bold text-slate-100">{activeRoute.estimatedDurationMinutes} min</div>
-              </div>
-
-              <div className="p-2.5 bg-space-850 rounded border border-space-800 space-y-0.5">
-                <div className="text-[10px] text-slate-400 flex items-center space-x-1">
-                  <TrendingUp className="w-3 h-3 text-telemetry-cyan" />
-                  <span>ELEV GAIN</span>
-                </div>
-                <div className="text-sm font-bold text-slate-100">+{activeRoute.elevationGainM} m</div>
-              </div>
-
-              <div className="p-2.5 bg-space-850 rounded border border-space-800 space-y-0.5">
-                <div className="text-[10px] text-slate-400 flex items-center space-x-1">
-                  <Activity className="w-3 h-3 text-telemetry-rose" />
-                  <span>MAX / AVG SLOPE</span>
-                </div>
-                <div className="text-sm font-bold text-slate-100">
-                  {activeRoute.maxSlopeDegrees}° <span className="text-[10px] text-slate-400 font-normal">/ {avgSlope}°</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="p-2.5 bg-space-850 rounded border border-space-800 flex items-center justify-between">
-              <div className="space-y-0.5">
-                <div className="text-[10px] text-slate-400">TERRAIN & STOPS</div>
-                <div className="font-bold uppercase text-slate-200">
-                  {activeRoute.overallDifficulty} • {scienceStopsCount} Science Stop{scienceStopsCount !== 1 ? "s" : ""}
-                </div>
-              </div>
-              <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase ${
-                activeRoute.overallDifficulty === "high"
-                  ? "bg-rose-950/80 text-rose-300 border border-rose-500/40"
-                  : activeRoute.overallDifficulty === "moderate"
-                  ? "bg-amber-950/80 text-amber-300 border border-amber-500/40"
-                  : "bg-emerald-950/80 text-emerald-300 border border-emerald-500/40"
-              }`}>
-                {activeRoute.overallDifficulty}
+          <div className="p-3.5 bg-atlas-surface border border-atlas-border space-y-3 shadow-lg">
+            <div className="flex items-center justify-between border-b border-atlas-border pb-2">
+              <span className="font-display font-bold text-atlas-text">Plan Evaluation</span>
+              <span className="text-[10px] text-atlas-teal uppercase font-bold">
+                {activeRoute.overallDifficulty} Terrain
               </span>
             </div>
 
-            {/* Elevation Profile Chart */}
-            <ElevationProfileChart
-              profile={activeRoute.elevationProfile}
-              totalDistanceKm={activeRoute.totalDistanceKm}
-              onHoverPoint={(pt) => {
-                if (onHoverProfilePoint) onHoverProfilePoint(pt);
-              }}
-            />
-
-            {/* Hazards / Warnings if any */}
-            {activeRoute.maxSlopeDegrees > 15 && (
-              <div className="p-2.5 rounded bg-rose-950/40 border border-rose-500/30 text-rose-300 text-[11px] flex items-center space-x-2">
-                <AlertTriangle className="w-4 h-4 text-rose-400 shrink-0" />
-                <span>Caution: Traverse contains steep sections exceeding 15° slope angle.</span>
+            <div className="grid grid-cols-2 gap-2 text-[11px]">
+              <div className="p-2 bg-atlas-elevated border border-atlas-border space-y-0.5">
+                <div className="text-[10px] text-atlas-muted">Total Distance</div>
+                <div className="font-bold text-atlas-text text-sm">
+                  {activeRoute.totalDistanceKm} km
+                </div>
               </div>
-            )}
+
+              <div className="p-2 bg-atlas-elevated border border-atlas-border space-y-0.5">
+                <div className="text-[10px] text-atlas-muted flex items-center space-x-1">
+                  <Clock className="w-3 h-3 text-atlas-amber" />
+                  <span>Duration</span>
+                </div>
+                <div className="font-bold text-atlas-text text-sm">
+                  {activeRoute.estimatedDurationMinutes} min
+                </div>
+              </div>
+
+              <div className="p-2 bg-atlas-elevated border border-atlas-border space-y-0.5">
+                <div className="text-[10px] text-atlas-muted">Avg Slope</div>
+                <div className="font-bold text-atlas-text">{avgSlope}°</div>
+              </div>
+
+              <div className="p-2 bg-atlas-elevated border border-atlas-border space-y-0.5">
+                <div className="text-[10px] text-atlas-muted">Max Incline</div>
+                <div className="font-bold text-atlas-amber">{activeRoute.maxSlopeDegrees}°</div>
+              </div>
+            </div>
+
+            {/* Elevation Profile Mini-Chart */}
+            <div className="pt-1">
+              <ElevationProfileChart
+                profile={activeRoute.elevationProfile}
+                totalDistanceKm={activeRoute.totalDistanceKm}
+                onHoverPoint={onHoverProfilePoint}
+              />
+            </div>
+
+            {/* Inspect Mission CTA */}
+            <button
+              onClick={() => onInspectMission(activeRoute)}
+              className="w-full py-2.5 bg-atlas-accent hover:bg-atlas-accent-dark text-white font-bold flex items-center justify-center space-x-2 transition-all shadow-md text-xs"
+            >
+              <Send className="w-3.5 h-3.5" />
+              <span>Assess EVA & Mission Score</span>
+            </button>
           </div>
         )}
       </div>
-
-      {/* Action Footer */}
-      {activeRoute && (
-        <div className="p-4 border-t border-space-800 bg-space-950/80">
-          <button
-            onClick={() => onInspectMission(activeRoute)}
-            className="w-full py-2.5 px-4 bg-gradient-to-r from-mars-rust to-mars-accent hover:from-mars-accent hover:to-orange-500 text-white rounded font-bold flex items-center justify-center space-x-2 shadow-lg shadow-mars-rust/30 transition-all text-xs"
-          >
-            <Send className="w-4 h-4" />
-            <span>ASSESS EVA & MISSION SCORE</span>
-          </button>
-        </div>
-      )}
     </div>
   );
 };

@@ -7,9 +7,10 @@ import { MultiAgentCoordinator, ScienceQueueItem } from "../operations/multiAgen
 import { MissionOperationsEngine, SimulationState } from "../operations/missionOperationsEngine.js";
 import { auditChainService } from "../security/auditChainService.js";
 import { PlanetaryAgent } from "../agents/agentTypes.js";
-import { SensorObservation, CommunicationPacket } from "../../types/index.js";
+import { SensorObservation, CommunicationPacket, MarsRoute } from "../../types/index.js";
 import { ObservationStore } from "../sensors/observationStore.js";
 import { CommunicationQueueService } from "../comms/communicationQueueService.js";
+import { missionRepository, StoredMission } from "../../repositories/missionRepository.js";
 
 export interface PersistedMissionState {
   version: string;
@@ -22,11 +23,13 @@ export interface PersistedMissionState {
   observations?: SensorObservation[];
   communicationQueue?: CommunicationPacket[];
   missionStatus?: "NOMINAL" | "DEGRADED" | "CRITICAL" | "PAUSED";
+  routes?: MarsRoute[];
+  missions?: StoredMission[];
 }
 
-const baseDataDir = process.cwd().endsWith("backend")
-  ? path.resolve(process.cwd(), "data")
-  : path.resolve(process.cwd(), "backend", "data");
+import { CANONICAL_BACKEND_DATA_DIR } from "../../utils/dataDir.js";
+
+const baseDataDir = CANONICAL_BACKEND_DATA_DIR;
 
 export class MissionPersistenceService {
   private static storageDir: string = baseDataDir;
@@ -65,6 +68,14 @@ export class MissionPersistenceService {
     const replanProposals = ReplanningEngine.getActiveProposals();
     const observations = ObservationStore.getAllObservations();
     const communicationQueue = CommunicationQueueService.getQueue();
+    let routes: MarsRoute[] = [];
+    let missions: StoredMission[] = [];
+    try {
+      routes = (missionRepository as any).routes ? Array.from((missionRepository as any).routes.values()) : [];
+      missions = (missionRepository as any).missions ? Array.from((missionRepository as any).missions.values()) : [];
+    } catch {
+      // Fallback
+    }
 
     const state: PersistedMissionState = {
       version: "5.0.0",
@@ -76,6 +87,8 @@ export class MissionPersistenceService {
       replanProposals,
       observations,
       communicationQueue,
+      routes,
+      missions,
       missionStatus: simState.isRunning ? "NOMINAL" : "PAUSED",
     };
 
@@ -132,6 +145,22 @@ export class MissionPersistenceService {
       if (state.communicationQueue && Array.isArray(state.communicationQueue)) {
         CommunicationQueueService.setQueue(state.communicationQueue);
       }
+
+      // Restore routes and missions if present in persisted state
+      if (state.routes && Array.isArray(state.routes)) {
+        state.routes.forEach((r) => {
+          if (r && r.id) missionRepository.saveRoute(r);
+        });
+      }
+
+      if (state.missions && Array.isArray(state.missions)) {
+        state.missions.forEach((m) => {
+          if (m && m.id) missionRepository.saveMission(m.id, m.routeId, m.parameters, m.evaAssessment);
+        });
+      }
+
+      // Ensure routes from disk are also loaded
+      missionRepository.loadFromDisk();
 
       return true;
     } catch (err) {

@@ -7,7 +7,7 @@
 [![React](https://img.shields.io/badge/React-18.3-61dafb?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![Node.js](https://img.shields.io/badge/Node.js-24-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
 [![Leaflet](https://img.shields.io/badge/Leaflet-1.9-199900?style=for-the-badge&logo=leaflet&logoColor=white)](https://leafletjs.com/)
-[![Tests](https://img.shields.io/badge/Tests-121%2F121%20Passing-34d399?style=for-the-badge&logo=vitest&logoColor=white)](#-automated-testing--validation)
+[![Tests](https://img.shields.io/badge/Tests-217%2F217%20Passing-34d399?style=for-the-badge&logo=vitest&logoColor=white)](#-automated-testing--validation)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue?style=for-the-badge)](LICENSE)
 
 > **Martian Map is a reproducible planetary mission digital twin that combines terrain intelligence, multi-agent operations, sensor uncertainty, communication modeling, safety invariants, human authorization, cryptographic mission auditing, deterministic replay, and what-if decision analysis.**
@@ -84,8 +84,8 @@ Judges and evaluators can launch the fully integrated application in under two m
 ### 1. Clone & Install
 
 ```bash
-git clone https://github.com/shrutirai29/nasa.git
-cd nasa
+git clone https://github.com/kharbashpriyanshu/NASA-Space-Challenge.git
+cd NASA-Space-Challenge
 npm install
 ```
 

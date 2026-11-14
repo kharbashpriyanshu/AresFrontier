@@ -8,6 +8,12 @@ import {
   getScienceTargets,
   getScienceTargetById,
   getScientificAssessment,
+  evaluateTarget,
+  evaluateObjectives,
+  classifyMineralogy,
+  assessIce,
+  assignTargetToMission,
+  getScienceDecisions,
 } from "../controllers/scienceController.js";
 import {
   createRoute,
@@ -16,12 +22,21 @@ import {
 } from "../controllers/routeController.js";
 import {
   createMission,
+  updateMission,
+  deleteMission,
   getMissionById,
+  getAllMissions,
+  getUnifiedMissionState,
+  updateUnifiedMissionDomain,
+  getMissionReport,
 } from "../controllers/missionController.js";
 import { assessMission } from "../controllers/assessmentController.js";
 import {
   getDataSources,
   getDataStatus,
+  getProvenanceExplorer,
+  getIngestedDatasets,
+  ingestMars2020Traverse,
 } from "../controllers/dataController.js";
 import {
   getHazards,
@@ -65,7 +80,13 @@ apiRouter.get("/terrain", getTerrain);
 apiRouter.get("/science/targets", getScienceTargets);
 apiRouter.get("/science/targets/breakdown", getScienceTargetBreakdown);
 apiRouter.get("/science/targets/:id", getScienceTargetById);
+apiRouter.post("/science/targets/:id/assign-mission", assignTargetToMission);
 apiRouter.get("/science/assessment", getScientificAssessment);
+apiRouter.post("/science/evaluate-target", evaluateTarget);
+apiRouter.post("/science/evaluate-objectives", evaluateObjectives);
+apiRouter.post("/science/classify-mineralogy", classifyMineralogy);
+apiRouter.post("/science/assess-ice", assessIce);
+apiRouter.get("/science/decisions", getScienceDecisions);
 
 // 4. Routes
 apiRouter.get("/routes", getAllRoutes);
@@ -73,8 +94,17 @@ apiRouter.post("/routes", createRoute);
 apiRouter.get("/routes/:id", getRouteById);
 
 // 5. Missions & EVA
+apiRouter.get("/missions", getAllMissions);
 apiRouter.post("/missions", createMission);
+apiRouter.get("/missions/state", getUnifiedMissionState);
+apiRouter.get("/missions/state/:id", getUnifiedMissionState);
+apiRouter.patch("/missions/state/:domain", updateUnifiedMissionDomain);
+apiRouter.patch("/missions/state/:id/domain/:domain", updateUnifiedMissionDomain);
+apiRouter.get("/missions/:id/report", getMissionReport);
 apiRouter.get("/missions/:id", getMissionById);
+apiRouter.patch("/missions/:id", updateMission);
+apiRouter.put("/missions/:id", updateMission);
+apiRouter.delete("/missions/:id", deleteMission);
 apiRouter.post("/missions/:id/approve", authorizeRequest(["MISSION_COMMAND"]), approveMissionPlan);
 apiRouter.post("/missions/:id/lock", authorizeRequest(["MISSION_COMMAND"]), lockMissionPlan);
 
@@ -100,13 +130,23 @@ apiRouter.post("/security/token", issueMissionToken);
 // 9. NASA Data Pipelines & System Health
 apiRouter.get("/data/sources", getDataSources);
 apiRouter.get("/data/status", getDataStatus);
+apiRouter.get("/data/ingested", getIngestedDatasets);
+apiRouter.post("/data/ingest/m20-traverse", ingestMars2020Traverse);
 
 // 10. Multi-Agent Planetary Field Operations (Phase 4)
 import { operationsController } from "../controllers/operationsController.js";
 
 apiRouter.get("/operations/agents", operationsController.getAgents);
 apiRouter.get("/operations/agents/:id", operationsController.getAgentById);
+apiRouter.post("/operations/agents/:id/status", operationsController.transitionAgentStatus);
+apiRouter.post("/operations/agents/:id/telemetry", operationsController.updateAgentTelemetry);
 apiRouter.post("/operations/agents/:id/tasks", operationsController.assignTask);
+apiRouter.get("/operations/tasks", operationsController.getTasks);
+apiRouter.post("/operations/tasks", operationsController.createAndAssignTask);
+apiRouter.post("/operations/tasks/:taskId/transition", operationsController.transitionTask);
+apiRouter.post("/operations/tasks/reassign", operationsController.reassignTask);
+apiRouter.post("/operations/digital-twin/snapshot", operationsController.createDigitalTwinSnapshot);
+apiRouter.get("/operations/digital-twin/inconsistencies", operationsController.getDigitalTwinInconsistencies);
 apiRouter.post("/operations/agents/:id/commands", operationsController.executeCommand);
 
 apiRouter.get("/operations/communications", operationsController.getCommunications);
@@ -140,6 +180,16 @@ apiRouter.get("/operations/orbital/current", operationsController.getOrbitalCurr
 
 apiRouter.get("/operations/comms/queue", operationsController.getCommsQueue);
 apiRouter.get("/operations/comms/status", operationsController.getCommsStatus);
+apiRouter.post("/operations/comms/packets", operationsController.enqueueCommPacket);
+apiRouter.post("/operations/comms/flush", operationsController.flushCommQueue);
+
+// EVA Console Session Lifecycle & Safety
+apiRouter.get("/eva/sessions", operationsController.listEvaSessions);
+apiRouter.post("/eva/sessions", operationsController.createEvaSession);
+apiRouter.get("/eva/sessions/:id", operationsController.getEvaSession);
+apiRouter.post("/eva/sessions/:id/transition", operationsController.transitionEvaSession);
+apiRouter.post("/eva/sessions/:id/advance", operationsController.advanceEvaSession);
+apiRouter.post("/eva/sessions/:id/simulate-emergency-return", operationsController.simulateEvaEmergencyReturn);
 
 apiRouter.get("/operations/events", operationsController.getMissionEvents);
 apiRouter.get("/operations/events/:id", operationsController.getMissionEventById);
@@ -160,9 +210,16 @@ apiRouter.post("/operations/scenarios/emergency", operationsController.scenarioE
 apiRouter.get("/replay/missions", operationsController.getReplayMissions);
 apiRouter.get("/replay/:missionId", operationsController.getReplayState);
 apiRouter.post("/replay/:missionId/start", operationsController.startReplay);
+apiRouter.post("/replay/:missionId/pause", operationsController.pauseReplay);
+apiRouter.post("/replay/:missionId/resume", operationsController.resumeReplay);
 apiRouter.post("/replay/:missionId/step", operationsController.stepReplay);
 apiRouter.post("/replay/:missionId/seek", operationsController.seekReplay);
 apiRouter.post("/replay/:missionId/reset", operationsController.resetReplay);
+apiRouter.get("/replay/:missionId/reconstruct", operationsController.reconstructHistoricalState);
+apiRouter.get("/replay/:missionId/events/:eventId", operationsController.inspectReplayEvent);
+apiRouter.post("/replay/:missionId/compare", operationsController.compareHistoricalStates);
+apiRouter.get("/replay/:missionId/export", operationsController.exportReplayData);
+apiRouter.get("/replay/:missionId/snapshots", operationsController.getReplaySnapshots);
 
 // Phase 6 What-If Simulation, Monte Carlo & Failure Injection
 apiRouter.post("/simulation/clone", operationsController.cloneMission);
@@ -172,9 +229,34 @@ apiRouter.post("/simulation/failure-injection", operationsController.injectFailu
 
 // Phase 6 Validation, Analytics, Provenance & Decision Lineage
 apiRouter.get("/validation/:missionId", operationsController.validateMission);
+apiRouter.post("/analytics/compare", operationsController.compareMissions);
+apiRouter.get("/analytics/:missionId/export", operationsController.exportMissionAnalytics);
 apiRouter.get("/analytics/:missionId", operationsController.getMissionAnalytics);
+apiRouter.get("/provenance/explorer", getProvenanceExplorer);
 apiRouter.get("/provenance/:eventId", operationsController.getProvenance);
 apiRouter.get("/decision-lineage/:eventId", operationsController.getDecisionLineage);
+
+// Recovery Batch 7: Isolated Judging Demo
+apiRouter.get("/demo/judging/catalog", operationsController.getJudgingDemoCatalog);
+apiRouter.get("/demo/judging/runs", operationsController.listJudgingDemoRuns);
+apiRouter.post("/demo/judging/run", operationsController.runJudgingDemo);
+apiRouter.post("/demo/judging/step", operationsController.stepJudgingDemo);
+apiRouter.post("/demo/judging/reset", operationsController.resetJudgingDemo);
+
+// Batch 9: Dynamic Scenario Builder CRUD & Isolated Execution
+apiRouter.get("/scenarios", operationsController.listScenarios);
+apiRouter.get("/scenarios/:id", operationsController.getScenario);
+apiRouter.post("/scenarios", operationsController.createScenario);
+apiRouter.patch("/scenarios/:id", operationsController.updateScenario);
+apiRouter.post("/scenarios/:id/duplicate", operationsController.duplicateScenario);
+apiRouter.post("/scenarios/:id/delete", operationsController.deleteScenario);
+apiRouter.delete("/scenarios/:id", operationsController.deleteScenario);
+apiRouter.post("/scenarios/:id/execute", operationsController.executeScenario);
+
+// Batch 9: Structured Explainable Copilot & Multi-Objective Plan Comparison
+apiRouter.post("/copilot/query", operationsController.structuredCopilotQuery);
+apiRouter.post("/copilot/confirm-action", operationsController.confirmCopilotAction);
+apiRouter.post("/missions/compare-plans", operationsController.comparePlanningAlternatives);
 
 
 
