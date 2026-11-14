@@ -4422,5 +4422,23 @@
       "candidateCount": 4,
       "paretoCount": 1
     }
+  },
+  {
+    "eventId": "evt-1794671110970-7f6ce2",
+    "blockHeight": 245,
+    "timestamp": "2026-11-14T15:45:10.976Z",
+    "userId": "ROVER-01 SCOUT",
+    "role": "ANALYST",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "6fe0d5fe333f9d45efcbb4d292ddb69c597a2268ae16bee41254530c0e3e1f3e",
+    "integrityHash": "b4a8eb025a55859edc20a8716d84ab76252b0b7ecc258b73f2836eba6a803da4",
+    "details": {
+      "replanId": "replan-1794671110932-7ghz",
+      "triggerType": "HAZARD_DETECTED",
+      "reason": "Slope gradient exceeds rover 20° stability ceiling. Automated safety pause engaged.",
+      "proposedRoute": "Low-Hazard Valley Corridor"
+    }
   }
 ]
