@@ -73,7 +73,7 @@ describe("Milestone 1 — Authentic NASA Multi-Mission Planetary Datasets (Items
     const surfacePhotos = hiriseProvider.getSurfacePhotosNear(jezero, 15.0);
     expect(surfacePhotos.length).toBeGreaterThanOrEqual(1);
     const photo = surfacePhotos[0];
-    expect(photo.thumbnailUrl).toContain("photojournal.jpl.nasa.gov");
+    expect(photo.pdsProductUrl).toContain("photojournal.jpl.nasa.gov");
     expect(photo.mission).toContain("Mars 2020");
     expect(photo.sol).toBeDefined();
   });

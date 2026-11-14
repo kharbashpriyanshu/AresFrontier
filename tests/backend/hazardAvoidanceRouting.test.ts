@@ -66,4 +66,37 @@ describe("Upgrade U4: A* Cost-Gradient Hazard-Avoidance Routing", () => {
     expect(response.body.data.routePoints.length).toBeGreaterThan(2);
     expect(response.body.data.provenance.dataset).toContain("MOLA");
   });
+
+  it("dynamically flags long-distance legs and routes through sheltered canyon corridors under regional dust storms", async () => {
+    const start = { latitude: 18.448, longitude: 77.420 };
+    const destination = { latitude: 18.448, longitude: 77.385 };
+
+    const result = hazardAvoidanceRouter.planSafeRoute(start, destination, {
+      dustStormActive: true,
+      preferShelteredCanyons: true,
+    });
+
+    expect(result.dustStormActive).toBe(true);
+    expect(result.shelteredCorridorEnforced).toBe(true);
+    expect(result.dustOpticalDepthTau).toBeGreaterThan(2.1);
+    expect(result.solarReductionPercent).toBe(65);
+    expect(result.longDistanceLegsFlagged).toBe(true);
+    expect(result.dustStormDirective).toContain("Regional dust storm");
+    expect(result.provenance.method).toContain("Sheltered Canyon Corridor");
+
+    const apiRes = await request(app)
+      .get("/api/data/authentic/safe-route")
+      .query({
+        startLat: 18.448,
+        startLon: 77.420,
+        destLat: 18.448,
+        destLon: 77.385,
+        dustStorm: "true",
+      });
+
+    expect(apiRes.status).toBe(200);
+    expect(apiRes.body.data.dustStormActive).toBe(true);
+    expect(apiRes.body.data.shelteredCorridorEnforced).toBe(true);
+    expect(apiRes.body.metadata.algorithm).toContain("Sheltered Canyon");
+  });
 });

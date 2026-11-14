@@ -4602,5 +4602,1638 @@
       "domainUpdated": "fleet",
       "timestamp": "2026-11-14T15:55:55.086Z"
     }
+  },
+  {
+    "eventId": "evt-1794678145709-785448",
+    "blockHeight": 254,
+    "timestamp": "2026-11-14T17:42:25.709Z",
+    "userId": "COMM_SUBSYSTEM",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "ORBITAL_DOWNLINK",
+    "planVersion": 1,
+    "previousHash": "c7add2ab632d90095e1fb5afacc356060a2d01824293da598ea59da78432787d",
+    "integrityHash": "91a43a448afde4d29d4fe16f1e94e10075ba1d5b0355f83a90838f91f09359cf",
+    "details": {
+      "transmittedCount": 3,
+      "criticalCount": 1,
+      "bandwidthKbps": 2048
+    }
+  },
+  {
+    "eventId": "evt-1794678145827-21e7b8",
+    "blockHeight": 255,
+    "timestamp": "2026-11-14T17:42:25.827Z",
+    "userId": "SIMULATION_ENGINE",
+    "role": "ANALYST",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "91a43a448afde4d29d4fe16f1e94e10075ba1d5b0355f83a90838f91f09359cf",
+    "integrityHash": "dfc172d961b925289a29cea866d2485c67c8da9f50a14e271d6be585edbb866f",
+    "details": {
+      "simulationId": "sim-whatif-marswalk-001-rover_breakdown-1-b181ada5",
+      "scenario": "ROVER_BREAKDOWN",
+      "successProbability": 95,
+      "routeFeasible": true
+    }
+  },
+  {
+    "eventId": "evt-1794678146489-7b4257",
+    "blockHeight": 256,
+    "timestamp": "2026-11-14T17:42:26.490Z",
+    "userId": "MISSION_COMMAND",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-TEST-001",
+    "planVersion": 1,
+    "previousHash": "dfc172d961b925289a29cea866d2485c67c8da9f50a14e271d6be585edbb866f",
+    "integrityHash": "aa39ee3650dfd73f8c459382f65a37c8c8369e9ae70aeebff01417a182336c71",
+    "details": {
+      "domainUpdated": "resources",
+      "timestamp": "2026-11-14T17:42:26.484Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678146515-49d83d",
+    "blockHeight": 257,
+    "timestamp": "2026-11-14T17:42:26.515Z",
+    "userId": "MISSION_COMMAND",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-TEST-001",
+    "planVersion": 1,
+    "previousHash": "aa39ee3650dfd73f8c459382f65a37c8c8369e9ae70aeebff01417a182336c71",
+    "integrityHash": "5f228a3354726edec20083bde0718dbe6844504dcb897fcf387e313bc7fa19a0",
+    "details": {
+      "domainUpdated": "objectives",
+      "timestamp": "2026-11-14T17:42:26.512Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678146785-3dcf90",
+    "blockHeight": 258,
+    "timestamp": "2026-11-14T17:42:26.785Z",
+    "userId": "MISSION_COMMAND",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-TEST-001",
+    "planVersion": 1,
+    "previousHash": "5f228a3354726edec20083bde0718dbe6844504dcb897fcf387e313bc7fa19a0",
+    "integrityHash": "c0ed3eb5994efaa83557f71da2c8840cdd2c86f04d1ac139067648e94fdd422c",
+    "details": {
+      "domainUpdated": "provenance",
+      "timestamp": "2026-11-14T17:42:26.785Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678164829-03ef9a",
+    "blockHeight": 259,
+    "timestamp": "2026-11-14T17:42:44.829Z",
+    "userId": "SIMULATION_ENGINE",
+    "role": "ANALYST",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "mission-jezero-sol100",
+    "planVersion": 1,
+    "previousHash": "c0ed3eb5994efaa83557f71da2c8840cdd2c86f04d1ac139067648e94fdd422c",
+    "integrityHash": "217bea51c9797b0130ffa3bddde5bdbacef48e4b5055539ebbc5f49739502496",
+    "details": {
+      "simulationId": "sim-whatif-mission-jezero-sol100-battery_degradation-1-36635eb1",
+      "successProbability": 95,
+      "routeFeasible": true
+    }
+  },
+  {
+    "eventId": "evt-1794678165079-685cef",
+    "blockHeight": 260,
+    "timestamp": "2026-11-14T17:42:45.079Z",
+    "userId": "SIMULATION_ENGINE",
+    "role": "ANALYST",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "mission-jezero-sol100",
+    "planVersion": 1,
+    "previousHash": "217bea51c9797b0130ffa3bddde5bdbacef48e4b5055539ebbc5f49739502496",
+    "integrityHash": "0b612e51ab2936c9eeec73d5e0c3921cdd7a55f0eeb0db3bfbf19ff9626b8048",
+    "details": {
+      "simulationId": "sim-whatif-mission-jezero-sol100-battery_degradation-2-2f0355a4",
+      "successProbability": 95,
+      "routeFeasible": true
+    }
+  },
+  {
+    "eventId": "evt-1794678165090-fddc38",
+    "blockHeight": 261,
+    "timestamp": "2026-11-14T17:42:45.090Z",
+    "userId": "MISSION_COPILOT",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "mission-jezero-sol100",
+    "planVersion": 1,
+    "previousHash": "0b612e51ab2936c9eeec73d5e0c3921cdd7a55f0eeb0db3bfbf19ff9626b8048",
+    "integrityHash": "cd82aa8323384f4cd6ca8e06de906780846e892e4c73020f0489889fdef0ef33",
+    "details": {
+      "copilotAction": "EXECUTE_SCENARIO",
+      "scenarioId": "scen-jezero-nominal",
+      "executionId": "exec-6d52085d"
+    }
+  },
+  {
+    "eventId": "evt-1794678168996-507fed",
+    "blockHeight": 262,
+    "timestamp": "2026-11-14T17:42:48.996Z",
+    "userId": "SIMULATION_ENGINE",
+    "role": "ANALYST",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "cd82aa8323384f4cd6ca8e06de906780846e892e4c73020f0489889fdef0ef33",
+    "integrityHash": "5a0fcd1fa426dbb06956d2609be03c159aef9b90b4a3b80c2de2606593a5efcf",
+    "details": {
+      "simulationId": "sim-whatif-marswalk-001-battery_failure-1-1b3e3128",
+      "successProbability": 5,
+      "routeFeasible": false
+    }
+  },
+  {
+    "eventId": "evt-1794678169072-b054a5",
+    "blockHeight": 263,
+    "timestamp": "2026-11-14T17:42:49.073Z",
+    "userId": "MISSION_COMMAND",
+    "role": "MISSION_COMMAND",
+    "action": "MODIFY_PRIORITIES",
+    "missionPlanId": "DEMO-FAILURE-B86C76",
+    "planVersion": 1,
+    "previousHash": "5a0fcd1fa426dbb06956d2609be03c159aef9b90b4a3b80c2de2606593a5efcf",
+    "integrityHash": "7240d10c26856c0657e68503cda822eb1f8cb194c41c175a917c7d196d5a4483",
+    "details": {
+      "evaTransition": "START",
+      "evaSessionId": "eva-1794678169051-2ya7",
+      "prevStatus": "PLANNED",
+      "nextStatus": "ACTIVE"
+    }
+  },
+  {
+    "eventId": "evt-1794678169092-689b2c",
+    "blockHeight": 264,
+    "timestamp": "2026-11-14T17:42:49.092Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "DEMO-FAILURE-B86C76",
+    "planVersion": 1,
+    "previousHash": "7240d10c26856c0657e68503cda822eb1f8cb194c41c175a917c7d196d5a4483",
+    "integrityHash": "e62af2cfe572ae8a354f160da18b1bcb40b59c7dbbb44df01cc17675a14873dc",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:42:49.090Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678169167-1c09d4",
+    "blockHeight": 265,
+    "timestamp": "2026-11-14T17:42:49.167Z",
+    "userId": "MISSION_COMMAND",
+    "role": "MISSION_COMMAND",
+    "action": "MODIFY_PRIORITIES",
+    "missionPlanId": "DEMO-FAILURE-B86C76",
+    "planVersion": 1,
+    "previousHash": "e62af2cfe572ae8a354f160da18b1bcb40b59c7dbbb44df01cc17675a14873dc",
+    "integrityHash": "08eb130e531317dda2dc3b717714fff8af4996956c00eb24f7dfdeb0bbdcf544",
+    "details": {
+      "evaTransition": "EMERGENCY_RETURN",
+      "evaSessionId": "eva-1794678169051-2ya7",
+      "prevStatus": "ACTIVE",
+      "nextStatus": "EMERGENCY_RETURN"
+    }
+  },
+  {
+    "eventId": "evt-1794678169189-4bc60a",
+    "blockHeight": 266,
+    "timestamp": "2026-11-14T17:42:49.189Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "DEMO-FAILURE-B86C76",
+    "planVersion": 1,
+    "previousHash": "08eb130e531317dda2dc3b717714fff8af4996956c00eb24f7dfdeb0bbdcf544",
+    "integrityHash": "03416d42a228eb21fb354b31fa1121d9b78395ffeca9beddd5a09ed75e983cd4",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:42:49.186Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678169269-954122",
+    "blockHeight": 267,
+    "timestamp": "2026-11-14T17:42:49.270Z",
+    "userId": "MISSION_COMMAND",
+    "role": "MISSION_COMMAND",
+    "action": "MODIFY_PRIORITIES",
+    "missionPlanId": "DEMO-FAILURE-B86C76",
+    "planVersion": 1,
+    "previousHash": "03416d42a228eb21fb354b31fa1121d9b78395ffeca9beddd5a09ed75e983cd4",
+    "integrityHash": "cf14ae068bcf553804bd595aba8b39edcd62b3e8841e9b3b3e50ce0c0a3fc62b",
+    "details": {
+      "evaTransition": "COMPLETE",
+      "evaSessionId": "eva-1794678169051-2ya7",
+      "prevStatus": "EMERGENCY_RETURN",
+      "nextStatus": "COMPLETED"
+    }
+  },
+  {
+    "eventId": "evt-1794678169280-215f71",
+    "blockHeight": 268,
+    "timestamp": "2026-11-14T17:42:49.280Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "DEMO-FAILURE-B86C76",
+    "planVersion": 1,
+    "previousHash": "cf14ae068bcf553804bd595aba8b39edcd62b3e8841e9b3b3e50ce0c0a3fc62b",
+    "integrityHash": "9690ea8848e57d86698334506aea27c487c634216d9e5d45c58a3b3e7dbc53a8",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:42:49.278Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678169531-622175",
+    "blockHeight": 269,
+    "timestamp": "2026-11-14T17:42:49.531Z",
+    "userId": "TEST_SCIENTIST",
+    "role": "SCIENCE_OFFICER",
+    "action": "MODIFY_PRIORITIES",
+    "missionPlanId": "USER-B8-A-1794678167232",
+    "planVersion": 1,
+    "previousHash": "9690ea8848e57d86698334506aea27c487c634216d9e5d45c58a3b3e7dbc53a8",
+    "integrityHash": "f4cfc02eb7d26e9b0c6230bd2f8d1c52e8e47ed2bb84de387db945674b27cab5",
+    "details": {
+      "subAction": "SCIENCE_TARGET_ASSIGNED",
+      "decisionId": "scidec-65cf0af1",
+      "targetId": "tgt-kodiak-butte",
+      "targetName": "Kodiak Butte Delta Remnant",
+      "missionId": "USER-B8-A-1794678167232",
+      "objectiveId": "ANCIENT_WATER_ACTIVITY",
+      "evidenceStatus": "verified_in_situ",
+      "rationale": "Independent science decision for Mission A"
+    }
+  },
+  {
+    "eventId": "evt-1794678169679-9fa744",
+    "blockHeight": 270,
+    "timestamp": "2026-11-14T17:42:49.679Z",
+    "userId": "SIMULATED_SCIENCE_LEAD",
+    "role": "SCIENCE_OFFICER",
+    "action": "MODIFY_PRIORITIES",
+    "missionPlanId": "DEMO-NOMINAL-FD5EAA",
+    "planVersion": 1,
+    "previousHash": "f4cfc02eb7d26e9b0c6230bd2f8d1c52e8e47ed2bb84de387db945674b27cab5",
+    "integrityHash": "202c57466ab059d0bde7237335b42dda11b9e5aebb99a41364b952f0d135c82f",
+    "details": {
+      "subAction": "SCIENCE_TARGET_ASSIGNED",
+      "decisionId": "scidec-a3f69fca",
+      "targetId": "tgt-kodiak-butte",
+      "targetName": "Kodiak Butte Delta Remnant",
+      "missionId": "DEMO-NOMINAL-FD5EAA",
+      "objectiveId": "ANCIENT_WATER_ACTIVITY",
+      "evidenceStatus": "verified_in_situ",
+      "rationale": "SIMULATED demo selection of Kodiak Butte Delta Remnant for Jezero Delta sampling."
+    }
+  },
+  {
+    "eventId": "evt-1794678169755-64a286",
+    "blockHeight": 271,
+    "timestamp": "2026-11-14T17:42:49.755Z",
+    "userId": "MISSION_COMMAND",
+    "role": "MISSION_COMMAND",
+    "action": "MODIFY_PRIORITIES",
+    "missionPlanId": "DEMO-NOMINAL-FD5EAA",
+    "planVersion": 1,
+    "previousHash": "202c57466ab059d0bde7237335b42dda11b9e5aebb99a41364b952f0d135c82f",
+    "integrityHash": "0683b5ef53933793b9250d8aa9c4031a372ebd2cf261f6ae73a065c1da0d0b23",
+    "details": {
+      "evaTransition": "START",
+      "evaSessionId": "eva-1794678169741-jk2s",
+      "prevStatus": "PLANNED",
+      "nextStatus": "ACTIVE"
+    }
+  },
+  {
+    "eventId": "evt-1794678169777-2a9e88",
+    "blockHeight": 272,
+    "timestamp": "2026-11-14T17:42:49.777Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "DEMO-NOMINAL-FD5EAA",
+    "planVersion": 1,
+    "previousHash": "0683b5ef53933793b9250d8aa9c4031a372ebd2cf261f6ae73a065c1da0d0b23",
+    "integrityHash": "81b2a0105b53fff053e81046f03bce6be7256ff888f424ea99071dabbc53fe84",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:42:49.775Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678169829-7737e7",
+    "blockHeight": 273,
+    "timestamp": "2026-11-14T17:42:49.829Z",
+    "userId": "MISSION_COMMAND",
+    "role": "MISSION_COMMAND",
+    "action": "MODIFY_PRIORITIES",
+    "missionPlanId": "DEMO-NOMINAL-FD5EAA",
+    "planVersion": 1,
+    "previousHash": "81b2a0105b53fff053e81046f03bce6be7256ff888f424ea99071dabbc53fe84",
+    "integrityHash": "d4501570a53a711cfcf18c16db7412ef66cdcb9e4a6d9ccc9407be14e8f41565",
+    "details": {
+      "evaTransition": "COMPLETE",
+      "evaSessionId": "eva-1794678169741-jk2s",
+      "prevStatus": "ACTIVE",
+      "nextStatus": "COMPLETED"
+    }
+  },
+  {
+    "eventId": "evt-1794678169838-df7db9",
+    "blockHeight": 274,
+    "timestamp": "2026-11-14T17:42:49.838Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "DEMO-NOMINAL-FD5EAA",
+    "planVersion": 1,
+    "previousHash": "d4501570a53a711cfcf18c16db7412ef66cdcb9e4a6d9ccc9407be14e8f41565",
+    "integrityHash": "8557f332a47893647a038394e590e229a6205a00720485828a4b98646df251c8",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:42:49.838Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678174495-13324e",
+    "blockHeight": 275,
+    "timestamp": "2026-11-14T17:42:54.495Z",
+    "userId": "ROVER-01 SCOUT",
+    "role": "ANALYST",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "8557f332a47893647a038394e590e229a6205a00720485828a4b98646df251c8",
+    "integrityHash": "d78a2b19f860915590e9ac8fc13e409ada3bff4e971af3c318090968faadc406",
+    "details": {
+      "replanId": "replan-1794678174477-4je1",
+      "triggerType": "HAZARD_DETECTED",
+      "reason": "Sensor-corroborated slope anomaly along primary traverse",
+      "proposedRoute": "Low-Hazard Valley Corridor"
+    }
+  },
+  {
+    "eventId": "evt-1794678174571-4f9b49",
+    "blockHeight": 276,
+    "timestamp": "2026-11-14T17:42:54.571Z",
+    "userId": "fdr-001",
+    "role": "MISSION_COMMAND",
+    "action": "APPROVE_PLAN",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 2,
+    "previousHash": "d78a2b19f860915590e9ac8fc13e409ada3bff4e971af3c318090968faadc406",
+    "integrityHash": "a357338886a059b0b90181d89f27d1511e9ba440470d600a3ab63f2a8040627d",
+    "details": {
+      "replanId": "replan-1794678174477-4je1",
+      "approvedRouteId": "cand-safest",
+      "approvedBy": "fdr-001"
+    }
+  },
+  {
+    "eventId": "evt-1794678174574-674cd0",
+    "blockHeight": 277,
+    "timestamp": "2026-11-14T17:42:54.574Z",
+    "userId": "COMM_SUBSYSTEM",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "ORBITAL_DOWNLINK",
+    "planVersion": 1,
+    "previousHash": "a357338886a059b0b90181d89f27d1511e9ba440470d600a3ab63f2a8040627d",
+    "integrityHash": "5f479aba49802d25442e118a77aedbe54c17ad53c079fb9f2b545e56a9f094c8",
+    "details": {
+      "transmittedCount": 4,
+      "criticalCount": 2,
+      "bandwidthKbps": 2048
+    }
+  },
+  {
+    "eventId": "evt-1794678174602-8c1cdc",
+    "blockHeight": 278,
+    "timestamp": "2026-11-14T17:42:54.602Z",
+    "userId": "guest-observer",
+    "role": "VIEWER",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "SECURITY_EVENT",
+    "planVersion": 1,
+    "previousHash": "5f479aba49802d25442e118a77aedbe54c17ad53c079fb9f2b545e56a9f094c8",
+    "integrityHash": "6dfb45c5ba92b3bce8513cabd753ca4132b1cdba89e3a491e28e2465e429774b",
+    "details": {
+      "eventType": "COMMAND_REJECTED",
+      "commandId": "cmd-malicious-1794678174601",
+      "agentId": "agent-rover-01",
+      "rejectedCode": "UNAUTHORIZED_ACTION",
+      "rejectedReason": "Role 'VIEWER' lacks permission for 'EMERGENCY_STOP'",
+      "attemptedCommand": "EMERGENCY_STOP"
+    }
+  },
+  {
+    "eventId": "evt-1794678178482-056dce",
+    "blockHeight": 279,
+    "timestamp": "2026-11-14T17:42:58.482Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "6dfb45c5ba92b3bce8513cabd753ca4132b1cdba89e3a491e28e2465e429774b",
+    "integrityHash": "79cc5826cc5d9e45e9f46f35fe429d5e8bbebc148e969fe8f48d3eaba5c86adb",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:42:58.481Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678178587-82bcb1",
+    "blockHeight": 280,
+    "timestamp": "2026-11-14T17:42:58.587Z",
+    "userId": "MISSION_COMMAND",
+    "role": "MISSION_COMMAND",
+    "action": "MODIFY_PRIORITIES",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "79cc5826cc5d9e45e9f46f35fe429d5e8bbebc148e969fe8f48d3eaba5c86adb",
+    "integrityHash": "7da024db6ca351f28bc6402261414fa471f9dc9b300126579a09c434c81d8d64",
+    "details": {
+      "assignTask": true,
+      "agentId": "agent-rover-02",
+      "taskId": "task-1794678178585-wvkx",
+      "taskType": "COLLECT_SCIENCE",
+      "status": "PENDING"
+    }
+  },
+  {
+    "eventId": "evt-1794678178591-116a77",
+    "blockHeight": 281,
+    "timestamp": "2026-11-14T17:42:58.591Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "7da024db6ca351f28bc6402261414fa471f9dc9b300126579a09c434c81d8d64",
+    "integrityHash": "5130ebe8afd2e0b7fdc53af9f6a7ca6cc6c5973d5c1c93a810b5fb994eedbb01",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:42:58.590Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678178660-06b5f6",
+    "blockHeight": 282,
+    "timestamp": "2026-11-14T17:42:58.661Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "5130ebe8afd2e0b7fdc53af9f6a7ca6cc6c5973d5c1c93a810b5fb994eedbb01",
+    "integrityHash": "6b9b1d95e9e03642bc04fc6315ede30e246567a3b888c907b4cf8154e0bacde8",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:42:58.660Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678178724-3807fe",
+    "blockHeight": 283,
+    "timestamp": "2026-11-14T17:42:58.724Z",
+    "userId": "MISSION_COMMAND",
+    "role": "MISSION_COMMAND",
+    "action": "MODIFY_PRIORITIES",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "6b9b1d95e9e03642bc04fc6315ede30e246567a3b888c907b4cf8154e0bacde8",
+    "integrityHash": "b66365920c60b4b331c303e6c79e2981ce88c2358f0fd7f00d54247278622b23",
+    "details": {
+      "assignTask": true,
+      "agentId": "agent-rover-01",
+      "taskId": "task-1794678178716-zjhq",
+      "taskType": "VERIFY_ROUTE",
+      "status": "PENDING"
+    }
+  },
+  {
+    "eventId": "evt-1794678178737-d43d43",
+    "blockHeight": 284,
+    "timestamp": "2026-11-14T17:42:58.737Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "b66365920c60b4b331c303e6c79e2981ce88c2358f0fd7f00d54247278622b23",
+    "integrityHash": "261ba346ea9a848c7f22ef6d2f26db8f0c717d9291e6a255172616659e2de2ea",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:42:58.734Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678178809-d776b1",
+    "blockHeight": 285,
+    "timestamp": "2026-11-14T17:42:58.809Z",
+    "userId": "MISSION_COMMAND",
+    "role": "MISSION_COMMAND",
+    "action": "MODIFY_PRIORITIES",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "261ba346ea9a848c7f22ef6d2f26db8f0c717d9291e6a255172616659e2de2ea",
+    "integrityHash": "60fb0696649c8c017690b8ce2440b108b888015da39fc1067059e74acf6c56af",
+    "details": {
+      "assignTask": true,
+      "agentId": "agent-rover-02",
+      "taskId": "task-1794678178807-2bg8",
+      "taskType": "COLLECT_SCIENCE",
+      "status": "PENDING"
+    }
+  },
+  {
+    "eventId": "evt-1794678178819-a2c031",
+    "blockHeight": 286,
+    "timestamp": "2026-11-14T17:42:58.819Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "60fb0696649c8c017690b8ce2440b108b888015da39fc1067059e74acf6c56af",
+    "integrityHash": "df65a13385a9cfb3df6e46687f6344668dc21f40eab5a9b94d97aca477831ee2",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:42:58.817Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678178910-a2e145",
+    "blockHeight": 287,
+    "timestamp": "2026-11-14T17:42:58.910Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "df65a13385a9cfb3df6e46687f6344668dc21f40eab5a9b94d97aca477831ee2",
+    "integrityHash": "90c69c8c051ff372f4c108bcb6bcc59383c468f5c776751178179cd511da6fd4",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:42:58.909Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678178964-3527ff",
+    "blockHeight": 288,
+    "timestamp": "2026-11-14T17:42:58.964Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "90c69c8c051ff372f4c108bcb6bcc59383c468f5c776751178179cd511da6fd4",
+    "integrityHash": "42b38b84ddc8b86422728de3e375ed939601b3319be41a4fe3cb59f5cce8e455",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:42:58.963Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678179027-1e0257",
+    "blockHeight": 289,
+    "timestamp": "2026-11-14T17:42:59.027Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "42b38b84ddc8b86422728de3e375ed939601b3319be41a4fe3cb59f5cce8e455",
+    "integrityHash": "48b8ef3f875355ca2c8e45005064e86784ae45d6100cf200bda91fba734c8ad7",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:42:59.027Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678179073-bcb8a5",
+    "blockHeight": 290,
+    "timestamp": "2026-11-14T17:42:59.073Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "48b8ef3f875355ca2c8e45005064e86784ae45d6100cf200bda91fba734c8ad7",
+    "integrityHash": "536ba0f785cec653be4168d5a5f43bbb0a27316924f970d9b04250354562a399",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:42:59.073Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678179113-6d2192",
+    "blockHeight": 291,
+    "timestamp": "2026-11-14T17:42:59.114Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "536ba0f785cec653be4168d5a5f43bbb0a27316924f970d9b04250354562a399",
+    "integrityHash": "86291261f618093f952e149d4e0e13b09c031a73246c6a4b42ff56fe09350b59",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:42:59.113Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678179160-325468",
+    "blockHeight": 292,
+    "timestamp": "2026-11-14T17:42:59.160Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "86291261f618093f952e149d4e0e13b09c031a73246c6a4b42ff56fe09350b59",
+    "integrityHash": "76a055103150477c790c4d0d6e5934f82979213ca48d185b557e8ad8dd56246d",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:42:59.160Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678179203-704968",
+    "blockHeight": 293,
+    "timestamp": "2026-11-14T17:42:59.203Z",
+    "userId": "MISSION_COMMAND",
+    "role": "MISSION_COMMAND",
+    "action": "MODIFY_PRIORITIES",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "76a055103150477c790c4d0d6e5934f82979213ca48d185b557e8ad8dd56246d",
+    "integrityHash": "045aad3b82a6a7f48ae16571eac336f957ce6408675091cd68c2f3cb493c5e5c",
+    "details": {
+      "assignTask": true,
+      "agentId": "agent-rover-02",
+      "taskId": "task-1794678179200-4r6c",
+      "taskType": "VERIFY_ROUTE",
+      "status": "IN_PROGRESS"
+    }
+  },
+  {
+    "eventId": "evt-1794678179208-925290",
+    "blockHeight": 294,
+    "timestamp": "2026-11-14T17:42:59.208Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "045aad3b82a6a7f48ae16571eac336f957ce6408675091cd68c2f3cb493c5e5c",
+    "integrityHash": "72c531fd7a8fcfc9b0ff30b87ff5304b21c7d2e434ee09b6c2ba671f84a99c90",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:42:59.207Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678179284-f46023",
+    "blockHeight": 295,
+    "timestamp": "2026-11-14T17:42:59.284Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "72c531fd7a8fcfc9b0ff30b87ff5304b21c7d2e434ee09b6c2ba671f84a99c90",
+    "integrityHash": "02b24f77bdecbb08285152274e3a736e2ef1c1ae2281fdf348ae9bf4d0a56080",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:42:59.284Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678179347-32cb06",
+    "blockHeight": 296,
+    "timestamp": "2026-11-14T17:42:59.347Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "02b24f77bdecbb08285152274e3a736e2ef1c1ae2281fdf348ae9bf4d0a56080",
+    "integrityHash": "b314a7c573484c7841a277629fb340046dcc9aaf74dc4e6f373f64a161dbde2a",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:42:59.346Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678179394-283dc0",
+    "blockHeight": 297,
+    "timestamp": "2026-11-14T17:42:59.394Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "b314a7c573484c7841a277629fb340046dcc9aaf74dc4e6f373f64a161dbde2a",
+    "integrityHash": "bf74ae2451f9813a13b86c45e6f762d292a1a220c9c231b1c164cc6247959f10",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:42:59.393Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678179435-f1c493",
+    "blockHeight": 298,
+    "timestamp": "2026-11-14T17:42:59.435Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "bf74ae2451f9813a13b86c45e6f762d292a1a220c9c231b1c164cc6247959f10",
+    "integrityHash": "4da26c1604e4dcfda3a6612c392a009ae7856104d199672e2f77ca89603d34ba",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:42:59.435Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678179483-71d70b",
+    "blockHeight": 299,
+    "timestamp": "2026-11-14T17:42:59.483Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "4da26c1604e4dcfda3a6612c392a009ae7856104d199672e2f77ca89603d34ba",
+    "integrityHash": "2f2c6ae16104e030ef728ecbbc302b2df11b2d92ece6b013c6d866b1b5bf13d2",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:42:59.483Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678179532-aa8057",
+    "blockHeight": 300,
+    "timestamp": "2026-11-14T17:42:59.532Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "2f2c6ae16104e030ef728ecbbc302b2df11b2d92ece6b013c6d866b1b5bf13d2",
+    "integrityHash": "6fcb88e4fd333dfb86331f33d8faab0794248df72d5a344ffb673999d01100cf",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:42:59.532Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678179574-b918f6",
+    "blockHeight": 301,
+    "timestamp": "2026-11-14T17:42:59.574Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "6fcb88e4fd333dfb86331f33d8faab0794248df72d5a344ffb673999d01100cf",
+    "integrityHash": "7e71ed154d7c707bc72428e26f38628408aac584ad422739485fc8dc70586e07",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:42:59.573Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678179624-cf5479",
+    "blockHeight": 302,
+    "timestamp": "2026-11-14T17:42:59.624Z",
+    "userId": "COMM_SUBSYSTEM",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "ORBITAL_DOWNLINK",
+    "planVersion": 1,
+    "previousHash": "7e71ed154d7c707bc72428e26f38628408aac584ad422739485fc8dc70586e07",
+    "integrityHash": "a6475bb2738d50f234465e952086b30518995e8f06705cc5527e0c92ae48abe9",
+    "details": {
+      "transmittedCount": 3,
+      "criticalCount": 2,
+      "bandwidthKbps": 1024
+    }
+  },
+  {
+    "eventId": "evt-1794678179627-06fc2b",
+    "blockHeight": 303,
+    "timestamp": "2026-11-14T17:42:59.627Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "a6475bb2738d50f234465e952086b30518995e8f06705cc5527e0c92ae48abe9",
+    "integrityHash": "a041025fd13d5d8d13a146a0b851337705f016f64b916594c69b46628bdf3f32",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:42:59.627Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678179703-0a038a",
+    "blockHeight": 304,
+    "timestamp": "2026-11-14T17:42:59.703Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "a041025fd13d5d8d13a146a0b851337705f016f64b916594c69b46628bdf3f32",
+    "integrityHash": "237fe93f8fc0c581752f943fa88d17c63757c06bc3a880a71ef81efeda991bda",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:42:59.702Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678179759-e1ab22",
+    "blockHeight": 305,
+    "timestamp": "2026-11-14T17:42:59.759Z",
+    "userId": "MISSION_COMMAND",
+    "role": "MISSION_COMMAND",
+    "action": "MODIFY_PRIORITIES",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "237fe93f8fc0c581752f943fa88d17c63757c06bc3a880a71ef81efeda991bda",
+    "integrityHash": "9d27edf2e99f40a49101562440fe2312f9a0d2310704212768f8954c0a343186",
+    "details": {
+      "evaTransition": "START",
+      "evaSessionId": "eva-1794678179746-eiji",
+      "prevStatus": "PLANNED",
+      "nextStatus": "ACTIVE"
+    }
+  },
+  {
+    "eventId": "evt-1794678179766-ceb153",
+    "blockHeight": 306,
+    "timestamp": "2026-11-14T17:42:59.766Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "9d27edf2e99f40a49101562440fe2312f9a0d2310704212768f8954c0a343186",
+    "integrityHash": "2a747c01a7c91c0ff03569ceb9152d419f5c1b5d744437cf30d61dcf43bc2e1c",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:42:59.766Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678179839-82d99a",
+    "blockHeight": 307,
+    "timestamp": "2026-11-14T17:42:59.839Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "2a747c01a7c91c0ff03569ceb9152d419f5c1b5d744437cf30d61dcf43bc2e1c",
+    "integrityHash": "1531b57b816c6bc552a92dfe9e6af5a0a5c32c0ab4d171dcb13105d3e642fc2e",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:42:59.839Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678179890-9cffc8",
+    "blockHeight": 308,
+    "timestamp": "2026-11-14T17:42:59.890Z",
+    "userId": "MISSION_COMMAND",
+    "role": "MISSION_COMMAND",
+    "action": "MODIFY_PRIORITIES",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "1531b57b816c6bc552a92dfe9e6af5a0a5c32c0ab4d171dcb13105d3e642fc2e",
+    "integrityHash": "0b32249774621820cb605d90f2dac6e465043e9dcfe306825ef3d208f90f43ff",
+    "details": {
+      "evaTransition": "EMERGENCY_RETURN",
+      "evaSessionId": "eva-1794678179746-eiji",
+      "prevStatus": "ACTIVE",
+      "nextStatus": "EMERGENCY_RETURN"
+    }
+  },
+  {
+    "eventId": "evt-1794678179897-106d4c",
+    "blockHeight": 309,
+    "timestamp": "2026-11-14T17:42:59.898Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "0b32249774621820cb605d90f2dac6e465043e9dcfe306825ef3d208f90f43ff",
+    "integrityHash": "ffd32037837ac47cbab960f1e0b0757900602e3704c5a4170a14990ea15b44ae",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:42:59.897Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678179966-81eef8",
+    "blockHeight": 310,
+    "timestamp": "2026-11-14T17:42:59.966Z",
+    "userId": "MISSION_COMMAND",
+    "role": "MISSION_COMMAND",
+    "action": "MODIFY_PRIORITIES",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "ffd32037837ac47cbab960f1e0b0757900602e3704c5a4170a14990ea15b44ae",
+    "integrityHash": "d61f9461df89d52a8feb04b08097679b32af5d57eaa0e598d297b4d5ffe5eac1",
+    "details": {
+      "evaTransition": "COMPLETE",
+      "evaSessionId": "eva-1794678179746-eiji",
+      "prevStatus": "EMERGENCY_RETURN",
+      "nextStatus": "COMPLETED"
+    }
+  },
+  {
+    "eventId": "evt-1794678179970-05baab",
+    "blockHeight": 311,
+    "timestamp": "2026-11-14T17:42:59.970Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "d61f9461df89d52a8feb04b08097679b32af5d57eaa0e598d297b4d5ffe5eac1",
+    "integrityHash": "076bd17cd63a0f435f71e0e7f99464fa62074d5607929b62970dbe73898c3fe1",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:42:59.969Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678180044-63cbb5",
+    "blockHeight": 312,
+    "timestamp": "2026-11-14T17:43:00.044Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "076bd17cd63a0f435f71e0e7f99464fa62074d5607929b62970dbe73898c3fe1",
+    "integrityHash": "113ed1763056aa31b11d8a7da1b3077651bb10a263b96d047b0e9b1a70e506ee",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:43:00.044Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678195059-76202e",
+    "blockHeight": 313,
+    "timestamp": "2026-11-14T17:43:15.059Z",
+    "userId": "SCIENCE_LEAD",
+    "role": "SCIENCE_OFFICER",
+    "action": "MODIFY_PRIORITIES",
+    "missionPlanId": "MARSWALK-DRAFT-TEST",
+    "planVersion": 1,
+    "previousHash": "113ed1763056aa31b11d8a7da1b3077651bb10a263b96d047b0e9b1a70e506ee",
+    "integrityHash": "a8c22e6c2fad516862ade07dc1e60b5db843c7d5f9900ed088aef300ef52363d",
+    "details": {
+      "subAction": "SCIENCE_TARGET_ASSIGNED",
+      "decisionId": "scidec-ba8b5e12",
+      "targetId": "tgt-oxia-planum",
+      "targetName": "Oxia Planum Fe/Mg-Phyllosilicate Plain",
+      "missionId": "MARSWALK-DRAFT-TEST",
+      "objectiveId": "ASTROBIOLOGY_RELEVANCE",
+      "evidenceStatus": "orbital_only",
+      "rationale": "Investigate Oxia Planum Fe/Mg phyllosilicates"
+    }
+  },
+  {
+    "eventId": "evt-1794678195882-aa0d8c",
+    "blockHeight": 314,
+    "timestamp": "2026-11-14T17:43:15.882Z",
+    "userId": "MISSION_PERSISTENCE",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "CHECKPOINT",
+    "planVersion": 1,
+    "previousHash": "a8c22e6c2fad516862ade07dc1e60b5db843c7d5f9900ed088aef300ef52363d",
+    "integrityHash": "78537d0ce5c5e7ce5d3f65c444ef6dd4dd080e599dd77578af53a7708f971ea2",
+    "details": {
+      "checkpointId": "test_cp_1794678195854",
+      "savedAt": "2026-11-14T17:43:15.854Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678195888-b66656",
+    "blockHeight": 315,
+    "timestamp": "2026-11-14T17:43:15.888Z",
+    "userId": "MISSION_PERSISTENCE",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "CHECKPOINT_RESTORE",
+    "planVersion": 1,
+    "previousHash": "78537d0ce5c5e7ce5d3f65c444ef6dd4dd080e599dd77578af53a7708f971ea2",
+    "integrityHash": "887618365e2a8f50308bd447fe47750e7e39208145a5d1270ad98dfdbe857ee1",
+    "details": {
+      "checkpointId": "test_cp_1794678195854",
+      "restoredAt": "2026-11-14T17:43:15.888Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678199663-ca24a8",
+    "blockHeight": 316,
+    "timestamp": "2026-11-14T17:43:19.663Z",
+    "userId": "SIMULATED_SCIENCE_LEAD",
+    "role": "SCIENCE_OFFICER",
+    "action": "MODIFY_PRIORITIES",
+    "missionPlanId": "DEMO-NOMINAL-8D7704",
+    "planVersion": 1,
+    "previousHash": "887618365e2a8f50308bd447fe47750e7e39208145a5d1270ad98dfdbe857ee1",
+    "integrityHash": "6e60e3d9f0a1c879fa5af9ad6ce47064dcaf0018b4fff51cf86dbd7a274481df",
+    "details": {
+      "subAction": "SCIENCE_TARGET_ASSIGNED",
+      "decisionId": "scidec-fa6a722e",
+      "targetId": "tgt-kodiak-butte",
+      "targetName": "Kodiak Butte Delta Remnant",
+      "missionId": "DEMO-NOMINAL-8D7704",
+      "objectiveId": "ANCIENT_WATER_ACTIVITY",
+      "evidenceStatus": "verified_in_situ",
+      "rationale": "SIMULATED demo selection of Kodiak Butte Delta Remnant for Jezero Delta sampling."
+    }
+  },
+  {
+    "eventId": "evt-1794678199729-d532ac",
+    "blockHeight": 317,
+    "timestamp": "2026-11-14T17:43:19.729Z",
+    "userId": "MISSION_COMMAND",
+    "role": "MISSION_COMMAND",
+    "action": "MODIFY_PRIORITIES",
+    "missionPlanId": "DEMO-NOMINAL-8D7704",
+    "planVersion": 1,
+    "previousHash": "6e60e3d9f0a1c879fa5af9ad6ce47064dcaf0018b4fff51cf86dbd7a274481df",
+    "integrityHash": "20f7cd2c3fb3c183e109cd477a8bc319f80084aab59c08a52d69df5d7fdefd7f",
+    "details": {
+      "evaTransition": "START",
+      "evaSessionId": "eva-1794678199719-hgwd",
+      "prevStatus": "PLANNED",
+      "nextStatus": "ACTIVE"
+    }
+  },
+  {
+    "eventId": "evt-1794678199739-4cb0b3",
+    "blockHeight": 318,
+    "timestamp": "2026-11-14T17:43:19.739Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "DEMO-NOMINAL-8D7704",
+    "planVersion": 1,
+    "previousHash": "20f7cd2c3fb3c183e109cd477a8bc319f80084aab59c08a52d69df5d7fdefd7f",
+    "integrityHash": "476989667c61e64ad8060fa7d68a85bace994f675e936f1c3bdbee895a0e2392",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:43:19.737Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678199778-8af113",
+    "blockHeight": 319,
+    "timestamp": "2026-11-14T17:43:19.778Z",
+    "userId": "MISSION_COMMAND",
+    "role": "MISSION_COMMAND",
+    "action": "MODIFY_PRIORITIES",
+    "missionPlanId": "DEMO-NOMINAL-8D7704",
+    "planVersion": 1,
+    "previousHash": "476989667c61e64ad8060fa7d68a85bace994f675e936f1c3bdbee895a0e2392",
+    "integrityHash": "f721b6e30b3aa2ad99829dcd8da05a53bccd1e9ecb836633af8e2e4cd1a6e00b",
+    "details": {
+      "evaTransition": "COMPLETE",
+      "evaSessionId": "eva-1794678199719-hgwd",
+      "prevStatus": "ACTIVE",
+      "nextStatus": "COMPLETED"
+    }
+  },
+  {
+    "eventId": "evt-1794678199785-39eae9",
+    "blockHeight": 320,
+    "timestamp": "2026-11-14T17:43:19.785Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "DEMO-NOMINAL-8D7704",
+    "planVersion": 1,
+    "previousHash": "f721b6e30b3aa2ad99829dcd8da05a53bccd1e9ecb836633af8e2e4cd1a6e00b",
+    "integrityHash": "d4d22222b8a719e764effd3d42e97fb14263a533b5bed8c5ce23963a141fd8b6",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:43:19.784Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678199931-690e43",
+    "blockHeight": 321,
+    "timestamp": "2026-11-14T17:43:19.931Z",
+    "userId": "SIMULATION_ENGINE",
+    "role": "ANALYST",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "d4d22222b8a719e764effd3d42e97fb14263a533b5bed8c5ce23963a141fd8b6",
+    "integrityHash": "48216571b3512f7f9183e4dfd99524257f32aaa849508801ae76e1cc112296a4",
+    "details": {
+      "simulationId": "sim-whatif-marswalk-001-battery_failure-1-1b3e3128",
+      "successProbability": 5,
+      "routeFeasible": false
+    }
+  },
+  {
+    "eventId": "evt-1794678202140-844bcb",
+    "blockHeight": 322,
+    "timestamp": "2026-11-14T17:43:22.140Z",
+    "userId": "cmdr-01",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "SECURITY_EVENT",
+    "planVersion": 1,
+    "previousHash": "48216571b3512f7f9183e4dfd99524257f32aaa849508801ae76e1cc112296a4",
+    "integrityHash": "2f8eb78cab29cb29aa9d7b18801928a4f62dfb4b88cbb00f63dd0fb5201d5f0b",
+    "details": {
+      "eventType": "COMMAND_REJECTED",
+      "commandId": "cmd-excessive-ttl-01",
+      "agentId": "agent-rover-01",
+      "rejectedCode": "TTL_EXCEEDED",
+      "rejectedReason": "Command TTL of 3600s exceeds maximum allowed 300s",
+      "attemptedCommand": "PAUSE"
+    }
+  },
+  {
+    "eventId": "evt-1794678202180-a0646c",
+    "blockHeight": 323,
+    "timestamp": "2026-11-14T17:43:22.181Z",
+    "userId": "cmdr-01",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "SECURITY_EVENT",
+    "planVersion": 1,
+    "previousHash": "2f8eb78cab29cb29aa9d7b18801928a4f62dfb4b88cbb00f63dd0fb5201d5f0b",
+    "integrityHash": "c75f2eeec13cadd5e3c4ef5beac31d078aee2e990fdf11d26a6142db926d2676",
+    "details": {
+      "eventType": "COMMAND_REJECTED",
+      "commandId": "cmd-stale-01",
+      "agentId": "agent-rover-01",
+      "rejectedCode": "COMMAND_STALE",
+      "rejectedReason": "Command issued timestamp is older than maximum freshness limit (300s)",
+      "attemptedCommand": "PAUSE"
+    }
+  },
+  {
+    "eventId": "evt-1794678202246-68ab18",
+    "blockHeight": 324,
+    "timestamp": "2026-11-14T17:43:22.246Z",
+    "userId": "cmdr-01",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "SECURITY_EVENT",
+    "planVersion": 1,
+    "previousHash": "c75f2eeec13cadd5e3c4ef5beac31d078aee2e990fdf11d26a6142db926d2676",
+    "integrityHash": "be8fe0f92ae473d0fdb1c870761019f5ab5b0460eac41adf53d254e89066dd46",
+    "details": {
+      "eventType": "COMMAND_REJECTED",
+      "commandId": "cmd-persist-replay-01",
+      "agentId": "agent-rover-01",
+      "rejectedCode": "COMMAND_REPLAYED",
+      "rejectedReason": "Command cmd-persist-replay-01 was already executed",
+      "attemptedCommand": "PAUSE"
+    }
+  },
+  {
+    "eventId": "evt-1794678203629-724f9f",
+    "blockHeight": 325,
+    "timestamp": "2026-11-14T17:43:23.629Z",
+    "userId": "astro-default-command",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "mission-1794678203490-710",
+    "planVersion": 1,
+    "previousHash": "be8fe0f92ae473d0fdb1c870761019f5ab5b0460eac41adf53d254e89066dd46",
+    "integrityHash": "8eeab3ccf60f44fc5ba5304364f6c1814bec6c81024a7d9d9554aec08fe220e9",
+    "details": {
+      "domainUpdated": "metadata",
+      "timestamp": "2026-11-14T17:43:23.628Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678204220-7296d6",
+    "blockHeight": 326,
+    "timestamp": "2026-11-14T17:43:24.220Z",
+    "userId": "usr-guest",
+    "role": "VIEWER",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "SECURITY_EVENT",
+    "planVersion": 1,
+    "previousHash": "8eeab3ccf60f44fc5ba5304364f6c1814bec6c81024a7d9d9554aec08fe220e9",
+    "integrityHash": "a0ee7cd46b00e4496da2e21f1f026d205fabc378adaf304f8373c984d9ef17a4",
+    "details": {
+      "eventType": "COMMAND_REJECTED",
+      "commandId": "cmd-unauth-002",
+      "agentId": "agent-rover-01",
+      "rejectedCode": "UNAUTHORIZED_ACTION",
+      "rejectedReason": "Role 'VIEWER' lacks permission for 'COMMAND_ROVER'",
+      "attemptedCommand": "PAUSE"
+    }
+  },
+  {
+    "eventId": "evt-1794678204239-4c7c9e",
+    "blockHeight": 327,
+    "timestamp": "2026-11-14T17:43:24.239Z",
+    "userId": "usr-cmdr",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "SECURITY_EVENT",
+    "planVersion": 1,
+    "previousHash": "a0ee7cd46b00e4496da2e21f1f026d205fabc378adaf304f8373c984d9ef17a4",
+    "integrityHash": "6ab51b2868e8399e2ecd21025d7e1434badb00fcc7e16094318ee841614272df",
+    "details": {
+      "eventType": "COMMAND_REJECTED",
+      "commandId": "cmd-expired-003",
+      "agentId": "agent-rover-01",
+      "rejectedCode": "COMMAND_EXPIRED",
+      "rejectedReason": "Command expired before processing",
+      "attemptedCommand": "PAUSE"
+    }
+  },
+  {
+    "eventId": "evt-1794678204266-65dbaa",
+    "blockHeight": 328,
+    "timestamp": "2026-11-14T17:43:24.266Z",
+    "userId": "usr-cmdr",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "SECURITY_EVENT",
+    "planVersion": 1,
+    "previousHash": "6ab51b2868e8399e2ecd21025d7e1434badb00fcc7e16094318ee841614272df",
+    "integrityHash": "a3ca5e250fb001ccf92b5bbe6e7548a83b0c4d99857b3113fc8fa8559467bfde",
+    "details": {
+      "eventType": "COMMAND_REJECTED",
+      "commandId": "cmd-replay-004",
+      "agentId": "agent-rover-01",
+      "rejectedCode": "COMMAND_REPLAYED",
+      "rejectedReason": "Command cmd-replay-004 was already executed",
+      "attemptedCommand": "PAUSE"
+    }
+  },
+  {
+    "eventId": "evt-1794678204284-d84219",
+    "blockHeight": 329,
+    "timestamp": "2026-11-14T17:43:24.284Z",
+    "userId": "usr-cmdr",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "SECURITY_EVENT",
+    "planVersion": 1,
+    "previousHash": "a3ca5e250fb001ccf92b5bbe6e7548a83b0c4d99857b3113fc8fa8559467bfde",
+    "integrityHash": "608822661fc7d26f4f6e6e17c086ee404e7199f694f9c37e2d520b36bd7752fe",
+    "details": {
+      "eventType": "COMMAND_REJECTED",
+      "commandId": "cmd-bad-transition-005",
+      "agentId": "agent-rover-01",
+      "rejectedCode": "INVALID_STATE_TRANSITION",
+      "rejectedReason": "Cannot resume agent in EMERGENCY status without explicit reset",
+      "attemptedCommand": "RESUME"
+    }
+  },
+  {
+    "eventId": "evt-1794678204320-7c5b4f",
+    "blockHeight": 330,
+    "timestamp": "2026-11-14T17:43:24.320Z",
+    "userId": "usr-cmdr",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "SECURITY_EVENT",
+    "planVersion": 1,
+    "previousHash": "608822661fc7d26f4f6e6e17c086ee404e7199f694f9c37e2d520b36bd7752fe",
+    "integrityHash": "a297b8eb635409c0a315f5fbcd49aa7d3287bfca8f04f47f2784377a753f1103",
+    "details": {
+      "eventType": "COMMAND_REJECTED",
+      "commandId": "cmd-restart-test-006",
+      "agentId": "agent-rover-01",
+      "rejectedCode": "COMMAND_REPLAYED",
+      "rejectedReason": "Command cmd-restart-test-006 was already executed",
+      "attemptedCommand": "PAUSE"
+    }
+  },
+  {
+    "eventId": "evt-1794678205525-1e19fc",
+    "blockHeight": 331,
+    "timestamp": "2026-11-14T17:43:25.525Z",
+    "userId": "ROVER-01 SCOUT",
+    "role": "ANALYST",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "a297b8eb635409c0a315f5fbcd49aa7d3287bfca8f04f47f2784377a753f1103",
+    "integrityHash": "aff30aedb0121a37b0e1d80934eccf29029bb2007d1822f5f5a8123c46f80b99",
+    "details": {
+      "replanId": "replan-1794678205497-kd68",
+      "triggerType": "HAZARD_DETECTED",
+      "reason": "Obstacle detected by navigation cameras. Safe detour required.",
+      "proposedRoute": "Low-Hazard Valley Corridor"
+    }
+  },
+  {
+    "eventId": "evt-1794678205527-c8ca27",
+    "blockHeight": 332,
+    "timestamp": "2026-11-14T17:43:25.527Z",
+    "userId": "FLIGHT_DIRECTOR_01",
+    "role": "MISSION_COMMAND",
+    "action": "APPROVE_PLAN",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 2,
+    "previousHash": "aff30aedb0121a37b0e1d80934eccf29029bb2007d1822f5f5a8123c46f80b99",
+    "integrityHash": "004592c9525301ffb6effcc7b8e5867925a5cd1fd21b5c31abaf0a2020c91386",
+    "details": {
+      "replanId": "replan-1794678205497-kd68",
+      "approvedRouteId": "cand-safest",
+      "approvedBy": "FLIGHT_DIRECTOR_01"
+    }
+  },
+  {
+    "eventId": "evt-1794678205562-869653",
+    "blockHeight": 333,
+    "timestamp": "2026-11-14T17:43:25.562Z",
+    "userId": "MISSION_OPERATIONS_ALLOCATOR",
+    "role": "MISSION_COMMAND",
+    "action": "MODIFY_PRIORITIES",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "004592c9525301ffb6effcc7b8e5867925a5cd1fd21b5c31abaf0a2020c91386",
+    "integrityHash": "adb2a59abfbc46c9bb5393df545335ff4f848f468295252c61a260324f98e635",
+    "details": {
+      "conflictType": "RESOURCE_CONTENTION",
+      "resourceId": "corridor-delta-01",
+      "resourceName": "Jezero Western Delta Traverse Corridor",
+      "winnerCallsign": "ASTRONAUT-01",
+      "loserId": "agent-rover-01",
+      "resolutionReason": "Crew safety priority: Astronaut ASTRONAUT-01 preempted autonomous ROVER-01 SCOUT."
+    }
+  },
+  {
+    "eventId": "evt-1794678206282-1c4731",
+    "blockHeight": 334,
+    "timestamp": "2026-11-14T17:43:26.282Z",
+    "userId": "SIMULATION_CONTROLLER",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "FAILURE_TEST",
+    "planVersion": 1,
+    "previousHash": "adb2a59abfbc46c9bb5393df545335ff4f848f468295252c61a260324f98e635",
+    "integrityHash": "025a6f1b9e8900e98a68af990b974c7a79f5a42485e74eadcdb9e1290e495cae",
+    "details": {
+      "eventType": "TRIGGER_EMERGENCY",
+      "injectionId": "fail-inj-marswalk-001-sensor_degraded-1-c83dc52d",
+      "failureType": "SENSOR_DEGRADED",
+      "targetAgentId": "agent-rover-01",
+      "systemActionTaken": "Sensor-Hazard Fusion downgraded to UNCORROBORATED. Rover speed throttled by 50%.",
+      "impactDescription": "HazCam optical point-cloud degradation (+300% uncertainty). Feature disparity lost."
+    }
+  },
+  {
+    "eventId": "evt-1794678206283-8b1492",
+    "blockHeight": 335,
+    "timestamp": "2026-11-14T17:43:26.284Z",
+    "userId": "SIMULATION_CONTROLLER",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "FAILURE_TEST",
+    "planVersion": 1,
+    "previousHash": "025a6f1b9e8900e98a68af990b974c7a79f5a42485e74eadcdb9e1290e495cae",
+    "integrityHash": "a6a4699bb1a47bdc4de92179f6543cdff70a26cb85bc037f826ea14ef7ea7fca",
+    "details": {
+      "eventType": "TRIGGER_EMERGENCY",
+      "injectionId": "fail-inj-marswalk-001-battery_drain-1-45f3b1ce",
+      "failureType": "BATTERY_DRAIN",
+      "targetAgentId": "agent-rover-01",
+      "systemActionTaken": "Safety Invariant S1 triggered. All science tasks aborted. Rover entered EMERGENCY_STOP.",
+      "impactDescription": "Sudden heater resistance short-circuit. Battery dropped to 14.5% (S1 reserve breached)."
+    }
+  },
+  {
+    "eventId": "evt-1794678212299-4cf50c",
+    "blockHeight": 336,
+    "timestamp": "2026-11-14T17:43:32.299Z",
+    "userId": "MISSION_OPERATIONS_ALLOCATOR",
+    "role": "MISSION_COMMAND",
+    "action": "MODIFY_PRIORITIES",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "a6a4699bb1a47bdc4de92179f6543cdff70a26cb85bc037f826ea14ef7ea7fca",
+    "integrityHash": "f1c95cfa84c24e332e7e69a0a8389c04699cc77d07acf2ae6d369ee959041e01",
+    "details": {
+      "conflictType": "RESOURCE_CONTENTION",
+      "resourceId": "corridor-delta-01",
+      "resourceName": "Delta Northern Valley Traversal Corridor",
+      "winnerCallsign": "ASTRONAUT-01",
+      "loserId": "agent-rover-01",
+      "resolutionReason": "Crew safety priority: Astronaut ASTRONAUT-01 preempted autonomous ROVER-01 SCOUT."
+    }
+  },
+  {
+    "eventId": "evt-1794678215615-cd602e",
+    "blockHeight": 337,
+    "timestamp": "2026-11-14T17:43:35.615Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "f1c95cfa84c24e332e7e69a0a8389c04699cc77d07acf2ae6d369ee959041e01",
+    "integrityHash": "bba0aa63454fa54c4ac4a54585f2e8eeba087d442d687c5fe133b3bc8109f333",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T17:43:35.614Z"
+    }
+  },
+  {
+    "eventId": "evt-1794678217598-856704",
+    "blockHeight": 338,
+    "timestamp": "2026-11-14T17:43:37.598Z",
+    "userId": "commander-smith",
+    "role": "MISSION_COMMAND",
+    "action": "CREATE_ROUTE",
+    "missionPlanId": "plan-test-01",
+    "planVersion": 1,
+    "previousHash": "bba0aa63454fa54c4ac4a54585f2e8eeba087d442d687c5fe133b3bc8109f333",
+    "integrityHash": "c31265d564c78fc6840a949a53b4b7aa908890fdd3006582d0937886b8bd1e47",
+    "details": {
+      "route": "Jezero Delta Path"
+    }
+  },
+  {
+    "eventId": "evt-1794678217602-ea179d",
+    "blockHeight": 339,
+    "timestamp": "2026-11-14T17:43:37.602Z",
+    "userId": "science-officer-jones",
+    "role": "SCIENCE_OFFICER",
+    "action": "MODIFY_PRIORITIES",
+    "missionPlanId": "plan-test-01",
+    "planVersion": 1,
+    "previousHash": "c31265d564c78fc6840a949a53b4b7aa908890fdd3006582d0937886b8bd1e47",
+    "integrityHash": "0802f7c33c086f882e69219852ad5aabd6f3e0fe081500343fe434dcff1bef84",
+    "details": {
+      "priority": "Clay Stratigraphy"
+    }
+  },
+  {
+    "eventId": "evt-1794678217608-8c799f",
+    "blockHeight": 340,
+    "timestamp": "2026-11-14T17:43:37.608Z",
+    "userId": "commander-smith",
+    "role": "MISSION_COMMAND",
+    "action": "APPROVE_PLAN",
+    "missionPlanId": "plan-version-test-1794678217608",
+    "planVersion": 1,
+    "previousHash": "0802f7c33c086f882e69219852ad5aabd6f3e0fe081500343fe434dcff1bef84",
+    "integrityHash": "0ad72d699d680dc9a524a7b0edc2d4a79f0d12975e21d3baaa1ad09f0c47674b",
+    "details": {
+      "status": "APPROVED",
+      "score": 88
+    }
+  },
+  {
+    "eventId": "evt-1794678217615-6b1f0c",
+    "blockHeight": 341,
+    "timestamp": "2026-11-14T17:43:37.615Z",
+    "userId": "commander-smith",
+    "role": "MISSION_COMMAND",
+    "action": "LOCK_PLAN",
+    "missionPlanId": "plan-version-test-1794678217608",
+    "planVersion": 1,
+    "previousHash": "0ad72d699d680dc9a524a7b0edc2d4a79f0d12975e21d3baaa1ad09f0c47674b",
+    "integrityHash": "89cbd64c5c976cbde4d7d70d18fbaf4b0d7ae91dfd55573327398bce3233eee9",
+    "details": {
+      "status": "LOCKED",
+      "score": 88
+    }
+  },
+  {
+    "eventId": "evt-1794678217632-a0fa51",
+    "blockHeight": 342,
+    "timestamp": "2026-11-14T17:43:37.632Z",
+    "userId": "commander-smith",
+    "role": "MISSION_COMMAND",
+    "action": "CREATE_ROUTE",
+    "missionPlanId": "plan-version-test-1794678217608",
+    "planVersion": 2,
+    "previousHash": "89cbd64c5c976cbde4d7d70d18fbaf4b0d7ae91dfd55573327398bce3233eee9",
+    "integrityHash": "b713916c93cf3a5bbf83f5ab373bf6e66bef38d50abc55331f1234a4682a5637",
+    "details": {
+      "action": "FORK_LOCKED_PLAN",
+      "previousVersion": 1
+    }
+  },
+  {
+    "eventId": "evt-1794678218759-49d244",
+    "blockHeight": 343,
+    "timestamp": "2026-11-14T17:43:38.759Z",
+    "userId": "astro-default-command",
+    "role": "MISSION_COMMAND",
+    "action": "ASSESS_MISSION",
+    "missionPlanId": "copilot-plan-1794678218759",
+    "planVersion": 1,
+    "previousHash": "b713916c93cf3a5bbf83f5ab373bf6e66bef38d50abc55331f1234a4682a5637",
+    "integrityHash": "dbad2523a20fa255bcef2c0dea3de57929803e63f1a2eaa1666900f3ba1aeee6",
+    "details": {
+      "prompt": "Plan a 4-hour EVA from Octavia Butler base to investigate ancient lake delta sediments and collect clay cores",
+      "objective": "ANCIENT_WATER_ACTIVITY",
+      "recommended": "cand-shortest",
+      "score": 97,
+      "paretoEfficient": true
+    }
+  },
+  {
+    "eventId": "evt-1794678218763-64c4b9",
+    "blockHeight": 344,
+    "timestamp": "2026-11-14T17:43:38.763Z",
+    "userId": "astro-default-command",
+    "role": "MISSION_COMMAND",
+    "action": "ASSESS_MISSION",
+    "missionPlanId": "copilot-plan-1794678218759",
+    "planVersion": 1,
+    "previousHash": "dbad2523a20fa255bcef2c0dea3de57929803e63f1a2eaa1666900f3ba1aeee6",
+    "integrityHash": "162774ae8c446d7d05cda9d592ebe1ff998dc702c33a4d74ad183f10edfe8296",
+    "details": {
+      "status": "ASSESSED",
+      "score": 97
+    }
+  },
+  {
+    "eventId": "evt-1794678220169-22b085",
+    "blockHeight": 345,
+    "timestamp": "2026-11-14T17:43:40.169Z",
+    "userId": "SIMULATION_ENGINE",
+    "role": "ANALYST",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "162774ae8c446d7d05cda9d592ebe1ff998dc702c33a4d74ad183f10edfe8296",
+    "integrityHash": "f5c9abd70740090ad2e8a222190884f9acfa00794f1dda7fb2651740bec0cae4",
+    "details": {
+      "simulationId": "sim-whatif-marswalk-001-battery_failure-1-a9000d07",
+      "successProbability": 5,
+      "routeFeasible": false
+    }
+  },
+  {
+    "eventId": "evt-1794678222305-bb0286",
+    "blockHeight": 346,
+    "timestamp": "2026-11-14T17:43:42.305Z",
+    "userId": "astro-default-command",
+    "role": "MISSION_COMMAND",
+    "action": "ASSESS_MISSION",
+    "missionPlanId": "copilot-plan-1794678222305",
+    "planVersion": 1,
+    "previousHash": "f5c9abd70740090ad2e8a222190884f9acfa00794f1dda7fb2651740bec0cae4",
+    "integrityHash": "c4b689dbc6a9ffa1cfbdf7ee36298e214ea0ee98a90e18183859367fba5b1fe3",
+    "details": {
+      "prompt": "Plan a safe 3-hour EVA from Octavia E. Butler landing to inspect ancient deltaic sediments",
+      "objective": "ANCIENT_WATER_ACTIVITY",
+      "recommended": "cand-shortest",
+      "score": 62,
+      "paretoEfficient": false
+    }
+  },
+  {
+    "eventId": "evt-1794678222307-592244",
+    "blockHeight": 347,
+    "timestamp": "2026-11-14T17:43:42.307Z",
+    "userId": "astro-default-command",
+    "role": "MISSION_COMMAND",
+    "action": "ASSESS_MISSION",
+    "missionPlanId": "copilot-plan-1794678222305",
+    "planVersion": 1,
+    "previousHash": "c4b689dbc6a9ffa1cfbdf7ee36298e214ea0ee98a90e18183859367fba5b1fe3",
+    "integrityHash": "ba49dccdddb8e070a516619442de92cb1b38314d4de6e9b43a7633e730bd1320",
+    "details": {
+      "status": "ASSESSED",
+      "score": 62
+    }
   }
 ]

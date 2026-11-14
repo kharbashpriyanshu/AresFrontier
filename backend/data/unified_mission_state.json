@@ -1,31 +1,26 @@
 {
   "schemaVersion": "1.0.0",
-  "missionId": "DEMO-NOMINAL-9740AA",
-  "savedAt": "2026-11-14T15:55:55.086Z",
+  "missionId": "MARSWALK-001",
+  "savedAt": "2026-11-14T17:43:35.614Z",
   "metadata": {
-    "id": "DEMO-NOMINAL-9740AA",
-    "name": "SIMULATED Nominal Demo (DEMO-NOMINAL-9740AA)",
+    "id": "MARSWALK-001",
+    "name": "Marswalk-001: Jezero Delta Astrobiology Traverse",
     "sol": 100,
     "missionPhase": "SURFACE_TRAVERSE",
     "status": "APPROVED",
     "commanderId": "ASTRONAUT-01",
-    "createdAt": "2026-11-14T15:55:54.619Z",
-    "updatedAt": "2026-11-14T15:55:55.086Z",
-    "activeRouteId": "route-demo-9740aa",
+    "createdAt": "2026-11-14T07:19:26.787Z",
+    "updatedAt": "2026-11-14T17:43:35.614Z",
+    "activeRouteId": "route-jezero-delta-sol100",
     "parameters": {
-      "routeId": "route-demo-9740aa",
-      "maxDurationMinutes": 180,
+      "routeId": "route-jezero-delta-sol100",
+      "maxDurationMinutes": 240,
       "startCoordinate": {
-        "latitude": 18.38,
-        "longitude": 77.58
-      },
-      "destinationCoordinate": {
-        "latitude": 18.44,
-        "longitude": 77.63
+        "latitude": 18.4447,
+        "longitude": 77.4508
       },
       "returnRequired": true,
-      "evaSuitType": "exploration-mark-1",
-      "astronautSkillLevel": "expert"
+      "astronautSkillLevel": "standard"
     },
     "tags": [
       "EVA",
@@ -375,7 +370,7 @@
         "name": "Astronaut Alex Vance (Commander)",
         "callsign": "ASTRONAUT-01",
         "type": "ASTRONAUT",
-        "status": "IDLE",
+        "status": "EXECUTING",
         "position": {
           "latitude": 18.4447,
           "longitude": 77.4508
@@ -421,7 +416,7 @@
         "telemetry": {
           "batteryPercent": 92,
           "batteryStatus": "GREEN",
-          "speedKph": 0,
+          "speedKph": 2.8,
           "headingDeg": 285,
           "internalTempC": 20.5,
           "signalStrengthPercent": 95,
@@ -429,9 +424,9 @@
           "energyConsumptionRateWhPerKm": 120,
           "suitOxygenPercent": 88,
           "heartRateBpm": 110,
-          "lastHeartbeat": "2026-11-14T15:33:22.785Z"
+          "lastHeartbeat": "2026-11-14T17:43:35.545Z"
         },
-        "lastUpdated": "2026-11-14T15:55:55.086Z",
+        "lastUpdated": "2026-11-14T17:43:35.615Z",
         "provenance": {
           "sourceType": "DERIVED",
           "sourceName": "Martian Map Planetary Computation — Astronaut Telemetry Model",
@@ -454,8 +449,8 @@
         "profileRole": "SCOUT",
         "status": "PAUSED",
         "position": {
-          "latitude": 18.451,
-          "longitude": 77.418
+          "latitude": 18.4485,
+          "longitude": 77.432
         },
         "capabilities": [
           "TERRAIN_RECON",
@@ -509,7 +504,7 @@
           "lineOfSightToRelay": true,
           "activeRelayId": "agent-rover-03",
           "energyConsumptionRateWhPerKm": 95,
-          "lastHeartbeat": "2026-11-14T15:33:22.786Z"
+          "lastHeartbeat": "2026-11-14T17:43:35.546Z"
         },
         "currentTask": {
           "id": "task-scout-recon-01",
@@ -528,11 +523,9 @@
           "requiredBatteryPercent": 18,
           "requiredCommunication": true,
           "riskLevel": "MODERATE",
-          "status": "IN_PROGRESS",
-          "missionId": "MARSWALK-001",
-          "assignedAt": "2026-11-14T15:33:22.786Z"
+          "status": "IN_PROGRESS"
         },
-        "lastUpdated": "2026-11-14T15:55:55.086Z",
+        "lastUpdated": "2026-11-14T17:43:35.615Z",
         "provenance": {
           "sourceType": "DERIVED",
           "sourceName": "Martian Map Planetary Computation — Scout Autonomous Vehicle Model",
@@ -607,9 +600,9 @@
           "lineOfSightToRelay": true,
           "activeRelayId": "agent-rover-03",
           "energyConsumptionRateWhPerKm": 160,
-          "lastHeartbeat": "2026-11-14T15:33:22.786Z"
+          "lastHeartbeat": "2026-11-14T17:43:35.546Z"
         },
-        "lastUpdated": "2026-11-14T15:55:55.086Z",
+        "lastUpdated": "2026-11-14T17:43:35.615Z",
         "provenance": {
           "sourceType": "DERIVED",
           "sourceName": "Martian Map Planetary Computation — Science Rover Model",
@@ -682,9 +675,9 @@
           "signalStrengthPercent": 98,
           "lineOfSightToRelay": true,
           "energyConsumptionRateWhPerKm": 80,
-          "lastHeartbeat": "2026-11-14T15:33:22.786Z"
+          "lastHeartbeat": "2026-11-14T17:43:35.546Z"
         },
-        "lastUpdated": "2026-11-14T15:55:55.086Z",
+        "lastUpdated": "2026-11-14T17:43:35.615Z",
         "provenance": {
           "sourceType": "DERIVED",
           "sourceName": "Martian Map Planetary Computation — Relay Rover Model",
@@ -743,7 +736,7 @@
         "orbitalPeriodMinutes": 112,
         "coverageRadiusKm": 850,
         "bandwidthKbps": 2048,
-        "nextPassWindowStart": "2026-11-14T15:51:22.786Z",
+        "nextPassWindowStart": "2026-11-14T18:01:35.546Z",
         "nextPassDurationMinutes": 14,
         "telemetry": {
           "batteryPercent": 96,
@@ -754,9 +747,9 @@
           "signalStrengthPercent": 100,
           "lineOfSightToRelay": true,
           "energyConsumptionRateWhPerKm": 0,
-          "lastHeartbeat": "2026-11-14T15:33:22.786Z"
+          "lastHeartbeat": "2026-11-14T17:43:35.546Z"
         },
-        "lastUpdated": "2026-11-14T15:33:22.786Z",
+        "lastUpdated": "2026-11-14T17:43:35.546Z",
         "provenance": {
           "sourceType": "DERIVED",
           "sourceName": "Martian Map Planetary Computation — MRO Orbital Relay Model",
@@ -777,93 +770,186 @@
       "agent-rover-03",
       "agent-orbiter-01"
     ],
-    "lastTelemetrySync": "2026-11-14T15:55:55.080Z"
+    "lastTelemetrySync": "2026-11-14T17:43:35.596Z"
   },
   "routes": {
-    "activeRouteId": "route-demo-9740aa",
+    "activeRouteId": "route-jezero-delta-sol100",
     "routes": {
-      "route-demo-9740aa": {
-        "id": "route-demo-9740aa",
-        "name": "SIMULATED Demo Nominal Jezero Traverse",
+      "route-jezero-delta-sol100": {
+        "id": "route-jezero-delta-sol100",
+        "name": "Jezero Delta Front & Séítah Exploration Traverse",
         "points": [
           {
-            "id": "route-demo-9740aa-pt-1",
+            "id": "pt-1",
             "coordinate": {
-              "latitude": 18.38,
-              "longitude": 77.58
+              "latitude": 18.4447,
+              "longitude": 77.4508
             },
             "type": "start",
-            "label": "Demo Base",
-            "elevationM": -2560
+            "label": "Octavia E. Butler Landing Site",
+            "elevationM": -2530
           },
           {
-            "id": "route-demo-9740aa-pt-2",
+            "id": "pt-2",
             "coordinate": {
-              "latitude": 18.41,
-              "longitude": 77.61
+              "latitude": 18.435,
+              "longitude": 77.438
             },
             "type": "science",
-            "label": "Delta Target",
-            "elevationM": -2515
+            "label": "South Séítah Olivine Cumulate",
+            "elevationM": -2545,
+            "targetId": "tgt-seitah-olivine"
           },
           {
-            "id": "route-demo-9740aa-pt-3",
+            "id": "pt-3",
+            "coordinate": {
+              "latitude": 18.423,
+              "longitude": 77.411
+            },
+            "type": "science",
+            "label": "Kodiak Butte Delta Remnant",
+            "elevationM": -2480,
+            "targetId": "tgt-kodiak-butte"
+          },
+          {
+            "id": "pt-4",
             "coordinate": {
               "latitude": 18.44,
-              "longitude": 77.63
+              "longitude": 77.395
             },
             "type": "destination",
-            "label": "Outcrop Station",
-            "elevationM": -2480
+            "label": "Delta Scarp Base Camp",
+            "elevationM": -2510
           }
         ],
         "segments": [
           {
-            "id": "route-demo-9740aa-seg-1",
+            "id": "seg-1",
             "start": {
-              "latitude": 18.38,
-              "longitude": 77.58
+              "latitude": 18.4447,
+              "longitude": 77.4508
+            },
+            "end": {
+              "latitude": 18.435,
+              "longitude": 77.438
+            },
+            "distanceKm": 0.98,
+            "elevationGainM": 0,
+            "elevationLossM": 15,
+            "averageSlopeDegrees": 0.88,
+            "difficulty": "low",
+            "estimatedMinutes": 44,
+            "hazards": []
+          },
+          {
+            "id": "seg-2",
+            "start": {
+              "latitude": 18.435,
+              "longitude": 77.438
+            },
+            "end": {
+              "latitude": 18.423,
+              "longitude": 77.411
+            },
+            "distanceKm": 1.74,
+            "elevationGainM": 65,
+            "elevationLossM": 0,
+            "averageSlopeDegrees": 2.14,
+            "difficulty": "low",
+            "estimatedMinutes": 58,
+            "hazards": []
+          },
+          {
+            "id": "seg-3",
+            "start": {
+              "latitude": 18.423,
+              "longitude": 77.411
             },
             "end": {
               "latitude": 18.44,
-              "longitude": 77.63
+              "longitude": 77.395
             },
-            "distanceKm": 1.85,
-            "elevationGainM": 80,
-            "elevationLossM": 12,
-            "averageSlopeDegrees": 5.46,
+            "distanceKm": 1.42,
+            "elevationGainM": 0,
+            "elevationLossM": 30,
+            "averageSlopeDegrees": 1.21,
             "difficulty": "low",
-            "estimatedMinutes": 95,
+            "estimatedMinutes": 27,
             "hazards": []
           }
         ],
-        "totalDistanceKm": 1.85,
-        "estimatedDurationMinutes": 95,
+        "totalDistanceKm": 4.14,
+        "estimatedDurationMinutes": 129,
         "elevationProfile": [
           {
             "distanceKm": 0,
-            "elevationM": -2560,
-            "slopeDegrees": 4.2,
+            "elevationM": -2530,
+            "slopeDegrees": 0.5,
             "coordinate": {
-              "latitude": 18.38,
-              "longitude": 77.58
+              "latitude": 18.4447,
+              "longitude": 77.4508
             }
           },
           {
-            "distanceKm": 1.85,
-            "elevationM": -2480,
-            "slopeDegrees": 7.8,
+            "distanceKm": 0.5,
+            "elevationM": -2538,
+            "slopeDegrees": 0.9,
             "coordinate": {
               "latitude": 18.44,
-              "longitude": 77.63
+              "longitude": 77.444
+            }
+          },
+          {
+            "distanceKm": 0.98,
+            "elevationM": -2545,
+            "slopeDegrees": 0.8,
+            "coordinate": {
+              "latitude": 18.435,
+              "longitude": 77.438
+            }
+          },
+          {
+            "distanceKm": 1.8,
+            "elevationM": -2510,
+            "slopeDegrees": 2.2,
+            "coordinate": {
+              "latitude": 18.429,
+              "longitude": 77.424
+            }
+          },
+          {
+            "distanceKm": 2.72,
+            "elevationM": -2480,
+            "slopeDegrees": 2.1,
+            "coordinate": {
+              "latitude": 18.423,
+              "longitude": 77.411
+            }
+          },
+          {
+            "distanceKm": 3.4,
+            "elevationM": -2495,
+            "slopeDegrees": 1.4,
+            "coordinate": {
+              "latitude": 18.432,
+              "longitude": 77.403
+            }
+          },
+          {
+            "distanceKm": 4.14,
+            "elevationM": -2510,
+            "slopeDegrees": 1.2,
+            "coordinate": {
+              "latitude": 18.44,
+              "longitude": 77.395
             }
           }
         ],
-        "elevationGainM": 80,
-        "elevationLossM": 12,
-        "maxSlopeDegrees": 7.8,
+        "elevationGainM": 65,
+        "elevationLossM": 45,
+        "maxSlopeDegrees": 3.8,
         "overallDifficulty": "low",
-        "createdAt": "2026-11-14T15:55:54.581Z"
+        "createdAt": "2026-11-01T00:00:00.000Z"
       }
     },
     "candidateProfiles": [],
@@ -1399,7 +1485,7 @@
   },
   "communication": {
     "networkTopology": {
-      "timestamp": "2026-11-14T15:55:54.904Z",
+      "timestamp": "2026-11-14T17:43:35.608Z",
       "links": [
         {
           "sourceAgentId": "agent-astronaut-01",
@@ -1407,7 +1493,7 @@
           "targetAgentId": "agent-rover-01",
           "targetCallsign": "ROVER-01 SCOUT",
           "linkType": "DIRECT",
-          "distanceKm": 1.88,
+          "distanceKm": 1.08,
           "lineOfSight": true,
           "estimatedLatencyMs": 5,
           "bandwidthKbps": 128,
@@ -1449,7 +1535,7 @@
           "targetAgentId": "agent-rover-02",
           "targetCallsign": "ROVER-02 SCIENCE",
           "linkType": "DIRECT",
-          "distanceKm": 1.28,
+          "distanceKm": 0.49,
           "lineOfSight": true,
           "estimatedLatencyMs": 5,
           "bandwidthKbps": 128,
@@ -1463,7 +1549,7 @@
           "targetAgentId": "agent-rover-03",
           "targetCallsign": "ROVER-03 RELAY",
           "linkType": "ROVER_RELAY",
-          "distanceKm": 1.54,
+          "distanceKm": 0.74,
           "lineOfSight": true,
           "estimatedLatencyMs": 5,
           "bandwidthKbps": 128,
@@ -1547,8 +1633,8 @@
       "unconnectedAgents": [],
       "orbitalVisibility": {
         "orbiterId": "agent-orbiter-01",
-        "startTime": "2026-11-14T15:52:54.904Z",
-        "endTime": "2026-11-14T16:12:54.904Z",
+        "startTime": "2026-11-14T17:40:35.608Z",
+        "endTime": "2026-11-14T18:00:35.608Z",
         "maxElevationDeg": 48.5,
         "slantRangeKm": 523.4,
         "visibilityQuality": "GOOD",
@@ -1566,7 +1652,7 @@
         "targetAgentId": "agent-rover-01",
         "targetCallsign": "ROVER-01 SCOUT",
         "linkType": "DIRECT",
-        "distanceKm": 1.88,
+        "distanceKm": 1.08,
         "lineOfSight": true,
         "estimatedLatencyMs": 5,
         "bandwidthKbps": 128,
@@ -1608,7 +1694,7 @@
         "targetAgentId": "agent-rover-02",
         "targetCallsign": "ROVER-02 SCIENCE",
         "linkType": "DIRECT",
-        "distanceKm": 1.28,
+        "distanceKm": 0.49,
         "lineOfSight": true,
         "estimatedLatencyMs": 5,
         "bandwidthKbps": 128,
@@ -1622,7 +1708,7 @@
         "targetAgentId": "agent-rover-03",
         "targetCallsign": "ROVER-03 RELAY",
         "linkType": "ROVER_RELAY",
-        "distanceKm": 1.54,
+        "distanceKm": 0.74,
         "lineOfSight": true,
         "estimatedLatencyMs": 5,
         "bandwidthKbps": 128,
@@ -1703,8 +1789,8 @@
     ],
     "orbitalPass": {
       "orbiterId": "agent-orbiter-01",
-      "startTime": "2026-11-14T15:52:54.904Z",
-      "endTime": "2026-11-14T16:12:54.904Z",
+      "startTime": "2026-11-14T17:40:35.608Z",
+      "endTime": "2026-11-14T18:00:35.608Z",
       "maxElevationDeg": 48.5,
       "slantRangeKm": 523.4,
       "visibilityQuality": "GOOD",
@@ -1721,7 +1807,7 @@
         "priority": "CRITICAL",
         "type": "TELEMETRY",
         "payloadSizeKb": 12,
-        "createdAt": "2026-11-14T13:31:26.803Z",
+        "createdAt": "2026-11-14T17:28:35.173Z",
         "status": "DELIVERED",
         "attempts": 1,
         "storeAndForward": true,
@@ -1733,7 +1819,7 @@
         "priority": "BULK",
         "type": "SCIENCE_DATA",
         "payloadSizeKb": 4500,
-        "createdAt": "2026-11-14T13:41:26.803Z",
+        "createdAt": "2026-11-14T17:38:35.173Z",
         "status": "BUFFERED",
         "attempts": 0,
         "storeAndForward": true,
@@ -1745,7 +1831,7 @@
         "priority": "CRITICAL",
         "type": "HAZARD_ALERT",
         "payloadSizeKb": 8,
-        "createdAt": "2026-11-14T13:45:26.803Z",
+        "createdAt": "2026-11-14T17:42:35.173Z",
         "status": "TRANSMITTING",
         "attempts": 1,
         "storeAndForward": true,
@@ -1782,7 +1868,7 @@
           "2001 Mars Odyssey THEMIS Daytime Thermal Regolith Bedrock",
           "Mars 2020 Perseverance SuperCam In-Situ Spectroscopy"
         ],
-        "assignedAt": "2026-11-14T13:21:26.798Z",
+        "assignedAt": "2026-11-14T17:18:35.166Z",
         "provenance": {
           "sourceType": "ROVER",
           "sourceName": "NASA Planetary Data System — Mars 2020 (Perseverance)",
@@ -1818,7 +1904,7 @@
           "MRO HiRISE Sub-Meter Foreset Dip Strata",
           "MGS MOLA Regional Elevation Differential (-2540m areoid)"
         ],
-        "assignedAt": "2026-11-14T13:36:26.798Z",
+        "assignedAt": "2026-11-14T17:33:35.166Z",
         "provenance": {
           "sourceType": "NASA",
           "sourceName": "NASA MRO High Resolution Imaging Science Experiment (HiRISE)",
@@ -1872,3054 +1958,7 @@
         }
       }
     ],
-    "replanProposals": [
-      {
-        "replanId": "replan-1794671110932-7ghz",
-        "timestamp": "2026-11-14T15:45:10.969Z",
-        "trigger": {
-          "triggerType": "HAZARD_DETECTED",
-          "initiatorAgentId": "agent-rover-01",
-          "initiatorCallsign": "ROVER-01 SCOUT",
-          "detectedCoordinate": {
-            "latitude": 18.451,
-            "longitude": 77.418
-          },
-          "hazardId": "hzd-jezero-delta-scarp-local",
-          "hazardDescription": "Sensor-corroborated 1.45° slope with perched boulders at Kodiak corridor",
-          "reason": "Slope gradient exceeds rover 20° stability ceiling. Automated safety pause engaged."
-        },
-        "status": "PROPOSED",
-        "currentRouteId": "cand-shortest",
-        "proposedRouteId": "cand-safest",
-        "candidateAlternatives": [
-          {
-            "id": "cand-shortest",
-            "name": "Direct Shortest Traverse",
-            "profileType": "shortest",
-            "route": {
-              "id": "route-1794671110937-754",
-              "name": "Direct Shortest Path",
-              "points": [
-                {
-                  "id": "pt-start",
-                  "label": "EVA Ingress Hub",
-                  "coordinate": {
-                    "latitude": 18.451,
-                    "longitude": 77.418
-                  },
-                  "type": "start"
-                },
-                {
-                  "id": "pt-start-return",
-                  "label": "EVA Return Hub",
-                  "coordinate": {
-                    "latitude": 18.451,
-                    "longitude": 77.418
-                  },
-                  "type": "destination"
-                }
-              ],
-              "segments": [
-                {
-                  "id": "seg-1",
-                  "start": {
-                    "latitude": 18.451,
-                    "longitude": 77.418
-                  },
-                  "end": {
-                    "latitude": 18.451,
-                    "longitude": 77.418
-                  },
-                  "distanceKm": 0,
-                  "elevationGainM": 0,
-                  "elevationLossM": 0,
-                  "averageSlopeDegrees": 0,
-                  "difficulty": "low",
-                  "estimatedMinutes": 0,
-                  "hazards": []
-                }
-              ],
-              "totalDistanceKm": 0,
-              "estimatedDurationMinutes": 0,
-              "elevationProfile": [
-                {
-                  "distanceKm": 0,
-                  "elevationM": -2501,
-                  "slopeDegrees": 0,
-                  "coordinate": {
-                    "latitude": 18.451,
-                    "longitude": 77.418
-                  }
-                }
-              ],
-              "elevationGainM": 0,
-              "elevationLossM": 0,
-              "maxSlopeDegrees": 0,
-              "overallDifficulty": "low",
-              "createdAt": "2026-11-14T15:45:10.937Z"
-            },
-            "distanceKm": 0,
-            "estimatedDurationMin": 0,
-            "terrainScore": 100,
-            "scienceScore": 92,
-            "safetyScore": 100,
-            "accessibilityScore": 95,
-            "overallScore": 97,
-            "communicationScore": 100,
-            "energyWhConsumed": 6,
-            "projectedBatteryPercent": 84.5,
-            "projectedOxygenMinutes": 177,
-            "hardConstraintViolations": [],
-            "tradeoffExplanation": "Route 'Direct Shortest Traverse' (SHORTEST) achieves risk-adjusted score 97/100. Science yield: 92/100, Terrain safety: 100/100. Resource impact: consumes 6 Wh, leaving projected 84.5% battery (+64.5% margin above 20% floor). Communication: 100% coverage (max blackout: 0 min). Emergency return feasible. All safety invariants satisfied.",
-            "communicationMetrics": {
-              "losCoveragePercent": 100,
-              "maxBlackoutDurationMin": 0,
-              "orbiterPassAvailable": true,
-              "commContinuitySatisfied": true
-            },
-            "resourceMetrics": {
-              "initialBatteryPercent": 85,
-              "projectedRemainingPercent": 84.5,
-              "energyExpenditureWh": 6,
-              "energyBudgetWh": 1020,
-              "batteryMarginPercent": 64.5,
-              "sampleTubesNeeded": 0,
-              "sampleTubesAvailable": 5,
-              "estimatedDataMb": 50,
-              "oxygenRemainingMin": 177,
-              "emergencyReturnFeasible": true
-            },
-            "hazards": [],
-            "scienceTargets": [
-              "Kodiak Butte Delta Remnant"
-            ],
-            "recommendationReason": "Direct transit vector: minimal distance (0.0 km) and lowest energy consumption, but sacrifices geological sampling breadth.",
-            "feasible": true,
-            "warnings": [],
-            "multiObjectiveScore": {
-              "safety": 100,
-              "science": 92,
-              "accessibility": 95,
-              "efficiency": 100,
-              "communication": 100,
-              "energyEfficiency": 100,
-              "resourceFeasibility": 100,
-              "evidenceConfidence": 92,
-              "evaFeasibility": 95,
-              "uncertaintyPenalty": 1,
-              "riskAdjustedScore": 97,
-              "isParetoEfficient": true,
-              "hardConstraintsSatisfied": true
-            },
-            "scienceBreakdown": {
-              "totalScore": 92,
-              "objectiveRelevance": 30,
-              "geologicalEvidence": 25,
-              "targetUniqueness": 18,
-              "dataQuality": 15,
-              "sampleDiversity": 4,
-              "scoringMethod": "PROJECT_RULE_FACTORIZED",
-              "scoringExplanation": "Traverse surveys 1 science target(s). Multi-attribute score: 92/100 based on factorized weights.",
-              "observedEvidenceSummary": "Kodiak Butte Delta Remnant: Isolated erosional remnant exhibiting textbook Gilbert-type delta bottomsets and foresets. Highest priority evidence of ancient high-energy lake stage.",
-              "provenance": {
-                "sourceType": "PROJECT_RULE",
-                "sourceName": "Martian Map Operational Protocol — Multi-Target Factorized Science Engine",
-                "processingMethod": "Linear weighted sum of individual target factor matrices",
-                "dataMode": "FALLBACK",
-                "uncertainty": {
-                  "value": 0,
-                  "unit": "rule",
-                  "methodology": "Operational engineering constraint based on human life support safety standards"
-                }
-              }
-            },
-            "coverage": {
-              "elevation": "MEDIUM",
-              "highResImagery": "HIGH",
-              "thermal": "HIGH",
-              "roverEvidence": "HIGH",
-              "scienceEvidence": "HIGH",
-              "overallEvidence": "HIGH",
-              "sourceResolutionM": 0.25,
-              "dataAgeYears": 5,
-              "summary": "Route corridor evidence confidence is HIGH. Elevation: MEDIUM, HiRISE stereo: HIGH, Thermal IR: HIGH, Rover in-situ: HIGH.",
-              "provenance": {
-                "sourceType": "DERIVED",
-                "sourceName": "Martian Map Planetary Computation — Data Evidence Coverage Index",
-                "processingMethod": "Mathematical calculation derived from [MGS MOLA, MRO HiRISE Footprints, Odyssey THEMIS, Rover Mission Archives]: Multi-layer spatial intersection and resolution scoring",
-                "dataMode": "FALLBACK",
-                "uncertainty": {
-                  "value": 1,
-                  "unit": "score",
-                  "methodology": "Propagated uncertainty from input layers [MGS MOLA, MRO HiRISE Footprints, Odyssey THEMIS, Rover Mission Archives]"
-                }
-              }
-            },
-            "provenance": {
-              "sourceType": "DERIVED",
-              "sourceName": "Martian Map Planetary Computation — Candidate Multi-Objective Evaluation",
-              "processingMethod": "Mathematical calculation derived from [MGS MOLA MEGDR, Factorized Science Engine, Data Coverage Engine, Resource Modeling Engine, Line-of-Sight Engine]: Risk-adjusted multi-attribute scoring model v4.0",
-              "dataMode": "FALLBACK",
-              "uncertainty": {
-                "value": 1,
-                "unit": "score",
-                "methodology": "Propagated uncertainty from input layers [MGS MOLA MEGDR, Factorized Science Engine, Data Coverage Engine, Resource Modeling Engine, Line-of-Sight Engine]"
-              }
-            }
-          },
-          {
-            "id": "cand-safest",
-            "name": "Low-Hazard Valley Corridor",
-            "profileType": "safest",
-            "route": {
-              "id": "route-1794671110953-809",
-              "name": "Low-Hazard Valley Route",
-              "points": [
-                {
-                  "id": "pt-start",
-                  "label": "EVA Ingress Hub",
-                  "coordinate": {
-                    "latitude": 18.451,
-                    "longitude": 77.418
-                  },
-                  "type": "start"
-                },
-                {
-                  "id": "pt-safe-pass",
-                  "label": "Low-Gradient Valley Corridor",
-                  "coordinate": {
-                    "latitude": 18.447,
-                    "longitude": 77.418
-                  },
-                  "type": "waypoint"
-                },
-                {
-                  "id": "tgt-neretva-inflow",
-                  "label": "Neretva Vallis Inflow Channel Breach",
-                  "coordinate": {
-                    "latitude": 18.52,
-                    "longitude": 77.38
-                  },
-                  "type": "science",
-                  "targetId": "tgt-neretva-inflow"
-                },
-                {
-                  "id": "pt-start-return",
-                  "label": "EVA Return Hub",
-                  "coordinate": {
-                    "latitude": 18.451,
-                    "longitude": 77.418
-                  },
-                  "type": "destination"
-                }
-              ],
-              "segments": [
-                {
-                  "id": "seg-1",
-                  "start": {
-                    "latitude": 18.451,
-                    "longitude": 77.418
-                  },
-                  "end": {
-                    "latitude": 18.447,
-                    "longitude": 77.418
-                  },
-                  "distanceKm": 0.237,
-                  "elevationGainM": 0,
-                  "elevationLossM": 0,
-                  "averageSlopeDegrees": 0,
-                  "difficulty": "low",
-                  "estimatedMinutes": 5,
-                  "hazards": []
-                },
-                {
-                  "id": "seg-2",
-                  "start": {
-                    "latitude": 18.447,
-                    "longitude": 77.418
-                  },
-                  "end": {
-                    "latitude": 18.52,
-                    "longitude": 77.38
-                  },
-                  "distanceKm": 4.816,
-                  "elevationGainM": 45,
-                  "elevationLossM": 0,
-                  "averageSlopeDegrees": 0.54,
-                  "difficulty": "low",
-                  "estimatedMinutes": 131,
-                  "hazards": []
-                },
-                {
-                  "id": "seg-3",
-                  "start": {
-                    "latitude": 18.52,
-                    "longitude": 77.38
-                  },
-                  "end": {
-                    "latitude": 18.451,
-                    "longitude": 77.418
-                  },
-                  "distanceKm": 4.605,
-                  "elevationGainM": 0,
-                  "elevationLossM": 45,
-                  "averageSlopeDegrees": 0.56,
-                  "difficulty": "low",
-                  "estimatedMinutes": 101,
-                  "hazards": []
-                }
-              ],
-              "totalDistanceKm": 9.658,
-              "estimatedDurationMinutes": 237,
-              "elevationProfile": [
-                {
-                  "distanceKm": 0,
-                  "elevationM": -2501,
-                  "slopeDegrees": 0,
-                  "coordinate": {
-                    "latitude": 18.451,
-                    "longitude": 77.418
-                  }
-                },
-                {
-                  "distanceKm": 0.047,
-                  "elevationM": -2501,
-                  "slopeDegrees": 0,
-                  "coordinate": {
-                    "latitude": 18.4502,
-                    "longitude": 77.418
-                  }
-                },
-                {
-                  "distanceKm": 0.095,
-                  "elevationM": -2501,
-                  "slopeDegrees": 0,
-                  "coordinate": {
-                    "latitude": 18.4494,
-                    "longitude": 77.418
-                  }
-                },
-                {
-                  "distanceKm": 0.142,
-                  "elevationM": -2501,
-                  "slopeDegrees": 0,
-                  "coordinate": {
-                    "latitude": 18.4486,
-                    "longitude": 77.418
-                  }
-                },
-                {
-                  "distanceKm": 0.189,
-                  "elevationM": -2501,
-                  "slopeDegrees": 0,
-                  "coordinate": {
-                    "latitude": 18.4478,
-                    "longitude": 77.418
-                  }
-                },
-                {
-                  "distanceKm": 0.237,
-                  "elevationM": -2501,
-                  "slopeDegrees": 0,
-                  "coordinate": {
-                    "latitude": 18.447,
-                    "longitude": 77.418
-                  }
-                },
-                {
-                  "distanceKm": 0.237,
-                  "elevationM": -2501,
-                  "slopeDegrees": 0,
-                  "coordinate": {
-                    "latitude": 18.447,
-                    "longitude": 77.418
-                  }
-                },
-                {
-                  "distanceKm": 0.429,
-                  "elevationM": -2500,
-                  "slopeDegrees": 0.3,
-                  "coordinate": {
-                    "latitude": 18.44992,
-                    "longitude": 77.41648
-                  }
-                },
-                {
-                  "distanceKm": 0.622,
-                  "elevationM": -2498,
-                  "slopeDegrees": 0.59,
-                  "coordinate": {
-                    "latitude": 18.45284,
-                    "longitude": 77.41496
-                  }
-                },
-                {
-                  "distanceKm": 0.815,
-                  "elevationM": -2496,
-                  "slopeDegrees": 0.59,
-                  "coordinate": {
-                    "latitude": 18.45576,
-                    "longitude": 77.41344
-                  }
-                },
-                {
-                  "distanceKm": 1.007,
-                  "elevationM": -2494,
-                  "slopeDegrees": 0.59,
-                  "coordinate": {
-                    "latitude": 18.45868,
-                    "longitude": 77.41192
-                  }
-                },
-                {
-                  "distanceKm": 1.2,
-                  "elevationM": -2492,
-                  "slopeDegrees": 0.59,
-                  "coordinate": {
-                    "latitude": 18.4616,
-                    "longitude": 77.4104
-                  }
-                },
-                {
-                  "distanceKm": 1.393,
-                  "elevationM": -2490,
-                  "slopeDegrees": 0.59,
-                  "coordinate": {
-                    "latitude": 18.46452,
-                    "longitude": 77.40888
-                  }
-                },
-                {
-                  "distanceKm": 1.585,
-                  "elevationM": -2488,
-                  "slopeDegrees": 0.59,
-                  "coordinate": {
-                    "latitude": 18.46744,
-                    "longitude": 77.40736
-                  }
-                },
-                {
-                  "distanceKm": 1.778,
-                  "elevationM": -2486,
-                  "slopeDegrees": 0.59,
-                  "coordinate": {
-                    "latitude": 18.47036,
-                    "longitude": 77.40584
-                  }
-                },
-                {
-                  "distanceKm": 1.971,
-                  "elevationM": -2483,
-                  "slopeDegrees": 0.89,
-                  "coordinate": {
-                    "latitude": 18.47328,
-                    "longitude": 77.40432
-                  }
-                },
-                {
-                  "distanceKm": 2.163,
-                  "elevationM": -2481,
-                  "slopeDegrees": 0.59,
-                  "coordinate": {
-                    "latitude": 18.4762,
-                    "longitude": 77.4028
-                  }
-                },
-                {
-                  "distanceKm": 2.356,
-                  "elevationM": -2479,
-                  "slopeDegrees": 0.59,
-                  "coordinate": {
-                    "latitude": 18.47912,
-                    "longitude": 77.40128
-                  }
-                },
-                {
-                  "distanceKm": 2.548,
-                  "elevationM": -2477,
-                  "slopeDegrees": 0.59,
-                  "coordinate": {
-                    "latitude": 18.48204,
-                    "longitude": 77.39976
-                  }
-                },
-                {
-                  "distanceKm": 2.741,
-                  "elevationM": -2475,
-                  "slopeDegrees": 0.59,
-                  "coordinate": {
-                    "latitude": 18.48496,
-                    "longitude": 77.39824
-                  }
-                },
-                {
-                  "distanceKm": 2.934,
-                  "elevationM": -2473,
-                  "slopeDegrees": 0.59,
-                  "coordinate": {
-                    "latitude": 18.48788,
-                    "longitude": 77.39672
-                  }
-                },
-                {
-                  "distanceKm": 3.126,
-                  "elevationM": -2471,
-                  "slopeDegrees": 0.59,
-                  "coordinate": {
-                    "latitude": 18.4908,
-                    "longitude": 77.3952
-                  }
-                },
-                {
-                  "distanceKm": 3.319,
-                  "elevationM": -2469,
-                  "slopeDegrees": 0.59,
-                  "coordinate": {
-                    "latitude": 18.49372,
-                    "longitude": 77.39368
-                  }
-                },
-                {
-                  "distanceKm": 3.511,
-                  "elevationM": -2467,
-                  "slopeDegrees": 0.59,
-                  "coordinate": {
-                    "latitude": 18.49664,
-                    "longitude": 77.39216
-                  }
-                },
-                {
-                  "distanceKm": 3.704,
-                  "elevationM": -2466,
-                  "slopeDegrees": 0.3,
-                  "coordinate": {
-                    "latitude": 18.49956,
-                    "longitude": 77.39064
-                  }
-                },
-                {
-                  "distanceKm": 3.897,
-                  "elevationM": -2464,
-                  "slopeDegrees": 0.59,
-                  "coordinate": {
-                    "latitude": 18.50248,
-                    "longitude": 77.38912
-                  }
-                },
-                {
-                  "distanceKm": 4.089,
-                  "elevationM": -2462,
-                  "slopeDegrees": 0.59,
-                  "coordinate": {
-                    "latitude": 18.5054,
-                    "longitude": 77.3876
-                  }
-                },
-                {
-                  "distanceKm": 4.282,
-                  "elevationM": -2461,
-                  "slopeDegrees": 0.3,
-                  "coordinate": {
-                    "latitude": 18.50832,
-                    "longitude": 77.38608
-                  }
-                },
-                {
-                  "distanceKm": 4.474,
-                  "elevationM": -2459,
-                  "slopeDegrees": 0.59,
-                  "coordinate": {
-                    "latitude": 18.51124,
-                    "longitude": 77.38456
-                  }
-                },
-                {
-                  "distanceKm": 4.667,
-                  "elevationM": -2458,
-                  "slopeDegrees": 0.3,
-                  "coordinate": {
-                    "latitude": 18.51416,
-                    "longitude": 77.38304
-                  }
-                },
-                {
-                  "distanceKm": 4.859,
-                  "elevationM": -2457,
-                  "slopeDegrees": 0.3,
-                  "coordinate": {
-                    "latitude": 18.51708,
-                    "longitude": 77.38152
-                  }
-                },
-                {
-                  "distanceKm": 5.052,
-                  "elevationM": -2456,
-                  "slopeDegrees": 0.3,
-                  "coordinate": {
-                    "latitude": 18.52,
-                    "longitude": 77.38
-                  }
-                },
-                {
-                  "distanceKm": 5.052,
-                  "elevationM": -2456,
-                  "slopeDegrees": 0,
-                  "coordinate": {
-                    "latitude": 18.52,
-                    "longitude": 77.38
-                  }
-                },
-                {
-                  "distanceKm": 5.244,
-                  "elevationM": -2457,
-                  "slopeDegrees": 0.3,
-                  "coordinate": {
-                    "latitude": 18.51713,
-                    "longitude": 77.38158
-                  }
-                },
-                {
-                  "distanceKm": 5.436,
-                  "elevationM": -2458,
-                  "slopeDegrees": 0.3,
-                  "coordinate": {
-                    "latitude": 18.51425,
-                    "longitude": 77.38317
-                  }
-                },
-                {
-                  "distanceKm": 5.627,
-                  "elevationM": -2459,
-                  "slopeDegrees": 0.3,
-                  "coordinate": {
-                    "latitude": 18.51138,
-                    "longitude": 77.38475
-                  }
-                },
-                {
-                  "distanceKm": 5.82,
-                  "elevationM": -2461,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.5085,
-                    "longitude": 77.38634
-                  }
-                },
-                {
-                  "distanceKm": 6.011,
-                  "elevationM": -2462,
-                  "slopeDegrees": 0.3,
-                  "coordinate": {
-                    "latitude": 18.50563,
-                    "longitude": 77.38792
-                  }
-                },
-                {
-                  "distanceKm": 6.203,
-                  "elevationM": -2464,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.50275,
-                    "longitude": 77.3895
-                  }
-                },
-                {
-                  "distanceKm": 6.395,
-                  "elevationM": -2466,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.49988,
-                    "longitude": 77.39109
-                  }
-                },
-                {
-                  "distanceKm": 6.587,
-                  "elevationM": -2467,
-                  "slopeDegrees": 0.3,
-                  "coordinate": {
-                    "latitude": 18.497,
-                    "longitude": 77.39267
-                  }
-                },
-                {
-                  "distanceKm": 6.779,
-                  "elevationM": -2469,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.49413,
-                    "longitude": 77.39425
-                  }
-                },
-                {
-                  "distanceKm": 6.971,
-                  "elevationM": -2471,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.49125,
-                    "longitude": 77.39584
-                  }
-                },
-                {
-                  "distanceKm": 7.163,
-                  "elevationM": -2473,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.48838,
-                    "longitude": 77.39742
-                  }
-                },
-                {
-                  "distanceKm": 7.355,
-                  "elevationM": -2475,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.4855,
-                    "longitude": 77.399
-                  }
-                },
-                {
-                  "distanceKm": 7.546,
-                  "elevationM": -2477,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.48263,
-                    "longitude": 77.40059
-                  }
-                },
-                {
-                  "distanceKm": 7.739,
-                  "elevationM": -2479,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.47975,
-                    "longitude": 77.40217
-                  }
-                },
-                {
-                  "distanceKm": 7.93,
-                  "elevationM": -2482,
-                  "slopeDegrees": 0.9,
-                  "coordinate": {
-                    "latitude": 18.47688,
-                    "longitude": 77.40375
-                  }
-                },
-                {
-                  "distanceKm": 8.122,
-                  "elevationM": -2484,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.474,
-                    "longitude": 77.40534
-                  }
-                },
-                {
-                  "distanceKm": 8.314,
-                  "elevationM": -2486,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.47113,
-                    "longitude": 77.40692
-                  }
-                },
-                {
-                  "distanceKm": 8.506,
-                  "elevationM": -2488,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.46825,
-                    "longitude": 77.4085
-                  }
-                },
-                {
-                  "distanceKm": 8.698,
-                  "elevationM": -2490,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.46538,
-                    "longitude": 77.41009
-                  }
-                },
-                {
-                  "distanceKm": 8.89,
-                  "elevationM": -2493,
-                  "slopeDegrees": 0.89,
-                  "coordinate": {
-                    "latitude": 18.4625,
-                    "longitude": 77.41167
-                  }
-                },
-                {
-                  "distanceKm": 9.081,
-                  "elevationM": -2495,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.45963,
-                    "longitude": 77.41325
-                  }
-                },
-                {
-                  "distanceKm": 9.273,
-                  "elevationM": -2497,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.45675,
-                    "longitude": 77.41483
-                  }
-                },
-                {
-                  "distanceKm": 9.465,
-                  "elevationM": -2499,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.45388,
-                    "longitude": 77.41642
-                  }
-                },
-                {
-                  "distanceKm": 9.657,
-                  "elevationM": -2501,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.451,
-                    "longitude": 77.418
-                  }
-                }
-              ],
-              "elevationGainM": 45,
-              "elevationLossM": 45,
-              "maxSlopeDegrees": 0.9,
-              "overallDifficulty": "low",
-              "createdAt": "2026-11-14T15:45:10.953Z"
-            },
-            "distanceKm": 9.658,
-            "estimatedDurationMin": 237,
-            "terrainScore": 94,
-            "scienceScore": 89,
-            "safetyScore": 5,
-            "accessibilityScore": 80,
-            "overallScore": 37,
-            "communicationScore": 53,
-            "energyWhConsumed": 1195.9,
-            "projectedBatteryPercent": 0,
-            "projectedOxygenMinutes": 0,
-            "hardConstraintViolations": [
-              "Battery reserve violation: Projected battery (0%) falls below the 20% mandatory return reserve (Invariant S1).",
-              "Energy deficit: Traverse requires 1195.9 Wh but available battery holds only 1020 Wh.",
-              "Emergency return infeasible: Energy remaining at furthest point is insufficient to return to ingress hub with safe reserve.",
-              "Life-support oxygen deficit: Remaining oxygen (0 min) breaches the mandatory 30-min EVA emergency reserve.",
-              "Route intersects critical impassable hazard zone."
-            ],
-            "tradeoffExplanation": "Route 'Low-Hazard Valley Corridor' (SAFEST) is REJECTED due to 5 critical constraint violation(s): Battery reserve violation: Projected battery (0%) falls below the 20% mandatory return reserve (Invariant S1). | Energy deficit: Traverse requires 1195.9 Wh but available battery holds only 1020 Wh. | Emergency return infeasible: Energy remaining at furthest point is insufficient to return to ingress hub with safe reserve. | Life-support oxygen deficit: Remaining oxygen (0 min) breaches the mandatory 30-min EVA emergency reserve. | Route intersects critical impassable hazard zone.. Cannot be selected regardless of score (37/100).",
-            "communicationMetrics": {
-              "losCoveragePercent": 75,
-              "maxBlackoutDurationMin": 79,
-              "orbiterPassAvailable": true,
-              "commContinuitySatisfied": false
-            },
-            "resourceMetrics": {
-              "initialBatteryPercent": 85,
-              "projectedRemainingPercent": 0,
-              "energyExpenditureWh": 1195.9,
-              "energyBudgetWh": 1020,
-              "batteryMarginPercent": -20,
-              "sampleTubesNeeded": 1,
-              "sampleTubesAvailable": 5,
-              "estimatedDataMb": 170,
-              "oxygenRemainingMin": 0,
-              "emergencyReturnFeasible": false
-            },
-            "hazards": [
-              {
-                "id": "res-battery-deficit-route-1794671110953-809",
-                "name": "Critical Battery Reserve Breach (Projected: -13.9%)",
-                "type": "LOW_BATTERY_RESERVE",
-                "category": "RESOURCE",
-                "severity": "CRITICAL",
-                "location": {
-                  "latitude": 18.451,
-                  "longitude": 77.418
-                },
-                "reason": "Estimated traverse energy expenditure (1187 Wh) depletes battery to -13.9%, breaching the 20% minimum safety return floor (Invariant S1).",
-                "recommendation": "Shorten route, omit secondary science stops, or recharge asset prior to mission departure.",
-                "confidence": 0.95,
-                "probability": 0.98,
-                "impactDescription": "Depletion of primary mobility battery, potential vehicle freezing, and asset stranding.",
-                "detectionSource": "Physical Terramechanics Energy Expenditure Model",
-                "provenanceClassification": "PREDICTED",
-                "recommendedMitigation": "Enforce battery cutoff threshold at 25% to reserve emergency return power.",
-                "sourceType": "DERIVED"
-              },
-              {
-                "id": "res-o2-breach-route-1794671110953-809",
-                "name": "Life-Support Oxygen Depletion Risk (237 min duration + 30 min margin > 240 min available)",
-                "type": "INSUFFICIENT_OXYGEN",
-                "category": "RESOURCE",
-                "severity": "CRITICAL",
-                "location": {
-                  "latitude": 18.451,
-                  "longitude": 77.418
-                },
-                "reason": "Total EVA time (237 min) plus NASA 30-min return reserve (267 min) exceeds suit consumable supply (240 min).",
-                "recommendation": "Truncate traverse itinerary or assign uncrewed robotic asset for distant waypoints.",
-                "confidence": 0.98,
-                "probability": 0.99,
-                "impactDescription": "Hypoxia and life-support asphyxiation hazard for EVA crewmember.",
-                "detectionSource": "Astronaut Suit Biotelemetry & Consumable Engine",
-                "provenanceClassification": "PREDICTED",
-                "recommendedMitigation": "Enforce strict 180-min abort rule regardless of science objectives.",
-                "sourceType": "DERIVED"
-              }
-            ],
-            "scienceTargets": [
-              "Neretva Vallis Inflow Channel Breach"
-            ],
-            "recommendationReason": "Non-executable candidate: violates critical safety envelopes or mission life-support thresholds.",
-            "feasible": false,
-            "warnings": [
-              "Route intersects one or more CRITICAL terrain or environmental hazards.",
-              "Extended RF blackout window detected (79 min without direct LOS or orbiter pass).",
-              "Narrow battery reserve margin (+-20% above minimum 20% floor)."
-            ],
-            "multiObjectiveScore": {
-              "safety": 5,
-              "science": 89,
-              "accessibility": 80,
-              "efficiency": 22,
-              "communication": 53,
-              "energyEfficiency": 10,
-              "resourceFeasibility": 5,
-              "evidenceConfidence": 92,
-              "evaFeasibility": 35,
-              "uncertaintyPenalty": 11,
-              "riskAdjustedScore": 37,
-              "isParetoEfficient": false,
-              "hardConstraintsSatisfied": false,
-              "paretoDominatedBy": [
-                "Direct Shortest Traverse"
-              ]
-            },
-            "scienceBreakdown": {
-              "totalScore": 89,
-              "objectiveRelevance": 30,
-              "geologicalEvidence": 25,
-              "targetUniqueness": 18,
-              "dataQuality": 12,
-              "sampleDiversity": 4,
-              "scoringMethod": "PROJECT_RULE_FACTORIZED",
-              "scoringExplanation": "Traverse surveys 1 science target(s). Multi-attribute score: 89/100 based on factorized weights.",
-              "observedEvidenceSummary": "Neretva Vallis Inflow Channel Breach: Channel canyon through which violent catastrophic floods carved the Jezero crater rim and deposited boulder conglomerates.",
-              "provenance": {
-                "sourceType": "PROJECT_RULE",
-                "sourceName": "Martian Map Operational Protocol — Multi-Target Factorized Science Engine",
-                "processingMethod": "Linear weighted sum of individual target factor matrices",
-                "dataMode": "FALLBACK",
-                "uncertainty": {
-                  "value": 0,
-                  "unit": "rule",
-                  "methodology": "Operational engineering constraint based on human life support safety standards"
-                }
-              }
-            },
-            "coverage": {
-              "elevation": "MEDIUM",
-              "highResImagery": "HIGH",
-              "thermal": "HIGH",
-              "roverEvidence": "HIGH",
-              "scienceEvidence": "HIGH",
-              "overallEvidence": "HIGH",
-              "sourceResolutionM": 0.25,
-              "dataAgeYears": 5,
-              "summary": "Route corridor evidence confidence is HIGH. Elevation: MEDIUM, HiRISE stereo: HIGH, Thermal IR: HIGH, Rover in-situ: HIGH.",
-              "provenance": {
-                "sourceType": "DERIVED",
-                "sourceName": "Martian Map Planetary Computation — Data Evidence Coverage Index",
-                "processingMethod": "Mathematical calculation derived from [MGS MOLA, MRO HiRISE Footprints, Odyssey THEMIS, Rover Mission Archives]: Multi-layer spatial intersection and resolution scoring",
-                "dataMode": "FALLBACK",
-                "uncertainty": {
-                  "value": 1,
-                  "unit": "score",
-                  "methodology": "Propagated uncertainty from input layers [MGS MOLA, MRO HiRISE Footprints, Odyssey THEMIS, Rover Mission Archives]"
-                }
-              }
-            },
-            "provenance": {
-              "sourceType": "DERIVED",
-              "sourceName": "Martian Map Planetary Computation — Candidate Multi-Objective Evaluation",
-              "processingMethod": "Mathematical calculation derived from [MGS MOLA MEGDR, Factorized Science Engine, Data Coverage Engine, Resource Modeling Engine, Line-of-Sight Engine]: Risk-adjusted multi-attribute scoring model v4.0",
-              "dataMode": "FALLBACK",
-              "uncertainty": {
-                "value": 1,
-                "unit": "score",
-                "methodology": "Propagated uncertainty from input layers [MGS MOLA MEGDR, Factorized Science Engine, Data Coverage Engine, Resource Modeling Engine, Line-of-Sight Engine]"
-              }
-            }
-          },
-          {
-            "id": "cand-highest-science",
-            "name": "Multi-Target Science Survey",
-            "profileType": "highest_science",
-            "route": {
-              "id": "route-1794671110960-154",
-              "name": "Comprehensive Science Survey",
-              "points": [
-                {
-                  "id": "pt-start",
-                  "label": "EVA Ingress Hub",
-                  "coordinate": {
-                    "latitude": 18.451,
-                    "longitude": 77.418
-                  },
-                  "type": "start"
-                },
-                {
-                  "id": "tgt-kodiak-butte",
-                  "label": "Kodiak Butte Delta Remnant",
-                  "coordinate": {
-                    "latitude": 18.423,
-                    "longitude": 77.411
-                  },
-                  "type": "science",
-                  "targetId": "tgt-kodiak-butte"
-                },
-                {
-                  "id": "tgt-neretva-inflow",
-                  "label": "Neretva Vallis Inflow Channel Breach",
-                  "coordinate": {
-                    "latitude": 18.52,
-                    "longitude": 77.38
-                  },
-                  "type": "science",
-                  "targetId": "tgt-neretva-inflow"
-                },
-                {
-                  "id": "tgt-belva-crater-rim",
-                  "label": "Belva Crater Impact Rim & Ejecta",
-                  "coordinate": {
-                    "latitude": 18.485,
-                    "longitude": 77.442
-                  },
-                  "type": "science",
-                  "targetId": "tgt-belva-crater-rim"
-                },
-                {
-                  "id": "pt-start-return",
-                  "label": "EVA Ingress Hub (Return)",
-                  "coordinate": {
-                    "latitude": 18.451,
-                    "longitude": 77.418
-                  },
-                  "type": "destination"
-                }
-              ],
-              "segments": [
-                {
-                  "id": "seg-1",
-                  "start": {
-                    "latitude": 18.451,
-                    "longitude": 77.418
-                  },
-                  "end": {
-                    "latitude": 18.423,
-                    "longitude": 77.411
-                  },
-                  "distanceKm": 1.702,
-                  "elevationGainM": 10,
-                  "elevationLossM": 0,
-                  "averageSlopeDegrees": 0.34,
-                  "difficulty": "low",
-                  "estimatedMinutes": 62,
-                  "hazards": []
-                },
-                {
-                  "id": "seg-2",
-                  "start": {
-                    "latitude": 18.423,
-                    "longitude": 77.411
-                  },
-                  "end": {
-                    "latitude": 18.52,
-                    "longitude": 77.38
-                  },
-                  "distanceKm": 5.996,
-                  "elevationGainM": 35,
-                  "elevationLossM": 0,
-                  "averageSlopeDegrees": 0.33,
-                  "difficulty": "low",
-                  "estimatedMinutes": 155,
-                  "hazards": []
-                },
-                {
-                  "id": "seg-3",
-                  "start": {
-                    "latitude": 18.52,
-                    "longitude": 77.38
-                  },
-                  "end": {
-                    "latitude": 18.485,
-                    "longitude": 77.442
-                  },
-                  "distanceKm": 4.048,
-                  "elevationGainM": 0,
-                  "elevationLossM": 37,
-                  "averageSlopeDegrees": 0.52,
-                  "difficulty": "low",
-                  "estimatedMinutes": 114,
-                  "hazards": []
-                },
-                {
-                  "id": "seg-4",
-                  "start": {
-                    "latitude": 18.485,
-                    "longitude": 77.442
-                  },
-                  "end": {
-                    "latitude": 18.451,
-                    "longitude": 77.418
-                  },
-                  "distanceKm": 2.421,
-                  "elevationGainM": 0,
-                  "elevationLossM": 8,
-                  "averageSlopeDegrees": 0.19,
-                  "difficulty": "low",
-                  "estimatedMinutes": 52,
-                  "hazards": []
-                }
-              ],
-              "totalDistanceKm": 14.167,
-              "estimatedDurationMinutes": 383,
-              "elevationProfile": [
-                {
-                  "distanceKm": 0,
-                  "elevationM": -2501,
-                  "slopeDegrees": 0,
-                  "coordinate": {
-                    "latitude": 18.451,
-                    "longitude": 77.418
-                  }
-                },
-                {
-                  "distanceKm": 0.189,
-                  "elevationM": -2500,
-                  "slopeDegrees": 0.3,
-                  "coordinate": {
-                    "latitude": 18.44789,
-                    "longitude": 77.41722
-                  }
-                },
-                {
-                  "distanceKm": 0.378,
-                  "elevationM": -2500,
-                  "slopeDegrees": 0,
-                  "coordinate": {
-                    "latitude": 18.44478,
-                    "longitude": 77.41644
-                  }
-                },
-                {
-                  "distanceKm": 0.567,
-                  "elevationM": -2499,
-                  "slopeDegrees": 0.3,
-                  "coordinate": {
-                    "latitude": 18.44167,
-                    "longitude": 77.41567
-                  }
-                },
-                {
-                  "distanceKm": 0.756,
-                  "elevationM": -2498,
-                  "slopeDegrees": 0.3,
-                  "coordinate": {
-                    "latitude": 18.43856,
-                    "longitude": 77.41489
-                  }
-                },
-                {
-                  "distanceKm": 0.946,
-                  "elevationM": -2497,
-                  "slopeDegrees": 0.3,
-                  "coordinate": {
-                    "latitude": 18.43544,
-                    "longitude": 77.41411
-                  }
-                },
-                {
-                  "distanceKm": 1.135,
-                  "elevationM": -2496,
-                  "slopeDegrees": 0.3,
-                  "coordinate": {
-                    "latitude": 18.43233,
-                    "longitude": 77.41333
-                  }
-                },
-                {
-                  "distanceKm": 1.324,
-                  "elevationM": -2494,
-                  "slopeDegrees": 0.61,
-                  "coordinate": {
-                    "latitude": 18.42922,
-                    "longitude": 77.41255
-                  }
-                },
-                {
-                  "distanceKm": 1.513,
-                  "elevationM": -2492,
-                  "slopeDegrees": 0.61,
-                  "coordinate": {
-                    "latitude": 18.42611,
-                    "longitude": 77.41178
-                  }
-                },
-                {
-                  "distanceKm": 1.702,
-                  "elevationM": -2491,
-                  "slopeDegrees": 0.3,
-                  "coordinate": {
-                    "latitude": 18.423,
-                    "longitude": 77.411
-                  }
-                },
-                {
-                  "distanceKm": 1.702,
-                  "elevationM": -2491,
-                  "slopeDegrees": 0,
-                  "coordinate": {
-                    "latitude": 18.423,
-                    "longitude": 77.411
-                  }
-                },
-                {
-                  "distanceKm": 1.902,
-                  "elevationM": -2491,
-                  "slopeDegrees": 0,
-                  "coordinate": {
-                    "latitude": 18.42623,
-                    "longitude": 77.40997
-                  }
-                },
-                {
-                  "distanceKm": 2.102,
-                  "elevationM": -2491,
-                  "slopeDegrees": 0,
-                  "coordinate": {
-                    "latitude": 18.42947,
-                    "longitude": 77.40893
-                  }
-                },
-                {
-                  "distanceKm": 2.302,
-                  "elevationM": -2492,
-                  "slopeDegrees": 0.29,
-                  "coordinate": {
-                    "latitude": 18.4327,
-                    "longitude": 77.4079
-                  }
-                },
-                {
-                  "distanceKm": 2.502,
-                  "elevationM": -2491,
-                  "slopeDegrees": 0.29,
-                  "coordinate": {
-                    "latitude": 18.43593,
-                    "longitude": 77.40687
-                  }
-                },
-                {
-                  "distanceKm": 2.702,
-                  "elevationM": -2491,
-                  "slopeDegrees": 0,
-                  "coordinate": {
-                    "latitude": 18.43917,
-                    "longitude": 77.40584
-                  }
-                },
-                {
-                  "distanceKm": 2.902,
-                  "elevationM": -2490,
-                  "slopeDegrees": 0.29,
-                  "coordinate": {
-                    "latitude": 18.4424,
-                    "longitude": 77.4048
-                  }
-                },
-                {
-                  "distanceKm": 3.101,
-                  "elevationM": -2490,
-                  "slopeDegrees": 0,
-                  "coordinate": {
-                    "latitude": 18.44563,
-                    "longitude": 77.40377
-                  }
-                },
-                {
-                  "distanceKm": 3.301,
-                  "elevationM": -2489,
-                  "slopeDegrees": 0.29,
-                  "coordinate": {
-                    "latitude": 18.44887,
-                    "longitude": 77.40274
-                  }
-                },
-                {
-                  "distanceKm": 3.501,
-                  "elevationM": -2488,
-                  "slopeDegrees": 0.29,
-                  "coordinate": {
-                    "latitude": 18.4521,
-                    "longitude": 77.4017
-                  }
-                },
-                {
-                  "distanceKm": 3.701,
-                  "elevationM": -2486,
-                  "slopeDegrees": 0.57,
-                  "coordinate": {
-                    "latitude": 18.45533,
-                    "longitude": 77.40067
-                  }
-                },
-                {
-                  "distanceKm": 3.901,
-                  "elevationM": -2485,
-                  "slopeDegrees": 0.29,
-                  "coordinate": {
-                    "latitude": 18.45857,
-                    "longitude": 77.39964
-                  }
-                },
-                {
-                  "distanceKm": 4.101,
-                  "elevationM": -2484,
-                  "slopeDegrees": 0.29,
-                  "coordinate": {
-                    "latitude": 18.4618,
-                    "longitude": 77.3986
-                  }
-                },
-                {
-                  "distanceKm": 4.3,
-                  "elevationM": -2482,
-                  "slopeDegrees": 0.57,
-                  "coordinate": {
-                    "latitude": 18.46503,
-                    "longitude": 77.39757
-                  }
-                },
-                {
-                  "distanceKm": 4.501,
-                  "elevationM": -2480,
-                  "slopeDegrees": 0.57,
-                  "coordinate": {
-                    "latitude": 18.46827,
-                    "longitude": 77.39654
-                  }
-                },
-                {
-                  "distanceKm": 4.7,
-                  "elevationM": -2479,
-                  "slopeDegrees": 0.29,
-                  "coordinate": {
-                    "latitude": 18.4715,
-                    "longitude": 77.3955
-                  }
-                },
-                {
-                  "distanceKm": 4.9,
-                  "elevationM": -2477,
-                  "slopeDegrees": 0.57,
-                  "coordinate": {
-                    "latitude": 18.47473,
-                    "longitude": 77.39447
-                  }
-                },
-                {
-                  "distanceKm": 5.1,
-                  "elevationM": -2475,
-                  "slopeDegrees": 0.57,
-                  "coordinate": {
-                    "latitude": 18.47797,
-                    "longitude": 77.39344
-                  }
-                },
-                {
-                  "distanceKm": 5.3,
-                  "elevationM": -2473,
-                  "slopeDegrees": 0.57,
-                  "coordinate": {
-                    "latitude": 18.4812,
-                    "longitude": 77.3924
-                  }
-                },
-                {
-                  "distanceKm": 5.5,
-                  "elevationM": -2472,
-                  "slopeDegrees": 0.29,
-                  "coordinate": {
-                    "latitude": 18.48443,
-                    "longitude": 77.39137
-                  }
-                },
-                {
-                  "distanceKm": 5.7,
-                  "elevationM": -2470,
-                  "slopeDegrees": 0.57,
-                  "coordinate": {
-                    "latitude": 18.48767,
-                    "longitude": 77.39034
-                  }
-                },
-                {
-                  "distanceKm": 5.9,
-                  "elevationM": -2468,
-                  "slopeDegrees": 0.57,
-                  "coordinate": {
-                    "latitude": 18.4909,
-                    "longitude": 77.3893
-                  }
-                },
-                {
-                  "distanceKm": 6.099,
-                  "elevationM": -2467,
-                  "slopeDegrees": 0.29,
-                  "coordinate": {
-                    "latitude": 18.49413,
-                    "longitude": 77.38827
-                  }
-                },
-                {
-                  "distanceKm": 6.299,
-                  "elevationM": -2465,
-                  "slopeDegrees": 0.57,
-                  "coordinate": {
-                    "latitude": 18.49737,
-                    "longitude": 77.38724
-                  }
-                },
-                {
-                  "distanceKm": 6.499,
-                  "elevationM": -2464,
-                  "slopeDegrees": 0.29,
-                  "coordinate": {
-                    "latitude": 18.5006,
-                    "longitude": 77.3862
-                  }
-                },
-                {
-                  "distanceKm": 6.699,
-                  "elevationM": -2462,
-                  "slopeDegrees": 0.57,
-                  "coordinate": {
-                    "latitude": 18.50383,
-                    "longitude": 77.38517
-                  }
-                },
-                {
-                  "distanceKm": 6.899,
-                  "elevationM": -2461,
-                  "slopeDegrees": 0.29,
-                  "coordinate": {
-                    "latitude": 18.50707,
-                    "longitude": 77.38414
-                  }
-                },
-                {
-                  "distanceKm": 7.099,
-                  "elevationM": -2459,
-                  "slopeDegrees": 0.57,
-                  "coordinate": {
-                    "latitude": 18.5103,
-                    "longitude": 77.3831
-                  }
-                },
-                {
-                  "distanceKm": 7.298,
-                  "elevationM": -2458,
-                  "slopeDegrees": 0.29,
-                  "coordinate": {
-                    "latitude": 18.51353,
-                    "longitude": 77.38207
-                  }
-                },
-                {
-                  "distanceKm": 7.499,
-                  "elevationM": -2457,
-                  "slopeDegrees": 0.29,
-                  "coordinate": {
-                    "latitude": 18.51677,
-                    "longitude": 77.38103
-                  }
-                },
-                {
-                  "distanceKm": 7.698,
-                  "elevationM": -2456,
-                  "slopeDegrees": 0.29,
-                  "coordinate": {
-                    "latitude": 18.52,
-                    "longitude": 77.38
-                  }
-                },
-                {
-                  "distanceKm": 7.698,
-                  "elevationM": -2456,
-                  "slopeDegrees": 0,
-                  "coordinate": {
-                    "latitude": 18.52,
-                    "longitude": 77.38
-                  }
-                },
-                {
-                  "distanceKm": 7.891,
-                  "elevationM": -2457,
-                  "slopeDegrees": 0.3,
-                  "coordinate": {
-                    "latitude": 18.51833,
-                    "longitude": 77.38295
-                  }
-                },
-                {
-                  "distanceKm": 8.084,
-                  "elevationM": -2458,
-                  "slopeDegrees": 0.3,
-                  "coordinate": {
-                    "latitude": 18.51667,
-                    "longitude": 77.38591
-                  }
-                },
-                {
-                  "distanceKm": 8.277,
-                  "elevationM": -2459,
-                  "slopeDegrees": 0.3,
-                  "coordinate": {
-                    "latitude": 18.515,
-                    "longitude": 77.38886
-                  }
-                },
-                {
-                  "distanceKm": 8.469,
-                  "elevationM": -2461,
-                  "slopeDegrees": 0.59,
-                  "coordinate": {
-                    "latitude": 18.51333,
-                    "longitude": 77.39181
-                  }
-                },
-                {
-                  "distanceKm": 8.662,
-                  "elevationM": -2462,
-                  "slopeDegrees": 0.3,
-                  "coordinate": {
-                    "latitude": 18.51167,
-                    "longitude": 77.39476
-                  }
-                },
-                {
-                  "distanceKm": 8.855,
-                  "elevationM": -2464,
-                  "slopeDegrees": 0.59,
-                  "coordinate": {
-                    "latitude": 18.51,
-                    "longitude": 77.39772
-                  }
-                },
-                {
-                  "distanceKm": 9.047,
-                  "elevationM": -2465,
-                  "slopeDegrees": 0.3,
-                  "coordinate": {
-                    "latitude": 18.50834,
-                    "longitude": 77.40067
-                  }
-                },
-                {
-                  "distanceKm": 9.24,
-                  "elevationM": -2467,
-                  "slopeDegrees": 0.59,
-                  "coordinate": {
-                    "latitude": 18.50667,
-                    "longitude": 77.40362
-                  }
-                },
-                {
-                  "distanceKm": 9.433,
-                  "elevationM": -2469,
-                  "slopeDegrees": 0.59,
-                  "coordinate": {
-                    "latitude": 18.505,
-                    "longitude": 77.40658
-                  }
-                },
-                {
-                  "distanceKm": 9.626,
-                  "elevationM": -2471,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.50334,
-                    "longitude": 77.40953
-                  }
-                },
-                {
-                  "distanceKm": 9.818,
-                  "elevationM": -2473,
-                  "slopeDegrees": 0.59,
-                  "coordinate": {
-                    "latitude": 18.50167,
-                    "longitude": 77.41248
-                  }
-                },
-                {
-                  "distanceKm": 10.011,
-                  "elevationM": -2475,
-                  "slopeDegrees": 0.59,
-                  "coordinate": {
-                    "latitude": 18.5,
-                    "longitude": 77.41543
-                  }
-                },
-                {
-                  "distanceKm": 10.203,
-                  "elevationM": -2477,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.49834,
-                    "longitude": 77.41838
-                  }
-                },
-                {
-                  "distanceKm": 10.397,
-                  "elevationM": -2479,
-                  "slopeDegrees": 0.59,
-                  "coordinate": {
-                    "latitude": 18.49667,
-                    "longitude": 77.42134
-                  }
-                },
-                {
-                  "distanceKm": 10.589,
-                  "elevationM": -2481,
-                  "slopeDegrees": 0.59,
-                  "coordinate": {
-                    "latitude": 18.495,
-                    "longitude": 77.42429
-                  }
-                },
-                {
-                  "distanceKm": 10.782,
-                  "elevationM": -2483,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.49334,
-                    "longitude": 77.42724
-                  }
-                },
-                {
-                  "distanceKm": 10.974,
-                  "elevationM": -2485,
-                  "slopeDegrees": 0.59,
-                  "coordinate": {
-                    "latitude": 18.49167,
-                    "longitude": 77.43019
-                  }
-                },
-                {
-                  "distanceKm": 11.167,
-                  "elevationM": -2487,
-                  "slopeDegrees": 0.59,
-                  "coordinate": {
-                    "latitude": 18.49,
-                    "longitude": 77.43314
-                  }
-                },
-                {
-                  "distanceKm": 11.36,
-                  "elevationM": -2489,
-                  "slopeDegrees": 0.59,
-                  "coordinate": {
-                    "latitude": 18.48833,
-                    "longitude": 77.4361
-                  }
-                },
-                {
-                  "distanceKm": 11.553,
-                  "elevationM": -2491,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.48667,
-                    "longitude": 77.43905
-                  }
-                },
-                {
-                  "distanceKm": 11.746,
-                  "elevationM": -2493,
-                  "slopeDegrees": 0.59,
-                  "coordinate": {
-                    "latitude": 18.485,
-                    "longitude": 77.442
-                  }
-                },
-                {
-                  "distanceKm": 11.746,
-                  "elevationM": -2493,
-                  "slopeDegrees": 0,
-                  "coordinate": {
-                    "latitude": 18.485,
-                    "longitude": 77.442
-                  }
-                },
-                {
-                  "distanceKm": 11.932,
-                  "elevationM": -2494,
-                  "slopeDegrees": 0.31,
-                  "coordinate": {
-                    "latitude": 18.48238,
-                    "longitude": 77.44015
-                  }
-                },
-                {
-                  "distanceKm": 12.118,
-                  "elevationM": -2496,
-                  "slopeDegrees": 0.62,
-                  "coordinate": {
-                    "latitude": 18.47977,
-                    "longitude": 77.43831
-                  }
-                },
-                {
-                  "distanceKm": 12.304,
-                  "elevationM": -2498,
-                  "slopeDegrees": 0.61,
-                  "coordinate": {
-                    "latitude": 18.47715,
-                    "longitude": 77.43646
-                  }
-                },
-                {
-                  "distanceKm": 12.49,
-                  "elevationM": -2499,
-                  "slopeDegrees": 0.31,
-                  "coordinate": {
-                    "latitude": 18.47454,
-                    "longitude": 77.43461
-                  }
-                },
-                {
-                  "distanceKm": 12.677,
-                  "elevationM": -2500,
-                  "slopeDegrees": 0.31,
-                  "coordinate": {
-                    "latitude": 18.47192,
-                    "longitude": 77.43277
-                  }
-                },
-                {
-                  "distanceKm": 12.863,
-                  "elevationM": -2501,
-                  "slopeDegrees": 0.31,
-                  "coordinate": {
-                    "latitude": 18.46931,
-                    "longitude": 77.43092
-                  }
-                },
-                {
-                  "distanceKm": 13.049,
-                  "elevationM": -2502,
-                  "slopeDegrees": 0.31,
-                  "coordinate": {
-                    "latitude": 18.46669,
-                    "longitude": 77.42908
-                  }
-                },
-                {
-                  "distanceKm": 13.235,
-                  "elevationM": -2503,
-                  "slopeDegrees": 0.31,
-                  "coordinate": {
-                    "latitude": 18.46408,
-                    "longitude": 77.42723
-                  }
-                },
-                {
-                  "distanceKm": 13.422,
-                  "elevationM": -2503,
-                  "slopeDegrees": 0,
-                  "coordinate": {
-                    "latitude": 18.46146,
-                    "longitude": 77.42538
-                  }
-                },
-                {
-                  "distanceKm": 13.607,
-                  "elevationM": -2503,
-                  "slopeDegrees": 0,
-                  "coordinate": {
-                    "latitude": 18.45885,
-                    "longitude": 77.42354
-                  }
-                },
-                {
-                  "distanceKm": 13.794,
-                  "elevationM": -2502,
-                  "slopeDegrees": 0.31,
-                  "coordinate": {
-                    "latitude": 18.45623,
-                    "longitude": 77.42169
-                  }
-                },
-                {
-                  "distanceKm": 13.979,
-                  "elevationM": -2502,
-                  "slopeDegrees": 0,
-                  "coordinate": {
-                    "latitude": 18.45362,
-                    "longitude": 77.41985
-                  }
-                },
-                {
-                  "distanceKm": 14.166,
-                  "elevationM": -2501,
-                  "slopeDegrees": 0.31,
-                  "coordinate": {
-                    "latitude": 18.451,
-                    "longitude": 77.418
-                  }
-                }
-              ],
-              "elevationGainM": 45,
-              "elevationLossM": 45,
-              "maxSlopeDegrees": 0.62,
-              "overallDifficulty": "low",
-              "createdAt": "2026-11-14T15:45:10.960Z"
-            },
-            "distanceKm": 14.167,
-            "estimatedDurationMin": 383,
-            "terrainScore": 94,
-            "scienceScore": 95,
-            "safetyScore": 5,
-            "accessibilityScore": 25,
-            "overallScore": 51,
-            "communicationScore": 56,
-            "energyWhConsumed": 1779,
-            "projectedBatteryPercent": 0,
-            "projectedOxygenMinutes": 0,
-            "hardConstraintViolations": [
-              "Battery reserve violation: Projected battery (0%) falls below the 20% mandatory return reserve (Invariant S1).",
-              "Energy deficit: Traverse requires 1779 Wh but available battery holds only 1020 Wh.",
-              "Emergency return infeasible: Energy remaining at furthest point is insufficient to return to ingress hub with safe reserve.",
-              "Life-support oxygen deficit: Remaining oxygen (0 min) breaches the mandatory 30-min EVA emergency reserve.",
-              "Duration limit exceeded: Estimated traverse duration (383 min) breaches operational ceiling (240 min)."
-            ],
-            "tradeoffExplanation": "Route 'Multi-Target Science Survey' (HIGHEST_SCIENCE) is REJECTED due to 5 critical constraint violation(s): Battery reserve violation: Projected battery (0%) falls below the 20% mandatory return reserve (Invariant S1). | Energy deficit: Traverse requires 1779 Wh but available battery holds only 1020 Wh. | Emergency return infeasible: Energy remaining at furthest point is insufficient to return to ingress hub with safe reserve. | Life-support oxygen deficit: Remaining oxygen (0 min) breaches the mandatory 30-min EVA emergency reserve. | Duration limit exceeded: Estimated traverse duration (383 min) breaches operational ceiling (240 min).. Cannot be selected regardless of score (51/100).",
-            "communicationMetrics": {
-              "losCoveragePercent": 80,
-              "maxBlackoutDurationMin": 96,
-              "orbiterPassAvailable": true,
-              "commContinuitySatisfied": false
-            },
-            "resourceMetrics": {
-              "initialBatteryPercent": 85,
-              "projectedRemainingPercent": 0,
-              "energyExpenditureWh": 1779,
-              "energyBudgetWh": 1020,
-              "batteryMarginPercent": -20,
-              "sampleTubesNeeded": 3,
-              "sampleTubesAvailable": 5,
-              "estimatedDataMb": 410,
-              "oxygenRemainingMin": 0,
-              "emergencyReturnFeasible": false
-            },
-            "hazards": [
-              {
-                "id": "hzd-belva-crater-rim",
-                "name": "Belva Crater Structural Rim",
-                "type": "STEEP_SLOPE",
-                "category": "GEOLOGICAL",
-                "severity": "MODERATE",
-                "location": {
-                  "latitude": 18.485,
-                  "longitude": 77.442
-                },
-                "radiusM": 500,
-                "reason": "Impact rim slope exceeding 16 degrees with perched megabreccia blocks.",
-                "recommendation": "Avoid traversing directly over perched boulders; follow low-gradient rim gaps.",
-                "confidence": 0.9,
-                "probability": 0.65,
-                "impactDescription": "Elevated motor current draw and increased traction slip on steep impact megabreccia.",
-                "detectionSource": "MRO CTX & HiRISE Orthomosaic",
-                "provenanceClassification": "MEASURED",
-                "recommendedMitigation": "Reduce speed to 0.5 km/h and engage differential wheel locking.",
-                "sourceType": "NASA",
-                "evidence": [
-                  {
-                    "id": "ev-belva-slope",
-                    "description": "Rim crest slope incline exceeds nominal EVA walking boundary",
-                    "dataset": "MRO CTX & HiRISE Orthomosaic",
-                    "observedMetric": "Measured Slope: 16.8°",
-                    "provenance": {
-                      "sourceType": "NASA",
-                      "sourceName": "NASA MRO High Resolution Imaging Science Experiment (HiRISE)",
-                      "datasetId": "MRO-M-HIRISE-3-RDR-V1.0",
-                      "observationId": "ESP_037146_1985",
-                      "sourceUrl": "https://hirise.lpl.arizona.edu/",
-                      "spatialResolutionM": 0.25,
-                      "processingMethod": "Photogrammetric Stereo DTM Elevation Modeling",
-                      "dataMode": "BENCHMARK",
-                      "confidence": 0.96,
-                      "uncertainty": {
-                        "value": 0.5,
-                        "absolute": 0.5,
-                        "unit": "m",
-                        "methodology": "Stereo-pair Bundle Adjustment and Epipolar Resampling"
-                      }
-                    }
-                  }
-                ],
-                "uncertainty": {
-                  "absolute": 50,
-                  "unit": "m",
-                  "methodology": "Crater structural rim delineation from orbital optical imagery"
-                },
-                "provenance": {
-                  "sourceType": "NASA",
-                  "sourceName": "NASA MRO High Resolution Imaging Science Experiment (HiRISE)",
-                  "datasetId": "MRO-M-HIRISE-3-RDR-V1.0",
-                  "observationId": "ESP_037146_1985",
-                  "sourceUrl": "https://hirise.lpl.arizona.edu/",
-                  "spatialResolutionM": 0.25,
-                  "processingMethod": "Photogrammetric Stereo DTM Elevation Modeling",
-                  "dataMode": "BENCHMARK",
-                  "confidence": 0.96,
-                  "uncertainty": {
-                    "value": 0.5,
-                    "absolute": 0.5,
-                    "unit": "m",
-                    "methodology": "Stereo-pair Bundle Adjustment and Epipolar Resampling"
-                  }
-                },
-                "affectedRouteSegment": "Segment 3 (seg-3)"
-              },
-              {
-                "id": "hzd-belva-crater-rim",
-                "name": "Belva Crater Structural Rim",
-                "type": "STEEP_SLOPE",
-                "category": "GEOLOGICAL",
-                "severity": "MODERATE",
-                "location": {
-                  "latitude": 18.485,
-                  "longitude": 77.442
-                },
-                "radiusM": 500,
-                "reason": "Impact rim slope exceeding 16 degrees with perched megabreccia blocks.",
-                "recommendation": "Avoid traversing directly over perched boulders; follow low-gradient rim gaps.",
-                "confidence": 0.9,
-                "probability": 0.65,
-                "impactDescription": "Elevated motor current draw and increased traction slip on steep impact megabreccia.",
-                "detectionSource": "MRO CTX & HiRISE Orthomosaic",
-                "provenanceClassification": "MEASURED",
-                "recommendedMitigation": "Reduce speed to 0.5 km/h and engage differential wheel locking.",
-                "sourceType": "NASA",
-                "evidence": [
-                  {
-                    "id": "ev-belva-slope",
-                    "description": "Rim crest slope incline exceeds nominal EVA walking boundary",
-                    "dataset": "MRO CTX & HiRISE Orthomosaic",
-                    "observedMetric": "Measured Slope: 16.8°",
-                    "provenance": {
-                      "sourceType": "NASA",
-                      "sourceName": "NASA MRO High Resolution Imaging Science Experiment (HiRISE)",
-                      "datasetId": "MRO-M-HIRISE-3-RDR-V1.0",
-                      "observationId": "ESP_037146_1985",
-                      "sourceUrl": "https://hirise.lpl.arizona.edu/",
-                      "spatialResolutionM": 0.25,
-                      "processingMethod": "Photogrammetric Stereo DTM Elevation Modeling",
-                      "dataMode": "BENCHMARK",
-                      "confidence": 0.96,
-                      "uncertainty": {
-                        "value": 0.5,
-                        "absolute": 0.5,
-                        "unit": "m",
-                        "methodology": "Stereo-pair Bundle Adjustment and Epipolar Resampling"
-                      }
-                    }
-                  }
-                ],
-                "uncertainty": {
-                  "absolute": 50,
-                  "unit": "m",
-                  "methodology": "Crater structural rim delineation from orbital optical imagery"
-                },
-                "provenance": {
-                  "sourceType": "NASA",
-                  "sourceName": "NASA MRO High Resolution Imaging Science Experiment (HiRISE)",
-                  "datasetId": "MRO-M-HIRISE-3-RDR-V1.0",
-                  "observationId": "ESP_037146_1985",
-                  "sourceUrl": "https://hirise.lpl.arizona.edu/",
-                  "spatialResolutionM": 0.25,
-                  "processingMethod": "Photogrammetric Stereo DTM Elevation Modeling",
-                  "dataMode": "BENCHMARK",
-                  "confidence": 0.96,
-                  "uncertainty": {
-                    "value": 0.5,
-                    "absolute": 0.5,
-                    "unit": "m",
-                    "methodology": "Stereo-pair Bundle Adjustment and Epipolar Resampling"
-                  }
-                },
-                "affectedRouteSegment": "Segment 4 (seg-4)"
-              },
-              {
-                "id": "res-battery-deficit-route-1794671110960-154",
-                "name": "Critical Battery Reserve Breach (Projected: -62.3%)",
-                "type": "LOW_BATTERY_RESERVE",
-                "category": "RESOURCE",
-                "severity": "CRITICAL",
-                "location": {
-                  "latitude": 18.451,
-                  "longitude": 77.418
-                },
-                "reason": "Estimated traverse energy expenditure (1768 Wh) depletes battery to -62.3%, breaching the 20% minimum safety return floor (Invariant S1).",
-                "recommendation": "Shorten route, omit secondary science stops, or recharge asset prior to mission departure.",
-                "confidence": 0.95,
-                "probability": 0.98,
-                "impactDescription": "Depletion of primary mobility battery, potential vehicle freezing, and asset stranding.",
-                "detectionSource": "Physical Terramechanics Energy Expenditure Model",
-                "provenanceClassification": "PREDICTED",
-                "recommendedMitigation": "Enforce battery cutoff threshold at 25% to reserve emergency return power.",
-                "sourceType": "DERIVED"
-              },
-              {
-                "id": "res-o2-breach-route-1794671110960-154",
-                "name": "Life-Support Oxygen Depletion Risk (383 min duration + 30 min margin > 240 min available)",
-                "type": "INSUFFICIENT_OXYGEN",
-                "category": "RESOURCE",
-                "severity": "CRITICAL",
-                "location": {
-                  "latitude": 18.451,
-                  "longitude": 77.418
-                },
-                "reason": "Total EVA time (383 min) plus NASA 30-min return reserve (413 min) exceeds suit consumable supply (240 min).",
-                "recommendation": "Truncate traverse itinerary or assign uncrewed robotic asset for distant waypoints.",
-                "confidence": 0.98,
-                "probability": 0.99,
-                "impactDescription": "Hypoxia and life-support asphyxiation hazard for EVA crewmember.",
-                "detectionSource": "Astronaut Suit Biotelemetry & Consumable Engine",
-                "provenanceClassification": "PREDICTED",
-                "recommendedMitigation": "Enforce strict 180-min abort rule regardless of science objectives.",
-                "sourceType": "DERIVED"
-              },
-              {
-                "id": "mc-deadline-breach-route-1794671110960-154",
-                "name": "Mission Timeline Constraint Exceeded (383 min > 240 min)",
-                "type": "MISSION_DEADLINE_BREACH",
-                "category": "MISSION_CONSTRAINT",
-                "severity": "CRITICAL",
-                "location": {
-                  "latitude": 18.451,
-                  "longitude": 77.418
-                },
-                "reason": "Estimated traverse duration (383 min) exceeds maximum permitted EVA ceiling of 240 minutes.",
-                "recommendation": "Prune intermediate waypoints or utilize motorized UTV rover escort.",
-                "confidence": 0.96,
-                "probability": 0.98,
-                "impactDescription": "Violates NASA EVA operational rules; mission failure.",
-                "detectionSource": "Mission Operational Timeline Engine",
-                "provenanceClassification": "PREDICTED",
-                "recommendedMitigation": "Reroute along direct primary transit vectors only.",
-                "sourceType": "DERIVED"
-              }
-            ],
-            "scienceTargets": [
-              "Kodiak Butte Delta Remnant",
-              "Neretva Vallis Inflow Channel Breach",
-              "Belva Crater Impact Rim & Ejecta"
-            ],
-            "recommendationReason": "Non-executable candidate: violates critical safety envelopes or mission life-support thresholds.",
-            "feasible": false,
-            "warnings": [
-              "Traverse duration (383 min) exceeds life-support constraint (240 min).",
-              "Route intersects one or more CRITICAL terrain or environmental hazards.",
-              "Extended RF blackout window detected (96 min without direct LOS or orbiter pass).",
-              "Narrow battery reserve margin (+-20% above minimum 20% floor)."
-            ],
-            "multiObjectiveScore": {
-              "safety": 5,
-              "science": 95,
-              "accessibility": 25,
-              "efficiency": 10,
-              "communication": 56,
-              "energyEfficiency": 10,
-              "resourceFeasibility": 5,
-              "evidenceConfidence": 92,
-              "evaFeasibility": 35,
-              "uncertaintyPenalty": 11,
-              "riskAdjustedScore": 51,
-              "isParetoEfficient": false,
-              "hardConstraintsSatisfied": false,
-              "paretoDominatedBy": [
-                "Direct Shortest Traverse"
-              ]
-            },
-            "scienceBreakdown": {
-              "totalScore": 95,
-              "objectiveRelevance": 29,
-              "geologicalEvidence": 25,
-              "targetUniqueness": 17,
-              "dataQuality": 14,
-              "sampleDiversity": 10,
-              "scoringMethod": "PROJECT_RULE_FACTORIZED",
-              "scoringExplanation": "Traverse surveys 3 science target(s). Multi-attribute score: 95/100 based on factorized weights.",
-              "observedEvidenceSummary": "Kodiak Butte Delta Remnant: Isolated erosional remnant exhibiting textbook Gilbert-type delta bottomsets and foresets. Highest priority evidence of ancient high-energy lake stage. | Neretva Vallis Inflow Channel Breach: Channel canyon through which violent catastrophic floods carved the Jezero crater rim and deposited boulder conglomerates. | Belva Crater Impact Rim & Ejecta: Younger impact into delta deposit exposing 3D cross-sections of sedimentary beds and deep megabreccia blocks.",
-              "provenance": {
-                "sourceType": "PROJECT_RULE",
-                "sourceName": "Martian Map Operational Protocol — Multi-Target Factorized Science Engine",
-                "processingMethod": "Linear weighted sum of individual target factor matrices",
-                "dataMode": "FALLBACK",
-                "uncertainty": {
-                  "value": 0,
-                  "unit": "rule",
-                  "methodology": "Operational engineering constraint based on human life support safety standards"
-                }
-              }
-            },
-            "coverage": {
-              "elevation": "MEDIUM",
-              "highResImagery": "HIGH",
-              "thermal": "HIGH",
-              "roverEvidence": "HIGH",
-              "scienceEvidence": "HIGH",
-              "overallEvidence": "HIGH",
-              "sourceResolutionM": 0.25,
-              "dataAgeYears": 5,
-              "summary": "Route corridor evidence confidence is HIGH. Elevation: MEDIUM, HiRISE stereo: HIGH, Thermal IR: HIGH, Rover in-situ: HIGH.",
-              "provenance": {
-                "sourceType": "DERIVED",
-                "sourceName": "Martian Map Planetary Computation — Data Evidence Coverage Index",
-                "processingMethod": "Mathematical calculation derived from [MGS MOLA, MRO HiRISE Footprints, Odyssey THEMIS, Rover Mission Archives]: Multi-layer spatial intersection and resolution scoring",
-                "dataMode": "FALLBACK",
-                "uncertainty": {
-                  "value": 1,
-                  "unit": "score",
-                  "methodology": "Propagated uncertainty from input layers [MGS MOLA, MRO HiRISE Footprints, Odyssey THEMIS, Rover Mission Archives]"
-                }
-              }
-            },
-            "provenance": {
-              "sourceType": "DERIVED",
-              "sourceName": "Martian Map Planetary Computation — Candidate Multi-Objective Evaluation",
-              "processingMethod": "Mathematical calculation derived from [MGS MOLA MEGDR, Factorized Science Engine, Data Coverage Engine, Resource Modeling Engine, Line-of-Sight Engine]: Risk-adjusted multi-attribute scoring model v4.0",
-              "dataMode": "FALLBACK",
-              "uncertainty": {
-                "value": 1,
-                "unit": "score",
-                "methodology": "Propagated uncertainty from input layers [MGS MOLA MEGDR, Factorized Science Engine, Data Coverage Engine, Resource Modeling Engine, Line-of-Sight Engine]"
-              }
-            }
-          },
-          {
-            "id": "cand-balanced",
-            "name": "Optimal Science & Margin Traverse",
-            "profileType": "balanced",
-            "route": {
-              "id": "route-1794671110966-33",
-              "name": "Balanced Mission Traverse",
-              "points": [
-                {
-                  "id": "pt-start",
-                  "label": "EVA Ingress Hub",
-                  "coordinate": {
-                    "latitude": 18.451,
-                    "longitude": 77.418
-                  },
-                  "type": "start"
-                },
-                {
-                  "id": "tgt-kodiak-butte",
-                  "label": "Kodiak Butte Delta Remnant",
-                  "coordinate": {
-                    "latitude": 18.423,
-                    "longitude": 77.411
-                  },
-                  "type": "science",
-                  "targetId": "tgt-kodiak-butte"
-                },
-                {
-                  "id": "tgt-neretva-inflow",
-                  "label": "Neretva Vallis Inflow Channel Breach",
-                  "coordinate": {
-                    "latitude": 18.52,
-                    "longitude": 77.38
-                  },
-                  "type": "science",
-                  "targetId": "tgt-neretva-inflow"
-                },
-                {
-                  "id": "pt-start-return",
-                  "label": "EVA Return Hub",
-                  "coordinate": {
-                    "latitude": 18.451,
-                    "longitude": 77.418
-                  },
-                  "type": "destination"
-                }
-              ],
-              "segments": [
-                {
-                  "id": "seg-1",
-                  "start": {
-                    "latitude": 18.451,
-                    "longitude": 77.418
-                  },
-                  "end": {
-                    "latitude": 18.423,
-                    "longitude": 77.411
-                  },
-                  "distanceKm": 1.702,
-                  "elevationGainM": 10,
-                  "elevationLossM": 0,
-                  "averageSlopeDegrees": 0.34,
-                  "difficulty": "low",
-                  "estimatedMinutes": 62,
-                  "hazards": []
-                },
-                {
-                  "id": "seg-2",
-                  "start": {
-                    "latitude": 18.423,
-                    "longitude": 77.411
-                  },
-                  "end": {
-                    "latitude": 18.52,
-                    "longitude": 77.38
-                  },
-                  "distanceKm": 5.996,
-                  "elevationGainM": 35,
-                  "elevationLossM": 0,
-                  "averageSlopeDegrees": 0.33,
-                  "difficulty": "low",
-                  "estimatedMinutes": 155,
-                  "hazards": []
-                },
-                {
-                  "id": "seg-3",
-                  "start": {
-                    "latitude": 18.52,
-                    "longitude": 77.38
-                  },
-                  "end": {
-                    "latitude": 18.451,
-                    "longitude": 77.418
-                  },
-                  "distanceKm": 4.605,
-                  "elevationGainM": 0,
-                  "elevationLossM": 45,
-                  "averageSlopeDegrees": 0.56,
-                  "difficulty": "low",
-                  "estimatedMinutes": 101,
-                  "hazards": []
-                }
-              ],
-              "totalDistanceKm": 12.303,
-              "estimatedDurationMinutes": 318,
-              "elevationProfile": [
-                {
-                  "distanceKm": 0,
-                  "elevationM": -2501,
-                  "slopeDegrees": 0,
-                  "coordinate": {
-                    "latitude": 18.451,
-                    "longitude": 77.418
-                  }
-                },
-                {
-                  "distanceKm": 0.189,
-                  "elevationM": -2500,
-                  "slopeDegrees": 0.3,
-                  "coordinate": {
-                    "latitude": 18.44789,
-                    "longitude": 77.41722
-                  }
-                },
-                {
-                  "distanceKm": 0.378,
-                  "elevationM": -2500,
-                  "slopeDegrees": 0,
-                  "coordinate": {
-                    "latitude": 18.44478,
-                    "longitude": 77.41644
-                  }
-                },
-                {
-                  "distanceKm": 0.567,
-                  "elevationM": -2499,
-                  "slopeDegrees": 0.3,
-                  "coordinate": {
-                    "latitude": 18.44167,
-                    "longitude": 77.41567
-                  }
-                },
-                {
-                  "distanceKm": 0.756,
-                  "elevationM": -2498,
-                  "slopeDegrees": 0.3,
-                  "coordinate": {
-                    "latitude": 18.43856,
-                    "longitude": 77.41489
-                  }
-                },
-                {
-                  "distanceKm": 0.946,
-                  "elevationM": -2497,
-                  "slopeDegrees": 0.3,
-                  "coordinate": {
-                    "latitude": 18.43544,
-                    "longitude": 77.41411
-                  }
-                },
-                {
-                  "distanceKm": 1.135,
-                  "elevationM": -2496,
-                  "slopeDegrees": 0.3,
-                  "coordinate": {
-                    "latitude": 18.43233,
-                    "longitude": 77.41333
-                  }
-                },
-                {
-                  "distanceKm": 1.324,
-                  "elevationM": -2494,
-                  "slopeDegrees": 0.61,
-                  "coordinate": {
-                    "latitude": 18.42922,
-                    "longitude": 77.41255
-                  }
-                },
-                {
-                  "distanceKm": 1.513,
-                  "elevationM": -2492,
-                  "slopeDegrees": 0.61,
-                  "coordinate": {
-                    "latitude": 18.42611,
-                    "longitude": 77.41178
-                  }
-                },
-                {
-                  "distanceKm": 1.702,
-                  "elevationM": -2491,
-                  "slopeDegrees": 0.3,
-                  "coordinate": {
-                    "latitude": 18.423,
-                    "longitude": 77.411
-                  }
-                },
-                {
-                  "distanceKm": 1.702,
-                  "elevationM": -2491,
-                  "slopeDegrees": 0,
-                  "coordinate": {
-                    "latitude": 18.423,
-                    "longitude": 77.411
-                  }
-                },
-                {
-                  "distanceKm": 1.902,
-                  "elevationM": -2491,
-                  "slopeDegrees": 0,
-                  "coordinate": {
-                    "latitude": 18.42623,
-                    "longitude": 77.40997
-                  }
-                },
-                {
-                  "distanceKm": 2.102,
-                  "elevationM": -2491,
-                  "slopeDegrees": 0,
-                  "coordinate": {
-                    "latitude": 18.42947,
-                    "longitude": 77.40893
-                  }
-                },
-                {
-                  "distanceKm": 2.302,
-                  "elevationM": -2492,
-                  "slopeDegrees": 0.29,
-                  "coordinate": {
-                    "latitude": 18.4327,
-                    "longitude": 77.4079
-                  }
-                },
-                {
-                  "distanceKm": 2.502,
-                  "elevationM": -2491,
-                  "slopeDegrees": 0.29,
-                  "coordinate": {
-                    "latitude": 18.43593,
-                    "longitude": 77.40687
-                  }
-                },
-                {
-                  "distanceKm": 2.702,
-                  "elevationM": -2491,
-                  "slopeDegrees": 0,
-                  "coordinate": {
-                    "latitude": 18.43917,
-                    "longitude": 77.40584
-                  }
-                },
-                {
-                  "distanceKm": 2.902,
-                  "elevationM": -2490,
-                  "slopeDegrees": 0.29,
-                  "coordinate": {
-                    "latitude": 18.4424,
-                    "longitude": 77.4048
-                  }
-                },
-                {
-                  "distanceKm": 3.101,
-                  "elevationM": -2490,
-                  "slopeDegrees": 0,
-                  "coordinate": {
-                    "latitude": 18.44563,
-                    "longitude": 77.40377
-                  }
-                },
-                {
-                  "distanceKm": 3.301,
-                  "elevationM": -2489,
-                  "slopeDegrees": 0.29,
-                  "coordinate": {
-                    "latitude": 18.44887,
-                    "longitude": 77.40274
-                  }
-                },
-                {
-                  "distanceKm": 3.501,
-                  "elevationM": -2488,
-                  "slopeDegrees": 0.29,
-                  "coordinate": {
-                    "latitude": 18.4521,
-                    "longitude": 77.4017
-                  }
-                },
-                {
-                  "distanceKm": 3.701,
-                  "elevationM": -2486,
-                  "slopeDegrees": 0.57,
-                  "coordinate": {
-                    "latitude": 18.45533,
-                    "longitude": 77.40067
-                  }
-                },
-                {
-                  "distanceKm": 3.901,
-                  "elevationM": -2485,
-                  "slopeDegrees": 0.29,
-                  "coordinate": {
-                    "latitude": 18.45857,
-                    "longitude": 77.39964
-                  }
-                },
-                {
-                  "distanceKm": 4.101,
-                  "elevationM": -2484,
-                  "slopeDegrees": 0.29,
-                  "coordinate": {
-                    "latitude": 18.4618,
-                    "longitude": 77.3986
-                  }
-                },
-                {
-                  "distanceKm": 4.3,
-                  "elevationM": -2482,
-                  "slopeDegrees": 0.57,
-                  "coordinate": {
-                    "latitude": 18.46503,
-                    "longitude": 77.39757
-                  }
-                },
-                {
-                  "distanceKm": 4.501,
-                  "elevationM": -2480,
-                  "slopeDegrees": 0.57,
-                  "coordinate": {
-                    "latitude": 18.46827,
-                    "longitude": 77.39654
-                  }
-                },
-                {
-                  "distanceKm": 4.7,
-                  "elevationM": -2479,
-                  "slopeDegrees": 0.29,
-                  "coordinate": {
-                    "latitude": 18.4715,
-                    "longitude": 77.3955
-                  }
-                },
-                {
-                  "distanceKm": 4.9,
-                  "elevationM": -2477,
-                  "slopeDegrees": 0.57,
-                  "coordinate": {
-                    "latitude": 18.47473,
-                    "longitude": 77.39447
-                  }
-                },
-                {
-                  "distanceKm": 5.1,
-                  "elevationM": -2475,
-                  "slopeDegrees": 0.57,
-                  "coordinate": {
-                    "latitude": 18.47797,
-                    "longitude": 77.39344
-                  }
-                },
-                {
-                  "distanceKm": 5.3,
-                  "elevationM": -2473,
-                  "slopeDegrees": 0.57,
-                  "coordinate": {
-                    "latitude": 18.4812,
-                    "longitude": 77.3924
-                  }
-                },
-                {
-                  "distanceKm": 5.5,
-                  "elevationM": -2472,
-                  "slopeDegrees": 0.29,
-                  "coordinate": {
-                    "latitude": 18.48443,
-                    "longitude": 77.39137
-                  }
-                },
-                {
-                  "distanceKm": 5.7,
-                  "elevationM": -2470,
-                  "slopeDegrees": 0.57,
-                  "coordinate": {
-                    "latitude": 18.48767,
-                    "longitude": 77.39034
-                  }
-                },
-                {
-                  "distanceKm": 5.9,
-                  "elevationM": -2468,
-                  "slopeDegrees": 0.57,
-                  "coordinate": {
-                    "latitude": 18.4909,
-                    "longitude": 77.3893
-                  }
-                },
-                {
-                  "distanceKm": 6.099,
-                  "elevationM": -2467,
-                  "slopeDegrees": 0.29,
-                  "coordinate": {
-                    "latitude": 18.49413,
-                    "longitude": 77.38827
-                  }
-                },
-                {
-                  "distanceKm": 6.299,
-                  "elevationM": -2465,
-                  "slopeDegrees": 0.57,
-                  "coordinate": {
-                    "latitude": 18.49737,
-                    "longitude": 77.38724
-                  }
-                },
-                {
-                  "distanceKm": 6.499,
-                  "elevationM": -2464,
-                  "slopeDegrees": 0.29,
-                  "coordinate": {
-                    "latitude": 18.5006,
-                    "longitude": 77.3862
-                  }
-                },
-                {
-                  "distanceKm": 6.699,
-                  "elevationM": -2462,
-                  "slopeDegrees": 0.57,
-                  "coordinate": {
-                    "latitude": 18.50383,
-                    "longitude": 77.38517
-                  }
-                },
-                {
-                  "distanceKm": 6.899,
-                  "elevationM": -2461,
-                  "slopeDegrees": 0.29,
-                  "coordinate": {
-                    "latitude": 18.50707,
-                    "longitude": 77.38414
-                  }
-                },
-                {
-                  "distanceKm": 7.099,
-                  "elevationM": -2459,
-                  "slopeDegrees": 0.57,
-                  "coordinate": {
-                    "latitude": 18.5103,
-                    "longitude": 77.3831
-                  }
-                },
-                {
-                  "distanceKm": 7.298,
-                  "elevationM": -2458,
-                  "slopeDegrees": 0.29,
-                  "coordinate": {
-                    "latitude": 18.51353,
-                    "longitude": 77.38207
-                  }
-                },
-                {
-                  "distanceKm": 7.499,
-                  "elevationM": -2457,
-                  "slopeDegrees": 0.29,
-                  "coordinate": {
-                    "latitude": 18.51677,
-                    "longitude": 77.38103
-                  }
-                },
-                {
-                  "distanceKm": 7.698,
-                  "elevationM": -2456,
-                  "slopeDegrees": 0.29,
-                  "coordinate": {
-                    "latitude": 18.52,
-                    "longitude": 77.38
-                  }
-                },
-                {
-                  "distanceKm": 7.698,
-                  "elevationM": -2456,
-                  "slopeDegrees": 0,
-                  "coordinate": {
-                    "latitude": 18.52,
-                    "longitude": 77.38
-                  }
-                },
-                {
-                  "distanceKm": 7.89,
-                  "elevationM": -2457,
-                  "slopeDegrees": 0.3,
-                  "coordinate": {
-                    "latitude": 18.51713,
-                    "longitude": 77.38158
-                  }
-                },
-                {
-                  "distanceKm": 8.082,
-                  "elevationM": -2458,
-                  "slopeDegrees": 0.3,
-                  "coordinate": {
-                    "latitude": 18.51425,
-                    "longitude": 77.38317
-                  }
-                },
-                {
-                  "distanceKm": 8.274,
-                  "elevationM": -2459,
-                  "slopeDegrees": 0.3,
-                  "coordinate": {
-                    "latitude": 18.51138,
-                    "longitude": 77.38475
-                  }
-                },
-                {
-                  "distanceKm": 8.466,
-                  "elevationM": -2461,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.5085,
-                    "longitude": 77.38634
-                  }
-                },
-                {
-                  "distanceKm": 8.657,
-                  "elevationM": -2462,
-                  "slopeDegrees": 0.3,
-                  "coordinate": {
-                    "latitude": 18.50563,
-                    "longitude": 77.38792
-                  }
-                },
-                {
-                  "distanceKm": 8.849,
-                  "elevationM": -2464,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.50275,
-                    "longitude": 77.3895
-                  }
-                },
-                {
-                  "distanceKm": 9.041,
-                  "elevationM": -2466,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.49988,
-                    "longitude": 77.39109
-                  }
-                },
-                {
-                  "distanceKm": 9.233,
-                  "elevationM": -2467,
-                  "slopeDegrees": 0.3,
-                  "coordinate": {
-                    "latitude": 18.497,
-                    "longitude": 77.39267
-                  }
-                },
-                {
-                  "distanceKm": 9.425,
-                  "elevationM": -2469,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.49413,
-                    "longitude": 77.39425
-                  }
-                },
-                {
-                  "distanceKm": 9.617,
-                  "elevationM": -2471,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.49125,
-                    "longitude": 77.39584
-                  }
-                },
-                {
-                  "distanceKm": 9.809,
-                  "elevationM": -2473,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.48838,
-                    "longitude": 77.39742
-                  }
-                },
-                {
-                  "distanceKm": 10.001,
-                  "elevationM": -2475,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.4855,
-                    "longitude": 77.399
-                  }
-                },
-                {
-                  "distanceKm": 10.193,
-                  "elevationM": -2477,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.48263,
-                    "longitude": 77.40059
-                  }
-                },
-                {
-                  "distanceKm": 10.385,
-                  "elevationM": -2479,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.47975,
-                    "longitude": 77.40217
-                  }
-                },
-                {
-                  "distanceKm": 10.576,
-                  "elevationM": -2482,
-                  "slopeDegrees": 0.9,
-                  "coordinate": {
-                    "latitude": 18.47688,
-                    "longitude": 77.40375
-                  }
-                },
-                {
-                  "distanceKm": 10.768,
-                  "elevationM": -2484,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.474,
-                    "longitude": 77.40534
-                  }
-                },
-                {
-                  "distanceKm": 10.96,
-                  "elevationM": -2486,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.47113,
-                    "longitude": 77.40692
-                  }
-                },
-                {
-                  "distanceKm": 11.152,
-                  "elevationM": -2488,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.46825,
-                    "longitude": 77.4085
-                  }
-                },
-                {
-                  "distanceKm": 11.344,
-                  "elevationM": -2490,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.46538,
-                    "longitude": 77.41009
-                  }
-                },
-                {
-                  "distanceKm": 11.536,
-                  "elevationM": -2493,
-                  "slopeDegrees": 0.89,
-                  "coordinate": {
-                    "latitude": 18.4625,
-                    "longitude": 77.41167
-                  }
-                },
-                {
-                  "distanceKm": 11.727,
-                  "elevationM": -2495,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.45963,
-                    "longitude": 77.41325
-                  }
-                },
-                {
-                  "distanceKm": 11.92,
-                  "elevationM": -2497,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.45675,
-                    "longitude": 77.41483
-                  }
-                },
-                {
-                  "distanceKm": 12.111,
-                  "elevationM": -2499,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.45388,
-                    "longitude": 77.41642
-                  }
-                },
-                {
-                  "distanceKm": 12.303,
-                  "elevationM": -2501,
-                  "slopeDegrees": 0.6,
-                  "coordinate": {
-                    "latitude": 18.451,
-                    "longitude": 77.418
-                  }
-                }
-              ],
-              "elevationGainM": 45,
-              "elevationLossM": 45,
-              "maxSlopeDegrees": 0.9,
-              "overallDifficulty": "low",
-              "createdAt": "2026-11-14T15:45:10.966Z"
-            },
-            "distanceKm": 12.303,
-            "estimatedDurationMin": 318,
-            "terrainScore": 94,
-            "scienceScore": 95,
-            "safetyScore": 5,
-            "accessibilityScore": 46,
-            "overallScore": 40,
-            "communicationScore": 53,
-            "energyWhConsumed": 1533,
-            "projectedBatteryPercent": 0,
-            "projectedOxygenMinutes": 0,
-            "hardConstraintViolations": [
-              "Battery reserve violation: Projected battery (0%) falls below the 20% mandatory return reserve (Invariant S1).",
-              "Energy deficit: Traverse requires 1533 Wh but available battery holds only 1020 Wh.",
-              "Emergency return infeasible: Energy remaining at furthest point is insufficient to return to ingress hub with safe reserve.",
-              "Life-support oxygen deficit: Remaining oxygen (0 min) breaches the mandatory 30-min EVA emergency reserve.",
-              "Duration limit exceeded: Estimated traverse duration (318 min) breaches operational ceiling (240 min).",
-              "Route intersects critical impassable hazard zone."
-            ],
-            "tradeoffExplanation": "Route 'Optimal Science & Margin Traverse' (BALANCED) is REJECTED due to 6 critical constraint violation(s): Battery reserve violation: Projected battery (0%) falls below the 20% mandatory return reserve (Invariant S1). | Energy deficit: Traverse requires 1533 Wh but available battery holds only 1020 Wh. | Emergency return infeasible: Energy remaining at furthest point is insufficient to return to ingress hub with safe reserve. | Life-support oxygen deficit: Remaining oxygen (0 min) breaches the mandatory 30-min EVA emergency reserve. | Duration limit exceeded: Estimated traverse duration (318 min) breaches operational ceiling (240 min). | Route intersects critical impassable hazard zone.. Cannot be selected regardless of score (40/100).",
-            "communicationMetrics": {
-              "losCoveragePercent": 75,
-              "maxBlackoutDurationMin": 106,
-              "orbiterPassAvailable": true,
-              "commContinuitySatisfied": false
-            },
-            "resourceMetrics": {
-              "initialBatteryPercent": 85,
-              "projectedRemainingPercent": 0,
-              "energyExpenditureWh": 1533,
-              "energyBudgetWh": 1020,
-              "batteryMarginPercent": -20,
-              "sampleTubesNeeded": 2,
-              "sampleTubesAvailable": 5,
-              "estimatedDataMb": 290,
-              "oxygenRemainingMin": 0,
-              "emergencyReturnFeasible": false
-            },
-            "hazards": [
-              {
-                "id": "res-battery-deficit-route-1794671110966-33",
-                "name": "Critical Battery Reserve Breach (Projected: -42%)",
-                "type": "LOW_BATTERY_RESERVE",
-                "category": "RESOURCE",
-                "severity": "CRITICAL",
-                "location": {
-                  "latitude": 18.451,
-                  "longitude": 77.418
-                },
-                "reason": "Estimated traverse energy expenditure (1524 Wh) depletes battery to -42%, breaching the 20% minimum safety return floor (Invariant S1).",
-                "recommendation": "Shorten route, omit secondary science stops, or recharge asset prior to mission departure.",
-                "confidence": 0.95,
-                "probability": 0.98,
-                "impactDescription": "Depletion of primary mobility battery, potential vehicle freezing, and asset stranding.",
-                "detectionSource": "Physical Terramechanics Energy Expenditure Model",
-                "provenanceClassification": "PREDICTED",
-                "recommendedMitigation": "Enforce battery cutoff threshold at 25% to reserve emergency return power.",
-                "sourceType": "DERIVED"
-              },
-              {
-                "id": "res-o2-breach-route-1794671110966-33",
-                "name": "Life-Support Oxygen Depletion Risk (318 min duration + 30 min margin > 240 min available)",
-                "type": "INSUFFICIENT_OXYGEN",
-                "category": "RESOURCE",
-                "severity": "CRITICAL",
-                "location": {
-                  "latitude": 18.451,
-                  "longitude": 77.418
-                },
-                "reason": "Total EVA time (318 min) plus NASA 30-min return reserve (348 min) exceeds suit consumable supply (240 min).",
-                "recommendation": "Truncate traverse itinerary or assign uncrewed robotic asset for distant waypoints.",
-                "confidence": 0.98,
-                "probability": 0.99,
-                "impactDescription": "Hypoxia and life-support asphyxiation hazard for EVA crewmember.",
-                "detectionSource": "Astronaut Suit Biotelemetry & Consumable Engine",
-                "provenanceClassification": "PREDICTED",
-                "recommendedMitigation": "Enforce strict 180-min abort rule regardless of science objectives.",
-                "sourceType": "DERIVED"
-              },
-              {
-                "id": "mc-deadline-breach-route-1794671110966-33",
-                "name": "Mission Timeline Constraint Exceeded (318 min > 240 min)",
-                "type": "MISSION_DEADLINE_BREACH",
-                "category": "MISSION_CONSTRAINT",
-                "severity": "CRITICAL",
-                "location": {
-                  "latitude": 18.451,
-                  "longitude": 77.418
-                },
-                "reason": "Estimated traverse duration (318 min) exceeds maximum permitted EVA ceiling of 240 minutes.",
-                "recommendation": "Prune intermediate waypoints or utilize motorized UTV rover escort.",
-                "confidence": 0.96,
-                "probability": 0.98,
-                "impactDescription": "Violates NASA EVA operational rules; mission failure.",
-                "detectionSource": "Mission Operational Timeline Engine",
-                "provenanceClassification": "PREDICTED",
-                "recommendedMitigation": "Reroute along direct primary transit vectors only.",
-                "sourceType": "DERIVED"
-              }
-            ],
-            "scienceTargets": [
-              "Kodiak Butte Delta Remnant",
-              "Neretva Vallis Inflow Channel Breach"
-            ],
-            "recommendationReason": "Non-executable candidate: violates critical safety envelopes or mission life-support thresholds.",
-            "feasible": false,
-            "warnings": [
-              "Traverse duration (318 min) exceeds life-support constraint (240 min).",
-              "Route intersects one or more CRITICAL terrain or environmental hazards.",
-              "Extended RF blackout window detected (106 min without direct LOS or orbiter pass).",
-              "Narrow battery reserve margin (+-20% above minimum 20% floor)."
-            ],
-            "multiObjectiveScore": {
-              "safety": 5,
-              "science": 95,
-              "accessibility": 46,
-              "efficiency": 10,
-              "communication": 53,
-              "energyEfficiency": 10,
-              "resourceFeasibility": 5,
-              "evidenceConfidence": 92,
-              "evaFeasibility": 35,
-              "uncertaintyPenalty": 11,
-              "riskAdjustedScore": 40,
-              "isParetoEfficient": false,
-              "hardConstraintsSatisfied": false,
-              "paretoDominatedBy": [
-                "Direct Shortest Traverse"
-              ]
-            },
-            "scienceBreakdown": {
-              "totalScore": 95,
-              "objectiveRelevance": 30,
-              "geologicalEvidence": 25,
-              "targetUniqueness": 18,
-              "dataQuality": 14,
-              "sampleDiversity": 8,
-              "scoringMethod": "PROJECT_RULE_FACTORIZED",
-              "scoringExplanation": "Traverse surveys 2 science target(s). Multi-attribute score: 95/100 based on factorized weights.",
-              "observedEvidenceSummary": "Kodiak Butte Delta Remnant: Isolated erosional remnant exhibiting textbook Gilbert-type delta bottomsets and foresets. Highest priority evidence of ancient high-energy lake stage. | Neretva Vallis Inflow Channel Breach: Channel canyon through which violent catastrophic floods carved the Jezero crater rim and deposited boulder conglomerates.",
-              "provenance": {
-                "sourceType": "PROJECT_RULE",
-                "sourceName": "Martian Map Operational Protocol — Multi-Target Factorized Science Engine",
-                "processingMethod": "Linear weighted sum of individual target factor matrices",
-                "dataMode": "FALLBACK",
-                "uncertainty": {
-                  "value": 0,
-                  "unit": "rule",
-                  "methodology": "Operational engineering constraint based on human life support safety standards"
-                }
-              }
-            },
-            "coverage": {
-              "elevation": "MEDIUM",
-              "highResImagery": "HIGH",
-              "thermal": "HIGH",
-              "roverEvidence": "HIGH",
-              "scienceEvidence": "HIGH",
-              "overallEvidence": "HIGH",
-              "sourceResolutionM": 0.25,
-              "dataAgeYears": 5,
-              "summary": "Route corridor evidence confidence is HIGH. Elevation: MEDIUM, HiRISE stereo: HIGH, Thermal IR: HIGH, Rover in-situ: HIGH.",
-              "provenance": {
-                "sourceType": "DERIVED",
-                "sourceName": "Martian Map Planetary Computation — Data Evidence Coverage Index",
-                "processingMethod": "Mathematical calculation derived from [MGS MOLA, MRO HiRISE Footprints, Odyssey THEMIS, Rover Mission Archives]: Multi-layer spatial intersection and resolution scoring",
-                "dataMode": "FALLBACK",
-                "uncertainty": {
-                  "value": 1,
-                  "unit": "score",
-                  "methodology": "Propagated uncertainty from input layers [MGS MOLA, MRO HiRISE Footprints, Odyssey THEMIS, Rover Mission Archives]"
-                }
-              }
-            },
-            "provenance": {
-              "sourceType": "DERIVED",
-              "sourceName": "Martian Map Planetary Computation — Candidate Multi-Objective Evaluation",
-              "processingMethod": "Mathematical calculation derived from [MGS MOLA MEGDR, Factorized Science Engine, Data Coverage Engine, Resource Modeling Engine, Line-of-Sight Engine]: Risk-adjusted multi-attribute scoring model v4.0",
-              "dataMode": "FALLBACK",
-              "uncertainty": {
-                "value": 1,
-                "unit": "score",
-                "methodology": "Propagated uncertainty from input layers [MGS MOLA MEGDR, Factorized Science Engine, Data Coverage Engine, Resource Modeling Engine, Line-of-Sight Engine]"
-              }
-            }
-          }
-        ],
-        "comparison": {
-          "distanceDiffKm": 9.66,
-          "durationDiffMin": 237,
-          "safetyScoreDiff": -95,
-          "scienceScoreDiff": -3,
-          "riskAdjustedDiff": 15,
-          "safetyRationale": "Rerouting eliminates high-gradient slope hazard. Safety index improved by +-95 points.",
-          "scienceTradeoff": "Preserves primary ancient water sedimentary objective with an additional +237 minutes traverse margin."
-        },
-        "humanApprovalRequired": true,
-        "auditBlockHash": "b4a8eb025a55859edc20a8716d84ab76252b0b7ecc258b73f2836eba6a803da4"
-      }
-    ],
+    "replanProposals": [],
     "completedTasksCount": 4
   },
   "simulation": {
@@ -4927,17 +1966,7 @@
       "isRunning": false,
       "simulationTimeMinutes": 45,
       "timeScale": 1,
-      "scenarioSeed": 20261107,
-      "activeEmergency": {
-        "scenarioId": "SCENARIO_C_HAZARD",
-        "title": "High-Gradient Scarp Detected by Scout Rover",
-        "affectedAgentCallsigns": [
-          "ROVER-01 SCOUT",
-          "ASTRONAUT-01"
-        ],
-        "severity": "WARNING",
-        "recommendedMitigation": "Approve proposed detour corridor along low-gradient valley floor."
-      }
+      "scenarioSeed": 20261107
     },
     "monteCarlo": null,
     "whatIfBranches": [],
@@ -5003,7 +2032,7 @@
           "telemetry": {
             "batteryPercent": 92,
             "batteryStatus": "GREEN",
-            "speedKph": 2.6,
+            "speedKph": 2.8,
             "headingDeg": 285,
             "internalTempC": 20.5,
             "signalStrengthPercent": 95,
@@ -5011,9 +2040,9 @@
             "energyConsumptionRateWhPerKm": 120,
             "suitOxygenPercent": 88,
             "heartRateBpm": 110,
-            "lastHeartbeat": "2026-11-14T15:33:22.785Z"
+            "lastHeartbeat": "2026-11-14T17:43:35.545Z"
           },
-          "lastUpdated": "2026-11-14T15:55:54.789Z",
+          "lastUpdated": "2026-11-14T17:43:35.545Z",
           "provenance": {
             "sourceType": "DERIVED",
             "sourceName": "Martian Map Planetary Computation — Astronaut Telemetry Model",
@@ -5034,8 +2063,8 @@
           "profileRole": "SCOUT",
           "status": "PAUSED",
           "position": {
-            "latitude": 18.451,
-            "longitude": 77.418
+            "latitude": 18.4485,
+            "longitude": 77.432
           },
           "capabilities": [
             "TERRAIN_RECON",
@@ -5089,7 +2118,7 @@
             "lineOfSightToRelay": true,
             "activeRelayId": "agent-rover-03",
             "energyConsumptionRateWhPerKm": 95,
-            "lastHeartbeat": "2026-11-14T15:33:22.786Z"
+            "lastHeartbeat": "2026-11-14T17:43:35.546Z"
           },
           "currentTask": {
             "id": "task-scout-recon-01",
@@ -5108,11 +2137,9 @@
             "requiredBatteryPercent": 18,
             "requiredCommunication": true,
             "riskLevel": "MODERATE",
-            "status": "IN_PROGRESS",
-            "missionId": "MARSWALK-001",
-            "assignedAt": "2026-11-14T15:33:22.786Z"
+            "status": "IN_PROGRESS"
           },
-          "lastUpdated": "2026-11-14T15:45:10.921Z",
+          "lastUpdated": "2026-11-14T17:43:35.586Z",
           "provenance": {
             "sourceType": "DERIVED",
             "sourceName": "Martian Map Planetary Computation — Scout Autonomous Vehicle Model",
@@ -5187,9 +2214,9 @@
             "lineOfSightToRelay": true,
             "activeRelayId": "agent-rover-03",
             "energyConsumptionRateWhPerKm": 160,
-            "lastHeartbeat": "2026-11-14T15:33:22.786Z"
+            "lastHeartbeat": "2026-11-14T17:43:35.546Z"
           },
-          "lastUpdated": "2026-11-14T15:33:22.786Z",
+          "lastUpdated": "2026-11-14T17:43:35.546Z",
           "provenance": {
             "sourceType": "DERIVED",
             "sourceName": "Martian Map Planetary Computation — Science Rover Model",
@@ -5262,9 +2289,9 @@
             "signalStrengthPercent": 98,
             "lineOfSightToRelay": true,
             "energyConsumptionRateWhPerKm": 80,
-            "lastHeartbeat": "2026-11-14T15:33:22.786Z"
+            "lastHeartbeat": "2026-11-14T17:43:35.546Z"
           },
-          "lastUpdated": "2026-11-14T15:33:22.786Z",
+          "lastUpdated": "2026-11-14T17:43:35.546Z",
           "provenance": {
             "sourceType": "DERIVED",
             "sourceName": "Martian Map Planetary Computation — Relay Rover Model",
@@ -5321,7 +2348,7 @@
           "orbitalPeriodMinutes": 112,
           "coverageRadiusKm": 850,
           "bandwidthKbps": 2048,
-          "nextPassWindowStart": "2026-11-14T15:51:22.786Z",
+          "nextPassWindowStart": "2026-11-14T18:01:35.546Z",
           "nextPassDurationMinutes": 14,
           "telemetry": {
             "batteryPercent": 96,
@@ -5332,9 +2359,9 @@
             "signalStrengthPercent": 100,
             "lineOfSightToRelay": true,
             "energyConsumptionRateWhPerKm": 0,
-            "lastHeartbeat": "2026-11-14T15:33:22.786Z"
+            "lastHeartbeat": "2026-11-14T17:43:35.546Z"
           },
-          "lastUpdated": "2026-11-14T15:33:22.786Z",
+          "lastUpdated": "2026-11-14T17:43:35.546Z",
           "provenance": {
             "sourceType": "DERIVED",
             "sourceName": "Martian Map Planetary Computation — MRO Orbital Relay Model",
@@ -5372,19 +2399,19 @@
         "packetsDeliveredCount": 0,
         "packetsBufferedCount": 0
       },
-      "lastUpdated": "2026-11-14T15:55:54.913Z"
+      "lastUpdated": "2026-11-14T17:43:35.611Z"
     },
     "telemetryDeviationScore": 0.02,
-    "lastSynchronizedAt": "2026-11-14T15:55:54.913Z"
+    "lastSynchronizedAt": "2026-11-14T17:43:35.611Z"
   },
   "lineage": {
     "decisionLineageGraphs": {},
     "latestDecisionNode": null,
     "auditChainVerification": {
       "isValid": true,
-      "chainLength": 251,
-      "verifiedAt": "2026-11-14T15:55:54.913Z",
-      "message": "Audit chain cryptographically verified. All 251 blocks valid and tamper-free."
+      "chainLength": 337,
+      "verifiedAt": "2026-11-14T17:43:35.611Z",
+      "message": "Audit chain cryptographically verified. All 337 blocks valid and tamper-free."
     }
   },
   "provenance": {
@@ -5484,7 +2511,7 @@
         "id": "S4",
         "name": "EVENT INTEGRITY",
         "status": "PASS",
-        "evaluatedMetric": "Event ledger count: 32 events",
+        "evaluatedMetric": "Event ledger count: 21 events",
         "threshold": "Cryptographic ledger strictly non-decreasing and unbroken",
         "scientificReference": "Cryptographic Append-Only Ledger Standard RFC-6962"
       },
@@ -5508,7 +2535,7 @@
         "id": "S7",
         "name": "TAMPER-EVIDENT AUDIT CHAIN",
         "status": "PASS",
-        "evaluatedMetric": "251 blocks verified",
+        "evaluatedMetric": "337 blocks verified",
         "threshold": "100% cryptographic SHA-256 validity across all audit blocks",
         "scientificReference": "NIST SP 800-92 Guide to Computer Security Log Management"
       },
@@ -5524,20 +2551,294 @@
     "overallSystemStatus": "NOMINAL"
   },
   "events": {
-    "totalEvents": 32,
+    "totalEvents": 21,
     "recentEvents": [
       {
-        "eventId": "mevt-1794649116420-13-9xv9",
-        "sequenceNumber": 13,
-        "missionId": "DEMO-NOMINAL-B81140",
-        "timestamp": "2026-11-14T09:38:36.420Z",
-        "actor": "SIMULATED_SCIENCE_LEAD",
-        "entityId": "tgt-kodiak-butte",
-        "auditRef": "9adda4830c154cd3351ef981b73f31c0e65cc687d9b152fa9039086c5eb651bc",
+        "eventId": "mevt-1794678191376-2-15d5",
+        "sequenceNumber": 2,
+        "missionId": "MARSWALK-001",
+        "timestamp": "2026-11-14T16:53:11.374Z",
+        "simulationTime": 600,
+        "actor": "agent-rover-01",
+        "eventType": "AGENT_ASSIGNED",
+        "payload": {
+          "task": "RECONNAISSANCE",
+          "coordinate": {
+            "latitude": 18.4485,
+            "longitude": 77.432
+          }
+        },
+        "provenance": {
+          "sourceType": "ROVER",
+          "sourceName": "Ares Scout Telemetry",
+          "dataMode": "SIMULATED"
+        },
+        "previousEventHash": "b443db1edf57f2fc40ba4656e40882448385a91118f96f992df86806b758a25a",
+        "eventHash": "d5593d08728768f0393de449119f9a9e86cfa0530fb456ac47a67aef858690d7"
+      },
+      {
+        "eventId": "mevt-1794678191379-3-skla",
+        "sequenceNumber": 3,
+        "missionId": "MARSWALK-001",
+        "timestamp": "2026-11-14T17:03:11.374Z",
+        "simulationTime": 1200,
+        "actor": "agent-rover-01",
+        "eventType": "SENSOR_OBSERVATION",
+        "payload": {
+          "sensor": "HAZCAM",
+          "measuredSlopeDeg": 21.8,
+          "uncertaintyDeg": 1.1
+        },
+        "provenance": {
+          "sourceType": "ROVER",
+          "sourceName": "Stereo HazCam",
+          "dataMode": "SIMULATED"
+        },
+        "previousEventHash": "d5593d08728768f0393de449119f9a9e86cfa0530fb456ac47a67aef858690d7",
+        "eventHash": "4b5e58f2fe4257deeec1f88610c7332c1263fac257e5aa0a281c5d8329582c89"
+      },
+      {
+        "eventId": "mevt-1794678191380-4-e2gm",
+        "sequenceNumber": 4,
+        "missionId": "MARSWALK-001",
+        "timestamp": "2026-11-14T17:13:11.374Z",
+        "simulationTime": 1800,
+        "actor": "agent-rover-01",
+        "eventType": "HAZARD_DETECTED",
+        "payload": {
+          "hazardType": "SLOPE_EXCESSIVE",
+          "coordinate": {
+            "latitude": 18.452,
+            "longitude": 77.418
+          },
+          "slopeDeg": 21.8
+        },
+        "provenance": {
+          "sourceType": "MODEL",
+          "sourceName": "ObservationHazardFusion",
+          "dataMode": "DERIVED"
+        },
+        "previousEventHash": "4b5e58f2fe4257deeec1f88610c7332c1263fac257e5aa0a281c5d8329582c89",
+        "eventHash": "eeda08894f344deba0d0235ba05a22296b46cf37d098694c9fa90a22d2e700e7"
+      },
+      {
+        "eventId": "mevt-1794678191382-5-erlc",
+        "sequenceNumber": 5,
+        "missionId": "MARSWALK-001",
+        "timestamp": "2026-11-14T17:18:11.374Z",
+        "simulationTime": 2100,
+        "actor": "agent-rover-01",
+        "eventType": "COMMAND_EXECUTED",
+        "payload": {
+          "command": "PAUSE",
+          "reason": "Autonomous safety stop on corroborated hazard"
+        },
+        "provenance": {
+          "sourceType": "ROVER",
+          "sourceName": "DecisionEngine",
+          "dataMode": "SIMULATED"
+        },
+        "previousEventHash": "eeda08894f344deba0d0235ba05a22296b46cf37d098694c9fa90a22d2e700e7",
+        "eventHash": "d6eaddbca67bed9113cc97d533e6f39b7674769af4cf80d41ff82a9e25ea6d13"
+      },
+      {
+        "eventId": "mevt-1794678191385-6-94pj",
+        "sequenceNumber": 6,
+        "missionId": "MARSWALK-001",
+        "timestamp": "2026-11-14T17:23:11.374Z",
+        "simulationTime": 2400,
+        "actor": "MISSION_CONTROL",
+        "eventType": "REPLAN_PROPOSED",
+        "payload": {
+          "replanId": "replan-benchmark-01",
+          "proposedWaypoints": [
+            {
+              "latitude": 18.4485,
+              "longitude": 77.432
+            },
+            {
+              "latitude": 18.454,
+              "longitude": 77.425
+            },
+            {
+              "latitude": 18.458,
+              "longitude": 77.412
+            }
+          ]
+        },
+        "provenance": {
+          "sourceType": "MODEL",
+          "sourceName": "ReplanningEngine",
+          "dataMode": "DERIVED"
+        },
+        "previousEventHash": "d6eaddbca67bed9113cc97d533e6f39b7674769af4cf80d41ff82a9e25ea6d13",
+        "eventHash": "cc68a61589459da11521c83dcdfe8acca971f21e268889429f5558630364d559"
+      },
+      {
+        "eventId": "mevt-1794678191387-7-2pce",
+        "sequenceNumber": 7,
+        "missionId": "MARSWALK-001",
+        "timestamp": "2026-11-14T17:28:11.374Z",
+        "simulationTime": 2700,
+        "actor": "MISSION_CONTROL",
+        "eventType": "REPLAN_APPROVED",
+        "payload": {
+          "approvedBy": "Flight Director Vance",
+          "role": "MISSION_COMMAND"
+        },
+        "provenance": {
+          "sourceType": "AUDIT",
+          "sourceName": "AuditChainService",
+          "dataMode": "BENCHMARK"
+        },
+        "previousEventHash": "cc68a61589459da11521c83dcdfe8acca971f21e268889429f5558630364d559",
+        "eventHash": "f231aa414ca023e2a92f1d1c2184467f9a7780760d30d6d3c6fd82032062883f"
+      },
+      {
+        "eventId": "mevt-1794678191390-8-5os7",
+        "sequenceNumber": 8,
+        "missionId": "MARSWALK-001",
+        "timestamp": "2026-11-14T17:38:11.374Z",
+        "simulationTime": 3300,
+        "actor": "agent-rover-02",
+        "eventType": "SCIENCE_TARGET_COMPLETED",
+        "payload": {
+          "targetId": "sci-delta-silt",
+          "targetName": "Delta Foreset Carbonate Bed"
+        },
+        "provenance": {
+          "sourceType": "ROVER",
+          "sourceName": "Raman Spectrometer",
+          "dataMode": "SIMULATED"
+        },
+        "previousEventHash": "f231aa414ca023e2a92f1d1c2184467f9a7780760d30d6d3c6fd82032062883f",
+        "eventHash": "7292546c8acdffb5edf55cf6d509b3f4433f1e93116fa2280841cdeb273d0224"
+      },
+      {
+        "eventId": "mevt-1794678195061-9-71d2",
+        "sequenceNumber": 9,
+        "missionId": "MARSWALK-DRAFT-TEST",
+        "timestamp": "2026-11-14T17:43:15.061Z",
+        "actor": "SCIENCE_LEAD",
+        "entityId": "tgt-oxia-planum",
+        "auditRef": "a8c22e6c2fad516862ade07dc1e60b5db843c7d5f9900ed088aef300ef52363d",
         "eventType": "MISSION_UPDATED",
         "payload": {
           "action": "SCIENCE_TARGET_ASSIGNED",
-          "decisionId": "scidec-6d4bbac4",
+          "decisionId": "scidec-ba8b5e12",
+          "targetId": "tgt-oxia-planum",
+          "targetName": "Oxia Planum Fe/Mg-Phyllosilicate Plain",
+          "region": "Oxia Planum",
+          "objectiveId": "ASTROBIOLOGY_RELEVANCE",
+          "rationale": "Investigate Oxia Planum Fe/Mg phyllosilicates"
+        },
+        "provenance": {
+          "sourceType": "DERIVED",
+          "sourceName": "Martian Map Planetary Computation — Science Target Assignment: Oxia Planum Fe/Mg-Phyllosilicate Plain",
+          "processingMethod": "Mathematical calculation derived from [NASA MRO CRISM / HiRISE & ESA Mars Express OMEGA]: Human-approved scientific target association with mission planning workspace",
+          "dataMode": "FALLBACK",
+          "uncertainty": {
+            "value": 1,
+            "unit": "score",
+            "methodology": "Propagated uncertainty from input layers [NASA MRO CRISM / HiRISE & ESA Mars Express OMEGA]"
+          }
+        },
+        "previousEventHash": "7292546c8acdffb5edf55cf6d509b3f4433f1e93116fa2280841cdeb273d0224",
+        "eventHash": "59f68ffe82cc9dbc894aa2e4ff2810e26280d30614cb0cf901136cb9cc4a1d50"
+      },
+      {
+        "eventId": "mevt-1794678196047-10-pf0e",
+        "sequenceNumber": 10,
+        "missionId": "MARSWALK-001",
+        "timestamp": "2026-11-14T17:43:16.047Z",
+        "actor": "agent-rover-01",
+        "eventType": "TELEMETRY_LOGGED",
+        "payload": {
+          "lat": 18.38,
+          "lon": 77.58,
+          "battery": 94
+        },
+        "provenance": {
+          "sourceType": "DERIVED",
+          "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+          "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
+          "dataMode": "FALLBACK",
+          "uncertainty": {
+            "value": 1,
+            "unit": "score",
+            "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
+          }
+        },
+        "previousEventHash": "59f68ffe82cc9dbc894aa2e4ff2810e26280d30614cb0cf901136cb9cc4a1d50",
+        "eventHash": "cd8ff51920a93e61087d98c0d557849735a3e66402920a7be8a785d5a1a32587"
+      },
+      {
+        "eventId": "mevt-1794678199474-11-sufa",
+        "sequenceNumber": 11,
+        "missionId": "USER-TEST-B7-001",
+        "timestamp": "2026-11-14T17:43:19.474Z",
+        "actor": "TEST_HARNESS",
+        "entityId": "USER-TEST-B7-001",
+        "eventType": "TELEMETRY_UPDATED",
+        "payload": {
+          "batteryPercent": 89,
+          "distanceKm": 0.9
+        },
+        "provenance": {
+          "sourceType": "DERIVED",
+          "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+          "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
+          "dataMode": "FALLBACK",
+          "uncertainty": {
+            "value": 1,
+            "unit": "score",
+            "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
+          }
+        },
+        "previousEventHash": "cd8ff51920a93e61087d98c0d557849735a3e66402920a7be8a785d5a1a32587",
+        "eventHash": "52697536d073148357f0ceff56da28882dbf31bb97c8ab42d0a03e0d012ac588"
+      },
+      {
+        "eventId": "mevt-1794678199661-12-3cfd",
+        "sequenceNumber": 12,
+        "missionId": "DEMO-NOMINAL-8D7704",
+        "timestamp": "2026-11-14T17:43:19.661Z",
+        "actor": "JUDGING_DEMO_ENGINE",
+        "entityId": "DEMO-NOMINAL-8D7704",
+        "eventType": "MISSION_CREATED",
+        "payload": {
+          "simulated": true,
+          "scenarioId": "NOMINAL_EXPLORATION",
+          "seed": 20261112,
+          "batteryPercent": 94,
+          "distanceKm": 0
+        },
+        "provenance": {
+          "sourceType": "DERIVED",
+          "sourceName": "Martian Map Planetary Computation — SIMULATED Judging Demo Engine",
+          "processingMethod": "Mathematical calculation derived from [JudgingDemoService]: Isolated demo mission creation (SIMULATED)",
+          "dataMode": "FALLBACK",
+          "uncertainty": {
+            "value": 1,
+            "unit": "score",
+            "methodology": "Propagated uncertainty from input layers [JudgingDemoService]"
+          }
+        },
+        "previousEventHash": "52697536d073148357f0ceff56da28882dbf31bb97c8ab42d0a03e0d012ac588",
+        "eventHash": "ccdfe7592b72c475edc761f0205fcdb30e337170876180d13bca4bcb72c4038c"
+      },
+      {
+        "eventId": "mevt-1794678199664-13-nchd",
+        "sequenceNumber": 13,
+        "missionId": "DEMO-NOMINAL-8D7704",
+        "timestamp": "2026-11-14T17:43:19.664Z",
+        "actor": "SIMULATED_SCIENCE_LEAD",
+        "entityId": "tgt-kodiak-butte",
+        "auditRef": "6e60e3d9f0a1c879fa5af9ad6ce47064dcaf0018b4fff51cf86dbd7a274481df",
+        "eventType": "MISSION_UPDATED",
+        "payload": {
+          "action": "SCIENCE_TARGET_ASSIGNED",
+          "decisionId": "scidec-fa6a722e",
           "targetId": "tgt-kodiak-butte",
           "targetName": "Kodiak Butte Delta Remnant",
           "region": "Jezero Crater",
@@ -5555,16 +2856,16 @@
             "methodology": "Propagated uncertainty from input layers [NASA Perseverance Rover Mastcam-Z Long Distance Imaging & CRISM]"
           }
         },
-        "previousEventHash": "1984ad17d2dbe7059510b6112f086f280d814366271a40aae25ea28639dd14bc",
-        "eventHash": "bd3220b3fffc5b51158bfeecee63b1caa6be48f6f6b70e5c2639b34f30e5bb87"
+        "previousEventHash": "ccdfe7592b72c475edc761f0205fcdb30e337170876180d13bca4bcb72c4038c",
+        "eventHash": "77277dfe15b756b34c0b6e9d1fde1166f3653978956520a66b9f316e50572e6a"
       },
       {
-        "eventId": "mevt-1794649116460-14-mpj4",
+        "eventId": "mevt-1794678199714-14-if6z",
         "sequenceNumber": 14,
-        "missionId": "DEMO-NOMINAL-B81140",
-        "timestamp": "2026-11-14T09:38:36.460Z",
+        "missionId": "DEMO-NOMINAL-8D7704",
+        "timestamp": "2026-11-14T17:43:19.714Z",
         "actor": "SIMULATED_ROUTE_OPTIMIZER",
-        "entityId": "route-demo-b81140",
+        "entityId": "route-demo-8d7704",
         "eventType": "ROUTE_SELECTED",
         "payload": {
           "simulated": true,
@@ -5584,18 +2885,18 @@
             "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
           }
         },
-        "previousEventHash": "bd3220b3fffc5b51158bfeecee63b1caa6be48f6f6b70e5c2639b34f30e5bb87",
-        "eventHash": "1bbd4213f7be65c33255fcc4eb942a32be6eb6eb4409842bffabfc5f70daf9b4"
+        "previousEventHash": "77277dfe15b756b34c0b6e9d1fde1166f3653978956520a66b9f316e50572e6a",
+        "eventHash": "0753b1a1036366dc79d5f7a863388b501c601ffbc9dc0c6d1460b1e557083504"
       },
       {
-        "eventId": "mevt-1794649116471-15-kmt8",
+        "eventId": "mevt-1794678199725-15-4d0u",
         "sequenceNumber": 15,
-        "missionId": "DEMO-NOMINAL-B81140",
-        "timestamp": "2026-11-14T09:38:36.471Z",
+        "missionId": "DEMO-NOMINAL-8D7704",
+        "timestamp": "2026-11-14T17:43:19.725Z",
         "actor": "ASTRONAUT-01",
         "eventType": "COMMAND_EXECUTED",
         "payload": {
-          "evaSessionId": "eva-1794649116462-8rk9",
+          "evaSessionId": "eva-1794678199719-hgwd",
           "action": "START",
           "previousStatus": "PLANNED",
           "nextStatus": "ACTIVE",
@@ -5612,18 +2913,18 @@
             "methodology": "Propagated uncertainty from input layers [Suit Telemetry Model, S1-S8 Invariants]"
           }
         },
-        "previousEventHash": "1bbd4213f7be65c33255fcc4eb942a32be6eb6eb4409842bffabfc5f70daf9b4",
-        "eventHash": "06036ebfb27d26d5fdcbac1cc5982a3ce06cd67b1ff62ab9ba07ab67a0dca4ae"
+        "previousEventHash": "0753b1a1036366dc79d5f7a863388b501c601ffbc9dc0c6d1460b1e557083504",
+        "eventHash": "10f29699c4cc08974181b343d48a33bc5619ac1f58a8f6b62b85776e28c51cfc"
       },
       {
-        "eventId": "mevt-1794649116544-16-jzrh",
+        "eventId": "mevt-1794678199776-16-7lox",
         "sequenceNumber": 16,
-        "missionId": "DEMO-NOMINAL-B81140",
-        "timestamp": "2026-11-14T09:38:36.544Z",
+        "missionId": "DEMO-NOMINAL-8D7704",
+        "timestamp": "2026-11-14T17:43:19.776Z",
         "actor": "ASTRONAUT-01",
         "eventType": "COMMAND_EXECUTED",
         "payload": {
-          "evaSessionId": "eva-1794649116462-8rk9",
+          "evaSessionId": "eva-1794678199719-hgwd",
           "action": "COMPLETE",
           "previousStatus": "ACTIVE",
           "nextStatus": "COMPLETED",
@@ -5640,21 +2941,21 @@
             "methodology": "Propagated uncertainty from input layers [Suit Telemetry Model, S1-S8 Invariants]"
           }
         },
-        "previousEventHash": "06036ebfb27d26d5fdcbac1cc5982a3ce06cd67b1ff62ab9ba07ab67a0dca4ae",
-        "eventHash": "7e588bc5c3ead89c9d8fe42d1fa93a24a4c7889791d04f47c8cfe7825dfecb78"
+        "previousEventHash": "10f29699c4cc08974181b343d48a33bc5619ac1f58a8f6b62b85776e28c51cfc",
+        "eventHash": "7b859b2f091e2ce87ad3e294fb4c4fb1485d7c962a91e4624c700a33ccf1dfbb"
       },
       {
-        "eventId": "mevt-1794649116608-17-8qr9",
+        "eventId": "mevt-1794678199829-17-86yr",
         "sequenceNumber": 17,
-        "missionId": "DEMO-NOMINAL-B81140",
-        "timestamp": "2026-11-14T09:38:36.608Z",
+        "missionId": "DEMO-NOMINAL-8D7704",
+        "timestamp": "2026-11-14T17:43:19.829Z",
         "actor": "SIMULATED_EVA_CREW",
-        "entityId": "eva-1794649116462-8rk9",
+        "entityId": "eva-1794678199719-hgwd",
         "eventType": "TASK_TRANSITION",
         "payload": {
           "simulated": true,
           "status": "COMPLETED",
-          "evaSessionId": "eva-1794649116462-8rk9",
+          "evaSessionId": "eva-1794678199719-hgwd",
           "elapsedMinutes": 0,
           "batteryPercent": 88
         },
@@ -5669,16 +2970,16 @@
             "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
           }
         },
-        "previousEventHash": "7e588bc5c3ead89c9d8fe42d1fa93a24a4c7889791d04f47c8cfe7825dfecb78",
-        "eventHash": "7c7af12c88962ea46a09ec7a2ff33a294a3f7a1b68b15b293b070268bd6dd014"
+        "previousEventHash": "7b859b2f091e2ce87ad3e294fb4c4fb1485d7c962a91e4624c700a33ccf1dfbb",
+        "eventHash": "80bc87bcf04c88d4d0e90b5d516b92b9d542abd328edd9b4de21081f1aa8c1e6"
       },
       {
-        "eventId": "mevt-1794649116612-18-17sv",
+        "eventId": "mevt-1794678199833-18-o4nh",
         "sequenceNumber": 18,
-        "missionId": "DEMO-NOMINAL-B81140",
-        "timestamp": "2026-11-14T09:38:36.612Z",
+        "missionId": "DEMO-NOMINAL-8D7704",
+        "timestamp": "2026-11-14T17:43:19.833Z",
         "actor": "SIMULATED_COMMS_RELAY",
-        "entityId": "DEMO-NOMINAL-B81140",
+        "entityId": "DEMO-NOMINAL-8D7704",
         "eventType": "PACKET_DELIVERED",
         "payload": {
           "simulated": true,
@@ -5697,16 +2998,16 @@
             "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
           }
         },
-        "previousEventHash": "7c7af12c88962ea46a09ec7a2ff33a294a3f7a1b68b15b293b070268bd6dd014",
-        "eventHash": "bf08870bce81a5c9051e75e06647142be5d78b9faf6eee70032453b9cf94e247"
+        "previousEventHash": "80bc87bcf04c88d4d0e90b5d516b92b9d542abd328edd9b4de21081f1aa8c1e6",
+        "eventHash": "749ecbb3f225a6c2811e2b1ad264cfd0b5a3a21adfb0337d390e89e2beac38b0"
       },
       {
-        "eventId": "mevt-1794649116696-19-w0fm",
+        "eventId": "mevt-1794678199915-19-jfu9",
         "sequenceNumber": 19,
-        "missionId": "DEMO-FAILURE-22B127",
-        "timestamp": "2026-11-14T09:38:36.696Z",
+        "missionId": "DEMO-FAILURE-0F1239",
+        "timestamp": "2026-11-14T17:43:19.915Z",
         "actor": "JUDGING_DEMO_ENGINE",
-        "entityId": "DEMO-FAILURE-22B127",
+        "entityId": "DEMO-FAILURE-0F1239",
         "eventType": "MISSION_CREATED",
         "payload": {
           "simulated": true,
@@ -5726,16 +3027,16 @@
             "methodology": "Propagated uncertainty from input layers [JudgingDemoService]"
           }
         },
-        "previousEventHash": "bf08870bce81a5c9051e75e06647142be5d78b9faf6eee70032453b9cf94e247",
-        "eventHash": "2ecad9f5f882b5c7a559ab89e0abe5c6d2c8224dcbe055913bc7cc110ce0e460"
+        "previousEventHash": "749ecbb3f225a6c2811e2b1ad264cfd0b5a3a21adfb0337d390e89e2beac38b0",
+        "eventHash": "8f991807f4e0e8a3316fbf084ab3d4a1b2d81304fdba000d438f0b6ad05f3959"
       },
       {
-        "eventId": "mevt-1794649116712-20-lzk1",
+        "eventId": "mevt-1794678199936-20-phmg",
         "sequenceNumber": 20,
-        "missionId": "DEMO-FAILURE-22B127",
-        "timestamp": "2026-11-14T09:38:36.712Z",
+        "missionId": "DEMO-FAILURE-0F1239",
+        "timestamp": "2026-11-14T17:43:19.936Z",
         "actor": "SIMULATED_FAILURE_ENGINE",
-        "entityId": "DEMO-FAILURE-22B127",
+        "entityId": "DEMO-FAILURE-0F1239",
         "eventType": "HAZARD_DETECTED",
         "payload": {
           "simulated": true,
@@ -5758,16 +3059,16 @@
             "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
           }
         },
-        "previousEventHash": "2ecad9f5f882b5c7a559ab89e0abe5c6d2c8224dcbe055913bc7cc110ce0e460",
-        "eventHash": "1325584fedf2ce2add45041764480236f2e593016b6ec8d6f6ebf157a319b139"
+        "previousEventHash": "8f991807f4e0e8a3316fbf084ab3d4a1b2d81304fdba000d438f0b6ad05f3959",
+        "eventHash": "2aea74987ee6548f106d18762a8198466bba7c60be110330c0499de6055a7a90"
       },
       {
-        "eventId": "mevt-1794649116716-21-8syc",
+        "eventId": "mevt-1794678199937-21-rfeu",
         "sequenceNumber": 21,
-        "missionId": "DEMO-FAILURE-22B127",
-        "timestamp": "2026-11-14T09:38:36.716Z",
+        "missionId": "DEMO-FAILURE-0F1239",
+        "timestamp": "2026-11-14T17:43:19.937Z",
         "actor": "SIMULATED_COMMS_RELAY",
-        "entityId": "DEMO-FAILURE-22B127",
+        "entityId": "DEMO-FAILURE-0F1239",
         "eventType": "COMMUNICATION_LOST",
         "payload": {
           "simulated": true,
@@ -5784,316 +3085,10 @@
             "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
           }
         },
-        "previousEventHash": "1325584fedf2ce2add45041764480236f2e593016b6ec8d6f6ebf157a319b139",
-        "eventHash": "4f05c7c16cf8afd8f2278bb1dafcb2baeff4be7ea7c3852b867470b8a2280468"
-      },
-      {
-        "eventId": "mevt-1794649136935-22-iu7t",
-        "sequenceNumber": 22,
-        "missionId": "MARSWALK-001",
-        "timestamp": "2026-11-14T09:38:56.935Z",
-        "actor": "SIMULATION_ENGINE",
-        "entityId": "sim-whatif-marswalk-001-battery_failure-1-a9000d07",
-        "eventType": "WHAT_IF_EXECUTED",
-        "payload": {
-          "forkSimTimeMinutes": 18
-        },
-        "provenance": {
-          "sourceType": "DERIVED",
-          "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
-          "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
-          "dataMode": "FALLBACK",
-          "uncertainty": {
-            "value": 1,
-            "unit": "score",
-            "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
-          }
-        },
-        "previousEventHash": "4f05c7c16cf8afd8f2278bb1dafcb2baeff4be7ea7c3852b867470b8a2280468",
-        "eventHash": "329a280cfd2557373c3b7bf16a500027bbe10afa0ce18bfe7c589473ede98d46"
-      },
-      {
-        "eventId": "mevt-1794661730682-23-zfxu",
-        "sequenceNumber": 23,
-        "missionId": "MARSWALK-001",
-        "timestamp": "2026-11-14T13:08:50.682Z",
-        "actor": "DIGITAL_TWIN",
-        "entityId": "snap-operator-checkpoint-1794661730611",
-        "eventType": "SNAPSHOT_CREATED",
-        "payload": {
-          "snapshotId": "snap-operator-checkpoint-1794661730611",
-          "tag": "OPERATOR_CHECKPOINT",
-          "stateHash": "32824c981000fb2865a28aa3149578a40505c8443850c88c7a34bb7e136a1128",
-          "simTimeMinutes": 45
-        },
-        "provenance": {
-          "sourceType": "DERIVED",
-          "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
-          "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
-          "dataMode": "FALLBACK",
-          "uncertainty": {
-            "value": 1,
-            "unit": "score",
-            "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
-          }
-        },
-        "previousEventHash": "329a280cfd2557373c3b7bf16a500027bbe10afa0ce18bfe7c589473ede98d46",
-        "eventHash": "59c1810d017ebe1225e03c368010e86dffd796c07c86010fa516bc3ff6f6999a"
-      },
-      {
-        "eventId": "mevt-1794662505356-24-2aq0",
-        "sequenceNumber": 24,
-        "missionId": "MARSWALK-001",
-        "timestamp": "2026-11-14T13:21:45.356Z",
-        "actor": "MONTE_CARLO_ENGINE",
-        "entityId": "mc-20261107-100",
-        "eventType": "MONTE_CARLO_EXECUTED",
-        "payload": {
-          "runCount": 100,
-          "seed": 20261107,
-          "successProbabilityPercent": 100
-        },
-        "provenance": {
-          "sourceType": "DERIVED",
-          "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
-          "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
-          "dataMode": "FALLBACK",
-          "uncertainty": {
-            "value": 1,
-            "unit": "score",
-            "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
-          }
-        },
-        "previousEventHash": "59c1810d017ebe1225e03c368010e86dffd796c07c86010fa516bc3ff6f6999a",
-        "eventHash": "2cc90c10bf40276b8413d32130683ef285d5cdf1868a4ab9db55436d953342f8"
-      },
-      {
-        "eventId": "mevt-1794662507674-25-xuni",
-        "sequenceNumber": 25,
-        "missionId": "MARSWALK-001",
-        "timestamp": "2026-11-14T13:21:47.674Z",
-        "actor": "MONTE_CARLO_ENGINE",
-        "entityId": "mc-20261107-100",
-        "eventType": "MONTE_CARLO_EXECUTED",
-        "payload": {
-          "runCount": 100,
-          "seed": 20261107,
-          "successProbabilityPercent": 100
-        },
-        "provenance": {
-          "sourceType": "DERIVED",
-          "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
-          "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
-          "dataMode": "FALLBACK",
-          "uncertainty": {
-            "value": 1,
-            "unit": "score",
-            "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
-          }
-        },
-        "previousEventHash": "2cc90c10bf40276b8413d32130683ef285d5cdf1868a4ab9db55436d953342f8",
-        "eventHash": "9f62baf17b738900972ada66c8b79a6dbfa28491a30c0509dca6ff60aa8b2dec"
-      },
-      {
-        "eventId": "mevt-1794662508339-26-t7er",
-        "sequenceNumber": 26,
-        "missionId": "MARSWALK-001",
-        "timestamp": "2026-11-14T13:21:48.339Z",
-        "actor": "MONTE_CARLO_ENGINE",
-        "entityId": "mc-20261107-100",
-        "eventType": "MONTE_CARLO_EXECUTED",
-        "payload": {
-          "runCount": 100,
-          "seed": 20261107,
-          "successProbabilityPercent": 100
-        },
-        "provenance": {
-          "sourceType": "DERIVED",
-          "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
-          "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
-          "dataMode": "FALLBACK",
-          "uncertainty": {
-            "value": 1,
-            "unit": "score",
-            "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
-          }
-        },
-        "previousEventHash": "9f62baf17b738900972ada66c8b79a6dbfa28491a30c0509dca6ff60aa8b2dec",
-        "eventHash": "62f7fc3699cd9d6c4b25fbf71808d9da08bcf8f56b4b3f08e34ab5f499938421"
-      },
-      {
-        "eventId": "mevt-1794662508506-27-yl39",
-        "sequenceNumber": 27,
-        "missionId": "MARSWALK-001",
-        "timestamp": "2026-11-14T13:21:48.506Z",
-        "actor": "MONTE_CARLO_ENGINE",
-        "entityId": "mc-20261107-100",
-        "eventType": "MONTE_CARLO_EXECUTED",
-        "payload": {
-          "runCount": 100,
-          "seed": 20261107,
-          "successProbabilityPercent": 100
-        },
-        "provenance": {
-          "sourceType": "DERIVED",
-          "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
-          "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
-          "dataMode": "FALLBACK",
-          "uncertainty": {
-            "value": 1,
-            "unit": "score",
-            "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
-          }
-        },
-        "previousEventHash": "62f7fc3699cd9d6c4b25fbf71808d9da08bcf8f56b4b3f08e34ab5f499938421",
-        "eventHash": "4afd6f584a9a4e7e579c4bd7a58315fecafd58d268dbe833fdd3fd4536c410ca"
-      },
-      {
-        "eventId": "mevt-1794662508731-28-bvyq",
-        "sequenceNumber": 28,
-        "missionId": "MARSWALK-001",
-        "timestamp": "2026-11-14T13:21:48.731Z",
-        "actor": "MONTE_CARLO_ENGINE",
-        "entityId": "mc-20261107-100",
-        "eventType": "MONTE_CARLO_EXECUTED",
-        "payload": {
-          "runCount": 100,
-          "seed": 20261107,
-          "successProbabilityPercent": 100
-        },
-        "provenance": {
-          "sourceType": "DERIVED",
-          "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
-          "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
-          "dataMode": "FALLBACK",
-          "uncertainty": {
-            "value": 1,
-            "unit": "score",
-            "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
-          }
-        },
-        "previousEventHash": "4afd6f584a9a4e7e579c4bd7a58315fecafd58d268dbe833fdd3fd4536c410ca",
-        "eventHash": "a1f34ae2c8676493f6131175346a212b1e6de36cd289e1620994ca3b6d115342"
-      },
-      {
-        "eventId": "mevt-1794671754655-29-t91m",
-        "sequenceNumber": 29,
-        "missionId": "DEMO-NOMINAL-9740AA",
-        "timestamp": "2026-11-14T15:55:54.655Z",
-        "actor": "JUDGING_DEMO_ENGINE",
-        "entityId": "DEMO-NOMINAL-9740AA",
-        "eventType": "MISSION_CREATED",
-        "payload": {
-          "simulated": true,
-          "scenarioId": "NOMINAL_EXPLORATION",
-          "seed": 20261112,
-          "batteryPercent": 94,
-          "distanceKm": 0
-        },
-        "provenance": {
-          "sourceType": "DERIVED",
-          "sourceName": "Martian Map Planetary Computation — SIMULATED Judging Demo Engine",
-          "processingMethod": "Mathematical calculation derived from [JudgingDemoService]: Isolated demo mission creation (SIMULATED)",
-          "dataMode": "FALLBACK",
-          "uncertainty": {
-            "value": 1,
-            "unit": "score",
-            "methodology": "Propagated uncertainty from input layers [JudgingDemoService]"
-          }
-        },
-        "previousEventHash": "a1f34ae2c8676493f6131175346a212b1e6de36cd289e1620994ca3b6d115342",
-        "eventHash": "a470ad416d1aa74135c1a55a2138ea21164c443dedc256f6d8909ca9069683ce"
-      },
-      {
-        "eventId": "mevt-1794671754668-30-o3ot",
-        "sequenceNumber": 30,
-        "missionId": "DEMO-NOMINAL-9740AA",
-        "timestamp": "2026-11-14T15:55:54.668Z",
-        "actor": "SIMULATED_SCIENCE_LEAD",
-        "entityId": "tgt-kodiak-butte",
-        "auditRef": "03fb292e40c9990e2681363fbe385ad312ba6fac9644fc942379b46ac1dc4c21",
-        "eventType": "MISSION_UPDATED",
-        "payload": {
-          "action": "SCIENCE_TARGET_ASSIGNED",
-          "decisionId": "scidec-212658f0",
-          "targetId": "tgt-kodiak-butte",
-          "targetName": "Kodiak Butte Delta Remnant",
-          "region": "Jezero Crater",
-          "objectiveId": "ANCIENT_WATER_ACTIVITY",
-          "rationale": "SIMULATED demo selection of Kodiak Butte Delta Remnant for Jezero Delta sampling."
-        },
-        "provenance": {
-          "sourceType": "DERIVED",
-          "sourceName": "Martian Map Planetary Computation — Science Target Assignment: Kodiak Butte Delta Remnant",
-          "processingMethod": "Mathematical calculation derived from [NASA Perseverance Rover Mastcam-Z Long Distance Imaging & CRISM]: Human-approved scientific target association with mission planning workspace",
-          "dataMode": "FALLBACK",
-          "uncertainty": {
-            "value": 1,
-            "unit": "score",
-            "methodology": "Propagated uncertainty from input layers [NASA Perseverance Rover Mastcam-Z Long Distance Imaging & CRISM]"
-          }
-        },
-        "previousEventHash": "a470ad416d1aa74135c1a55a2138ea21164c443dedc256f6d8909ca9069683ce",
-        "eventHash": "977cfa9674a25d7127ac7ae63648a68f30a5822ad02516ff18d61523fe29a804"
-      },
-      {
-        "eventId": "mevt-1794671754762-31-ij92",
-        "sequenceNumber": 31,
-        "missionId": "DEMO-NOMINAL-9740AA",
-        "timestamp": "2026-11-14T15:55:54.762Z",
-        "actor": "SIMULATED_ROUTE_OPTIMIZER",
-        "entityId": "route-demo-9740aa",
-        "eventType": "ROUTE_SELECTED",
-        "payload": {
-          "simulated": true,
-          "distanceKm": 1.85,
-          "batteryPercent": 91,
-          "maxSlopeDeg": 7.8,
-          "feasible": true
-        },
-        "provenance": {
-          "sourceType": "DERIVED",
-          "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
-          "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
-          "dataMode": "FALLBACK",
-          "uncertainty": {
-            "value": 1,
-            "unit": "score",
-            "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
-          }
-        },
-        "previousEventHash": "977cfa9674a25d7127ac7ae63648a68f30a5822ad02516ff18d61523fe29a804",
-        "eventHash": "752f796d1832ab11afed2cd5ab7c0f393ae1193920b4699f0f81f513d95fdc23"
-      },
-      {
-        "eventId": "mevt-1794671754803-32-chls",
-        "sequenceNumber": 32,
-        "missionId": "DEMO-NOMINAL-9740AA",
-        "timestamp": "2026-11-14T15:55:54.803Z",
-        "actor": "ASTRONAUT-01",
-        "eventType": "COMMAND_EXECUTED",
-        "payload": {
-          "evaSessionId": "eva-1794671754772-tfd6",
-          "action": "START",
-          "previousStatus": "PLANNED",
-          "nextStatus": "ACTIVE",
-          "reason": "SIMULATED nominal demo start"
-        },
-        "provenance": {
-          "sourceType": "DERIVED",
-          "sourceName": "Martian Map Planetary Computation — EVA Session Safety Controller",
-          "processingMethod": "Mathematical calculation derived from [Suit Telemetry Model, S1-S8 Invariants]: EVA START",
-          "dataMode": "FALLBACK",
-          "uncertainty": {
-            "value": 1,
-            "unit": "score",
-            "methodology": "Propagated uncertainty from input layers [Suit Telemetry Model, S1-S8 Invariants]"
-          }
-        },
-        "previousEventHash": "752f796d1832ab11afed2cd5ab7c0f393ae1193920b4699f0f81f513d95fdc23",
-        "eventHash": "3d5ea481bdb7d1bd9e511c921b70fa20218e3f53f61a8dd3985f9ebf344f06a8"
+        "previousEventHash": "2aea74987ee6548f106d18762a8198466bba7c60be110330c0499de6055a7a90",
+        "eventHash": "8dac386322ca9fed62e0f1faf008f0a0674de73e29534aae52ac7571a2dd9b62"
       }
     ],
-    "latestEventHash": "3d5ea481bdb7d1bd9e511c921b70fa20218e3f53f61a8dd3985f9ebf344f06a8"
+    "latestEventHash": "8dac386322ca9fed62e0f1faf008f0a0674de73e29534aae52ac7571a2dd9b62"
   }
 }

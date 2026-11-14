@@ -1115,8 +1115,16 @@ export const api = {
     return request<any>(`/data/authentic/observation-plan?${params.toString()}`);
   },
 
-  async getSafeHazardAvoidanceRoute(startLat: number, startLon: number, destLat: number, destLon: number, bufferM?: number): Promise<any> {
+  async getSafeHazardAvoidanceRoute(startLat: number, startLon: number, destLat: number, destLon: number, bufferM?: number, dustStorm?: boolean): Promise<any> {
     const qBuf = bufferM !== undefined ? `&bufferM=${bufferM}` : "";
-    return request<any>(`/data/authentic/safe-route?startLat=${startLat}&startLon=${startLon}&destLat=${destLat}&destLon=${destLon}${qBuf}`);
+    const qDust = dustStorm ? `&dustStorm=true` : "";
+    return request<any>(`/data/authentic/safe-route?startLat=${startLat}&startLon=${startLon}&destLat=${destLat}&destLon=${destLon}${qBuf}${qDust}`);
+  },
+
+  async simulateDustStorm(latitude: number, longitude: number, sol = 100, tau?: number, stormType: string = "REGIONAL_STORM"): Promise<any> {
+    return request<any>("/simulation/dust-storm", {
+      method: "POST",
+      body: JSON.stringify({ latitude, longitude, sol, tau, stormType }),
+    });
   },
 };

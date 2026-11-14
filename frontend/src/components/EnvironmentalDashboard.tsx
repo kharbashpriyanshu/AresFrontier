@@ -10,16 +10,24 @@ import {
   X,
   CheckCircle,
   Radio,
+  Wind,
+  ShieldCheck,
 } from "lucide-react";
 
 interface EnvironmentalDashboardProps {
   coordinate: MarsCoordinate;
   onClose: () => void;
+  isDustStormActive?: boolean;
+  onToggleDustStorm?: (active: boolean) => void;
+  onRequestShelteredReroute?: () => void;
 }
 
 export const EnvironmentalDashboard: React.FC<EnvironmentalDashboardProps> = ({
   coordinate,
   onClose,
+  isDustStormActive,
+  onToggleDustStorm,
+  onRequestShelteredReroute,
 }) => {
   const [sol, setSol] = useState<number>(350);
   const [hour, setHour] = useState<number>(14);
@@ -28,6 +36,46 @@ export const EnvironmentalDashboard: React.FC<EnvironmentalDashboardProps> = ({
   const [atmoData, setAtmoData] = useState<any>(null);
   const [radData, setRadData] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
+
+  const [dustStormActive, setDustStormActive] = useState<boolean>(isDustStormActive || false);
+  const [simulatingStorm, setSimulatingStorm] = useState<boolean>(false);
+  const [stormImpact, setStormImpact] = useState<any>(null);
+
+  useEffect(() => {
+    if (isDustStormActive !== undefined) {
+      setDustStormActive(isDustStormActive);
+    }
+  }, [isDustStormActive]);
+
+  const handleToggleDustStorm = async () => {
+    const nextState = !dustStormActive;
+    setDustStormActive(nextState);
+    if (onToggleDustStorm) {
+      onToggleDustStorm(nextState);
+    }
+
+    if (nextState) {
+      try {
+        setSimulatingStorm(true);
+        const res = await api.simulateDustStorm(
+          coordinate.latitude,
+          coordinate.longitude,
+          sol,
+          2.45,
+          "REGIONAL_STORM"
+        );
+        if (res?.data) {
+          setStormImpact(res.data);
+        }
+      } catch (e) {
+        console.warn("Failed to simulate dust storm impact:", e);
+      } finally {
+        setSimulatingStorm(false);
+      }
+    } else {
+      setStormImpact(null);
+    }
+  };
 
   useEffect(() => {
     let isMounted = true;
@@ -62,6 +110,14 @@ export const EnvironmentalDashboard: React.FC<EnvironmentalDashboardProps> = ({
 
   const kToC = (k: any) =>
     typeof k === "number" && !isNaN(k) ? (k - 273.15).toFixed(1) : "--";
+
+  const effectiveTau = dustStormActive
+    ? (stormImpact?.dustOpticalDepthTau ?? 2.45)
+    : (atmoData?.dustOpticalDepthTau ?? 0.42);
+
+  const solarEfficiencyPct = dustStormActive
+    ? Math.max(15, 100 - (stormImpact?.solarReductionPercent ?? 65))
+    : 100;
 
   return (
     <div className="absolute top-24 right-4 z-40 w-96 max-w-[calc(100vw-2rem)] bg-atlas-surface/95 border border-atlas-border backdrop-blur-md shadow-2xl p-4 font-mono text-xs text-atlas-text flex flex-col space-y-3 pointer-events-auto">
@@ -137,6 +193,89 @@ export const EnvironmentalDashboard: React.FC<EnvironmentalDashboardProps> = ({
         </div>
       </div>
 
+      {/* Dynamic Regional Dust Storm Dynamic Impact Simulator */}
+      <div
+        className={`p-2.5 border transition-all ${
+          dustStormActive
+            ? "bg-amber-950/30 border-amber-500/80 shadow-md"
+            : "bg-atlas-bg/60 border-atlas-border"
+        }`}
+      >
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-2">
+            <Wind
+              className={`w-4 h-4 ${
+                dustStormActive ? "text-amber-400 animate-pulse" : "text-atlas-muted"
+              }`}
+            />
+            <div>
+              <span className="font-bold text-[11px] text-atlas-text uppercase tracking-wider block">
+                Regional Dust Storm Simulator
+              </span>
+              <span className="text-[9px] text-atlas-muted block">
+                {dustStormActive
+                  ? "NASA MEDA Tau Spiked (>2.1) · Solar Impairment -65%"
+                  : "Nominal clear-sky conditions (τ ≈ 0.42)"}
+              </span>
+            </div>
+          </div>
+          <button
+            onClick={handleToggleDustStorm}
+            disabled={simulatingStorm}
+            className={`px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider border transition-all ${
+              dustStormActive
+                ? "bg-amber-500 text-black border-amber-400 shadow-md ring-1 ring-amber-400"
+                : "bg-atlas-elevated hover:bg-atlas-surface text-atlas-text border-atlas-border"
+            }`}
+          >
+            {simulatingStorm ? "Simulating..." : dustStormActive ? "Storm Active" : "Simulate Storm"}
+          </button>
+        </div>
+
+        {dustStormActive && (
+          <div className="mt-2.5 pt-2 border-t border-amber-800/40 space-y-2 text-[10px]">
+            <div className="grid grid-cols-2 gap-2">
+              <div className="bg-atlas-surface/90 p-2 border border-amber-800/50">
+                <span className="text-atlas-muted block text-[9px]">Optical Depth (τ):</span>
+                <span className="text-amber-400 font-bold text-xs">
+                  τ = {safeFixed(effectiveTau, 2)} [SEVERE]
+                </span>
+                <span className="text-[8px] text-atlas-muted block mt-0.5">Nominal: 0.42</span>
+              </div>
+              <div className="bg-atlas-surface/90 p-2 border border-amber-800/50">
+                <span className="text-atlas-muted block text-[9px]">Rover Solar Efficiency:</span>
+                <span className="text-atlas-red font-bold text-xs">
+                  {solarEfficiencyPct}% (-65% Drop)
+                </span>
+                <span className="text-[8px] text-atlas-muted block mt-0.5">Flux: ~189 W/m²</span>
+              </div>
+            </div>
+
+            <div className="p-2 bg-amber-950/60 border border-amber-700/60 text-amber-200 text-[10px] flex items-start space-x-2">
+              <AlertTriangle className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
+              <div className="space-y-0.5">
+                <div className="font-bold uppercase tracking-wider text-[9px] text-amber-400">
+                  Atmospheric Hazard & Safe Traverse Rule
+                </div>
+                <div>
+                  Long-distance legs (&gt;1.2 km) flagged high-risk. A* route planner instructed to bypass exposed ridges and seek sheltered canyon corridors.
+                </div>
+              </div>
+            </div>
+
+            {onRequestShelteredReroute && (
+              <button
+                onClick={onRequestShelteredReroute}
+                className="w-full py-1.5 bg-atlas-teal hover:bg-atlas-teal-hover text-atlas-bg font-bold flex items-center justify-center space-x-1.5 text-[10px] uppercase tracking-wider transition-colors shadow-sm"
+              >
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>Reroute via Sheltered Canyon Corridors (A*)</span>
+              </button>
+            )}
+          </div>
+        )}
+      </div>
+
       {loading ? (
         <div className="py-8 flex flex-col items-center justify-center space-y-2 text-atlas-muted">
           <div className="w-5 h-5 border-2 border-atlas-teal border-t-transparent animate-spin rounded-full" />
@@ -205,34 +344,60 @@ export const EnvironmentalDashboard: React.FC<EnvironmentalDashboardProps> = ({
           </div>
 
           {/* Dust Conditions */}
-          <div className="bg-atlas-bg/60 border border-atlas-border/60 p-2.5">
+          <div
+            className={`border p-2.5 transition-colors ${
+              dustStormActive
+                ? "bg-amber-950/40 border-amber-500/60"
+                : "bg-atlas-bg/60 border-atlas-border/60"
+            }`}
+          >
             <div className="flex items-center justify-between text-atlas-muted mb-2 text-[11px]">
               <span className="flex items-center space-x-1.5 font-semibold text-atlas-text">
                 <Sun className="w-3.5 h-3.5 text-amber-400" />
                 <span>Dust Environment & Visibility</span>
               </span>
-              <span className="text-[10px] text-amber-400 bg-amber-950/40 px-1.5 py-0.5 border border-amber-800/50">
-                τ = {safeFixed(atmoData.dustOpticalDepthTau, 2)}
+              <span
+                className={`text-[10px] px-1.5 py-0.5 border font-bold ${
+                  dustStormActive
+                    ? "text-amber-300 bg-amber-900/60 border-amber-500"
+                    : "text-amber-400 bg-amber-950/40 border-amber-800/50"
+                }`}
+              >
+                τ = {safeFixed(effectiveTau, 2)} {dustStormActive ? "[SPIKED]" : ""}
               </span>
             </div>
             <div className="flex items-center justify-between text-[11px]">
-              <span className="text-atlas-muted">Dust Devil Activity:</span>
+              <span className="text-atlas-muted">Dust Storm State:</span>
               <span
                 className={`font-semibold ${
-                  atmoData.dustDevilActivityRisk === "HIGH"
+                  dustStormActive
+                    ? "text-amber-400 font-bold"
+                    : atmoData.dustDevilActivityRisk === "HIGH"
                     ? "text-atlas-red"
                     : atmoData.dustDevilActivityRisk === "MODERATE"
                     ? "text-amber-400"
                     : "text-emerald-400"
                 }`}
               >
-                {atmoData.dustDevilActivityRisk || "NOMINAL"}
+                {dustStormActive ? "REGIONAL STORM ACTIVE" : atmoData.dustDevilActivityRisk || "NOMINAL"}
+              </span>
+            </div>
+            <div className="flex items-center justify-between text-[10px] text-atlas-muted mt-1">
+              <span>Rover Solar Array:</span>
+              <span className={`font-semibold ${dustStormActive ? "text-atlas-red" : "text-emerald-400"}`}>
+                {solarEfficiencyPct}% {dustStormActive ? "(-65% Impairment)" : "Nominal"}
+              </span>
+            </div>
+            <div className="flex items-center justify-between text-[10px] text-atlas-muted mt-1">
+              <span>Surface Visibility:</span>
+              <span className="text-atlas-text font-semibold">
+                {dustStormActive ? "~750 meters (Hazy)" : "25+ km (Clear)"}
               </span>
             </div>
             <div className="text-[10px] text-atlas-muted mt-1">
               Spacesuit Thermal Load:{" "}
               <span className="text-atlas-teal font-semibold">
-                {atmoData.suitThermalRegulationComfort || "NOMINAL"}
+                {dustStormActive ? "MODERATE COOLING DEMAND" : atmoData.suitThermalRegulationComfort || "NOMINAL"}
               </span>
             </div>
           </div>

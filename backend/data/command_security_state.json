@@ -6,10 +6,10 @@
     "role": "MISSION_COMMAND",
     "agentId": "agent-rover-01",
     "command": "PAUSE",
-    "issuedAt": 1794649121031,
-    "expiresAt": 1794649181031,
+    "issuedAt": 1794678204301,
+    "expiresAt": 1794678264301,
     "status": "EXECUTED",
-    "processedAt": "2026-11-14T09:38:41.031Z"
+    "processedAt": "2026-11-14T17:43:24.301Z"
   },
   {
     "commandId": "cmd-restart-test-006",
@@ -18,9 +18,9 @@
     "role": "MISSION_COMMAND",
     "agentId": "agent-rover-01",
     "command": "PAUSE",
-    "issuedAt": 1794649121031,
-    "expiresAt": 1794649181031,
+    "issuedAt": 1794678204301,
+    "expiresAt": 1794678264301,
     "status": "REJECTED",
-    "processedAt": "2026-11-14T09:38:41.044Z"
+    "processedAt": "2026-11-14T17:43:24.322Z"
   }
 ]

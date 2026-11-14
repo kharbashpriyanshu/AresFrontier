@@ -8,7 +8,7 @@ import {
   ScienceObjective,
   ScienceObjectiveId,
 } from "../types/index.js";
-import { formatMarsCoordinate } from "../utils/marsCoordinates.js";
+import { formatMarsCoordinate, calculateMarsDistanceKm } from "../utils/marsCoordinates.js";
 import { ElevationProfileChart } from "./ElevationProfileChart.js";
 import { api } from "../services/api.js";
 import {
@@ -21,6 +21,8 @@ import {
   ShieldCheck,
   X,
   MapPin,
+  Wind,
+  AlertTriangle,
 } from "lucide-react";
 
 interface RoutePlannerProps {
@@ -43,6 +45,7 @@ interface RoutePlannerProps {
   onRunCopilotOptimizer?: () => Promise<void>;
   isOptimizing?: boolean;
   onClose?: () => void;
+  isDustStormActive?: boolean;
 }
 
 export const RoutePlanner: React.FC<RoutePlannerProps> = ({
@@ -64,6 +67,7 @@ export const RoutePlanner: React.FC<RoutePlannerProps> = ({
   onRunCopilotOptimizer,
   isOptimizing = false,
   onClose,
+  isDustStormActive = false,
 }) => {
   const [isGenerating, setIsGenerating] = useState<boolean>(false);
   const [selectedScienceTargetId, setSelectedScienceTargetId] = useState<string>("");
@@ -121,7 +125,8 @@ export const RoutePlanner: React.FC<RoutePlannerProps> = ({
         start.longitude,
         dest.latitude,
         dest.longitude,
-        150
+        150,
+        isDustStormActive
       );
 
       if (res && res.routePoints && res.routePoints.length > 2) {
@@ -132,17 +137,31 @@ export const RoutePlanner: React.FC<RoutePlannerProps> = ({
             id: `pt-detour-${idx + 1}`,
             coordinate: pt,
             type: "waypoint" as const,
-            label: `A* Detour Pass ${idx + 1}`,
+            label: isDustStormActive
+              ? `Canyon Shelter Waypoint ${idx + 1}`
+              : `A* Detour Pass ${idx + 1}`,
           })),
           points[points.length - 1],
         ];
         setPoints(newPts);
         await onGenerateRoute(newPts);
-        setHazardAvoidanceMsg(
-          `A* Safe Reroute: Bypassed ${res.hazardsBypassed?.length || 1} obstacle envelope(s) with >=100m buffer.`
-        );
+        if (res.shelteredCorridorEnforced) {
+          setHazardAvoidanceMsg(
+            `A* Canyon Sheltered Reroute: Bypassed exposed ridges & ${
+              res.hazardsBypassed?.length || 0
+            } obstacle(s) via depression corridors to mitigate storm dust shear.`
+          );
+        } else {
+          setHazardAvoidanceMsg(
+            `A* Safe Reroute: Bypassed ${res.hazardsBypassed?.length || 1} obstacle envelope(s) with >=100m buffer.`
+          );
+        }
       } else {
-        setHazardAvoidanceMsg("Direct path verified safe: Zero scarp or obstacle conflicts detected.");
+        setHazardAvoidanceMsg(
+          isDustStormActive
+            ? "A* Corridor: Direct path checked. Traversal within sheltered corridor criteria."
+            : "Direct path verified safe: Zero scarp or obstacle conflicts detected."
+        );
       }
     } catch (err: any) {
       setHazardAvoidanceMsg(err?.message || "Failed to compute hazard avoidance path.");
@@ -263,6 +282,9 @@ export const RoutePlanner: React.FC<RoutePlannerProps> = ({
               const isStart = index === 0;
               const isDest = index === points.length - 1;
               const isScience = point.type === "science";
+              const prevPoint = index > 0 ? points[index - 1] : null;
+              const legDistKm = prevPoint ? calculateMarsDistanceKm(prevPoint.coordinate, point.coordinate) : 0;
+              const isLongLeg = legDistKm > 1.2;
 
               return (
                 <div
@@ -312,6 +334,15 @@ export const RoutePlanner: React.FC<RoutePlannerProps> = ({
                     <span>{formatMarsCoordinate(point.coordinate)}</span>
                     <span className="capitalize text-atlas-muted">{point.type}</span>
                   </div>
+
+                  {isDustStormActive && isLongLeg && (
+                    <div className="mt-2 p-1.5 bg-amber-950/50 border border-amber-600/70 text-amber-300 text-[9px] flex items-center space-x-1.5">
+                      <AlertTriangle className="w-3 h-3 text-amber-400 shrink-0" />
+                      <span>
+                        Leg distance: {legDistKm.toFixed(1)} km &gt; 1.2 km limit — High Dust Exposure Flagged
+                      </span>
+                    </div>
+                  )}
                 </div>
               );
             })}
@@ -432,6 +463,18 @@ export const RoutePlanner: React.FC<RoutePlannerProps> = ({
             <span className="text-[10px] text-atlas-muted">A* Pathfinding</span>
           </div>
 
+          {isDustStormActive && (
+            <div className="p-2.5 bg-amber-950/40 border border-amber-500/70 text-[10px] space-y-1">
+              <div className="flex items-center space-x-1.5 text-amber-400 font-bold uppercase">
+                <Wind className="w-3.5 h-3.5" />
+                <span>Regional Dust Storm Impact Active (τ &gt; 2.1)</span>
+              </div>
+              <div className="text-amber-200">
+                Rover solar generation dropped by 65%. A* router will prefer sheltered canyon depression corridors to protect crew &amp; equipment.
+              </div>
+            </div>
+          )}
+
           <div className="grid grid-cols-2 gap-2">
             <button
               onClick={handleGenerate}
@@ -445,11 +488,21 @@ export const RoutePlanner: React.FC<RoutePlannerProps> = ({
             <button
               onClick={handleApplyHazardAvoidance}
               disabled={isReroutingSafe || points.length < 2}
-              className="w-full py-2.5 bg-atlas-surface hover:bg-atlas-elevated text-atlas-text border border-atlas-border hover:border-atlas-teal font-bold flex items-center justify-center space-x-1.5 transition-all disabled:opacity-40 shadow-sm text-xs"
+              className={`w-full py-2.5 bg-atlas-surface hover:bg-atlas-elevated text-atlas-text border font-bold flex items-center justify-center space-x-1.5 transition-all disabled:opacity-40 shadow-sm text-xs ${
+                isDustStormActive
+                  ? "border-amber-500/80 hover:border-amber-400 text-amber-300"
+                  : "border-atlas-border hover:border-atlas-teal"
+              }`}
               title="Compute A* Terrain Detour to bypass scarps, boulder fields, and steep inclines"
             >
-              <ShieldCheck className="w-3.5 h-3.5 text-atlas-teal" />
-              <span>{isReroutingSafe ? "Routing A*..." : "Avoid Hazards (A*)"}</span>
+              <ShieldCheck className={`w-3.5 h-3.5 ${isDustStormActive ? "text-amber-400" : "text-atlas-teal"}`} />
+              <span>
+                {isReroutingSafe
+                  ? "Routing A*..."
+                  : isDustStormActive
+                  ? "Sheltered Canyon (A*)"
+                  : "Avoid Hazards (A*)"}
+              </span>
             </button>
           </div>
 

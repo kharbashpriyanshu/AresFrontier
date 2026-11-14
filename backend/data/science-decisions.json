@@ -96,19 +96,19 @@
     "eventId": "mevt-1794649110645-9-8lmu"
   },
   {
-    "id": "scidec-212658f0",
-    "targetId": "tgt-kodiak-butte",
-    "targetName": "Kodiak Butte Delta Remnant",
-    "region": "Jezero Crater",
-    "missionId": "DEMO-NOMINAL-9740AA",
-    "objectiveId": "ANCIENT_WATER_ACTIVITY",
-    "rationale": "SIMULATED demo selection of Kodiak Butte Delta Remnant for Jezero Delta sampling.",
-    "actor": "SIMULATED_SCIENCE_LEAD",
-    "provenanceClassification": "BENCHMARK",
-    "evidenceStatus": "verified_in_situ",
-    "dataSource": "NASA Perseverance Rover Mastcam-Z Long Distance Imaging & CRISM",
-    "createdAt": "2026-11-14T15:55:54.664Z",
-    "auditBlockHash": "03fb292e40c9990e2681363fbe385ad312ba6fac9644fc942379b46ac1dc4c21",
-    "eventId": "mevt-1794671754668-30-o3ot"
+    "id": "scidec-ba8b5e12",
+    "targetId": "tgt-oxia-planum",
+    "targetName": "Oxia Planum Fe/Mg-Phyllosilicate Plain",
+    "region": "Oxia Planum",
+    "missionId": "MARSWALK-DRAFT-TEST",
+    "objectiveId": "ASTROBIOLOGY_RELEVANCE",
+    "rationale": "Investigate Oxia Planum Fe/Mg phyllosilicates",
+    "actor": "SCIENCE_LEAD",
+    "provenanceClassification": "DERIVED",
+    "evidenceStatus": "orbital_only",
+    "dataSource": "NASA MRO CRISM / HiRISE & ESA Mars Express OMEGA",
+    "createdAt": "2026-11-14T17:43:15.059Z",
+    "auditBlockHash": "a8c22e6c2fad516862ade07dc1e60b5db843c7d5f9900ed088aef300ef52363d",
+    "eventId": "mevt-1794678195061-9-71d2"
   }
 ]

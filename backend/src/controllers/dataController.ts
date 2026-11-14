@@ -495,24 +495,35 @@ export function getObservationPlan(req: Request, res: Response): void {
 // ============================================================================
 
 export function getSafeHazardAvoidanceRoute(req: Request, res: Response): void {
-  const startLat = req.query.startLat ? Number(req.query.startLat) : 18.4447;
-  const startLon = req.query.startLon ? Number(req.query.startLon) : 77.4508;
-  const destLat = req.query.destLat ? Number(req.query.destLat) : 18.4230;
-  const destLon = req.query.destLon ? Number(req.query.destLon) : 77.4110;
-  const bufferM = req.query.bufferM ? Number(req.query.bufferM) : 150;
-  const maxSlope = req.query.maxSlope ? Number(req.query.maxSlope) : 15;
+  const startLat = req.query.startLat ? Number(req.query.startLat) : (req.body?.startLat ? Number(req.body.startLat) : 18.4447);
+  const startLon = req.query.startLon ? Number(req.query.startLon) : (req.body?.startLon ? Number(req.body.startLon) : 77.4508);
+  const destLat = req.query.destLat ? Number(req.query.destLat) : (req.body?.destLat ? Number(req.body.destLat) : 18.4230);
+  const destLon = req.query.destLon ? Number(req.query.destLon) : (req.body?.destLon ? Number(req.body.destLon) : 77.4110);
+  const bufferM = req.query.bufferM ? Number(req.query.bufferM) : (req.body?.bufferM ? Number(req.body.bufferM) : 150);
+  const maxSlope = req.query.maxSlope ? Number(req.query.maxSlope) : (req.body?.maxSlope ? Number(req.body.maxSlope) : 15);
+  const dustStormActive =
+    req.query.dustStorm === "true" ||
+    req.query.preferShelteredCanyons === "true" ||
+    Boolean(req.body?.dustStormActive || req.body?.preferShelteredCanyons || req.body?.dustStorm);
 
   const result = hazardAvoidanceRouter.planSafeRoute(
     { latitude: startLat, longitude: startLon },
     { latitude: destLat, longitude: destLon },
-    { safetyBufferM: bufferM, maxAllowableSlopeDegrees: maxSlope }
+    {
+      safetyBufferM: bufferM,
+      maxAllowableSlopeDegrees: maxSlope,
+      dustStormActive,
+      preferShelteredCanyons: dustStormActive,
+    }
   );
 
   res.json({
     success: true,
     data: result,
     metadata: {
-      algorithm: "A* Tangent Corridor Cost-Gradient",
+      algorithm: dustStormActive
+        ? "A* Sheltered Canyon Cost-Gradient Search"
+        : "A* Tangent Corridor Cost-Gradient",
       timestamp: new Date().toISOString(),
     },
   });

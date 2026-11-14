@@ -95,6 +95,7 @@ export const MapPage: React.FC = () => {
 
   // Milestone 6 & 7 Tactical & Operations HUDs
   const [showWeatherHud, setShowWeatherHud] = useState<boolean>(false);
+  const [isDustStormActive, setIsDustStormActive] = useState<boolean>(false);
   const [showRfOverlay, setShowRfOverlay] = useState<boolean>(false);
   const [showTacticalGrid, setShowTacticalGrid] = useState<boolean>(false);
   const [showSurfacePhotos, setShowSurfacePhotos] = useState<boolean>(false);
@@ -580,14 +581,16 @@ export const MapPage: React.FC = () => {
             <button
               onClick={() => setShowWeatherHud(!showWeatherHud)}
               className={`px-2 py-1 flex items-center space-x-1.5 border transition-all ${
-                showWeatherHud
+                isDustStormActive
+                  ? "bg-amber-950/80 text-amber-300 border-amber-500 font-bold shadow-md animate-pulse"
+                  : showWeatherHud
                   ? "bg-atlas-elevated text-atlas-amber border-atlas-amber font-bold shadow-sm"
                   : "bg-atlas-bg/60 border-atlas-border/80 text-atlas-muted hover:text-atlas-text hover:bg-atlas-elevated"
               }`}
               title="Toggle Martian Diurnal Weather & Radiation HUD (MEDA / RAD)"
             >
-              <CloudSun className="w-3.5 h-3.5 text-atlas-amber" />
-              <span>Sol Weather</span>
+              <CloudSun className={`w-3.5 h-3.5 ${isDustStormActive ? "text-amber-400" : "text-atlas-amber"}`} />
+              <span>{isDustStormActive ? "Storm Active (τ 2.45)" : "Sol Weather"}</span>
             </button>
 
             <button
@@ -768,6 +771,11 @@ export const MapPage: React.FC = () => {
           <EnvironmentalDashboard
             coordinate={hudCoord}
             onClose={() => setShowWeatherHud(false)}
+            isDustStormActive={isDustStormActive}
+            onToggleDustStorm={(active) => setIsDustStormActive(active)}
+            onRequestShelteredReroute={() => {
+              setActiveDrawer("planner");
+            }}
           />
         )}
 
@@ -860,6 +868,7 @@ export const MapPage: React.FC = () => {
           onSelectObjective={setSelectedObjectiveId}
           onRunCopilotOptimizer={handleRunCopilotOptimizer}
           isOptimizing={isOptimizing}
+          isDustStormActive={isDustStormActive}
           onClose={() => setActiveDrawer(null)}
         />
       )}
@@ -1022,13 +1031,29 @@ export const MapPage: React.FC = () => {
                 <div className="text-[11px] text-atlas-muted font-mono">Pure CO2, Jezero datum</div>
               </div>
 
-              <div className="p-4 bg-atlas-elevated border border-atlas-border space-y-1">
-                <div className="flex items-center space-x-1.5 text-xs text-atlas-muted font-mono">
-                  <Sun className="w-3.5 h-3.5 text-atlas-accent" />
-                  <span>Direct Solar Flux</span>
+              <div
+                className={`p-4 border space-y-1 transition-colors ${
+                  isDustStormActive
+                    ? "bg-amber-950/40 border-amber-500/80 shadow-md"
+                    : "bg-atlas-elevated border-atlas-border"
+                }`}
+              >
+                <div className="flex items-center space-x-1.5 text-xs font-mono">
+                  <Sun className={`w-3.5 h-3.5 ${isDustStormActive ? "text-amber-400" : "text-atlas-accent"}`} />
+                  <span className={isDustStormActive ? "text-amber-300 font-bold" : "text-atlas-muted"}>
+                    {isDustStormActive ? "Solar Flux (Attenuated -65%)" : "Direct Solar Flux"}
+                  </span>
                 </div>
-                <div className="text-2xl font-bold font-mono text-atlas-text">590 W/m²</div>
-                <div className="text-[11px] text-atlas-muted font-mono">Tau dust opacity: 0.42</div>
+                <div className={`text-2xl font-bold font-mono ${isDustStormActive ? "text-amber-300" : "text-atlas-text"}`}>
+                  {isDustStormActive ? "189 W/m²" : "590 W/m²"}
+                </div>
+                <div className="text-[11px] font-mono">
+                  {isDustStormActive ? (
+                    <span className="text-amber-400 font-bold">Tau dust opacity: 2.45 [SEVERE STORM]</span>
+                  ) : (
+                    <span className="text-atlas-muted">Tau dust opacity: 0.42</span>
+                  )}
+                </div>
               </div>
 
               <div className="p-4 bg-atlas-elevated border border-atlas-border space-y-1">
