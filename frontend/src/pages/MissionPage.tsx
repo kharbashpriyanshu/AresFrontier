@@ -477,10 +477,10 @@ export const MissionPage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-atlas-bg text-atlas-text font-sans p-4 md:p-6 pb-24 transition-colors">
+    <div className="min-h-screen bg-atlas-bg text-atlas-text font-sans pb-32 transition-colors">
       {/* Toast Notification */}
       {notificationMsg && (
-        <div className="fixed bottom-6 right-6 z-50 bg-atlas-elevated border border-atlas-accent text-atlas-text px-4 py-3 rounded shadow-2xl font-mono text-xs flex items-center gap-2 animate-in fade-in slide-in-from-bottom-2">
+        <div className="fixed bottom-6 right-6 z-50 bg-atlas-elevated border border-atlas-accent/50 text-atlas-text px-5 py-3.5 rounded-xl shadow-2xl font-mono text-xs flex items-center gap-3 animate-in fade-in slide-in-from-bottom-2">
           <CheckCircle2 className="w-4 h-4 text-atlas-accent shrink-0" />
           <span>{notificationMsg}</span>
         </div>
@@ -495,60 +495,63 @@ export const MissionPage: React.FC = () => {
 
       {/* Create / Edit Mission Modal */}
       {missionModalMode && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
           <form
             onSubmit={handleSubmitMissionModal}
-            className="w-full max-w-lg bg-atlas-surface border border-atlas-border p-6 rounded shadow-2xl space-y-4 font-mono text-xs"
+            className="w-full max-w-lg bg-atlas-surface border border-atlas-border p-6 md:p-8 rounded-2xl shadow-2xl space-y-5 font-mono text-xs"
           >
-            <div className="flex items-center justify-between border-b border-atlas-border pb-3">
-              <h2 className="text-sm font-bold font-display text-atlas-text uppercase tracking-wider">
-                {missionModalMode === "create" ? "Create New EVA Mission" : `Edit Mission (${activeMission?.id})`}
-              </h2>
+            <div className="flex items-center justify-between border-b border-atlas-border pb-4">
+              <div>
+                <span className="text-[10px] font-bold tracking-widest text-atlas-accent uppercase block">Operations Registry</span>
+                <h2 className="text-base font-bold font-display text-atlas-text uppercase tracking-wider mt-0.5">
+                  {missionModalMode === "create" ? "Create New EVA Mission" : `Edit Mission (${activeMission?.id})`}
+                </h2>
+              </div>
               <button
                 type="button"
                 onClick={() => setMissionModalMode(null)}
-                className="text-atlas-muted hover:text-atlas-text"
+                className="p-1.5 text-atlas-muted hover:text-atlas-text rounded-lg hover:bg-atlas-elevated transition-colors"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
 
             {formError && (
-              <div className="p-2.5 bg-red-500/10 border border-red-500/40 text-red-400 text-xs">
+              <div className="p-3 bg-red-500/10 border border-red-500/40 text-red-400 text-xs rounded-lg">
                 {formError}
               </div>
             )}
 
-            <div className="space-y-1">
-              <label className="block text-atlas-muted uppercase text-[10px]">Mission Name *</label>
+            <div className="space-y-1.5">
+              <label className="block text-atlas-muted uppercase text-[10px] tracking-wider font-semibold">Mission Name *</label>
               <input
                 type="text"
                 value={formName}
                 onChange={(e) => setFormName(e.target.value)}
                 placeholder="e.g., Sol 104 Kodiak Core Sampling EVA"
-                className="w-full bg-atlas-elevated border border-atlas-border rounded px-3 py-2 text-atlas-text focus:outline-none focus:border-atlas-accent"
+                className="w-full bg-atlas-elevated border border-atlas-border rounded-lg px-3.5 py-2.5 text-atlas-text placeholder:text-atlas-muted/50 focus:outline-none focus:border-atlas-accent transition-colors"
                 required
               />
             </div>
 
-            <div className="space-y-1">
-              <label className="block text-atlas-muted uppercase text-[10px]">Mission Description</label>
+            <div className="space-y-1.5">
+              <label className="block text-atlas-muted uppercase text-[10px] tracking-wider font-semibold">Mission Description</label>
               <textarea
                 value={formDescription}
                 onChange={(e) => setFormDescription(e.target.value)}
                 rows={2}
                 placeholder="Operational summary, sampling goals, or contingency notes..."
-                className="w-full bg-atlas-elevated border border-atlas-border rounded px-3 py-2 text-atlas-text focus:outline-none focus:border-atlas-accent"
+                className="w-full bg-atlas-elevated border border-atlas-border rounded-lg px-3.5 py-2.5 text-atlas-text placeholder:text-atlas-muted/50 focus:outline-none focus:border-atlas-accent transition-colors"
               />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              <div className="space-y-1">
-                <label className="block text-atlas-muted uppercase text-[10px]">Science Objective</label>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-1.5">
+                <label className="block text-atlas-muted uppercase text-[10px] tracking-wider font-semibold">Science Objective</label>
                 <select
                   value={formObjectiveId}
                   onChange={(e) => setFormObjectiveId(e.target.value as ScienceObjectiveId)}
-                  className="w-full bg-atlas-elevated border border-atlas-border rounded px-2.5 py-2 text-atlas-text"
+                  className="w-full bg-atlas-elevated border border-atlas-border rounded-lg px-3 py-2.5 text-atlas-text focus:outline-none focus:border-atlas-accent"
                 >
                   <option value="ANCIENT_WATER_ACTIVITY">Ancient Water Activity</option>
                   <option value="PAST_HABITABILITY">Past Habitability</option>
@@ -558,12 +561,12 @@ export const MissionPage: React.FC = () => {
                 </select>
               </div>
 
-              <div className="space-y-1">
-                <label className="block text-atlas-muted uppercase text-[10px]">Traverse Route</label>
+              <div className="space-y-1.5">
+                <label className="block text-atlas-muted uppercase text-[10px] tracking-wider font-semibold">Traverse Route</label>
                 <select
                   value={formRouteId}
                   onChange={(e) => setFormRouteId(e.target.value)}
-                  className="w-full bg-atlas-elevated border border-atlas-border rounded px-2.5 py-2 text-atlas-text"
+                  className="w-full bg-atlas-elevated border border-atlas-border rounded-lg px-3 py-2.5 text-atlas-text focus:outline-none focus:border-atlas-accent"
                 >
                   {allRoutes.map((r) => (
                     <option key={r.id} value={r.id}>
@@ -574,41 +577,42 @@ export const MissionPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 items-center">
-              <div className="space-y-1">
-                <label className="block text-atlas-muted uppercase text-[10px]">Max Duration (min)</label>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+              <div className="space-y-1.5">
+                <label className="block text-atlas-muted uppercase text-[10px] tracking-wider font-semibold">Max Duration (min)</label>
                 <input
                   type="number"
                   min={30}
                   max={600}
                   value={formMaxDuration}
                   onChange={(e) => setFormMaxDuration(Number(e.target.value))}
-                  className="w-full bg-atlas-elevated border border-atlas-border rounded px-3 py-2 text-atlas-text"
+                  className="w-full bg-atlas-elevated border border-atlas-border rounded-lg px-3.5 py-2.5 text-atlas-text focus:outline-none focus:border-atlas-accent"
                 />
               </div>
 
-              <label className="flex items-center space-x-2 pt-4 cursor-pointer text-atlas-text">
+              <label className="flex items-center space-x-2.5 pt-4 cursor-pointer text-atlas-text">
                 <input
                   type="checkbox"
                   checked={formReturnRequired}
                   onChange={(e) => setFormReturnRequired(e.target.checked)}
+                  className="rounded border-atlas-border text-atlas-accent focus:ring-0 w-4 h-4"
                 />
-                <span>Require S3 Return Reserve</span>
+                <span className="text-xs font-semibold">Require S3 Return Reserve</span>
               </label>
             </div>
 
-            <div className="flex justify-end gap-2 pt-3 border-t border-atlas-border">
+            <div className="flex justify-end gap-3 pt-4 border-t border-atlas-border">
               <button
                 type="button"
                 onClick={() => setMissionModalMode(null)}
-                className="px-3 py-1.5 border border-atlas-border text-atlas-muted hover:text-atlas-text rounded"
+                className="px-4 py-2 border border-atlas-border text-atlas-muted hover:text-atlas-text hover:bg-atlas-elevated rounded-lg transition-colors"
               >
                 Cancel
               </button>
               <button
                 type="submit"
                 disabled={isSubmittingMission}
-                className="px-4 py-1.5 bg-atlas-accent hover:bg-atlas-accent/90 text-white font-bold rounded disabled:opacity-50"
+                className="px-5 py-2 bg-atlas-accent hover:bg-atlas-accent-dark text-white font-bold rounded-lg disabled:opacity-50 transition-colors shadow-lg shadow-atlas-accent/20"
               >
                 {isSubmittingMission ? "Saving..." : missionModalMode === "create" ? "Create Mission" : "Save Changes"}
               </button>
@@ -617,187 +621,191 @@ export const MissionPage: React.FC = () => {
         </div>
       )}
 
-      {/* Top Header Bar */}
-      <div className="max-w-7xl mx-auto mb-6 flex flex-col gap-4 border-b border-atlas-border pb-4">
-        {/* Mission Management Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-3 bg-atlas-surface border border-atlas-border px-3 py-2 rounded">
-          <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-[11px] font-mono font-bold text-atlas-muted uppercase">Active Mission:</span>
-            <select
-              aria-label="Active Mission Selector"
-              value={activeMission?.id || ""}
-              onChange={(e) => handleSelectMission(e.target.value)}
-              className="bg-atlas-elevated border border-atlas-border rounded px-2.5 py-1 text-xs font-mono text-atlas-text min-w-[240px]"
-            >
-              {missions.length === 0 && <option value="">Unsaved Route Plan</option>}
-              {missions.map((m) => (
-                <option key={m.id} value={m.id}>
-                  {m.name} [{m.status}]
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={openCreateMissionModal}
-              className="flex items-center gap-1 px-2.5 py-1 bg-atlas-accent/15 border border-atlas-accent text-atlas-text hover:bg-atlas-accent/25 rounded text-xs font-mono font-semibold"
-            >
-              <Plus className="w-3.5 h-3.5 text-atlas-accent" />
-              <span>New Mission</span>
-            </button>
-            {activeMission && (
+      {/* Editorial Header Section */}
+      <div className="border-b border-atlas-border bg-atlas-surface/40 backdrop-blur-md">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 py-6 md:py-8 space-y-6">
+          {/* Mission Management Bar */}
+          <div className="flex flex-wrap items-center justify-between gap-4 bg-atlas-surface border border-atlas-border px-4 py-3 rounded-xl shadow-lg">
+            <div className="flex items-center gap-3 flex-wrap">
+              <span className="text-[10px] font-mono font-bold tracking-widest text-atlas-muted uppercase">
+                Active Mission:
+              </span>
+              <select
+                aria-label="Active Mission Selector"
+                value={activeMission?.id || ""}
+                onChange={(e) => handleSelectMission(e.target.value)}
+                className="bg-atlas-elevated border border-atlas-border rounded-lg px-3 py-1.5 text-xs font-mono font-medium text-atlas-text min-w-[260px] focus:outline-none focus:border-atlas-accent"
+              >
+                {missions.length === 0 && <option value="">Unsaved Route Plan</option>}
+                {missions.map((m) => (
+                  <option key={m.id} value={m.id}>
+                    {m.name} [{m.status}]
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="flex items-center gap-2">
               <button
                 type="button"
-                onClick={openEditMissionModal}
-                className="flex items-center gap-1 px-2.5 py-1 bg-atlas-elevated border border-atlas-border text-atlas-text hover:border-atlas-accent rounded text-xs font-mono font-semibold"
+                onClick={openCreateMissionModal}
+                className="flex items-center gap-1.5 px-3 py-1.5 bg-atlas-accent/15 border border-atlas-accent/40 text-atlas-accent hover:bg-atlas-accent/25 rounded-lg text-xs font-mono font-semibold transition-colors"
               >
-                <Edit3 className="w-3.5 h-3.5 text-atlas-blue" />
-                <span>Edit Mission</span>
+                <Plus className="w-3.5 h-3.5" />
+                <span>New Mission</span>
               </button>
-            )}
-            {activeMission && activeMission.id !== "MARSWALK-001" && (
+              {activeMission && (
+                <button
+                  type="button"
+                  onClick={openEditMissionModal}
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-atlas-elevated border border-atlas-border text-atlas-text hover:border-atlas-accent/50 rounded-lg text-xs font-mono font-semibold transition-colors"
+                >
+                  <Edit3 className="w-3.5 h-3.5 text-atlas-teal" />
+                  <span>Edit</span>
+                </button>
+              )}
+              {activeMission && activeMission.id !== "MARSWALK-001" && (
+                <button
+                  type="button"
+                  onClick={handleDeleteActiveMission}
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-red-500/10 border border-red-500/30 text-red-400 hover:bg-red-500/20 rounded-lg text-xs font-mono transition-colors"
+                  title="Delete Mission"
+                >
+                  <Trash2 className="w-3.5 h-3.5" />
+                  <span>Delete</span>
+                </button>
+              )}
+            </div>
+          </div>
+
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div>
+              <div className="flex items-center gap-2 text-xs font-mono text-atlas-muted mb-2">
+                <Link
+                  to={`/map?routeId=${encodeURIComponent(route.id)}${activeMission ? `&missionId=${encodeURIComponent(activeMission.id)}` : ""}`}
+                  className="hover:text-atlas-text flex items-center gap-1 transition-colors"
+                >
+                  <ArrowLeft className="w-3.5 h-3.5 text-atlas-accent" /> Planetary Map
+                </Link>
+                <span>/</span>
+                <span className="text-atlas-text font-medium">Mission Studio &amp; Governance</span>
+              </div>
+              <div className="flex items-center gap-3.5 flex-wrap">
+                <h1 className="text-2xl md:text-3xl font-extrabold font-display text-atlas-text tracking-tight">
+                  {activeMission ? activeMission.name : route.name}
+                </h1>
+                <span
+                  className={`text-xs px-3 py-1 font-mono font-bold tracking-wider rounded-md border ${
+                    planStatus === "LOCKED"
+                      ? "bg-red-500/15 text-red-400 border-red-500/40"
+                      : planStatus === "APPROVED"
+                      ? "bg-emerald-500/15 text-emerald-400 border-emerald-500/40"
+                      : "bg-atlas-elevated text-atlas-muted border-atlas-border"
+                  }`}
+                >
+                  {planStatus} v{planVersion}.0
+                </span>
+                <span className="text-xs px-3 py-1 font-mono rounded-md bg-atlas-elevated text-atlas-teal border border-atlas-border font-medium">
+                  {route.totalDistanceKm} km · {route.estimatedDurationMinutes} min
+                </span>
+              </div>
+            </div>
+
+            {/* Action Controls */}
+            <div className="flex items-center gap-2.5 flex-wrap">
               <button
-                type="button"
-                onClick={handleDeleteActiveMission}
-                className="flex items-center gap-1 px-2.5 py-1 bg-red-500/10 border border-red-500/30 text-red-400 hover:bg-red-500/20 rounded text-xs font-mono"
-                title="Delete Mission"
+                onClick={() => setIsCopilotOpen(true)}
+                className="flex items-center gap-2 px-3.5 py-2 bg-atlas-accent/15 border border-atlas-accent/50 text-atlas-accent hover:bg-atlas-accent/25 rounded-xl text-xs font-mono font-bold transition-all shadow-sm"
               >
-                <Trash2 className="w-3.5 h-3.5" />
-                <span>Delete</span>
+                <Sparkles className="w-3.5 h-3.5 text-atlas-accent" />
+                <span>Mission Copilot</span>
               </button>
-            )}
+
+              <button
+                onClick={handleSavePlan}
+                disabled={isSavingPlan}
+                className="flex items-center gap-2 px-4 py-2 bg-atlas-accent hover:bg-atlas-accent-dark disabled:opacity-50 text-white rounded-xl text-xs font-mono font-bold shadow-lg shadow-atlas-accent/20 transition-all"
+              >
+                {isSavingPlan ? (
+                  <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                ) : (
+                  <Database className="w-3.5 h-3.5" />
+                )}
+                <span>Save Plan</span>
+              </button>
+
+              {userRole === "MISSION_COMMAND" && planStatus !== "LOCKED" && (
+                <button
+                  onClick={handleApprovePlan}
+                  className="flex items-center gap-2 px-3.5 py-2 bg-emerald-500/15 border border-emerald-500/50 text-emerald-300 hover:bg-emerald-500/25 rounded-xl text-xs font-mono font-bold transition-colors"
+                >
+                  <CheckCircle className="w-3.5 h-3.5" />
+                  <span>Approve</span>
+                </button>
+              )}
+
+              {userRole === "MISSION_COMMAND" && planStatus !== "LOCKED" && (
+                <button
+                  onClick={handleLockPlan}
+                  className="flex items-center gap-2 px-3.5 py-2 bg-red-500/15 border border-red-500/50 text-red-300 hover:bg-red-500/25 rounded-xl text-xs font-mono font-bold transition-colors"
+                >
+                  <Lock className="w-3.5 h-3.5" />
+                  <span>Lock Plan</span>
+                </button>
+              )}
+            </div>
           </div>
-        </div>
-
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <div>
-          <div className="flex items-center gap-2 text-xs font-mono text-atlas-muted mb-1">
-            <Link
-              to={`/map?routeId=${encodeURIComponent(route.id)}${activeMission ? `&missionId=${encodeURIComponent(activeMission.id)}` : ""}`}
-              className="hover:text-atlas-text flex items-center gap-1"
-            >
-              <ArrowLeft className="w-3.5 h-3.5" /> Planetary Map
-            </Link>
-            <span>/</span>
-            <span>Mission Planning Workspace</span>
-          </div>
-          <div className="flex items-center gap-3 flex-wrap">
-            <h1 className="text-xl md:text-2xl font-bold font-display text-atlas-text">
-              {activeMission ? activeMission.name : route.name}
-            </h1>
-            <span
-              className={`text-xs px-2.5 py-0.5 font-mono font-semibold border ${
-                planStatus === "LOCKED"
-                  ? "bg-red-500/10 text-red-400 border-red-500/30"
-                  : planStatus === "APPROVED"
-                  ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/30"
-                  : "bg-atlas-elevated text-atlas-muted border-atlas-border"
-              }`}
-            >
-              {planStatus} v{planVersion}.0
-            </span>
-            <span className="text-xs px-2.5 py-0.5 font-mono bg-atlas-elevated text-atlas-teal border border-atlas-border">
-              {route.totalDistanceKm} km | {route.estimatedDurationMinutes} min
-            </span>
-          </div>
-        </div>
-
-        {/* Action Controls */}
-        <div className="flex items-center gap-2 flex-wrap">
-          <button
-            onClick={() => setIsCopilotOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-atlas-accent/15 border border-atlas-accent text-atlas-text hover:bg-atlas-accent/25 rounded text-xs font-mono font-bold transition-all shadow-sm"
-          >
-            <Sparkles className="w-3.5 h-3.5 text-atlas-accent" />
-            <span>Mission Copilot</span>
-          </button>
-
-          <button
-            onClick={handleSavePlan}
-            disabled={isSavingPlan}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-atlas-accent hover:bg-atlas-accent/90 disabled:opacity-50 text-white rounded text-xs font-mono font-bold shadow transition-all"
-          >
-            {isSavingPlan ? (
-              <RefreshCw className="w-3.5 h-3.5 animate-spin" />
-            ) : (
-              <Database className="w-3.5 h-3.5" />
-            )}
-            <span>Save Plan</span>
-          </button>
-
-          {userRole === "MISSION_COMMAND" && planStatus !== "LOCKED" && (
-            <button
-              onClick={handleApprovePlan}
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-500/15 border border-emerald-500 text-emerald-300 hover:bg-emerald-500/25 rounded text-xs font-mono font-semibold"
-            >
-              <CheckCircle className="w-3.5 h-3.5" />
-              <span>Approve</span>
-            </button>
-          )}
-
-          {userRole === "MISSION_COMMAND" && planStatus !== "LOCKED" && (
-            <button
-              onClick={handleLockPlan}
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-red-500/15 border border-red-500 text-red-300 hover:bg-red-500/25 rounded text-xs font-mono font-semibold"
-            >
-              <Lock className="w-3.5 h-3.5" />
-              <span>Lock Plan</span>
-            </button>
-          )}
-        </div>
         </div>
       </div>
 
       {/* Workspace Navigation Tabs */}
-      <div className="max-w-7xl mx-auto mb-6 flex flex-wrap items-center justify-between gap-2 border-b border-atlas-border">
-        <div className="flex flex-wrap items-center gap-2">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 pt-6 mb-8 flex flex-wrap items-center justify-between gap-4 border-b border-atlas-border">
+        <div className="flex flex-wrap items-center gap-1 sm:gap-3">
           <button
             onClick={() => setActiveTab("PLANNING")}
-            className={`px-4 py-2.5 text-xs font-mono font-bold border-b-2 transition-all flex items-center gap-2 ${
+            className={`px-4 py-3 text-xs font-mono font-bold border-b-2 transition-all flex items-center gap-2 ${
               activeTab === "PLANNING"
-                ? "border-atlas-accent text-atlas-accent bg-atlas-surface/60"
+                ? "border-atlas-accent text-atlas-accent bg-atlas-surface/80"
                 : "border-transparent text-atlas-muted hover:text-atlas-text"
             }`}
           >
-            <Compass className="w-4 h-4" />
-            <span>1. Planning & Multi-Plan Comparison</span>
+            <Compass className="w-4 h-4 text-atlas-accent" />
+            <span>01 Multi-Plan Comparison</span>
           </button>
 
           <button
             onClick={() => setActiveTab("SCENARIOS")}
-            className={`px-4 py-2.5 text-xs font-mono font-bold border-b-2 transition-all flex items-center gap-2 ${
+            className={`px-4 py-3 text-xs font-mono font-bold border-b-2 transition-all flex items-center gap-2 ${
               activeTab === "SCENARIOS"
-                ? "border-atlas-accent text-atlas-accent bg-atlas-surface/60"
+                ? "border-atlas-accent text-atlas-accent bg-atlas-surface/80"
                 : "border-transparent text-atlas-muted hover:text-atlas-text"
             }`}
           >
-            <Sliders className="w-4 h-4" />
-            <span>2. Dynamic Scenario Builder</span>
+            <Sliders className="w-4 h-4 text-atlas-teal" />
+            <span>02 Dynamic Scenario Builder</span>
           </button>
 
           <button
             onClick={() => setActiveTab("REPORTING")}
-            className={`px-4 py-2.5 text-xs font-mono font-bold border-b-2 transition-all flex items-center gap-2 ${
+            className={`px-4 py-3 text-xs font-mono font-bold border-b-2 transition-all flex items-center gap-2 ${
               activeTab === "REPORTING"
-                ? "border-atlas-accent text-atlas-accent bg-atlas-surface/60"
+                ? "border-atlas-accent text-atlas-accent bg-atlas-surface/80"
                 : "border-transparent text-atlas-muted hover:text-atlas-text"
             }`}
           >
-            <FileText className="w-4 h-4" />
-            <span>3. Mission Reporting & Audit Lineage</span>
+            <FileText className="w-4 h-4 text-atlas-amber" />
+            <span>03 Audit Lineage &amp; Report</span>
           </button>
 
           <button
             onClick={() => setActiveTab("EVA")}
-            className={`px-4 py-2.5 text-xs font-mono font-bold border-b-2 transition-all flex items-center gap-2 ${
+            className={`px-4 py-3 text-xs font-mono font-bold border-b-2 transition-all flex items-center gap-2 ${
               activeTab === "EVA"
-                ? "border-atlas-accent text-atlas-accent bg-atlas-surface/60"
+                ? "border-atlas-accent text-atlas-accent bg-atlas-surface/80"
                 : "border-transparent text-atlas-muted hover:text-atlas-text"
             }`}
           >
-            <Clock className="w-4 h-4" />
-            <span>4. EVA Session & Safety Console</span>
+            <Clock className="w-4 h-4 text-emerald-400" />
+            <span>04 EVA Safety Console</span>
           </button>
         </div>
 
@@ -805,10 +813,10 @@ export const MissionPage: React.FC = () => {
         {activeTab === "PLANNING" && (
           <button
             onClick={() => setShow3D((v) => !v)}
-            className={`px-3 py-1 rounded text-xs font-mono font-semibold border flex items-center gap-1.5 transition-colors ${
+            className={`px-3.5 py-1.5 rounded-lg text-xs font-mono font-semibold border flex items-center gap-2 transition-all ${
               show3D
-                ? "bg-atlas-accent text-white border-atlas-accent"
-                : "bg-atlas-elevated text-atlas-text border-atlas-border hover:bg-atlas-elevated/80"
+                ? "bg-atlas-accent text-white border-atlas-accent shadow-md shadow-atlas-accent/20"
+                : "bg-atlas-elevated text-atlas-text border-atlas-border hover:bg-atlas-surface"
             }`}
           >
             <Boxes className="w-3.5 h-3.5" />
@@ -817,22 +825,24 @@ export const MissionPage: React.FC = () => {
         )}
       </div>
 
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
         {/* ========================================================================= */}
         {/* TAB 1: UNIFIED MISSION PLANNING & MULTI-OBJECTIVE CANDIDATE COMPARISON   */}
         {/* ========================================================================= */}
         {activeTab === "PLANNING" && (
-          <div className="space-y-6">
+          <div className="space-y-10">
             {/* Top Interactive Parameter Console */}
-            <div className="bg-atlas-surface border border-atlas-border p-4 rounded-lg">
-              <div className="flex flex-col lg:flex-row lg:items-center flex-wrap justify-between gap-4">
+            <div className="bg-atlas-surface border border-atlas-border p-6 rounded-2xl shadow-xl">
+              <div className="flex flex-col lg:flex-row lg:items-center flex-wrap justify-between gap-6">
                 {/* Route Selector Dropdown */}
                 <div className="flex items-center gap-3">
-                  <label className="text-xs font-mono text-atlas-muted uppercase">Select Candidate:</label>
+                  <label className="text-xs font-mono font-bold tracking-wider text-atlas-muted uppercase">
+                    Select Candidate:
+                  </label>
                   <select
                     value={route.id}
                     onChange={(e) => handleSelectRoute(e.target.value)}
-                    className="bg-atlas-elevated border border-atlas-border text-atlas-text text-xs font-mono px-3 py-1.5 rounded focus:outline-none focus:border-atlas-accent"
+                    className="bg-atlas-elevated border border-atlas-border text-atlas-text text-xs font-mono px-3.5 py-2 rounded-lg focus:outline-none focus:border-atlas-accent"
                   >
                     {allRoutes.map((r) => (
                       <option key={r.id} value={r.id}>
@@ -856,18 +866,18 @@ export const MissionPage: React.FC = () => {
                     step={15}
                     value={maxDurationMinutes}
                     onChange={(e) => setMaxDurationMinutes(Number(e.target.value))}
-                    className="w-32 accent-atlas-accent cursor-pointer"
+                    className="w-36 accent-atlas-accent cursor-pointer"
                   />
                 </div>
 
                 {/* Return Required Toggle */}
-                <div className="flex items-center gap-2 font-mono text-xs">
+                <div className="flex items-center gap-3 font-mono text-xs">
                   <span className="text-atlas-muted">Return Required:</span>
                   <button
                     onClick={() => setReturnRequired(!returnRequired)}
-                    className={`px-2.5 py-1 rounded border text-[11px] font-bold ${
+                    className={`px-3 py-1.5 rounded-lg border text-xs font-bold transition-colors ${
                       returnRequired
-                        ? "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
+                        ? "bg-emerald-500/15 text-emerald-400 border-emerald-500/40"
                         : "bg-atlas-elevated text-atlas-muted border-atlas-border"
                     }`}
                   >
@@ -876,11 +886,11 @@ export const MissionPage: React.FC = () => {
                 </div>
 
                 {/* Escort Mode */}
-                <div className="flex items-center gap-2 font-mono text-xs">
+                <div className="flex items-center gap-3 font-mono text-xs">
                   <span className="text-atlas-muted">Mode:</span>
                   <button
                     onClick={() => setWalkingMode(walkingMode === "standard" ? "utv" : "standard")}
-                    className="px-2.5 py-1 bg-atlas-elevated border border-atlas-border text-atlas-text rounded text-[11px]"
+                    className="px-3 py-1.5 bg-atlas-elevated border border-atlas-border hover:border-atlas-accent/50 text-atlas-text rounded-lg text-xs font-medium transition-colors"
                   >
                     {walkingMode === "standard" ? "Walking EVA" : "UTV Escort"}
                   </button>
@@ -903,7 +913,20 @@ export const MissionPage: React.FC = () => {
                 }
               />
             ) : (
-              <div className="bg-atlas-surface border border-atlas-border p-4 rounded-lg">
+              <div className="bg-atlas-surface border border-atlas-border p-6 rounded-2xl shadow-xl">
+                <div className="flex items-center justify-between border-b border-atlas-border pb-4 mb-4">
+                  <div>
+                    <span className="text-[10px] font-bold font-mono tracking-widest text-atlas-accent uppercase block">
+                      TOPOGRAPHIC TRANSECT
+                    </span>
+                    <h3 className="text-base font-bold font-display text-atlas-text">
+                      MOLA Altimetry Elevation Profile
+                    </h3>
+                  </div>
+                  <span className="text-xs font-mono text-atlas-muted">
+                    Total Incline Variance: {route.maxSlopeDegrees.toFixed(1)}° max
+                  </span>
+                </div>
                 <ElevationProfileChart
                   profile={route.elevationProfile || []}
                   totalDistanceKm={route.totalDistanceKm}
@@ -911,13 +934,18 @@ export const MissionPage: React.FC = () => {
               </div>
             )}
 
-            {/* Batch 9: Science Targets & Agent Capability Assignment */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-              <div className="bg-atlas-surface border border-atlas-border p-4 rounded-lg space-y-3">
-                <div className="flex items-center justify-between border-b border-atlas-border pb-2">
-                  <h3 className="text-sm font-bold font-display text-atlas-text">
-                    Science Target Selection ({selectedTargetIds.length} selected)
-                  </h3>
+            {/* Science Targets & Agent Capability Assignment */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div className="bg-atlas-surface border border-atlas-border p-6 rounded-2xl shadow-xl space-y-4">
+                <div className="flex items-center justify-between border-b border-atlas-border pb-3">
+                  <div>
+                    <span className="text-[10px] font-bold font-mono tracking-widest text-atlas-teal uppercase block">
+                      GEOSPATIAL COGNITION
+                    </span>
+                    <h3 className="text-base font-bold font-display text-atlas-text">
+                      Science Target Selection ({selectedTargetIds.length} selected)
+                    </h3>
+                  </div>
                   <button
                     onClick={async () => {
                       const targetId = selectedTargetIds[0];
@@ -930,12 +958,12 @@ export const MissionPage: React.FC = () => {
                       }
                     }}
                     disabled={selectedTargetIds.length === 0 || !activeMission}
-                    className="px-2.5 py-1 rounded bg-atlas-teal/20 border border-atlas-teal/40 text-atlas-teal text-[11px] font-mono font-bold disabled:opacity-40"
+                    className="px-3 py-1.5 rounded-lg bg-atlas-teal/15 border border-atlas-teal/40 text-atlas-teal text-xs font-mono font-bold hover:bg-atlas-teal/25 disabled:opacity-40 transition-colors"
                   >
-                    Assign Selected to Mission
+                    Assign to Mission
                   </button>
                 </div>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2.5">
                   {scienceTargets.slice(0, 6).map((t: any) => {
                     const checked = selectedTargetIds.includes(t.id);
                     return (
@@ -946,10 +974,10 @@ export const MissionPage: React.FC = () => {
                             checked ? prev.filter((id) => id !== t.id) : [...prev, t.id]
                           )
                         }
-                        className={`px-2.5 py-1 rounded border text-[11px] font-mono transition-colors ${
+                        className={`px-3 py-1.5 rounded-lg border text-xs font-mono transition-all ${
                           checked
-                            ? "bg-atlas-accent/20 border-atlas-accent text-atlas-text font-bold"
-                            : "bg-atlas-elevated/40 border-atlas-border text-atlas-muted hover:text-atlas-text"
+                            ? "bg-atlas-accent/20 border-atlas-accent text-atlas-text font-bold shadow-sm shadow-atlas-accent/20"
+                            : "bg-atlas-elevated/50 border-atlas-border text-atlas-muted hover:text-atlas-text hover:border-atlas-border-bright"
                         }`}
                       >
                         {t.name || t.id} ({t.priorityScore ?? t.scientificPriority ?? "HIGH"})
@@ -959,11 +987,16 @@ export const MissionPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-atlas-surface border border-atlas-border p-4 rounded-lg space-y-3">
-                <div className="flex items-center justify-between border-b border-atlas-border pb-2">
-                  <h3 className="text-sm font-bold font-display text-atlas-text">
-                    Agent Capability & Plan Comparison
-                  </h3>
+              <div className="bg-atlas-surface border border-atlas-border p-6 rounded-2xl shadow-xl space-y-4">
+                <div className="flex items-center justify-between border-b border-atlas-border pb-3">
+                  <div>
+                    <span className="text-[10px] font-bold font-mono tracking-widest text-atlas-accent uppercase block">
+                      FLEET CAPACITY
+                    </span>
+                    <h3 className="text-base font-bold font-display text-atlas-text">
+                      Agent Capability &amp; Plan Comparison
+                    </h3>
+                  </div>
                   <button
                     onClick={async () => {
                       try {
@@ -980,17 +1013,17 @@ export const MissionPage: React.FC = () => {
                         showNotification(err.message || "Failed to evaluate plan alternatives.");
                       }
                     }}
-                    className="px-3 py-1 rounded bg-atlas-accent text-white text-[11px] font-mono font-bold"
+                    className="px-3.5 py-1.5 rounded-lg bg-atlas-accent hover:bg-atlas-accent-dark text-white text-xs font-mono font-bold transition-colors shadow-md shadow-atlas-accent/20"
                   >
-                    Evaluate & Compare Plans
+                    Evaluate &amp; Compare Plans
                   </button>
                 </div>
-                <div className="flex flex-wrap items-center gap-2 text-xs font-mono">
-                  <span className="text-atlas-muted">Primary Asset:</span>
+                <div className="flex flex-wrap items-center gap-3 text-xs font-mono">
+                  <span className="text-atlas-muted font-medium">Primary Asset:</span>
                   <select
                     value={selectedAgentId}
                     onChange={(e) => setSelectedAgentId(e.target.value)}
-                    className="bg-atlas-elevated border border-atlas-border rounded px-2.5 py-1 text-xs text-atlas-text"
+                    className="bg-atlas-elevated border border-atlas-border rounded-lg px-3 py-1.5 text-xs text-atlas-text focus:outline-none focus:border-atlas-accent"
                   >
                     {agents.map((a) => (
                       <option key={a.id} value={a.id}>
@@ -1014,7 +1047,7 @@ export const MissionPage: React.FC = () => {
                         showNotification(err.message || "Failed to assign task.");
                       }
                     }}
-                    className="px-2.5 py-1 rounded bg-atlas-elevated hover:bg-atlas-accent/20 border border-atlas-border text-[11px] text-atlas-text"
+                    className="px-3 py-1.5 rounded-lg bg-atlas-elevated hover:bg-atlas-accent/20 border border-atlas-border hover:border-atlas-accent/50 text-xs font-medium text-atlas-text transition-colors"
                   >
                     Assign Asset Task
                   </button>
@@ -1023,22 +1056,25 @@ export const MissionPage: React.FC = () => {
             </div>
 
             {/* Candidate Route Comparison Matrix */}
-            <div className="bg-atlas-surface border border-atlas-border p-4 md:p-5 rounded-lg">
-              <div className="flex items-center justify-between mb-3 border-b border-atlas-border pb-2">
+            <div className="bg-atlas-surface border border-atlas-border p-6 md:p-8 rounded-2xl shadow-xl space-y-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-atlas-border pb-4">
                 <div>
-                  <h3 className="text-base font-bold font-display text-atlas-text flex items-center gap-2">
-                    <TrendingUp className="w-4 h-4 text-atlas-accent" />
+                  <span className="text-[10px] font-bold font-mono tracking-widest text-atlas-accent uppercase block">
+                    PARETO EVALUATION
+                  </span>
+                  <h3 className="text-lg font-bold font-display text-atlas-text flex items-center gap-2 mt-0.5">
+                    <TrendingUp className="w-5 h-5 text-atlas-accent" />
                     <span>Candidate Plans Multi-Objective Comparison Matrix</span>
                   </h3>
-                  <p className="text-xs text-atlas-muted font-mono mt-0.5">
+                  <p className="text-xs text-atlas-muted font-mono mt-1">
                     {planComparison?.noUniversalWinnerNotice ||
-                      "Hard safety constraints (S1/S2/S3) gate candidates before ranking. Evaluates Distance, Duration, Battery/O2 Margins, Comms, Hazard Exposure & Modeled Science Yield."}
+                      "Hard safety constraints (S1/S2/S3) gate candidates before ranking. Evaluates Distance, Duration, Margins, Comms & Modeled Science Yield."}
                   </p>
                 </div>
               </div>
 
               {((planComparison?.alternatives || allRoutes) as any[]).length === 0 ? (
-                <div className="p-6 text-center text-xs font-mono text-atlas-muted border border-dashed border-atlas-border rounded">
+                <div className="p-8 text-center text-xs font-mono text-atlas-muted border border-dashed border-atlas-border rounded-xl">
                   No candidate route alternatives available for comparison.
                 </div>
               ) : (
@@ -1047,19 +1083,19 @@ export const MissionPage: React.FC = () => {
                   <div className="hidden lg:block overflow-x-auto">
                     <table className="w-full text-xs font-mono text-left">
                       <thead>
-                        <tr className="border-b border-atlas-border text-atlas-muted">
-                          <th className="py-2 px-3">Rank / Candidate</th>
-                          <th className="py-2 px-3">Dist / Dur</th>
-                          <th className="py-2 px-3">Max Slope</th>
-                          <th className="py-2 px-3">Batt / O2 Margin</th>
-                          <th className="py-2 px-3">Comms / Hazards</th>
-                          <th className="py-2 px-3">Safety</th>
-                          <th className="py-2 px-3">Modeled Science</th>
-                          <th className="py-2 px-3">Hard Safety Gate</th>
-                          <th className="py-2 px-3 text-right">Action</th>
+                        <tr className="border-b border-atlas-border text-atlas-muted tracking-wider uppercase text-[10px]">
+                          <th className="py-3 px-4">Rank / Candidate</th>
+                          <th className="py-3 px-4">Dist / Dur</th>
+                          <th className="py-3 px-4">Max Slope</th>
+                          <th className="py-3 px-4">Batt / O2 Margin</th>
+                          <th className="py-3 px-4">Comms / Hazards</th>
+                          <th className="py-3 px-4">Safety</th>
+                          <th className="py-3 px-4">Modeled Science</th>
+                          <th className="py-3 px-4">Hard Safety Gate</th>
+                          <th className="py-3 px-4 text-right">Action</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody className="divide-y divide-atlas-border/50">
                         {(planComparison?.alternatives || allRoutes).map((cand: any) => {
                           const candId = cand.routeId || cand.id;
                           const isSelected = candId === route.id;
@@ -1077,18 +1113,18 @@ export const MissionPage: React.FC = () => {
                           return (
                             <tr
                               key={candId}
-                              className={`border-b border-atlas-border/50 transition-colors ${
-                                isSelected ? "bg-atlas-accent/10" : "hover:bg-atlas-elevated/40"
+                              className={`transition-colors ${
+                                isSelected ? "bg-atlas-accent/10 font-medium" : "hover:bg-atlas-elevated/40"
                               }`}
                             >
-                              <td className="py-3 px-3 font-bold text-atlas-text">
-                                <div className="flex flex-wrap items-center gap-1.5">
+                              <td className="py-4 px-4 font-bold text-atlas-text">
+                                <div className="flex flex-wrap items-center gap-2">
                                   {cand.rank ? (
-                                    <span className="px-1.5 py-0.5 rounded bg-atlas-elevated text-[10px] text-atlas-accent">
+                                    <span className="px-2 py-0.5 rounded bg-atlas-elevated text-[10px] text-atlas-accent font-bold">
                                       #{cand.rank}
                                     </span>
                                   ) : null}
-                                  {isSelected && <span className="w-2 h-2 rounded-full bg-atlas-accent"></span>}
+                                  {isSelected && <span className="w-2.5 h-2.5 rounded-full bg-atlas-accent shrink-0 shadow-sm shadow-atlas-accent"></span>}
                                   <span>{cand.name}</span>
                                   {cand.deduplicatedCount > 0 && (
                                     <span className="px-1.5 py-0.5 rounded bg-atlas-elevated border border-atlas-border text-[9px] text-atlas-muted">
@@ -1097,19 +1133,19 @@ export const MissionPage: React.FC = () => {
                                   )}
                                 </div>
                               </td>
-                              <td className="py-3 px-3 text-atlas-text">
+                              <td className="py-4 px-4 text-atlas-text">
                                 {cand.distanceKm ?? cand.totalDistanceKm} km · {cand.estimatedDurationMinutes}m
                               </td>
-                              <td className={`py-3 px-3 font-bold ${maxSlope > 20 ? "text-red-400" : "text-emerald-400"}`}>
+                              <td className={`py-4 px-4 font-bold ${maxSlope > 20 ? "text-red-400" : "text-emerald-400"}`}>
                                 {maxSlope.toFixed(1)}°
                               </td>
-                              <td className="py-3 px-3 text-atlas-text">
+                              <td className="py-4 px-4 text-atlas-text">
                                 {battMargin}% · {o2Margin}m
                               </td>
-                              <td className="py-3 px-3 text-atlas-text">
+                              <td className="py-4 px-4 text-atlas-text">
                                 {commsPct}% · {hazardCnt} haz
                               </td>
-                              <td className="py-3 px-3">
+                              <td className="py-4 px-4">
                                 <span
                                   className={`font-bold ${
                                     safetyScore >= 80 ? "text-emerald-400" : safetyScore >= 60 ? "text-amber-400" : "text-red-400"
@@ -1118,26 +1154,28 @@ export const MissionPage: React.FC = () => {
                                   {safetyScore}/100
                                 </span>
                               </td>
-                              <td className="py-3 px-3 text-atlas-teal font-bold">{scienceScore}/100</td>
-                              <td className="py-3 px-3">
+                              <td className="py-4 px-4 text-atlas-teal font-bold">{scienceScore}/100</td>
+                              <td className="py-4 px-4">
                                 {!compliant ? (
-                                  <span className="px-2 py-0.5 rounded bg-red-500/20 text-red-400 border border-red-500/30 text-[10px] font-bold">
+                                  <span className="px-2.5 py-1 rounded-md bg-red-500/15 text-red-400 border border-red-500/30 text-[10px] font-bold tracking-wider">
                                     {cand.disqualificationReasons?.[0] || "BREACHES S2 (>20°)"}
                                   </span>
                                 ) : (
-                                  <span className="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[10px] font-bold">
+                                  <span className="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 text-[10px] font-bold tracking-wider">
                                     S1–S8 COMPLIANT
                                   </span>
                                 )}
                               </td>
-                              <td className="py-3 px-3 text-right">
-                                {!isSelected && (
+                              <td className="py-4 px-4 text-right">
+                                {!isSelected ? (
                                   <button
                                     onClick={() => handleSelectRoute(candId)}
-                                    className="px-2.5 py-1 bg-atlas-elevated hover:bg-atlas-accent text-atlas-text hover:text-white rounded text-[11px] border border-atlas-border transition-colors"
+                                    className="px-3 py-1.5 bg-atlas-elevated hover:bg-atlas-accent text-atlas-text hover:text-white rounded-lg text-xs font-semibold border border-atlas-border hover:border-atlas-accent transition-all shadow-sm"
                                   >
                                     Select
                                   </button>
+                                ) : (
+                                  <span className="text-xs text-atlas-accent font-bold">Active</span>
                                 )}
                               </td>
                             </tr>
@@ -1148,7 +1186,7 @@ export const MissionPage: React.FC = () => {
                   </div>
 
                   {/* Tablet & Mobile Responsive Card Layout (<lg) */}
-                  <div className="lg:hidden grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <div className="lg:hidden grid grid-cols-1 md:grid-cols-2 gap-4">
                     {(planComparison?.alternatives || allRoutes).map((cand: any) => {
                       const candId = cand.routeId || cand.id;
                       const isSelected = candId === route.id;
@@ -1166,14 +1204,14 @@ export const MissionPage: React.FC = () => {
                       return (
                         <div
                           key={candId}
-                          className={`p-3 rounded border font-mono text-xs space-y-2 ${
-                            isSelected ? "bg-atlas-accent/10 border-atlas-accent" : "bg-atlas-elevated/30 border-atlas-border"
+                          className={`p-5 rounded-xl border font-mono text-xs space-y-3 ${
+                            isSelected ? "bg-atlas-accent/10 border-atlas-accent" : "bg-atlas-elevated/40 border-atlas-border"
                           }`}
                         >
                           <div className="flex items-start justify-between gap-2">
                             <div className="font-bold text-atlas-text flex flex-wrap items-center gap-1.5">
                               {cand.rank ? (
-                                <span className="px-1.5 py-0.5 rounded bg-atlas-elevated text-[10px] text-atlas-accent">
+                                <span className="px-1.5 py-0.5 rounded bg-atlas-elevated text-[10px] text-atlas-accent font-bold">
                                   #{cand.rank}
                                 </span>
                               ) : null}
@@ -1190,19 +1228,19 @@ export const MissionPage: React.FC = () => {
                             </span>
                           </div>
 
-                          <div className="grid grid-cols-2 gap-1.5 text-[11px] text-atlas-muted">
+                          <div className="grid grid-cols-2 gap-2 text-[11px] text-atlas-muted">
                             <div>Dist/Dur: <span className="text-atlas-text">{cand.distanceKm ?? cand.totalDistanceKm} km · {cand.estimatedDurationMinutes}m</span></div>
                             <div>Max Slope: <span className={maxSlope > 20 ? "text-red-400 font-bold" : "text-emerald-400 font-bold"}>{maxSlope.toFixed(1)}°</span></div>
                             <div>Batt/O2: <span className="text-atlas-text">{battMargin}% · {o2Margin}m</span></div>
                             <div>Comms/Haz: <span className="text-atlas-text">{commsPct}% · {hazardCnt} haz</span></div>
                             <div>Safety: <span className="text-atlas-text font-bold">{safetyScore}/100</span></div>
-                            <div>Science (Modeled): <span className="text-atlas-teal font-bold">{scienceScore}/100</span></div>
+                            <div>Science: <span className="text-atlas-teal font-bold">{scienceScore}/100</span></div>
                           </div>
 
                           {!isSelected && (
                             <button
                               onClick={() => handleSelectRoute(candId)}
-                              className="w-full py-1.5 bg-atlas-elevated hover:bg-atlas-accent text-atlas-text hover:text-white rounded text-[11px] font-bold border border-atlas-border transition-colors"
+                              className="w-full py-2 bg-atlas-elevated hover:bg-atlas-accent text-atlas-text hover:text-white rounded-lg text-xs font-bold border border-atlas-border transition-colors shadow-sm"
                             >
                               Select Candidate
                             </button>
@@ -1216,34 +1254,34 @@ export const MissionPage: React.FC = () => {
             </div>
 
             {/* Safety Invariants S1-S8 Guard Card */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-3 font-mono text-xs">
-              <div className="p-3 bg-atlas-surface border border-atlas-border rounded">
-                <span className="text-[10px] text-atlas-muted uppercase block">Invariant S1: Power Floor</span>
-                <span className="text-base font-bold text-emerald-400 block mt-1">PASS (≥20%)</span>
-                <span className="text-[10px] text-atlas-muted">Reserve protected for abort</span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-mono text-xs">
+              <div className="p-5 bg-atlas-surface border border-atlas-border rounded-xl shadow-lg">
+                <span className="text-[10px] text-atlas-muted tracking-wider uppercase block font-semibold">Invariant S1: Power Floor</span>
+                <span className="text-xl font-bold font-mono text-emerald-400 block mt-1.5">PASS (≥20%)</span>
+                <span className="text-[11px] text-atlas-muted mt-1 block">Reserve protected for abort</span>
               </div>
-              <div className="p-3 bg-atlas-surface border border-atlas-border rounded">
-                <span className="text-[10px] text-atlas-muted uppercase block">Invariant S2: Slope Ceiling</span>
+              <div className="p-5 bg-atlas-surface border border-atlas-border rounded-xl shadow-lg">
+                <span className="text-[10px] text-atlas-muted tracking-wider uppercase block font-semibold">Invariant S2: Slope Ceiling</span>
                 <span
-                  className={`text-base font-bold block mt-1 ${
+                  className={`text-xl font-bold font-mono block mt-1.5 ${
                     route.maxSlopeDegrees <= 20.0 ? "text-emerald-400" : "text-red-400"
                   }`}
                 >
                   {route.maxSlopeDegrees <= 20.0 ? "PASS (≤20.0°)" : "FAIL (>20.0°)"}
                 </span>
-                <span className="text-[10px] text-atlas-muted">Max incline {route.maxSlopeDegrees.toFixed(1)}°</span>
+                <span className="text-[11px] text-atlas-muted mt-1 block">Max incline {route.maxSlopeDegrees.toFixed(1)}°</span>
               </div>
-              <div className="p-3 bg-atlas-surface border border-atlas-border rounded">
-                <span className="text-[10px] text-atlas-muted uppercase block">Invariant S3: EVA Contingency</span>
-                <span className="text-base font-bold text-emerald-400 block mt-1">PASS (≥30 min)</span>
-                <span className="text-[10px] text-atlas-muted">Life-support return margin</span>
+              <div className="p-5 bg-atlas-surface border border-atlas-border rounded-xl shadow-lg">
+                <span className="text-[10px] text-atlas-muted tracking-wider uppercase block font-semibold">Invariant S3: EVA Contingency</span>
+                <span className="text-xl font-bold font-mono text-emerald-400 block mt-1.5">PASS (≥30 min)</span>
+                <span className="text-[11px] text-atlas-muted mt-1 block">Life-support return margin</span>
               </div>
-              <div className="p-3 bg-atlas-surface border border-atlas-border rounded">
-                <span className="text-[10px] text-atlas-muted uppercase block">Invariant S7: Audit Integrity</span>
-                <span className="text-base font-bold text-atlas-teal block mt-1">
-                  {auditVerification?.isValid ? "INVARIANT CHECK PASSED" : "UNVERIFIED"}
+              <div className="p-5 bg-atlas-surface border border-atlas-border rounded-xl shadow-lg">
+                <span className="text-[10px] text-atlas-muted tracking-wider uppercase block font-semibold">Invariant S7: Audit Integrity</span>
+                <span className="text-xl font-bold font-mono text-atlas-teal block mt-1.5">
+                  {auditVerification?.isValid ? "PASSED" : "UNVERIFIED"}
                 </span>
-                <span className="text-[10px] text-atlas-muted">
+                <span className="text-[11px] text-atlas-muted mt-1 block">
                   {auditVerification?.chainLength ?? 0} blocks SHA-256
                 </span>
               </div>
@@ -1267,44 +1305,47 @@ export const MissionPage: React.FC = () => {
         {/* TAB 3: MISSION REPORT GENERATION & DECISION TRACEABILITY                  */}
         {/* ========================================================================= */}
         {activeTab === "REPORTING" && (
-          <div className="space-y-6">
+          <div className="space-y-8">
             {/* Export Toolbar */}
-            <div className="bg-atlas-surface border border-atlas-border p-4 rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="bg-atlas-surface border border-atlas-border p-6 rounded-2xl shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
-                <h3 className="text-base font-bold font-display text-atlas-text flex items-center gap-2">
+                <span className="text-[10px] font-bold font-mono tracking-widest text-atlas-accent uppercase block">
+                  SYNTHESIZED INTEL
+                </span>
+                <h3 className="text-lg font-bold font-display text-atlas-text flex items-center gap-2 mt-0.5">
                   <FileText className="w-5 h-5 text-atlas-accent" />
-                  <span>Mission Report Generation & Decision Traceability</span>
+                  <span>Mission Report Generation &amp; Decision Traceability</span>
                 </h3>
-                <p className="text-xs text-atlas-muted font-mono mt-0.5">
+                <p className="text-xs text-atlas-muted font-mono mt-1">
                   Export Mission Briefings Synthesized from Canonical State, Audit Blocks &amp; Model Simulations
                 </p>
               </div>
 
-              <div className="flex items-center gap-2 flex-wrap">
+              <div className="flex items-center gap-2.5 flex-wrap">
                 <button
                   onClick={handleExportCSV}
-                  className="flex items-center gap-1.5 px-3 py-1.5 bg-atlas-elevated hover:bg-atlas-elevated/80 border border-atlas-border text-atlas-text rounded text-xs font-mono font-bold"
+                  className="flex items-center gap-2 px-3.5 py-2 bg-atlas-elevated hover:bg-atlas-surface border border-atlas-border hover:border-emerald-500/50 text-atlas-text rounded-xl text-xs font-mono font-bold transition-all shadow-sm"
                 >
                   <FileSpreadsheet className="w-4 h-4 text-emerald-400" />
                   <span>Export CSV</span>
                 </button>
                 <button
                   onClick={handleExportMarkdown}
-                  className="flex items-center gap-1.5 px-3 py-1.5 bg-atlas-elevated hover:bg-atlas-elevated/80 border border-atlas-border text-atlas-text rounded text-xs font-mono font-bold"
+                  className="flex items-center gap-2 px-3.5 py-2 bg-atlas-elevated hover:bg-atlas-surface border border-atlas-border hover:border-blue-500/50 text-atlas-text rounded-xl text-xs font-mono font-bold transition-all shadow-sm"
                 >
                   <FileText className="w-4 h-4 text-blue-400" />
                   <span>Export Markdown</span>
                 </button>
                 <button
                   onClick={handleExportJSON}
-                  className="flex items-center gap-1.5 px-3 py-1.5 bg-atlas-elevated hover:bg-atlas-elevated/80 border border-atlas-border text-atlas-text rounded text-xs font-mono font-bold"
+                  className="flex items-center gap-2 px-3.5 py-2 bg-atlas-elevated hover:bg-atlas-surface border border-atlas-border hover:border-atlas-teal/50 text-atlas-text rounded-xl text-xs font-mono font-bold transition-all shadow-sm"
                 >
                   <Download className="w-4 h-4 text-atlas-teal" />
                   <span>Export JSON</span>
                 </button>
                 <button
                   onClick={() => window.print()}
-                  className="flex items-center gap-1.5 px-3 py-1.5 bg-atlas-elevated hover:bg-atlas-elevated/80 border border-atlas-border text-atlas-text rounded text-xs font-mono font-bold"
+                  className="flex items-center gap-2 px-3.5 py-2 bg-atlas-elevated hover:bg-atlas-surface border border-atlas-border hover:border-purple-500/50 text-atlas-text rounded-xl text-xs font-mono font-bold transition-all shadow-sm"
                 >
                   <Printer className="w-4 h-4 text-purple-400" />
                   <span>Print Briefing</span>
@@ -1314,68 +1355,68 @@ export const MissionPage: React.FC = () => {
 
             {/* Generated Report Summary View */}
             {reportData && (
-              <div className="bg-atlas-surface border border-atlas-border p-6 rounded-lg space-y-6 font-mono text-xs">
+              <div className="bg-atlas-surface border border-atlas-border p-6 md:p-8 rounded-2xl shadow-xl space-y-8 font-mono text-xs">
                 {/* Header Strip */}
-                <div className="border-b border-atlas-border pb-4">
-                  <div className="flex justify-between items-start gap-4">
+                <div className="border-b border-atlas-border pb-6">
+                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                     <div>
-                      <span className="text-[10px] text-atlas-muted uppercase block">OFFICIAL BRIEFING</span>
-                      <h2 className="text-xl font-bold font-display text-atlas-text">
+                      <span className="text-[10px] text-atlas-muted uppercase font-bold tracking-widest block">OFFICIAL BRIEFING</span>
+                      <h2 className="text-xl md:text-2xl font-bold font-display text-atlas-text mt-1">
                         EXPEDITION MISSION REPORT — {reportData.missionId}
                       </h2>
-                      <span className="text-[11px] text-atlas-muted">
-                        Report ID: <code className="text-atlas-text">{reportData.reportId}</code> | Generated:{" "}
+                      <span className="text-xs text-atlas-muted mt-1 block">
+                        Report ID: <code className="text-atlas-text">{reportData.reportId}</code> · Generated:{" "}
                         {new Date(reportData.generatedAt).toLocaleString()}
                       </span>
                     </div>
-                    <span className="text-xs px-2.5 py-1 bg-atlas-elevated text-atlas-teal border border-atlas-border font-bold">
+                    <span className="text-xs px-3 py-1.5 bg-atlas-elevated text-atlas-teal border border-atlas-border rounded-lg font-bold tracking-wider self-start">
                       {reportData.classification}
                     </span>
                   </div>
-                  <p className="mt-3 text-[11px] text-atlas-muted p-2.5 bg-atlas-elevated/40 border border-atlas-border rounded">
+                  <p className="mt-4 text-xs text-atlas-muted p-3.5 bg-atlas-elevated/40 border border-atlas-border rounded-xl leading-relaxed">
                     {reportData.provenanceNotice}
                   </p>
                 </div>
 
                 {/* Section 1: Executive KPI Strip */}
                 <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-atlas-accent mb-3">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-atlas-accent mb-4">
                     1. Executive Operational KPI Summary
                   </h4>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-                    <div className="p-3 bg-atlas-elevated/40 border border-atlas-border rounded">
-                      <span className="text-[10px] text-atlas-muted uppercase block">Safety Score</span>
-                      <span className="text-lg font-bold text-emerald-400 mt-0.5 block">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+                    <div className="p-4 bg-atlas-elevated/40 border border-atlas-border rounded-xl">
+                      <span className="text-[10px] text-atlas-muted uppercase block font-semibold">Safety Score</span>
+                      <span className="text-xl font-bold font-mono text-emerald-400 mt-1 block">
                         {reportData.executiveSummary.overallSafetyScore}/100
                       </span>
                     </div>
-                    <div className="p-3 bg-atlas-elevated/40 border border-atlas-border rounded">
-                      <span className="text-[10px] text-atlas-muted uppercase block">Science Yield</span>
-                      <span className="text-lg font-bold text-atlas-teal mt-0.5 block">
+                    <div className="p-4 bg-atlas-elevated/40 border border-atlas-border rounded-xl">
+                      <span className="text-[10px] text-atlas-muted uppercase block font-semibold">Science Yield</span>
+                      <span className="text-xl font-bold font-mono text-atlas-teal mt-1 block">
                         {reportData.executiveSummary.scienceYieldScore}/100
                       </span>
                     </div>
-                    <div className="p-3 bg-atlas-elevated/40 border border-atlas-border rounded">
-                      <span className="text-[10px] text-atlas-muted uppercase block">Active Fleet</span>
-                      <span className="text-lg font-bold text-atlas-text mt-0.5 block">
+                    <div className="p-4 bg-atlas-elevated/40 border border-atlas-border rounded-xl">
+                      <span className="text-[10px] text-atlas-muted uppercase block font-semibold">Active Fleet</span>
+                      <span className="text-xl font-bold font-mono text-atlas-text mt-1 block">
                         {reportData.executiveSummary.activeAgentsCount} Assets
                       </span>
                     </div>
-                    <div className="p-3 bg-atlas-elevated/40 border border-atlas-border rounded">
-                      <span className="text-[10px] text-atlas-muted uppercase block">Active Hazards</span>
-                      <span className="text-lg font-bold text-amber-400 mt-0.5 block">
+                    <div className="p-4 bg-atlas-elevated/40 border border-atlas-border rounded-xl">
+                      <span className="text-[10px] text-atlas-muted uppercase block font-semibold">Active Hazards</span>
+                      <span className="text-xl font-bold font-mono text-amber-400 mt-1 block">
                         {reportData.executiveSummary.activeHazardsCount} Zones
                       </span>
                     </div>
-                    <div className="p-3 bg-atlas-elevated/40 border border-atlas-border rounded">
-                      <span className="text-[10px] text-atlas-muted uppercase block">Emergency Return</span>
-                      <span className="text-lg font-bold text-emerald-400 mt-0.5 block">
+                    <div className="p-4 bg-atlas-elevated/40 border border-atlas-border rounded-xl">
+                      <span className="text-[10px] text-atlas-muted uppercase block font-semibold">Emergency Return</span>
+                      <span className="text-xl font-bold font-mono text-emerald-400 mt-1 block">
                         {reportData.resourceBudget.emergencyReturnMarginMinutes} min
                       </span>
                     </div>
-                    <div className="p-3 bg-atlas-elevated/40 border border-atlas-border rounded">
-                      <span className="text-[10px] text-atlas-muted uppercase block">Audit Verification</span>
-                      <span className="text-lg font-bold text-atlas-teal mt-0.5 block">
+                    <div className="p-4 bg-atlas-elevated/40 border border-atlas-border rounded-xl">
+                      <span className="text-[10px] text-atlas-muted uppercase block font-semibold">Audit Chain</span>
+                      <span className="text-xl font-bold font-mono text-atlas-teal mt-1 block">
                         {reportData.executiveSummary.auditChainBlockHeight} Blocks
                       </span>
                     </div>

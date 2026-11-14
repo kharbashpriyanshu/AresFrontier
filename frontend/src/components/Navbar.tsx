@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -11,38 +11,44 @@ import {
   RotateCcw,
   BarChart3,
   Award,
-  Sun,
-  Moon,
   Menu,
   X,
-  Sparkles,
   ShieldCheck,
-  CheckCircle2,
   ExternalLink,
-  Layers,
+  ChevronDown,
 } from "lucide-react";
-import { useTheme } from "../context/ThemeContext.js";
 import { OperationalDataModeBadge } from "./OperationalDataModeBadge.js";
 
 export const Navbar: React.FC = () => {
   const location = useLocation();
-  const { theme, toggleTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [toolsDropdownOpen, setToolsDropdownOpen] = useState(false);
   const [showBenchmarkModal, setShowBenchmarkModal] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setShowBenchmarkModal(false);
+        setToolsDropdownOpen(false);
+        setMobileMenuOpen(false);
       }
     };
-    if (showBenchmarkModal) {
-      window.addEventListener("keydown", handleKeyDown);
-    }
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [showBenchmarkModal]);
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setToolsDropdownOpen(false);
+      }
+    };
 
-  const navLinks = [
+    window.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const primaryLinks = [
     { to: "/", label: "Overview", icon: Compass },
     { to: "/map", label: "Map", icon: MapIcon },
     { to: "/operations", label: "Operations", icon: Users },
@@ -50,18 +56,23 @@ export const Navbar: React.FC = () => {
     { to: "/replay", label: "Replay", icon: RotateCcw },
     { to: "/mission-analytics", label: "Analytics", icon: BarChart3 },
     { to: "/science", label: "Science", icon: Database },
-    { to: "/methodology", label: "Data Provenance", icon: BookOpen },
-    { to: "/demo", label: "Test Harness", icon: Award },
   ];
 
+  const secondaryTools = [
+    { to: "/methodology", label: "Data Provenance", icon: BookOpen, desc: "NASA datasets & cryptographic validation" },
+    { to: "/demo", label: "Test Harness", icon: Award, desc: "Reproducible evaluation testbeds & verification" },
+  ];
+
+  const isToolActive = secondaryTools.some((t) => location.pathname === t.to);
+
   return (
-    <header className="h-14 border-b border-atlas-border bg-atlas-surface/95 backdrop-blur-md px-4 lg:px-6 flex items-center justify-between sticky top-0 z-50 select-none transition-colors">
+    <header className="h-16 border-b border-atlas-border bg-atlas-surface/95 backdrop-blur-md px-4 lg:px-8 flex items-center justify-between sticky top-0 z-50 select-none">
       {/* Brand & Desktop Navigation */}
-      <div className="flex items-center space-x-6">
+      <div className="flex items-center space-x-8">
         <Link to="/" className="flex items-center space-x-3 group">
           {/* Atlas Intelligence Geometric Symbol */}
-          <div className="w-8 h-8 bg-atlas-elevated border border-atlas-border flex items-center justify-center transition-colors group-hover:border-atlas-accent">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <div className="w-9 h-9 bg-atlas-elevated border border-atlas-border flex items-center justify-center transition-colors group-hover:border-atlas-accent">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M4 19L9 5H12L7 19H4Z" fill="var(--atlas-accent)" />
               <path d="M10 19L15 5H18L13 19H10Z" fill="var(--atlas-accent)" opacity="0.8" />
               <path d="M16 19L19.5 9H21.5L18 19H16Z" fill="var(--atlas-teal)" />
@@ -69,277 +80,214 @@ export const Navbar: React.FC = () => {
           </div>
           <div className="flex flex-col">
             <div className="flex items-center space-x-2">
-              <span className="font-display font-extrabold text-xs tracking-wider text-atlas-text">
+              <span className="font-display font-bold text-sm tracking-wide text-atlas-text">
                 MARTIAN MAP
               </span>
-              <span className="text-[9px] px-1.5 py-0.2 bg-atlas-elevated text-atlas-accent border border-atlas-border font-mono tracking-tight">
+              <span className="text-[10px] px-1.5 py-0.2 bg-atlas-elevated text-atlas-accent border border-atlas-border font-mono tracking-tight font-semibold">
                 ATLAS INTELLIGENCE
               </span>
             </div>
-            <span className="text-[10px] text-atlas-muted tracking-tight">
+            <span className="text-[11px] text-atlas-muted tracking-tight">
               Planetary Mission Platform
             </span>
           </div>
         </Link>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden lg:flex items-center space-x-0.5">
-          {navLinks.map((link) => {
+        <nav className="hidden lg:flex items-center space-x-1 font-sans">
+          {primaryLinks.map((link) => {
             const isActive = location.pathname === link.to;
             return (
               <Link
                 key={link.to}
                 to={link.to}
-                className={`relative px-2.5 py-1.5 text-xs font-medium transition-colors ${isActive
-                  ? "text-atlas-text font-semibold"
-                  : "text-atlas-muted hover:text-atlas-text hover:bg-atlas-elevated"
-                  }`}
+                className={`relative px-3 py-2 text-[13px] font-medium transition-colors ${
+                  isActive
+                    ? "text-atlas-text font-semibold"
+                    : "text-atlas-muted hover:text-atlas-text hover:bg-atlas-elevated/60"
+                }`}
               >
                 <span>{link.label}</span>
                 {isActive && (
-                  <span className="absolute bottom-0 left-2 right-2 h-[2px] bg-atlas-accent" />
+                  <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-atlas-accent" />
                 )}
               </Link>
             );
           })}
+
+          {/* Tools Dropdown */}
+          <div className="relative" ref={dropdownRef}>
+            <button
+              onClick={() => setToolsDropdownOpen(!toolsDropdownOpen)}
+              className={`relative px-3 py-2 text-[13px] font-medium transition-colors flex items-center space-x-1.5 ${
+                isToolActive
+                  ? "text-atlas-text font-semibold"
+                  : "text-atlas-muted hover:text-atlas-text hover:bg-atlas-elevated/60"
+              }`}
+            >
+              <span>Tools</span>
+              <ChevronDown className={`w-3.5 h-3.5 transition-transform ${toolsDropdownOpen ? "rotate-180" : ""}`} />
+              {isToolActive && (
+                <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-atlas-accent" />
+              )}
+            </button>
+
+            {toolsDropdownOpen && (
+              <div className="absolute left-0 top-full mt-1.5 w-64 bg-atlas-surface border border-atlas-border shadow-2xl p-2 z-50 animate-in fade-in slide-in-from-top-1">
+                {secondaryTools.map((tool) => {
+                  const isActive = location.pathname === tool.to;
+                  const Icon = tool.icon;
+                  return (
+                    <Link
+                      key={tool.to}
+                      to={tool.to}
+                      onClick={() => setToolsDropdownOpen(false)}
+                      className={`flex items-start space-x-3 p-2.5 transition-colors ${
+                        isActive ? "bg-atlas-elevated text-atlas-accent font-semibold" : "text-atlas-text hover:bg-atlas-elevated/60"
+                      }`}
+                    >
+                      <Icon className="w-4 h-4 text-atlas-accent shrink-0 mt-0.5" />
+                      <div>
+                        <div className="text-xs font-semibold">{tool.label}</div>
+                        <div className="text-[11px] text-atlas-muted">{tool.desc}</div>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
+          </div>
         </nav>
       </div>
 
-      {/* Right Controls */}
-      <div className="flex items-center space-x-2.5">
-        {/* Benchmark Data Mode Badge */}
-        <div className="hidden sm:block">
-          <OperationalDataModeBadge
-            mode="BENCHMARK"
-            compact
-            onClick={() => setShowBenchmarkModal(true)}
-          />
-        </div>
-
-        {/* Unified Primary Demo Tour CTA */}
-        <Link
-          to="/map?demo=marswalk-001"
-          className="flex items-center space-x-1.5 text-xs font-mono bg-atlas-elevated hover:bg-atlas-surface border border-atlas-accent text-atlas-accent px-3 py-1.5 font-bold transition-all shadow-sm hover:shadow-atlas-accent/20"
-          title="Launch 5-Step Guided Marswalk Tour for NASA Space Apps Judges"
-        >
-          <Sparkles className="w-3.5 h-3.5 text-atlas-accent" />
-          <span>Guided Demo</span>
-        </Link>
-
-        {/* Theme Toggle Button */}
+      {/* Right Operational Status Hub */}
+      <div className="flex items-center space-x-3">
+        {/* Benchmark Data Badge Button */}
         <button
-          onClick={toggleTheme}
-          aria-label="Toggle visual theme"
-          title={`Switch to ${theme === "dark" ? "Light" : "Dark"} theme`}
-          className="w-8 h-8 bg-atlas-elevated hover:bg-atlas-surface border border-atlas-border flex items-center justify-center text-atlas-text transition-colors"
+          onClick={() => setShowBenchmarkModal(true)}
+          className="bg-atlas-elevated/80 hover:bg-atlas-elevated border border-atlas-teal/30 hover:border-atlas-teal px-3 py-1.5 text-xs font-mono text-atlas-teal flex items-center space-x-2 transition-all shadow-sm group"
+          title="Inspect verified NASA datasets and active benchmark mission"
         >
-          {theme === "dark" ? (
-            <Sun className="w-4 h-4 text-atlas-amber" />
-          ) : (
-            <Moon className="w-4 h-4 text-atlas-blue" />
-          )}
+          <span className="w-2 h-2 rounded-full bg-atlas-teal group-hover:animate-ping" />
+          <span className="font-semibold tracking-wide">BENCHMARK DATA: MARSWALK-001</span>
         </button>
 
-        {/* Mobile menu toggle */}
+        {/* Tactical Data Mode Badge */}
+        <OperationalDataModeBadge />
+
+        {/* Mobile Menu Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden w-8 h-8 bg-atlas-elevated border border-atlas-border flex items-center justify-center text-atlas-text"
+          className="lg:hidden p-2 text-atlas-muted hover:text-atlas-text hover:bg-atlas-elevated transition-colors border border-atlas-border"
           aria-label="Toggle navigation menu"
         >
-          {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+          {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
       </div>
 
-      {/* Mobile Navigation Drawer */}
+      {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden absolute top-14 left-0 right-0 bg-atlas-surface border-b border-atlas-border p-4 shadow-2xl flex flex-col space-y-2 z-50">
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-            {navLinks.map((link) => {
-              const Icon = link.icon;
-              const isActive = location.pathname === link.to;
-              return (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`p-2.5 flex items-center space-x-2 border text-xs transition-colors ${isActive
-                    ? "bg-atlas-elevated text-atlas-accent border-atlas-accent font-semibold"
-                    : "bg-atlas-bg text-atlas-muted border-atlas-border hover:text-atlas-text"
-                    }`}
-                >
-                  <Icon className="w-3.5 h-3.5" />
-                  <span>{link.label}</span>
-                </Link>
-              );
-            })}
-          </div>
-          <div className="pt-3 border-t border-atlas-border flex items-center justify-between text-[11px] font-mono text-atlas-muted">
-            <OperationalDataModeBadge
-              mode="BENCHMARK"
-              compact
-              onClick={() => {
-                setMobileMenuOpen(false);
-                setShowBenchmarkModal(true);
-              }}
-            />
-            <Link
-              to="/map?demo=marswalk-001"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-atlas-accent font-semibold flex items-center space-x-1"
-            >
-              <Sparkles className="w-3 h-3" />
-              <span>Launch Guided Demo</span>
-            </Link>
-          </div>
+        <div className="lg:hidden fixed inset-x-0 top-16 bg-atlas-surface border-b border-atlas-border shadow-2xl z-40 p-4 space-y-2 max-h-[85vh] overflow-y-auto">
+          {[...primaryLinks, ...secondaryTools].map((link) => {
+            const isActive = location.pathname === link.to;
+            const Icon = link.icon;
+            return (
+              <Link
+                key={link.to}
+                to={link.to}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`flex items-center space-x-3 px-3 py-2.5 text-xs font-mono transition-colors ${
+                  isActive
+                    ? "bg-atlas-accent text-white font-bold"
+                    : "text-atlas-text hover:bg-atlas-elevated"
+                }`}
+              >
+                <Icon className="w-4 h-4" />
+                <span>{link.label}</span>
+              </Link>
+            );
+          })}
         </div>
       )}
 
-      {/* NASA Benchmark Dataset Inspector Modal via React Portal directly into body */}
+      {/* Benchmark Data Inspector Modal (Portaled directly to document.body for true viewport centering) */}
       {showBenchmarkModal &&
         createPortal(
           <div
-            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 sm:p-6 animate-in fade-in duration-200"
-            onClick={(e) => {
-              if (e.target === e.currentTarget) setShowBenchmarkModal(false);
-            }}
+            className="fixed inset-0 z-[9999] bg-black/80 backdrop-blur-md flex items-center justify-center p-4"
+            onClick={() => setShowBenchmarkModal(false)}
           >
-            <div className="bg-atlas-surface border border-atlas-border max-w-2xl w-full max-h-[85vh] rounded shadow-2xl flex flex-col text-left overflow-hidden animate-in zoom-in-95 duration-150">
-              {/* Modal Header */}
-              <div className="px-5 py-4 border-b border-atlas-border flex items-center justify-between bg-atlas-elevated/90 shrink-0">
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 rounded bg-atlas-teal/10 border border-atlas-teal/30 flex items-center justify-center">
-                    <Database className="w-4 h-4 text-atlas-teal" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-semibold text-atlas-text flex items-center space-x-2 font-mono">
-                      <span>NASA Benchmark Dataset Architecture</span>
-                      <span className="text-[10px] uppercase px-1.5 py-0.5 rounded bg-atlas-teal/20 text-atlas-teal border border-atlas-teal/40 font-mono">
-                        Calibrated Ground Truth
-                      </span>
-                    </h3>
-                    <p className="text-[11px] text-atlas-muted">
-                      Multi-mission planetary science baselines for 100% reproducible mission planning
-                    </p>
-                  </div>
+            <div
+              className="bg-atlas-surface border border-atlas-border shadow-2xl max-w-xl w-full p-6 space-y-5 font-mono text-xs text-atlas-text animate-in fade-in zoom-in-95 duration-150"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between border-b border-atlas-border pb-3">
+                <div className="flex items-center space-x-2">
+                  <ShieldCheck className="w-5 h-5 text-atlas-teal" />
+                  <h3 className="font-display font-bold text-base text-atlas-text">
+                    Verified NASA Datasets & Benchmark
+                  </h3>
                 </div>
                 <button
-                  type="button"
                   onClick={() => setShowBenchmarkModal(false)}
-                  className="w-7 h-7 flex items-center justify-center text-atlas-muted hover:text-atlas-text hover:bg-atlas-elevated rounded transition-colors"
-                  title="Close modal"
+                  className="p-1 hover:bg-atlas-elevated text-atlas-muted hover:text-atlas-text transition-colors"
                 >
                   <X className="w-4 h-4" />
                 </button>
               </div>
 
-              {/* Modal Body */}
-              <div className="p-5 space-y-4 text-xs font-sans overflow-y-auto">
-                {/* Active Mode Banner */}
-                <div className="p-3.5 bg-atlas-elevated border border-atlas-border/80 flex items-start space-x-3 rounded">
-                  <ShieldCheck className="w-5 h-5 text-atlas-teal flex-shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="text-xs font-semibold text-atlas-text font-mono">
-                      Operational Status: BENCHMARK (Deterministic Precision)
-                    </h4>
-                    <p className="text-[11px] text-atlas-muted mt-1 leading-relaxed">
-                      This instance operates with calibrated NASA and ESA ground truth datasets. In this mode, traverse calculations, Tobler metabolic cost, and solar radiation profiles execute with zero network latency, deterministic seed reproducibility, and zero external rate limiting.
-                    </p>
-                  </div>
-                </div>
+              <div className="space-y-3 font-sans text-xs text-atlas-muted leading-relaxed">
+                <p>
+                  Martian Map synthesizes primary NASA/JPL planetary datasets for high-fidelity terrain modeling,
+                  bioenergetic traversal validation, and scientific target identification in Jezero Crater.
+                </p>
 
-                {/* Mission Datasets Breakdown */}
-                <div>
-                  <h5 className="text-[11px] font-mono uppercase tracking-wider text-atlas-accent font-bold mb-2 flex items-center space-x-1.5">
-                    <Layers className="w-3.5 h-3.5" />
-                    <span>Integrated NASA Planetary Datasets</span>
-                  </h5>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 font-mono text-[11px]">
-                    <div className="p-2.5 bg-atlas-bg border border-atlas-border rounded">
-                      <div className="flex items-center justify-between text-atlas-text font-bold mb-1">
-                        <span>MGS MOLA Altimetry</span>
-                        <span className="text-[10px] text-atlas-teal">Megdr 128 ppd</span>
-                      </div>
-                      <p className="text-[10px] text-atlas-muted font-sans leading-normal">
-                        Areoid reference datum (3,396,190 m). Digital elevation model used for gradient heuristic and Tobler hiking cost.
-                      </p>
+                <div className="space-y-2 pt-1 font-mono">
+                  <div className="p-3 bg-atlas-elevated border border-atlas-border space-y-1">
+                    <div className="flex items-center justify-between font-bold text-atlas-text">
+                      <span className="text-atlas-teal">MGS MOLA Laser Altimeter</span>
+                      <span className="text-[10px] text-atlas-muted">128 px/deg</span>
                     </div>
-
-                    <div className="p-2.5 bg-atlas-bg border border-atlas-border rounded">
-                      <div className="flex items-center justify-between text-atlas-text font-bold mb-1">
-                        <span>MRO CRISM Mineralogy</span>
-                        <span className="text-[10px] text-atlas-teal">Hyperspectral</span>
-                      </div>
-                      <p className="text-[10px] text-atlas-muted font-sans leading-normal">
-                        Spectral bands for carbonates, hydrated sulfates, and olivine in Jezero Crater delta sediments.
-                      </p>
-                    </div>
-
-                    <div className="p-2.5 bg-atlas-bg border border-atlas-border rounded">
-                      <div className="flex items-center justify-between text-atlas-text font-bold mb-1">
-                        <span>Mars 2020 MEDA</span>
-                        <span className="text-[10px] text-atlas-teal">In-Situ Sensors</span>
-                      </div>
-                      <p className="text-[10px] text-atlas-muted font-sans leading-normal">
-                        Real Jezero atmospheric pressure (610 Pa), ambient diurnal temp (-62°C), and atmospheric optical depth.
-                      </p>
-                    </div>
-
-                    <div className="p-2.5 bg-atlas-bg border border-atlas-border rounded">
-                      <div className="flex items-center justify-between text-atlas-text font-bold mb-1">
-                        <span>MSL Curiosity RAD</span>
-                        <span className="text-[10px] text-atlas-teal">Dosimetry</span>
-                      </div>
-                      <p className="text-[10px] text-atlas-muted font-sans leading-normal">
-                        Galactic cosmic ray baseline (0.67 mSv/sol) and solar particle event thresholds for astronaut safety.
-                      </p>
-                    </div>
-
-                    <div className="p-2.5 bg-atlas-bg border border-atlas-border rounded">
-                      <div className="flex items-center justify-between text-atlas-text font-bold mb-1">
-                        <span>MRO HiRISE / CTX</span>
-                        <span className="text-[10px] text-atlas-teal">0.25 - 6 m/px</span>
-                      </div>
-                      <p className="text-[10px] text-atlas-muted font-sans leading-normal">
-                        Sub-meter morphological inspection, landing ellipse hazards, scarps, and dune field boulder fields.
-                      </p>
-                    </div>
-
-                    <div className="p-2.5 bg-atlas-bg border border-atlas-border rounded">
-                      <div className="flex items-center justify-between text-atlas-text font-bold mb-1">
-                        <span>USGS Astrogeology</span>
-                        <span className="text-[10px] text-atlas-teal">Viking MDIM 2.1</span>
-                      </div>
-                      <p className="text-[10px] text-atlas-muted font-sans leading-normal">
-                        Geodetic control network and multi-resolution global planetary basemap projection.
-                      </p>
+                    <div className="text-[11px] text-atlas-muted">
+                      Topographic areoid datum elevation model covering 100% of the traverse area.
                     </div>
                   </div>
-                </div>
 
-                {/* Data Integrity Callout */}
-                <div className="p-2.5 bg-atlas-bg border border-atlas-border flex items-center justify-between text-[11px] font-mono rounded">
-                  <div className="flex items-center space-x-2 text-atlas-text">
-                    <CheckCircle2 className="w-4 h-4 text-atlas-teal" />
-                    <span>Deterministic SHA-256 Checksums Verified</span>
+                  <div className="p-3 bg-atlas-elevated border border-atlas-border space-y-1">
+                    <div className="flex items-center justify-between font-bold text-atlas-text">
+                      <span className="text-atlas-accent">Mars 2020 Perseverance Traverse</span>
+                      <span className="text-[10px] text-atlas-muted">NASA PDS / MMGIS</span>
+                    </div>
+                    <div className="text-[11px] text-atlas-muted">
+                      Authentic rover traverse coordinates, science stations, and coring sample cache locations.
+                    </div>
                   </div>
-                  <span className="text-[10px] text-atlas-muted">Offline Resilient</span>
+
+                  <div className="p-3 bg-atlas-elevated border border-atlas-border space-y-1">
+                    <div className="flex items-center justify-between font-bold text-atlas-text">
+                      <span className="text-atlas-blue">CRISM & HiRISE Imagery</span>
+                      <span className="text-[10px] text-atlas-muted">MRO Instruments</span>
+                    </div>
+                    <div className="text-[11px] text-atlas-muted">
+                      Hyperspectral mineral mapping detecting olivine, smectite, and deltaic carbonate outcrops.
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              {/* Modal Footer */}
-              <div className="px-5 py-3 border-t border-atlas-border bg-atlas-elevated/90 flex items-center justify-between shrink-0">
+              <div className="pt-2 flex items-center justify-between border-t border-atlas-border">
                 <Link
                   to="/methodology"
                   onClick={() => setShowBenchmarkModal(false)}
-                  className="inline-flex items-center space-x-1.5 text-xs text-atlas-accent hover:underline font-mono"
+                  className="text-xs text-atlas-teal hover:underline flex items-center space-x-1"
                 >
-                  <span>Read Full Methodology & Scientific Provenance</span>
+                  <span>Read Full Data Provenance</span>
                   <ExternalLink className="w-3.5 h-3.5" />
                 </Link>
+
                 <button
-                  type="button"
                   onClick={() => setShowBenchmarkModal(false)}
-                  className="px-4 py-1.5 bg-atlas-surface hover:bg-atlas-elevated border border-atlas-border text-xs text-atlas-text font-mono transition-colors rounded"
+                  className="px-4 py-2 bg-atlas-accent hover:bg-atlas-accent-hover text-white font-bold text-xs shadow-md transition-colors"
                 >
                   Close
                 </button>

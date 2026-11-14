@@ -5,53 +5,22 @@
 @layer base {
   :root {
     --atlas-bg: #080F19;
-    --atlas-surface: #101C2B;
-    --atlas-elevated: #172638;
-    --atlas-border: #29384B;
-    --atlas-border-light: #344860;
-    --atlas-text: #F0F4F8;
-    --atlas-muted: #9BAEC1;
-    --atlas-accent: #ED7143;
-    --atlas-accent-dark: #C4512A;
-    --atlas-accent-glow: rgba(237, 113, 67, 0.22);
-    --atlas-teal: #36B9AF;
-    --atlas-amber: #E7A83E;
-    --atlas-red: #D85B64;
+    --atlas-surface: #132536;
+    --atlas-elevated: #1B3041;
+    --atlas-border: #223A4E;
+    --atlas-border-light: #2E4A62;
+    --atlas-text: #F2F3F0;
+    --atlas-muted: #91A5B5;
+    --atlas-accent: #FA7955;
+    --atlas-accent-dark: #E0623E;
+    --atlas-accent-hover: #FF916D;
+    --atlas-accent-glow: rgba(250, 121, 85, 0.25);
+    --atlas-teal: #2CB9B1;
+    --atlas-amber: #E8AE62;
+    --atlas-red: #E57373;
     --atlas-blue: #549ED8;
     --atlas-violet: #9784CD;
     color-scheme: dark;
-  }
-
-  html.light,
-  :root[data-theme="light"],
-  body.light {
-    --atlas-bg: #F5F6F4;
-    --atlas-surface: #FFFFFF;
-    --atlas-elevated: #EAEFEE;
-    --atlas-border: #D8E0E1;
-    --atlas-border-light: #C5D0D2;
-    --atlas-text: #172633;
-    --atlas-muted: #536677;
-    --atlas-accent: #C4512A;
-    --atlas-accent-dark: #A43F1C;
-    --atlas-accent-glow: rgba(196, 81, 42, 0.15);
-    --atlas-teal: #087F78;
-    --atlas-amber: #C98218;
-    --atlas-red: #C33E47;
-    --atlas-blue: #2E79B5;
-    --atlas-violet: #7864B3;
-    color-scheme: light;
-  }
-
-  * {
-    border-radius: 0px !important;
-  }
-
-  /* Allow circular geometry strictly for specific pinpoint or pulse items */
-  .rounded-circle,
-  .rounded-full.pulse-indicator,
-  .map-pin-circle {
-    border-radius: 9999px !important;
   }
 
   body {
@@ -62,7 +31,10 @@
     overflow-x: hidden;
   }
 
-  h1, h2, h3, .font-display {
+  h1,
+  h2,
+  h3,
+  .font-display {
     font-family: 'Manrope', system-ui, sans-serif;
   }
 
@@ -71,22 +43,28 @@
   }
 
   /* Tabular numbers for telemetry, clocks, and coordinates */
-  .tabular-nums, .font-mono, .telemetry-val {
+  .tabular-nums,
+  .font-mono,
+  .telemetry-val {
+    font-family: 'IBM Plex Mono', 'Inter', monospace;
     font-variant-numeric: tabular-nums;
   }
 
-  /* Custom scrollbar */
+  /* Custom dark scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
   }
+
   ::-webkit-scrollbar-track {
     background: var(--atlas-bg);
   }
+
   ::-webkit-scrollbar-thumb {
     background: var(--atlas-border);
-    border-radius: 0px;
+    border-radius: 2px;
   }
+
   ::-webkit-scrollbar-thumb:hover {
     background: var(--atlas-accent);
   }
@@ -94,15 +72,15 @@
 
 /* Leaflet map theme styling */
 .leaflet-container {
-  background-color: #161210 !important;
+  background-color: #080F19 !important;
   font-family: 'Inter', system-ui, sans-serif !important;
 }
 
 .leaflet-bar {
   border: 1px solid var(--atlas-border) !important;
-  border-radius: 0px !important;
+  border-radius: 2px !important;
   overflow: hidden;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5) !important;
 }
 
 .leaflet-bar a {
@@ -122,8 +100,8 @@
   background-color: var(--atlas-surface) !important;
   color: var(--atlas-text) !important;
   border: 1px solid var(--atlas-border) !important;
-  border-radius: 0px !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6) !important;
+  border-radius: 4px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7) !important;
 }
 
 .leaflet-popup-tip {
