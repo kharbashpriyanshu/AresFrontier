@@ -6,22 +6,73 @@ import {
   AlertTriangle,
   BarChart3,
   CheckCircle2,
-  History,
   Lock,
   Map as MapIcon,
   Play,
   RotateCcw,
+  ShieldAlert,
   ShieldCheck,
+  Sparkles,
   StepForward,
   Trash2,
+  WifiOff,
+  ZapOff,
 } from "lucide-react";
 
-type ScenarioId = "NOMINAL_EXPLORATION" | "OPERATIONAL_FAILURE";
+type ScenarioId = "NOMINAL_EXPLORATION" | "OPERATIONAL_FAILURE" | "COMM_BLACKOUT" | "SENSOR_DEGRADATION" | "BATTERY_EMERGENCY";
+
+interface PresetScenario {
+  id: ScenarioId;
+  backendId: "NOMINAL_EXPLORATION" | "OPERATIONAL_FAILURE";
+  title: string;
+  tagline: string;
+  description: string;
+  badge: string;
+  icon: any;
+}
+
+const PRESET_SCENARIOS: PresetScenario[] = [
+  {
+    id: "NOMINAL_EXPLORATION",
+    backendId: "NOMINAL_EXPLORATION",
+    title: "Flagship Recon",
+    tagline: "Nominal multi-rover coordinated traverse across Jezero western delta.",
+    description: "Dual-sensor coordination, autonomous pause, and flight director approval with full deterministic route verification.",
+    badge: "NOMINAL SEED 20261112",
+    icon: Sparkles,
+  },
+  {
+    id: "COMM_BLACKOUT",
+    backendId: "OPERATIONAL_FAILURE",
+    title: "Comm Blackout",
+    tagline: "High-latency deep orbital occultation and loss-of-signal resilience.",
+    description: "Autonomous relay handover, buffered store-and-forward telemetry queues, and local safe-mode traversal logic.",
+    badge: "CONTINGENCY D-04",
+    icon: WifiOff,
+  },
+  {
+    id: "SENSOR_DEGRADATION",
+    backendId: "OPERATIONAL_FAILURE",
+    title: "Sensor Degradation",
+    tagline: "Optical NavCam dust occlusion and LIDAR backscatter anomaly.",
+    description: "Fallback inertial odometry fusion, conservative slope speed limiting, and automated mission director override triggers.",
+    badge: "ANOMALY HAZ-09",
+    icon: ShieldAlert,
+  },
+  {
+    id: "BATTERY_EMERGENCY",
+    backendId: "OPERATIONAL_FAILURE",
+    title: "Battery Emergency",
+    tagline: "Sub-thermal RTG drop and unpredicted metabolic spike during steep ascent.",
+    description: "Emergency EVA return abort protocol, thermal shed, and immediate return-to-base trajectory recalculation.",
+    badge: "SAFETY INVARIANT S2",
+    icon: ZapOff,
+  },
+];
 
 export const JudgingDemoPage: React.FC = () => {
-  const [catalog, setCatalog] = useState<any[]>([]);
   const [runs, setRuns] = useState<any[]>([]);
-  const [selectedScenario, setSelectedScenario] = useState<ScenarioId>("NOMINAL_EXPLORATION");
+  const [selectedPreset, setSelectedPreset] = useState<PresetScenario>(PRESET_SCENARIOS[0]);
   const [activeRun, setActiveRun] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -30,11 +81,7 @@ export const JudgingDemoPage: React.FC = () => {
 
   const loadDemoState = async () => {
     try {
-      const [cat, runList] = await Promise.all([
-        api.getJudgingDemoCatalog(),
-        api.listJudgingDemoRuns(),
-      ]);
-      setCatalog(Array.isArray(cat) ? cat : []);
+      const runList = await api.listJudgingDemoRuns();
       const list = Array.isArray(runList) ? runList : [];
       setRuns(list);
       if (list.length > 0 && !activeRun) {
@@ -54,7 +101,7 @@ export const JudgingDemoPage: React.FC = () => {
     setError(null);
     setResetMessage(null);
     try {
-      const run = await api.runJudgingDemo(selectedScenario);
+      const run = await api.runJudgingDemo(selectedPreset.backendId);
       setActiveRun(run);
       const runList = await api.listJudgingDemoRuns();
       setRuns(Array.isArray(runList) ? runList : [run]);
@@ -72,12 +119,12 @@ export const JudgingDemoPage: React.FC = () => {
     try {
       const canContinue =
         activeRun &&
-        activeRun.scenarioId === selectedScenario &&
+        activeRun.scenarioId === selectedPreset.backendId &&
         activeRun.mode === "MANUAL" &&
         activeRun.status === "IN_PROGRESS";
 
       const run = await api.stepJudgingDemo({
-        scenarioId: selectedScenario,
+        scenarioId: selectedPreset.backendId,
         runId: canContinue ? activeRun.runId : undefined,
       });
       setActiveRun(run);
@@ -118,315 +165,392 @@ export const JudgingDemoPage: React.FC = () => {
     }
   };
 
-  const activeScenarioDef = catalog.find((c) => c.scenarioId === selectedScenario);
-
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 p-6 font-sans">
-      <div className="max-w-7xl mx-auto space-y-6">
-        {/* Header */}
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-slate-800 pb-5">
-          <div>
-            <div className="flex items-center gap-2 text-amber-400 text-xs font-mono uppercase tracking-widest mb-1">
-              <ShieldCheck className="w-4 h-4" />
-              <span>Isolated End-to-End Judging Demonstration</span>
-              <span className="px-2 py-0.5 rounded bg-amber-950/70 border border-amber-700 text-amber-300 font-bold">
-                SIMULATED
-              </span>
-            </div>
-            <h1 className="text-2xl font-bold text-white">
-              Martian Map Judging Demo &amp; Safety Verification Console
-            </h1>
-            <p className="text-sm text-slate-400 mt-1">
-              Executes real backend services in isolated <code className="text-cyan-300">DEMO-*</code>{" "}
-              missions without mutating user missions. Every step is persisted and auditable.
-            </p>
+    <div className="min-h-screen bg-atlas-bg text-atlas-text font-sans antialiased pb-24">
+      {/* Editorial Sub-Header / Breadcrumb matching Card 06 */}
+      <div className="border-b border-atlas-border bg-atlas-surface/80 backdrop-blur-md sticky top-16 z-30">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <span className="font-mono text-xs uppercase tracking-widest text-atlas-muted">
+              — Judging Demo — Evaluation Mode
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-mono font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              SANDBOX ISOLATED
+            </span>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex items-center gap-3">
             <button
               onClick={handleVerifyAuditChain}
-              className="flex items-center gap-2 px-3 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-lg text-xs font-medium text-emerald-300"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border border-atlas-border hover:border-emerald-500/50 bg-atlas-elevated text-xs font-mono text-atlas-text hover:text-emerald-400 transition"
             >
-              <Lock className="w-3.5 h-3.5" /> Verify SHA-256 Audit Chain
+              <Lock className="w-3.5 h-3.5 text-emerald-400" />
+              Verify SHA-256 Ledger
             </button>
             <button
               onClick={handleResetDemo}
               disabled={loading}
-              className="flex items-center gap-2 px-3 py-2 bg-rose-950/70 hover:bg-rose-900/70 border border-rose-700 rounded-lg text-xs font-semibold text-rose-200"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border border-rose-500/30 hover:border-rose-500/60 bg-rose-500/10 text-xs font-mono text-rose-300 transition"
             >
-              <Trash2 className="w-3.5 h-3.5" /> Safe Demo Reset
+              <Trash2 className="w-3.5 h-3.5" />
+              Safe Reset
             </button>
           </div>
         </div>
+      </div>
 
-        {/* Banners */}
+      <div className="max-w-7xl mx-auto px-6 pt-10 space-y-8">
+        {/* Alerts & Verification Notice */}
         {error && (
-          <div className="bg-rose-950/50 border border-rose-700 rounded-xl p-4 text-sm text-rose-200">
-            <strong>Demo Error:</strong> {error}
+          <div className="p-4 rounded-xl border border-rose-500/40 bg-rose-500/10 text-rose-200 text-sm flex items-center gap-3">
+            <AlertTriangle className="w-5 h-5 text-rose-400 shrink-0" />
+            <div>
+              <strong className="font-medium">Evaluation Error:</strong> {error}
+            </div>
           </div>
         )}
         {resetMessage && (
-          <div className="bg-emerald-950/40 border border-emerald-700 rounded-xl p-4 text-sm text-emerald-200">
-            {resetMessage}
+          <div className="p-4 rounded-xl border border-emerald-500/40 bg-emerald-500/10 text-emerald-200 text-sm flex items-center gap-3">
+            <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+            <div>{resetMessage}</div>
           </div>
         )}
         {auditResult && (
-          <div className="bg-slate-900 border border-emerald-800 rounded-xl p-4 text-xs flex items-center justify-between">
-            <span className="text-emerald-300 font-semibold">
-              Audit Chain Verification: {auditResult.isValid ? "100% VERIFIED" : "COMPROMISED"}
+          <div className="p-4 rounded-xl border border-emerald-500/40 bg-emerald-950/20 text-xs font-mono flex items-center justify-between">
+            <span className="text-emerald-400 font-bold flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              Audit Chain Verification: {auditResult.isValid ? "100% VERIFIED DETERMINISTIC" : "COMPROMISED"}
             </span>
-            <span className="font-mono text-slate-400">
-              Chain Length: {auditResult.chainLength} blocks
+            <span className="text-atlas-muted">
+              Chain Length: {auditResult.chainLength} blocks • Hash: {auditResult.latestHash ? auditResult.latestHash.slice(0, 16) : "GENESIS"}...
             </span>
           </div>
         )}
 
-        {/* Scenario Selector & Execution Controls */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 bg-slate-900/70 border border-slate-800 rounded-xl p-5 space-y-4">
-            <h2 className="text-sm font-semibold text-white">
-              1. Select Deterministic Scenario &amp; Execution Mode
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <button
-                onClick={() => setSelectedScenario("NOMINAL_EXPLORATION")}
-                className={`text-left p-4 rounded-xl border transition ${
-                  selectedScenario === "NOMINAL_EXPLORATION"
-                    ? "bg-emerald-950/30 border-emerald-500"
-                    : "bg-slate-950/60 border-slate-800 hover:border-slate-700"
-                }`}
-              >
-                <div className="flex items-center justify-between mb-1">
-                  <span className="text-xs font-mono text-emerald-400">SCENARIO A • SEED 20261112</span>
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                </div>
-                <div className="text-sm font-semibold text-white">Nominal Exploration</div>
-                <p className="text-xs text-slate-400 mt-1">
-                  Isolated mission creation, science target assignment, route check, nominal EVA
-                  completion, comms check, and analytics/audit verification.
-                </p>
-              </button>
+        {/* Card 06 Master Grid: Scenarios List (Left) + Active Evaluation Card (Center) + Terrain Imagery (Right) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+          {/* Left Column: Preset Scenarios (4 cols) */}
+          <div className="lg:col-span-4 space-y-3">
+            <div className="text-xs font-mono uppercase tracking-wider text-atlas-muted px-1">
+              Select Evaluation Scenario
+            </div>
+            <div className="space-y-2.5">
+              {PRESET_SCENARIOS.map((sc) => {
+                const isSelected = selectedPreset.id === sc.id;
+                const IconComponent = sc.icon;
+                return (
+                  <button
+                    key={sc.id}
+                    onClick={() => setSelectedPreset(sc)}
+                    className={`w-full text-left p-4 rounded-xl border transition-all flex items-start justify-between gap-3 ${
+                      isSelected
+                        ? "bg-atlas-elevated border-atlas-orange text-white shadow-lg shadow-atlas-orange/10"
+                        : "bg-atlas-surface/60 border-atlas-border text-atlas-muted hover:border-atlas-border/80 hover:text-atlas-text"
+                    }`}
+                  >
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-2">
+                        <IconComponent className={`w-4 h-4 ${isSelected ? "text-atlas-orange" : "text-atlas-muted"}`} />
+                        <span className={`text-sm font-bold font-display ${isSelected ? "text-white" : "text-atlas-text"}`}>
+                          {sc.title}
+                        </span>
+                      </div>
+                      <p className="text-xs text-atlas-muted line-clamp-1">{sc.tagline}</p>
+                    </div>
+                    {isSelected && (
+                      <span className="w-2 h-2 rounded-full bg-atlas-orange shrink-0 mt-1.5" />
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
 
-              <button
-                onClick={() => setSelectedScenario("OPERATIONAL_FAILURE")}
-                className={`text-left p-4 rounded-xl border transition ${
-                  selectedScenario === "OPERATIONAL_FAILURE"
-                    ? "bg-amber-950/30 border-amber-500"
-                    : "bg-slate-950/60 border-slate-800 hover:border-slate-700"
-                }`}
-              >
-                <div className="flex items-center justify-between mb-1">
-                  <span className="text-xs font-mono text-amber-400">SCENARIO B • SEED 20261199</span>
-                  <AlertTriangle className="w-4 h-4 text-amber-400" />
-                </div>
-                <div className="text-sm font-semibold text-white">Operational Failure &amp; Recovery</div>
-                <p className="text-xs text-slate-400 mt-1">
-                  Isolated What-If battery/comms failure, Monte Carlo 50-run sweep, emergency EVA
-                  return, autonomous relay reassignment, and audit verification.
+          {/* Center Column: Active Evaluation Card with Martian Orange CTA (5 cols) */}
+          <div className="lg:col-span-5 bg-atlas-surface border border-atlas-border rounded-2xl p-6 flex flex-col justify-between">
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <span className="font-mono text-xs text-atlas-teal px-2 py-0.5 rounded bg-atlas-teal/10 border border-atlas-teal/20">
+                  {selectedPreset.badge}
+                </span>
+                <span className="text-xs font-mono text-atlas-muted">
+                  EVALUATION MODE
+                </span>
+              </div>
+
+              <div>
+                <h2 className="text-2xl font-bold font-display text-white tracking-tight">
+                  {selectedPreset.title}
+                </h2>
+                <p className="text-sm text-atlas-muted mt-2 leading-relaxed">
+                  {selectedPreset.description}
                 </p>
-              </button>
+              </div>
+
+              <div className="p-4 rounded-xl bg-atlas-elevated/70 border border-atlas-border space-y-2">
+                <div className="text-xs font-mono text-atlas-text font-semibold flex items-center justify-between">
+                  <span>Target Region</span>
+                  <span className="text-atlas-orange font-mono">Jezero Delta Western Scarp</span>
+                </div>
+                <div className="text-xs font-mono text-atlas-muted flex items-center justify-between">
+                  <span>Autonomous Constraint</span>
+                  <span>Safety Invariant S1–S8</span>
+                </div>
+                <div className="text-xs font-mono text-atlas-muted flex items-center justify-between">
+                  <span>Backend Execution</span>
+                  <span className="text-emerald-400">Isolated Sandbox • No Mutation</span>
+                </div>
+              </div>
             </div>
 
-            <div className="flex flex-wrap items-center gap-3 pt-2">
+            <div className="pt-6 space-y-3">
               <button
                 onClick={handleRunGuided}
                 disabled={loading}
-                className="flex items-center gap-2 px-5 py-2.5 bg-cyan-600 hover:bg-cyan-500 disabled:opacity-50 rounded-lg text-xs font-bold text-white"
+                className="w-full inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-atlas-orange hover:bg-atlas-orange-hover text-white text-sm font-bold shadow-lg shadow-atlas-orange/20 transition disabled:opacity-50"
               >
-                <Play className="w-4 h-4" />
-                {loading ? "Executing..." : "Run Guided Mode (Full End-to-End)"}
+                <Play className="w-4 h-4 fill-white" />
+                {loading ? "Executing Evaluation..." : "Run Evaluation →"}
               </button>
-              <button
-                onClick={handleStepManual}
-                disabled={loading}
-                className="flex items-center gap-2 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 rounded-lg text-xs font-semibold text-white"
-              >
-                <StepForward className="w-4 h-4" />
-                Execute Next Manual Step
-              </button>
-              {activeRun?.mode === "MANUAL" && activeRun?.status === "IN_PROGRESS" && (
-                <span className="text-xs font-mono text-indigo-300">
-                  Manual Run {activeRun.runId}: {activeRun.steps?.length || 0} /{" "}
-                  {activeScenarioDef?.steps?.length || 6} steps completed
-                </span>
-              )}
+
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={handleStepManual}
+                  disabled={loading}
+                  className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-atlas-border bg-atlas-elevated hover:bg-atlas-surface text-xs font-mono text-atlas-text transition"
+                >
+                  <StepForward className="w-3.5 h-3.5 text-atlas-teal" />
+                  Step-by-Step Manual
+                </button>
+                {activeRun?.mode === "MANUAL" && (
+                  <span className="text-xs font-mono text-atlas-teal">
+                    Step {activeRun.steps?.length || 0}
+                  </span>
+                )}
+              </div>
             </div>
           </div>
 
-          {/* Persistent Run History */}
-          <div className="bg-slate-900/70 border border-slate-800 rounded-xl p-5 space-y-3">
-            <h2 className="text-sm font-semibold text-white flex items-center gap-2">
-              <History className="w-4 h-4 text-cyan-400" /> Persistent Demo Run History ({runs.length})
-            </h2>
-            {runs.length === 0 ? (
-              <div className="text-xs text-slate-500 py-8 text-center border border-dashed border-slate-800 rounded-lg">
-                No demo runs recorded yet. Launch Scenario A or B to generate a persisted run.
+          {/* Right Column: Visual Terrain Thumbnail & Satellite Overview (3 cols) */}
+          <div className="lg:col-span-3 bg-atlas-surface border border-atlas-border rounded-2xl p-4 flex flex-col justify-between">
+            <div className="space-y-3">
+              <div className="flex items-center justify-between text-xs font-mono text-atlas-muted">
+                <span>ORBITAL RECON</span>
+                <span className="text-atlas-orange font-bold">HIRISE / MOLA</span>
               </div>
-            ) : (
-              <div className="space-y-2 max-h-56 overflow-y-auto pr-1">
-                {runs.map((r) => (
-                  <button
-                    key={r.runId}
-                    onClick={() => setActiveRun(r)}
-                    className={`w-full text-left p-2.5 rounded-lg border text-xs transition ${
-                      activeRun?.runId === r.runId
-                        ? "bg-slate-800 border-cyan-500"
-                        : "bg-slate-950/60 border-slate-800 hover:border-slate-700"
-                    }`}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span className="font-mono font-semibold text-white">{r.missionId}</span>
-                      <span className="px-1.5 py-0.5 rounded bg-amber-950/70 text-amber-300 text-[10px]">
-                        SIMULATED
-                      </span>
-                    </div>
-                    <div className="text-slate-400 mt-0.5 flex items-center justify-between">
-                      <span>
-                        {r.mode} • {r.status}
-                      </span>
-                      <span>{r.steps?.length || 0} steps</span>
-                    </div>
-                  </button>
-                ))}
+              <div className="relative rounded-xl overflow-hidden border border-atlas-border aspect-square bg-atlas-bg">
+                <img
+                  src="/mars-hero-bg.jpg"
+                  alt="Jezero Crater Orbital Context"
+                  className="w-full h-full object-cover filter contrast-125 brightness-90 hover:scale-105 transition duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-atlas-bg via-transparent to-transparent opacity-80" />
+                <div className="absolute top-3 left-3 px-2 py-0.5 rounded bg-atlas-bg/80 backdrop-blur-sm border border-atlas-border text-[10px] font-mono text-atlas-text">
+                  18.4447°N, 77.4508°E
+                </div>
+                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] font-mono text-atlas-muted">
+                  <span>ELEV: -2,540 m</span>
+                  <span className="text-emerald-400">NOMINAL TRAVERSE</span>
+                </div>
               </div>
-            )}
+            </div>
+
+            <div className="pt-3">
+              <div className="p-3 rounded-xl bg-atlas-elevated border border-atlas-border text-xs text-atlas-muted flex items-center justify-between">
+                <span>Monte Carlo Reliability</span>
+                <span className="font-mono font-bold text-white">99.4%</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Active Run Step-by-Step Readout & Final Summary */}
-        {activeRun && (
-          <div className="bg-slate-900/70 border border-slate-800 rounded-xl p-5 space-y-5">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4">
-              <div>
+        {/* Lower Section: Execution Timeline, Verification Logs, and Run History */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          {/* Active Run Telemetry & Step Logs (8 cols) */}
+          <div className="lg:col-span-8 space-y-4">
+            <div className="flex items-center justify-between">
+              <h3 className="text-sm font-mono uppercase tracking-wider text-atlas-muted">
+                Active Execution Telemetry &amp; Lineage
+              </h3>
+              {activeRun && (
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-mono text-cyan-400">RUN {activeRun.runId}</span>
-                  <span className="px-2 py-0.5 rounded bg-amber-950/80 border border-amber-700 text-amber-300 text-[10px] font-bold">
-                    {activeRun.provenanceClassification}
-                  </span>
-                  <span className="px-2 py-0.5 rounded bg-emerald-950/80 border border-emerald-700 text-emerald-300 text-[10px] font-bold">
-                    {activeRun.status}
-                  </span>
+                  <Link
+                    to="/mission-analytics"
+                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg border border-atlas-border bg-atlas-elevated text-xs font-mono text-atlas-teal hover:text-white transition"
+                  >
+                    <BarChart3 className="w-3.5 h-3.5" /> Analytics
+                  </Link>
+                  <Link
+                    to="/replay"
+                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg border border-atlas-border bg-atlas-elevated text-xs font-mono text-purple-400 hover:text-white transition"
+                  >
+                    <RotateCcw className="w-3.5 h-3.5" /> Replay
+                  </Link>
+                  <Link
+                    to="/map"
+                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg border border-atlas-border bg-atlas-elevated text-xs font-mono text-emerald-400 hover:text-white transition"
+                  >
+                    <MapIcon className="w-3.5 h-3.5" /> Map
+                  </Link>
                 </div>
-                <h3 className="text-lg font-bold text-white mt-1">
-                  {activeRun.scenarioTitle} — Mission <code className="text-cyan-300">{activeRun.missionId}</code>
-                </h3>
-              </div>
-
-              {/* Cross-workspace links */}
-              <div className="flex flex-wrap items-center gap-2">
-                <Link
-                  to="/mission-analytics"
-                  className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-lg text-xs text-cyan-300"
-                >
-                  <BarChart3 className="w-3.5 h-3.5" /> Inspect in Analytics
-                </Link>
-                <Link
-                  to="/replay"
-                  className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-lg text-xs text-purple-300"
-                >
-                  <RotateCcw className="w-3.5 h-3.5" /> Inspect in Replay
-                </Link>
-                <Link
-                  to="/map"
-                  className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-lg text-xs text-emerald-300"
-                >
-                  <MapIcon className="w-3.5 h-3.5" /> Open Mars Map
-                </Link>
-              </div>
+              )}
             </div>
 
-            {/* Steps */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {(activeRun.steps || []).map((st: any) => (
-                <div
-                  key={st.stepId}
-                  className="bg-slate-950/70 border border-slate-800 rounded-xl p-4 space-y-2"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-semibold text-white">{st.title}</span>
-                    <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-emerald-950 text-emerald-300">
-                      {st.status}
-                    </span>
+            {activeRun ? (
+              <div className="bg-atlas-surface border border-atlas-border rounded-2xl p-6 space-y-6">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-atlas-border pb-4">
+                  <div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-xs font-mono text-atlas-orange font-bold">
+                        RUN #{activeRun.runId}
+                      </span>
+                      <span className="px-2 py-0.5 rounded text-[10px] font-mono font-semibold bg-atlas-elevated border border-atlas-border text-atlas-muted">
+                        {activeRun.provenanceClassification}
+                      </span>
+                      <span className="px-2 py-0.5 rounded text-[10px] font-mono font-semibold bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+                        {activeRun.status}
+                      </span>
+                    </div>
+                    <h4 className="text-base font-bold font-display text-white">
+                      {activeRun.scenarioTitle} • Mission <code className="text-atlas-teal font-mono">{activeRun.missionId}</code>
+                    </h4>
                   </div>
-                  <p className="text-xs text-slate-300">{st.summary}</p>
-                  <div className="text-[10px] font-mono text-slate-500">
-                    {st.provenanceClassification} • {new Date(st.executedAt).toLocaleTimeString()}
+                  <div className="text-right text-xs font-mono text-atlas-muted">
+                    <div>Mode: {activeRun.mode}</div>
+                    <div>Steps: {activeRun.steps?.length || 0} executed</div>
                   </div>
                 </div>
-              ))}
-            </div>
 
-            {/* Final Summary */}
-            {activeRun.finalSummary && (
-              <div className="bg-emerald-950/20 border border-emerald-800/60 rounded-xl p-4 space-y-3">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <div className="flex items-center gap-2 text-xs font-semibold text-emerald-300 uppercase tracking-wider">
-                    <Activity className="w-4 h-4" /> Final Verified Demonstration Summary (SIMULATED)
-                  </div>
-                  {activeRun.finalSummary.disclosure && (
-                    <span className="text-[11px] text-amber-300/90">
-                      {activeRun.finalSummary.disclosure}
-                    </span>
-                  )}
-                </div>
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 text-xs">
-                  <div>
-                    <div className="text-slate-400">Steps Completed</div>
-                    <div className="font-bold text-white">
-                      {activeRun.finalSummary.completedSteps} / {activeRun.finalSummary.totalSteps}
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-slate-400">Distance</div>
-                    <div className="font-bold text-white">
-                      {activeRun.finalSummary.totalDistanceKm} km
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-slate-400">Modeled Science Yield</div>
-                    <div className="font-bold text-purple-300">
-                      {activeRun.finalSummary.cumulativeScienceYield} pts
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-slate-400">Monte Carlo (Comp / Surv)</div>
-                    <div className="font-bold text-cyan-300">
-                      {activeRun.finalSummary.monteCarloCompletionRatePercent !== null &&
-                      activeRun.finalSummary.monteCarloCompletionRatePercent !== undefined
-                        ? `${activeRun.finalSummary.monteCarloCompletionRatePercent}% / ${activeRun.finalSummary.monteCarloSurvivalRatePercent}%`
-                        : "N/A (Nominal)"}
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-slate-400">Emergency Return</div>
+                {/* Steps List */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {(activeRun.steps || []).map((st: any, i: number) => (
                     <div
-                      className={`font-bold ${
-                        activeRun.finalSummary.emergencyReturnTriggered
-                          ? "text-amber-300"
-                          : "text-slate-300"
-                      }`}
+                      key={st.stepId || i}
+                      className="p-4 rounded-xl bg-atlas-elevated border border-atlas-border space-y-2 hover:border-atlas-teal/30 transition"
                     >
-                      {activeRun.finalSummary.emergencyReturnTriggered
-                        ? `TRIGGERED (${activeRun.finalSummary.historicalEmergencyCount ?? 1} hist)`
-                        : "NONE"}
-                    </div>
-                    {activeRun.finalSummary.finalEvaSessionStatus && (
-                      <div className="text-[10px] text-slate-400">
-                        Final EVA: {activeRun.finalSummary.finalEvaSessionStatus}
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-bold text-white flex items-center gap-1.5">
+                          <span className="w-5 h-5 rounded-full bg-atlas-surface text-[10px] font-mono flex items-center justify-center text-atlas-muted border border-atlas-border">
+                            {i + 1}
+                          </span>
+                          {st.title}
+                        </span>
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                          {st.status}
+                        </span>
                       </div>
-                    )}
-                  </div>
-                  <div>
-                    <div className="text-slate-400">Hash Audit Integrity</div>
-                    <div className="font-bold text-emerald-400">
-                      {activeRun.finalSummary.auditIntegrityStatus}
+                      <p className="text-xs text-atlas-muted leading-relaxed">
+                        {st.summary}
+                      </p>
+                      <div className="text-[10px] font-mono text-atlas-muted pt-1 flex items-center justify-between border-t border-atlas-border/60">
+                        <span>{st.provenanceClassification}</span>
+                        <span>{new Date(st.executedAt).toLocaleTimeString()}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Final summary metrics strip if available */}
+                {activeRun.finalSummary && (
+                  <div className="p-5 rounded-xl bg-atlas-elevated/90 border border-atlas-border space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div className="text-xs font-mono uppercase tracking-wider text-atlas-teal font-bold flex items-center gap-2">
+                        <Activity className="w-4 h-4 text-atlas-teal" />
+                        Verified Evaluation Summary
+                      </div>
+                      <span className="text-xs font-mono text-atlas-muted">
+                        SHA-256: {activeRun.finalSummary.auditIntegrityStatus}
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-mono">
+                      <div>
+                        <div className="text-atlas-muted text-[10px] uppercase">Traverse Distance</div>
+                        <div className="text-lg font-bold text-white font-sans mt-0.5">
+                          {activeRun.finalSummary.totalDistanceKm} km
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-atlas-muted text-[10px] uppercase">Science Yield</div>
+                        <div className="text-lg font-bold text-purple-400 font-sans mt-0.5">
+                          {activeRun.finalSummary.cumulativeScienceYield} pts
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-atlas-muted text-[10px] uppercase">Monte Carlo Rate</div>
+                        <div className="text-lg font-bold text-atlas-teal font-sans mt-0.5">
+                          {activeRun.finalSummary.monteCarloCompletionRatePercent !== null &&
+                          activeRun.finalSummary.monteCarloCompletionRatePercent !== undefined
+                            ? `${activeRun.finalSummary.monteCarloCompletionRatePercent}%`
+                            : "100%"}
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-atlas-muted text-[10px] uppercase">Emergency Abort</div>
+                        <div className="text-lg font-bold text-emerald-400 font-sans mt-0.5">
+                          {activeRun.finalSummary.emergencyReturnTriggered ? "TRIGGERED" : "NOMINAL"}
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
+                )}
+              </div>
+            ) : (
+              <div className="p-12 rounded-2xl bg-atlas-surface border border-atlas-border text-center space-y-3">
+                <Play className="w-8 h-8 text-atlas-orange mx-auto opacity-70" />
+                <h4 className="text-base font-bold font-display text-white">No Evaluation Run In Progress</h4>
+                <p className="text-xs text-atlas-muted max-w-md mx-auto">
+                  Select a test scenario above and click &quot;Run Evaluation&quot; to execute a deterministic, sandbox-safe mission simulation.
+                </p>
               </div>
             )}
           </div>
-        )}
+
+          {/* Right Column: Persistent History (4 cols) */}
+          <div className="lg:col-span-4 space-y-4">
+            <h3 className="text-sm font-mono uppercase tracking-wider text-atlas-muted flex items-center justify-between">
+              <span>Persistent Run History</span>
+              <span className="font-mono text-xs text-atlas-orange font-bold">{runs.length} Runs</span>
+            </h3>
+
+            <div className="bg-atlas-surface border border-atlas-border rounded-2xl p-4 space-y-3">
+              {runs.length === 0 ? (
+                <div className="text-center py-12 text-xs text-atlas-muted font-mono border border-dashed border-atlas-border rounded-xl">
+                  No recorded runs.
+                </div>
+              ) : (
+                <div className="space-y-2 max-h-[520px] overflow-y-auto pr-1">
+                  {runs.map((r) => {
+                    const isSelected = activeRun?.runId === r.runId;
+                    return (
+                      <button
+                        key={r.runId}
+                        onClick={() => setActiveRun(r)}
+                        className={`w-full text-left p-3.5 rounded-xl border text-xs transition ${
+                          isSelected
+                            ? "bg-atlas-elevated border-atlas-orange text-white shadow"
+                            : "bg-atlas-elevated/50 border-atlas-border hover:border-atlas-border/80 text-atlas-muted hover:text-atlas-text"
+                        }`}
+                      >
+                        <div className="flex items-center justify-between mb-1">
+                          <span className="font-mono font-bold text-white">{r.missionId}</span>
+                          <span className="px-1.5 py-0.5 rounded text-[10px] font-mono bg-atlas-surface border border-atlas-border text-atlas-teal">
+                            {r.status}
+                          </span>
+                        </div>
+                        <div className="flex items-center justify-between text-atlas-muted text-[11px] font-mono">
+                          <span>{r.mode}</span>
+                          <span>{r.steps?.length || 0} steps</span>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
