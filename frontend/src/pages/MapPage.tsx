@@ -199,7 +199,6 @@ export const MapPage: React.FC = () => {
     if (jezeroLoc as LocationData) {
       setSelectedLocation(jezeroLoc as LocationData);
     }
-    setActiveDrawer("planner");
 
     // Automatically generate the route
     api.createRoute("MARSWALK-001: Jezero Delta & Séítah Recon", demoPoints).then((newRoute) => {
@@ -208,27 +207,42 @@ export const MapPage: React.FC = () => {
   }, [locations, scienceTargets]);
 
   const handleTourStepChange = (stepIdx: number) => {
+    // Keep drawers and other floating modals closed so ONLY the tour box is shown
+    setActiveDrawer(null);
+    setShowWeatherHud(false);
+    setShowNarrative(false);
+    setShowEvaPlayback(false);
+    setShowRfOverlay(false);
+    setShowSurfacePhotos(false);
+    setShowSamplingPanel(false);
+    setShowWaypointPreview(false);
+
     if (stepIdx === 0) {
+      // Step 1: Mission Briefing & Martian Weather (Jezero Landing Base)
       setFocusCoord({ latitude: 18.4447, longitude: 77.4508 });
       setHudCoord({ latitude: 18.4447, longitude: 77.4508 });
-      setShowWeatherHud(true);
       setShowMolaHeatmap(false);
       setShowCrismOverlay(false);
-      setShowEvaPlayback(false);
     } else if (stepIdx === 1) {
-      setShowMolaHeatmap(true);
-      setShowWeatherHud(false);
+      // Step 2: MOLA Altimetry & Scarp Hazards (Delta Front Cliff)
       setFocusCoord({ latitude: 18.448, longitude: 77.402 });
-    } else if (stepIdx === 2) {
-      setShowCrismOverlay(true);
       setShowMolaHeatmap(true);
+      setShowCrismOverlay(false);
+    } else if (stepIdx === 2) {
+      // Step 3: CRISM Hyperspectral Target Scan (Carbonate & Smectite Outcrops)
       setFocusCoord({ latitude: 18.438, longitude: 77.418 });
+      setShowMolaHeatmap(false);
+      setShowCrismOverlay(true);
     } else if (stepIdx === 3) {
-      loadDemoMarswalk();
-      setShowNarrative(true);
+      // Step 4: A* Cost-Gradient Hazard Avoidance (Valley Breach Detour)
+      setFocusCoord({ latitude: 18.442, longitude: 77.425 });
+      setShowMolaHeatmap(false);
+      setShowCrismOverlay(false);
     } else if (stepIdx === 4) {
-      setShowEvaPlayback(true);
-      setIsEvaPlaying(true);
+      // Step 5: Live Astronaut Bioenergetics & Multi-Agent Escort (Delta Scarp Base Camp)
+      setFocusCoord({ latitude: 18.440, longitude: 77.395 });
+      setShowMolaHeatmap(false);
+      setShowCrismOverlay(false);
     }
   };
 
@@ -526,6 +540,7 @@ export const MapPage: React.FC = () => {
           <button
             onClick={() => {
               setDemoActive(true);
+              setActiveDrawer(null);
               loadDemoMarswalk();
               setShowGuidedTour(true);
               handleTourStepChange(0);
@@ -716,7 +731,23 @@ export const MapPage: React.FC = () => {
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-40 w-full max-w-xl px-4">
             <GuidedMarswalkTour
               onStepChange={handleTourStepChange}
-              onClose={() => setShowGuidedTour(false)}
+              onClose={() => {
+                setShowGuidedTour(false);
+                setDemoActive(false);
+              }}
+              onLaunchEvaPlayback={() => {
+                setShowGuidedTour(false);
+                setShowEvaPlayback(true);
+                setIsEvaPlaying(true);
+              }}
+              onOpenRoutePlanner={() => {
+                setShowGuidedTour(false);
+                setActiveDrawer("planner");
+              }}
+              onOpenMissionStory={() => {
+                setShowGuidedTour(false);
+                setShowNarrative(true);
+              }}
             />
           </div>
         )}
