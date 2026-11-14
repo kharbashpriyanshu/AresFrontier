@@ -24,11 +24,11 @@ import { SamplingProtocolPanel } from "../components/SamplingProtocolPanel.js";
 import { SurfacePhotoViewer } from "../components/SurfacePhotoViewer.js";
 import { MissionNarrativePanel } from "../components/MissionNarrativePanel.js";
 import { EvaPlaybackAnimation } from "../components/EvaPlaybackAnimation.js";
+import { GuidedMarswalkTour } from "../components/GuidedMarswalkTour.js";
 import {
   Navigation,
   Info,
   Play,
-  CheckCircle,
   AlertTriangle,
   Database,
   Activity,
@@ -100,6 +100,7 @@ export const MapPage: React.FC = () => {
   const [isEvaPlaying, setIsEvaPlaying] = useState<boolean>(false);
   const [showMolaHeatmap, setShowMolaHeatmap] = useState<boolean>(false);
   const [showCrismOverlay, setShowCrismOverlay] = useState<boolean>(false);
+  const [showGuidedTour, setShowGuidedTour] = useState<boolean>(false);
   const [hudCoord, setHudCoord] = useState<MarsCoordinate>({ latitude: 18.4447, longitude: 77.4508 });
   const [hudLabel, setHudLabel] = useState<string>("Octavia E. Butler Landing (Jezero)");
   const [ingestedM20Traverse, setIngestedM20Traverse] = useState<{
@@ -205,6 +206,31 @@ export const MapPage: React.FC = () => {
       setActiveRoute(newRoute);
     });
   }, [locations, scienceTargets]);
+
+  const handleTourStepChange = (stepIdx: number) => {
+    if (stepIdx === 0) {
+      setFocusCoord({ latitude: 18.4447, longitude: 77.4508 });
+      setHudCoord({ latitude: 18.4447, longitude: 77.4508 });
+      setShowWeatherHud(true);
+      setShowMolaHeatmap(false);
+      setShowCrismOverlay(false);
+      setShowEvaPlayback(false);
+    } else if (stepIdx === 1) {
+      setShowMolaHeatmap(true);
+      setShowWeatherHud(false);
+      setFocusCoord({ latitude: 18.448, longitude: 77.402 });
+    } else if (stepIdx === 2) {
+      setShowCrismOverlay(true);
+      setShowMolaHeatmap(true);
+      setFocusCoord({ latitude: 18.438, longitude: 77.418 });
+    } else if (stepIdx === 3) {
+      loadDemoMarswalk();
+      setShowNarrative(true);
+    } else if (stepIdx === 4) {
+      setShowEvaPlayback(true);
+      setIsEvaPlaying(true);
+    }
+  };
 
   const hasLoadedRef = useRef<boolean>(false);
   const handledQueryRef = useRef<string>("");
@@ -492,18 +518,23 @@ export const MapPage: React.FC = () => {
             <span>Pipeline Status</span>
           </button>
 
-          {/* Demo Button */}
+          {/* Guided Tour & Demo Marswalk Button */}
           <button
-            onClick={() => loadDemoMarswalk()}
+            onClick={() => {
+              setDemoActive(true);
+              loadDemoMarswalk();
+              setShowGuidedTour(true);
+              handleTourStepChange(0);
+            }}
             className={`px-3 py-1.5 flex items-center space-x-2 border transition-all ${
-              demoActive
-                ? "bg-atlas-elevated text-atlas-teal border-atlas-teal font-bold shadow-lg shadow-atlas-teal/10"
+              showGuidedTour || demoActive
+                ? "bg-atlas-accent text-white border-atlas-accent font-bold shadow-lg shadow-atlas-accent/20"
                 : "bg-atlas-surface/95 hover:bg-atlas-elevated text-atlas-text border-atlas-border"
             }`}
-            title="Load Pre-configured Demo Mission (MARSWALK-001)"
+            title="Launch Interactive Step-by-Step Marswalk Tour for NASA Judges"
           >
-            {demoActive ? <CheckCircle className="w-3.5 h-3.5 text-atlas-teal" /> : <Play className="w-3.5 h-3.5 text-atlas-accent" />}
-            <span className="font-semibold">Demo: Marswalk-001</span>
+            <Sparkles className="w-3.5 h-3.5 text-atlas-accent" />
+            <span className="font-semibold">{demoActive ? "Guided Demo Active" : "Guided Demo Tour"}</span>
           </button>
 
           {/* Drawer Switcher */}
@@ -668,6 +699,15 @@ export const MapPage: React.FC = () => {
         </div>
 
         {/* Milestone 6 & 7 Modal Overlays */}
+        {showGuidedTour && (
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-40 w-full max-w-xl px-4">
+            <GuidedMarswalkTour
+              onStepChange={handleTourStepChange}
+              onClose={() => setShowGuidedTour(false)}
+            />
+          </div>
+        )}
+
         {showNarrative && (
           <div className="absolute top-20 left-4 right-4 sm:right-auto sm:left-4 sm:w-[520px] z-40 max-h-[80vh] overflow-y-auto">
             <MissionNarrativePanel

@@ -3957,5 +3957,47 @@
       "candidateCount": 4,
       "paretoCount": 1
     }
+  },
+  {
+    "eventId": "evt-1794648114429-8200d6",
+    "blockHeight": 224,
+    "timestamp": "2026-11-14T09:21:54.429Z",
+    "userId": "astro-default-command",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "plan-1794648114429",
+    "planVersion": 1,
+    "previousHash": "5caafce26b9c574e6db0b14f319000f918db141233093802bd23b687cbeff990",
+    "integrityHash": "7338f247ba9cdd84844a3e00936f4991be095549ccd149a3211b184d566404b7",
+    "details": {
+      "start": {
+        "latitude": 18.4447,
+        "longitude": 77.4508
+      },
+      "dest": {
+        "latitude": 18.44,
+        "longitude": 77.395
+      },
+      "candidateCount": 4,
+      "paretoCount": 1
+    }
+  },
+  {
+    "eventId": "evt-1794648283512-f63b47",
+    "blockHeight": 225,
+    "timestamp": "2026-11-14T09:24:43.512Z",
+    "userId": "ROVER-01 SCOUT",
+    "role": "ANALYST",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "7338f247ba9cdd84844a3e00936f4991be095549ccd149a3211b184d566404b7",
+    "integrityHash": "49acd462d2ca4e81671fee5973aed85166218ce8c29aaa655db3b3dfe963fbea",
+    "details": {
+      "replanId": "replan-1794648283507-ogm3",
+      "triggerType": "HAZARD_DETECTED",
+      "reason": "Slope gradient exceeds rover 20° stability ceiling. Automated safety pause engaged.",
+      "proposedRoute": "Low-Hazard Valley Corridor"
+    }
   }
 ]
