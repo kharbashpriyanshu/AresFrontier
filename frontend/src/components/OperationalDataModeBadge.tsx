@@ -6,12 +6,14 @@ interface OperationalDataModeBadgeProps {
   mode?: DataMode | "SIMULATED";
   compact?: boolean;
   className?: string;
+  onClick?: () => void;
 }
 
 export const OperationalDataModeBadge: React.FC<OperationalDataModeBadgeProps> = ({
   mode = "BENCHMARK",
   compact = false,
   className = "",
+  onClick,
 }) => {
   let label = "Benchmark Data";
   let badgeStyle = "bg-atlas-elevated text-atlas-teal border-atlas-border";
@@ -53,9 +55,11 @@ export const OperationalDataModeBadge: React.FC<OperationalDataModeBadgeProps> =
   }
 
   return (
-    <div
-      className={`inline-flex items-center space-x-1.5 px-2.5 py-1 border font-mono text-[10px] font-medium tracking-tight transition-all ${badgeStyle} ${className}`}
-      title={`Operational Status: ${description}`}
+    <button
+      type="button"
+      onClick={onClick}
+      className={`inline-flex items-center space-x-1.5 px-2.5 py-1 border font-mono text-[10px] font-medium tracking-tight transition-all cursor-pointer hover:brightness-110 active:scale-95 ${badgeStyle} ${className}`}
+      title={`Operational Status: ${description} (Click to inspect NASA datasets)`}
     >
       {icon}
       <span>{label}</span>
@@ -64,6 +68,6 @@ export const OperationalDataModeBadge: React.FC<OperationalDataModeBadgeProps> =
           Marswalk-001
         </span>
       )}
-    </div>
+    </button>
   );
 };
