@@ -1,0 +1,46 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing & Coverage
+coverage/
+*.lcov
+
+# Production build outputs
+dist/
+build/
+*.tsbuildinfo
+.vite/
+frontend/.vite/
+
+# Environment variables & secrets
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS and Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Large scientific data (must not be committed directly into git)
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+backend/data/checkpoints/checkpoint-test_*.json
+*.tif
+*.tiff
+*.nc
+*.geotiff
+*.h5
+*.hdf

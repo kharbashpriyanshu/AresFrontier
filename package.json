@@ -1,0 +1,29 @@
+{
+  "name": "martian-map-root",
+  "version": "1.0.0",
+  "description": "Interplanetary Survival Guide: Martian Map - NASA Space Apps Challenge",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev": "npm --prefix backend run dev",
+    "build": "npm --prefix backend run build && npm --prefix frontend run build",
+    "test": "npm --prefix backend test"
+  },
+  "keywords": [
+    "mars",
+    "nasa-space-apps",
+    "planetary-science",
+    "mission-planning",
+    "gis",
+    "leaflet",
+    "mola",
+    "hirise"
+  ],
+  "author": "Martian Map Engineering Team",
+  "license": "Apache-2.0"
+}

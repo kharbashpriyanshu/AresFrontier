@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+  
+  body {
+    @apply bg-space-950 text-slate-100 font-sans antialiased overflow-x-hidden;
+  }
+
+  /* Custom scrollbar for tactical telemetry */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0b0f19;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #222f4b;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #c1440e;
+  }
+}
+
+/* Leaflet dark styling */
+.leaflet-container {
+  background-color: #07090e !important;
+  font-family: inherit;
+}
+
+.leaflet-bar {
+  border: 1px solid #222f4b !important;
+  border-radius: 4px !important;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+}
+
+.leaflet-bar a {
+  background-color: #111726 !important;
+  color: #94a3b8 !important;
+  border-bottom: 1px solid #172033 !important;
+  transition: all 0.15s ease;
+}
+
+.leaflet-bar a:hover {
+  background-color: #172033 !important;
+  color: #e26d46 !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background-color: #111726 !important;
+  color: #e2e8f0 !important;
+  border: 1px solid #334466 !important;
+  border-radius: 6px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7) !important;
+}
+
+.leaflet-popup-tip {
+  background-color: #111726 !important;
+}
+
+.leaflet-control-attribution {
+  background-color: rgba(11, 15, 25, 0.85) !important;
+  color: #64748b !important;
+  font-size: 10px !important;
+}
+
+.leaflet-control-attribution a {
+  color: #38bdf8 !important;
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "commandId": "cmd-preempt-1794076770976",
+    "nonce": "nonce-1794076770976",
+    "issuer": "flight-dir-alpha",
+    "role": "MISSION_COMMAND",
+    "agentId": "agent-rover-02",
+    "command": "PAUSE",
+    "issuedAt": 1794076770976,
+    "expiresAt": 1794076830976,
+    "status": "EXECUTED",
+    "processedAt": "2026-11-07T18:39:30.976Z"
+  }
+]

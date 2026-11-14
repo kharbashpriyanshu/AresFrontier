@@ -1,0 +1,27 @@
+[
+  {
+    "eventId": "mevt-1794076771008-7s0m",
+    "missionId": "MARSWALK-001",
+    "timestamp": "2026-11-07T18:39:31.008Z",
+    "actor": "agent-rover-01",
+    "eventType": "TELEMETRY_LOGGED",
+    "payload": {
+      "lat": 18.38,
+      "lon": 77.58,
+      "battery": 94
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
+      }
+    },
+    "previousEventHash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "eventHash": "0cbba373b368b08d48881616b0ba8246b242d789e06ac1cd0bff34d69040ed65"
+  }
+]
