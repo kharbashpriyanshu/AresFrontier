@@ -1,0 +1,771 @@
+[
+  {
+    "id": "eva-sol100-marswalk-001",
+    "missionId": "MARSWALK-001",
+    "title": "Sol 100 Jezero Western Delta EVA-1",
+    "status": "PLANNED",
+    "crewAgentId": "agent-astronaut-01",
+    "supportRoverId": "agent-rover-01",
+    "routeId": "route-jezero-delta-sol100",
+    "plannedDurationMinutes": 240,
+    "elapsedMinutes": 0,
+    "remainingMinutes": 240,
+    "updatedAt": "2026-11-14T07:18:40.489Z",
+    "safetyChecks": {
+      "overallSafe": true,
+      "reserveMarginMinutes": 0,
+      "suitOxygenReserveMinutes": 240,
+      "crewBatteryPercent": 92,
+      "roverBatteryPercent": 85,
+      "violations": [],
+      "warnings": [
+        "Suit oxygen margin (0 min) below 30-min S3 return buffer"
+      ]
+    },
+    "telemetryProvenance": {
+      "sourceType": "SIMULATED",
+      "label": "Modeled Suit & Rover Telemetry (Not Live Medical Hardware)",
+      "updatedAt": "2026-11-14T07:18:40.489Z"
+    },
+    "history": [
+      {
+        "timestamp": "2026-11-14T07:18:40.489Z",
+        "fromStatus": null,
+        "toStatus": "PLANNED",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA session created"
+      }
+    ]
+  },
+  {
+    "id": "eva-1794640784444-qzkb",
+    "missionId": "MARSWALK-001",
+    "title": "Sol 101 Verification EVA",
+    "status": "COMPLETED",
+    "crewAgentId": "agent-astronaut-01",
+    "supportRoverId": "agent-rover-01",
+    "routeId": "route-jezero-delta-sol100",
+    "plannedDurationMinutes": 180,
+    "elapsedMinutes": 15,
+    "remainingMinutes": 165,
+    "updatedAt": "2026-11-14T07:19:44.780Z",
+    "safetyChecks": {
+      "overallSafe": true,
+      "reserveMarginMinutes": 60,
+      "suitOxygenReserveMinutes": 225,
+      "crewBatteryPercent": 88,
+      "roverBatteryPercent": 85,
+      "violations": [],
+      "warnings": []
+    },
+    "telemetryProvenance": {
+      "sourceType": "SIMULATED",
+      "label": "Modeled Suit & Rover Telemetry (Not Live Medical Hardware)",
+      "updatedAt": "2026-11-14T07:19:44.780Z"
+    },
+    "history": [
+      {
+        "timestamp": "2026-11-14T07:19:44.443Z",
+        "fromStatus": null,
+        "toStatus": "PLANNED",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA session created"
+      },
+      {
+        "timestamp": "2026-11-14T07:19:44.462Z",
+        "fromStatus": "PLANNED",
+        "toStatus": "ACTIVE",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA START"
+      },
+      {
+        "timestamp": "2026-11-14T07:19:44.640Z",
+        "fromStatus": "ACTIVE",
+        "toStatus": "EMERGENCY_RETURN",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA EMERGENCY_RETURN"
+      },
+      {
+        "timestamp": "2026-11-14T07:19:44.780Z",
+        "fromStatus": "EMERGENCY_RETURN",
+        "toStatus": "COMPLETED",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA COMPLETE"
+      }
+    ],
+    "startedAt": "2026-11-14T07:19:44.462Z",
+    "endedAt": "2026-11-14T07:19:44.780Z"
+  },
+  {
+    "id": "eva-1794640784977-8iy5",
+    "missionId": "MARSWALK-001",
+    "title": "Unsafe Low-O2 EVA",
+    "status": "PLANNED",
+    "crewAgentId": "agent-astronaut-01",
+    "routeId": "route-jezero-delta-sol100",
+    "plannedDurationMinutes": 120,
+    "elapsedMinutes": 0,
+    "remainingMinutes": 120,
+    "updatedAt": "2026-11-14T07:19:44.977Z",
+    "safetyChecks": {
+      "overallSafe": false,
+      "reserveMarginMinutes": -100,
+      "suitOxygenReserveMinutes": 20,
+      "crewBatteryPercent": 88,
+      "roverBatteryPercent": null,
+      "violations": [
+        "S3 Violation: Suit oxygen reserve (20 min) below 30-min mandatory return reserve"
+      ],
+      "warnings": []
+    },
+    "telemetryProvenance": {
+      "sourceType": "SIMULATED",
+      "label": "Modeled Suit & Rover Telemetry (Not Live Medical Hardware)",
+      "updatedAt": "2026-11-14T07:19:44.977Z"
+    },
+    "history": [
+      {
+        "timestamp": "2026-11-14T07:19:44.977Z",
+        "fromStatus": null,
+        "toStatus": "PLANNED",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA session created"
+      }
+    ]
+  },
+  {
+    "id": "eva-1794640955511-qdls",
+    "missionId": "MARSWALK-001",
+    "title": "Sol 101 Verification EVA",
+    "status": "COMPLETED",
+    "crewAgentId": "agent-astronaut-01",
+    "supportRoverId": "agent-rover-01",
+    "routeId": "route-jezero-delta-sol100",
+    "plannedDurationMinutes": 180,
+    "elapsedMinutes": 15,
+    "remainingMinutes": 165,
+    "updatedAt": "2026-11-14T07:22:35.749Z",
+    "safetyChecks": {
+      "overallSafe": true,
+      "reserveMarginMinutes": 60,
+      "suitOxygenReserveMinutes": 225,
+      "crewBatteryPercent": 88,
+      "roverBatteryPercent": 85,
+      "violations": [],
+      "warnings": []
+    },
+    "telemetryProvenance": {
+      "sourceType": "SIMULATED",
+      "label": "Modeled Suit & Rover Telemetry (Not Live Medical Hardware)",
+      "updatedAt": "2026-11-14T07:22:35.749Z"
+    },
+    "history": [
+      {
+        "timestamp": "2026-11-14T07:22:35.510Z",
+        "fromStatus": null,
+        "toStatus": "PLANNED",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA session created"
+      },
+      {
+        "timestamp": "2026-11-14T07:22:35.529Z",
+        "fromStatus": "PLANNED",
+        "toStatus": "ACTIVE",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA START"
+      },
+      {
+        "timestamp": "2026-11-14T07:22:35.676Z",
+        "fromStatus": "ACTIVE",
+        "toStatus": "EMERGENCY_RETURN",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA EMERGENCY_RETURN"
+      },
+      {
+        "timestamp": "2026-11-14T07:22:35.749Z",
+        "fromStatus": "EMERGENCY_RETURN",
+        "toStatus": "COMPLETED",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA COMPLETE"
+      }
+    ],
+    "startedAt": "2026-11-14T07:22:35.529Z",
+    "endedAt": "2026-11-14T07:22:35.749Z"
+  },
+  {
+    "id": "eva-1794640955910-3vrb",
+    "missionId": "MARSWALK-001",
+    "title": "Unsafe Low-O2 EVA",
+    "status": "PLANNED",
+    "crewAgentId": "agent-astronaut-01",
+    "routeId": "route-jezero-delta-sol100",
+    "plannedDurationMinutes": 120,
+    "elapsedMinutes": 0,
+    "remainingMinutes": 120,
+    "updatedAt": "2026-11-14T07:22:35.910Z",
+    "safetyChecks": {
+      "overallSafe": false,
+      "reserveMarginMinutes": -100,
+      "suitOxygenReserveMinutes": 20,
+      "crewBatteryPercent": 88,
+      "roverBatteryPercent": null,
+      "violations": [
+        "S3 Violation: Suit oxygen reserve (20 min) below 30-min mandatory return reserve"
+      ],
+      "warnings": []
+    },
+    "telemetryProvenance": {
+      "sourceType": "SIMULATED",
+      "label": "Modeled Suit & Rover Telemetry (Not Live Medical Hardware)",
+      "updatedAt": "2026-11-14T07:22:35.910Z"
+    },
+    "history": [
+      {
+        "timestamp": "2026-11-14T07:22:35.910Z",
+        "fromStatus": null,
+        "toStatus": "PLANNED",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA session created"
+      }
+    ]
+  },
+  {
+    "id": "eva-1794641808790-hiwq",
+    "missionId": "MARSWALK-001",
+    "title": "Sol 101 Verification EVA",
+    "status": "COMPLETED",
+    "crewAgentId": "agent-astronaut-01",
+    "supportRoverId": "agent-rover-01",
+    "routeId": "route-jezero-delta-sol100",
+    "plannedDurationMinutes": 180,
+    "elapsedMinutes": 15,
+    "remainingMinutes": 165,
+    "updatedAt": "2026-11-14T07:36:49.096Z",
+    "safetyChecks": {
+      "overallSafe": true,
+      "reserveMarginMinutes": 60,
+      "suitOxygenReserveMinutes": 225,
+      "crewBatteryPercent": 88,
+      "roverBatteryPercent": 85,
+      "violations": [],
+      "warnings": []
+    },
+    "telemetryProvenance": {
+      "sourceType": "SIMULATED",
+      "label": "Modeled Suit & Rover Telemetry (Not Live Medical Hardware)",
+      "updatedAt": "2026-11-14T07:36:49.096Z"
+    },
+    "history": [
+      {
+        "timestamp": "2026-11-14T07:36:48.790Z",
+        "fromStatus": null,
+        "toStatus": "PLANNED",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA session created"
+      },
+      {
+        "timestamp": "2026-11-14T07:36:48.813Z",
+        "fromStatus": "PLANNED",
+        "toStatus": "ACTIVE",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA START"
+      },
+      {
+        "timestamp": "2026-11-14T07:36:48.980Z",
+        "fromStatus": "ACTIVE",
+        "toStatus": "EMERGENCY_RETURN",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA EMERGENCY_RETURN"
+      },
+      {
+        "timestamp": "2026-11-14T07:36:49.096Z",
+        "fromStatus": "EMERGENCY_RETURN",
+        "toStatus": "COMPLETED",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA COMPLETE"
+      }
+    ],
+    "startedAt": "2026-11-14T07:36:48.813Z",
+    "endedAt": "2026-11-14T07:36:49.096Z"
+  },
+  {
+    "id": "eva-1794641809273-lerh",
+    "missionId": "MARSWALK-001",
+    "title": "Unsafe Low-O2 EVA",
+    "status": "PLANNED",
+    "crewAgentId": "agent-astronaut-01",
+    "routeId": "route-jezero-delta-sol100",
+    "plannedDurationMinutes": 120,
+    "elapsedMinutes": 0,
+    "remainingMinutes": 120,
+    "updatedAt": "2026-11-14T07:36:49.272Z",
+    "safetyChecks": {
+      "overallSafe": false,
+      "reserveMarginMinutes": -100,
+      "suitOxygenReserveMinutes": 20,
+      "crewBatteryPercent": 88,
+      "roverBatteryPercent": null,
+      "violations": [
+        "S3 Violation: Suit oxygen reserve (20 min) below 30-min mandatory return reserve"
+      ],
+      "warnings": []
+    },
+    "telemetryProvenance": {
+      "sourceType": "SIMULATED",
+      "label": "Modeled Suit & Rover Telemetry (Not Live Medical Hardware)",
+      "updatedAt": "2026-11-14T07:36:49.272Z"
+    },
+    "history": [
+      {
+        "timestamp": "2026-11-14T07:36:49.272Z",
+        "fromStatus": null,
+        "toStatus": "PLANNED",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA session created"
+      }
+    ]
+  },
+  {
+    "id": "eva-1794643975807-on6u",
+    "missionId": "MARSWALK-001",
+    "title": "Sol 101 Verification EVA",
+    "status": "COMPLETED",
+    "crewAgentId": "agent-astronaut-01",
+    "supportRoverId": "agent-rover-01",
+    "routeId": "route-jezero-delta-sol100",
+    "plannedDurationMinutes": 180,
+    "elapsedMinutes": 15,
+    "remainingMinutes": 165,
+    "updatedAt": "2026-11-14T08:12:56.191Z",
+    "safetyChecks": {
+      "overallSafe": true,
+      "reserveMarginMinutes": 60,
+      "suitOxygenReserveMinutes": 225,
+      "crewBatteryPercent": 88,
+      "roverBatteryPercent": 85,
+      "violations": [],
+      "warnings": []
+    },
+    "telemetryProvenance": {
+      "sourceType": "SIMULATED",
+      "label": "Modeled Suit & Rover Telemetry (Not Live Medical Hardware)",
+      "updatedAt": "2026-11-14T08:12:56.191Z"
+    },
+    "history": [
+      {
+        "timestamp": "2026-11-14T08:12:55.807Z",
+        "fromStatus": null,
+        "toStatus": "PLANNED",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA session created"
+      },
+      {
+        "timestamp": "2026-11-14T08:12:55.814Z",
+        "fromStatus": "PLANNED",
+        "toStatus": "ACTIVE",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA START"
+      },
+      {
+        "timestamp": "2026-11-14T08:12:56.011Z",
+        "fromStatus": "ACTIVE",
+        "toStatus": "EMERGENCY_RETURN",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA EMERGENCY_RETURN"
+      },
+      {
+        "timestamp": "2026-11-14T08:12:56.191Z",
+        "fromStatus": "EMERGENCY_RETURN",
+        "toStatus": "COMPLETED",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA COMPLETE"
+      }
+    ],
+    "startedAt": "2026-11-14T08:12:55.814Z",
+    "endedAt": "2026-11-14T08:12:56.191Z"
+  },
+  {
+    "id": "eva-1794643976348-p1bz",
+    "missionId": "MARSWALK-001",
+    "title": "Unsafe Low-O2 EVA",
+    "status": "PLANNED",
+    "crewAgentId": "agent-astronaut-01",
+    "routeId": "route-jezero-delta-sol100",
+    "plannedDurationMinutes": 120,
+    "elapsedMinutes": 0,
+    "remainingMinutes": 120,
+    "updatedAt": "2026-11-14T08:12:56.348Z",
+    "safetyChecks": {
+      "overallSafe": false,
+      "reserveMarginMinutes": -100,
+      "suitOxygenReserveMinutes": 20,
+      "crewBatteryPercent": 88,
+      "roverBatteryPercent": null,
+      "violations": [
+        "S3 Violation: Suit oxygen reserve (20 min) below 30-min mandatory return reserve"
+      ],
+      "warnings": []
+    },
+    "telemetryProvenance": {
+      "sourceType": "SIMULATED",
+      "label": "Modeled Suit & Rover Telemetry (Not Live Medical Hardware)",
+      "updatedAt": "2026-11-14T08:12:56.348Z"
+    },
+    "history": [
+      {
+        "timestamp": "2026-11-14T08:12:56.348Z",
+        "fromStatus": null,
+        "toStatus": "PLANNED",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA session created"
+      }
+    ]
+  },
+  {
+    "id": "eva-1794644215157-7xv5",
+    "missionId": "MARSWALK-001",
+    "title": "Sol 101 Verification EVA",
+    "status": "COMPLETED",
+    "crewAgentId": "agent-astronaut-01",
+    "supportRoverId": "agent-rover-01",
+    "routeId": "route-jezero-delta-sol100",
+    "plannedDurationMinutes": 180,
+    "elapsedMinutes": 15,
+    "remainingMinutes": 165,
+    "updatedAt": "2026-11-14T08:16:55.343Z",
+    "safetyChecks": {
+      "overallSafe": true,
+      "reserveMarginMinutes": 60,
+      "suitOxygenReserveMinutes": 225,
+      "crewBatteryPercent": 88,
+      "roverBatteryPercent": 85,
+      "violations": [],
+      "warnings": []
+    },
+    "telemetryProvenance": {
+      "sourceType": "SIMULATED",
+      "label": "Modeled Suit & Rover Telemetry (Not Live Medical Hardware)",
+      "updatedAt": "2026-11-14T08:16:55.343Z"
+    },
+    "history": [
+      {
+        "timestamp": "2026-11-14T08:16:55.156Z",
+        "fromStatus": null,
+        "toStatus": "PLANNED",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA session created"
+      },
+      {
+        "timestamp": "2026-11-14T08:16:55.164Z",
+        "fromStatus": "PLANNED",
+        "toStatus": "ACTIVE",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA START"
+      },
+      {
+        "timestamp": "2026-11-14T08:16:55.282Z",
+        "fromStatus": "ACTIVE",
+        "toStatus": "EMERGENCY_RETURN",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA EMERGENCY_RETURN"
+      },
+      {
+        "timestamp": "2026-11-14T08:16:55.343Z",
+        "fromStatus": "EMERGENCY_RETURN",
+        "toStatus": "COMPLETED",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA COMPLETE"
+      }
+    ],
+    "startedAt": "2026-11-14T08:16:55.164Z",
+    "endedAt": "2026-11-14T08:16:55.343Z"
+  },
+  {
+    "id": "eva-1794644215458-tn71",
+    "missionId": "MARSWALK-001",
+    "title": "Unsafe Low-O2 EVA",
+    "status": "PLANNED",
+    "crewAgentId": "agent-astronaut-01",
+    "routeId": "route-jezero-delta-sol100",
+    "plannedDurationMinutes": 120,
+    "elapsedMinutes": 0,
+    "remainingMinutes": 120,
+    "updatedAt": "2026-11-14T08:16:55.458Z",
+    "safetyChecks": {
+      "overallSafe": false,
+      "reserveMarginMinutes": -100,
+      "suitOxygenReserveMinutes": 20,
+      "crewBatteryPercent": 88,
+      "roverBatteryPercent": null,
+      "violations": [
+        "S3 Violation: Suit oxygen reserve (20 min) below 30-min mandatory return reserve"
+      ],
+      "warnings": []
+    },
+    "telemetryProvenance": {
+      "sourceType": "SIMULATED",
+      "label": "Modeled Suit & Rover Telemetry (Not Live Medical Hardware)",
+      "updatedAt": "2026-11-14T08:16:55.458Z"
+    },
+    "history": [
+      {
+        "timestamp": "2026-11-14T08:16:55.458Z",
+        "fromStatus": null,
+        "toStatus": "PLANNED",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA session created"
+      }
+    ]
+  },
+  {
+    "id": "eva-1794644313516-4c5l",
+    "missionId": "MARSWALK-001",
+    "title": "Sol 101 Verification EVA",
+    "status": "COMPLETED",
+    "crewAgentId": "agent-astronaut-01",
+    "supportRoverId": "agent-rover-01",
+    "routeId": "route-jezero-delta-sol100",
+    "plannedDurationMinutes": 180,
+    "elapsedMinutes": 15,
+    "remainingMinutes": 165,
+    "updatedAt": "2026-11-14T08:18:33.714Z",
+    "safetyChecks": {
+      "overallSafe": true,
+      "reserveMarginMinutes": 60,
+      "suitOxygenReserveMinutes": 225,
+      "crewBatteryPercent": 88,
+      "roverBatteryPercent": 85,
+      "violations": [],
+      "warnings": []
+    },
+    "telemetryProvenance": {
+      "sourceType": "SIMULATED",
+      "label": "Modeled Suit & Rover Telemetry (Not Live Medical Hardware)",
+      "updatedAt": "2026-11-14T08:18:33.714Z"
+    },
+    "history": [
+      {
+        "timestamp": "2026-11-14T08:18:33.516Z",
+        "fromStatus": null,
+        "toStatus": "PLANNED",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA session created"
+      },
+      {
+        "timestamp": "2026-11-14T08:18:33.524Z",
+        "fromStatus": "PLANNED",
+        "toStatus": "ACTIVE",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA START"
+      },
+      {
+        "timestamp": "2026-11-14T08:18:33.620Z",
+        "fromStatus": "ACTIVE",
+        "toStatus": "EMERGENCY_RETURN",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA EMERGENCY_RETURN"
+      },
+      {
+        "timestamp": "2026-11-14T08:18:33.714Z",
+        "fromStatus": "EMERGENCY_RETURN",
+        "toStatus": "COMPLETED",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA COMPLETE"
+      }
+    ],
+    "startedAt": "2026-11-14T08:18:33.524Z",
+    "endedAt": "2026-11-14T08:18:33.714Z"
+  },
+  {
+    "id": "eva-1794646211603-829u",
+    "missionId": "MARSWALK-001",
+    "title": "Sol 101 Verification EVA",
+    "status": "COMPLETED",
+    "crewAgentId": "agent-astronaut-01",
+    "supportRoverId": "agent-rover-01",
+    "routeId": "route-jezero-delta-sol100",
+    "plannedDurationMinutes": 180,
+    "elapsedMinutes": 15,
+    "remainingMinutes": 165,
+    "updatedAt": "2026-11-14T08:50:11.824Z",
+    "safetyChecks": {
+      "overallSafe": true,
+      "reserveMarginMinutes": 60,
+      "suitOxygenReserveMinutes": 225,
+      "crewBatteryPercent": 88,
+      "roverBatteryPercent": 85,
+      "violations": [],
+      "warnings": []
+    },
+    "telemetryProvenance": {
+      "sourceType": "SIMULATED",
+      "label": "Modeled Suit & Rover Telemetry (Not Live Medical Hardware)",
+      "updatedAt": "2026-11-14T08:50:11.824Z"
+    },
+    "history": [
+      {
+        "timestamp": "2026-11-14T08:50:11.603Z",
+        "fromStatus": null,
+        "toStatus": "PLANNED",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA session created"
+      },
+      {
+        "timestamp": "2026-11-14T08:50:11.618Z",
+        "fromStatus": "PLANNED",
+        "toStatus": "ACTIVE",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA START"
+      },
+      {
+        "timestamp": "2026-11-14T08:50:11.763Z",
+        "fromStatus": "ACTIVE",
+        "toStatus": "EMERGENCY_RETURN",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA EMERGENCY_RETURN"
+      },
+      {
+        "timestamp": "2026-11-14T08:50:11.824Z",
+        "fromStatus": "EMERGENCY_RETURN",
+        "toStatus": "COMPLETED",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA COMPLETE"
+      }
+    ],
+    "startedAt": "2026-11-14T08:50:11.618Z",
+    "endedAt": "2026-11-14T08:50:11.824Z"
+  },
+  {
+    "id": "eva-1794646211953-s1eo",
+    "missionId": "MARSWALK-001",
+    "title": "Unsafe Low-O2 EVA",
+    "status": "PLANNED",
+    "crewAgentId": "agent-astronaut-01",
+    "routeId": "route-jezero-delta-sol100",
+    "plannedDurationMinutes": 120,
+    "elapsedMinutes": 0,
+    "remainingMinutes": 120,
+    "updatedAt": "2026-11-14T08:50:11.953Z",
+    "safetyChecks": {
+      "overallSafe": false,
+      "reserveMarginMinutes": -100,
+      "suitOxygenReserveMinutes": 20,
+      "crewBatteryPercent": 88,
+      "roverBatteryPercent": null,
+      "violations": [
+        "S3 Violation: Suit oxygen reserve (20 min) below 30-min mandatory return reserve"
+      ],
+      "warnings": []
+    },
+    "telemetryProvenance": {
+      "sourceType": "SIMULATED",
+      "label": "Modeled Suit & Rover Telemetry (Not Live Medical Hardware)",
+      "updatedAt": "2026-11-14T08:50:11.953Z"
+    },
+    "history": [
+      {
+        "timestamp": "2026-11-14T08:50:11.953Z",
+        "fromStatus": null,
+        "toStatus": "PLANNED",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA session created"
+      }
+    ]
+  },
+  {
+    "id": "eva-1794646586745-v7bm",
+    "missionId": "MARSWALK-001",
+    "title": "Sol 101 Verification EVA",
+    "status": "COMPLETED",
+    "crewAgentId": "agent-astronaut-01",
+    "supportRoverId": "agent-rover-01",
+    "routeId": "route-jezero-delta-sol100",
+    "plannedDurationMinutes": 180,
+    "elapsedMinutes": 15,
+    "remainingMinutes": 165,
+    "updatedAt": "2026-11-14T08:56:26.989Z",
+    "safetyChecks": {
+      "overallSafe": true,
+      "reserveMarginMinutes": 60,
+      "suitOxygenReserveMinutes": 225,
+      "crewBatteryPercent": 88,
+      "roverBatteryPercent": 85,
+      "violations": [],
+      "warnings": []
+    },
+    "telemetryProvenance": {
+      "sourceType": "SIMULATED",
+      "label": "Modeled Suit & Rover Telemetry (Not Live Medical Hardware)",
+      "updatedAt": "2026-11-14T08:56:26.989Z"
+    },
+    "history": [
+      {
+        "timestamp": "2026-11-14T08:56:26.744Z",
+        "fromStatus": null,
+        "toStatus": "PLANNED",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA session created"
+      },
+      {
+        "timestamp": "2026-11-14T08:56:26.757Z",
+        "fromStatus": "PLANNED",
+        "toStatus": "ACTIVE",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA START"
+      },
+      {
+        "timestamp": "2026-11-14T08:56:26.910Z",
+        "fromStatus": "ACTIVE",
+        "toStatus": "EMERGENCY_RETURN",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA EMERGENCY_RETURN"
+      },
+      {
+        "timestamp": "2026-11-14T08:56:26.989Z",
+        "fromStatus": "EMERGENCY_RETURN",
+        "toStatus": "COMPLETED",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA COMPLETE"
+      }
+    ],
+    "startedAt": "2026-11-14T08:56:26.757Z",
+    "endedAt": "2026-11-14T08:56:26.989Z"
+  },
+  {
+    "id": "eva-1794646587328-q1me",
+    "missionId": "MARSWALK-001",
+    "title": "Unsafe Low-O2 EVA",
+    "status": "PLANNED",
+    "crewAgentId": "agent-astronaut-01",
+    "routeId": "route-jezero-delta-sol100",
+    "plannedDurationMinutes": 120,
+    "elapsedMinutes": 0,
+    "remainingMinutes": 120,
+    "updatedAt": "2026-11-14T08:56:27.328Z",
+    "safetyChecks": {
+      "overallSafe": false,
+      "reserveMarginMinutes": -100,
+      "suitOxygenReserveMinutes": 20,
+      "crewBatteryPercent": 88,
+      "roverBatteryPercent": null,
+      "violations": [
+        "S3 Violation: Suit oxygen reserve (20 min) below 30-min mandatory return reserve"
+      ],
+      "warnings": []
+    },
+    "telemetryProvenance": {
+      "sourceType": "SIMULATED",
+      "label": "Modeled Suit & Rover Telemetry (Not Live Medical Hardware)",
+      "updatedAt": "2026-11-14T08:56:27.328Z"
+    },
+    "history": [
+      {
+        "timestamp": "2026-11-14T08:56:27.328Z",
+        "fromStatus": null,
+        "toStatus": "PLANNED",
+        "actor": "MISSION_COMMAND",
+        "reason": "EVA session created"
+      }
+    ]
+  }
+]

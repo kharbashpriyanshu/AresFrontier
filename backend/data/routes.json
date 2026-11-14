@@ -2,16 +2,178 @@
   {
     "id": "route-jezero-delta-sol100",
     "name": "Jezero Delta Front & Séítah Exploration Traverse",
-    "points": [],
-    "segments": [],
+    "points": [
+      {
+        "id": "pt-1",
+        "coordinate": {
+          "latitude": 18.4447,
+          "longitude": 77.4508
+        },
+        "type": "start",
+        "label": "Octavia E. Butler Landing Site",
+        "elevationM": -2530
+      },
+      {
+        "id": "pt-2",
+        "coordinate": {
+          "latitude": 18.435,
+          "longitude": 77.438
+        },
+        "type": "science",
+        "label": "South Séítah Olivine Cumulate",
+        "elevationM": -2545,
+        "targetId": "tgt-seitah-olivine"
+      },
+      {
+        "id": "pt-3",
+        "coordinate": {
+          "latitude": 18.423,
+          "longitude": 77.411
+        },
+        "type": "science",
+        "label": "Kodiak Butte Delta Remnant",
+        "elevationM": -2480,
+        "targetId": "tgt-kodiak-butte"
+      },
+      {
+        "id": "pt-4",
+        "coordinate": {
+          "latitude": 18.44,
+          "longitude": 77.395
+        },
+        "type": "destination",
+        "label": "Delta Scarp Base Camp",
+        "elevationM": -2510
+      }
+    ],
+    "segments": [
+      {
+        "id": "seg-1",
+        "start": {
+          "latitude": 18.4447,
+          "longitude": 77.4508
+        },
+        "end": {
+          "latitude": 18.435,
+          "longitude": 77.438
+        },
+        "distanceKm": 0.98,
+        "elevationGainM": 0,
+        "elevationLossM": 15,
+        "averageSlopeDegrees": 0.88,
+        "difficulty": "low",
+        "estimatedMinutes": 44,
+        "hazards": []
+      },
+      {
+        "id": "seg-2",
+        "start": {
+          "latitude": 18.435,
+          "longitude": 77.438
+        },
+        "end": {
+          "latitude": 18.423,
+          "longitude": 77.411
+        },
+        "distanceKm": 1.74,
+        "elevationGainM": 65,
+        "elevationLossM": 0,
+        "averageSlopeDegrees": 2.14,
+        "difficulty": "low",
+        "estimatedMinutes": 58,
+        "hazards": []
+      },
+      {
+        "id": "seg-3",
+        "start": {
+          "latitude": 18.423,
+          "longitude": 77.411
+        },
+        "end": {
+          "latitude": 18.44,
+          "longitude": 77.395
+        },
+        "distanceKm": 1.42,
+        "elevationGainM": 0,
+        "elevationLossM": 30,
+        "averageSlopeDegrees": 1.21,
+        "difficulty": "low",
+        "estimatedMinutes": 27,
+        "hazards": []
+      }
+    ],
     "totalDistanceKm": 4.14,
     "estimatedDurationMinutes": 129,
-    "elevationProfile": [],
+    "elevationProfile": [
+      {
+        "distanceKm": 0,
+        "elevationM": -2530,
+        "slopeDegrees": 0.5,
+        "coordinate": {
+          "latitude": 18.4447,
+          "longitude": 77.4508
+        }
+      },
+      {
+        "distanceKm": 0.5,
+        "elevationM": -2538,
+        "slopeDegrees": 0.9,
+        "coordinate": {
+          "latitude": 18.44,
+          "longitude": 77.444
+        }
+      },
+      {
+        "distanceKm": 0.98,
+        "elevationM": -2545,
+        "slopeDegrees": 0.8,
+        "coordinate": {
+          "latitude": 18.435,
+          "longitude": 77.438
+        }
+      },
+      {
+        "distanceKm": 1.8,
+        "elevationM": -2510,
+        "slopeDegrees": 2.2,
+        "coordinate": {
+          "latitude": 18.429,
+          "longitude": 77.424
+        }
+      },
+      {
+        "distanceKm": 2.72,
+        "elevationM": -2480,
+        "slopeDegrees": 2.1,
+        "coordinate": {
+          "latitude": 18.423,
+          "longitude": 77.411
+        }
+      },
+      {
+        "distanceKm": 3.4,
+        "elevationM": -2495,
+        "slopeDegrees": 1.4,
+        "coordinate": {
+          "latitude": 18.432,
+          "longitude": 77.403
+        }
+      },
+      {
+        "distanceKm": 4.14,
+        "elevationM": -2510,
+        "slopeDegrees": 1.2,
+        "coordinate": {
+          "latitude": 18.44,
+          "longitude": 77.395
+        }
+      }
+    ],
     "elevationGainM": 65,
     "elevationLossM": 45,
     "maxSlopeDegrees": 3.8,
     "overallDifficulty": "low",
-    "createdAt": "2026-11-12T09:00:54.975Z"
+    "createdAt": "2026-11-01T00:00:00.000Z"
   },
   {
     "id": "route-1794464117886-802",
@@ -4187,5 +4349,3243 @@
     "maxSlopeDegrees": 0.88,
     "overallDifficulty": "low",
     "createdAt": "2026-11-12T09:35:32.844Z"
+  },
+  {
+    "id": "route-1794640792128-931",
+    "name": "Batch 5 Guard Route",
+    "points": [
+      {
+        "id": "p1",
+        "coordinate": {
+          "latitude": 18.42,
+          "longitude": 77.41
+        },
+        "type": "start"
+      },
+      {
+        "id": "p2",
+        "coordinate": {
+          "latitude": 18.43,
+          "longitude": 77.43
+        },
+        "type": "end"
+      }
+    ],
+    "segments": [
+      {
+        "id": "seg-1",
+        "start": {
+          "latitude": 18.42,
+          "longitude": 77.41
+        },
+        "end": {
+          "latitude": 18.43,
+          "longitude": 77.43
+        },
+        "distanceKm": 1.269,
+        "elevationGainM": 0,
+        "elevationLossM": 18,
+        "averageSlopeDegrees": 0.81,
+        "difficulty": "low",
+        "estimatedMinutes": 28,
+        "hazards": []
+      }
+    ],
+    "totalDistanceKm": 1.269,
+    "estimatedDurationMinutes": 28,
+    "elevationProfile": [
+      {
+        "distanceKm": 0,
+        "elevationM": -2489,
+        "slopeDegrees": 0,
+        "coordinate": {
+          "latitude": 18.42,
+          "longitude": 77.41
+        }
+      },
+      {
+        "distanceKm": 0.181,
+        "elevationM": -2491,
+        "slopeDegrees": 0.63,
+        "coordinate": {
+          "latitude": 18.42143,
+          "longitude": 77.41286
+        }
+      },
+      {
+        "distanceKm": 0.362,
+        "elevationM": -2494,
+        "slopeDegrees": 0.95,
+        "coordinate": {
+          "latitude": 18.42286,
+          "longitude": 77.41571
+        }
+      },
+      {
+        "distanceKm": 0.544,
+        "elevationM": -2496,
+        "slopeDegrees": 0.63,
+        "coordinate": {
+          "latitude": 18.42429,
+          "longitude": 77.41857
+        }
+      },
+      {
+        "distanceKm": 0.725,
+        "elevationM": -2499,
+        "slopeDegrees": 0.95,
+        "coordinate": {
+          "latitude": 18.42571,
+          "longitude": 77.42143
+        }
+      },
+      {
+        "distanceKm": 0.906,
+        "elevationM": -2502,
+        "slopeDegrees": 0.95,
+        "coordinate": {
+          "latitude": 18.42714,
+          "longitude": 77.42428
+        }
+      },
+      {
+        "distanceKm": 1.087,
+        "elevationM": -2504,
+        "slopeDegrees": 0.63,
+        "coordinate": {
+          "latitude": 18.42857,
+          "longitude": 77.42714
+        }
+      },
+      {
+        "distanceKm": 1.269,
+        "elevationM": -2507,
+        "slopeDegrees": 0.95,
+        "coordinate": {
+          "latitude": 18.43,
+          "longitude": 77.43
+        }
+      }
+    ],
+    "elevationGainM": 0,
+    "elevationLossM": 18,
+    "maxSlopeDegrees": 0.95,
+    "overallDifficulty": "low",
+    "createdAt": "2026-11-14T07:19:52.128Z"
+  },
+  {
+    "id": "route-1794640804861-145",
+    "name": "E2E Jezero Delta Traversal Mission",
+    "points": [
+      {
+        "id": "pt-1",
+        "coordinate": {
+          "latitude": 18.4447,
+          "longitude": 77.4508
+        },
+        "type": "start",
+        "label": "Jezero Base"
+      },
+      {
+        "id": "pt-2",
+        "coordinate": {
+          "latitude": 18.435,
+          "longitude": 77.438
+        },
+        "type": "science",
+        "label": "South Séítah Cumulate Outcrop",
+        "targetId": "tgt-seitah-olivine"
+      },
+      {
+        "id": "pt-3",
+        "coordinate": {
+          "latitude": 18.423,
+          "longitude": 77.411
+        },
+        "type": "science",
+        "label": "Kodiak Butte Delta Remnant",
+        "targetId": "tgt-kodiak-butte"
+      },
+      {
+        "id": "pt-4",
+        "coordinate": {
+          "latitude": 18.44,
+          "longitude": 77.395
+        },
+        "type": "destination",
+        "label": "Base Camp"
+      }
+    ],
+    "segments": [
+      {
+        "id": "seg-1",
+        "start": {
+          "latitude": 18.4447,
+          "longitude": 77.4508
+        },
+        "end": {
+          "latitude": 18.435,
+          "longitude": 77.438
+        },
+        "distanceKm": 0.919,
+        "elevationGainM": 15,
+        "elevationLossM": 0,
+        "averageSlopeDegrees": 0.93,
+        "difficulty": "low",
+        "estimatedMinutes": 46,
+        "hazards": []
+      },
+      {
+        "id": "seg-2",
+        "start": {
+          "latitude": 18.435,
+          "longitude": 77.438
+        },
+        "end": {
+          "latitude": 18.423,
+          "longitude": 77.411
+        },
+        "distanceKm": 1.673,
+        "elevationGainM": 24,
+        "elevationLossM": 0,
+        "averageSlopeDegrees": 0.82,
+        "difficulty": "low",
+        "estimatedMinutes": 62,
+        "hazards": []
+      },
+      {
+        "id": "seg-3",
+        "start": {
+          "latitude": 18.423,
+          "longitude": 77.411
+        },
+        "end": {
+          "latitude": 18.44,
+          "longitude": 77.395
+        },
+        "distanceKm": 1.348,
+        "elevationGainM": 8,
+        "elevationLossM": 0,
+        "averageSlopeDegrees": 0.34,
+        "difficulty": "low",
+        "estimatedMinutes": 29,
+        "hazards": []
+      }
+    ],
+    "totalDistanceKm": 3.94,
+    "estimatedDurationMinutes": 137,
+    "elevationProfile": [
+      {
+        "distanceKm": 0,
+        "elevationM": -2530,
+        "slopeDegrees": 0,
+        "coordinate": {
+          "latitude": 18.4447,
+          "longitude": 77.4508
+        }
+      },
+      {
+        "distanceKm": 0.184,
+        "elevationM": -2527,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.44276,
+          "longitude": 77.44824
+        }
+      },
+      {
+        "distanceKm": 0.368,
+        "elevationM": -2524,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.44082,
+          "longitude": 77.44568
+        }
+      },
+      {
+        "distanceKm": 0.552,
+        "elevationM": -2521,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.43888,
+          "longitude": 77.44312
+        }
+      },
+      {
+        "distanceKm": 0.736,
+        "elevationM": -2518,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.43694,
+          "longitude": 77.44056
+        }
+      },
+      {
+        "distanceKm": 0.919,
+        "elevationM": -2515,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.435,
+          "longitude": 77.438
+        }
+      },
+      {
+        "distanceKm": 0.919,
+        "elevationM": -2515,
+        "slopeDegrees": 0,
+        "coordinate": {
+          "latitude": 18.435,
+          "longitude": 77.438
+        }
+      },
+      {
+        "distanceKm": 1.105,
+        "elevationM": -2513,
+        "slopeDegrees": 0.62,
+        "coordinate": {
+          "latitude": 18.43367,
+          "longitude": 77.435
+        }
+      },
+      {
+        "distanceKm": 1.291,
+        "elevationM": -2510,
+        "slopeDegrees": 0.92,
+        "coordinate": {
+          "latitude": 18.43233,
+          "longitude": 77.432
+        }
+      },
+      {
+        "distanceKm": 1.477,
+        "elevationM": -2507,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.431,
+          "longitude": 77.429
+        }
+      },
+      {
+        "distanceKm": 1.663,
+        "elevationM": -2504,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.42967,
+          "longitude": 77.426
+        }
+      },
+      {
+        "distanceKm": 1.849,
+        "elevationM": -2501,
+        "slopeDegrees": 0.92,
+        "coordinate": {
+          "latitude": 18.42833,
+          "longitude": 77.423
+        }
+      },
+      {
+        "distanceKm": 2.035,
+        "elevationM": -2499,
+        "slopeDegrees": 0.62,
+        "coordinate": {
+          "latitude": 18.427,
+          "longitude": 77.42
+        }
+      },
+      {
+        "distanceKm": 2.221,
+        "elevationM": -2496,
+        "slopeDegrees": 0.92,
+        "coordinate": {
+          "latitude": 18.42567,
+          "longitude": 77.417
+        }
+      },
+      {
+        "distanceKm": 2.407,
+        "elevationM": -2493,
+        "slopeDegrees": 0.92,
+        "coordinate": {
+          "latitude": 18.42433,
+          "longitude": 77.414
+        }
+      },
+      {
+        "distanceKm": 2.593,
+        "elevationM": -2491,
+        "slopeDegrees": 0.62,
+        "coordinate": {
+          "latitude": 18.423,
+          "longitude": 77.411
+        }
+      },
+      {
+        "distanceKm": 2.593,
+        "elevationM": -2491,
+        "slopeDegrees": 0,
+        "coordinate": {
+          "latitude": 18.423,
+          "longitude": 77.411
+        }
+      },
+      {
+        "distanceKm": 2.786,
+        "elevationM": -2490,
+        "slopeDegrees": 0.3,
+        "coordinate": {
+          "latitude": 18.42543,
+          "longitude": 77.40871
+        }
+      },
+      {
+        "distanceKm": 2.978,
+        "elevationM": -2489,
+        "slopeDegrees": 0.3,
+        "coordinate": {
+          "latitude": 18.42786,
+          "longitude": 77.40643
+        }
+      },
+      {
+        "distanceKm": 3.171,
+        "elevationM": -2488,
+        "slopeDegrees": 0.3,
+        "coordinate": {
+          "latitude": 18.43029,
+          "longitude": 77.40414
+        }
+      },
+      {
+        "distanceKm": 3.363,
+        "elevationM": -2487,
+        "slopeDegrees": 0.3,
+        "coordinate": {
+          "latitude": 18.43271,
+          "longitude": 77.40186
+        }
+      },
+      {
+        "distanceKm": 3.556,
+        "elevationM": -2486,
+        "slopeDegrees": 0.3,
+        "coordinate": {
+          "latitude": 18.43514,
+          "longitude": 77.39957
+        }
+      },
+      {
+        "distanceKm": 3.748,
+        "elevationM": -2484,
+        "slopeDegrees": 0.6,
+        "coordinate": {
+          "latitude": 18.43757,
+          "longitude": 77.39729
+        }
+      },
+      {
+        "distanceKm": 3.941,
+        "elevationM": -2483,
+        "slopeDegrees": 0.3,
+        "coordinate": {
+          "latitude": 18.44,
+          "longitude": 77.395
+        }
+      }
+    ],
+    "elevationGainM": 47,
+    "elevationLossM": 0,
+    "maxSlopeDegrees": 0.93,
+    "overallDifficulty": "low",
+    "createdAt": "2026-11-14T07:20:04.861Z"
+  },
+  {
+    "id": "route-1794640806152-461",
+    "name": "Test Traverse",
+    "points": [
+      {
+        "coordinate": {
+          "latitude": 18.44,
+          "longitude": 77.45
+        },
+        "type": "start"
+      },
+      {
+        "coordinate": {
+          "latitude": 18.42,
+          "longitude": 77.41
+        },
+        "type": "destination"
+      }
+    ],
+    "segments": [
+      {
+        "id": "seg-1",
+        "start": {
+          "latitude": 18.44,
+          "longitude": 77.45
+        },
+        "end": {
+          "latitude": 18.42,
+          "longitude": 77.41
+        },
+        "distanceKm": 2.538,
+        "elevationGainM": 36,
+        "elevationLossM": 0,
+        "averageSlopeDegrees": 0.81,
+        "difficulty": "low",
+        "estimatedMinutes": 57,
+        "hazards": []
+      }
+    ],
+    "totalDistanceKm": 2.538,
+    "estimatedDurationMinutes": 57,
+    "elevationProfile": [
+      {
+        "distanceKm": 0,
+        "elevationM": -2525,
+        "slopeDegrees": 0,
+        "coordinate": {
+          "latitude": 18.44,
+          "longitude": 77.45
+        }
+      },
+      {
+        "distanceKm": 0.195,
+        "elevationM": -2523,
+        "slopeDegrees": 0.59,
+        "coordinate": {
+          "latitude": 18.43846,
+          "longitude": 77.44692
+        }
+      },
+      {
+        "distanceKm": 0.39,
+        "elevationM": -2520,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.43692,
+          "longitude": 77.44385
+        }
+      },
+      {
+        "distanceKm": 0.585,
+        "elevationM": -2517,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.43539,
+          "longitude": 77.44077
+        }
+      },
+      {
+        "distanceKm": 0.781,
+        "elevationM": -2514,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.43385,
+          "longitude": 77.43769
+        }
+      },
+      {
+        "distanceKm": 0.976,
+        "elevationM": -2511,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.43231,
+          "longitude": 77.43461
+        }
+      },
+      {
+        "distanceKm": 1.171,
+        "elevationM": -2509,
+        "slopeDegrees": 0.59,
+        "coordinate": {
+          "latitude": 18.43077,
+          "longitude": 77.43154
+        }
+      },
+      {
+        "distanceKm": 1.367,
+        "elevationM": -2506,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.42923,
+          "longitude": 77.42846
+        }
+      },
+      {
+        "distanceKm": 1.562,
+        "elevationM": -2503,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.42769,
+          "longitude": 77.42538
+        }
+      },
+      {
+        "distanceKm": 1.757,
+        "elevationM": -2500,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.42615,
+          "longitude": 77.42231
+        }
+      },
+      {
+        "distanceKm": 1.952,
+        "elevationM": -2497,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.42462,
+          "longitude": 77.41923
+        }
+      },
+      {
+        "distanceKm": 2.147,
+        "elevationM": -2494,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.42308,
+          "longitude": 77.41615
+        }
+      },
+      {
+        "distanceKm": 2.342,
+        "elevationM": -2491,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.42154,
+          "longitude": 77.41308
+        }
+      },
+      {
+        "distanceKm": 2.538,
+        "elevationM": -2489,
+        "slopeDegrees": 0.59,
+        "coordinate": {
+          "latitude": 18.42,
+          "longitude": 77.41
+        }
+      }
+    ],
+    "elevationGainM": 36,
+    "elevationLossM": 0,
+    "maxSlopeDegrees": 0.88,
+    "overallDifficulty": "low",
+    "createdAt": "2026-11-14T07:20:06.152Z"
+  },
+  {
+    "id": "route-1794640963427-437",
+    "name": "Batch 5 Guard Route",
+    "points": [
+      {
+        "id": "p1",
+        "coordinate": {
+          "latitude": 18.42,
+          "longitude": 77.41
+        },
+        "type": "start"
+      },
+      {
+        "id": "p2",
+        "coordinate": {
+          "latitude": 18.43,
+          "longitude": 77.43
+        },
+        "type": "end"
+      }
+    ],
+    "segments": [
+      {
+        "id": "seg-1",
+        "start": {
+          "latitude": 18.42,
+          "longitude": 77.41
+        },
+        "end": {
+          "latitude": 18.43,
+          "longitude": 77.43
+        },
+        "distanceKm": 1.269,
+        "elevationGainM": 0,
+        "elevationLossM": 18,
+        "averageSlopeDegrees": 0.81,
+        "difficulty": "low",
+        "estimatedMinutes": 28,
+        "hazards": []
+      }
+    ],
+    "totalDistanceKm": 1.269,
+    "estimatedDurationMinutes": 28,
+    "elevationProfile": [
+      {
+        "distanceKm": 0,
+        "elevationM": -2489,
+        "slopeDegrees": 0,
+        "coordinate": {
+          "latitude": 18.42,
+          "longitude": 77.41
+        }
+      },
+      {
+        "distanceKm": 0.181,
+        "elevationM": -2491,
+        "slopeDegrees": 0.63,
+        "coordinate": {
+          "latitude": 18.42143,
+          "longitude": 77.41286
+        }
+      },
+      {
+        "distanceKm": 0.362,
+        "elevationM": -2494,
+        "slopeDegrees": 0.95,
+        "coordinate": {
+          "latitude": 18.42286,
+          "longitude": 77.41571
+        }
+      },
+      {
+        "distanceKm": 0.544,
+        "elevationM": -2496,
+        "slopeDegrees": 0.63,
+        "coordinate": {
+          "latitude": 18.42429,
+          "longitude": 77.41857
+        }
+      },
+      {
+        "distanceKm": 0.725,
+        "elevationM": -2499,
+        "slopeDegrees": 0.95,
+        "coordinate": {
+          "latitude": 18.42571,
+          "longitude": 77.42143
+        }
+      },
+      {
+        "distanceKm": 0.906,
+        "elevationM": -2502,
+        "slopeDegrees": 0.95,
+        "coordinate": {
+          "latitude": 18.42714,
+          "longitude": 77.42428
+        }
+      },
+      {
+        "distanceKm": 1.087,
+        "elevationM": -2504,
+        "slopeDegrees": 0.63,
+        "coordinate": {
+          "latitude": 18.42857,
+          "longitude": 77.42714
+        }
+      },
+      {
+        "distanceKm": 1.269,
+        "elevationM": -2507,
+        "slopeDegrees": 0.95,
+        "coordinate": {
+          "latitude": 18.43,
+          "longitude": 77.43
+        }
+      }
+    ],
+    "elevationGainM": 0,
+    "elevationLossM": 18,
+    "maxSlopeDegrees": 0.95,
+    "overallDifficulty": "low",
+    "createdAt": "2026-11-14T07:22:43.427Z"
+  },
+  {
+    "id": "route-1794640973730-758",
+    "name": "E2E Jezero Delta Traversal Mission",
+    "points": [
+      {
+        "id": "pt-1",
+        "coordinate": {
+          "latitude": 18.4447,
+          "longitude": 77.4508
+        },
+        "type": "start",
+        "label": "Jezero Base"
+      },
+      {
+        "id": "pt-2",
+        "coordinate": {
+          "latitude": 18.435,
+          "longitude": 77.438
+        },
+        "type": "science",
+        "label": "South Séítah Cumulate Outcrop",
+        "targetId": "tgt-seitah-olivine"
+      },
+      {
+        "id": "pt-3",
+        "coordinate": {
+          "latitude": 18.423,
+          "longitude": 77.411
+        },
+        "type": "science",
+        "label": "Kodiak Butte Delta Remnant",
+        "targetId": "tgt-kodiak-butte"
+      },
+      {
+        "id": "pt-4",
+        "coordinate": {
+          "latitude": 18.44,
+          "longitude": 77.395
+        },
+        "type": "destination",
+        "label": "Base Camp"
+      }
+    ],
+    "segments": [
+      {
+        "id": "seg-1",
+        "start": {
+          "latitude": 18.4447,
+          "longitude": 77.4508
+        },
+        "end": {
+          "latitude": 18.435,
+          "longitude": 77.438
+        },
+        "distanceKm": 0.919,
+        "elevationGainM": 15,
+        "elevationLossM": 0,
+        "averageSlopeDegrees": 0.93,
+        "difficulty": "low",
+        "estimatedMinutes": 46,
+        "hazards": []
+      },
+      {
+        "id": "seg-2",
+        "start": {
+          "latitude": 18.435,
+          "longitude": 77.438
+        },
+        "end": {
+          "latitude": 18.423,
+          "longitude": 77.411
+        },
+        "distanceKm": 1.673,
+        "elevationGainM": 24,
+        "elevationLossM": 0,
+        "averageSlopeDegrees": 0.82,
+        "difficulty": "low",
+        "estimatedMinutes": 62,
+        "hazards": []
+      },
+      {
+        "id": "seg-3",
+        "start": {
+          "latitude": 18.423,
+          "longitude": 77.411
+        },
+        "end": {
+          "latitude": 18.44,
+          "longitude": 77.395
+        },
+        "distanceKm": 1.348,
+        "elevationGainM": 8,
+        "elevationLossM": 0,
+        "averageSlopeDegrees": 0.34,
+        "difficulty": "low",
+        "estimatedMinutes": 29,
+        "hazards": []
+      }
+    ],
+    "totalDistanceKm": 3.94,
+    "estimatedDurationMinutes": 137,
+    "elevationProfile": [
+      {
+        "distanceKm": 0,
+        "elevationM": -2530,
+        "slopeDegrees": 0,
+        "coordinate": {
+          "latitude": 18.4447,
+          "longitude": 77.4508
+        }
+      },
+      {
+        "distanceKm": 0.184,
+        "elevationM": -2527,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.44276,
+          "longitude": 77.44824
+        }
+      },
+      {
+        "distanceKm": 0.368,
+        "elevationM": -2524,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.44082,
+          "longitude": 77.44568
+        }
+      },
+      {
+        "distanceKm": 0.552,
+        "elevationM": -2521,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.43888,
+          "longitude": 77.44312
+        }
+      },
+      {
+        "distanceKm": 0.736,
+        "elevationM": -2518,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.43694,
+          "longitude": 77.44056
+        }
+      },
+      {
+        "distanceKm": 0.919,
+        "elevationM": -2515,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.435,
+          "longitude": 77.438
+        }
+      },
+      {
+        "distanceKm": 0.919,
+        "elevationM": -2515,
+        "slopeDegrees": 0,
+        "coordinate": {
+          "latitude": 18.435,
+          "longitude": 77.438
+        }
+      },
+      {
+        "distanceKm": 1.105,
+        "elevationM": -2513,
+        "slopeDegrees": 0.62,
+        "coordinate": {
+          "latitude": 18.43367,
+          "longitude": 77.435
+        }
+      },
+      {
+        "distanceKm": 1.291,
+        "elevationM": -2510,
+        "slopeDegrees": 0.92,
+        "coordinate": {
+          "latitude": 18.43233,
+          "longitude": 77.432
+        }
+      },
+      {
+        "distanceKm": 1.477,
+        "elevationM": -2507,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.431,
+          "longitude": 77.429
+        }
+      },
+      {
+        "distanceKm": 1.663,
+        "elevationM": -2504,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.42967,
+          "longitude": 77.426
+        }
+      },
+      {
+        "distanceKm": 1.849,
+        "elevationM": -2501,
+        "slopeDegrees": 0.92,
+        "coordinate": {
+          "latitude": 18.42833,
+          "longitude": 77.423
+        }
+      },
+      {
+        "distanceKm": 2.035,
+        "elevationM": -2499,
+        "slopeDegrees": 0.62,
+        "coordinate": {
+          "latitude": 18.427,
+          "longitude": 77.42
+        }
+      },
+      {
+        "distanceKm": 2.221,
+        "elevationM": -2496,
+        "slopeDegrees": 0.92,
+        "coordinate": {
+          "latitude": 18.42567,
+          "longitude": 77.417
+        }
+      },
+      {
+        "distanceKm": 2.407,
+        "elevationM": -2493,
+        "slopeDegrees": 0.92,
+        "coordinate": {
+          "latitude": 18.42433,
+          "longitude": 77.414
+        }
+      },
+      {
+        "distanceKm": 2.593,
+        "elevationM": -2491,
+        "slopeDegrees": 0.62,
+        "coordinate": {
+          "latitude": 18.423,
+          "longitude": 77.411
+        }
+      },
+      {
+        "distanceKm": 2.593,
+        "elevationM": -2491,
+        "slopeDegrees": 0,
+        "coordinate": {
+          "latitude": 18.423,
+          "longitude": 77.411
+        }
+      },
+      {
+        "distanceKm": 2.786,
+        "elevationM": -2490,
+        "slopeDegrees": 0.3,
+        "coordinate": {
+          "latitude": 18.42543,
+          "longitude": 77.40871
+        }
+      },
+      {
+        "distanceKm": 2.978,
+        "elevationM": -2489,
+        "slopeDegrees": 0.3,
+        "coordinate": {
+          "latitude": 18.42786,
+          "longitude": 77.40643
+        }
+      },
+      {
+        "distanceKm": 3.171,
+        "elevationM": -2488,
+        "slopeDegrees": 0.3,
+        "coordinate": {
+          "latitude": 18.43029,
+          "longitude": 77.40414
+        }
+      },
+      {
+        "distanceKm": 3.363,
+        "elevationM": -2487,
+        "slopeDegrees": 0.3,
+        "coordinate": {
+          "latitude": 18.43271,
+          "longitude": 77.40186
+        }
+      },
+      {
+        "distanceKm": 3.556,
+        "elevationM": -2486,
+        "slopeDegrees": 0.3,
+        "coordinate": {
+          "latitude": 18.43514,
+          "longitude": 77.39957
+        }
+      },
+      {
+        "distanceKm": 3.748,
+        "elevationM": -2484,
+        "slopeDegrees": 0.6,
+        "coordinate": {
+          "latitude": 18.43757,
+          "longitude": 77.39729
+        }
+      },
+      {
+        "distanceKm": 3.941,
+        "elevationM": -2483,
+        "slopeDegrees": 0.3,
+        "coordinate": {
+          "latitude": 18.44,
+          "longitude": 77.395
+        }
+      }
+    ],
+    "elevationGainM": 47,
+    "elevationLossM": 0,
+    "maxSlopeDegrees": 0.93,
+    "overallDifficulty": "low",
+    "createdAt": "2026-11-14T07:22:53.730Z"
+  },
+  {
+    "id": "route-1794640974761-545",
+    "name": "Test Traverse",
+    "points": [
+      {
+        "coordinate": {
+          "latitude": 18.44,
+          "longitude": 77.45
+        },
+        "type": "start"
+      },
+      {
+        "coordinate": {
+          "latitude": 18.42,
+          "longitude": 77.41
+        },
+        "type": "destination"
+      }
+    ],
+    "segments": [
+      {
+        "id": "seg-1",
+        "start": {
+          "latitude": 18.44,
+          "longitude": 77.45
+        },
+        "end": {
+          "latitude": 18.42,
+          "longitude": 77.41
+        },
+        "distanceKm": 2.538,
+        "elevationGainM": 36,
+        "elevationLossM": 0,
+        "averageSlopeDegrees": 0.81,
+        "difficulty": "low",
+        "estimatedMinutes": 57,
+        "hazards": []
+      }
+    ],
+    "totalDistanceKm": 2.538,
+    "estimatedDurationMinutes": 57,
+    "elevationProfile": [
+      {
+        "distanceKm": 0,
+        "elevationM": -2525,
+        "slopeDegrees": 0,
+        "coordinate": {
+          "latitude": 18.44,
+          "longitude": 77.45
+        }
+      },
+      {
+        "distanceKm": 0.195,
+        "elevationM": -2523,
+        "slopeDegrees": 0.59,
+        "coordinate": {
+          "latitude": 18.43846,
+          "longitude": 77.44692
+        }
+      },
+      {
+        "distanceKm": 0.39,
+        "elevationM": -2520,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.43692,
+          "longitude": 77.44385
+        }
+      },
+      {
+        "distanceKm": 0.585,
+        "elevationM": -2517,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.43539,
+          "longitude": 77.44077
+        }
+      },
+      {
+        "distanceKm": 0.781,
+        "elevationM": -2514,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.43385,
+          "longitude": 77.43769
+        }
+      },
+      {
+        "distanceKm": 0.976,
+        "elevationM": -2511,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.43231,
+          "longitude": 77.43461
+        }
+      },
+      {
+        "distanceKm": 1.171,
+        "elevationM": -2509,
+        "slopeDegrees": 0.59,
+        "coordinate": {
+          "latitude": 18.43077,
+          "longitude": 77.43154
+        }
+      },
+      {
+        "distanceKm": 1.367,
+        "elevationM": -2506,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.42923,
+          "longitude": 77.42846
+        }
+      },
+      {
+        "distanceKm": 1.562,
+        "elevationM": -2503,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.42769,
+          "longitude": 77.42538
+        }
+      },
+      {
+        "distanceKm": 1.757,
+        "elevationM": -2500,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.42615,
+          "longitude": 77.42231
+        }
+      },
+      {
+        "distanceKm": 1.952,
+        "elevationM": -2497,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.42462,
+          "longitude": 77.41923
+        }
+      },
+      {
+        "distanceKm": 2.147,
+        "elevationM": -2494,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.42308,
+          "longitude": 77.41615
+        }
+      },
+      {
+        "distanceKm": 2.342,
+        "elevationM": -2491,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.42154,
+          "longitude": 77.41308
+        }
+      },
+      {
+        "distanceKm": 2.538,
+        "elevationM": -2489,
+        "slopeDegrees": 0.59,
+        "coordinate": {
+          "latitude": 18.42,
+          "longitude": 77.41
+        }
+      }
+    ],
+    "elevationGainM": 36,
+    "elevationLossM": 0,
+    "maxSlopeDegrees": 0.88,
+    "overallDifficulty": "low",
+    "createdAt": "2026-11-14T07:22:54.761Z"
+  },
+  {
+    "id": "route-1794641820952-547",
+    "name": "Batch 5 Guard Route",
+    "points": [
+      {
+        "id": "p1",
+        "coordinate": {
+          "latitude": 18.42,
+          "longitude": 77.41
+        },
+        "type": "start"
+      },
+      {
+        "id": "p2",
+        "coordinate": {
+          "latitude": 18.43,
+          "longitude": 77.43
+        },
+        "type": "end"
+      }
+    ],
+    "segments": [
+      {
+        "id": "seg-1",
+        "start": {
+          "latitude": 18.42,
+          "longitude": 77.41
+        },
+        "end": {
+          "latitude": 18.43,
+          "longitude": 77.43
+        },
+        "distanceKm": 1.269,
+        "elevationGainM": 0,
+        "elevationLossM": 18,
+        "averageSlopeDegrees": 0.81,
+        "difficulty": "low",
+        "estimatedMinutes": 28,
+        "hazards": []
+      }
+    ],
+    "totalDistanceKm": 1.269,
+    "estimatedDurationMinutes": 28,
+    "elevationProfile": [
+      {
+        "distanceKm": 0,
+        "elevationM": -2489,
+        "slopeDegrees": 0,
+        "coordinate": {
+          "latitude": 18.42,
+          "longitude": 77.41
+        }
+      },
+      {
+        "distanceKm": 0.181,
+        "elevationM": -2491,
+        "slopeDegrees": 0.63,
+        "coordinate": {
+          "latitude": 18.42143,
+          "longitude": 77.41286
+        }
+      },
+      {
+        "distanceKm": 0.362,
+        "elevationM": -2494,
+        "slopeDegrees": 0.95,
+        "coordinate": {
+          "latitude": 18.42286,
+          "longitude": 77.41571
+        }
+      },
+      {
+        "distanceKm": 0.544,
+        "elevationM": -2496,
+        "slopeDegrees": 0.63,
+        "coordinate": {
+          "latitude": 18.42429,
+          "longitude": 77.41857
+        }
+      },
+      {
+        "distanceKm": 0.725,
+        "elevationM": -2499,
+        "slopeDegrees": 0.95,
+        "coordinate": {
+          "latitude": 18.42571,
+          "longitude": 77.42143
+        }
+      },
+      {
+        "distanceKm": 0.906,
+        "elevationM": -2502,
+        "slopeDegrees": 0.95,
+        "coordinate": {
+          "latitude": 18.42714,
+          "longitude": 77.42428
+        }
+      },
+      {
+        "distanceKm": 1.087,
+        "elevationM": -2504,
+        "slopeDegrees": 0.63,
+        "coordinate": {
+          "latitude": 18.42857,
+          "longitude": 77.42714
+        }
+      },
+      {
+        "distanceKm": 1.269,
+        "elevationM": -2507,
+        "slopeDegrees": 0.95,
+        "coordinate": {
+          "latitude": 18.43,
+          "longitude": 77.43
+        }
+      }
+    ],
+    "elevationGainM": 0,
+    "elevationLossM": 18,
+    "maxSlopeDegrees": 0.95,
+    "overallDifficulty": "low",
+    "createdAt": "2026-11-14T07:37:00.952Z"
+  },
+  {
+    "id": "route-1794641836808-578",
+    "name": "E2E Jezero Delta Traversal Mission",
+    "points": [
+      {
+        "id": "pt-1",
+        "coordinate": {
+          "latitude": 18.4447,
+          "longitude": 77.4508
+        },
+        "type": "start",
+        "label": "Jezero Base"
+      },
+      {
+        "id": "pt-2",
+        "coordinate": {
+          "latitude": 18.435,
+          "longitude": 77.438
+        },
+        "type": "science",
+        "label": "South Séítah Cumulate Outcrop",
+        "targetId": "tgt-seitah-olivine"
+      },
+      {
+        "id": "pt-3",
+        "coordinate": {
+          "latitude": 18.423,
+          "longitude": 77.411
+        },
+        "type": "science",
+        "label": "Kodiak Butte Delta Remnant",
+        "targetId": "tgt-kodiak-butte"
+      },
+      {
+        "id": "pt-4",
+        "coordinate": {
+          "latitude": 18.44,
+          "longitude": 77.395
+        },
+        "type": "destination",
+        "label": "Base Camp"
+      }
+    ],
+    "segments": [
+      {
+        "id": "seg-1",
+        "start": {
+          "latitude": 18.4447,
+          "longitude": 77.4508
+        },
+        "end": {
+          "latitude": 18.435,
+          "longitude": 77.438
+        },
+        "distanceKm": 0.919,
+        "elevationGainM": 15,
+        "elevationLossM": 0,
+        "averageSlopeDegrees": 0.93,
+        "difficulty": "low",
+        "estimatedMinutes": 46,
+        "hazards": []
+      },
+      {
+        "id": "seg-2",
+        "start": {
+          "latitude": 18.435,
+          "longitude": 77.438
+        },
+        "end": {
+          "latitude": 18.423,
+          "longitude": 77.411
+        },
+        "distanceKm": 1.673,
+        "elevationGainM": 24,
+        "elevationLossM": 0,
+        "averageSlopeDegrees": 0.82,
+        "difficulty": "low",
+        "estimatedMinutes": 62,
+        "hazards": []
+      },
+      {
+        "id": "seg-3",
+        "start": {
+          "latitude": 18.423,
+          "longitude": 77.411
+        },
+        "end": {
+          "latitude": 18.44,
+          "longitude": 77.395
+        },
+        "distanceKm": 1.348,
+        "elevationGainM": 8,
+        "elevationLossM": 0,
+        "averageSlopeDegrees": 0.34,
+        "difficulty": "low",
+        "estimatedMinutes": 29,
+        "hazards": []
+      }
+    ],
+    "totalDistanceKm": 3.94,
+    "estimatedDurationMinutes": 137,
+    "elevationProfile": [
+      {
+        "distanceKm": 0,
+        "elevationM": -2530,
+        "slopeDegrees": 0,
+        "coordinate": {
+          "latitude": 18.4447,
+          "longitude": 77.4508
+        }
+      },
+      {
+        "distanceKm": 0.184,
+        "elevationM": -2527,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.44276,
+          "longitude": 77.44824
+        }
+      },
+      {
+        "distanceKm": 0.368,
+        "elevationM": -2524,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.44082,
+          "longitude": 77.44568
+        }
+      },
+      {
+        "distanceKm": 0.552,
+        "elevationM": -2521,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.43888,
+          "longitude": 77.44312
+        }
+      },
+      {
+        "distanceKm": 0.736,
+        "elevationM": -2518,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.43694,
+          "longitude": 77.44056
+        }
+      },
+      {
+        "distanceKm": 0.919,
+        "elevationM": -2515,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.435,
+          "longitude": 77.438
+        }
+      },
+      {
+        "distanceKm": 0.919,
+        "elevationM": -2515,
+        "slopeDegrees": 0,
+        "coordinate": {
+          "latitude": 18.435,
+          "longitude": 77.438
+        }
+      },
+      {
+        "distanceKm": 1.105,
+        "elevationM": -2513,
+        "slopeDegrees": 0.62,
+        "coordinate": {
+          "latitude": 18.43367,
+          "longitude": 77.435
+        }
+      },
+      {
+        "distanceKm": 1.291,
+        "elevationM": -2510,
+        "slopeDegrees": 0.92,
+        "coordinate": {
+          "latitude": 18.43233,
+          "longitude": 77.432
+        }
+      },
+      {
+        "distanceKm": 1.477,
+        "elevationM": -2507,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.431,
+          "longitude": 77.429
+        }
+      },
+      {
+        "distanceKm": 1.663,
+        "elevationM": -2504,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.42967,
+          "longitude": 77.426
+        }
+      },
+      {
+        "distanceKm": 1.849,
+        "elevationM": -2501,
+        "slopeDegrees": 0.92,
+        "coordinate": {
+          "latitude": 18.42833,
+          "longitude": 77.423
+        }
+      },
+      {
+        "distanceKm": 2.035,
+        "elevationM": -2499,
+        "slopeDegrees": 0.62,
+        "coordinate": {
+          "latitude": 18.427,
+          "longitude": 77.42
+        }
+      },
+      {
+        "distanceKm": 2.221,
+        "elevationM": -2496,
+        "slopeDegrees": 0.92,
+        "coordinate": {
+          "latitude": 18.42567,
+          "longitude": 77.417
+        }
+      },
+      {
+        "distanceKm": 2.407,
+        "elevationM": -2493,
+        "slopeDegrees": 0.92,
+        "coordinate": {
+          "latitude": 18.42433,
+          "longitude": 77.414
+        }
+      },
+      {
+        "distanceKm": 2.593,
+        "elevationM": -2491,
+        "slopeDegrees": 0.62,
+        "coordinate": {
+          "latitude": 18.423,
+          "longitude": 77.411
+        }
+      },
+      {
+        "distanceKm": 2.593,
+        "elevationM": -2491,
+        "slopeDegrees": 0,
+        "coordinate": {
+          "latitude": 18.423,
+          "longitude": 77.411
+        }
+      },
+      {
+        "distanceKm": 2.786,
+        "elevationM": -2490,
+        "slopeDegrees": 0.3,
+        "coordinate": {
+          "latitude": 18.42543,
+          "longitude": 77.40871
+        }
+      },
+      {
+        "distanceKm": 2.978,
+        "elevationM": -2489,
+        "slopeDegrees": 0.3,
+        "coordinate": {
+          "latitude": 18.42786,
+          "longitude": 77.40643
+        }
+      },
+      {
+        "distanceKm": 3.171,
+        "elevationM": -2488,
+        "slopeDegrees": 0.3,
+        "coordinate": {
+          "latitude": 18.43029,
+          "longitude": 77.40414
+        }
+      },
+      {
+        "distanceKm": 3.363,
+        "elevationM": -2487,
+        "slopeDegrees": 0.3,
+        "coordinate": {
+          "latitude": 18.43271,
+          "longitude": 77.40186
+        }
+      },
+      {
+        "distanceKm": 3.556,
+        "elevationM": -2486,
+        "slopeDegrees": 0.3,
+        "coordinate": {
+          "latitude": 18.43514,
+          "longitude": 77.39957
+        }
+      },
+      {
+        "distanceKm": 3.748,
+        "elevationM": -2484,
+        "slopeDegrees": 0.6,
+        "coordinate": {
+          "latitude": 18.43757,
+          "longitude": 77.39729
+        }
+      },
+      {
+        "distanceKm": 3.941,
+        "elevationM": -2483,
+        "slopeDegrees": 0.3,
+        "coordinate": {
+          "latitude": 18.44,
+          "longitude": 77.395
+        }
+      }
+    ],
+    "elevationGainM": 47,
+    "elevationLossM": 0,
+    "maxSlopeDegrees": 0.93,
+    "overallDifficulty": "low",
+    "createdAt": "2026-11-14T07:37:16.808Z"
+  },
+  {
+    "id": "route-1794641838733-315",
+    "name": "Test Traverse",
+    "points": [
+      {
+        "coordinate": {
+          "latitude": 18.44,
+          "longitude": 77.45
+        },
+        "type": "start"
+      },
+      {
+        "coordinate": {
+          "latitude": 18.42,
+          "longitude": 77.41
+        },
+        "type": "destination"
+      }
+    ],
+    "segments": [
+      {
+        "id": "seg-1",
+        "start": {
+          "latitude": 18.44,
+          "longitude": 77.45
+        },
+        "end": {
+          "latitude": 18.42,
+          "longitude": 77.41
+        },
+        "distanceKm": 2.538,
+        "elevationGainM": 36,
+        "elevationLossM": 0,
+        "averageSlopeDegrees": 0.81,
+        "difficulty": "low",
+        "estimatedMinutes": 57,
+        "hazards": []
+      }
+    ],
+    "totalDistanceKm": 2.538,
+    "estimatedDurationMinutes": 57,
+    "elevationProfile": [
+      {
+        "distanceKm": 0,
+        "elevationM": -2525,
+        "slopeDegrees": 0,
+        "coordinate": {
+          "latitude": 18.44,
+          "longitude": 77.45
+        }
+      },
+      {
+        "distanceKm": 0.195,
+        "elevationM": -2523,
+        "slopeDegrees": 0.59,
+        "coordinate": {
+          "latitude": 18.43846,
+          "longitude": 77.44692
+        }
+      },
+      {
+        "distanceKm": 0.39,
+        "elevationM": -2520,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.43692,
+          "longitude": 77.44385
+        }
+      },
+      {
+        "distanceKm": 0.585,
+        "elevationM": -2517,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.43539,
+          "longitude": 77.44077
+        }
+      },
+      {
+        "distanceKm": 0.781,
+        "elevationM": -2514,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.43385,
+          "longitude": 77.43769
+        }
+      },
+      {
+        "distanceKm": 0.976,
+        "elevationM": -2511,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.43231,
+          "longitude": 77.43461
+        }
+      },
+      {
+        "distanceKm": 1.171,
+        "elevationM": -2509,
+        "slopeDegrees": 0.59,
+        "coordinate": {
+          "latitude": 18.43077,
+          "longitude": 77.43154
+        }
+      },
+      {
+        "distanceKm": 1.367,
+        "elevationM": -2506,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.42923,
+          "longitude": 77.42846
+        }
+      },
+      {
+        "distanceKm": 1.562,
+        "elevationM": -2503,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.42769,
+          "longitude": 77.42538
+        }
+      },
+      {
+        "distanceKm": 1.757,
+        "elevationM": -2500,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.42615,
+          "longitude": 77.42231
+        }
+      },
+      {
+        "distanceKm": 1.952,
+        "elevationM": -2497,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.42462,
+          "longitude": 77.41923
+        }
+      },
+      {
+        "distanceKm": 2.147,
+        "elevationM": -2494,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.42308,
+          "longitude": 77.41615
+        }
+      },
+      {
+        "distanceKm": 2.342,
+        "elevationM": -2491,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.42154,
+          "longitude": 77.41308
+        }
+      },
+      {
+        "distanceKm": 2.538,
+        "elevationM": -2489,
+        "slopeDegrees": 0.59,
+        "coordinate": {
+          "latitude": 18.42,
+          "longitude": 77.41
+        }
+      }
+    ],
+    "elevationGainM": 36,
+    "elevationLossM": 0,
+    "maxSlopeDegrees": 0.88,
+    "overallDifficulty": "low",
+    "createdAt": "2026-11-14T07:37:18.733Z"
+  },
+  {
+    "id": "route-1794644312480-653",
+    "name": "Batch 5 Guard Route",
+    "points": [
+      {
+        "id": "p1",
+        "coordinate": {
+          "latitude": 18.42,
+          "longitude": 77.41
+        },
+        "type": "start"
+      },
+      {
+        "id": "p2",
+        "coordinate": {
+          "latitude": 18.43,
+          "longitude": 77.43
+        },
+        "type": "end"
+      }
+    ],
+    "segments": [
+      {
+        "id": "seg-1",
+        "start": {
+          "latitude": 18.42,
+          "longitude": 77.41
+        },
+        "end": {
+          "latitude": 18.43,
+          "longitude": 77.43
+        },
+        "distanceKm": 1.269,
+        "elevationGainM": 0,
+        "elevationLossM": 18,
+        "averageSlopeDegrees": 0.81,
+        "difficulty": "low",
+        "estimatedMinutes": 28,
+        "hazards": []
+      }
+    ],
+    "totalDistanceKm": 1.269,
+    "estimatedDurationMinutes": 28,
+    "elevationProfile": [
+      {
+        "distanceKm": 0,
+        "elevationM": -2489,
+        "slopeDegrees": 0,
+        "coordinate": {
+          "latitude": 18.42,
+          "longitude": 77.41
+        }
+      },
+      {
+        "distanceKm": 0.181,
+        "elevationM": -2491,
+        "slopeDegrees": 0.63,
+        "coordinate": {
+          "latitude": 18.42143,
+          "longitude": 77.41286
+        }
+      },
+      {
+        "distanceKm": 0.362,
+        "elevationM": -2494,
+        "slopeDegrees": 0.95,
+        "coordinate": {
+          "latitude": 18.42286,
+          "longitude": 77.41571
+        }
+      },
+      {
+        "distanceKm": 0.544,
+        "elevationM": -2496,
+        "slopeDegrees": 0.63,
+        "coordinate": {
+          "latitude": 18.42429,
+          "longitude": 77.41857
+        }
+      },
+      {
+        "distanceKm": 0.725,
+        "elevationM": -2499,
+        "slopeDegrees": 0.95,
+        "coordinate": {
+          "latitude": 18.42571,
+          "longitude": 77.42143
+        }
+      },
+      {
+        "distanceKm": 0.906,
+        "elevationM": -2502,
+        "slopeDegrees": 0.95,
+        "coordinate": {
+          "latitude": 18.42714,
+          "longitude": 77.42428
+        }
+      },
+      {
+        "distanceKm": 1.087,
+        "elevationM": -2504,
+        "slopeDegrees": 0.63,
+        "coordinate": {
+          "latitude": 18.42857,
+          "longitude": 77.42714
+        }
+      },
+      {
+        "distanceKm": 1.269,
+        "elevationM": -2507,
+        "slopeDegrees": 0.95,
+        "coordinate": {
+          "latitude": 18.43,
+          "longitude": 77.43
+        }
+      }
+    ],
+    "elevationGainM": 0,
+    "elevationLossM": 18,
+    "maxSlopeDegrees": 0.95,
+    "overallDifficulty": "low",
+    "createdAt": "2026-11-14T08:18:32.480Z"
+  },
+  {
+    "id": "route-1794646226148-632",
+    "name": "Batch 5 Guard Route",
+    "points": [
+      {
+        "id": "p1",
+        "coordinate": {
+          "latitude": 18.42,
+          "longitude": 77.41
+        },
+        "type": "start"
+      },
+      {
+        "id": "p2",
+        "coordinate": {
+          "latitude": 18.43,
+          "longitude": 77.43
+        },
+        "type": "end"
+      }
+    ],
+    "segments": [
+      {
+        "id": "seg-1",
+        "start": {
+          "latitude": 18.42,
+          "longitude": 77.41
+        },
+        "end": {
+          "latitude": 18.43,
+          "longitude": 77.43
+        },
+        "distanceKm": 1.269,
+        "elevationGainM": 0,
+        "elevationLossM": 18,
+        "averageSlopeDegrees": 0.81,
+        "difficulty": "low",
+        "estimatedMinutes": 28,
+        "hazards": []
+      }
+    ],
+    "totalDistanceKm": 1.269,
+    "estimatedDurationMinutes": 28,
+    "elevationProfile": [
+      {
+        "distanceKm": 0,
+        "elevationM": -2489,
+        "slopeDegrees": 0,
+        "coordinate": {
+          "latitude": 18.42,
+          "longitude": 77.41
+        }
+      },
+      {
+        "distanceKm": 0.181,
+        "elevationM": -2491,
+        "slopeDegrees": 0.63,
+        "coordinate": {
+          "latitude": 18.42143,
+          "longitude": 77.41286
+        }
+      },
+      {
+        "distanceKm": 0.362,
+        "elevationM": -2494,
+        "slopeDegrees": 0.95,
+        "coordinate": {
+          "latitude": 18.42286,
+          "longitude": 77.41571
+        }
+      },
+      {
+        "distanceKm": 0.544,
+        "elevationM": -2496,
+        "slopeDegrees": 0.63,
+        "coordinate": {
+          "latitude": 18.42429,
+          "longitude": 77.41857
+        }
+      },
+      {
+        "distanceKm": 0.725,
+        "elevationM": -2499,
+        "slopeDegrees": 0.95,
+        "coordinate": {
+          "latitude": 18.42571,
+          "longitude": 77.42143
+        }
+      },
+      {
+        "distanceKm": 0.906,
+        "elevationM": -2502,
+        "slopeDegrees": 0.95,
+        "coordinate": {
+          "latitude": 18.42714,
+          "longitude": 77.42428
+        }
+      },
+      {
+        "distanceKm": 1.087,
+        "elevationM": -2504,
+        "slopeDegrees": 0.63,
+        "coordinate": {
+          "latitude": 18.42857,
+          "longitude": 77.42714
+        }
+      },
+      {
+        "distanceKm": 1.269,
+        "elevationM": -2507,
+        "slopeDegrees": 0.95,
+        "coordinate": {
+          "latitude": 18.43,
+          "longitude": 77.43
+        }
+      }
+    ],
+    "elevationGainM": 0,
+    "elevationLossM": 18,
+    "maxSlopeDegrees": 0.95,
+    "overallDifficulty": "low",
+    "createdAt": "2026-11-14T08:50:26.148Z"
+  },
+  {
+    "id": "route-1794646238481-967",
+    "name": "E2E Jezero Delta Traversal Mission",
+    "points": [
+      {
+        "id": "pt-1",
+        "coordinate": {
+          "latitude": 18.4447,
+          "longitude": 77.4508
+        },
+        "type": "start",
+        "label": "Jezero Base"
+      },
+      {
+        "id": "pt-2",
+        "coordinate": {
+          "latitude": 18.435,
+          "longitude": 77.438
+        },
+        "type": "science",
+        "label": "South Séítah Cumulate Outcrop",
+        "targetId": "tgt-seitah-olivine"
+      },
+      {
+        "id": "pt-3",
+        "coordinate": {
+          "latitude": 18.423,
+          "longitude": 77.411
+        },
+        "type": "science",
+        "label": "Kodiak Butte Delta Remnant",
+        "targetId": "tgt-kodiak-butte"
+      },
+      {
+        "id": "pt-4",
+        "coordinate": {
+          "latitude": 18.44,
+          "longitude": 77.395
+        },
+        "type": "destination",
+        "label": "Base Camp"
+      }
+    ],
+    "segments": [
+      {
+        "id": "seg-1",
+        "start": {
+          "latitude": 18.4447,
+          "longitude": 77.4508
+        },
+        "end": {
+          "latitude": 18.435,
+          "longitude": 77.438
+        },
+        "distanceKm": 0.919,
+        "elevationGainM": 15,
+        "elevationLossM": 0,
+        "averageSlopeDegrees": 0.93,
+        "difficulty": "low",
+        "estimatedMinutes": 46,
+        "hazards": []
+      },
+      {
+        "id": "seg-2",
+        "start": {
+          "latitude": 18.435,
+          "longitude": 77.438
+        },
+        "end": {
+          "latitude": 18.423,
+          "longitude": 77.411
+        },
+        "distanceKm": 1.673,
+        "elevationGainM": 24,
+        "elevationLossM": 0,
+        "averageSlopeDegrees": 0.82,
+        "difficulty": "low",
+        "estimatedMinutes": 62,
+        "hazards": []
+      },
+      {
+        "id": "seg-3",
+        "start": {
+          "latitude": 18.423,
+          "longitude": 77.411
+        },
+        "end": {
+          "latitude": 18.44,
+          "longitude": 77.395
+        },
+        "distanceKm": 1.348,
+        "elevationGainM": 8,
+        "elevationLossM": 0,
+        "averageSlopeDegrees": 0.34,
+        "difficulty": "low",
+        "estimatedMinutes": 29,
+        "hazards": []
+      }
+    ],
+    "totalDistanceKm": 3.94,
+    "estimatedDurationMinutes": 137,
+    "elevationProfile": [
+      {
+        "distanceKm": 0,
+        "elevationM": -2530,
+        "slopeDegrees": 0,
+        "coordinate": {
+          "latitude": 18.4447,
+          "longitude": 77.4508
+        }
+      },
+      {
+        "distanceKm": 0.184,
+        "elevationM": -2527,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.44276,
+          "longitude": 77.44824
+        }
+      },
+      {
+        "distanceKm": 0.368,
+        "elevationM": -2524,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.44082,
+          "longitude": 77.44568
+        }
+      },
+      {
+        "distanceKm": 0.552,
+        "elevationM": -2521,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.43888,
+          "longitude": 77.44312
+        }
+      },
+      {
+        "distanceKm": 0.736,
+        "elevationM": -2518,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.43694,
+          "longitude": 77.44056
+        }
+      },
+      {
+        "distanceKm": 0.919,
+        "elevationM": -2515,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.435,
+          "longitude": 77.438
+        }
+      },
+      {
+        "distanceKm": 0.919,
+        "elevationM": -2515,
+        "slopeDegrees": 0,
+        "coordinate": {
+          "latitude": 18.435,
+          "longitude": 77.438
+        }
+      },
+      {
+        "distanceKm": 1.105,
+        "elevationM": -2513,
+        "slopeDegrees": 0.62,
+        "coordinate": {
+          "latitude": 18.43367,
+          "longitude": 77.435
+        }
+      },
+      {
+        "distanceKm": 1.291,
+        "elevationM": -2510,
+        "slopeDegrees": 0.92,
+        "coordinate": {
+          "latitude": 18.43233,
+          "longitude": 77.432
+        }
+      },
+      {
+        "distanceKm": 1.477,
+        "elevationM": -2507,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.431,
+          "longitude": 77.429
+        }
+      },
+      {
+        "distanceKm": 1.663,
+        "elevationM": -2504,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.42967,
+          "longitude": 77.426
+        }
+      },
+      {
+        "distanceKm": 1.849,
+        "elevationM": -2501,
+        "slopeDegrees": 0.92,
+        "coordinate": {
+          "latitude": 18.42833,
+          "longitude": 77.423
+        }
+      },
+      {
+        "distanceKm": 2.035,
+        "elevationM": -2499,
+        "slopeDegrees": 0.62,
+        "coordinate": {
+          "latitude": 18.427,
+          "longitude": 77.42
+        }
+      },
+      {
+        "distanceKm": 2.221,
+        "elevationM": -2496,
+        "slopeDegrees": 0.92,
+        "coordinate": {
+          "latitude": 18.42567,
+          "longitude": 77.417
+        }
+      },
+      {
+        "distanceKm": 2.407,
+        "elevationM": -2493,
+        "slopeDegrees": 0.92,
+        "coordinate": {
+          "latitude": 18.42433,
+          "longitude": 77.414
+        }
+      },
+      {
+        "distanceKm": 2.593,
+        "elevationM": -2491,
+        "slopeDegrees": 0.62,
+        "coordinate": {
+          "latitude": 18.423,
+          "longitude": 77.411
+        }
+      },
+      {
+        "distanceKm": 2.593,
+        "elevationM": -2491,
+        "slopeDegrees": 0,
+        "coordinate": {
+          "latitude": 18.423,
+          "longitude": 77.411
+        }
+      },
+      {
+        "distanceKm": 2.786,
+        "elevationM": -2490,
+        "slopeDegrees": 0.3,
+        "coordinate": {
+          "latitude": 18.42543,
+          "longitude": 77.40871
+        }
+      },
+      {
+        "distanceKm": 2.978,
+        "elevationM": -2489,
+        "slopeDegrees": 0.3,
+        "coordinate": {
+          "latitude": 18.42786,
+          "longitude": 77.40643
+        }
+      },
+      {
+        "distanceKm": 3.171,
+        "elevationM": -2488,
+        "slopeDegrees": 0.3,
+        "coordinate": {
+          "latitude": 18.43029,
+          "longitude": 77.40414
+        }
+      },
+      {
+        "distanceKm": 3.363,
+        "elevationM": -2487,
+        "slopeDegrees": 0.3,
+        "coordinate": {
+          "latitude": 18.43271,
+          "longitude": 77.40186
+        }
+      },
+      {
+        "distanceKm": 3.556,
+        "elevationM": -2486,
+        "slopeDegrees": 0.3,
+        "coordinate": {
+          "latitude": 18.43514,
+          "longitude": 77.39957
+        }
+      },
+      {
+        "distanceKm": 3.748,
+        "elevationM": -2484,
+        "slopeDegrees": 0.6,
+        "coordinate": {
+          "latitude": 18.43757,
+          "longitude": 77.39729
+        }
+      },
+      {
+        "distanceKm": 3.941,
+        "elevationM": -2483,
+        "slopeDegrees": 0.3,
+        "coordinate": {
+          "latitude": 18.44,
+          "longitude": 77.395
+        }
+      }
+    ],
+    "elevationGainM": 47,
+    "elevationLossM": 0,
+    "maxSlopeDegrees": 0.93,
+    "overallDifficulty": "low",
+    "createdAt": "2026-11-14T08:50:38.481Z"
+  },
+  {
+    "id": "route-1794646241265-311",
+    "name": "Test Traverse",
+    "points": [
+      {
+        "coordinate": {
+          "latitude": 18.44,
+          "longitude": 77.45
+        },
+        "type": "start"
+      },
+      {
+        "coordinate": {
+          "latitude": 18.42,
+          "longitude": 77.41
+        },
+        "type": "destination"
+      }
+    ],
+    "segments": [
+      {
+        "id": "seg-1",
+        "start": {
+          "latitude": 18.44,
+          "longitude": 77.45
+        },
+        "end": {
+          "latitude": 18.42,
+          "longitude": 77.41
+        },
+        "distanceKm": 2.538,
+        "elevationGainM": 36,
+        "elevationLossM": 0,
+        "averageSlopeDegrees": 0.81,
+        "difficulty": "low",
+        "estimatedMinutes": 57,
+        "hazards": []
+      }
+    ],
+    "totalDistanceKm": 2.538,
+    "estimatedDurationMinutes": 57,
+    "elevationProfile": [
+      {
+        "distanceKm": 0,
+        "elevationM": -2525,
+        "slopeDegrees": 0,
+        "coordinate": {
+          "latitude": 18.44,
+          "longitude": 77.45
+        }
+      },
+      {
+        "distanceKm": 0.195,
+        "elevationM": -2523,
+        "slopeDegrees": 0.59,
+        "coordinate": {
+          "latitude": 18.43846,
+          "longitude": 77.44692
+        }
+      },
+      {
+        "distanceKm": 0.39,
+        "elevationM": -2520,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.43692,
+          "longitude": 77.44385
+        }
+      },
+      {
+        "distanceKm": 0.585,
+        "elevationM": -2517,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.43539,
+          "longitude": 77.44077
+        }
+      },
+      {
+        "distanceKm": 0.781,
+        "elevationM": -2514,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.43385,
+          "longitude": 77.43769
+        }
+      },
+      {
+        "distanceKm": 0.976,
+        "elevationM": -2511,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.43231,
+          "longitude": 77.43461
+        }
+      },
+      {
+        "distanceKm": 1.171,
+        "elevationM": -2509,
+        "slopeDegrees": 0.59,
+        "coordinate": {
+          "latitude": 18.43077,
+          "longitude": 77.43154
+        }
+      },
+      {
+        "distanceKm": 1.367,
+        "elevationM": -2506,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.42923,
+          "longitude": 77.42846
+        }
+      },
+      {
+        "distanceKm": 1.562,
+        "elevationM": -2503,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.42769,
+          "longitude": 77.42538
+        }
+      },
+      {
+        "distanceKm": 1.757,
+        "elevationM": -2500,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.42615,
+          "longitude": 77.42231
+        }
+      },
+      {
+        "distanceKm": 1.952,
+        "elevationM": -2497,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.42462,
+          "longitude": 77.41923
+        }
+      },
+      {
+        "distanceKm": 2.147,
+        "elevationM": -2494,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.42308,
+          "longitude": 77.41615
+        }
+      },
+      {
+        "distanceKm": 2.342,
+        "elevationM": -2491,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.42154,
+          "longitude": 77.41308
+        }
+      },
+      {
+        "distanceKm": 2.538,
+        "elevationM": -2489,
+        "slopeDegrees": 0.59,
+        "coordinate": {
+          "latitude": 18.42,
+          "longitude": 77.41
+        }
+      }
+    ],
+    "elevationGainM": 36,
+    "elevationLossM": 0,
+    "maxSlopeDegrees": 0.88,
+    "overallDifficulty": "low",
+    "createdAt": "2026-11-14T08:50:41.265Z"
+  },
+  {
+    "id": "route-1794646602632-330",
+    "name": "Batch 5 Guard Route",
+    "points": [
+      {
+        "id": "p1",
+        "coordinate": {
+          "latitude": 18.42,
+          "longitude": 77.41
+        },
+        "type": "start"
+      },
+      {
+        "id": "p2",
+        "coordinate": {
+          "latitude": 18.43,
+          "longitude": 77.43
+        },
+        "type": "end"
+      }
+    ],
+    "segments": [
+      {
+        "id": "seg-1",
+        "start": {
+          "latitude": 18.42,
+          "longitude": 77.41
+        },
+        "end": {
+          "latitude": 18.43,
+          "longitude": 77.43
+        },
+        "distanceKm": 1.269,
+        "elevationGainM": 0,
+        "elevationLossM": 18,
+        "averageSlopeDegrees": 0.81,
+        "difficulty": "low",
+        "estimatedMinutes": 28,
+        "hazards": []
+      }
+    ],
+    "totalDistanceKm": 1.269,
+    "estimatedDurationMinutes": 28,
+    "elevationProfile": [
+      {
+        "distanceKm": 0,
+        "elevationM": -2489,
+        "slopeDegrees": 0,
+        "coordinate": {
+          "latitude": 18.42,
+          "longitude": 77.41
+        }
+      },
+      {
+        "distanceKm": 0.181,
+        "elevationM": -2491,
+        "slopeDegrees": 0.63,
+        "coordinate": {
+          "latitude": 18.42143,
+          "longitude": 77.41286
+        }
+      },
+      {
+        "distanceKm": 0.362,
+        "elevationM": -2494,
+        "slopeDegrees": 0.95,
+        "coordinate": {
+          "latitude": 18.42286,
+          "longitude": 77.41571
+        }
+      },
+      {
+        "distanceKm": 0.544,
+        "elevationM": -2496,
+        "slopeDegrees": 0.63,
+        "coordinate": {
+          "latitude": 18.42429,
+          "longitude": 77.41857
+        }
+      },
+      {
+        "distanceKm": 0.725,
+        "elevationM": -2499,
+        "slopeDegrees": 0.95,
+        "coordinate": {
+          "latitude": 18.42571,
+          "longitude": 77.42143
+        }
+      },
+      {
+        "distanceKm": 0.906,
+        "elevationM": -2502,
+        "slopeDegrees": 0.95,
+        "coordinate": {
+          "latitude": 18.42714,
+          "longitude": 77.42428
+        }
+      },
+      {
+        "distanceKm": 1.087,
+        "elevationM": -2504,
+        "slopeDegrees": 0.63,
+        "coordinate": {
+          "latitude": 18.42857,
+          "longitude": 77.42714
+        }
+      },
+      {
+        "distanceKm": 1.269,
+        "elevationM": -2507,
+        "slopeDegrees": 0.95,
+        "coordinate": {
+          "latitude": 18.43,
+          "longitude": 77.43
+        }
+      }
+    ],
+    "elevationGainM": 0,
+    "elevationLossM": 18,
+    "maxSlopeDegrees": 0.95,
+    "overallDifficulty": "low",
+    "createdAt": "2026-11-14T08:56:42.632Z"
+  },
+  {
+    "id": "route-1794646614576-68",
+    "name": "E2E Jezero Delta Traversal Mission",
+    "points": [
+      {
+        "id": "pt-1",
+        "coordinate": {
+          "latitude": 18.4447,
+          "longitude": 77.4508
+        },
+        "type": "start",
+        "label": "Jezero Base"
+      },
+      {
+        "id": "pt-2",
+        "coordinate": {
+          "latitude": 18.435,
+          "longitude": 77.438
+        },
+        "type": "science",
+        "label": "South Séítah Cumulate Outcrop",
+        "targetId": "tgt-seitah-olivine"
+      },
+      {
+        "id": "pt-3",
+        "coordinate": {
+          "latitude": 18.423,
+          "longitude": 77.411
+        },
+        "type": "science",
+        "label": "Kodiak Butte Delta Remnant",
+        "targetId": "tgt-kodiak-butte"
+      },
+      {
+        "id": "pt-4",
+        "coordinate": {
+          "latitude": 18.44,
+          "longitude": 77.395
+        },
+        "type": "destination",
+        "label": "Base Camp"
+      }
+    ],
+    "segments": [
+      {
+        "id": "seg-1",
+        "start": {
+          "latitude": 18.4447,
+          "longitude": 77.4508
+        },
+        "end": {
+          "latitude": 18.435,
+          "longitude": 77.438
+        },
+        "distanceKm": 0.919,
+        "elevationGainM": 15,
+        "elevationLossM": 0,
+        "averageSlopeDegrees": 0.93,
+        "difficulty": "low",
+        "estimatedMinutes": 46,
+        "hazards": []
+      },
+      {
+        "id": "seg-2",
+        "start": {
+          "latitude": 18.435,
+          "longitude": 77.438
+        },
+        "end": {
+          "latitude": 18.423,
+          "longitude": 77.411
+        },
+        "distanceKm": 1.673,
+        "elevationGainM": 24,
+        "elevationLossM": 0,
+        "averageSlopeDegrees": 0.82,
+        "difficulty": "low",
+        "estimatedMinutes": 62,
+        "hazards": []
+      },
+      {
+        "id": "seg-3",
+        "start": {
+          "latitude": 18.423,
+          "longitude": 77.411
+        },
+        "end": {
+          "latitude": 18.44,
+          "longitude": 77.395
+        },
+        "distanceKm": 1.348,
+        "elevationGainM": 8,
+        "elevationLossM": 0,
+        "averageSlopeDegrees": 0.34,
+        "difficulty": "low",
+        "estimatedMinutes": 29,
+        "hazards": []
+      }
+    ],
+    "totalDistanceKm": 3.94,
+    "estimatedDurationMinutes": 137,
+    "elevationProfile": [
+      {
+        "distanceKm": 0,
+        "elevationM": -2530,
+        "slopeDegrees": 0,
+        "coordinate": {
+          "latitude": 18.4447,
+          "longitude": 77.4508
+        }
+      },
+      {
+        "distanceKm": 0.184,
+        "elevationM": -2527,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.44276,
+          "longitude": 77.44824
+        }
+      },
+      {
+        "distanceKm": 0.368,
+        "elevationM": -2524,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.44082,
+          "longitude": 77.44568
+        }
+      },
+      {
+        "distanceKm": 0.552,
+        "elevationM": -2521,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.43888,
+          "longitude": 77.44312
+        }
+      },
+      {
+        "distanceKm": 0.736,
+        "elevationM": -2518,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.43694,
+          "longitude": 77.44056
+        }
+      },
+      {
+        "distanceKm": 0.919,
+        "elevationM": -2515,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.435,
+          "longitude": 77.438
+        }
+      },
+      {
+        "distanceKm": 0.919,
+        "elevationM": -2515,
+        "slopeDegrees": 0,
+        "coordinate": {
+          "latitude": 18.435,
+          "longitude": 77.438
+        }
+      },
+      {
+        "distanceKm": 1.105,
+        "elevationM": -2513,
+        "slopeDegrees": 0.62,
+        "coordinate": {
+          "latitude": 18.43367,
+          "longitude": 77.435
+        }
+      },
+      {
+        "distanceKm": 1.291,
+        "elevationM": -2510,
+        "slopeDegrees": 0.92,
+        "coordinate": {
+          "latitude": 18.43233,
+          "longitude": 77.432
+        }
+      },
+      {
+        "distanceKm": 1.477,
+        "elevationM": -2507,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.431,
+          "longitude": 77.429
+        }
+      },
+      {
+        "distanceKm": 1.663,
+        "elevationM": -2504,
+        "slopeDegrees": 0.93,
+        "coordinate": {
+          "latitude": 18.42967,
+          "longitude": 77.426
+        }
+      },
+      {
+        "distanceKm": 1.849,
+        "elevationM": -2501,
+        "slopeDegrees": 0.92,
+        "coordinate": {
+          "latitude": 18.42833,
+          "longitude": 77.423
+        }
+      },
+      {
+        "distanceKm": 2.035,
+        "elevationM": -2499,
+        "slopeDegrees": 0.62,
+        "coordinate": {
+          "latitude": 18.427,
+          "longitude": 77.42
+        }
+      },
+      {
+        "distanceKm": 2.221,
+        "elevationM": -2496,
+        "slopeDegrees": 0.92,
+        "coordinate": {
+          "latitude": 18.42567,
+          "longitude": 77.417
+        }
+      },
+      {
+        "distanceKm": 2.407,
+        "elevationM": -2493,
+        "slopeDegrees": 0.92,
+        "coordinate": {
+          "latitude": 18.42433,
+          "longitude": 77.414
+        }
+      },
+      {
+        "distanceKm": 2.593,
+        "elevationM": -2491,
+        "slopeDegrees": 0.62,
+        "coordinate": {
+          "latitude": 18.423,
+          "longitude": 77.411
+        }
+      },
+      {
+        "distanceKm": 2.593,
+        "elevationM": -2491,
+        "slopeDegrees": 0,
+        "coordinate": {
+          "latitude": 18.423,
+          "longitude": 77.411
+        }
+      },
+      {
+        "distanceKm": 2.786,
+        "elevationM": -2490,
+        "slopeDegrees": 0.3,
+        "coordinate": {
+          "latitude": 18.42543,
+          "longitude": 77.40871
+        }
+      },
+      {
+        "distanceKm": 2.978,
+        "elevationM": -2489,
+        "slopeDegrees": 0.3,
+        "coordinate": {
+          "latitude": 18.42786,
+          "longitude": 77.40643
+        }
+      },
+      {
+        "distanceKm": 3.171,
+        "elevationM": -2488,
+        "slopeDegrees": 0.3,
+        "coordinate": {
+          "latitude": 18.43029,
+          "longitude": 77.40414
+        }
+      },
+      {
+        "distanceKm": 3.363,
+        "elevationM": -2487,
+        "slopeDegrees": 0.3,
+        "coordinate": {
+          "latitude": 18.43271,
+          "longitude": 77.40186
+        }
+      },
+      {
+        "distanceKm": 3.556,
+        "elevationM": -2486,
+        "slopeDegrees": 0.3,
+        "coordinate": {
+          "latitude": 18.43514,
+          "longitude": 77.39957
+        }
+      },
+      {
+        "distanceKm": 3.748,
+        "elevationM": -2484,
+        "slopeDegrees": 0.6,
+        "coordinate": {
+          "latitude": 18.43757,
+          "longitude": 77.39729
+        }
+      },
+      {
+        "distanceKm": 3.941,
+        "elevationM": -2483,
+        "slopeDegrees": 0.3,
+        "coordinate": {
+          "latitude": 18.44,
+          "longitude": 77.395
+        }
+      }
+    ],
+    "elevationGainM": 47,
+    "elevationLossM": 0,
+    "maxSlopeDegrees": 0.93,
+    "overallDifficulty": "low",
+    "createdAt": "2026-11-14T08:56:54.576Z"
+  },
+  {
+    "id": "route-1794646617011-706",
+    "name": "Test Traverse",
+    "points": [
+      {
+        "coordinate": {
+          "latitude": 18.44,
+          "longitude": 77.45
+        },
+        "type": "start"
+      },
+      {
+        "coordinate": {
+          "latitude": 18.42,
+          "longitude": 77.41
+        },
+        "type": "destination"
+      }
+    ],
+    "segments": [
+      {
+        "id": "seg-1",
+        "start": {
+          "latitude": 18.44,
+          "longitude": 77.45
+        },
+        "end": {
+          "latitude": 18.42,
+          "longitude": 77.41
+        },
+        "distanceKm": 2.538,
+        "elevationGainM": 36,
+        "elevationLossM": 0,
+        "averageSlopeDegrees": 0.81,
+        "difficulty": "low",
+        "estimatedMinutes": 57,
+        "hazards": []
+      }
+    ],
+    "totalDistanceKm": 2.538,
+    "estimatedDurationMinutes": 57,
+    "elevationProfile": [
+      {
+        "distanceKm": 0,
+        "elevationM": -2525,
+        "slopeDegrees": 0,
+        "coordinate": {
+          "latitude": 18.44,
+          "longitude": 77.45
+        }
+      },
+      {
+        "distanceKm": 0.195,
+        "elevationM": -2523,
+        "slopeDegrees": 0.59,
+        "coordinate": {
+          "latitude": 18.43846,
+          "longitude": 77.44692
+        }
+      },
+      {
+        "distanceKm": 0.39,
+        "elevationM": -2520,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.43692,
+          "longitude": 77.44385
+        }
+      },
+      {
+        "distanceKm": 0.585,
+        "elevationM": -2517,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.43539,
+          "longitude": 77.44077
+        }
+      },
+      {
+        "distanceKm": 0.781,
+        "elevationM": -2514,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.43385,
+          "longitude": 77.43769
+        }
+      },
+      {
+        "distanceKm": 0.976,
+        "elevationM": -2511,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.43231,
+          "longitude": 77.43461
+        }
+      },
+      {
+        "distanceKm": 1.171,
+        "elevationM": -2509,
+        "slopeDegrees": 0.59,
+        "coordinate": {
+          "latitude": 18.43077,
+          "longitude": 77.43154
+        }
+      },
+      {
+        "distanceKm": 1.367,
+        "elevationM": -2506,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.42923,
+          "longitude": 77.42846
+        }
+      },
+      {
+        "distanceKm": 1.562,
+        "elevationM": -2503,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.42769,
+          "longitude": 77.42538
+        }
+      },
+      {
+        "distanceKm": 1.757,
+        "elevationM": -2500,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.42615,
+          "longitude": 77.42231
+        }
+      },
+      {
+        "distanceKm": 1.952,
+        "elevationM": -2497,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.42462,
+          "longitude": 77.41923
+        }
+      },
+      {
+        "distanceKm": 2.147,
+        "elevationM": -2494,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.42308,
+          "longitude": 77.41615
+        }
+      },
+      {
+        "distanceKm": 2.342,
+        "elevationM": -2491,
+        "slopeDegrees": 0.88,
+        "coordinate": {
+          "latitude": 18.42154,
+          "longitude": 77.41308
+        }
+      },
+      {
+        "distanceKm": 2.538,
+        "elevationM": -2489,
+        "slopeDegrees": 0.59,
+        "coordinate": {
+          "latitude": 18.42,
+          "longitude": 77.41
+        }
+      }
+    ],
+    "elevationGainM": 36,
+    "elevationLossM": 0,
+    "maxSlopeDegrees": 0.88,
+    "overallDifficulty": "low",
+    "createdAt": "2026-11-14T08:56:57.011Z"
   }
 ]

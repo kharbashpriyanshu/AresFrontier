@@ -1470,6 +1470,56 @@ export const MissionPage: React.FC = () => {
                     </div>
                   </div>
                 )}
+
+                {/* Section 5: NASA Authentic Multi-Mission Scientific Baseline */}
+                {reportData.authenticScienceEnvironment && (
+                  <div>
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-atlas-accent mb-3">
+                      5. NASA Multi-Mission Authentic Planetary Science &amp; Environment
+                    </h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+                      <div className="p-3 bg-atlas-elevated/40 border border-atlas-border rounded">
+                        <span className="text-[10px] text-atlas-muted uppercase block">MOLA Topography</span>
+                        <span className="text-sm font-bold text-atlas-text mt-0.5 block">
+                          {reportData.authenticScienceEnvironment.topography.elevationM.toFixed(1)} m
+                        </span>
+                        <span className="text-[10px] text-atlas-muted">
+                          ±{reportData.authenticScienceEnvironment.topography.uncertaintyM}m 95% CI
+                        </span>
+                      </div>
+
+                      <div className="p-3 bg-atlas-elevated/40 border border-atlas-border rounded">
+                        <span className="text-[10px] text-atlas-muted uppercase block">USGS Stratigraphy</span>
+                        <span className="text-sm font-bold text-purple-300 mt-0.5 block truncate">
+                          {reportData.authenticScienceEnvironment.geology.formation}
+                        </span>
+                        <span className="text-[10px] text-atlas-muted">
+                          Unit: {reportData.authenticScienceEnvironment.geology.unit} | Mohs: {reportData.authenticScienceEnvironment.geology.hardness}
+                        </span>
+                      </div>
+
+                      <div className="p-3 bg-atlas-elevated/40 border border-atlas-border rounded">
+                        <span className="text-[10px] text-atlas-muted uppercase block">CRISM Mineralogy</span>
+                        <span className="text-sm font-bold text-cyan-300 mt-0.5 block truncate">
+                          {reportData.authenticScienceEnvironment.mineralogy.detectedMineral}
+                        </span>
+                        <span className="text-[10px] text-atlas-muted">
+                          Preservation: {reportData.authenticScienceEnvironment.mineralogy.preservationRanking}
+                        </span>
+                      </div>
+
+                      <div className="p-3 bg-atlas-elevated/40 border border-atlas-border rounded">
+                        <span className="text-[10px] text-atlas-muted uppercase block">MEDA Weather &amp; RAD</span>
+                        <span className="text-sm font-bold text-amber-400 mt-0.5 block">
+                          {reportData.authenticScienceEnvironment.atmosphereAndRadiation.surfacePressurePa.toFixed(0)} Pa · {reportData.authenticScienceEnvironment.atmosphereAndRadiation.airTemperatureK.toFixed(0)} K
+                        </span>
+                        <span className="text-[10px] text-atlas-muted">
+                          Rad: {reportData.authenticScienceEnvironment.atmosphereAndRadiation.radiationDoseRateMicroGyPerDay} μGy/d | τ={reportData.authenticScienceEnvironment.atmosphereAndRadiation.dustOpticalDepthTau.toFixed(2)}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             )}
           </div>

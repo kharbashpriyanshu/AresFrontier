@@ -1,10 +1,14 @@
 import { CoverageRating, DataProvenance, MarsCoordinate } from "../../types/index.js";
 import { calculateMarsDistanceKm } from "../../utils/marsCoordinates.js";
 import { ProvenanceService } from "./provenanceService.js";
+import {
+  AuthenticOpticalProduct,
+  AUTHENTIC_OPTICAL_CATALOG,
+} from "./authenticMarsData.js";
 
 /**
- * MRO HiRISE High-Resolution Imaging Provider
- * Tracks verified HiRISE stereo DTM footprints and observation footprints.
+ * MRO HiRISE High-Resolution Imaging & Surface Rover Photography Provider
+ * Tracks verified HiRISE stereo DTM footprints, orthomosaics, and Mastcam/Navcam ground imagery.
  */
 export class HiriseProvider {
   // Documented HiRISE stereo DEM coverage regions (centered at key science sites)
@@ -62,6 +66,40 @@ export class HiriseProvider {
         confidence: 0.7,
       },
     };
+  }
+
+  /**
+   * Retrieves all authentic optical imagery products in catalog
+   */
+  public getAuthenticOpticalCatalog(): AuthenticOpticalProduct[] {
+    return [...AUTHENTIC_OPTICAL_CATALOG];
+  }
+
+  /**
+   * Finds optical imagery products (HiRISE, CTX, Mastcam-Z) near a given coordinate
+   */
+  public getProductsNear(coord: MarsCoordinate, radiusKm = 25.0): AuthenticOpticalProduct[] {
+    return AUTHENTIC_OPTICAL_CATALOG.filter((prod) => {
+      const d = calculateMarsDistanceKm(coord, prod.center);
+      return d <= radiusKm;
+    });
+  }
+
+  /**
+   * Retrieves surface rover photographs (Mastcam-Z, Navcam) for ground POV inspection
+   */
+  public getSurfacePhotosNear(coord: MarsCoordinate, radiusKm = 10.0): AuthenticOpticalProduct[] {
+    return AUTHENTIC_OPTICAL_CATALOG.filter((prod) => {
+      if (
+        prod.type !== "MASTCAM_Z_PANORAMA" &&
+        prod.type !== "NAVCAM_STEREO" &&
+        prod.type !== "HAZCAM_SURFACE"
+      ) {
+        return false;
+      }
+      const d = calculateMarsDistanceKm(coord, prod.center);
+      return d <= radiusKm;
+    });
   }
 }
 

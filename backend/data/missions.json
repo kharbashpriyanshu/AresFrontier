@@ -1,6 +1,9 @@
 [
   {
     "id": "mission-1794464117884",
+    "name": "EVA Mission (mission-1794464117884)",
+    "objectiveId": "ANCIENT_WATER_ACTIVITY",
+    "status": "DRAFT",
     "routeId": "route-1794464117850-485",
     "parameters": {
       "routeId": "route-1794464117850-485",
@@ -30,10 +33,15 @@
       "hazardExposureFactor": 0,
       "dataUncertaintyFactor": 0.15
     },
-    "createdAt": "2026-11-12T09:35:25.814Z"
+    "isDemo": false,
+    "createdAt": "2026-11-12T09:35:25.814Z",
+    "updatedAt": "2026-11-14T08:56:43.390Z"
   },
   {
     "id": "mission-1794467153103",
+    "name": "EVA Mission (mission-1794467153103)",
+    "objectiveId": "ANCIENT_WATER_ACTIVITY",
+    "status": "DRAFT",
     "routeId": "route-1794467153087-150",
     "parameters": {
       "routeId": "route-1794467153087-150",
@@ -63,10 +71,15 @@
       "hazardExposureFactor": 0,
       "dataUncertaintyFactor": 0.15
     },
-    "createdAt": "2026-11-12T09:35:25.814Z"
+    "isDemo": false,
+    "createdAt": "2026-11-12T09:35:25.814Z",
+    "updatedAt": "2026-11-14T08:56:43.390Z"
   },
   {
     "id": "mission-1794468476481",
+    "name": "EVA Mission (mission-1794468476481)",
+    "objectiveId": "ANCIENT_WATER_ACTIVITY",
+    "status": "DRAFT",
     "routeId": "route-1794468476462-855",
     "parameters": {
       "routeId": "route-1794468476462-855",
@@ -96,10 +109,15 @@
       "hazardExposureFactor": 0,
       "dataUncertaintyFactor": 0.15
     },
-    "createdAt": "2026-11-12T09:35:25.814Z"
+    "isDemo": false,
+    "createdAt": "2026-11-12T09:35:25.814Z",
+    "updatedAt": "2026-11-14T08:56:43.390Z"
   },
   {
     "id": "mission-1794468546402",
+    "name": "EVA Mission (mission-1794468546402)",
+    "objectiveId": "ANCIENT_WATER_ACTIVITY",
+    "status": "DRAFT",
     "routeId": "route-1794468546393-988",
     "parameters": {
       "routeId": "route-1794468546393-988",
@@ -129,10 +147,15 @@
       "hazardExposureFactor": 0,
       "dataUncertaintyFactor": 0.15
     },
-    "createdAt": "2026-11-12T09:35:25.814Z"
+    "isDemo": false,
+    "createdAt": "2026-11-12T09:35:25.814Z",
+    "updatedAt": "2026-11-14T08:56:43.390Z"
   },
   {
     "id": "mission-1794472197497",
+    "name": "EVA Mission (mission-1794472197497)",
+    "objectiveId": "ANCIENT_WATER_ACTIVITY",
+    "status": "DRAFT",
     "routeId": "route-1794472197479-694",
     "parameters": {
       "routeId": "route-1794472197479-694",
@@ -162,10 +185,15 @@
       "hazardExposureFactor": 0,
       "dataUncertaintyFactor": 0.15
     },
-    "createdAt": "2026-11-12T09:35:25.814Z"
+    "isDemo": false,
+    "createdAt": "2026-11-12T09:35:25.814Z",
+    "updatedAt": "2026-11-14T08:56:43.390Z"
   },
   {
     "id": "mission-1794474004055",
+    "name": "EVA Mission (mission-1794474004055)",
+    "objectiveId": "ANCIENT_WATER_ACTIVITY",
+    "status": "DRAFT",
     "routeId": "route-1794474004035-463",
     "parameters": {
       "routeId": "route-1794474004035-463",
@@ -195,10 +223,15 @@
       "hazardExposureFactor": 0,
       "dataUncertaintyFactor": 0.15
     },
-    "createdAt": "2026-11-12T09:35:25.814Z"
+    "isDemo": false,
+    "createdAt": "2026-11-12T09:35:25.814Z",
+    "updatedAt": "2026-11-14T08:56:43.390Z"
   },
   {
     "id": "mission-1794474069949",
+    "name": "EVA Mission (mission-1794474069949)",
+    "objectiveId": "ANCIENT_WATER_ACTIVITY",
+    "status": "DRAFT",
     "routeId": "route-1794474069937-186",
     "parameters": {
       "routeId": "route-1794474069937-186",
@@ -228,10 +261,15 @@
       "hazardExposureFactor": 0,
       "dataUncertaintyFactor": 0.15
     },
-    "createdAt": "2026-11-12T09:35:25.814Z"
+    "isDemo": false,
+    "createdAt": "2026-11-12T09:35:25.814Z",
+    "updatedAt": "2026-11-14T08:56:43.390Z"
   },
   {
     "id": "mission-1794474366849",
+    "name": "EVA Mission (mission-1794474366849)",
+    "objectiveId": "ANCIENT_WATER_ACTIVITY",
+    "status": "DRAFT",
     "routeId": "route-jezero-delta-sol100",
     "parameters": {
       "name": "WS9 Restart Persistence Test",
@@ -260,10 +298,15 @@
       "hazardExposureFactor": 0,
       "dataUncertaintyFactor": 0.15
     },
-    "createdAt": "2026-11-12T09:35:25.814Z"
+    "isDemo": false,
+    "createdAt": "2026-11-12T09:35:25.814Z",
+    "updatedAt": "2026-11-14T08:56:43.390Z"
   },
   {
     "id": "mission-1794474705784",
+    "name": "EVA Mission (mission-1794474705784)",
+    "objectiveId": "ANCIENT_WATER_ACTIVITY",
+    "status": "DRAFT",
     "routeId": "route-jezero-delta-sol100",
     "parameters": {
       "routeId": "route-jezero-delta-sol100",
@@ -293,10 +336,15 @@
       "hazardExposureFactor": 0,
       "dataUncertaintyFactor": 0.15
     },
-    "createdAt": "2026-11-12T09:35:25.814Z"
+    "isDemo": false,
+    "createdAt": "2026-11-12T09:35:25.814Z",
+    "updatedAt": "2026-11-14T08:56:43.390Z"
   },
   {
     "id": "mission-1794474705798",
+    "name": "EVA Mission (mission-1794474705798)",
+    "objectiveId": "ANCIENT_WATER_ACTIVITY",
+    "status": "DRAFT",
     "routeId": "route-jezero-delta-sol100",
     "parameters": {
       "routeId": "route-jezero-delta-sol100",
@@ -326,10 +374,15 @@
       "hazardExposureFactor": 0,
       "dataUncertaintyFactor": 0.15
     },
-    "createdAt": "2026-11-12T09:35:25.814Z"
+    "isDemo": false,
+    "createdAt": "2026-11-12T09:35:25.814Z",
+    "updatedAt": "2026-11-14T08:56:43.390Z"
   },
   {
     "id": "mission-1794474709445",
+    "name": "EVA Mission (mission-1794474709445)",
+    "objectiveId": "ANCIENT_WATER_ACTIVITY",
+    "status": "DRAFT",
     "routeId": "route-jezero-delta-sol100",
     "parameters": {
       "routeId": "route-jezero-delta-sol100",
@@ -359,10 +412,15 @@
       "hazardExposureFactor": 0,
       "dataUncertaintyFactor": 0.15
     },
-    "createdAt": "2026-11-12T09:35:25.814Z"
+    "isDemo": false,
+    "createdAt": "2026-11-12T09:35:25.814Z",
+    "updatedAt": "2026-11-14T08:56:43.390Z"
   },
   {
     "id": "mission-1794475042718",
+    "name": "EVA Mission (mission-1794475042718)",
+    "objectiveId": "ANCIENT_WATER_ACTIVITY",
+    "status": "DRAFT",
     "routeId": "route-1794475042706-444",
     "parameters": {
       "routeId": "route-1794475042706-444",
@@ -392,10 +450,15 @@
       "hazardExposureFactor": 0,
       "dataUncertaintyFactor": 0.15
     },
-    "createdAt": "2026-11-12T09:35:25.814Z"
+    "isDemo": false,
+    "createdAt": "2026-11-12T09:35:25.814Z",
+    "updatedAt": "2026-11-14T08:56:43.390Z"
   },
   {
     "id": "mission-1794476073318",
+    "name": "EVA Mission (mission-1794476073318)",
+    "objectiveId": "ANCIENT_WATER_ACTIVITY",
+    "status": "DRAFT",
     "routeId": "route-1794467153087-150",
     "parameters": {
       "routeId": "route-1794467153087-150",
@@ -425,10 +488,15 @@
       "hazardExposureFactor": 0,
       "dataUncertaintyFactor": 0.15
     },
-    "createdAt": "2026-11-12T09:35:25.814Z"
+    "isDemo": false,
+    "createdAt": "2026-11-12T09:35:25.814Z",
+    "updatedAt": "2026-11-14T08:56:43.390Z"
   },
   {
     "id": "mission-1794476131718",
+    "name": "EVA Mission (mission-1794476131718)",
+    "objectiveId": "ANCIENT_WATER_ACTIVITY",
+    "status": "DRAFT",
     "routeId": "route-1794476131704-405",
     "parameters": {
       "routeId": "route-1794476131704-405",
@@ -458,6 +526,421 @@
       "hazardExposureFactor": 0,
       "dataUncertaintyFactor": 0.15
     },
-    "createdAt": "2026-11-12T09:35:31.718Z"
+    "isDemo": false,
+    "createdAt": "2026-11-12T09:35:31.718Z",
+    "updatedAt": "2026-11-14T08:56:43.390Z"
+  },
+  {
+    "id": "MARSWALK-001",
+    "name": "Marswalk-001: Jezero Delta Astrobiology Traverse",
+    "description": "Primary Sol 100 multi-agent EVA traverse across Jezero Western Delta and South Séítah.",
+    "objectiveId": "ANCIENT_WATER_ACTIVITY",
+    "status": "APPROVED",
+    "routeId": "route-jezero-delta-sol100",
+    "parameters": {
+      "routeId": "route-jezero-delta-sol100",
+      "maxDurationMinutes": 240,
+      "startCoordinate": {
+        "latitude": 18.4447,
+        "longitude": 77.4508
+      },
+      "returnRequired": true,
+      "astronautSkillLevel": "standard"
+    },
+    "evaAssessment": {
+      "estimatedDurationMinutes": 129,
+      "totalDistanceKm": 4.14,
+      "terrainDifficulty": "low",
+      "returnMarginMinutes": 111,
+      "feasible": true,
+      "warnings": [],
+      "oxygenReserveRemainingPercent": 46,
+      "recommendations": [
+        "Baseline Sol 100 EVA traverse within nominal life-support margins."
+      ]
+    },
+    "isDemo": false,
+    "createdAt": "2026-11-14T07:19:26.787Z",
+    "updatedAt": "2026-11-14T08:56:43.390Z"
+  },
+  {
+    "id": "mission-1794640792317-981",
+    "name": "Batch 5 Approved Guard Mission",
+    "objectiveId": "ANCIENT_WATER_ACTIVITY",
+    "status": "APPROVED",
+    "routeId": "route-1794640792128-931",
+    "parameters": {
+      "routeId": "route-1794640792128-931",
+      "maxDurationMinutes": 240,
+      "startCoordinate": {
+        "latitude": 18.42,
+        "longitude": 77.41
+      },
+      "returnRequired": true
+    },
+    "evaAssessment": {
+      "estimatedDurationMinutes": 53,
+      "totalDistanceKm": 1.269,
+      "terrainDifficulty": "low",
+      "returnMarginMinutes": 187,
+      "feasible": true,
+      "warnings": [],
+      "oxygenReserveRemainingPercent": 84,
+      "recommendations": [
+        "Route passes all baseline safety limits. Proceed to flight director sign-off."
+      ],
+      "status": "GREEN",
+      "statusReason": "Nominal mission parameters. All life-support reserves and slope thresholds satisfied.",
+      "returnFeasibility": true,
+      "emergencyReserveMinutes": 187,
+      "terrainStressFactor": 0.02,
+      "hazardExposureFactor": 0,
+      "dataUncertaintyFactor": 0.15
+    },
+    "isDemo": false,
+    "createdAt": "2026-11-14T07:19:52.317Z",
+    "updatedAt": "2026-11-14T08:56:43.390Z"
+  },
+  {
+    "id": "mission-1794640804933-48",
+    "name": "E2E Jezero Delta Traversal Mission Plan",
+    "objectiveId": "ANCIENT_WATER_ACTIVITY",
+    "status": "DRAFT",
+    "routeId": "route-1794640804861-145",
+    "parameters": {
+      "routeId": "route-1794640804861-145",
+      "maxDurationMinutes": 240,
+      "startCoordinate": {
+        "latitude": 18.4447,
+        "longitude": 77.4508
+      },
+      "returnRequired": true
+    },
+    "evaAssessment": {
+      "estimatedDurationMinutes": 200,
+      "totalDistanceKm": 3.94,
+      "terrainDifficulty": "low",
+      "returnMarginMinutes": 40,
+      "feasible": true,
+      "warnings": [],
+      "oxygenReserveRemainingPercent": 41,
+      "recommendations": [
+        "Route passes all baseline safety limits. Proceed to flight director sign-off."
+      ],
+      "status": "GREEN",
+      "statusReason": "Nominal mission parameters. All life-support reserves and slope thresholds satisfied.",
+      "returnFeasibility": true,
+      "emergencyReserveMinutes": 40,
+      "terrainStressFactor": 0.07,
+      "hazardExposureFactor": 0,
+      "dataUncertaintyFactor": 0.15
+    },
+    "isDemo": false,
+    "createdAt": "2026-11-14T07:20:04.933Z",
+    "updatedAt": "2026-11-14T08:56:43.390Z"
+  },
+  {
+    "id": "mission-1794640963475-378",
+    "name": "Batch 5 Approved Guard Mission",
+    "objectiveId": "ANCIENT_WATER_ACTIVITY",
+    "status": "APPROVED",
+    "routeId": "route-1794640963427-437",
+    "parameters": {
+      "routeId": "route-1794640963427-437",
+      "maxDurationMinutes": 240,
+      "startCoordinate": {
+        "latitude": 18.42,
+        "longitude": 77.41
+      },
+      "returnRequired": true
+    },
+    "evaAssessment": {
+      "estimatedDurationMinutes": 53,
+      "totalDistanceKm": 1.269,
+      "terrainDifficulty": "low",
+      "returnMarginMinutes": 187,
+      "feasible": true,
+      "warnings": [],
+      "oxygenReserveRemainingPercent": 84,
+      "recommendations": [
+        "Route passes all baseline safety limits. Proceed to flight director sign-off."
+      ],
+      "status": "GREEN",
+      "statusReason": "Nominal mission parameters. All life-support reserves and slope thresholds satisfied.",
+      "returnFeasibility": true,
+      "emergencyReserveMinutes": 187,
+      "terrainStressFactor": 0.02,
+      "hazardExposureFactor": 0,
+      "dataUncertaintyFactor": 0.15
+    },
+    "isDemo": false,
+    "createdAt": "2026-11-14T07:22:43.475Z",
+    "updatedAt": "2026-11-14T08:56:43.390Z"
+  },
+  {
+    "id": "mission-1794640973757-585",
+    "name": "E2E Jezero Delta Traversal Mission Plan",
+    "objectiveId": "ANCIENT_WATER_ACTIVITY",
+    "status": "DRAFT",
+    "routeId": "route-1794640973730-758",
+    "parameters": {
+      "routeId": "route-1794640973730-758",
+      "maxDurationMinutes": 240,
+      "startCoordinate": {
+        "latitude": 18.4447,
+        "longitude": 77.4508
+      },
+      "returnRequired": true
+    },
+    "evaAssessment": {
+      "estimatedDurationMinutes": 200,
+      "totalDistanceKm": 3.94,
+      "terrainDifficulty": "low",
+      "returnMarginMinutes": 40,
+      "feasible": true,
+      "warnings": [],
+      "oxygenReserveRemainingPercent": 41,
+      "recommendations": [
+        "Route passes all baseline safety limits. Proceed to flight director sign-off."
+      ],
+      "status": "GREEN",
+      "statusReason": "Nominal mission parameters. All life-support reserves and slope thresholds satisfied.",
+      "returnFeasibility": true,
+      "emergencyReserveMinutes": 40,
+      "terrainStressFactor": 0.07,
+      "hazardExposureFactor": 0,
+      "dataUncertaintyFactor": 0.15
+    },
+    "isDemo": false,
+    "createdAt": "2026-11-14T07:22:53.757Z",
+    "updatedAt": "2026-11-14T08:56:43.390Z"
+  },
+  {
+    "id": "mission-1794641821046-181",
+    "name": "Batch 5 Approved Guard Mission",
+    "objectiveId": "ANCIENT_WATER_ACTIVITY",
+    "status": "APPROVED",
+    "routeId": "route-1794641820952-547",
+    "parameters": {
+      "routeId": "route-1794641820952-547",
+      "maxDurationMinutes": 240,
+      "startCoordinate": {
+        "latitude": 18.42,
+        "longitude": 77.41
+      },
+      "returnRequired": true
+    },
+    "evaAssessment": {
+      "estimatedDurationMinutes": 53,
+      "totalDistanceKm": 1.269,
+      "terrainDifficulty": "low",
+      "returnMarginMinutes": 187,
+      "feasible": true,
+      "warnings": [],
+      "oxygenReserveRemainingPercent": 84,
+      "recommendations": [
+        "Route passes all baseline safety limits. Proceed to flight director sign-off."
+      ],
+      "status": "GREEN",
+      "statusReason": "Nominal mission parameters. All life-support reserves and slope thresholds satisfied.",
+      "returnFeasibility": true,
+      "emergencyReserveMinutes": 187,
+      "terrainStressFactor": 0.02,
+      "hazardExposureFactor": 0,
+      "dataUncertaintyFactor": 0.15
+    },
+    "isDemo": false,
+    "createdAt": "2026-11-14T07:37:01.046Z",
+    "updatedAt": "2026-11-14T08:56:43.390Z"
+  },
+  {
+    "id": "mission-1794641836911-167",
+    "name": "E2E Jezero Delta Traversal Mission Plan",
+    "objectiveId": "ANCIENT_WATER_ACTIVITY",
+    "status": "DRAFT",
+    "routeId": "route-1794641836808-578",
+    "parameters": {
+      "routeId": "route-1794641836808-578",
+      "maxDurationMinutes": 240,
+      "startCoordinate": {
+        "latitude": 18.4447,
+        "longitude": 77.4508
+      },
+      "returnRequired": true
+    },
+    "evaAssessment": {
+      "estimatedDurationMinutes": 200,
+      "totalDistanceKm": 3.94,
+      "terrainDifficulty": "low",
+      "returnMarginMinutes": 40,
+      "feasible": true,
+      "warnings": [],
+      "oxygenReserveRemainingPercent": 41,
+      "recommendations": [
+        "Route passes all baseline safety limits. Proceed to flight director sign-off."
+      ],
+      "status": "GREEN",
+      "statusReason": "Nominal mission parameters. All life-support reserves and slope thresholds satisfied.",
+      "returnFeasibility": true,
+      "emergencyReserveMinutes": 40,
+      "terrainStressFactor": 0.07,
+      "hazardExposureFactor": 0,
+      "dataUncertaintyFactor": 0.15
+    },
+    "isDemo": false,
+    "createdAt": "2026-11-14T07:37:16.912Z",
+    "updatedAt": "2026-11-14T08:56:43.390Z"
+  },
+  {
+    "id": "mission-1794646226181-442",
+    "name": "Batch 5 Approved Guard Mission",
+    "objectiveId": "ANCIENT_WATER_ACTIVITY",
+    "status": "APPROVED",
+    "routeId": "route-1794646226148-632",
+    "parameters": {
+      "routeId": "route-1794646226148-632",
+      "maxDurationMinutes": 240,
+      "startCoordinate": {
+        "latitude": 18.42,
+        "longitude": 77.41
+      },
+      "returnRequired": true
+    },
+    "evaAssessment": {
+      "estimatedDurationMinutes": 53,
+      "totalDistanceKm": 1.269,
+      "terrainDifficulty": "low",
+      "returnMarginMinutes": 187,
+      "feasible": true,
+      "warnings": [],
+      "oxygenReserveRemainingPercent": 84,
+      "recommendations": [
+        "Route passes all baseline safety limits. Proceed to flight director sign-off."
+      ],
+      "status": "GREEN",
+      "statusReason": "Nominal mission parameters. All life-support reserves and slope thresholds satisfied.",
+      "returnFeasibility": true,
+      "emergencyReserveMinutes": 187,
+      "terrainStressFactor": 0.02,
+      "hazardExposureFactor": 0,
+      "dataUncertaintyFactor": 0.15
+    },
+    "isDemo": false,
+    "createdAt": "2026-11-14T08:50:26.181Z",
+    "updatedAt": "2026-11-14T08:56:43.390Z"
+  },
+  {
+    "id": "mission-1794646238511-902",
+    "name": "E2E Jezero Delta Traversal Mission Plan",
+    "objectiveId": "ANCIENT_WATER_ACTIVITY",
+    "status": "DRAFT",
+    "routeId": "route-1794646238481-967",
+    "parameters": {
+      "routeId": "route-1794646238481-967",
+      "maxDurationMinutes": 240,
+      "startCoordinate": {
+        "latitude": 18.4447,
+        "longitude": 77.4508
+      },
+      "returnRequired": true
+    },
+    "evaAssessment": {
+      "estimatedDurationMinutes": 200,
+      "totalDistanceKm": 3.94,
+      "terrainDifficulty": "low",
+      "returnMarginMinutes": 40,
+      "feasible": true,
+      "warnings": [],
+      "oxygenReserveRemainingPercent": 41,
+      "recommendations": [
+        "Route passes all baseline safety limits. Proceed to flight director sign-off."
+      ],
+      "status": "GREEN",
+      "statusReason": "Nominal mission parameters. All life-support reserves and slope thresholds satisfied.",
+      "returnFeasibility": true,
+      "emergencyReserveMinutes": 40,
+      "terrainStressFactor": 0.07,
+      "hazardExposureFactor": 0,
+      "dataUncertaintyFactor": 0.15
+    },
+    "isDemo": false,
+    "createdAt": "2026-11-14T08:50:38.511Z",
+    "updatedAt": "2026-11-14T08:56:43.390Z"
+  },
+  {
+    "id": "mission-1794646602659-355",
+    "name": "Batch 5 Approved Guard Mission",
+    "objectiveId": "ANCIENT_WATER_ACTIVITY",
+    "status": "APPROVED",
+    "routeId": "route-1794646602632-330",
+    "parameters": {
+      "routeId": "route-1794646602632-330",
+      "maxDurationMinutes": 240,
+      "startCoordinate": {
+        "latitude": 18.42,
+        "longitude": 77.41
+      },
+      "returnRequired": true
+    },
+    "evaAssessment": {
+      "estimatedDurationMinutes": 53,
+      "totalDistanceKm": 1.269,
+      "terrainDifficulty": "low",
+      "returnMarginMinutes": 187,
+      "feasible": true,
+      "warnings": [],
+      "oxygenReserveRemainingPercent": 84,
+      "recommendations": [
+        "Route passes all baseline safety limits. Proceed to flight director sign-off."
+      ],
+      "status": "GREEN",
+      "statusReason": "Nominal mission parameters. All life-support reserves and slope thresholds satisfied.",
+      "returnFeasibility": true,
+      "emergencyReserveMinutes": 187,
+      "terrainStressFactor": 0.02,
+      "hazardExposureFactor": 0,
+      "dataUncertaintyFactor": 0.15
+    },
+    "isDemo": false,
+    "createdAt": "2026-11-14T08:56:42.659Z",
+    "updatedAt": "2026-11-14T08:56:43.390Z"
+  },
+  {
+    "id": "mission-1794646614606-323",
+    "name": "E2E Jezero Delta Traversal Mission Plan",
+    "objectiveId": "ANCIENT_WATER_ACTIVITY",
+    "status": "DRAFT",
+    "routeId": "route-1794646614576-68",
+    "parameters": {
+      "routeId": "route-1794646614576-68",
+      "maxDurationMinutes": 240,
+      "startCoordinate": {
+        "latitude": 18.4447,
+        "longitude": 77.4508
+      },
+      "returnRequired": true
+    },
+    "evaAssessment": {
+      "estimatedDurationMinutes": 200,
+      "totalDistanceKm": 3.94,
+      "terrainDifficulty": "low",
+      "returnMarginMinutes": 40,
+      "feasible": true,
+      "warnings": [],
+      "oxygenReserveRemainingPercent": 41,
+      "recommendations": [
+        "Route passes all baseline safety limits. Proceed to flight director sign-off."
+      ],
+      "status": "GREEN",
+      "statusReason": "Nominal mission parameters. All life-support reserves and slope thresholds satisfied.",
+      "returnFeasibility": true,
+      "emergencyReserveMinutes": 40,
+      "terrainStressFactor": 0.07,
+      "hazardExposureFactor": 0,
+      "dataUncertaintyFactor": 0.15
+    },
+    "isDemo": false,
+    "createdAt": "2026-11-14T08:56:54.606Z",
+    "updatedAt": "2026-11-14T08:56:54.606Z"
   }
 ]

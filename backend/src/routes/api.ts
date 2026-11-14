@@ -37,6 +37,27 @@ import {
   getProvenanceExplorer,
   getIngestedDatasets,
   ingestMars2020Traverse,
+  getAuthenticDTM,
+  getAuthenticOptical,
+  getAuthenticSurfacePhotos,
+  getAuthenticThermal,
+  getAuthenticMineralogy,
+  getAuthenticGeology,
+  getAuthenticSubsurfaceIce,
+  getAuthenticAtmosphere,
+  getAuthenticRadiation,
+  getSpatiotemporalAlignment,
+  getUncertaintyReport,
+  getUnifiedScienceLayer,
+  getMLValidationMetrics,
+  getMicroTerrainObstacles,
+  getAstronautMobility,
+  getConstellationComms,
+  getRoboticSupportPlan,
+  getBuddyPairState,
+  getMepagPrioritizedTargets,
+  getParetoRoutePlans,
+  getObservationPlan,
 } from "../controllers/dataController.js";
 import {
   getHazards,
@@ -127,11 +148,32 @@ apiRouter.post("/security/verify-audit-chain", verifyAuditChain);
 apiRouter.get("/security/audit-chain", getAuditChain);
 apiRouter.post("/security/token", issueMissionToken);
 
-// 9. NASA Data Pipelines & System Health
+// 9. NASA Data Pipelines, Authentic Multi-Mission Data & System Health
 apiRouter.get("/data/sources", getDataSources);
 apiRouter.get("/data/status", getDataStatus);
 apiRouter.get("/data/ingested", getIngestedDatasets);
 apiRouter.post("/data/ingest/m20-traverse", ingestMars2020Traverse);
+apiRouter.get("/data/authentic/dtm", getAuthenticDTM);
+apiRouter.get("/data/authentic/optical", getAuthenticOptical);
+apiRouter.get("/data/authentic/surface-photos", getAuthenticSurfacePhotos);
+apiRouter.get("/data/authentic/thermal", getAuthenticThermal);
+apiRouter.get("/data/authentic/mineralogy", getAuthenticMineralogy);
+apiRouter.get("/data/authentic/geology", getAuthenticGeology);
+apiRouter.get("/data/authentic/subsurface-ice", getAuthenticSubsurfaceIce);
+apiRouter.get("/data/authentic/atmosphere", getAuthenticAtmosphere);
+apiRouter.get("/data/authentic/radiation", getAuthenticRadiation);
+apiRouter.get("/data/authentic/spatiotemporal-alignment", getSpatiotemporalAlignment);
+apiRouter.get("/data/authentic/uncertainty-report", getUncertaintyReport);
+apiRouter.get("/data/authentic/unified-science-layer", getUnifiedScienceLayer);
+apiRouter.get("/data/authentic/ml-validation", getMLValidationMetrics);
+apiRouter.get("/data/authentic/micro-terrain", getMicroTerrainObstacles);
+apiRouter.get("/data/authentic/astronaut-mobility", getAstronautMobility);
+apiRouter.get("/data/authentic/constellation-comms", getConstellationComms);
+apiRouter.get("/data/authentic/robotic-support", getRoboticSupportPlan);
+apiRouter.get("/data/authentic/buddy-pair", getBuddyPairState);
+apiRouter.get("/data/authentic/mepag-targets", getMepagPrioritizedTargets);
+apiRouter.get("/data/authentic/pareto-plans", getParetoRoutePlans);
+apiRouter.get("/data/authentic/observation-plan", getObservationPlan);
 
 // 10. Multi-Agent Planetary Field Operations (Phase 4)
 import { operationsController } from "../controllers/operationsController.js";

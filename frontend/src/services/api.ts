@@ -1008,4 +1008,110 @@ export const api = {
       body: JSON.stringify({ missionId }),
     });
   },
+
+  // Authentic NASA Multi-Mission Data Endpoints (Milestones 1 - 7)
+  async getAuthenticDTM(lat: number, lon: number): Promise<any> {
+    return request<any>(`/data/authentic/dtm?lat=${lat}&lon=${lon}`);
+  },
+
+  async getAuthenticOptical(lat: number, lon: number): Promise<any> {
+    return request<any>(`/data/authentic/optical?lat=${lat}&lon=${lon}`);
+  },
+
+  async getAuthenticSurfacePhotos(lat: number, lon: number): Promise<any> {
+    return request<any>(`/data/authentic/surface-photos?lat=${lat}&lon=${lon}`);
+  },
+
+  async getAuthenticThermal(lat: number, lon: number): Promise<any> {
+    return request<any>(`/data/authentic/thermal?lat=${lat}&lon=${lon}`);
+  },
+
+  async getAuthenticMineralogy(lat: number, lon: number): Promise<any> {
+    return request<any>(`/data/authentic/mineralogy?lat=${lat}&lon=${lon}`);
+  },
+
+  async getAuthenticGeology(lat: number, lon: number): Promise<any> {
+    return request<any>(`/data/authentic/geology?lat=${lat}&lon=${lon}`);
+  },
+
+  async getAuthenticSubsurfaceIce(lat: number, lon: number): Promise<any> {
+    return request<any>(`/data/authentic/subsurface-ice?lat=${lat}&lon=${lon}`);
+  },
+
+  async getAuthenticAtmosphere(lat: number, lon: number, sol?: number, hour?: number): Promise<any> {
+    const qSol = sol !== undefined ? `&sol=${sol}` : "";
+    const qHour = hour !== undefined ? `&hour=${hour}` : "";
+    return request<any>(`/data/authentic/atmosphere?lat=${lat}&lon=${lon}${qSol}${qHour}`);
+  },
+
+  async getAuthenticRadiation(lat: number, lon: number, sol?: number, hours?: number): Promise<any> {
+    const qSol = sol !== undefined ? `&sol=${sol}` : "";
+    const qHours = hours !== undefined ? `&hours=${hours}` : "";
+    return request<any>(`/data/authentic/radiation?lat=${lat}&lon=${lon}${qSol}${qHours}`);
+  },
+
+  async getSpatiotemporalAlignment(lat: number, lon: number): Promise<any> {
+    return request<any>(`/data/authentic/spatiotemporal-alignment?lat=${lat}&lon=${lon}`);
+  },
+
+  async getUncertaintyReport(lat: number, lon: number): Promise<any> {
+    return request<any>(`/data/authentic/uncertainty-report?lat=${lat}&lon=${lon}`);
+  },
+
+  async getUnifiedScienceLayer(lat: number, lon: number, sol?: number, hour?: number): Promise<any> {
+    const qSol = sol !== undefined ? `&sol=${sol}` : "";
+    const qHour = hour !== undefined ? `&hour=${hour}` : "";
+    return request<any>(`/data/authentic/unified-science-layer?lat=${lat}&lon=${lon}${qSol}${qHour}`);
+  },
+
+  async getMicroTerrainObstacles(lat: number, lon: number): Promise<any> {
+    return request<any>(`/data/authentic/micro-terrain?lat=${lat}&lon=${lon}`);
+  },
+
+  async getAstronautMobility(distanceKm?: number, slopeDeg?: number, walkMode?: string, fatigueIndex?: number): Promise<any> {
+    const params = new URLSearchParams();
+    if (distanceKm !== undefined) params.append("distanceKm", distanceKm.toString());
+    if (slopeDeg !== undefined) params.append("slopeDeg", slopeDeg.toString());
+    if (walkMode) params.append("walkMode", walkMode);
+    if (fatigueIndex !== undefined) params.append("fatigueIndex", fatigueIndex.toString());
+    return request<any>(`/data/authentic/astronaut-mobility?${params.toString()}`);
+  },
+
+  async getConstellationComms(lat: number, lon: number, sol?: number, durationMin?: number): Promise<any> {
+    const qSol = sol !== undefined ? `&sol=${sol}` : "";
+    const qDur = durationMin !== undefined ? `&durationMin=${durationMin}` : "";
+    return request<any>(`/data/authentic/constellation-comms?lat=${lat}&lon=${lon}${qSol}${qDur}`);
+  },
+
+  async getRoboticSupportPlan(mode?: string, distanceKm?: number, payloadKg?: number): Promise<any> {
+    const params = new URLSearchParams();
+    if (mode) params.append("mode", mode);
+    if (distanceKm !== undefined) params.append("distanceKm", distanceKm.toString());
+    if (payloadKg !== undefined) params.append("payloadKg", payloadKg.toString());
+    return request<any>(`/data/authentic/robotic-support?${params.toString()}`);
+  },
+
+  async getBuddyPairState(distanceMeters?: number, o2Left1?: number, o2Left2?: number): Promise<any> {
+    const params = new URLSearchParams();
+    if (distanceMeters !== undefined) params.append("distanceMeters", distanceMeters.toString());
+    if (o2Left1 !== undefined) params.append("o2Left1", o2Left1.toString());
+    if (o2Left2 !== undefined) params.append("o2Left2", o2Left2.toString());
+    return request<any>(`/data/authentic/buddy-pair?${params.toString()}`);
+  },
+
+  async getMepagPrioritizedTargets(lat: number, lon: number): Promise<any> {
+    return request<any>(`/data/authentic/mepag-targets?lat=${lat}&lon=${lon}`);
+  },
+
+  async getParetoRoutePlans(lat: number, lon: number): Promise<any> {
+    return request<any>(`/data/authentic/pareto-plans?lat=${lat}&lon=${lon}`);
+  },
+
+  async getObservationPlan(targetId?: string, targetType?: string, formation?: string): Promise<any> {
+    const params = new URLSearchParams();
+    if (targetId) params.append("targetId", targetId);
+    if (targetType) params.append("targetType", targetType);
+    if (formation) params.append("formation", formation);
+    return request<any>(`/data/authentic/observation-plan?${params.toString()}`);
+  },
 };

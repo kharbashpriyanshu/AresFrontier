@@ -16,7 +16,28 @@ import {
 import { MarsMap } from "../components/MarsMap.js";
 import { LocationExplorer } from "../components/LocationExplorer.js";
 import { RoutePlanner } from "../components/RoutePlanner.js";
-import { Navigation, Info, Play, CheckCircle, AlertTriangle, Database, Activity } from "lucide-react";
+import { WaypointPreviewHud } from "../components/WaypointPreviewHud.js";
+import { EnvironmentalDashboard } from "../components/EnvironmentalDashboard.js";
+import { RfCoverageOverlay } from "../components/RfCoverageOverlay.js";
+import { HyperlocalTacticalGrid } from "../components/HyperlocalTacticalGrid.js";
+import { SamplingProtocolPanel } from "../components/SamplingProtocolPanel.js";
+import { SurfacePhotoViewer } from "../components/SurfacePhotoViewer.js";
+import { MissionNarrativePanel } from "../components/MissionNarrativePanel.js";
+import {
+  Navigation,
+  Info,
+  Play,
+  CheckCircle,
+  AlertTriangle,
+  Database,
+  Activity,
+  CloudSun,
+  Radio,
+  Footprints,
+  Camera,
+  Compass,
+  Sparkles,
+} from "lucide-react";
 
 export const MapPage: React.FC = () => {
   const navigate = useNavigate();
@@ -64,6 +85,17 @@ export const MapPage: React.FC = () => {
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [demoActive, setDemoActive] = useState<boolean>(false);
   const [focusCoord, setFocusCoord] = useState<MarsCoordinate | null>(null);
+
+  // Milestone 6 & 7 Tactical & Operations HUDs
+  const [showWeatherHud, setShowWeatherHud] = useState<boolean>(false);
+  const [showRfOverlay, setShowRfOverlay] = useState<boolean>(false);
+  const [showTacticalGrid, setShowTacticalGrid] = useState<boolean>(false);
+  const [showSurfacePhotos, setShowSurfacePhotos] = useState<boolean>(false);
+  const [showWaypointPreview, setShowWaypointPreview] = useState<boolean>(false);
+  const [showSamplingPanel, setShowSamplingPanel] = useState<boolean>(false);
+  const [showNarrative, setShowNarrative] = useState<boolean>(false);
+  const [hudCoord, setHudCoord] = useState<MarsCoordinate>({ latitude: 18.4447, longitude: 77.4508 });
+  const [hudLabel, setHudLabel] = useState<string>("Octavia E. Butler Landing (Jezero)");
   const [ingestedM20Traverse, setIngestedM20Traverse] = useState<{
     segments: [number, number][][];
     currentPosition?: { latitude: number; longitude: number; sol: number; totalDistanceKm: number } | null;
@@ -337,6 +369,8 @@ export const MapPage: React.FC = () => {
   // Map Click Handler
   const handleMapClick = async (coord: MarsCoordinate) => {
     setClickedCoord(coord);
+    setHudCoord(coord);
+    setHudLabel(`Mars Surface (${coord.latitude.toFixed(3)}°N, ${coord.longitude.toFixed(3)}°E)`);
 
     if (isPickingOnMap) {
       setIsPickingOnMap(false);
@@ -370,6 +404,8 @@ export const MapPage: React.FC = () => {
   // Select Location from Marker or Search
   const handleSelectLocation = (loc: LocationData) => {
     setSelectedLocation(loc);
+    setHudCoord(loc.coordinate);
+    setHudLabel(loc.name);
     setActiveDrawer("explorer");
   };
 
@@ -489,6 +525,160 @@ export const MapPage: React.FC = () => {
             </button>
           </div>
         </div>
+
+        {/* Milestone 6 & 7 Tactical Operations Toolbar (Floating below primary controls) */}
+        <div className="absolute top-16 right-4 z-20 flex flex-wrap items-center justify-end gap-1.5 text-xs font-mono shadow-xl pointer-events-auto">
+          <button
+            onClick={() => setShowWeatherHud(!showWeatherHud)}
+            className={`px-2.5 py-1 flex items-center space-x-1.5 border backdrop-blur-md transition-colors ${
+              showWeatherHud
+                ? "bg-amber-600 text-white font-bold border-amber-500 shadow-md"
+                : "bg-atlas-surface/95 hover:bg-atlas-elevated text-atlas-text border-atlas-border"
+            }`}
+            title="Toggle Martian Diurnal Weather & Radiation HUD (MEDA / RAD)"
+          >
+            <CloudSun className="w-3.5 h-3.5 text-amber-400" />
+            <span>Sol Weather</span>
+          </button>
+
+          <button
+            onClick={() => setShowRfOverlay(!showRfOverlay)}
+            className={`px-2.5 py-1 flex items-center space-x-1.5 border backdrop-blur-md transition-colors ${
+              showRfOverlay
+                ? "bg-atlas-teal text-atlas-bg font-bold border-atlas-teal shadow-md"
+                : "bg-atlas-surface/95 hover:bg-atlas-elevated text-atlas-text border-atlas-border"
+            }`}
+            title="Toggle Orbiter Constellation Comms & Scarp Shadowing"
+          >
+            <Radio className="w-3.5 h-3.5 text-atlas-teal" />
+            <span>RF Relay</span>
+          </button>
+
+          <button
+            onClick={() => setShowTacticalGrid(!showTacticalGrid)}
+            className={`px-2.5 py-1 flex items-center space-x-1.5 border backdrop-blur-md transition-colors ${
+              showTacticalGrid
+                ? "bg-emerald-600 text-white font-bold border-emerald-500 shadow-md"
+                : "bg-atlas-surface/95 hover:bg-atlas-elevated text-atlas-text border-atlas-border"
+            }`}
+            title="Toggle Sub-meter Hyperlocal Tactical Grid (Astronaut + Buddy + Mule)"
+          >
+            <Footprints className="w-3.5 h-3.5 text-emerald-400" />
+            <span>Tactical Grid</span>
+          </button>
+
+          <button
+            onClick={() => setShowSurfacePhotos(!showSurfacePhotos)}
+            className={`px-2.5 py-1 flex items-center space-x-1.5 border backdrop-blur-md transition-colors ${
+              showSurfacePhotos
+                ? "bg-purple-600 text-white font-bold border-purple-500 shadow-md"
+                : "bg-atlas-surface/95 hover:bg-atlas-elevated text-atlas-text border-atlas-border"
+            }`}
+            title="Toggle Ground POV Rover Photography (Mastcam-Z / Navcam)"
+          >
+            <Camera className="w-3.5 h-3.5 text-purple-400" />
+            <span>Ground POV</span>
+          </button>
+
+          <button
+            onClick={() => setShowWaypointPreview(!showWaypointPreview)}
+            className={`px-2.5 py-1 flex items-center space-x-1.5 border backdrop-blur-md transition-colors ${
+              showWaypointPreview
+                ? "bg-cyan-600 text-white font-bold border-cyan-500 shadow-md"
+                : "bg-atlas-surface/95 hover:bg-atlas-elevated text-atlas-text border-atlas-border"
+            }`}
+            title="Toggle Contextual Science & Terrain Destination Preview"
+          >
+            <Compass className="w-3.5 h-3.5 text-cyan-400" />
+            <span>Preview HUD</span>
+          </button>
+
+          <button
+            onClick={() => setShowSamplingPanel(!showSamplingPanel)}
+            className={`px-2.5 py-1 flex items-center space-x-1.5 border backdrop-blur-md transition-colors ${
+              showSamplingPanel
+                ? "bg-pink-600 text-white font-bold border-pink-500 shadow-md"
+                : "bg-atlas-surface/95 hover:bg-atlas-elevated text-atlas-text border-atlas-border"
+            }`}
+            title="Toggle 8-Step Scientific Sampling Protocol Checklist"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-pink-400" />
+            <span>Sampling Plan</span>
+          </button>
+
+          <button
+            onClick={() => setShowNarrative((v) => !v)}
+            className="flex items-center gap-1.5 px-3 py-2 bg-atlas-surface border border-atlas-border hover:border-atlas-accent text-xs font-mono transition-colors"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-atlas-accent" />
+            <span className="hidden sm:inline">Mission Story</span>
+          </button>
+        </div>
+
+        {/* Milestone 6 & 7 Modal Overlays */}
+        {showNarrative && (
+          <div className="absolute top-20 left-4 right-4 sm:right-auto sm:left-4 sm:w-[520px] z-40 max-h-[80vh] overflow-y-auto">
+            <MissionNarrativePanel
+              route={points}
+              location={selectedLocation?.name}
+              onClose={() => setShowNarrative(false)}
+            />
+          </div>
+        )}
+        {showWeatherHud && (
+          <EnvironmentalDashboard
+            coordinate={hudCoord}
+            onClose={() => setShowWeatherHud(false)}
+          />
+        )}
+
+        {showRfOverlay && (
+          <RfCoverageOverlay
+            coordinate={hudCoord}
+            onClose={() => setShowRfOverlay(false)}
+          />
+        )}
+
+        {showTacticalGrid && (
+          <HyperlocalTacticalGrid
+            coordinate={hudCoord}
+            onClose={() => setShowTacticalGrid(false)}
+          />
+        )}
+
+        {showWaypointPreview && (
+          <WaypointPreviewHud
+            coordinate={hudCoord}
+            label={hudLabel}
+            onClose={() => setShowWaypointPreview(false)}
+            onOpenSurfacePhotos={(coord) => {
+              setHudCoord(coord);
+              setShowSurfacePhotos(true);
+            }}
+          />
+        )}
+
+        {showSamplingPanel && (
+          <SamplingProtocolPanel
+            targetId="tgt-kodiak-delta"
+            targetName={hudLabel}
+            targetType="LACUSTRINE_FAN"
+            formation="Shenandoah (Ns)"
+            onClose={() => setShowSamplingPanel(false)}
+          />
+        )}
+
+        {showSurfacePhotos && (
+          <div className="absolute inset-0 z-40 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 pointer-events-auto">
+            <div className="w-full max-w-3xl">
+              <SurfacePhotoViewer
+                latitude={hudCoord.latitude}
+                longitude={hudCoord.longitude}
+                onClose={() => setShowSurfacePhotos(false)}
+              />
+            </div>
+          </div>
+        )}
 
         {/* Error Banner */}
         {errorMsg && (

@@ -1,0 +1,212 @@
+[
+  {
+    "id": "scen-jezero-nominal",
+    "name": "Nominal Jezero Delta Traverse",
+    "description": "Baseline multi-agent reconnaissance and core sampling across Jezero western delta.",
+    "baselineMissionId": "mission-jezero-sol100",
+    "routeId": "route-jezero-delta-sol100",
+    "durationMinutes": 240,
+    "agents": {
+      "rover01Available": true,
+      "rover02Available": true,
+      "astronaut01Available": true,
+      "requiredCapabilities": [
+        "HAZARD_LIDAR",
+        "ROTARY_DRILL",
+        "EVA_SAMPLING"
+      ]
+    },
+    "resources": {
+      "initialBatteryPercent": 94,
+      "batteryDegradationMultiplier": 1,
+      "oxygenReserveMinutes": 280,
+      "sampleStorageKg": 15
+    },
+    "comms": {
+      "surfaceRelayAvailable": true,
+      "orbiterRelayAvailable": true,
+      "blackoutWindowMinutes": 12
+    },
+    "terrain": {
+      "maxAllowedSlopeDeg": 20,
+      "hazardEscalationFactor": 1,
+      "restrictedZones": [
+        "Kodiak Steep Scarp (>20°)"
+      ]
+    },
+    "science": {
+      "objectivePriority": "ANCIENT_WATER_ACTIVITY",
+      "targetIds": [
+        "target-jezero-01",
+        "target-jezero-02"
+      ],
+      "instrumentFailure": false
+    },
+    "conditions": [],
+    "createdAt": "2026-11-14T07:19:33.222Z",
+    "updatedAt": "2026-11-14T08:56:15.395Z",
+    "lastExecution": {
+      "executionId": "exec-726b8b72",
+      "scenarioId": "scen-jezero-nominal",
+      "executedAt": "2026-11-14T08:56:15.395Z",
+      "mode": "SIMULATED",
+      "isolatedFromLiveState": true,
+      "feasible": true,
+      "projectedBatteryPercent": 55,
+      "projectedOxygenMinutes": 179,
+      "commsCoveragePercent": 23,
+      "monteCarloSuccessProbability": 100,
+      "estimatedScienceYield": 100,
+      "safetyChecks": [
+        {
+          "passed": true,
+          "invariantId": "S1",
+          "description": "Never command a rover below its minimum battery reserve (20%)"
+        },
+        {
+          "passed": true,
+          "invariantId": "S2",
+          "description": "Never execute a route exceeding terrain slope limit (20°)"
+        },
+        {
+          "passed": true,
+          "invariantId": "S3",
+          "description": "Maintain >= 30 min emergency O2 return reserve"
+        }
+      ],
+      "whatIfSummary": {
+        "simulationId": "sim-whatif-mission-jezero-sol100-battery_degradation-2-2f0355a4",
+        "routeFeasible": true,
+        "batteryDeficitPercent": 24,
+        "energyConsumedWh": 468,
+        "newHazardsCount": 0
+      },
+      "monteCarloSummary": {
+        "analysisId": "mc-analysis-mission-jezero-sol100-monte_carlo-40-37934414",
+        "runCount": 40,
+        "successDefinition": "Final battery >= 20%, duration <= 240 min, max slope <= 22 deg.",
+        "durationP50Minutes": 134.7,
+        "batteryP50Percent": 75.9
+      },
+      "assumptions": [
+        "SIMULATED OUTCOME: Executed against isolated state clone; live mission state was NOT modified.",
+        "Battery degradation multiplier 1x applied to modeled traverse power draw.",
+        "Terrain hazard escalation factor 1x applied to baseline route max slope (3.8°).",
+        "Comms coverage reflects surface relay=true, orbiter relay=true, blackout=12 min.",
+        "Baseline route: Jezero Delta Front & Séítah Exploration Traverse (4.14 km, max slope 3.8 deg).",
+        "Battery pack capacity: 2400 Wh; nominal draw: 105 Wh/km; initial SoC: 94.0%; injected drop: 0.0%.",
+        "Comms outage probability per trial: 8.0% (requires comms for nominal completion: false).",
+        "Not NASA-certified or flight-cleared; all distributions are synthetic/modeled Monte Carlo analogs."
+      ],
+      "provenance": {
+        "sourceType": "DERIVED",
+        "sourceName": "Martian Map Planetary Computation — Scenario Builder Isolated Execution (Nominal Jezero Delta Traverse)",
+        "processingMethod": "Mathematical calculation derived from [Isolated Mission State Clone, MonteCarloEngine, WhatIfSimulationEngine, SafetyInvariantService]: SIMULATED Scenario Stress-Test",
+        "dataMode": "FALLBACK",
+        "uncertainty": {
+          "value": 1,
+          "unit": "score",
+          "methodology": "Propagated uncertainty from input layers [Isolated Mission State Clone, MonteCarloEngine, WhatIfSimulationEngine, SafetyInvariantService]"
+        }
+      }
+    }
+  },
+  {
+    "id": "scen-dust-battery-degradation",
+    "name": "Dust Storm Power & Comms Degradation",
+    "description": "Simulates elevated battery discharge (+35%) and surface VHF blackout forcing orbiter relay store-and-forward.",
+    "baselineMissionId": "mission-jezero-sol100",
+    "routeId": "route-jezero-delta-sol100",
+    "durationMinutes": 210,
+    "agents": {
+      "rover01Available": true,
+      "rover02Available": true,
+      "astronaut01Available": true,
+      "requiredCapabilities": [
+        "HAZARD_LIDAR",
+        "UHF_RELAY"
+      ]
+    },
+    "resources": {
+      "initialBatteryPercent": 78,
+      "batteryDegradationMultiplier": 1.35,
+      "oxygenReserveMinutes": 240,
+      "sampleStorageKg": 12
+    },
+    "comms": {
+      "surfaceRelayAvailable": false,
+      "orbiterRelayAvailable": true,
+      "blackoutWindowMinutes": 48
+    },
+    "terrain": {
+      "maxAllowedSlopeDeg": 18,
+      "hazardEscalationFactor": 1.25,
+      "restrictedZones": [
+        "Kodiak Steep Scarp (>20°)",
+        "Southern Talus Fan"
+      ]
+    },
+    "science": {
+      "objectivePriority": "BIOSIGNATURE_PRESERVATION",
+      "targetIds": [
+        "target-jezero-01"
+      ],
+      "instrumentFailure": false
+    },
+    "conditions": [
+      "BATTERY_DEGRADATION",
+      "COMMUNICATION_BLACKOUT"
+    ],
+    "createdAt": "2026-11-14T07:19:33.222Z",
+    "updatedAt": "2026-11-14T07:19:33.222Z"
+  },
+  {
+    "id": "scen-scarp-emergency-return",
+    "name": "Scarp Escalation & Emergency EVA Return",
+    "description": "Tests hard safety invariant S1/S2 enforcement under steep terrain escalation and rover breakdown.",
+    "baselineMissionId": "mission-jezero-sol100",
+    "routeId": "route-jezero-delta-sol100",
+    "durationMinutes": 150,
+    "agents": {
+      "rover01Available": false,
+      "rover02Available": true,
+      "astronaut01Available": true,
+      "requiredCapabilities": [
+        "EMERGENCY_EXTRACTION"
+      ]
+    },
+    "resources": {
+      "initialBatteryPercent": 52,
+      "batteryDegradationMultiplier": 1.6,
+      "oxygenReserveMinutes": 145,
+      "sampleStorageKg": 8
+    },
+    "comms": {
+      "surfaceRelayAvailable": true,
+      "orbiterRelayAvailable": false,
+      "blackoutWindowMinutes": 35
+    },
+    "terrain": {
+      "maxAllowedSlopeDeg": 16,
+      "hazardEscalationFactor": 1.8,
+      "restrictedZones": [
+        "Kodiak Steep Scarp (>20°)",
+        "Belva Crater Rim"
+      ]
+    },
+    "science": {
+      "objectivePriority": "SUBSURFACE_ICE_DETECTION",
+      "targetIds": [
+        "target-jezero-03"
+      ],
+      "instrumentFailure": true
+    },
+    "conditions": [
+      "ROVER_BREAKDOWN",
+      "TERRAIN_HAZARD_ESCALATION",
+      "EMERGENCY_RETURN"
+    ],
+    "createdAt": "2026-11-14T07:19:33.222Z",
+    "updatedAt": "2026-11-14T07:19:33.222Z"
+  }
+]

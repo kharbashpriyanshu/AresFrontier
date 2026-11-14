@@ -1297,6 +1297,33 @@ export interface MissionReportData {
     rationale: string;
     blockHeight: number;
   }>;
+  authenticScienceEnvironment?: {
+    topography: {
+      dataset: string;
+      elevationM: number;
+      uncertaintyM: number;
+    };
+    geology: {
+      dataset: string;
+      unit: string;
+      formation: string;
+      hardness: string;
+    };
+    mineralogy: {
+      dataset: string;
+      detectedMineral: string;
+      preservationRanking: string;
+    };
+    atmosphereAndRadiation: {
+      dataset: string;
+      surfacePressurePa: number;
+      airTemperatureK: number;
+      dustOpticalDepthTau: number;
+      radiationDoseRateMicroGyPerDay: number;
+      solarParticleEventAlert: boolean;
+      careerPELPercent: number;
+    };
+  };
 }
 
 
