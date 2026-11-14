@@ -90,11 +90,10 @@ export const Navbar: React.FC = () => {
               <Link
                 key={link.to}
                 to={link.to}
-                className={`relative px-2.5 py-1.5 text-xs font-medium transition-colors ${
-                  isActive
-                    ? "text-atlas-text font-semibold"
-                    : "text-atlas-muted hover:text-atlas-text hover:bg-atlas-elevated"
-                }`}
+                className={`relative px-2.5 py-1.5 text-xs font-medium transition-colors ${isActive
+                  ? "text-atlas-text font-semibold"
+                  : "text-atlas-muted hover:text-atlas-text hover:bg-atlas-elevated"
+                  }`}
               >
                 <span>{link.label}</span>
                 {isActive && (
@@ -163,11 +162,10 @@ export const Navbar: React.FC = () => {
                   key={link.to}
                   to={link.to}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`p-2.5 flex items-center space-x-2 border text-xs transition-colors ${
-                    isActive
-                      ? "bg-atlas-elevated text-atlas-accent border-atlas-accent font-semibold"
-                      : "bg-atlas-bg text-atlas-muted border-atlas-border hover:text-atlas-text"
-                  }`}
+                  className={`p-2.5 flex items-center space-x-2 border text-xs transition-colors ${isActive
+                    ? "bg-atlas-elevated text-atlas-accent border-atlas-accent font-semibold"
+                    : "bg-atlas-bg text-atlas-muted border-atlas-border hover:text-atlas-text"
+                    }`}
                 >
                   <Icon className="w-3.5 h-3.5" />
                   <span>{link.label}</span>
