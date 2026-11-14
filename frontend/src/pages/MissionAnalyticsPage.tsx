@@ -1,25 +1,18 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { api } from "../services/api";
 import {
-  Activity,
   AlertTriangle,
   BarChart3,
   CheckCircle2,
-  Cpu,
   Download,
   Filter,
   GitCompare,
   Play,
-  Radio,
   RefreshCw,
-  Shield,
   ShieldAlert,
-  Sparkles,
   Users,
 } from "lucide-react";
 import {
-  Area,
-  AreaChart,
   Bar,
   BarChart,
   CartesianGrid,
