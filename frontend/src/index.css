@@ -119,3 +119,50 @@
 .leaflet-control-attribution a {
   color: var(--atlas-blue) !important;
 }
+
+/* =========================================================================
+   Aerospace Sharp Geometric Styling: border-radius = 0 to 2px
+   ========================================================================= */
+button,
+input,
+select,
+textarea,
+.rounded-2xl,
+.rounded-xl,
+.rounded-lg,
+.rounded-md,
+.rounded {
+  border-radius: 2px !important;
+}
+
+.rounded-none {
+  border-radius: 0px !important;
+}
+
+/* =========================================================================
+   Global Recharts Dark Tooltip Styling (Prevents Black-on-Dark Text)
+   ========================================================================= */
+.recharts-default-tooltip {
+  background-color: #0D1925 !important;
+  border: 1px solid #223A4E !important;
+  border-radius: 2px !important;
+  color: #F2F3F0 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7) !important;
+  font-family: 'IBM Plex Mono', 'Inter', monospace !important;
+  font-size: 12px !important;
+  padding: 8px 12px !important;
+}
+
+.recharts-tooltip-item,
+.recharts-tooltip-item-name,
+.recharts-tooltip-item-value,
+.recharts-tooltip-item-separator,
+.recharts-tooltip-label {
+  color: #F2F3F0 !important;
+}
+
+.recharts-tooltip-label {
+  color: #FA7955 !important;
+  font-weight: 700 !important;
+  margin-bottom: 4px !important;
+}

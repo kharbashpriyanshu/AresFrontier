@@ -4,7 +4,6 @@ import {
   Mountain,
   Target,
   Shield,
-  Activity,
   ArrowRight,
   Database,
   Radio,
@@ -13,6 +12,7 @@ import {
   CheckCircle,
   FileCheck,
   Compass,
+  Sparkles,
   Users,
   GitBranch,
 } from "lucide-react";
@@ -21,190 +21,333 @@ export const LandingPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-atlas-bg text-atlas-text flex flex-col selection:bg-atlas-accent selection:text-white">
       {/* =========================================================================
-          SECTION 1: HERO SECTION (Reference Image 1)
+          HERO SECTION (Reference Image 1: Martian Mission Intelligence Dashboard)
           ========================================================================= */}
-      <section className="relative px-6 sm:px-10 lg:px-16 pt-20 pb-28 md:pt-28 md:pb-36 overflow-hidden border-b border-atlas-border">
-        {/* Cinematic Martian Vista Background */}
+      <section className="relative px-4 sm:px-6 lg:px-8 pt-12 pb-20 md:pt-16 md:pb-28 overflow-hidden border-b border-atlas-border">
+        {/* Martian Cinematic Background Vista */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
           <img
             src="/mars-hero-bg.jpg"
-            alt="Mars Jezero Crater Surface Vista"
-            className="w-full h-full object-cover object-center opacity-45 brightness-90 contrast-105"
+            alt="Cinematic twilight Martian surface vista"
+            className="w-full h-full object-cover object-bottom transition-opacity duration-300 opacity-90"
           />
-          {/* Subtle atmospheric vignette gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-atlas-bg via-atlas-bg/60 to-atlas-bg/30" />
-          <div className="absolute inset-0 bg-gradient-to-r from-atlas-bg via-transparent to-atlas-bg" />
+          {/* Gradients to blend seamlessly into canvas (#080F19) and preserve crisp text contrast */}
+          <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-atlas-bg via-atlas-bg/40 to-atlas-bg/90" />
+          <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-atlas-bg/95 via-atlas-bg/75 to-atlas-bg/30" />
         </div>
 
+        {/* Hero Content Container */}
         <div className="relative z-10 max-w-7xl mx-auto space-y-12">
-          {/* Eyebrow Pill */}
-          <div className="inline-flex items-center space-x-2.5 px-3.5 py-1.5 bg-atlas-surface/85 backdrop-blur-md border border-atlas-border text-atlas-text text-xs font-mono shadow-md">
-            <span className="w-2 h-2 rounded-full bg-atlas-accent animate-pulse" />
-            <span className="text-atlas-muted uppercase tracking-wider font-semibold">NASA Space Apps Challenge</span>
-            <span className="text-atlas-border">|</span>
-            <span className="text-atlas-accent font-bold">Planetary Mission Intelligence</span>
-          </div>
+          {/* Main Hero Split Grid */}
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Left Column: Typography, Badges & CTAs */}
+            <div className="lg:col-span-5 text-left space-y-6">
+              {/* Challenge Classification Badge */}
+              <div className="inline-flex items-center space-x-2 px-3 py-1.5 bg-atlas-surface/85 backdrop-blur-md border border-atlas-border text-[11px] font-mono text-atlas-muted shadow-sm">
+                <span className="w-2 h-2 rounded-full bg-atlas-accent animate-pulse" />
+                <span className="text-atlas-text font-medium">NASA SPACE APPS CHALLENGE</span>
+                <span className="text-atlas-border">|</span>
+                <span className="text-atlas-accent font-semibold tracking-wide">PLANETARY MISSION PLANNER</span>
+              </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Left Hero Narrative */}
-            <div className="lg:col-span-6 space-y-8">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-display tracking-tight text-atlas-text leading-[1.12]">
-                Planetary Mission Intelligence for{" "}
-                <span className="text-atlas-accent">Real-World Mars Operations</span>
+              {/* Hero Title */}
+              <h1 className="font-display text-4xl sm:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-atlas-text leading-[1.08]">
+                Planetary Mission
+                <br />
+                Intelligence for
+                <br />
+                <span className="text-atlas-accent font-extrabold">Real-World Mars</span>
+                <br />
+                Operations
               </h1>
 
-              <p className="text-base sm:text-lg text-atlas-muted font-sans leading-relaxed max-w-xl">
-                A mission planning and operational intelligence suite synthesizing planetary datasets,
-                EVA route planning, autonomous safety invariants, replay verification, and digital-twin
-                simulation for authentic Jezero Crater exploration.
+              {/* Subheading Description */}
+              <p className="text-sm sm:text-base text-atlas-muted font-sans max-w-xl leading-relaxed">
+                A mission planning suite that synthesizes planetary datasets,
+                EVA route planning, science target selection, replay and digital
+                twin validation, analytics, and provenance-aware intelligence
+                for realistic Mars operations.
               </p>
 
-              {/* Primary Call to Actions */}
-              <div className="flex flex-wrap items-center gap-4 pt-2">
+              {/* Action Buttons */}
+              <div className="flex flex-wrap items-center gap-3 pt-2 font-sans">
                 <Link
-                  to="/map?demo=marswalk-001"
-                  className="px-7 py-3.5 bg-atlas-accent hover:bg-atlas-accent-hover text-white font-mono text-xs font-bold tracking-wide flex items-center space-x-2 transition-all shadow-xl hover:shadow-atlas-accent/20"
+                  to="/map?demo=marswalk-001&tour=true"
+                  className="px-6 py-3.5 bg-atlas-accent hover:bg-atlas-accent-dark text-white font-bold text-xs uppercase tracking-wider flex items-center space-x-2 shadow-lg shadow-atlas-accent/25 transition-all border border-transparent"
                 >
+                  <Sparkles className="w-4 h-4" />
                   <span>Plan a Mars Mission</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 ml-1" />
                 </Link>
 
                 <Link
                   to="/map"
-                  className="px-7 py-3.5 bg-atlas-surface/90 hover:bg-atlas-elevated border border-atlas-border text-atlas-text font-mono text-xs font-semibold tracking-wide transition-colors shadow-md"
+                  className="px-5 py-3.5 bg-atlas-surface/85 hover:bg-atlas-elevated text-atlas-text border border-atlas-border font-bold text-xs uppercase tracking-wider flex items-center space-x-2 backdrop-blur-md transition-colors shadow-sm"
                 >
-                  Explore the Platform
+                  <Compass className="w-4 h-4 text-atlas-teal" />
+                  <span>Explore the Platform</span>
                 </Link>
+              </div>
+
+              {/* NASA Challenge Feature Badges */}
+              <div className="flex flex-wrap gap-1.5 pt-2 font-mono text-[10px]">
+                <span className="px-2 py-1 bg-atlas-surface/80 border border-atlas-border text-atlas-text">
+                  ✓ A* Hazard Detour
+                </span>
+                <span className="px-2 py-1 bg-atlas-surface/80 border border-atlas-border text-atlas-teal">
+                  ✓ 0.38g Tobler Gait &amp; Playback
+                </span>
+                <span className="px-2 py-1 bg-atlas-surface/80 border border-atlas-border text-atlas-amber">
+                  ✓ MOLA &amp; CRISM Overlays
+                </span>
+                <span className="px-2 py-1 bg-atlas-surface/80 border border-atlas-border text-purple-300">
+                  ✓ Multi-Orbiter Comms Windows
+                </span>
               </div>
             </div>
 
-            {/* Right Hero Visual: Authentic UI Mockup Card (Reference Image 1 Composition) */}
-            <div className="lg:col-span-6">
-              <div className="relative bg-atlas-surface border border-atlas-border p-4 sm:p-6 shadow-2xl backdrop-blur-md space-y-4">
-                {/* Window Chrome Header */}
-                <div className="flex items-center justify-between border-b border-atlas-border pb-3">
+            {/* Right Column: Product Interface Mockup (Reference Image 1) */}
+            <div className="lg:col-span-7 relative">
+              <div className="border border-atlas-border/80 bg-atlas-surface/90 backdrop-blur-md shadow-2xl p-2 sm:p-3 relative overflow-hidden group">
+                {/* Tablet Frame Header */}
+                <div className="flex items-center justify-between border-b border-atlas-border pb-2.5 mb-2.5 px-2">
                   <div className="flex items-center space-x-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-atlas-border" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-atlas-border" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-atlas-border" />
-                    <span className="text-[11px] font-mono font-bold text-atlas-text ml-2">
-                      MARTIAN MAP — ATLAS INTELLIGENCE
+                    <div className="flex space-x-1">
+                      <div className="w-2 h-2 rounded-full bg-atlas-border" />
+                      <div className="w-2 h-2 rounded-full bg-atlas-border" />
+                      <div className="w-2 h-2 rounded-full bg-atlas-border" />
+                    </div>
+                    <span className="text-[10px] font-mono text-atlas-accent font-bold tracking-wider">
+                      MARTIAN MAP
+                    </span>
+                    <span className="text-[9px] font-mono text-atlas-muted uppercase tracking-tight hidden sm:inline">
+                      • Atlas Intelligence
                     </span>
                   </div>
-                  <span className="text-[10px] font-mono px-2 py-0.5 bg-atlas-elevated border border-atlas-border text-atlas-accent font-bold">
-                    DEMO: MARSWALK-001
-                  </span>
-                </div>
 
-                {/* Simulated Geospatial Viewport */}
-                <div className="h-64 sm:h-72 bg-atlas-bg border border-atlas-border relative overflow-hidden flex items-center justify-center">
-                  <div className="absolute inset-0 bg-[radial-gradient(#223A4E_1px,transparent_1px)] [background-size:20px_20px] opacity-40" />
-
-                  {/* Waypoint Traversal Line Overlay */}
-                  <svg className="absolute inset-0 w-full h-full pointer-events-none">
-                    <path
-                      d="M 60 190 Q 150 140 240 160 T 420 80"
-                      fill="none"
-                      stroke="var(--atlas-accent)"
-                      strokeWidth="3"
-                      strokeDasharray="6 4"
-                    />
-                    <circle cx="60" cy="190" r="6" fill="var(--atlas-teal)" />
-                    <circle cx="160" cy="148" r="4" fill="white" />
-                    <circle cx="260" cy="155" r="4" fill="white" />
-                    <circle cx="420" cy="80" r="6" fill="var(--atlas-accent)" />
-                  </svg>
-
-                  {/* Floating Telemetry Badge Overlays */}
-                  <div className="absolute top-4 left-4 p-3 bg-atlas-surface/90 border border-atlas-border shadow-lg space-y-1 font-mono text-[11px]">
-                    <div className="text-[10px] text-atlas-muted uppercase flex items-center space-x-1">
-                      <BarChart3 className="w-3 h-3 text-atlas-teal" />
-                      <span>Mission Analytics</span>
-                    </div>
-                    <div className="text-xl font-bold font-mono text-atlas-text">88.5%</div>
-                    <div className="text-[10px] text-atlas-muted">Fleet Utilization</div>
-                  </div>
-
-                  <div className="absolute bottom-4 right-4 p-3 bg-atlas-surface/90 border border-atlas-border shadow-lg space-y-1 font-mono text-[11px]">
-                    <div className="text-[10px] text-atlas-teal uppercase flex items-center space-x-1">
-                      <CheckCircle className="w-3 h-3 text-atlas-teal" />
-                      <span>EVA Feasibility</span>
-                    </div>
-                    <div className="text-sm font-bold text-atlas-teal">FEASIBLE</div>
-                    <div className="text-[10px] text-atlas-muted">Return Margin: 48 min</div>
+                  <div className="flex items-center space-x-2 font-mono text-[10px]">
+                    <span className="text-atlas-muted hidden sm:inline">DEMO:</span>
+                    <span className="text-atlas-accent bg-atlas-elevated px-2 py-0.5 border border-atlas-border font-semibold">
+                      MARSWALK-001
+                    </span>
                   </div>
                 </div>
 
-                {/* Plan Metrics Row */}
-                <div className="grid grid-cols-3 gap-3 text-xs font-mono pt-1">
-                  <div className="p-2.5 bg-atlas-elevated border border-atlas-border">
-                    <div className="text-[10px] text-atlas-muted uppercase">Traverse</div>
-                    <div className="font-bold text-atlas-text text-sm mt-0.5">4.14 km</div>
+                {/* Inner Mockup Grid: Map on Left + Route Planner on Right */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-2 relative bg-[#0a121d] border border-atlas-border overflow-hidden">
+                  {/* Left / Center: Interactive Map Surface Canvas */}
+                  <div className="md:col-span-8 relative h-72 sm:h-96 overflow-hidden">
+                    {/* Radial Topographic Contour Simulation */}
+                    <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 800 480">
+                      <defs>
+                        <radialGradient id="jezeroCraterGlow" cx="60%" cy="40%" r="45%">
+                          <stop offset="0%" stopColor="#c1440e" stopOpacity="0.22" />
+                          <stop offset="65%" stopColor="#29384b" stopOpacity="0.10" />
+                          <stop offset="100%" stopColor="transparent" stopOpacity="0" />
+                        </radialGradient>
+                      </defs>
+
+                      {/* Terrain Grid Lines */}
+                      <g stroke="#1b2a3a" strokeWidth="0.5" opacity="0.6">
+                        <line x1="0" y1="120" x2="800" y2="120" />
+                        <line x1="0" y1="240" x2="800" y2="240" />
+                        <line x1="0" y1="360" x2="800" y2="360" />
+                        <line x1="200" y1="0" x2="200" y2="480" />
+                        <line x1="400" y1="0" x2="400" y2="480" />
+                        <line x1="600" y1="0" x2="600" y2="480" />
+                      </g>
+
+                      {/* Jezero Crater Geological Rims */}
+                      <ellipse cx="500" cy="210" rx="220" ry="140" fill="url(#jezeroCraterGlow)" stroke="#384f68" strokeWidth="1.5" strokeDasharray="4 4" />
+                      <ellipse cx="500" cy="210" rx="150" ry="95" fill="none" stroke="#25374a" strokeWidth="1" />
+
+                      {/* Traverse Route Path */}
+                      <path
+                        d="M 120 330 L 250 280 L 390 230 L 520 195 L 680 150"
+                        fill="none"
+                        stroke="var(--atlas-accent)"
+                        strokeWidth="2.5"
+                        strokeDasharray="6 4"
+                      />
+
+                      {/* Waypoint Dots */}
+                      <circle cx="120" cy="330" r="6" fill="var(--atlas-teal)" stroke="#ffffff" strokeWidth="2" />
+                      <circle cx="250" cy="280" r="4.5" fill="#ffffff" stroke="var(--atlas-accent)" strokeWidth="1.5" />
+                      <circle cx="390" cy="230" r="4.5" fill="#ffffff" stroke="var(--atlas-accent)" strokeWidth="1.5" />
+                      <circle cx="520" cy="195" r="4.5" fill="#ffffff" stroke="var(--atlas-accent)" strokeWidth="1.5" />
+                      <rect x="673" y="143" width="14" height="14" fill="var(--atlas-accent)" stroke="#ffffff" strokeWidth="1.5" />
+                    </svg>
+
+                    {/* Coordinates & Location Header Banner */}
+                    <div className="absolute top-2 left-2 font-mono text-[10px] bg-atlas-surface/85 backdrop-blur-sm px-2 py-1 border border-atlas-border text-atlas-text">
+                      <div className="font-bold">Jezero Crater • EVA Route Planner</div>
+                      <div className="text-atlas-muted text-[9px]">18.4447°N, 77.4508°E • MOLA MEGDR 128 px/deg</div>
+                    </div>
+
+                    {/* Floating Telemetry Card 1: Mission Analytics (Top Left) */}
+                    <div className="absolute top-12 left-2 p-2 bg-atlas-surface/95 border border-atlas-border shadow-xl w-36 hidden sm:block">
+                      <div className="text-[9px] font-mono text-atlas-muted flex items-center space-x-1 uppercase">
+                        <BarChart3 className="w-3 h-3 text-atlas-teal" />
+                        <span>Mission Analytics</span>
+                      </div>
+                      <div className="text-base font-bold font-mono text-atlas-text mt-0.5">88.5%</div>
+                      <div className="text-[9px] text-atlas-muted font-mono">Fleet Utilization</div>
+                      <div className="flex items-end space-x-1 h-3 mt-1.5 pt-0.5 border-t border-atlas-border">
+                        <div className="w-1.5 bg-atlas-teal h-1.5" />
+                        <div className="w-1.5 bg-atlas-teal h-2.5" />
+                        <div className="w-1.5 bg-atlas-teal h-3" />
+                        <div className="w-1.5 bg-atlas-teal h-2" />
+                        <div className="w-1.5 bg-atlas-teal h-3" />
+                      </div>
+                    </div>
+
+                    {/* Floating Telemetry Card 2: Replay / Digital Twin (Mid Left) */}
+                    <div className="absolute top-36 left-2 p-2 bg-atlas-surface/95 border border-atlas-border shadow-xl w-40 hidden sm:block">
+                      <div className="text-[9px] font-mono text-atlas-muted flex items-center space-x-1 uppercase">
+                        <RotateCcw className="w-3 h-3 text-atlas-accent" />
+                        <span>Replay / Digital Twin</span>
+                      </div>
+                      <div className="text-[11px] font-bold text-atlas-text mt-0.5">8 Events Recorded</div>
+                      <div className="flex items-center space-x-1.5 mt-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-atlas-teal" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-atlas-teal" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-atlas-teal" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-atlas-accent animate-pulse" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-atlas-border" />
+                      </div>
+                    </div>
+
+                    {/* Floating Telemetry Card 3: Provenance & Benchmark (Bottom Left) */}
+                    <div className="absolute bottom-2 left-2 p-1.5 bg-atlas-surface/95 border border-atlas-border shadow-xl hidden md:flex items-center space-x-2 text-[10px] font-mono">
+                      <Database className="w-3.5 h-3.5 text-atlas-blue" />
+                      <span className="text-atlas-muted">MGS / MOLA:</span>
+                      <span className="text-atlas-teal font-bold flex items-center space-x-1">
+                        <CheckCircle className="w-3 h-3" />
+                        <span>ONLINE</span>
+                      </span>
+                    </div>
+
+                    {/* Floating Telemetry Card 4: EVA Feasibility Card (Bottom Center / Right) */}
+                    <div className="absolute bottom-2 right-2 p-2.5 bg-atlas-surface/95 border border-atlas-border shadow-2xl max-w-[14rem] text-left">
+                      <div className="flex items-center justify-between border-b border-atlas-border pb-1 mb-1">
+                        <div className="flex items-center space-x-1">
+                          <Shield className="w-3.5 h-3.5 text-atlas-teal" />
+                          <span className="font-mono text-[10px] font-bold text-atlas-text uppercase">EVA Feasibility</span>
+                        </div>
+                        <span className="px-1.5 py-0.5 bg-atlas-elevated text-atlas-teal font-mono text-[9px] font-bold border border-atlas-border">
+                          FEASIBLE
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-3 gap-1 font-mono text-[10px]">
+                        <div>
+                          <span className="text-atlas-muted text-[8px]">Distance:</span>
+                          <div className="font-bold text-atlas-text">4.14 km</div>
+                        </div>
+                        <div>
+                          <span className="text-atlas-muted text-[8px]">Duration:</span>
+                          <div className="font-bold text-atlas-text">129 min</div>
+                        </div>
+                        <div>
+                          <span className="text-atlas-muted text-[8px]">Slope:</span>
+                          <div className="font-bold text-atlas-amber">3.8°</div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div className="p-2.5 bg-atlas-elevated border border-atlas-border">
-                    <div className="text-[10px] text-atlas-muted uppercase">Duration</div>
-                    <div className="font-bold text-atlas-text text-sm mt-0.5">129 min</div>
-                  </div>
-                  <div className="p-2.5 bg-atlas-elevated border border-atlas-border">
-                    <div className="text-[10px] text-atlas-muted uppercase">Max Incline</div>
-                    <div className="font-bold text-atlas-accent text-sm mt-0.5">3.8°</div>
+
+                  {/* Right Column of Mockup: Route Planner Sidebar Panel */}
+                  <div className="md:col-span-4 p-3 bg-atlas-surface/95 border-t md:border-t-0 md:border-l border-atlas-border flex flex-col justify-between space-y-3 font-mono text-xs">
+                    <div>
+                      <div className="text-[10px] text-atlas-muted uppercase tracking-wider flex items-center space-x-1 pb-1.5 border-b border-atlas-border">
+                        <Compass className="w-3 h-3 text-atlas-accent" />
+                        <span>Route Planner</span>
+                      </div>
+
+                      <div className="text-[9px] text-atlas-muted mt-2">Traverse Sequence (4 Waypoints)</div>
+                      <div className="space-y-1.5 mt-1.5 text-[10px]">
+                        <div className="p-1.5 bg-atlas-elevated border border-atlas-border flex items-center space-x-1.5">
+                          <span className="w-4 h-4 bg-atlas-teal text-white flex items-center justify-center font-bold text-[9px]">S</span>
+                          <span className="truncate text-atlas-text">Octavia E. Butler Site</span>
+                        </div>
+                        <div className="p-1.5 bg-atlas-elevated border border-atlas-border flex items-center space-x-1.5">
+                          <span className="w-4 h-4 bg-atlas-blue text-white flex items-center justify-center font-bold text-[9px]">W1</span>
+                          <span className="truncate text-atlas-text">South Séítah Olivine</span>
+                        </div>
+                        <div className="p-1.5 bg-atlas-elevated border border-atlas-border flex items-center space-x-1.5">
+                          <span className="w-4 h-4 bg-atlas-blue text-white flex items-center justify-center font-bold text-[9px]">W2</span>
+                          <span className="truncate text-atlas-text">Kodiak Butte Delta</span>
+                        </div>
+                        <div className="p-1.5 bg-atlas-elevated border border-atlas-border flex items-center space-x-1.5">
+                          <span className="w-4 h-4 bg-atlas-accent text-white flex items-center justify-center font-bold text-[9px]">D</span>
+                          <span className="truncate text-atlas-text">Delta Scarp Base Camp</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="space-y-2 pt-2 border-t border-atlas-border">
+                      <div className="text-[9px] text-atlas-muted">Target Science Outcrop:</div>
+                      <div className="p-1.5 bg-atlas-elevated border border-atlas-border text-[10px] text-atlas-text font-bold truncate">
+                        Olivine Cumulate Outcrop
+                      </div>
+
+                      <Link
+                        to="/mission?route=demo"
+                        className="w-full py-2 bg-atlas-accent hover:bg-atlas-accent-dark text-white font-bold text-[10px] uppercase text-center block transition-colors shadow-sm"
+                      >
+                        Assess EVA &amp; Mission Score
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* =========================================================================
-          SECTION 2: NASA DATASETS INTEGRATION STRIP
-          ========================================================================= */}
-      <section className="bg-atlas-surface/60 border-b border-atlas-border py-12 px-6 sm:px-10 lg:px-16">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 lg:gap-8 font-mono text-xs">
-            <div className="p-4 bg-atlas-surface border border-atlas-border space-y-1.5">
-              <div className="flex items-center space-x-2 text-atlas-accent">
-                <Database className="w-4 h-4" />
-                <span className="font-bold uppercase tracking-wider text-[11px]">5 NASA Missions</span>
+          {/* Telemetry Status Ribbon (Bottom of Hero - Reference Image 1) */}
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-3 w-full text-left font-mono text-xs">
+            <div className="p-3.5 bg-atlas-surface/85 backdrop-blur-md border border-atlas-border space-y-1 shadow-sm">
+              <div className="text-[10px] text-atlas-muted flex items-center space-x-1 uppercase">
+                <Radio className="w-3 h-3 text-atlas-teal" />
+                <span>5 Missions</span>
               </div>
-              <div className="text-base font-bold text-atlas-text">Integrated PDS</div>
-              <div className="text-[11px] text-atlas-muted">MGS, MRO, Odyssey, MSL, M2020</div>
+              <div className="text-sm font-bold text-atlas-text font-display">Integrated</div>
+              <div className="text-[10px] text-atlas-muted truncate">MGS, MRO, Odyssey, MSL, M2020</div>
             </div>
 
-            <div className="p-4 bg-atlas-surface border border-atlas-border space-y-1.5">
-              <div className="flex items-center space-x-2 text-atlas-teal">
-                <Mountain className="w-4 h-4" />
-                <span className="font-bold uppercase tracking-wider text-[11px]">MOLA MEGDR</span>
+            <div className="p-3.5 bg-atlas-surface/85 backdrop-blur-md border border-atlas-border space-y-1 shadow-sm">
+              <div className="text-[10px] text-atlas-muted flex items-center space-x-1 uppercase">
+                <Mountain className="w-3 h-3 text-atlas-blue" />
+                <span>MOLA MEGDR</span>
               </div>
-              <div className="text-base font-bold text-atlas-text">128 px/deg Grid</div>
-              <div className="text-[11px] text-atlas-muted">Precision laser altimetry datum</div>
+              <div className="text-sm font-bold text-atlas-text font-display">128 px/deg</div>
+              <div className="text-[10px] text-atlas-muted">Laser altimetry areoid grid</div>
             </div>
 
-            <div className="p-4 bg-atlas-surface border border-atlas-border space-y-1.5">
-              <div className="flex items-center space-x-2 text-atlas-amber">
-                <Target className="w-4 h-4" />
-                <span className="font-bold uppercase tracking-wider text-[11px]">Science Targets</span>
+            <div className="p-3.5 bg-atlas-surface/85 backdrop-blur-md border border-atlas-border space-y-1 shadow-sm">
+              <div className="text-[10px] text-atlas-muted flex items-center space-x-1 uppercase">
+                <Target className="w-3 h-3 text-atlas-amber" />
+                <span>Cataloged</span>
               </div>
-              <div className="text-base font-bold text-atlas-text">Cataloged Outcrops</div>
-              <div className="text-[11px] text-atlas-muted">Carbonates, clays, delta scarps</div>
+              <div className="text-sm font-bold text-atlas-text font-display">Science Targets</div>
+              <div className="text-[10px] text-atlas-muted">Clays, carbonates, delta scarps</div>
             </div>
 
-            <div className="p-4 bg-atlas-surface border border-atlas-border space-y-1.5">
-              <div className="flex items-center space-x-2 text-atlas-blue">
-                <Activity className="w-4 h-4" />
-                <span className="font-bold uppercase tracking-wider text-[11px]">Deterministic</span>
+            <div className="p-3.5 bg-atlas-surface/85 backdrop-blur-md border border-atlas-border space-y-1 shadow-sm">
+              <div className="text-[10px] text-atlas-muted flex items-center space-x-1 uppercase">
+                <Shield className="w-3 h-3 text-atlas-accent" />
+                <span>Deterministic</span>
               </div>
-              <div className="text-base font-bold text-atlas-text">EVA Safety Margins</div>
-              <div className="text-[11px] text-atlas-muted">Metabolic &amp; slope boundaries</div>
+              <div className="text-sm font-bold text-atlas-text font-display">EVA Safety Margins</div>
+              <div className="text-[10px] text-atlas-muted">Metabolic &amp; slope boundaries</div>
             </div>
 
-            <div className="p-4 bg-atlas-surface border border-atlas-border space-y-1.5 col-span-2 sm:col-span-1">
-              <div className="flex items-center space-x-2 text-atlas-teal">
-                <Shield className="w-4 h-4" />
-                <span className="font-bold uppercase tracking-wider text-[11px]">100% Verified</span>
+            <div className="p-3.5 bg-atlas-surface/85 backdrop-blur-md border border-atlas-border space-y-1 shadow-sm col-span-2 md:col-span-1">
+              <div className="text-[10px] text-atlas-muted flex items-center space-x-1 uppercase">
+                <FileCheck className="w-3 h-3 text-atlas-teal" />
+                <span>100% Verified</span>
               </div>
-              <div className="text-base font-bold text-atlas-text">Audit Provenance</div>
-              <div className="text-[11px] text-atlas-muted">Cryptographic event ledger</div>
+              <div className="text-sm font-bold text-atlas-text font-display">Audit &amp; Provenance</div>
+              <div className="text-[10px] text-atlas-muted">Cryptographic event ledger</div>
             </div>
           </div>
         </div>
