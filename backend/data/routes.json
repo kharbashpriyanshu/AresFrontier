@@ -10436,5 +10436,88 @@
     "maxSlopeDegrees": 0.93,
     "overallDifficulty": "low",
     "createdAt": "2026-11-14T13:08:44.063Z"
+  },
+  {
+    "id": "route-demo-9740aa",
+    "name": "SIMULATED Demo Nominal Jezero Traverse",
+    "points": [
+      {
+        "id": "route-demo-9740aa-pt-1",
+        "coordinate": {
+          "latitude": 18.38,
+          "longitude": 77.58
+        },
+        "type": "start",
+        "label": "Demo Base",
+        "elevationM": -2560
+      },
+      {
+        "id": "route-demo-9740aa-pt-2",
+        "coordinate": {
+          "latitude": 18.41,
+          "longitude": 77.61
+        },
+        "type": "science",
+        "label": "Delta Target",
+        "elevationM": -2515
+      },
+      {
+        "id": "route-demo-9740aa-pt-3",
+        "coordinate": {
+          "latitude": 18.44,
+          "longitude": 77.63
+        },
+        "type": "destination",
+        "label": "Outcrop Station",
+        "elevationM": -2480
+      }
+    ],
+    "segments": [
+      {
+        "id": "route-demo-9740aa-seg-1",
+        "start": {
+          "latitude": 18.38,
+          "longitude": 77.58
+        },
+        "end": {
+          "latitude": 18.44,
+          "longitude": 77.63
+        },
+        "distanceKm": 1.85,
+        "elevationGainM": 80,
+        "elevationLossM": 12,
+        "averageSlopeDegrees": 5.46,
+        "difficulty": "low",
+        "estimatedMinutes": 95,
+        "hazards": []
+      }
+    ],
+    "totalDistanceKm": 1.85,
+    "estimatedDurationMinutes": 95,
+    "elevationProfile": [
+      {
+        "distanceKm": 0,
+        "elevationM": -2560,
+        "slopeDegrees": 4.2,
+        "coordinate": {
+          "latitude": 18.38,
+          "longitude": 77.58
+        }
+      },
+      {
+        "distanceKm": 1.85,
+        "elevationM": -2480,
+        "slopeDegrees": 7.8,
+        "coordinate": {
+          "latitude": 18.44,
+          "longitude": 77.63
+        }
+      }
+    ],
+    "elevationGainM": 80,
+    "elevationLossM": 12,
+    "maxSlopeDegrees": 7.8,
+    "overallDifficulty": "low",
+    "createdAt": "2026-11-14T15:55:54.581Z"
   }
 ]

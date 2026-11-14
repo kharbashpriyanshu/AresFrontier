@@ -4440,5 +4440,167 @@
       "reason": "Slope gradient exceeds rover 20° stability ceiling. Automated safety pause engaged.",
       "proposedRoute": "Low-Hazard Valley Corridor"
     }
+  },
+  {
+    "eventId": "evt-1794671701590-8d70b1",
+    "blockHeight": 246,
+    "timestamp": "2026-11-14T15:55:01.591Z",
+    "userId": "astro-default-command",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "plan-1794671701590",
+    "planVersion": 1,
+    "previousHash": "b4a8eb025a55859edc20a8716d84ab76252b0b7ecc258b73f2836eba6a803da4",
+    "integrityHash": "7ef79ddcb0fbd117559a83f50cfe02ccba91c29d25ef7ab029dea98323e55c0d",
+    "details": {
+      "start": {
+        "latitude": 18.4447,
+        "longitude": 77.4508
+      },
+      "dest": {
+        "latitude": 18.44,
+        "longitude": 77.395
+      },
+      "candidateCount": 4,
+      "paretoCount": 1
+    }
+  },
+  {
+    "eventId": "evt-1794671701630-7a9fdf",
+    "blockHeight": 247,
+    "timestamp": "2026-11-14T15:55:01.630Z",
+    "userId": "astro-default-command",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "plan-1794671701630",
+    "planVersion": 1,
+    "previousHash": "7ef79ddcb0fbd117559a83f50cfe02ccba91c29d25ef7ab029dea98323e55c0d",
+    "integrityHash": "5bd72be2b87af78cd5f49dbe41e2716ce7310b4f1c0d6cf5321f0060ec50e270",
+    "details": {
+      "start": {
+        "latitude": 18.4447,
+        "longitude": 77.4508
+      },
+      "dest": {
+        "latitude": 18.44,
+        "longitude": 77.395
+      },
+      "candidateCount": 4,
+      "paretoCount": 1
+    }
+  },
+  {
+    "eventId": "evt-1794671721830-8dc71c",
+    "blockHeight": 248,
+    "timestamp": "2026-11-14T15:55:21.830Z",
+    "userId": "astro-default-command",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "plan-1794671721830",
+    "planVersion": 1,
+    "previousHash": "5bd72be2b87af78cd5f49dbe41e2716ce7310b4f1c0d6cf5321f0060ec50e270",
+    "integrityHash": "43876a6d5ec9a74bb74e26b892fc3c6cc0ef5476271bec91e2d7de5bb4a19bbb",
+    "details": {
+      "start": {
+        "latitude": 18.4447,
+        "longitude": 77.4508
+      },
+      "dest": {
+        "latitude": 18.44,
+        "longitude": 77.395
+      },
+      "candidateCount": 4,
+      "paretoCount": 1
+    }
+  },
+  {
+    "eventId": "evt-1794671754664-aff777",
+    "blockHeight": 249,
+    "timestamp": "2026-11-14T15:55:54.664Z",
+    "userId": "SIMULATED_SCIENCE_LEAD",
+    "role": "SCIENCE_OFFICER",
+    "action": "MODIFY_PRIORITIES",
+    "missionPlanId": "DEMO-NOMINAL-9740AA",
+    "planVersion": 1,
+    "previousHash": "43876a6d5ec9a74bb74e26b892fc3c6cc0ef5476271bec91e2d7de5bb4a19bbb",
+    "integrityHash": "03fb292e40c9990e2681363fbe385ad312ba6fac9644fc942379b46ac1dc4c21",
+    "details": {
+      "subAction": "SCIENCE_TARGET_ASSIGNED",
+      "decisionId": "scidec-212658f0",
+      "targetId": "tgt-kodiak-butte",
+      "targetName": "Kodiak Butte Delta Remnant",
+      "missionId": "DEMO-NOMINAL-9740AA",
+      "objectiveId": "ANCIENT_WATER_ACTIVITY",
+      "evidenceStatus": "verified_in_situ",
+      "rationale": "SIMULATED demo selection of Kodiak Butte Delta Remnant for Jezero Delta sampling."
+    }
+  },
+  {
+    "eventId": "evt-1794671754844-bb0088",
+    "blockHeight": 250,
+    "timestamp": "2026-11-14T15:55:54.845Z",
+    "userId": "MISSION_COMMAND",
+    "role": "MISSION_COMMAND",
+    "action": "MODIFY_PRIORITIES",
+    "missionPlanId": "DEMO-NOMINAL-9740AA",
+    "planVersion": 1,
+    "previousHash": "03fb292e40c9990e2681363fbe385ad312ba6fac9644fc942379b46ac1dc4c21",
+    "integrityHash": "85f8f86f909786d04ea4b9eecc4d13268eaef1afa6076656b0a7a59f6a7c003b",
+    "details": {
+      "evaTransition": "START",
+      "evaSessionId": "eva-1794671754772-tfd6",
+      "prevStatus": "PLANNED",
+      "nextStatus": "ACTIVE"
+    }
+  },
+  {
+    "eventId": "evt-1794671754932-13574b",
+    "blockHeight": 251,
+    "timestamp": "2026-11-14T15:55:54.932Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "DEMO-NOMINAL-9740AA",
+    "planVersion": 1,
+    "previousHash": "85f8f86f909786d04ea4b9eecc4d13268eaef1afa6076656b0a7a59f6a7c003b",
+    "integrityHash": "a73e5cbc73bc6bafcae7fe3806cc59f03817bffd72f1c0fbc6f6de8cacc9de48",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T15:55:54.918Z"
+    }
+  },
+  {
+    "eventId": "evt-1794671755046-6e7658",
+    "blockHeight": 252,
+    "timestamp": "2026-11-14T15:55:55.046Z",
+    "userId": "MISSION_COMMAND",
+    "role": "MISSION_COMMAND",
+    "action": "MODIFY_PRIORITIES",
+    "missionPlanId": "DEMO-NOMINAL-9740AA",
+    "planVersion": 1,
+    "previousHash": "a73e5cbc73bc6bafcae7fe3806cc59f03817bffd72f1c0fbc6f6de8cacc9de48",
+    "integrityHash": "e53c1122b5470423169b89e5ea189a76fa5e92e7ba4407d2b0254e301afb99ff",
+    "details": {
+      "evaTransition": "COMPLETE",
+      "evaSessionId": "eva-1794671754772-tfd6",
+      "prevStatus": "ACTIVE",
+      "nextStatus": "COMPLETED"
+    }
+  },
+  {
+    "eventId": "evt-1794671755087-17e6a7",
+    "blockHeight": 253,
+    "timestamp": "2026-11-14T15:55:55.087Z",
+    "userId": "SYSTEM_SYNC",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "DEMO-NOMINAL-9740AA",
+    "planVersion": 1,
+    "previousHash": "e53c1122b5470423169b89e5ea189a76fa5e92e7ba4407d2b0254e301afb99ff",
+    "integrityHash": "c7add2ab632d90095e1fb5afacc356060a2d01824293da598ea59da78432787d",
+    "details": {
+      "domainUpdated": "fleet",
+      "timestamp": "2026-11-14T15:55:55.086Z"
+    }
   }
 ]

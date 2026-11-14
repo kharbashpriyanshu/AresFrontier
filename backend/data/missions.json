@@ -1056,5 +1056,45 @@
     "isDemo": false,
     "createdAt": "2026-11-14T13:20:49.697Z",
     "updatedAt": "2026-11-14T13:20:49.697Z"
+  },
+  {
+    "id": "DEMO-NOMINAL-9740AA",
+    "name": "SIMULATED Nominal Demo (DEMO-NOMINAL-9740AA)",
+    "description": "Deterministic NOMINAL_EXPLORATION judging demonstration (seed 20261112).",
+    "objectiveId": "ANCIENT_WATER_ACTIVITY",
+    "status": "APPROVED",
+    "routeId": "route-demo-9740aa",
+    "parameters": {
+      "routeId": "route-demo-9740aa",
+      "maxDurationMinutes": 180,
+      "startCoordinate": {
+        "latitude": 18.38,
+        "longitude": 77.58
+      },
+      "destinationCoordinate": {
+        "latitude": 18.44,
+        "longitude": 77.63
+      },
+      "returnRequired": true,
+      "evaSuitType": "exploration-mark-1",
+      "astronautSkillLevel": "expert"
+    },
+    "evaAssessment": {
+      "estimatedDurationMinutes": 75,
+      "totalDistanceKm": 1.85,
+      "terrainDifficulty": "low",
+      "returnMarginMinutes": 65,
+      "feasible": true,
+      "warnings": [
+        "SIMULATED judging demonstration mission — isolated from user missions."
+      ],
+      "oxygenReserveRemainingPercent": 68,
+      "recommendations": [
+        "Maintain rover relay line-of-sight throughout traverse."
+      ]
+    },
+    "isDemo": true,
+    "createdAt": "2026-11-14T15:55:54.619Z",
+    "updatedAt": "2026-11-14T15:55:54.703Z"
   }
 ]

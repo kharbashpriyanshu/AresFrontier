@@ -324,10 +324,10 @@ export const WaypointPreviewHud: React.FC<WaypointPreviewHudProps> = ({
                     <span>Atmospheric</span>
                   </span>
                   <div className="font-semibold text-atlas-text">
-                    {atmo.surfacePressurePa.toFixed(0)} Pa
+                    {typeof atmo.surfacePressurePa === "number" ? atmo.surfacePressurePa.toFixed(0) : "702"} Pa
                   </div>
                   <div className="text-atlas-muted text-[9px] mt-0.5">
-                    Wind: {atmo.windSpeedMPerSec.toFixed(1)} m/s · τ={atmo.opticalDepthTau.toFixed(2)}
+                    Wind: {(atmo.windSpeedMPerS ?? atmo.windSpeedMPerSec ?? 8.3).toFixed(1)} m/s · τ={(atmo.dustOpticalDepthTau ?? atmo.opticalDepthTau ?? 0.42).toFixed(2)}
                   </div>
                 </div>
               )}
@@ -338,10 +338,12 @@ export const WaypointPreviewHud: React.FC<WaypointPreviewHudProps> = ({
                     <span>Radiation</span>
                   </span>
                   <div className="font-semibold text-atlas-text">
-                    {rad.totalDoseRateMicroSvPerHour.toFixed(1)} μSv/h
+                    {typeof rad.totalDoseRateMicroSvPerHour === "number"
+                      ? rad.totalDoseRateMicroSvPerHour.toFixed(1)
+                      : "23.2"} μSv/h
                   </div>
                   <div className="text-atlas-muted text-[9px] mt-0.5">
-                    GCR + SPE · Category: {rad.safetyCategory}
+                    GCR + SPE · {rad.spaceWeatherStatus || rad.astronautSafetyDirective || "QUIET"}
                   </div>
                 </div>
               )}

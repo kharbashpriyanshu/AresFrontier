@@ -94,5 +94,21 @@
     "createdAt": "2026-11-14T09:38:30.642Z",
     "auditBlockHash": "c6161887481148153448360451faa11d1e8273e5f443ba612561a97a426425cb",
     "eventId": "mevt-1794649110645-9-8lmu"
+  },
+  {
+    "id": "scidec-212658f0",
+    "targetId": "tgt-kodiak-butte",
+    "targetName": "Kodiak Butte Delta Remnant",
+    "region": "Jezero Crater",
+    "missionId": "DEMO-NOMINAL-9740AA",
+    "objectiveId": "ANCIENT_WATER_ACTIVITY",
+    "rationale": "SIMULATED demo selection of Kodiak Butte Delta Remnant for Jezero Delta sampling.",
+    "actor": "SIMULATED_SCIENCE_LEAD",
+    "provenanceClassification": "BENCHMARK",
+    "evidenceStatus": "verified_in_situ",
+    "dataSource": "NASA Perseverance Rover Mastcam-Z Long Distance Imaging & CRISM",
+    "createdAt": "2026-11-14T15:55:54.664Z",
+    "auditBlockHash": "03fb292e40c9990e2681363fbe385ad312ba6fac9644fc942379b46ac1dc4c21",
+    "eventId": "mevt-1794671754668-30-o3ot"
   }
 ]

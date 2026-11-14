@@ -238,8 +238,15 @@ export class UnifiedScienceLayerService {
         regolithSinkagePotentialCm: micro.looseRegolithEntrapment.estimatedWheelOrBootSinkageCm,
         entrapmentRiskLevel: micro.looseRegolithEntrapment.entrapmentRiskLevel,
       },
-      atmospheric: atmo,
-      radiation: rad,
+      atmospheric: {
+        ...atmo,
+        windSpeedMPerSec: atmo.windSpeedMPerS,
+        opticalDepthTau: atmo.dustOpticalDepthTau,
+      } as any,
+      radiation: {
+        ...rad,
+        safetyCategory: rad.spaceWeatherStatus,
+      } as any,
       alignment: align,
       uncertainty: uncert,
       retrievedAt: new Date().toISOString(),
