@@ -1326,5 +1326,21 @@ export interface MissionReportData {
   };
 }
 
+export interface FlyoverCameraState {
+  isActive: boolean;
+  latitude: number;
+  longitude: number;
+  zoom: number;
+  pitchDeg: number;
+  altitudeM: number;
+  phase: "ORBITAL_RECON" | "DESCENT_CORRIDOR" | "WAYPOINT_INGRESS" | "LOW_PASS";
+  targetName?: string;
+  targetMepag?: string;
+  stratigraphicUnit?: string;
+  elevationMola?: number;
+  headingDeg: number;
+  annotation?: string;
+}
+
 
 

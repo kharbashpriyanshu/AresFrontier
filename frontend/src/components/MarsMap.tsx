@@ -8,6 +8,7 @@ import {
   RouteSegment,
   SystemPipelineStatus,
   Hazard,
+  FlyoverCameraState,
 } from "../types/index.js";
 import { formatMarsCoordinate } from "../utils/marsCoordinates.js";
 import { getMepagGoalForCategory } from "../utils/mepag.js";
@@ -49,6 +50,7 @@ interface MarsMapProps {
   } | null;
   showMolaHeatmap?: boolean;
   showCrismOverlay?: boolean;
+  flyoverCamera?: FlyoverCameraState | null;
 }
 
 export type MarsLayerType = "viking" | "mola" | "shaded";
@@ -74,6 +76,7 @@ export const MarsMap: React.FC<MarsMapProps> = ({
   ingestedM20Traverse = null,
   showMolaHeatmap = false,
   showCrismOverlay = false,
+  flyoverCamera = null,
 }) => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
@@ -210,6 +213,29 @@ export const MarsMap: React.FC<MarsMapProps> = ({
     if (!map || !focusCoord) return;
     map.setView([focusCoord.latitude, focusCoord.longitude], Math.max(map.getZoom(), 7), { animate: false });
   }, [focusCoord]);
+
+  // Smooth camera flyTo tracking during 2.5D Orbit-to-Ground Flyover
+  const lastFlyoverCoordRef = useRef<{ lat: number; lon: number; zoom: number } | null>(null);
+  useEffect(() => {
+    const map = mapInstanceRef.current;
+    if (!map || !flyoverCamera?.isActive) return;
+
+    const { latitude, longitude, zoom } = flyoverCamera;
+    const last = lastFlyoverCoordRef.current;
+    if (
+      !last ||
+      Math.abs(last.lat - latitude) > 0.0004 ||
+      Math.abs(last.lon - longitude) > 0.0004 ||
+      last.zoom !== zoom
+    ) {
+      lastFlyoverCoordRef.current = { lat: latitude, lon: longitude, zoom };
+      map.flyTo([latitude, longitude], zoom, {
+        duration: 1.4,
+        easeLinearity: 0.3,
+        noMoveStart: true,
+      });
+    }
+  }, [flyoverCamera]);
 
   // Update Tile Layer
   useEffect(() => {
@@ -775,7 +801,17 @@ export const MarsMap: React.FC<MarsMapProps> = ({
   return (
     <div className="relative w-full h-full bg-atlas-bg overflow-hidden select-none">
       {/* Leaflet DOM Root */}
-      <div ref={mapContainerRef} className="w-full h-full z-0 bg-[#161210]" />
+      <div
+        ref={mapContainerRef}
+        className="w-full h-full z-0 bg-[#161210]"
+        style={{
+          transform: flyoverCamera?.isActive
+            ? "perspective(1200px) rotateX(25deg) translateY(-14px) scale(1.05)"
+            : "none",
+          transformOrigin: "50% 85%",
+          transition: "transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
+        }}
+      />
 
       {/* Crosshair Center Reticle */}
       <div className="absolute inset-0 pointer-events-none flex items-center justify-center z-10 opacity-30">
@@ -783,6 +819,98 @@ export const MarsMap: React.FC<MarsMapProps> = ({
           <div className="w-2 h-2 bg-atlas-accent" />
         </div>
       </div>
+
+      {/* 2.5D Orbit-to-Ground Reconnaissance HUD Overlay */}
+      {flyoverCamera?.isActive && (
+        <div className="absolute inset-0 pointer-events-none z-30 flex flex-col justify-between p-4 font-mono select-none">
+          {/* Top Aerospace Flight Deck Bar */}
+          <div className="flex items-center justify-between">
+            <div className="bg-atlas-surface/95 border border-atlas-accent/50 px-3 py-1.5 backdrop-blur-md shadow-2xl flex items-center space-x-2 text-xs">
+              <span className="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping" />
+              <span className="font-bold text-atlas-accent uppercase tracking-wider">
+                ● REC [2.5D ORBIT-TO-GROUND FLYOVER]
+              </span>
+              <span className="text-[10px] text-atlas-muted border-l border-atlas-border pl-2">
+                MRO / HiRISE DTM 25cm SYNTHESIS
+              </span>
+            </div>
+
+            <div className="bg-atlas-surface/95 border border-atlas-border px-3 py-1.5 backdrop-blur-md shadow-2xl flex items-center space-x-3 text-xs text-atlas-text">
+              <span className="flex items-center space-x-1">
+                <span className="text-atlas-muted">PHASE:</span>
+                <span className="font-bold text-atlas-teal">{flyoverCamera.phase.replace("_", " ")}</span>
+              </span>
+              <span className="border-l border-atlas-border pl-3 flex items-center space-x-1">
+                <span className="text-atlas-muted">RADAR ALT:</span>
+                <span className="font-bold text-atlas-accent">
+                  {flyoverCamera.altitudeM >= 1000
+                    ? `${(flyoverCamera.altitudeM / 1000).toFixed(1)} km`
+                    : `${flyoverCamera.altitudeM} m`}
+                </span>
+              </span>
+              <span className="border-l border-atlas-border pl-3 flex items-center space-x-1">
+                <span className="text-atlas-muted">PITCH:</span>
+                <span className="font-bold text-atlas-amber">{flyoverCamera.pitchDeg}°</span>
+              </span>
+            </div>
+          </div>
+
+          {/* Center Flight Reticle & Pitch Crosshairs */}
+          <div className="relative flex-1 flex items-center justify-center">
+            {/* Corner Framing Brackets */}
+            <div className="w-52 h-40 border border-dashed border-atlas-accent/30 relative flex items-center justify-center">
+              <div className="absolute -top-1 -left-1 w-3 h-3 border-t-2 border-l-2 border-atlas-accent" />
+              <div className="absolute -top-1 -right-1 w-3 h-3 border-t-2 border-r-2 border-atlas-accent" />
+              <div className="absolute -bottom-1 -left-1 w-3 h-3 border-b-2 border-l-2 border-atlas-accent" />
+              <div className="absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 border-atlas-accent" />
+
+              {/* Pitch Ladder Indicators */}
+              <div className="w-full flex flex-col items-center space-y-3 opacity-60">
+                <div className="w-24 border-t border-atlas-teal flex justify-between text-[8px] text-atlas-teal px-0.5">
+                  <span>-20°</span><span>-20°</span>
+                </div>
+                <div className="w-36 border-t-2 border-atlas-accent flex justify-between text-[9px] text-atlas-accent font-bold px-1">
+                  <span>{flyoverCamera.pitchDeg}° CAM</span><span>{flyoverCamera.pitchDeg}° CAM</span>
+                </div>
+                <div className="w-24 border-t border-atlas-teal flex justify-between text-[8px] text-atlas-teal px-0.5">
+                  <span>-40°</span><span>-40°</span>
+                </div>
+              </div>
+
+              {/* Center Crosshair */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div className="w-3 h-3 border border-atlas-accent rounded-full flex items-center justify-center">
+                  <div className="w-1 h-1 bg-atlas-accent" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Target Banner & Flight Vector */}
+          <div className="flex items-center justify-between">
+            <div className="bg-atlas-surface/95 border border-atlas-border px-3 py-2 backdrop-blur-md shadow-2xl flex items-center space-x-3 text-xs max-w-xl">
+              <div className="flex items-center space-x-1.5 text-atlas-accent font-bold">
+                <Navigation className="w-3.5 h-3.5" />
+                <span>WAYPOINT: {flyoverCamera.targetName || "Target Outcrop"}</span>
+              </div>
+              <span className="text-atlas-muted border-l border-atlas-border pl-3 text-[11px]">
+                {flyoverCamera.annotation || "Reconnaissance trajectory"}
+              </span>
+            </div>
+
+            <div className="bg-atlas-surface/95 border border-atlas-border px-3 py-2 backdrop-blur-md shadow-2xl flex items-center space-x-4 text-xs font-mono">
+              <div className="flex items-center space-x-1">
+                <span className="text-atlas-muted">HDG:</span>
+                <span className="font-bold text-atlas-text">{flyoverCamera.headingDeg}°</span>
+              </div>
+              <div className="border-l border-atlas-border pl-3 flex items-center space-x-1">
+                <span className="text-atlas-muted">MOLA DATUM:</span>
+                <span className="font-bold text-atlas-teal">{flyoverCamera.elevationMola || -2530} m</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Picking Waypoint Banner */}
       {isPickingRoutePoint && (

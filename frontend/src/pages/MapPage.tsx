@@ -12,6 +12,7 @@ import {
   ScienceObjective,
   ScienceObjectiveId,
   RouteCandidate,
+  FlyoverCameraState,
 } from "../types/index.js";
 import { MarsMap } from "../components/MarsMap.js";
 import { LocationExplorer } from "../components/LocationExplorer.js";
@@ -46,6 +47,7 @@ import {
   ArrowRight,
   Gauge,
   Sun,
+  Video,
 } from "lucide-react";
 
 export const MapPage: React.FC = () => {
@@ -105,6 +107,8 @@ export const MapPage: React.FC = () => {
   const [showNarrative, setShowNarrative] = useState<boolean>(false);
   const [showEvaPlayback, setShowEvaPlayback] = useState<boolean>(false);
   const [isEvaPlaying, setIsEvaPlaying] = useState<boolean>(false);
+  const [flyoverCamera, setFlyoverCamera] = useState<FlyoverCameraState | null>(null);
+  const [evaInitialFlyover, setEvaInitialFlyover] = useState<boolean>(false);
   const [showBriefingModal, setShowBriefingModal] = useState<boolean>(false);
   const [showMolaHeatmap, setShowMolaHeatmap] = useState<boolean>(false);
   const [showCrismOverlay, setShowCrismOverlay] = useState<boolean>(false);
@@ -521,6 +525,7 @@ export const MapPage: React.FC = () => {
           ingestedM20Traverse={ingestedM20Traverse}
           showMolaHeatmap={showMolaHeatmap}
           showCrismOverlay={showCrismOverlay}
+          flyoverCamera={flyoverCamera}
         />
 
         {/* Unified Flight Deck & Tactical Operations Command Bar (Single Stacked Container - Zero Overlap) */}
@@ -656,9 +661,12 @@ export const MapPage: React.FC = () => {
 
             {/* Group C: Mission Operations, Recon & Playback */}
             <button
-              onClick={() => setShowEvaPlayback((v) => !v)}
+              onClick={() => {
+                setEvaInitialFlyover(false);
+                setShowEvaPlayback((v) => !v);
+              }}
               className={`px-2 py-1 flex items-center space-x-1.5 border transition-all ${
-                showEvaPlayback
+                showEvaPlayback && !evaInitialFlyover
                   ? "bg-atlas-elevated text-atlas-teal border-atlas-teal font-bold shadow-sm"
                   : "bg-atlas-bg/60 border-atlas-border/80 text-atlas-muted hover:text-atlas-text hover:bg-atlas-elevated"
               }`}
@@ -666,6 +674,30 @@ export const MapPage: React.FC = () => {
             >
               <Play className="w-3.5 h-3.5 text-atlas-teal" />
               <span>EVA Playback</span>
+            </button>
+
+            <button
+              onClick={() => {
+                if (showEvaPlayback && evaInitialFlyover) {
+                  setShowEvaPlayback(false);
+                  setIsEvaPlaying(false);
+                  setEvaInitialFlyover(false);
+                  setFlyoverCamera(null);
+                } else {
+                  setEvaInitialFlyover(true);
+                  setShowEvaPlayback(true);
+                  setIsEvaPlaying(true);
+                }
+              }}
+              className={`px-2 py-1 flex items-center space-x-1.5 border transition-all ${
+                showEvaPlayback && evaInitialFlyover
+                  ? "bg-atlas-elevated text-atlas-accent border-atlas-accent font-bold shadow-sm"
+                  : "bg-atlas-bg/60 border-atlas-border/80 text-atlas-muted hover:text-atlas-text hover:bg-atlas-elevated"
+              }`}
+              title="Launch Simulated 2.5D Orbit-to-Ground Route Flyover (NASA Challenge Resource 3)"
+            >
+              <Video className="w-3.5 h-3.5 text-atlas-accent" />
+              <span>2.5D Flyover</span>
             </button>
 
             <button
@@ -762,9 +794,13 @@ export const MapPage: React.FC = () => {
               isPlaying={isEvaPlaying}
               onTogglePlay={() => setIsEvaPlaying((v) => !v)}
               onComplete={() => setIsEvaPlaying(false)}
+              initialFlyoverMode={evaInitialFlyover}
+              onFlyoverUpdate={setFlyoverCamera}
               onClose={() => {
                 setShowEvaPlayback(false);
                 setIsEvaPlaying(false);
+                setEvaInitialFlyover(false);
+                setFlyoverCamera(null);
               }}
             />
           </div>
@@ -869,6 +905,11 @@ export const MapPage: React.FC = () => {
           onGenerateRoute={handleGenerateRoute}
           onInspectMission={handleInspectMission}
           onOpenBriefingDossier={() => setShowBriefingModal(true)}
+          onLaunchFlyover={() => {
+            setEvaInitialFlyover(true);
+            setShowEvaPlayback(true);
+            setIsEvaPlaying(true);
+          }}
           onTogglePickMode={setIsPickingOnMap}
           isPickingOnMap={isPickingOnMap}
           clickedCoord={clickedCoord}

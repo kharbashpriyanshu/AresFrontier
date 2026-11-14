@@ -25,6 +25,7 @@ import {
   Wind,
   AlertTriangle,
   FileText,
+  Video,
 } from "lucide-react";
 
 interface RoutePlannerProps {
@@ -35,6 +36,7 @@ interface RoutePlannerProps {
   onGenerateRoute: (points: RoutePoint[]) => Promise<void>;
   onInspectMission: (route: MarsRoute) => void;
   onOpenBriefingDossier?: () => void;
+  onLaunchFlyover?: () => void;
   onTogglePickMode: (isPicking: boolean) => void;
   isPickingOnMap: boolean;
   clickedCoord: MarsCoordinate | null;
@@ -59,6 +61,7 @@ export const RoutePlanner: React.FC<RoutePlannerProps> = ({
   onGenerateRoute,
   onInspectMission,
   onOpenBriefingDossier,
+  onLaunchFlyover,
   onTogglePickMode,
   isPickingOnMap,
   onHoverProfilePoint,
@@ -605,6 +608,17 @@ export const RoutePlanner: React.FC<RoutePlannerProps> = ({
                 >
                   <FileText className="w-3.5 h-3.5 text-atlas-teal" />
                   <span>Export Mission Briefing (PDF)</span>
+                </button>
+              )}
+
+              {onLaunchFlyover && (
+                <button
+                  onClick={onLaunchFlyover}
+                  className="w-full py-2.5 bg-atlas-elevated hover:bg-atlas-surface text-atlas-text border border-atlas-border hover:border-atlas-accent font-bold flex items-center justify-center space-x-2 text-xs transition-all shadow-sm"
+                  title="Simulate 2.5D Orbit-to-Ground Route Flyover"
+                >
+                  <Video className="w-3.5 h-3.5 text-atlas-accent" />
+                  <span>Simulate 2.5D Flyover</span>
                 </button>
               )}
             </div>
