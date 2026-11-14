@@ -14,6 +14,7 @@ import {
   CheckCircle,
   FileCheck,
   Compass,
+  Sparkles,
 } from "lucide-react";
 
 export const LandingPage: React.FC = () => {
@@ -83,23 +84,40 @@ export const LandingPage: React.FC = () => {
                 for realistic Mars operations.
               </p>
 
-              {/* Action Buttons (Strict 0px Corners) */}
-              <div className="flex flex-wrap items-center gap-4 pt-2 font-sans">
+              {/* Action Buttons */}
+              <div className="flex flex-wrap items-center gap-3 pt-2 font-sans">
                 <Link
-                  to="/map?demo=marswalk-001"
+                  to="/map?demo=marswalk-001&tour=true"
                   className="px-6 py-3.5 bg-atlas-accent hover:bg-atlas-accent-dark text-white font-bold text-xs uppercase tracking-wider flex items-center space-x-2 shadow-lg shadow-atlas-accent/25 transition-all border border-transparent"
                 >
-                  <span>Plan a Mars Mission</span>
+                  <Sparkles className="w-4 h-4" />
+                  <span>Launch Guided Marswalk Tour</span>
                   <ArrowRight className="w-4 h-4 ml-1" />
                 </Link>
 
                 <Link
                   to="/map"
-                  className="px-6 py-3.5 bg-atlas-surface/85 hover:bg-atlas-elevated text-atlas-text border border-atlas-border font-bold text-xs uppercase tracking-wider flex items-center space-x-2 backdrop-blur-md transition-colors shadow-sm"
+                  className="px-5 py-3.5 bg-atlas-surface/85 hover:bg-atlas-elevated text-atlas-text border border-atlas-border font-bold text-xs uppercase tracking-wider flex items-center space-x-2 backdrop-blur-md transition-colors shadow-sm"
                 >
                   <Compass className="w-4 h-4 text-atlas-teal" />
-                  <span>Explore the Platform</span>
+                  <span>Open Interactive Map</span>
                 </Link>
+              </div>
+
+              {/* NASA Challenge Feature Badges */}
+              <div className="flex flex-wrap gap-1.5 pt-2 font-mono text-[10px]">
+                <span className="px-2 py-1 bg-atlas-surface/80 border border-atlas-border text-atlas-text">
+                  ✓ A* Hazard Detour
+                </span>
+                <span className="px-2 py-1 bg-atlas-surface/80 border border-atlas-border text-atlas-teal">
+                  ✓ 0.38g Tobler Gait & Playback
+                </span>
+                <span className="px-2 py-1 bg-atlas-surface/80 border border-atlas-border text-atlas-amber">
+                  ✓ MOLA & CRISM Overlays
+                </span>
+                <span className="px-2 py-1 bg-atlas-surface/80 border border-atlas-border text-purple-300">
+                  ✓ Multi-Orbiter Comms Windows
+                </span>
               </div>
             </div>
 

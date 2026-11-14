@@ -316,6 +316,10 @@ export const MapPage: React.FC = () => {
 
     if (searchParams.get("demo") === "marswalk-001") {
       loadDemoMarswalk(locations, scienceTargets);
+      if (searchParams.get("tour") === "true") {
+        setShowGuidedTour(true);
+        handleTourStepChange(0);
+      }
     }
   }, [isLoading, searchParams, locations, scienceTargets, handleAddScienceStop, loadDemoMarswalk]);
 
