@@ -57,10 +57,14 @@ export const EnvironmentalDashboard: React.FC<EnvironmentalDashboardProps> = ({
     };
   }, [coordinate.latitude, coordinate.longitude, sol, hour]);
 
-  const kToC = (k: number) => (k - 273.15).toFixed(1);
+  const safeFixed = (val: any, decimals: number = 1, fallback: string = "0.0") =>
+    typeof val === "number" && !isNaN(val) ? val.toFixed(decimals) : fallback;
+
+  const kToC = (k: any) =>
+    typeof k === "number" && !isNaN(k) ? (k - 273.15).toFixed(1) : "--";
 
   return (
-    <div className="absolute top-16 right-4 z-30 w-96 max-w-[calc(100vw-2rem)] bg-atlas-surface/95 border border-atlas-border backdrop-blur-md shadow-2xl p-4 font-mono text-xs text-atlas-text flex flex-col space-y-3 pointer-events-auto">
+    <div className="absolute top-24 right-4 z-40 w-96 max-w-[calc(100vw-2rem)] bg-atlas-surface/95 border border-atlas-border backdrop-blur-md shadow-2xl p-4 font-mono text-xs text-atlas-text flex flex-col space-y-3 pointer-events-auto">
       {/* Header */}
       <div className="flex items-center justify-between border-b border-atlas-border pb-2">
         <div className="flex items-center space-x-2">
@@ -161,7 +165,7 @@ export const EnvironmentalDashboard: React.FC<EnvironmentalDashboardProps> = ({
               <div className="bg-atlas-surface p-2 border border-atlas-border">
                 <span className="text-[10px] text-atlas-muted block">Air Temp (1.5m):</span>
                 <span className="font-bold text-sm text-atlas-text">
-                  {atmoData.airTemperatureK.toFixed(1)} K
+                  {safeFixed(atmoData.airTemperatureK, 1)} K
                 </span>
                 <span className="text-[10px] text-atlas-muted ml-1.5">
                   ({kToC(atmoData.airTemperatureK)}°C)
@@ -170,7 +174,7 @@ export const EnvironmentalDashboard: React.FC<EnvironmentalDashboardProps> = ({
               <div className="bg-atlas-surface p-2 border border-atlas-border">
                 <span className="text-[10px] text-atlas-muted block">Ground Temp:</span>
                 <span className="font-bold text-sm text-amber-400">
-                  {atmoData.groundTemperatureK.toFixed(1)} K
+                  {safeFixed(atmoData.groundTemperatureK, 1)} K
                 </span>
                 <span className="text-[10px] text-atlas-muted ml-1.5">
                   ({kToC(atmoData.groundTemperatureK)}°C)
@@ -182,19 +186,19 @@ export const EnvironmentalDashboard: React.FC<EnvironmentalDashboardProps> = ({
               <div className="bg-atlas-surface p-2 border border-atlas-border">
                 <span className="text-[10px] text-atlas-muted block">Pressure:</span>
                 <span className="font-bold text-sm text-atlas-text">
-                  {atmoData.surfacePressurePa.toFixed(0)} Pa
+                  {safeFixed(atmoData.surfacePressurePa, 0)} Pa
                 </span>
                 <span className="text-[9px] text-atlas-muted block mt-0.5">
-                  {(atmoData.surfacePressurePa / 100).toFixed(2)} mbar
+                  {safeFixed((atmoData.surfacePressurePa ?? 0) / 100, 2)} mbar
                 </span>
               </div>
               <div className="bg-atlas-surface p-2 border border-atlas-border">
                 <span className="text-[10px] text-atlas-muted block">Wind Velocity:</span>
                 <span className="font-bold text-sm text-atlas-text">
-                  {atmoData.windSpeedMPerS.toFixed(1)} m/s
+                  {safeFixed(atmoData.windSpeedMPerS, 1)} m/s
                 </span>
                 <span className="text-[9px] text-atlas-muted block mt-0.5">
-                  Dir: {atmoData.windDirectionDeg}°
+                  Dir: {atmoData.windDirectionDeg ?? 0}°
                 </span>
               </div>
             </div>
@@ -208,7 +212,7 @@ export const EnvironmentalDashboard: React.FC<EnvironmentalDashboardProps> = ({
                 <span>Dust Environment & Visibility</span>
               </span>
               <span className="text-[10px] text-amber-400 bg-amber-950/40 px-1.5 py-0.5 border border-amber-800/50">
-                τ = {atmoData.dustOpticalDepthTau.toFixed(2)}
+                τ = {safeFixed(atmoData.dustOpticalDepthTau, 2)}
               </span>
             </div>
             <div className="flex items-center justify-between text-[11px]">
@@ -222,13 +226,13 @@ export const EnvironmentalDashboard: React.FC<EnvironmentalDashboardProps> = ({
                     : "text-emerald-400"
                 }`}
               >
-                {atmoData.dustDevilActivityRisk}
+                {atmoData.dustDevilActivityRisk || "NOMINAL"}
               </span>
             </div>
             <div className="text-[10px] text-atlas-muted mt-1">
               Spacesuit Thermal Load:{" "}
               <span className="text-atlas-teal font-semibold">
-                {atmoData.suitThermalRegulationComfort}
+                {atmoData.suitThermalRegulationComfort || "NOMINAL"}
               </span>
             </div>
           </div>
@@ -241,7 +245,7 @@ export const EnvironmentalDashboard: React.FC<EnvironmentalDashboardProps> = ({
                 <span>Surface Radiation (MSL RAD)</span>
               </span>
               <span className="text-[10px] text-emerald-400 bg-emerald-950/40 px-1.5 py-0.5 border border-emerald-800/50">
-                {radData.exposureSafetyStatus}
+                {radData.exposureSafetyStatus || "NOMINAL"}
               </span>
             </div>
 
@@ -249,19 +253,19 @@ export const EnvironmentalDashboard: React.FC<EnvironmentalDashboardProps> = ({
               <div className="bg-atlas-surface p-2 border border-atlas-border">
                 <span className="text-atlas-muted block">Dose Rate:</span>
                 <span className="font-bold text-sm text-atlas-text">
-                  {radData.doseRateMicroGyPerDay.toFixed(0)} μGy/d
+                  {safeFixed(radData.doseRateMicroGyPerDay, 0)} μGy/d
                 </span>
                 <span className="text-[9px] text-atlas-muted block">
-                  {(radData.doseEquivalentMicroSvPerDay).toFixed(0)} μSv/d
+                  {safeFixed(radData.doseEquivalentMicroSvPerDay, 0)} μSv/d
                 </span>
               </div>
               <div className="bg-atlas-surface p-2 border border-atlas-border">
                 <span className="text-atlas-muted block">EVA Cumulative:</span>
                 <span className="font-bold text-sm text-atlas-teal">
-                  {(radData.cumulativeDoseMilliSv).toFixed(3)} mSv
+                  {safeFixed(radData.cumulativeDoseMilliSv, 3)} mSv
                 </span>
                 <span className="text-[9px] text-atlas-muted block">
-                  {radData.evaDurationHours} hr EVA session
+                  {radData.evaDurationHours ?? 8} hr EVA session
                 </span>
               </div>
             </div>
@@ -269,13 +273,13 @@ export const EnvironmentalDashboard: React.FC<EnvironmentalDashboardProps> = ({
             {/* PEL Progress */}
             <div className="mt-2.5">
               <div className="flex justify-between text-[10px] text-atlas-muted mb-1">
-                <span>NASA 30-Day Career PEL ({radData.nasa30DayPELMilliSv} mSv)</span>
-                <span>{(radData.percentageOf30DayPEL).toFixed(2)}%</span>
+                <span>NASA 30-Day Career PEL ({radData.nasa30DayPELMilliSv ?? 25} mSv)</span>
+                <span>{safeFixed(radData.percentageOf30DayPEL, 2)}%</span>
               </div>
               <div className="w-full bg-atlas-elevated h-1.5 border border-atlas-border overflow-hidden">
                 <div
                   className="bg-atlas-teal h-full transition-all"
-                  style={{ width: `${Math.min(100, Math.max(1, radData.percentageOf30DayPEL * 10))}%` }}
+                  style={{ width: `${Math.min(100, Math.max(1, (radData.percentageOf30DayPEL ?? 0) * 10))}%` }}
                 />
               </div>
             </div>

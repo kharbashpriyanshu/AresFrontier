@@ -501,7 +501,7 @@ export const MapPage: React.FC = () => {
         />
 
         {/* Unified Floating Controls Bar (Top Right) */}
-        <div className="absolute top-4 right-4 z-20 flex flex-wrap items-center justify-end gap-2 text-xs font-mono shadow-2xl pointer-events-auto">
+        <div className="absolute top-4 right-4 z-20 max-w-[calc(100%-19rem)] flex flex-wrap items-center justify-end gap-2 text-xs font-mono shadow-2xl pointer-events-auto">
           {/* Data Provenance Modal Trigger */}
           <button
             onClick={() => setShowProvenanceModal(true)}
@@ -570,136 +570,145 @@ export const MapPage: React.FC = () => {
         </div>
 
         {/* Milestone 6 & 7 Tactical Operations Toolbar (Floating below primary controls) */}
-        <div className="absolute top-16 right-4 z-20 flex flex-wrap items-center justify-end gap-1.5 text-xs font-mono shadow-xl pointer-events-auto">
-          <button
-            onClick={() => setShowWeatherHud(!showWeatherHud)}
-            className={`px-2.5 py-1 flex items-center space-x-1.5 border backdrop-blur-md transition-colors ${
-              showWeatherHud
-                ? "bg-amber-600 text-white font-bold border-amber-500 shadow-md"
-                : "bg-atlas-surface/95 hover:bg-atlas-elevated text-atlas-text border-atlas-border"
-            }`}
-            title="Toggle Martian Diurnal Weather & Radiation HUD (MEDA / RAD)"
-          >
-            <CloudSun className="w-3.5 h-3.5 text-amber-400" />
-            <span>Sol Weather</span>
-          </button>
+        <div className="absolute top-16 right-4 z-20 max-w-[calc(100%-19rem)] flex flex-wrap items-center justify-end gap-1 text-[11px] font-mono pointer-events-auto">
+          <div className="bg-atlas-surface/90 border border-atlas-border backdrop-blur-md p-1 shadow-2xl flex flex-wrap items-center gap-1 justify-end">
+            {/* Comms & Telemetry */}
+            <button
+              onClick={() => setShowWeatherHud(!showWeatherHud)}
+              className={`px-2 py-1 flex items-center space-x-1 border transition-colors ${
+                showWeatherHud
+                  ? "bg-amber-600 text-white font-bold border-amber-500 shadow-sm"
+                  : "bg-atlas-elevated/70 hover:bg-atlas-elevated text-atlas-text border-atlas-border"
+              }`}
+              title="Toggle Martian Diurnal Weather & Radiation HUD (MEDA / RAD)"
+            >
+              <CloudSun className="w-3.5 h-3.5 text-amber-400" />
+              <span>Sol Weather</span>
+            </button>
 
-          <button
-            onClick={() => setShowRfOverlay(!showRfOverlay)}
-            className={`px-2.5 py-1 flex items-center space-x-1.5 border backdrop-blur-md transition-colors ${
-              showRfOverlay
-                ? "bg-atlas-teal text-atlas-bg font-bold border-atlas-teal shadow-md"
-                : "bg-atlas-surface/95 hover:bg-atlas-elevated text-atlas-text border-atlas-border"
-            }`}
-            title="Toggle Orbiter Constellation Comms & Scarp Shadowing"
-          >
-            <Radio className="w-3.5 h-3.5 text-atlas-teal" />
-            <span>RF Relay</span>
-          </button>
+            <button
+              onClick={() => setShowRfOverlay(!showRfOverlay)}
+              className={`px-2 py-1 flex items-center space-x-1 border transition-colors ${
+                showRfOverlay
+                  ? "bg-atlas-teal text-atlas-bg font-bold border-atlas-teal shadow-sm"
+                  : "bg-atlas-elevated/70 hover:bg-atlas-elevated text-atlas-text border-atlas-border"
+              }`}
+              title="Toggle Orbiter Constellation Comms & Scarp Shadowing"
+            >
+              <Radio className="w-3.5 h-3.5 text-atlas-teal" />
+              <span>RF Relay</span>
+            </button>
 
-          <button
-            onClick={() => setShowTacticalGrid(!showTacticalGrid)}
-            className={`px-2.5 py-1 flex items-center space-x-1.5 border backdrop-blur-md transition-colors ${
-              showTacticalGrid
-                ? "bg-emerald-600 text-white font-bold border-emerald-500 shadow-md"
-                : "bg-atlas-surface/95 hover:bg-atlas-elevated text-atlas-text border-atlas-border"
-            }`}
-            title="Toggle Sub-meter Hyperlocal Tactical Grid (Astronaut + Buddy + Mule)"
-          >
-            <Footprints className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Tactical Grid</span>
-          </button>
+            <div className="h-4 w-px bg-atlas-border mx-0.5 hidden sm:block" />
 
-          <button
-            onClick={() => setShowSurfacePhotos(!showSurfacePhotos)}
-            className={`px-2.5 py-1 flex items-center space-x-1.5 border backdrop-blur-md transition-colors ${
-              showSurfacePhotos
-                ? "bg-purple-600 text-white font-bold border-purple-500 shadow-md"
-                : "bg-atlas-surface/95 hover:bg-atlas-elevated text-atlas-text border-atlas-border"
-            }`}
-            title="Toggle Ground POV Rover Photography (Mastcam-Z / Navcam)"
-          >
-            <Camera className="w-3.5 h-3.5 text-purple-400" />
-            <span>Ground POV</span>
-          </button>
+            {/* Tactical & Surface Operations */}
+            <button
+              onClick={() => setShowTacticalGrid(!showTacticalGrid)}
+              className={`px-2 py-1 flex items-center space-x-1 border transition-colors ${
+                showTacticalGrid
+                  ? "bg-emerald-600 text-white font-bold border-emerald-500 shadow-sm"
+                  : "bg-atlas-elevated/70 hover:bg-atlas-elevated text-atlas-text border-atlas-border"
+              }`}
+              title="Toggle Sub-meter Hyperlocal Tactical Grid (Astronaut + Buddy + Mule)"
+            >
+              <Footprints className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Tactical Grid</span>
+            </button>
 
-          <button
-            onClick={() => setShowWaypointPreview(!showWaypointPreview)}
-            className={`px-2.5 py-1 flex items-center space-x-1.5 border backdrop-blur-md transition-colors ${
-              showWaypointPreview
-                ? "bg-cyan-600 text-white font-bold border-cyan-500 shadow-md"
-                : "bg-atlas-surface/95 hover:bg-atlas-elevated text-atlas-text border-atlas-border"
-            }`}
-            title="Toggle Contextual Science & Terrain Destination Preview"
-          >
-            <Compass className="w-3.5 h-3.5 text-cyan-400" />
-            <span>Preview HUD</span>
-          </button>
+            <button
+              onClick={() => setShowEvaPlayback((v) => !v)}
+              className={`px-2 py-1 flex items-center space-x-1 border transition-colors ${
+                showEvaPlayback
+                  ? "bg-atlas-teal text-slate-950 font-bold border-atlas-teal shadow-sm"
+                  : "bg-atlas-elevated/70 hover:bg-atlas-elevated text-atlas-text border-atlas-border"
+              }`}
+              title="Toggle Real-Time Animated EVA Traverse & Bioenergetics Playback"
+            >
+              <Play className="w-3.5 h-3.5 text-atlas-teal" />
+              <span>EVA Playback</span>
+            </button>
 
-          <button
-            onClick={() => setShowSamplingPanel(!showSamplingPanel)}
-            className={`px-2.5 py-1 flex items-center space-x-1.5 border backdrop-blur-md transition-colors ${
-              showSamplingPanel
-                ? "bg-pink-600 text-white font-bold border-pink-500 shadow-md"
-                : "bg-atlas-surface/95 hover:bg-atlas-elevated text-atlas-text border-atlas-border"
-            }`}
-            title="Toggle 8-Step Scientific Sampling Protocol Checklist"
-          >
-            <Sparkles className="w-3.5 h-3.5 text-pink-400" />
-            <span>Sampling Plan</span>
-          </button>
+            <button
+              onClick={() => setShowSurfacePhotos(!showSurfacePhotos)}
+              className={`px-2 py-1 flex items-center space-x-1 border transition-colors ${
+                showSurfacePhotos
+                  ? "bg-purple-600 text-white font-bold border-purple-500 shadow-sm"
+                  : "bg-atlas-elevated/70 hover:bg-atlas-elevated text-atlas-text border-atlas-border"
+              }`}
+              title="Toggle Ground POV Rover Photography (Mastcam-Z / Navcam)"
+            >
+              <Camera className="w-3.5 h-3.5 text-purple-400" />
+              <span>Ground POV</span>
+            </button>
 
-          <button
-            onClick={() => setShowNarrative((v) => !v)}
-            className={`px-2.5 py-1 flex items-center space-x-1.5 border backdrop-blur-md transition-colors ${
-              showNarrative
-                ? "bg-atlas-accent text-white font-bold border-atlas-accent shadow-md"
-                : "bg-atlas-surface/95 hover:bg-atlas-elevated text-atlas-text border-atlas-border"
-            }`}
-            title="Toggle Mission Narrative & Scientific Storytelling"
-          >
-            <Sparkles className="w-3.5 h-3.5 text-atlas-accent" />
-            <span>Mission Story</span>
-          </button>
+            <button
+              onClick={() => setShowWaypointPreview(!showWaypointPreview)}
+              className={`px-2 py-1 flex items-center space-x-1 border transition-colors ${
+                showWaypointPreview
+                  ? "bg-cyan-600 text-white font-bold border-cyan-500 shadow-sm"
+                  : "bg-atlas-elevated/70 hover:bg-atlas-elevated text-atlas-text border-atlas-border"
+              }`}
+              title="Toggle Contextual Science & Terrain Destination Preview"
+            >
+              <Compass className="w-3.5 h-3.5 text-cyan-400" />
+              <span>Preview HUD</span>
+            </button>
 
-          <button
-            onClick={() => setShowEvaPlayback((v) => !v)}
-            className={`px-2.5 py-1 flex items-center space-x-1.5 border backdrop-blur-md transition-colors ${
-              showEvaPlayback
-                ? "bg-atlas-teal text-slate-950 font-bold border-atlas-teal shadow-md"
-                : "bg-atlas-surface/95 hover:bg-atlas-elevated text-atlas-text border-atlas-border"
-            }`}
-            title="Toggle Real-Time Animated EVA Traverse & Bioenergetics Playback"
-          >
-            <Play className="w-3.5 h-3.5 text-atlas-teal" />
-            <span>EVA Playback</span>
-          </button>
+            <div className="h-4 w-px bg-atlas-border mx-0.5 hidden sm:block" />
 
-          <button
-            onClick={() => setShowMolaHeatmap((v) => !v)}
-            className={`px-2.5 py-1 flex items-center space-x-1.5 border backdrop-blur-md transition-colors ${
-              showMolaHeatmap
-                ? "bg-blue-600 text-white font-bold border-blue-500 shadow-md"
-                : "bg-atlas-surface/95 hover:bg-atlas-elevated text-atlas-text border-atlas-border"
-            }`}
-            title="Toggle MOLA Altimetry Elevation Contour Heatmap Overlay"
-          >
-            <Mountain className="w-3.5 h-3.5 text-blue-400" />
-            <span>MOLA Heatmap</span>
-          </button>
+            {/* Science & Planetary Overlays */}
+            <button
+              onClick={() => setShowMolaHeatmap((v) => !v)}
+              className={`px-2 py-1 flex items-center space-x-1 border transition-colors ${
+                showMolaHeatmap
+                  ? "bg-blue-600 text-white font-bold border-blue-500 shadow-sm"
+                  : "bg-atlas-elevated/70 hover:bg-atlas-elevated text-atlas-text border-atlas-border"
+              }`}
+              title="Toggle MOLA Altimetry Elevation Contour Heatmap Overlay"
+            >
+              <Mountain className="w-3.5 h-3.5 text-blue-400" />
+              <span>MOLA Heatmap</span>
+            </button>
 
-          <button
-            onClick={() => setShowCrismOverlay((v) => !v)}
-            className={`px-2.5 py-1 flex items-center space-x-1.5 border backdrop-blur-md transition-colors ${
-              showCrismOverlay
-                ? "bg-purple-600 text-white font-bold border-purple-500 shadow-md"
-                : "bg-atlas-surface/95 hover:bg-atlas-elevated text-atlas-text border-atlas-border"
-            }`}
-            title="Toggle CRISM Hyperspectral Mineralogy & MEPAG Target Overlay"
-          >
-            <Database className="w-3.5 h-3.5 text-purple-400" />
-            <span>CRISM Mineralogy</span>
-          </button>
+            <button
+              onClick={() => setShowCrismOverlay((v) => !v)}
+              className={`px-2 py-1 flex items-center space-x-1 border transition-colors ${
+                showCrismOverlay
+                  ? "bg-purple-600 text-white font-bold border-purple-500 shadow-sm"
+                  : "bg-atlas-elevated/70 hover:bg-atlas-elevated text-atlas-text border-atlas-border"
+              }`}
+              title="Toggle CRISM Hyperspectral Mineralogy & MEPAG Target Overlay"
+            >
+              <Database className="w-3.5 h-3.5 text-purple-400" />
+              <span>CRISM Mineralogy</span>
+            </button>
+
+            <button
+              onClick={() => setShowSamplingPanel(!showSamplingPanel)}
+              className={`px-2 py-1 flex items-center space-x-1 border transition-colors ${
+                showSamplingPanel
+                  ? "bg-pink-600 text-white font-bold border-pink-500 shadow-sm"
+                  : "bg-atlas-elevated/70 hover:bg-atlas-elevated text-atlas-text border-atlas-border"
+              }`}
+              title="Toggle 8-Step Scientific Sampling Protocol Checklist"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-pink-400" />
+              <span>Sampling</span>
+            </button>
+
+            <button
+              onClick={() => setShowNarrative((v) => !v)}
+              className={`px-2 py-1 flex items-center space-x-1 border transition-colors ${
+                showNarrative
+                  ? "bg-atlas-accent text-white font-bold border-atlas-accent shadow-sm"
+                  : "bg-atlas-elevated/70 hover:bg-atlas-elevated text-atlas-text border-atlas-border"
+              }`}
+              title="Toggle Mission Narrative & Scientific Storytelling"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-atlas-accent" />
+              <span>Story</span>
+            </button>
+          </div>
         </div>
 
         {/* Milestone 6 & 7 Modal Overlays */}

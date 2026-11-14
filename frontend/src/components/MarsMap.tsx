@@ -21,6 +21,7 @@ import {
   Activity,
   CheckCircle,
   X,
+  ChevronDown,
 } from "lucide-react";
 
 interface MarsMapProps {
@@ -775,8 +776,8 @@ export const MarsMap: React.FC<MarsMapProps> = ({
         </div>
       )}
 
-      {/* Top Left Layer Switcher, Overlays & Reset View (compact so it never collides with top-right controls) */}
-      <div className="absolute top-4 left-4 z-20 flex items-center gap-2">
+      {/* Top Left Layer Switcher, Overlays & Reset View */}
+      <div className="absolute top-4 left-4 z-40 flex items-center gap-2">
         <div className="relative">
           <button
             onClick={() => setLayerDropdownOpen(!layerDropdownOpen)}
@@ -784,13 +785,19 @@ export const MarsMap: React.FC<MarsMapProps> = ({
           >
             <Layers className="w-3.5 h-3.5 text-atlas-blue" />
             <span className="font-semibold">Layer: {activeLayer}</span>
+            <ChevronDown className={`w-3 h-3 transition-transform ${layerDropdownOpen ? "rotate-180" : ""}`} />
           </button>
 
           {layerDropdownOpen && (
-            <div className="absolute top-9 left-0 w-64 bg-atlas-surface border border-atlas-border shadow-2xl p-3 backdrop-blur-md font-mono text-xs z-30 space-y-2.5">
-              <div className="text-[10px] text-atlas-muted font-bold uppercase tracking-wider pb-1.5 border-b border-atlas-border">
-                Planetary Tile Layers
-              </div>
+            <>
+              <div
+                className="fixed inset-0 z-40"
+                onClick={() => setLayerDropdownOpen(false)}
+              />
+              <div className="absolute top-9 left-0 w-64 bg-atlas-surface border border-atlas-border shadow-2xl p-3 backdrop-blur-md font-mono text-xs z-50 space-y-2.5">
+                <div className="text-[10px] text-atlas-muted font-bold uppercase tracking-wider pb-1.5 border-b border-atlas-border">
+                  Planetary Tile Layers
+                </div>
               <button
                 onClick={() => {
                   setActiveLayer("viking");
@@ -879,6 +886,7 @@ export const MarsMap: React.FC<MarsMapProps> = ({
                 </label>
               </div>
             </div>
+            </>
           )}
         </div>
 

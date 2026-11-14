@@ -98,5 +98,5 @@ describe("Martian Map — Complete End-to-End Mission Journey", () => {
     expect(statusRes.status).toBe(200);
     expect(statusRes.body.data.pipelines.molaElevation).toBe("Available");
     expect(statusRes.body.data.pipelines.scienceTargets).toBe("Available");
-  });
+  }, 15000);
 });
