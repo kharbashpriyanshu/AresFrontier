@@ -6,7 +6,6 @@ import {
   Activity,
   Database,
   BookOpen,
-  Radio,
   Users,
   RotateCcw,
   BarChart3,
@@ -15,6 +14,7 @@ import {
   Moon,
   Menu,
   X,
+  Sparkles,
 } from "lucide-react";
 import { useTheme } from "../context/ThemeContext.js";
 import { OperationalDataModeBadge } from "./OperationalDataModeBadge.js";
@@ -27,13 +27,13 @@ export const Navbar: React.FC = () => {
   const navLinks = [
     { to: "/", label: "Overview", icon: Compass },
     { to: "/map", label: "Map", icon: MapIcon },
-    { to: "/operations", label: "Field Operations", icon: Users },
+    { to: "/operations", label: "Operations", icon: Users },
+    { to: "/mission", label: "Mission Studio", icon: Activity },
     { to: "/replay", label: "Replay", icon: RotateCcw },
     { to: "/mission-analytics", label: "Analytics", icon: BarChart3 },
-    { to: "/demo", label: "Judging Demo", icon: Award },
-    { to: "/mission", label: "EVA Console", icon: Activity },
     { to: "/science", label: "Science", icon: Database },
-    { to: "/methodology", label: "Data & Provenance", icon: BookOpen },
+    { to: "/methodology", label: "Data Provenance", icon: BookOpen },
+    { to: "/demo", label: "Test Harness", icon: Award },
   ];
 
   return (
@@ -65,14 +65,14 @@ export const Navbar: React.FC = () => {
         </Link>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden xl:flex items-center space-x-1">
+        <nav className="hidden lg:flex items-center space-x-0.5">
           {navLinks.map((link) => {
             const isActive = location.pathname === link.to;
             return (
               <Link
                 key={link.to}
                 to={link.to}
-                className={`relative px-3 py-1.5 text-xs font-medium transition-colors ${
+                className={`relative px-2.5 py-1.5 text-xs font-medium transition-colors ${
                   isActive
                     ? "text-atlas-text font-semibold"
                     : "text-atlas-muted hover:text-atlas-text hover:bg-atlas-elevated"
@@ -89,33 +89,21 @@ export const Navbar: React.FC = () => {
       </div>
 
       {/* Right Controls */}
-      <div className="flex items-center space-x-3">
-        {/* Benchmark Data Badge */}
+      <div className="flex items-center space-x-2.5">
+        {/* Benchmark Data Mode Badge */}
         <div className="hidden sm:block">
           <OperationalDataModeBadge mode="BENCHMARK" compact />
         </div>
 
-        {/* Demo Shortcut */}
+        {/* Unified Primary Demo Tour CTA */}
         <Link
-          to="/operations?demo=marswalk-001"
-          className="hidden md:flex items-center space-x-1 text-[11px] font-mono bg-atlas-elevated hover:bg-atlas-surface text-atlas-accent px-2.5 py-1 border border-atlas-border transition-colors"
+          to="/map?demo=marswalk-001"
+          className="flex items-center space-x-1.5 text-xs font-mono bg-atlas-accent hover:brightness-110 text-white px-3 py-1.5 border border-atlas-accent font-bold transition-all shadow-md shadow-atlas-accent/20"
+          title="Launch 5-Step Guided Marswalk Tour for NASA Space Apps Judges"
         >
-          <span>Demo: Marswalk-001</span>
+          <Sparkles className="w-3.5 h-3.5 text-white" />
+          <span>Guided Demo</span>
         </Link>
-
-        {/* Benchmark Terrain Model Status */}
-        <div
-          className="hidden lg:flex items-center space-x-2 text-[11px] font-mono bg-atlas-elevated px-2.5 py-1 border border-atlas-border text-atlas-muted"
-          title="Configured static benchmark terrain model (not a live NASA telemetry feed)"
-        >
-          <Radio className="w-3 h-3 text-atlas-teal" />
-          <span>Terrain Model: Benchmark</span>
-        </div>
-
-        {/* Areoid Datum Indicator */}
-        <div className="hidden 2xl:block text-[11px] font-mono text-atlas-muted border-l border-atlas-border pl-3">
-          Datum: <span className="text-atlas-text">Areoid 3396.2 km</span>
-        </div>
 
         {/* Theme Toggle Button */}
         <button
@@ -134,7 +122,7 @@ export const Navbar: React.FC = () => {
         {/* Mobile menu toggle */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="xl:hidden w-8 h-8 bg-atlas-elevated border border-atlas-border flex items-center justify-center text-atlas-text"
+          className="lg:hidden w-8 h-8 bg-atlas-elevated border border-atlas-border flex items-center justify-center text-atlas-text"
           aria-label="Toggle navigation menu"
         >
           {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
@@ -143,7 +131,7 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Navigation Drawer */}
       {mobileMenuOpen && (
-        <div className="xl:hidden absolute top-14 left-0 right-0 bg-atlas-surface border-b border-atlas-border p-4 shadow-2xl flex flex-col space-y-2 z-50">
+        <div className="lg:hidden absolute top-14 left-0 right-0 bg-atlas-surface border-b border-atlas-border p-4 shadow-2xl flex flex-col space-y-2 z-50">
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
             {navLinks.map((link) => {
               const Icon = link.icon;
@@ -167,7 +155,14 @@ export const Navbar: React.FC = () => {
           </div>
           <div className="pt-3 border-t border-atlas-border flex items-center justify-between text-[11px] font-mono text-atlas-muted">
             <OperationalDataModeBadge mode="BENCHMARK" compact />
-            <span>Datum: Areoid 3396.2 km</span>
+            <Link
+              to="/map?demo=marswalk-001"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-atlas-accent font-semibold flex items-center space-x-1"
+            >
+              <Sparkles className="w-3 h-3" />
+              <span>Launch Guided Demo</span>
+            </Link>
           </div>
         </div>
       )}
