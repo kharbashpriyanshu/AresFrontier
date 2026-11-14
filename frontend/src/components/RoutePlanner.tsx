@@ -23,6 +23,7 @@ import {
   MapPin,
   Wind,
   AlertTriangle,
+  FileText,
 } from "lucide-react";
 
 interface RoutePlannerProps {
@@ -32,6 +33,7 @@ interface RoutePlannerProps {
   setPoints: React.Dispatch<React.SetStateAction<RoutePoint[]>>;
   onGenerateRoute: (points: RoutePoint[]) => Promise<void>;
   onInspectMission: (route: MarsRoute) => void;
+  onOpenBriefingDossier?: () => void;
   onTogglePickMode: (isPicking: boolean) => void;
   isPickingOnMap: boolean;
   clickedCoord: MarsCoordinate | null;
@@ -55,6 +57,7 @@ export const RoutePlanner: React.FC<RoutePlannerProps> = ({
   setPoints,
   onGenerateRoute,
   onInspectMission,
+  onOpenBriefingDossier,
   onTogglePickMode,
   isPickingOnMap,
   onHoverProfilePoint,
@@ -569,14 +572,27 @@ export const RoutePlanner: React.FC<RoutePlannerProps> = ({
               />
             </div>
 
-            {/* Inspect Mission CTA */}
-            <button
-              onClick={() => onInspectMission(activeRoute)}
-              className="w-full py-3 bg-atlas-accent hover:bg-atlas-accent-hover text-white font-bold flex items-center justify-center space-x-2 transition-all shadow-lg text-sm tracking-wide"
-            >
-              <Send className="w-4 h-4" />
-              <span>Assess EVA & Mission Score</span>
-            </button>
+            {/* Inspect & Export Mission CTAs */}
+            <div className="space-y-2 pt-1">
+              <button
+                onClick={() => onInspectMission(activeRoute)}
+                className="w-full py-3 bg-atlas-accent hover:bg-atlas-accent-hover text-white font-bold flex items-center justify-center space-x-2 transition-all shadow-lg text-sm tracking-wide"
+              >
+                <Send className="w-4 h-4" />
+                <span>Assess EVA &amp; Mission Score</span>
+              </button>
+
+              {onOpenBriefingDossier && (
+                <button
+                  onClick={onOpenBriefingDossier}
+                  className="w-full py-2.5 bg-atlas-elevated hover:bg-atlas-surface text-atlas-text border border-atlas-border hover:border-atlas-teal font-bold flex items-center justify-center space-x-2 text-xs transition-all shadow-sm"
+                  title="Generate NASA EVA Briefing Dossier & Printable PDF"
+                >
+                  <FileText className="w-3.5 h-3.5 text-atlas-teal" />
+                  <span>Export Mission Briefing (PDF)</span>
+                </button>
+              )}
+            </div>
           </section>
         )}
       </div>

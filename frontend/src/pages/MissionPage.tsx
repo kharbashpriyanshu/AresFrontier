@@ -19,6 +19,7 @@ import { ScenarioBuilder } from "../components/ScenarioBuilder.js";
 import { Mars3DView } from "../components/Mars3DView.js";
 import { MissionCopilotModal } from "../components/MissionCopilotModal.js";
 import { EvaSessionConsole } from "../components/EvaSessionConsole.js";
+import { MissionDossierModal } from "../components/MissionDossierModal.js";
 import {
   Clock,
   Sparkles,
@@ -51,6 +52,7 @@ export const MissionPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<"PLANNING" | "SCENARIOS" | "REPORTING" | "EVA">("PLANNING");
   const [show3D, setShow3D] = useState<boolean>(false);
   const [isCopilotOpen, setIsCopilotOpen] = useState<boolean>(false);
+  const [showBriefingDossier, setShowBriefingDossier] = useState<boolean>(false);
 
   // Mission Management State
   const [missions, setMissions] = useState<StoredMissionRecord[]>([]);
@@ -713,6 +715,15 @@ export const MissionPage: React.FC = () => {
             {/* Action Controls */}
             <div className="flex items-center gap-2.5 flex-wrap">
               <button
+                onClick={() => setShowBriefingDossier(true)}
+                className="flex items-center gap-2 px-3.5 py-2 bg-atlas-elevated hover:bg-atlas-surface border border-atlas-border hover:border-atlas-teal text-atlas-text rounded-xl text-xs font-mono font-bold transition-all shadow-sm"
+                title="Open Printable NASA EVA Mission Briefing Dossier"
+              >
+                <Printer className="w-3.5 h-3.5 text-atlas-teal" />
+                <span>Mission Dossier (PDF)</span>
+              </button>
+
+              <button
                 onClick={() => setIsCopilotOpen(true)}
                 className="flex items-center gap-2 px-3.5 py-2 bg-atlas-accent/15 border border-atlas-accent/50 text-atlas-accent hover:bg-atlas-accent/25 rounded-xl text-xs font-mono font-bold transition-all shadow-sm"
               >
@@ -1344,11 +1355,11 @@ export const MissionPage: React.FC = () => {
                   <span>Export JSON</span>
                 </button>
                 <button
-                  onClick={() => window.print()}
-                  className="flex items-center gap-2 px-3.5 py-2 bg-atlas-elevated hover:bg-atlas-surface border border-atlas-border hover:border-purple-500/50 text-atlas-text rounded-xl text-xs font-mono font-bold transition-all shadow-sm"
+                  onClick={() => setShowBriefingDossier(true)}
+                  className="flex items-center gap-2 px-3.5 py-2 bg-atlas-accent hover:bg-atlas-accent-dark text-white rounded-xl text-xs font-mono font-bold transition-all shadow-md"
                 >
-                  <Printer className="w-4 h-4 text-purple-400" />
-                  <span>Print Briefing</span>
+                  <Printer className="w-4 h-4 text-white" />
+                  <span>Mission Dossier / PDF Briefing</span>
                 </button>
               </div>
             </div>
@@ -1571,6 +1582,17 @@ export const MissionPage: React.FC = () => {
             missionId={activeMission?.id}
             routeId={route?.id}
             agents={agents}
+          />
+        )}
+
+        {showBriefingDossier && (
+          <MissionDossierModal
+            route={route}
+            points={route?.points || []}
+            mission={activeMission}
+            reportData={reportData}
+            locationName="Jezero Crater Western Fan Delta"
+            onClose={() => setShowBriefingDossier(false)}
           />
         )}
       </div>

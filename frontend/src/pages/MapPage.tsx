@@ -26,6 +26,7 @@ import { MissionNarrativePanel } from "../components/MissionNarrativePanel.js";
 import { EvaPlaybackAnimation } from "../components/EvaPlaybackAnimation.js";
 import { GuidedMarswalkTour } from "../components/GuidedMarswalkTour.js";
 import { ElevationProfileChart } from "../components/ElevationProfileChart.js";
+import { MissionDossierModal } from "../components/MissionDossierModal.js";
 import {
   Navigation,
   Info,
@@ -104,6 +105,7 @@ export const MapPage: React.FC = () => {
   const [showNarrative, setShowNarrative] = useState<boolean>(false);
   const [showEvaPlayback, setShowEvaPlayback] = useState<boolean>(false);
   const [isEvaPlaying, setIsEvaPlaying] = useState<boolean>(false);
+  const [showBriefingModal, setShowBriefingModal] = useState<boolean>(false);
   const [showMolaHeatmap, setShowMolaHeatmap] = useState<boolean>(false);
   const [showCrismOverlay, setShowCrismOverlay] = useState<boolean>(false);
   const [showGuidedTour, setShowGuidedTour] = useState<boolean>(false);
@@ -827,6 +829,16 @@ export const MapPage: React.FC = () => {
           </div>
         )}
 
+        {showBriefingModal && (
+          <MissionDossierModal
+            route={activeRoute}
+            points={points}
+            locationName={selectedLocation?.name}
+            isDustStormActive={isDustStormActive}
+            onClose={() => setShowBriefingModal(false)}
+          />
+        )}
+
         {/* Error Banner */}
         {errorMsg && (
           <div className="absolute bottom-16 left-4 z-20 bg-atlas-surface border border-atlas-red text-atlas-red text-xs font-mono p-3 shadow-2xl max-w-md flex items-center space-x-2">
@@ -856,6 +868,7 @@ export const MapPage: React.FC = () => {
           setPoints={setPoints}
           onGenerateRoute={handleGenerateRoute}
           onInspectMission={handleInspectMission}
+          onOpenBriefingDossier={() => setShowBriefingModal(true)}
           onTogglePickMode={setIsPickingOnMap}
           isPickingOnMap={isPickingOnMap}
           clickedCoord={clickedCoord}
