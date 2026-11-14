@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import { RoutePoint } from "../types/index.js";
 import {
   Play,
@@ -71,11 +71,47 @@ export const EvaPlaybackAnimation: React.FC<EvaPlaybackAnimationProps> = ({
     };
   }, [isPlaying, totalDurationSeconds, onComplete]);
 
-  // Derived state
-  const segmentCount = Math.max(1, route.length - 1);
-  const currentSegmentFloat = progress * segmentCount;
-  const currentSegment = Math.min(segmentCount - 1, Math.floor(currentSegmentFloat));
-  const segmentT = currentSegmentFloat - currentSegment;
+  // Calculate physical distances between waypoints for continuous velocity
+  const segmentDistances = useMemo(() => {
+    if (route.length < 2) return [1];
+    const dists: number[] = [];
+    for (let i = 0; i < route.length - 1; i++) {
+      const p1 = route[i].coordinate;
+      const p2 = route[i + 1].coordinate;
+      const dLat = (p2.latitude - p1.latitude) * 59.3;
+      const dLon = (p2.longitude - p1.longitude) * 59.3 * Math.cos((p1.latitude * Math.PI) / 180);
+      const d = Math.hypot(dLat, dLon);
+      dists.push(Math.max(0.001, d));
+    }
+    return dists;
+  }, [route]);
+
+  const totalTraverseDistance = useMemo(() => {
+    return segmentDistances.reduce((acc, d) => acc + d, 0);
+  }, [segmentDistances]);
+
+  // Derive continuous physical interpolation across segments
+  const { currentSegment, segmentT } = useMemo(() => {
+    if (route.length < 2) return { currentSegment: 0, segmentT: 0 };
+    if (progress <= 0) return { currentSegment: 0, segmentT: 0 };
+    if (progress >= 1) return { currentSegment: route.length - 2, segmentT: 1 };
+
+    let accumulated = 0;
+    const targetDist = progress * totalTraverseDistance;
+
+    for (let i = 0; i < segmentDistances.length; i++) {
+      const segLen = segmentDistances[i];
+      if (accumulated + segLen >= targetDist || i === segmentDistances.length - 1) {
+        const segProgress = (targetDist - accumulated) / segLen;
+        return {
+          currentSegment: i,
+          segmentT: Math.max(0, Math.min(1, segProgress)),
+        };
+      }
+      accumulated += segLen;
+    }
+    return { currentSegment: 0, segmentT: 0 };
+  }, [progress, route, segmentDistances, totalTraverseDistance]);
 
   useEffect(() => {
     setActiveSegmentIndex(currentSegment);
@@ -270,16 +306,48 @@ export const EvaPlaybackAnimation: React.FC<EvaPlaybackAnimationProps> = ({
         </div>
       </div>
 
-      {/* Traversal Progress Bar */}
-      <div className="space-y-1">
-        <div className="flex justify-between text-[10px] text-atlas-muted">
-          <span>TRAVERSE PROGRESS</span>
-          <span className="font-bold text-atlas-text">{(progress * 100).toFixed(1)}%</span>
+      {/* Interactive Traversal Progress Scrubber (Smooth 60FPS + Scrubbable) */}
+      <div className="space-y-1.5">
+        <div className="flex justify-between text-[10px] text-atlas-muted select-none">
+          <span className="flex items-center space-x-1.5 font-bold">
+            <span>TRAVERSE PROGRESS</span>
+            <span className="text-[9px] text-atlas-teal font-normal font-mono px-1 py-0.2 rounded bg-atlas-elevated border border-atlas-border">
+              Interactive Scrubber
+            </span>
+          </span>
+          <span className="font-mono font-bold text-atlas-text text-xs">
+            {(progress * 100).toFixed(1)}%
+          </span>
         </div>
-        <div className="w-full h-2 bg-atlas-elevated border border-atlas-border overflow-hidden rounded-sm">
+
+        {/* Custom Range Track & Slider */}
+        <div className="relative flex items-center group cursor-pointer h-4">
+          <input
+            type="range"
+            min="0"
+            max="1000"
+            step="1"
+            value={Math.round(progress * 1000)}
+            onChange={(e) => {
+              const val = Number(e.target.value) / 1000;
+              setProgress(val);
+              setElapsedSeconds(val * totalDurationSeconds);
+            }}
+            className="w-full h-full opacity-0 cursor-pointer z-10 absolute inset-0"
+            title="Drag or click to scrub traverse position"
+          />
+          {/* Custom Track Background */}
+          <div className="w-full h-2.5 bg-atlas-elevated border border-atlas-border rounded-sm overflow-hidden relative pointer-events-none">
+            {/* Filled Progress Bar - Zero Transition Lag for Butter-Smooth Frame Rendering */}
+            <div
+              className="h-full bg-gradient-to-r from-atlas-teal via-atlas-blue to-atlas-accent"
+              style={{ width: `${(progress * 100).toFixed(2)}%` }}
+            />
+          </div>
+          {/* Scrubber Thumb Reticle Indicator */}
           <div
-            className="h-full bg-gradient-to-r from-atlas-teal via-atlas-blue to-atlas-accent transition-all duration-100"
-            style={{ width: `${progress * 100}%` }}
+            className="absolute top-1/2 -translate-y-1/2 w-3.5 h-3.5 bg-white border-2 border-atlas-accent rounded-full shadow-md pointer-events-none -ml-1.5 transition-transform group-hover:scale-125"
+            style={{ left: `${(progress * 100).toFixed(2)}%` }}
           />
         </div>
       </div>
