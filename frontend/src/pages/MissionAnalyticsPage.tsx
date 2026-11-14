@@ -28,8 +28,6 @@ import {
   YAxis,
 } from "recharts";
 
-const PIE_COLORS = ["#f97316", "#eab308", "#ef4444", "#38bdf8", "#a855f7"];
-
 export const MissionAnalyticsPage: React.FC = () => {
   const [selectedMissionId, setSelectedMissionId] = useState<string>("MARSWALK-001");
   const [analytics, setAnalytics] = useState<any>(null);
@@ -153,12 +151,34 @@ export const MissionAnalyticsPage: React.FC = () => {
 
   const hazardSeverityChartData = useMemo(() => {
     const entries = Object.entries(analytics?.hazardBreakdown?.bySeverity || {});
-    return entries.map(([name, value]) => ({ name, value }));
+    const severityColorMap: Record<string, string> = {
+      CRITICAL: "#E57373",
+      HIGH: "#FA7955",
+      MEDIUM: "#E8AE62",
+      LOW: "#2CB9B1",
+    };
+    return entries.map(([name, value]) => ({
+      name,
+      value: value as number,
+      color: severityColorMap[name.toUpperCase()] || "#FA7955",
+    }));
   }, [analytics]);
 
   const hazardTypeChartData = useMemo(() => {
     const entries = Object.entries(analytics?.hazardBreakdown?.byType || {});
-    return entries.map(([type, count]) => ({ type, count }));
+    return entries
+      .map(([rawType, count]) => {
+        const formatted = rawType
+          .replace(/_/g, " ")
+          .toLowerCase()
+          .replace(/\b\w/g, (c) => c.toUpperCase());
+        return {
+          rawType,
+          type: formatted,
+          count: count as number,
+        };
+      })
+      .sort((a, b) => b.count - a.count);
   }, [analytics]);
 
   return (
@@ -439,7 +459,17 @@ export const MissionAnalyticsPage: React.FC = () => {
                     <XAxis dataKey="label" stroke="#91A5B5" fontSize={11} fontStyle="mono" />
                     <YAxis yAxisId="left" stroke="#91A5B5" fontSize={11} domain={[0, 100]} />
                     <Tooltip
-                      contentStyle={{ backgroundColor: "#0D1925", borderColor: "#223A4E", borderRadius: "12px", fontSize: 12, color: "#F2F3F0" }}
+                      contentStyle={{
+                        backgroundColor: "#0D1925",
+                        borderColor: "#223A4E",
+                        borderRadius: "2px",
+                        padding: "8px 12px",
+                        fontSize: 12,
+                        color: "#F2F3F0",
+                        boxShadow: "0 8px 24px rgba(0,0,0,0.6)",
+                      }}
+                      itemStyle={{ color: "#F2F3F0", fontSize: 12 }}
+                      labelStyle={{ color: "#FA7955", fontSize: 12, fontWeight: 700, marginBottom: 4 }}
                     />
                     <Line
                       yAxisId="left"
@@ -477,7 +507,7 @@ export const MissionAnalyticsPage: React.FC = () => {
             {/* Recharts Supporting Visualizations Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* Chart 2: Agent Battery & Reserve Margin */}
-              <div className="bg-atlas-surface border border-atlas-border rounded-2xl p-6 shadow-xl space-y-4">
+              <div className="bg-atlas-surface border border-atlas-border p-6 shadow-xl space-y-4">
                 <div className="flex items-center justify-between border-b border-atlas-border pb-3">
                   <h2 className="text-sm font-bold font-display text-atlas-text flex items-center gap-2">
                     <Users className="w-4 h-4 text-atlas-teal" /> Fleet Battery &amp; Reserve Margin (%)
@@ -491,15 +521,25 @@ export const MissionAnalyticsPage: React.FC = () => {
                       <XAxis dataKey="name" stroke="#91A5B5" fontSize={11} />
                       <YAxis stroke="#91A5B5" fontSize={11} />
                       <Tooltip
-                        contentStyle={{ backgroundColor: "#0D1925", borderColor: "#223A4E", borderRadius: "10px", fontSize: 12, color: "#F2F3F0" }}
+                        contentStyle={{
+                          backgroundColor: "#0D1925",
+                          borderColor: "#223A4E",
+                          borderRadius: "2px",
+                          padding: "8px 12px",
+                          fontSize: 12,
+                          color: "#F2F3F0",
+                          boxShadow: "0 8px 24px rgba(0,0,0,0.6)",
+                        }}
+                        itemStyle={{ color: "#F2F3F0", fontSize: 12 }}
+                        labelStyle={{ color: "#FA7955", fontSize: 12, fontWeight: 700, marginBottom: 4 }}
                       />
                       <Legend wrapperStyle={{ fontSize: 11 }} />
-                      <Bar dataKey="batteryPercent" name="Battery %" fill="#2CB9B1" radius={[6, 6, 0, 0]} />
+                      <Bar dataKey="batteryPercent" name="Battery %" fill="#2CB9B1" radius={[0, 0, 0, 0]} />
                       <Bar
                         dataKey="emergencyReserveMarginPercent"
                         name="Reserve Margin %"
                         fill="#FA7955"
-                        radius={[6, 6, 0, 0]}
+                        radius={[0, 0, 0, 0]}
                       />
                     </BarChart>
                   </ResponsiveContainer>
@@ -507,7 +547,7 @@ export const MissionAnalyticsPage: React.FC = () => {
               </div>
 
               {/* Chart 3: Hazard Severity Distribution */}
-              <div className="bg-atlas-surface border border-atlas-border rounded-2xl p-6 shadow-xl space-y-4">
+              <div className="bg-atlas-surface border border-atlas-border p-6 shadow-xl space-y-4">
                 <div className="flex items-center justify-between border-b border-atlas-border pb-3">
                   <h2 className="text-sm font-bold font-display text-atlas-text flex items-center gap-2">
                     <AlertTriangle className="w-4 h-4 text-atlas-amber" /> Hazard Severity Breakdown
@@ -517,36 +557,106 @@ export const MissionAnalyticsPage: React.FC = () => {
                   </span>
                 </div>
                 {hazardSeverityChartData.length > 0 ? (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center h-64">
-                    <ResponsiveContainer width="100%" height="100%">
-                      <PieChart>
-                        <Pie
-                          data={hazardSeverityChartData}
-                          dataKey="value"
-                          nameKey="name"
-                          outerRadius={80}
-                          label
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+                    {/* Left: Donut Chart with Centered Total */}
+                    <div className="md:col-span-5 flex flex-col items-center justify-center">
+                      <div className="h-48 w-full relative flex items-center justify-center">
+                        <ResponsiveContainer width="100%" height="100%">
+                          <PieChart>
+                            <Pie
+                              data={hazardSeverityChartData}
+                              dataKey="value"
+                              nameKey="name"
+                              innerRadius={46}
+                              outerRadius={72}
+                              paddingAngle={3}
+                              stroke="#080F19"
+                              strokeWidth={2}
+                            >
+                              {hazardSeverityChartData.map((entry, idx) => (
+                                <Cell key={idx} fill={entry.color} />
+                              ))}
+                            </Pie>
+                            <Tooltip
+                              contentStyle={{
+                                backgroundColor: "#0D1925",
+                                borderColor: "#223A4E",
+                                borderRadius: "2px",
+                                padding: "8px 12px",
+                                fontSize: 12,
+                                color: "#F2F3F0",
+                                boxShadow: "0 8px 24px rgba(0,0,0,0.6)",
+                              }}
+                              itemStyle={{ color: "#F2F3F0", fontSize: 12 }}
+                              labelStyle={{ color: "#FA7955", fontSize: 12, fontWeight: 700 }}
+                            />
+                          </PieChart>
+                        </ResponsiveContainer>
+                        <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                          <span className="text-xl font-bold font-mono text-white">
+                            {analytics.hazardBreakdown?.total || 0}
+                          </span>
+                          <span className="text-[9px] font-mono text-atlas-muted uppercase tracking-wider">
+                            Hazards
+                          </span>
+                        </div>
+                      </div>
+                      {/* Legend */}
+                      <div className="flex flex-wrap justify-center gap-x-3 gap-y-1 pt-1 font-mono text-[11px]">
+                        {hazardSeverityChartData.map((d) => (
+                          <div key={d.name} className="flex items-center gap-1.5">
+                            <span className="w-2 h-2 rounded-none inline-block" style={{ backgroundColor: d.color }} />
+                            <span className="text-atlas-muted text-[11px]">{d.name}:</span>
+                            <span className="font-bold text-white text-[11px]">{d.value}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Right: Full Width Horizontal Bar Chart with Unclipped Labels */}
+                    <div className="md:col-span-7 h-52 w-full">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <BarChart
+                          data={hazardTypeChartData}
+                          layout="vertical"
+                          margin={{ top: 5, right: 20, left: 10, bottom: 5 }}
                         >
-                          {hazardSeverityChartData.map((_, idx) => (
-                            <Cell key={idx} fill={PIE_COLORS[idx % PIE_COLORS.length]} />
-                          ))}
-                        </Pie>
-                        <Tooltip
-                          contentStyle={{ backgroundColor: "#0D1925", borderColor: "#223A4E", borderRadius: "10px", fontSize: 12, color: "#F2F3F0" }}
-                        />
-                      </PieChart>
-                    </ResponsiveContainer>
-                    <ResponsiveContainer width="100%" height="100%">
-                      <BarChart data={hazardTypeChartData} layout="vertical">
-                        <CartesianGrid strokeDasharray="3 3" stroke="#1B3041" opacity={0.6} />
-                        <XAxis type="number" stroke="#91A5B5" fontSize={11} />
-                        <YAxis dataKey="type" type="category" stroke="#91A5B5" fontSize={10} width={90} />
-                        <Tooltip
-                          contentStyle={{ backgroundColor: "#0D1925", borderColor: "#223A4E", borderRadius: "10px", fontSize: 12, color: "#F2F3F0" }}
-                        />
-                        <Bar dataKey="count" name="Hazards" fill="#FA7955" radius={[0, 6, 6, 0]} />
-                      </BarChart>
-                    </ResponsiveContainer>
+                          <CartesianGrid strokeDasharray="3 3" stroke="#1B3041" opacity={0.5} horizontal={false} />
+                          <XAxis
+                            type="number"
+                            stroke="#91A5B5"
+                            fontSize={11}
+                            allowDecimals={false}
+                            axisLine={{ stroke: "#223A4E" }}
+                            tickLine={false}
+                          />
+                          <YAxis
+                            dataKey="type"
+                            type="category"
+                            stroke="#91A5B5"
+                            fontSize={11}
+                            width={130}
+                            axisLine={{ stroke: "#223A4E" }}
+                            tickLine={false}
+                            tick={{ fill: "#91A5B5", fontSize: 11 }}
+                          />
+                          <Tooltip
+                            contentStyle={{
+                              backgroundColor: "#0D1925",
+                              borderColor: "#223A4E",
+                              borderRadius: "2px",
+                              padding: "8px 12px",
+                              fontSize: 12,
+                              color: "#F2F3F0",
+                              boxShadow: "0 8px 24px rgba(0,0,0,0.6)",
+                            }}
+                            itemStyle={{ color: "#F2F3F0", fontSize: 12 }}
+                            labelStyle={{ color: "#FA7955", fontSize: 12, fontWeight: 700 }}
+                          />
+                          <Bar dataKey="count" name="Hazard Count" fill="#FA7955" radius={[0, 1, 1, 0]} barSize={14} />
+                        </BarChart>
+                      </ResponsiveContainer>
+                    </div>
                   </div>
                 ) : (
                   <div className="h-64 flex items-center justify-center text-xs font-mono text-atlas-muted">
