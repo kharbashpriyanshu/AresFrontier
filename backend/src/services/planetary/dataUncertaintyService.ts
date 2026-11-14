@@ -42,7 +42,7 @@ export class DataUncertaintyService {
     const pressUncertainty = 12.0;
     const radUncertainty = 1.8;
 
-    const parameters = [
+    const parameters: MeasurementUncertaintyReport["parameters"] = [
       {
         parameter: "Surface Topography (Elevation)",
         nominalValue: elevationM,
@@ -53,7 +53,7 @@ export class DataUncertaintyService {
         },
         spatialResolutionMeters: isBenchmark ? 0.25 : 463.0,
         observationAgeYears: isBenchmark ? 3.0 : 23.0,
-        dataQualityLevel: (isBenchmark ? "MISSION_BENCHMARK_CALIBRATED" : "DERIVED_HIGH_CONFIDENCE") as const,
+        dataQualityLevel: isBenchmark ? "MISSION_BENCHMARK_CALIBRATED" : "DERIVED_HIGH_CONFIDENCE",
         coverageGapDetected: false,
         instrumentPdsSource: isBenchmark ? "MRO HiRISE Stereo DTM (DTEEC_002172_1985)" : "MGS MOLA MEGDR L3",
       },
@@ -67,7 +67,7 @@ export class DataUncertaintyService {
         },
         spatialResolutionMeters: 100.0,
         observationAgeYears: 20.0,
-        dataQualityLevel: (isBenchmark ? "MISSION_BENCHMARK_CALIBRATED" : "REGIONAL_ESTIMATE") as const,
+        dataQualityLevel: isBenchmark ? "MISSION_BENCHMARK_CALIBRATED" : "REGIONAL_ESTIMATE",
         coverageGapDetected: false,
         instrumentPdsSource: "2001 Mars Odyssey THEMIS IR Mosaic",
       },
@@ -81,7 +81,7 @@ export class DataUncertaintyService {
         },
         spatialResolutionMeters: 1.0,
         observationAgeYears: 0.2,
-        dataQualityLevel: (isBenchmark ? "MISSION_BENCHMARK_CALIBRATED" : "THEORETICAL_MODEL") as const,
+        dataQualityLevel: isBenchmark ? "MISSION_BENCHMARK_CALIBRATED" : "THEORETICAL_MODEL",
         coverageGapDetected: false,
         instrumentPdsSource: isBenchmark ? "Mars 2020 MEDA Atmospheric Station" : "Mars Climate Database v5.3",
       },
@@ -95,7 +95,7 @@ export class DataUncertaintyService {
         },
         spatialResolutionMeters: 100.0,
         observationAgeYears: 1.0,
-        dataQualityLevel: (isBenchmark ? "MISSION_BENCHMARK_CALIBRATED" : "REGIONAL_ESTIMATE") as const,
+        dataQualityLevel: isBenchmark ? "MISSION_BENCHMARK_CALIBRATED" : "REGIONAL_ESTIMATE",
         coverageGapDetected: false,
         instrumentPdsSource: "MSL Curiosity Radiation Assessment Detector (RAD)",
       },

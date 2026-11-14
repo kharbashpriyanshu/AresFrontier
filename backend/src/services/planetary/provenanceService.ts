@@ -115,16 +115,20 @@ export class ProvenanceService {
   /**
    * Constructs a 2001 Mars Odyssey THEMIS thermal provenance record.
    */
-  public static createThemisProvenance(): DataProvenance {
+  public static createThemisProvenance(
+    method: string = "Daytime Calibrated Thermal Brightness Temperature",
+    confidence: number = 0.9,
+    datasetId: string = "OD-M-THEMIS-5-DDR-V1.0"
+  ): DataProvenance {
     return {
       sourceType: "NASA",
       sourceName: "2001 Mars Odyssey Thermal Emission Imaging System (THEMIS)",
-      datasetId: "OD-M-THEMIS-5-DDR-V1.0",
+      datasetId: datasetId || "OD-M-THEMIS-5-DDR-V1.0",
       sourceUrl: "https://themis.asu.edu/",
       spatialResolutionM: 100,
-      processingMethod: "Daytime Calibrated Thermal Brightness Temperature",
+      processingMethod: method || "Daytime Calibrated Thermal Brightness Temperature",
       dataMode: "CACHED",
-      confidence: 0.9,
+      confidence: confidence || 0.9,
       uncertainty: {
         value: 10,
         relative: 0.1,

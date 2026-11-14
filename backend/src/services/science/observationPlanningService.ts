@@ -138,7 +138,7 @@ export class ObservationPlanningService {
       coordinate: { ...coord },
       geologicalFormation: `${geo.unit.name} (${geo.unit.code})`,
       dominantMineralogy: min.dominantMineralClass,
-      astrobiologySignificance: min.astrobiologicalRelevance,
+      astrobiologySignificance: min.target?.astrobiologicalRelevance || min.summary,
       totalObservationDurationMinutes: totalMinutes,
       totalPowerRequiredWh: totalPowerWh,
       assignedSampleTubeId: tubeId,

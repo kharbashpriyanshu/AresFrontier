@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "missionId": "MARSWALK-001",
-  "savedAt": "2026-11-14T09:38:52.620Z",
+  "savedAt": "2026-11-14T13:20:49.772Z",
   "metadata": {
     "id": "MARSWALK-001",
     "name": "Marswalk-001: Jezero Delta Astrobiology Traverse",
@@ -10,17 +10,18 @@
     "status": "APPROVED",
     "commanderId": "ASTRONAUT-01",
     "createdAt": "2026-11-14T07:19:26.787Z",
-    "updatedAt": "2026-11-14T09:38:52.620Z",
+    "updatedAt": "2026-11-14T13:20:49.772Z",
     "activeRouteId": "route-jezero-delta-sol100",
     "parameters": {
       "routeId": "route-jezero-delta-sol100",
-      "maxDurationMinutes": 240,
       "startCoordinate": {
         "latitude": 18.4447,
         "longitude": 77.4508
       },
+      "maxDurationMinutes": 240,
+      "astronautSkillLevel": "standard",
       "returnRequired": true,
-      "astronautSkillLevel": "standard"
+      "contingencyMarginMinutes": 30
     },
     "tags": [
       "EVA",
@@ -773,7 +774,7 @@
     "lastTelemetrySync": "2026-11-14T09:38:52.612Z"
   },
   "routes": {
-    "activeRouteId": "route-jezero-delta-sol100",
+    "activeRouteId": "route-1794464117886-802",
     "routes": {
       "route-jezero-delta-sol100": {
         "id": "route-jezero-delta-sol100",

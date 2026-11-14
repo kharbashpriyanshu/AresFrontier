@@ -1018,5 +1018,43 @@
     "isDemo": false,
     "createdAt": "2026-11-14T09:38:45.250Z",
     "updatedAt": "2026-11-14T09:38:45.250Z"
+  },
+  {
+    "id": "mission-1794662449697-987",
+    "name": "Test Traverse Plan",
+    "objectiveId": "ANCIENT_WATER_ACTIVITY",
+    "status": "DRAFT",
+    "routeId": "route-1794464117886-802",
+    "parameters": {
+      "routeId": "route-1794464117886-802",
+      "maxDurationMinutes": 195,
+      "startCoordinate": {
+        "latitude": 18.44,
+        "longitude": 77.45
+      },
+      "returnRequired": true
+    },
+    "evaAssessment": {
+      "estimatedDurationMinutes": 108,
+      "totalDistanceKm": 2.538,
+      "terrainDifficulty": "low",
+      "returnMarginMinutes": 87,
+      "feasible": true,
+      "warnings": [],
+      "oxygenReserveRemainingPercent": 60,
+      "recommendations": [
+        "Route passes all baseline safety limits. Proceed to flight director sign-off."
+      ],
+      "status": "GREEN",
+      "statusReason": "Nominal mission parameters. All life-support reserves and slope thresholds satisfied.",
+      "returnFeasibility": true,
+      "emergencyReserveMinutes": 87,
+      "terrainStressFactor": 0.06,
+      "hazardExposureFactor": 0,
+      "dataUncertaintyFactor": 0.15
+    },
+    "isDemo": false,
+    "createdAt": "2026-11-14T13:20:49.697Z",
+    "updatedAt": "2026-11-14T13:20:49.697Z"
   }
 ]

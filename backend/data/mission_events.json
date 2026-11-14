@@ -606,5 +606,140 @@
     },
     "previousEventHash": "329a280cfd2557373c3b7bf16a500027bbe10afa0ce18bfe7c589473ede98d46",
     "eventHash": "59c1810d017ebe1225e03c368010e86dffd796c07c86010fa516bc3ff6f6999a"
+  },
+  {
+    "eventId": "mevt-1794662505356-24-2aq0",
+    "sequenceNumber": 24,
+    "missionId": "MARSWALK-001",
+    "timestamp": "2026-11-14T13:21:45.356Z",
+    "actor": "MONTE_CARLO_ENGINE",
+    "entityId": "mc-20261107-100",
+    "eventType": "MONTE_CARLO_EXECUTED",
+    "payload": {
+      "runCount": 100,
+      "seed": 20261107,
+      "successProbabilityPercent": 100
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
+      }
+    },
+    "previousEventHash": "59c1810d017ebe1225e03c368010e86dffd796c07c86010fa516bc3ff6f6999a",
+    "eventHash": "2cc90c10bf40276b8413d32130683ef285d5cdf1868a4ab9db55436d953342f8"
+  },
+  {
+    "eventId": "mevt-1794662507674-25-xuni",
+    "sequenceNumber": 25,
+    "missionId": "MARSWALK-001",
+    "timestamp": "2026-11-14T13:21:47.674Z",
+    "actor": "MONTE_CARLO_ENGINE",
+    "entityId": "mc-20261107-100",
+    "eventType": "MONTE_CARLO_EXECUTED",
+    "payload": {
+      "runCount": 100,
+      "seed": 20261107,
+      "successProbabilityPercent": 100
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
+      }
+    },
+    "previousEventHash": "2cc90c10bf40276b8413d32130683ef285d5cdf1868a4ab9db55436d953342f8",
+    "eventHash": "9f62baf17b738900972ada66c8b79a6dbfa28491a30c0509dca6ff60aa8b2dec"
+  },
+  {
+    "eventId": "mevt-1794662508339-26-t7er",
+    "sequenceNumber": 26,
+    "missionId": "MARSWALK-001",
+    "timestamp": "2026-11-14T13:21:48.339Z",
+    "actor": "MONTE_CARLO_ENGINE",
+    "entityId": "mc-20261107-100",
+    "eventType": "MONTE_CARLO_EXECUTED",
+    "payload": {
+      "runCount": 100,
+      "seed": 20261107,
+      "successProbabilityPercent": 100
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
+      }
+    },
+    "previousEventHash": "9f62baf17b738900972ada66c8b79a6dbfa28491a30c0509dca6ff60aa8b2dec",
+    "eventHash": "62f7fc3699cd9d6c4b25fbf71808d9da08bcf8f56b4b3f08e34ab5f499938421"
+  },
+  {
+    "eventId": "mevt-1794662508506-27-yl39",
+    "sequenceNumber": 27,
+    "missionId": "MARSWALK-001",
+    "timestamp": "2026-11-14T13:21:48.506Z",
+    "actor": "MONTE_CARLO_ENGINE",
+    "entityId": "mc-20261107-100",
+    "eventType": "MONTE_CARLO_EXECUTED",
+    "payload": {
+      "runCount": 100,
+      "seed": 20261107,
+      "successProbabilityPercent": 100
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
+      }
+    },
+    "previousEventHash": "62f7fc3699cd9d6c4b25fbf71808d9da08bcf8f56b4b3f08e34ab5f499938421",
+    "eventHash": "4afd6f584a9a4e7e579c4bd7a58315fecafd58d268dbe833fdd3fd4536c410ca"
+  },
+  {
+    "eventId": "mevt-1794662508731-28-bvyq",
+    "sequenceNumber": 28,
+    "missionId": "MARSWALK-001",
+    "timestamp": "2026-11-14T13:21:48.731Z",
+    "actor": "MONTE_CARLO_ENGINE",
+    "entityId": "mc-20261107-100",
+    "eventType": "MONTE_CARLO_EXECUTED",
+    "payload": {
+      "runCount": 100,
+      "seed": 20261107,
+      "successProbabilityPercent": 100
+    },
+    "provenance": {
+      "sourceType": "DERIVED",
+      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
+      "dataMode": "FALLBACK",
+      "uncertainty": {
+        "value": 1,
+        "unit": "score",
+        "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
+      }
+    },
+    "previousEventHash": "4afd6f584a9a4e7e579c4bd7a58315fecafd58d268dbe833fdd3fd4536c410ca",
+    "eventHash": "a1f34ae2c8676493f6131175346a212b1e6de36cd289e1620994ca3b6d115342"
   }
 ]

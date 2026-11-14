@@ -89,7 +89,7 @@ export class HiriseProvider {
    * Retrieves surface rover photographs (Mastcam-Z, Navcam) for ground POV inspection
    */
   public getSurfacePhotosNear(coord: MarsCoordinate, radiusKm = 10.0): AuthenticOpticalProduct[] {
-    return AUTHENTIC_OPTICAL_CATALOG.filter((prod) => {
+    const directMatches = AUTHENTIC_OPTICAL_CATALOG.filter((prod) => {
       if (
         prod.type !== "MASTCAM_Z_PANORAMA" &&
         prod.type !== "NAVCAM_STEREO" &&
@@ -100,6 +100,18 @@ export class HiriseProvider {
       const d = calculateMarsDistanceKm(coord, prod.center);
       return d <= radiusKm;
     });
+
+    if (directMatches.length > 0) {
+      return directMatches;
+    }
+
+    // Resilient fallback: return in-situ rover ground photography catalog sorted by proximity
+    return AUTHENTIC_OPTICAL_CATALOG.filter(
+      (prod) =>
+        prod.type === "MASTCAM_Z_PANORAMA" ||
+        prod.type === "NAVCAM_STEREO" ||
+        prod.type === "HAZCAM_SURFACE"
+    ).sort((a, b) => calculateMarsDistanceKm(coord, a.center) - calculateMarsDistanceKm(coord, b.center));
   }
 }
 

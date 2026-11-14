@@ -4262,5 +4262,165 @@
       "candidateCount": 4,
       "paretoCount": 1
     }
+  },
+  {
+    "eventId": "evt-1794662390505-aae663",
+    "blockHeight": 238,
+    "timestamp": "2026-11-14T13:19:50.533Z",
+    "userId": "astro-default-command",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "plan-1794662390504",
+    "planVersion": 1,
+    "previousHash": "7d57212dc40d8b71968c7bb770f1c3fd7fbb824bf8f69344f19dd04b9da7f560",
+    "integrityHash": "8e36d1548a0191845353d72a7ff31ba71bca9b146c65fae14eb88a9fe1f6d8c2",
+    "details": {
+      "start": {
+        "latitude": 18.4447,
+        "longitude": 77.4508
+      },
+      "dest": {
+        "latitude": 18.44,
+        "longitude": 77.395
+      },
+      "candidateCount": 4,
+      "paretoCount": 1
+    }
+  },
+  {
+    "eventId": "evt-1794662390893-292217",
+    "blockHeight": 239,
+    "timestamp": "2026-11-14T13:19:50.893Z",
+    "userId": "astro-default-command",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "plan-1794662390893",
+    "planVersion": 1,
+    "previousHash": "8e36d1548a0191845353d72a7ff31ba71bca9b146c65fae14eb88a9fe1f6d8c2",
+    "integrityHash": "c3eb8e04a2190c7de10bc74afb02787de70ca565d6550c6ed45ba2bccc309dd8",
+    "details": {
+      "start": {
+        "latitude": 18.4447,
+        "longitude": 77.4508
+      },
+      "dest": {
+        "latitude": 18.44,
+        "longitude": 77.395
+      },
+      "candidateCount": 4,
+      "paretoCount": 1
+    }
+  },
+  {
+    "eventId": "evt-1794662398054-bab3d1",
+    "blockHeight": 240,
+    "timestamp": "2026-11-14T13:19:58.055Z",
+    "userId": "astro-default-command",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "plan-1794662398054",
+    "planVersion": 1,
+    "previousHash": "c3eb8e04a2190c7de10bc74afb02787de70ca565d6550c6ed45ba2bccc309dd8",
+    "integrityHash": "c29c2bf8542e4b4d95d52788302b421a57c52b532d73e69f2db16fe32a1865b5",
+    "details": {
+      "start": {
+        "latitude": 18.4447,
+        "longitude": 77.4508
+      },
+      "dest": {
+        "latitude": 18.44,
+        "longitude": 77.395
+      },
+      "candidateCount": 4,
+      "paretoCount": 1
+    }
+  },
+  {
+    "eventId": "evt-1794662398239-7920e3",
+    "blockHeight": 241,
+    "timestamp": "2026-11-14T13:19:58.239Z",
+    "userId": "astro-default-command",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "plan-1794662398239",
+    "planVersion": 1,
+    "previousHash": "c29c2bf8542e4b4d95d52788302b421a57c52b532d73e69f2db16fe32a1865b5",
+    "integrityHash": "357bfc8b31c68e930ac66b49e0162fd11d9e1e1ae38ec952059947da764504d1",
+    "details": {
+      "start": {
+        "latitude": 18.4447,
+        "longitude": 77.4508
+      },
+      "dest": {
+        "latitude": 18.44,
+        "longitude": 77.395
+      },
+      "candidateCount": 4,
+      "paretoCount": 1
+    }
+  },
+  {
+    "eventId": "evt-1794662406168-682c6e",
+    "blockHeight": 242,
+    "timestamp": "2026-11-14T13:20:06.169Z",
+    "userId": "astro-default-command",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "plan-1794662406168",
+    "planVersion": 1,
+    "previousHash": "357bfc8b31c68e930ac66b49e0162fd11d9e1e1ae38ec952059947da764504d1",
+    "integrityHash": "620dd8fc128fe6f3019da67f9ba6f8194d158f1fc149d02aae1efdb56cd2f4ae",
+    "details": {
+      "start": {
+        "latitude": 18.44,
+        "longitude": 77.45
+      },
+      "dest": {
+        "latitude": 18.42,
+        "longitude": 77.41
+      },
+      "candidateCount": 4,
+      "paretoCount": 1
+    }
+  },
+  {
+    "eventId": "evt-1794662449785-9c1fb6",
+    "blockHeight": 243,
+    "timestamp": "2026-11-14T13:20:49.785Z",
+    "userId": "astro-default-command",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "MARSWALK-001",
+    "planVersion": 1,
+    "previousHash": "620dd8fc128fe6f3019da67f9ba6f8194d158f1fc149d02aae1efdb56cd2f4ae",
+    "integrityHash": "d84e8c487f6c51c8dafe131f1e868907aaf22a0545e789d3311c9beb4e2dec48",
+    "details": {
+      "domainUpdated": "routes",
+      "timestamp": "2026-11-14T13:20:49.772Z"
+    }
+  },
+  {
+    "eventId": "evt-1794662450511-98a460",
+    "blockHeight": 244,
+    "timestamp": "2026-11-14T13:20:50.511Z",
+    "userId": "astro-default-command",
+    "role": "MISSION_COMMAND",
+    "action": "OPTIMIZE_ROUTE",
+    "missionPlanId": "plan-1794662450511",
+    "planVersion": 1,
+    "previousHash": "d84e8c487f6c51c8dafe131f1e868907aaf22a0545e789d3311c9beb4e2dec48",
+    "integrityHash": "6fe0d5fe333f9d45efcbb4d292ddb69c597a2268ae16bee41254530c0e3e1f3e",
+    "details": {
+      "start": {
+        "latitude": 18.44,
+        "longitude": 77.45
+      },
+      "dest": {
+        "latitude": 18.42,
+        "longitude": 77.41
+      },
+      "candidateCount": 4,
+      "paretoCount": 1
+    }
   }
 ]

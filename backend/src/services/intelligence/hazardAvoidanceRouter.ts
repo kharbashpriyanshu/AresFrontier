@@ -316,7 +316,7 @@ export class HazardAvoidanceRouter {
       }
       return {
         hazardId: h.id,
-        hazardName: h.name,
+        hazardName: h.name || "Identified Surface Hazard",
         standoffDistanceM: Math.round(minClearanceM),
       };
     });

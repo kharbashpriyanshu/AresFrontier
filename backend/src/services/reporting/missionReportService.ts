@@ -172,7 +172,7 @@ export class MissionReportService {
       auditChainService.appendEvent({
         userId: "SYSTEM_GENESIS",
         role: "MISSION_COMMAND",
-        action: "MISSION_PLAN_ASSESSED",
+        action: "ASSESS_MISSION",
         missionPlanId: missionId,
         details: { note: "Canonical genesis block for mission reporting audit traceability." },
       });
@@ -415,9 +415,9 @@ export class MissionReportService {
             },
             geology: {
               dataset: "USGS SIM 3464 Geologic Map of Jezero Crater",
-              unit: geo.unitCode,
-              formation: geo.formationName,
-              hardness: `${geo.rockHardnessMohs} Mohs`,
+              unit: geo.unit.code,
+              formation: geo.unit.name,
+              hardness: `${geo.unit.rockHardnessMohs} Mohs`,
             },
             mineralogy: {
               dataset: "NASA MRO CRISM Hyperspectral Mapping (MTR3)",
@@ -430,8 +430,8 @@ export class MissionReportService {
               airTemperatureK: atmo.airTemperatureK,
               dustOpticalDepthTau: atmo.dustOpticalDepthTau,
               radiationDoseRateMicroGyPerDay: rad.gcrDoseRateMicroSvPerHour * 24,
-              solarParticleEventAlert: rad.solarParticleEventAlert,
-              careerPELPercent: (rad.absorbedDoseMilliSvPerSol / 250) * 100,
+              solarParticleEventAlert: rad.spaceWeatherStatus === "SOLAR_PARTICLE_EVENT" || rad.spaceWeatherStatus === "EXTREME_STORM",
+              careerPELPercent: rad.nasaPel30DayBudgetPct,
             },
           };
         } catch {

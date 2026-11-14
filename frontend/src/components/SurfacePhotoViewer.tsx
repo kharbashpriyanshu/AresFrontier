@@ -69,7 +69,27 @@ export const SurfacePhotoViewer: React.FC<SurfacePhotoViewerProps> = ({
   }
 
   if (photos.length === 0) {
-    return null;
+    return (
+      <div className={`p-6 rounded-xl border border-atlas-border bg-atlas-card text-center space-y-3 ${className}`}>
+        <div className="flex items-center justify-between pb-2 border-b border-atlas-border">
+          <div className="flex items-center space-x-2">
+            <Camera className="w-5 h-5 text-amber-500" />
+            <h3 className="text-sm font-semibold text-atlas-text">NASA Rover Photography</h3>
+          </div>
+          {onClose && (
+            <button
+              onClick={onClose}
+              className="p-1 hover:bg-atlas-elevated text-atlas-muted hover:text-atlas-text rounded transition-colors"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          )}
+        </div>
+        <p className="text-xs text-atlas-muted">
+          No rover surface photography cataloged directly at this coordinate. Teleport to Jezero Crater or Gale Crater to inspect in-situ rover Mastcam & Navcam imagery.
+        </p>
+      </div>
+    );
   }
 
   return (
