@@ -21,6 +21,7 @@ import {
   Sparkles,
   Cpu,
   ShieldCheck,
+  X,
 } from "lucide-react";
 
 interface RoutePlannerProps {
@@ -42,6 +43,7 @@ interface RoutePlannerProps {
   onSelectObjective?: (objId: ScienceObjectiveId) => void;
   onRunCopilotOptimizer?: () => Promise<void>;
   isOptimizing?: boolean;
+  onClose?: () => void;
 }
 
 export const RoutePlanner: React.FC<RoutePlannerProps> = ({
@@ -62,6 +64,7 @@ export const RoutePlanner: React.FC<RoutePlannerProps> = ({
   onSelectObjective,
   onRunCopilotOptimizer,
   isOptimizing = false,
+  onClose,
 }) => {
   const [isGenerating, setIsGenerating] = useState<boolean>(false);
   const [selectedScienceTargetId, setSelectedScienceTargetId] = useState<string>("");
@@ -170,17 +173,28 @@ export const RoutePlanner: React.FC<RoutePlannerProps> = ({
           </div>
           <h2 className="text-sm font-bold text-atlas-text font-display">Marswalk Navigator</h2>
         </div>
-        <button
-          onClick={() => onTogglePickMode(!isPickingOnMap)}
-          className={`px-3 py-1.5 text-[11px] font-semibold border transition-colors ${
-            isPickingOnMap
-              ? "bg-atlas-accent text-white border-atlas-accent animate-pulse"
-              : "bg-atlas-elevated hover:bg-atlas-surface text-atlas-text border-atlas-border"
-          }`}
-          title="Click to place waypoints on the Mars surface"
-        >
-          {isPickingOnMap ? "Picking..." : "+ Map Pin"}
-        </button>
+        <div className="flex items-center space-x-2">
+          <button
+            onClick={() => onTogglePickMode(!isPickingOnMap)}
+            className={`px-2.5 py-1 text-[11px] font-semibold border transition-colors ${
+              isPickingOnMap
+                ? "bg-atlas-accent text-white border-atlas-accent animate-pulse"
+                : "bg-atlas-elevated hover:bg-atlas-surface text-atlas-text border-atlas-border"
+            }`}
+            title="Click to place waypoints on the Mars surface"
+          >
+            {isPickingOnMap ? "Picking..." : "+ Map Pin"}
+          </button>
+          {onClose && (
+            <button
+              onClick={onClose}
+              className="p-1 hover:bg-atlas-surface text-atlas-muted hover:text-atlas-text border border-transparent hover:border-atlas-border transition-colors"
+              title="Close Route Planner"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Content Area */}

@@ -98,10 +98,10 @@ export const Navbar: React.FC = () => {
         {/* Unified Primary Demo Tour CTA */}
         <Link
           to="/map?demo=marswalk-001"
-          className="flex items-center space-x-1.5 text-xs font-mono bg-atlas-accent hover:brightness-110 text-white px-3 py-1.5 border border-atlas-accent font-bold transition-all shadow-md shadow-atlas-accent/20"
+          className="flex items-center space-x-1.5 text-xs font-mono bg-atlas-elevated hover:bg-atlas-surface border border-atlas-accent text-atlas-accent px-3 py-1.5 font-bold transition-all shadow-sm hover:shadow-atlas-accent/20"
           title="Launch 5-Step Guided Marswalk Tour for NASA Space Apps Judges"
         >
-          <Sparkles className="w-3.5 h-3.5 text-white" />
+          <Sparkles className="w-3.5 h-3.5 text-atlas-accent" />
           <span>Guided Demo</span>
         </Link>
 
