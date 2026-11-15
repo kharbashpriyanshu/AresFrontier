@@ -26,10 +26,9 @@ export const LandingPage: React.FC = () => {
       <section className="relative px-4 sm:px-6 lg:px-8 pt-12 pb-20 md:pt-16 md:pb-28 overflow-hidden border-b border-atlas-border">
         {/* Martian Cinematic Background Vista */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
-          <img
-            src="/mars-hero-bg.jpg"
-            alt="Cinematic twilight Martian surface vista"
-            className="w-full h-full object-cover object-bottom transition-opacity duration-300 opacity-90"
+          <div
+            className="w-full h-full bg-cover bg-bottom bg-fixed transition-opacity duration-300 opacity-90"
+            style={{ backgroundImage: "url('/mars-hero-bg.jpg')" }}
           />
           {/* Gradients to blend seamlessly into canvas (#080F19) and preserve crisp text contrast */}
           <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-atlas-bg via-atlas-bg/40 to-atlas-bg/90" />
@@ -118,7 +117,7 @@ export const LandingPage: React.FC = () => {
                       <div className="w-2 h-2 rounded-full bg-atlas-border" />
                     </div>
                     <span className="text-[10px] font-mono text-atlas-accent font-bold tracking-wider">
-                      MARTIAN MAP
+                      ARES FRONTIER
                     </span>
                     <span className="text-[9px] font-mono text-atlas-muted uppercase tracking-tight hidden sm:inline">
                       • Atlas Intelligence

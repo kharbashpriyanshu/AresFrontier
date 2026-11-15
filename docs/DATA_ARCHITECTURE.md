@@ -1,8 +1,8 @@
-# Martian Map — Data Architecture & Planetary Grounding
+# Ares Frontier — Data Architecture & Planetary Grounding
 
 ## 1. Overview & Architectural Philosophy
 
-The **Martian Map** data architecture is engineered to provide rigorous, scientifically grounded decision support for Mars surface extravehicular activity (EVA) planning. Rather than treating planetary observations as static assets or synthetic placeholders, the system employs a multi-tiered data provenance model separating:
+The **Ares Frontier** data architecture is engineered to provide rigorous, scientifically grounded decision support for Mars surface extravehicular activity (EVA) planning. Rather than treating planetary observations as static assets or synthetic placeholders, the system employs a multi-tiered data provenance model separating:
 
 1. **Observed Physical Evidence** (Orbital remote sensing, in-situ rover logs, calibrated benchmarks)
 2. **Derived Engineering Indicators** (Slope vectors, elevation profiles, hazard envelopes)
@@ -76,7 +76,7 @@ flowchart TD
 
 ## 3. Separation of Real, Benchmark, Fallback, and Heuristic Data
 
-Every telemetry packet and analysis in Martian Map carries an explicit `DataMode`:
+Every telemetry packet and analysis in Ares Frontier carries an explicit `DataMode`:
 
 - **`LIVE`**: Active API or WMS stream directly from NASA / USGS Astrogeology servers.
 - **`CACHED`**: Locally cached copy of an authoritative NASA dataset retrieved with bounded TTL.

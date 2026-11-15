@@ -1,4 +1,4 @@
-# Phase 5 Baseline Audit: Martian Map Planetary Operations Platform
+# Phase 5 Baseline Audit: Ares Frontier Planetary Operations Platform
 
 **Audit Timestamp:** 2026-11-07T21:56:00+05:30  
 **Repository:** `https://github.com/shrutirai29/nasa`  
@@ -9,7 +9,7 @@
 
 ## 1. Current Architecture Overview
 
-Martian Map contains the following interconnected subsystems implemented across Phases 1 through 4:
+Ares Frontier contains the following interconnected subsystems implemented across Phases 1 through 4:
 
 ### 1.1 Subsystem Inventory
 

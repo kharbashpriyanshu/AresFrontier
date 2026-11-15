@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-Autonomous planetary systems must never operate as "black boxes." When Martian Map recommends a detour, halts a rover, or reprioritizes an EVA route, it generates a complete 7-step decision lineage graph showing the full causal chain from raw sensor observation to human authorization and execution.
+Autonomous planetary systems must never operate as "black boxes." When Ares Frontier recommends a detour, halts a rover, or reprioritizes an EVA route, it generates a complete 7-step decision lineage graph showing the full causal chain from raw sensor observation to human authorization and execution.
 
 ## 2. The 7-Step Decision Explanation Lineage
 

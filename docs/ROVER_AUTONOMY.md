@@ -2,7 +2,7 @@
 
 ## 1. Autonomous Control Architecture
 
-Martian Map's autonomous rover decision engine implements a 9-stage closed-loop operational cycle:
+Ares Frontier's autonomous rover decision engine implements a 9-stage closed-loop operational cycle:
 
 $$\text{OBSERVE} \to \text{ASSESS} \to \text{SELECT TASK} \to \text{PLAN PATH} \to \text{CHECK BATTERY} \to \text{CHECK COMMS} \to \text{CHECK HAZARDS} \to \text{EXECUTE / PAUSE} \to \text{REPORT}$$
 

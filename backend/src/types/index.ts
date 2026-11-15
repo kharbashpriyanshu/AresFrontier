@@ -1,5 +1,5 @@
 /**
- * Martian Map - Core Type Definitions & Scientific Abstractions
+ * Ares Frontier - Core Type Definitions & Scientific Abstractions
  * Reference Ellipsoid: Mars equatorial radius = 3389.5 km
  */
 

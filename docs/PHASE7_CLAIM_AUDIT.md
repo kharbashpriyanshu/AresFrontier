@@ -2,7 +2,7 @@
 
 ## 1. Overview & Policy
 
-In accordance with strict scientific truthfulness guidelines for the NASA Space Apps Challenge, this document audits every significant capability, telemetry, and numerical claim across the Martian Map repository.
+In accordance with strict scientific truthfulness guidelines for the NASA Space Apps Challenge, this document audits every significant capability, telemetry, and numerical claim across the Ares Frontier repository.
 
 No simulated value, physics model output, or benchmark dataset may be claimed as "LIVE" telemetry from active Mars rovers. Every claim is categorized under one of eight formal classifications:
 1. **`VERIFIED`**: Directly executed and confirmed by automated tests and cryptographic proof.

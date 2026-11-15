@@ -1,7 +1,7 @@
 # Persistence Model — State Recovery & Checkpoints
 
 ## 1. Multi-Tier Persistence Strategy
-Martian Map ensures persistent operations survive server restarts through cohesive storage layers:
+Ares Frontier ensures persistent operations survive server restarts through cohesive storage layers:
 1. **Planned Routes & Missions (`backend/data/routes.json`, `backend/data/missions.json`)**:
    - Persisted via `MissionRepository` using atomic write patterns.
    - Survives backend restarts and cold restarts.

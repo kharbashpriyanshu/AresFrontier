@@ -1,8 +1,8 @@
-# Martian Map — System Architecture & Integration Guide
+# Ares Frontier — System Architecture & Integration Guide
 
 ## 1. System Overview
 
-Martian Map is a full-stack planetary exploration and mission planning application built for the NASA Space Apps Challenge.
+Ares Frontier is a full-stack planetary exploration and mission planning application built for the NASA Space Apps Challenge.
 The system provides future Martian astronauts and flight controllers with real-time terrain evaluation, MOLA elevation profiling,
 science target evaluation, and deterministic extravehicular activity (EVA) feasibility calculations.
 

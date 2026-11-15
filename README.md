@@ -1,4 +1,4 @@
-# 🪐 Martian Map
+# 🪐 Ares Frontier
 
 ## Planetary Mission Intelligence Under Uncertainty
 
@@ -10,7 +10,7 @@
 [![Tests](https://img.shields.io/badge/Tests-256%2F256%20Passing-34d399?style=for-the-badge&logo=vitest&logoColor=white)](#-automated-testing--validation)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue?style=for-the-badge)](LICENSE)
 
-> **Martian Map is a reproducible planetary mission digital twin that combines terrain intelligence, multi-agent operations, sensor uncertainty, communication modeling, safety invariants, human authorization, cryptographic mission auditing, deterministic replay, and what-if decision analysis.**
+> **Ares Frontier is a reproducible planetary mission digital twin that combines terrain intelligence, multi-agent operations, sensor uncertainty, communication modeling, safety invariants, human authorization, cryptographic mission auditing, deterministic replay, and what-if decision analysis.**
 
 ```text
 OBSERVE
@@ -51,7 +51,7 @@ Human extravehicular activity on Mars presents extreme, interconnected operation
 
 ## 💡 The Solution
 
-**Martian Map** synthesizes multi-mission NASA orbital and in-situ datasets into a unified mission operations console:
+**Ares Frontier** synthesizes multi-mission NASA orbital and in-situ datasets into a unified mission operations console:
 
 ```text
 Explore Mars
@@ -309,8 +309,8 @@ We maintain strict scientific transparency regarding data provenance (`DataMode 
 | **Viking MDIM 2.1** | Viking Orbiters 1 & 2 / USGS | `Real External Data` | Calibrated visible basemap tile layer (~232 m/pixel). |
 | **THEMIS Day IR** | 2001 Mars Odyssey / ASU | `Real External Data` | Global thermal infrared mosaic indicating rock abundance and thermal inertia. |
 | **Rover Traverses & Targets** | Mars 2020 & MSL / PDS Analyst's Notebook | `Benchmark Ground Truth` | In-situ observations and ground-truth sample logs (SuperCam, CheMin, PIXL). |
-| **MOLA Elevation Cross-Section** | Martian Map Mission Engine | `Derived Calculation` | Great-circle surface sampling interpolated at ~300 m resolution. |
-| **Metabolic Traversal Pace** | Martian Map Mission Engine | `Derived Calculation` | Tobler hiking speed calibrated for Martian gravity ($0.38g$). |
+| **MOLA Elevation Cross-Section** | Ares Frontier Mission Engine | `Derived Calculation` | Great-circle surface sampling interpolated at ~300 m resolution. |
+| **Metabolic Traversal Pace** | Ares Frontier Mission Engine | `Derived Calculation` | Tobler hiking speed calibrated for Martian gravity ($0.38g$). |
 | **Life Support Reserves** | NASA Flight Rules Model | `Deterministic Heuristic` | Enforces mandatory 30-min return margin & metabolic $O_2$ consumption. |
 | **Evidence-Based Scarps** | Regional Geologic Mapping | `Derived / Evidence-Backed` | Slope gradient and scarp boundary visualization with sensor citations. |
 | **Factorized Science Scoring** | MEPAG / Mars Science Community | `Project Scoring Rule` | Separates physical observed evidence from mission scoring weights. |
@@ -322,7 +322,7 @@ We maintain strict scientific transparency regarding data provenance (`DataMode 
 ### Phase 7: Mission Readiness, Scientific Verification & Judge Hardening
 - [Phase 7 Master Claim Audit & Classification](docs/PHASE7_CLAIM_AUDIT.md)
 - [Phase 7 Closed-Loop Architecture](docs/PHASE7_ARCHITECTURE.md)
-- [Why Martian Map — Strategic & Scientific Differentiation](docs/WHY_MARTIAN_MAP.md)
+- [Why Ares Frontier — Strategic & Scientific Differentiation](docs/WHY_MARTIAN_MAP.md)
 - [Documented Scientific Limitations & Model Boundaries](docs/SCIENTIFIC_LIMITATIONS.md)
 - [Automated Verification Matrix (S1–S8, Security, Replay, What-If)](docs/PHASE7_VERIFICATION_MATRIX.md)
 - [Clean Machine Installation Guide](docs/CLEAN_INSTALL.md)

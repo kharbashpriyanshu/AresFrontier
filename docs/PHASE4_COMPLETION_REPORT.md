@@ -2,7 +2,7 @@
 
 ## 1. Executive Summary
 
-Phase 4 of the **Martian Map — Interplanetary Survival Guide** project is completed. The system has evolved into an end-to-end, multi-agent planetary field operations and collaborative teleoperations platform.
+Phase 4 of the **Ares Frontier — Interplanetary Survival Guide** project is completed. The system has evolved into an end-to-end, multi-agent planetary field operations and collaborative teleoperations platform.
 
 - **Automated Tests**: **71 / 71 passing** (100% pass rate across 20 test files).
 - **Backend Build**: Clean TypeScript compilation (`tsc`) with 0 errors.

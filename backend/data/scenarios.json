@@ -44,11 +44,11 @@
     },
     "conditions": [],
     "createdAt": "2026-11-14T07:19:33.222Z",
-    "updatedAt": "2026-11-14T17:42:45.086Z",
+    "updatedAt": "2026-11-15T16:28:33.802Z",
     "lastExecution": {
-      "executionId": "exec-6d52085d",
+      "executionId": "exec-49da33bc",
       "scenarioId": "scen-jezero-nominal",
-      "executedAt": "2026-11-14T17:42:45.086Z",
+      "executedAt": "2026-11-15T16:28:33.802Z",
       "mode": "SIMULATED",
       "isolatedFromLiveState": true,
       "feasible": true,
@@ -100,7 +100,7 @@
       ],
       "provenance": {
         "sourceType": "DERIVED",
-        "sourceName": "Martian Map Planetary Computation — Scenario Builder Isolated Execution (Nominal Jezero Delta Traverse)",
+        "sourceName": "Ares Frontier Planetary Computation — Scenario Builder Isolated Execution (Nominal Jezero Delta Traverse)",
         "processingMethod": "Mathematical calculation derived from [Isolated Mission State Clone, MonteCarloEngine, WhatIfSimulationEngine, SafetyInvariantService]: SIMULATED Scenario Stress-Test",
         "dataMode": "FALLBACK",
         "uncertainty": {

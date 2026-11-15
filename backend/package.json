@@ -1,7 +1,7 @@
 {
-  "name": "martian-map-backend",
+  "name": "ares-frontier-backend",
   "version": "1.0.0",
-  "description": "Martian Map Backend API & NASA Mission Engine",
+  "description": "Ares Frontier Backend API & NASA Mission Engine",
   "main": "dist/app.js",
   "scripts": {
     "build": "tsc",

@@ -165,7 +165,7 @@ export const MissionNarrativePanel: React.FC<MissionNarrativePanelProps> = ({
         <p className="text-xs text-atlas-text">
           On Sol 1042, Commander A. Gomez plans a {distanceKm} km EVA from{" "}
           <span className="text-atlas-accent font-semibold">{startLabel}</span> to{" "}
-          <span className="text-atlas-teal font-semibold">{endLabel}</span>. MARTIAN MAP integrates 8 NASA mission datasets to ensure maximum safety and science return.
+          <span className="text-atlas-teal font-semibold">{endLabel}</span>. ARES FRONTIER integrates 8 NASA mission datasets to ensure maximum safety and science return.
         </p>
       </div>
 

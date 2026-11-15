@@ -9,7 +9,7 @@ Ensure your host system meets the following standard prerequisites:
 - **OS**: Windows, macOS, or Linux.
 - **Port Availability**: Port `5000` (Backend API) and Port `5173` (Frontend UI).
 
-*Note: No external API keys, database credentials, or proprietary software licenses are required. Martian Map includes built-in in-memory fallback repositories and deterministic benchmark datasets for 100% offline functionality.*
+*Note: No external API keys, database credentials, or proprietary software licenses are required. Ares Frontier includes built-in in-memory fallback repositories and deterministic benchmark datasets for 100% offline functionality.*
 
 ---
 

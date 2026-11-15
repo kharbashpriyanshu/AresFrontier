@@ -5,7 +5,7 @@
 ### [00:00 – 00:30] Problem: Operational Uncertainty on Mars
 - **UI View**: Open [`http://localhost:5173`](http://localhost:5173) (Landing Page / Global Mars Map).
 - **Spoken Narration**:
-  > *"When human crews and robotic rovers explore Mars, they don't operate with perfect knowledge. They operate under extreme uncertainty—delayed communications, steep terrain scarps, finite battery reserves, and irreversible decisions. Traditional tools plan a route and hope for the best. Martian Map is a mission digital twin that observes reality, quantifies uncertainty, assesses hazards, synthesizes alternatives, and respects human authority."*
+  > *"When human crews and robotic rovers explore Mars, they don't operate with perfect knowledge. They operate under extreme uncertainty—delayed communications, steep terrain scarps, finite battery reserves, and irreversible decisions. Traditional tools plan a route and hope for the best. Ares Frontier is a mission digital twin that observes reality, quantifies uncertainty, assesses hazards, synthesizes alternatives, and respects human authority."*
 
 ---
 
@@ -26,7 +26,7 @@
 ### [02:00 – 02:45] What-If Comparative Analysis: The Cost of Ignoring Hazards
 - **UI Action**: Inspect the **DECISION COMPARISON** card or click **Explore Full What-If Matrix** to open [`/replay`](http://localhost:5173/replay).
 - **Spoken Narration**:
-  > *"Why did the flight director approve the detour? In Martian Map, we don't have to guess. Our What-If simulation engine branches off at the exact moment of the hazard and simulates the alternative: What if we forced the rover over the steep slope to save distance? Look at the side-by-side delta: forcing the direct path saved 1.5 km and 6 minutes, but dropped our safety score from 92 down to 51, with an 80% scree trenching penalty that would have stranded a \$2.5 billion rover. The digital twin proves the value of the human decision."*
+  > *"Why did the flight director approve the detour? In Ares Frontier, we don't have to guess. Our What-If simulation engine branches off at the exact moment of the hazard and simulates the alternative: What if we forced the rover over the steep slope to save distance? Look at the side-by-side delta: forcing the direct path saved 1.5 km and 6 minutes, but dropped our safety score from 92 down to 51, with an 80% scree trenching penalty that would have stranded a \$2.5 billion rover. The digital twin proves the value of the human decision."*
 
 ---
 
@@ -47,4 +47,4 @@
 ### [04:15 – 05:00] Differentiation & Scientific Truthfulness
 - **UI Action**: Open [`/methodology`](http://localhost:5173/methodology). Point to the 5-tier classification grid.
 - **Spoken Narration**:
-  > *"Finally, we hold ourselves to rigorous scientific honesty. You will never see fake 'LIVE TELEMETRY FROM MARS' in our application. We explicitly classify our data into five tiers: real NASA benchmark datasets, physical calculations, simulated sensor and orbital models, flight rule heuristics, and demonstration scenarios. Martian Map doesn't replace mission control. It gives mission control better evidence for deciding what to do next under uncertainty."*
+  > *"Finally, we hold ourselves to rigorous scientific honesty. You will never see fake 'LIVE TELEMETRY FROM MARS' in our application. We explicitly classify our data into five tiers: real NASA benchmark datasets, physical calculations, simulated sensor and orbital models, flight rule heuristics, and demonstration scenarios. Ares Frontier doesn't replace mission control. It gives mission control better evidence for deciding what to do next under uncertainty."*

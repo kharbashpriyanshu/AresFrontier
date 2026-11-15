@@ -1,7 +1,7 @@
 # Phase 5 Completion Report — Autonomous Mission Intelligence & Verified Planetary Simulation
 
 ## 1. Executive Summary
-Phase 5 successfully upgrades the **Martian Map — Interplanetary Survival Guide** from a deterministic multi-agent demonstration into a fully verified, evidence-driven planetary operations simulator.
+Phase 5 successfully upgrades the **Ares Frontier — Interplanetary Survival Guide** from a deterministic multi-agent demonstration into a fully verified, evidence-driven planetary operations simulator.
 
 ## 2. Test Verification Summary
 - **Total Tests Passing**: **104 / 104 tests (100% pass rate)**

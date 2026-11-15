@@ -1,8 +1,8 @@
-# Martian Map — Data Provenance Model
+# Ares Frontier — Data Provenance Model
 
 ## 1. Provenance Specification & Design
 
-In planetary science and aerospace mission operations, decisions must be auditable back to specific sensors, orbits, and calibration steps. The Martian Map provenance standard enforces that every response envelope includes explicit scientific citations.
+In planetary science and aerospace mission operations, decisions must be auditable back to specific sensors, orbits, and calibration steps. The Ares Frontier provenance standard enforces that every response envelope includes explicit scientific citations.
 
 ```typescript
 export interface DataProvenance {
@@ -29,7 +29,7 @@ export interface DataProvenance {
 
 ## 2. Dynamic Confidence Formulation
 
-Martian Map eliminates all arbitrary static confidence constants (e.g., hardcoded `0.95` or `0.88`). Confidence is dynamically derived from empirical observation mode and physical terrain properties:
+Ares Frontier eliminates all arbitrary static confidence constants (e.g., hardcoded `0.95` or `0.88`). Confidence is dynamically derived from empirical observation mode and physical terrain properties:
 
 $$C_{\text{terrain}} = C_{\text{base}}(\text{mode}) - k_{\text{roughness}} \cdot \text{RoughnessFactor}$$
 

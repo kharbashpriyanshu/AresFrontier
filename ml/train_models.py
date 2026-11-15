@@ -1,5 +1,5 @@
 """
-Martian Map - ML Training Pipeline
+Ares Frontier - ML Training Pipeline
 Trains and serializes machine learning models for Mars terrain hazard assessment,
 route risk regression, mission feasibility classification, and target prioritization.
 

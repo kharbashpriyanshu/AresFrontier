@@ -2,7 +2,7 @@
 
 ## 1. System Overview
 
-Martian Map Phase 6 evolves the multi-agent planetary operations simulator into a **Reproducible Planetary Mission Digital Twin**. The architecture provides mission recording, deterministic step replay, what-if decision branching with multi-dimensional delta comparison, seeded Monte Carlo uncertainty analysis, a failure injection testing harness, automated S1–S8 safety invariant verification, a transparent health model, decision explanation lineage, and deep data provenance.
+Ares Frontier Phase 6 evolves the multi-agent planetary operations simulator into a **Reproducible Planetary Mission Digital Twin**. The architecture provides mission recording, deterministic step replay, what-if decision branching with multi-dimensional delta comparison, seeded Monte Carlo uncertainty analysis, a failure injection testing harness, automated S1–S8 safety invariant verification, a transparent health model, decision explanation lineage, and deep data provenance.
 
 ```
 +-----------------------------------------------------------------------------------+

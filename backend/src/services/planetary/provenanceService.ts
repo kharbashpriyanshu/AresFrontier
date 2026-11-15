@@ -198,7 +198,7 @@ export class ProvenanceService {
   ): DataProvenance {
     return {
       sourceType: "DERIVED",
-      sourceName: `Martian Map Planetary Computation — ${metricName}`,
+      sourceName: `Ares Frontier Planetary Computation — ${metricName}`,
       processingMethod: `Mathematical calculation derived from [${inputs.join(", ")}]: ${methodology}`,
       dataMode: "FALLBACK",
       confidence,
@@ -216,7 +216,7 @@ export class ProvenanceService {
   public static createProjectRuleProvenance(ruleName: string, description: string): DataProvenance {
     return {
       sourceType: "PROJECT_RULE",
-      sourceName: `Martian Map Operational Protocol — ${ruleName}`,
+      sourceName: `Ares Frontier Operational Protocol — ${ruleName}`,
       processingMethod: description,
       dataMode: "FALLBACK",
       confidence: undefined, // Explicitly undefined for human policy rules per NASA integrity guidelines

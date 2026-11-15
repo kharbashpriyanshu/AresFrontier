@@ -1,4 +1,4 @@
-# Martian Map — Phase 3 Hardening & Verification Audit
+# Ares Frontier — Phase 3 Hardening & Verification Audit
 
 ## 1. Audit Scope & Objective
 Before implementing Phase 4 (Multi-Agent Planetary Field Operations & Collaborative Teleoperations), this audit inspects the current repository state (`2c37c80`) to verify all data providers, mode transitions, security checks, and plan immutability.

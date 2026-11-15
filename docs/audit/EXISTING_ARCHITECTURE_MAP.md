@@ -1,8 +1,8 @@
-# MARTIAN MAP — EXISTING ARCHITECTURE MAP
+# ARES FRONTIER — EXISTING ARCHITECTURE MAP
 
 **Audit Date**: November 12, 2026  
 **Auditor**: Antigravity Technical Audit Agent  
-**Repository**: `martian-map`  
+**Repository**: `ares-frontier`  
 
 ---
 

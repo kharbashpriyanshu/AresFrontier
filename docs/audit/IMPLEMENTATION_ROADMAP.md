@@ -1,8 +1,8 @@
-# MARTIAN MAP — IMPLEMENTATION ROADMAP
+# ARES FRONTIER — IMPLEMENTATION ROADMAP
 
 **Audit Date**: November 12, 2026  
 **Auditor**: Antigravity Technical Audit Agent  
-**Repository**: `martian-map`  
+**Repository**: `ares-frontier`  
 
 ---
 

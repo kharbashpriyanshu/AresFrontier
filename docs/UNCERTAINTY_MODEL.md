@@ -1,4 +1,4 @@
-# Martian Map — Observational Uncertainty & Decision Model
+# Ares Frontier — Observational Uncertainty & Decision Model
 
 ## 1. Topographic & Slope Uncertainty
 

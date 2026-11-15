@@ -67,7 +67,7 @@ export function getProvenanceExplorer(req: Request, res: Response): void {
     success: true,
     data: explorer,
     metadata: {
-      source: "Martian Map Provenance & Audit Registry",
+      source: "Ares Frontier Provenance & Audit Registry",
       timestamp: new Date().toISOString(),
     },
   });
@@ -296,7 +296,7 @@ export async function getUnifiedScienceLayer(req: Request, res: Response): Promi
     data: point,
     metadata: {
       modalitiesCount: 8,
-      source: "Martian Map Unified Multi-Mission Scientific Data Layer",
+      source: "Ares Frontier Unified Multi-Mission Scientific Data Layer",
       timestamp: new Date().toISOString(),
     },
   });

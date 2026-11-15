@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-Phase 4 transforms **Martian Map** from a single-mission decision-support application into a comprehensive **Multi-Agent Planetary Field Operations and Collaborative Teleoperations Platform**. In Phase 4, mission planning expands beyond individual astronaut EVA corridors to coordinate autonomous robotic rovers, human exploration crews, elevated communication relays, orbital relay passes, dynamic replanning engines, and tamper-evident audit logging.
+Phase 4 transforms **Ares Frontier** from a single-mission decision-support application into a comprehensive **Multi-Agent Planetary Field Operations and Collaborative Teleoperations Platform**. In Phase 4, mission planning expands beyond individual astronaut EVA corridors to coordinate autonomous robotic rovers, human exploration crews, elevated communication relays, orbital relay passes, dynamic replanning engines, and tamper-evident audit logging.
 
 ```mermaid
 flowchart TD

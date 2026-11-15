@@ -2,7 +2,7 @@
 
 ## 1. Conceptual Mission Intelligence Architecture
 
-The Martian Map digital twin operates as a closed-loop planetary operations and decision-support system:
+The Ares Frontier digital twin operates as a closed-loop planetary operations and decision-support system:
 
 ```text
                  MARTIAN ENVIRONMENT

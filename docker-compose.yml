@@ -3,12 +3,12 @@ version: '3.8'
 services:
   db:
     image: postgis/postgis:15-3.3
-    container_name: martian_map_db
+    container_name: ares_frontier_db
     restart: unless-stopped
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: martian_map
+      POSTGRES_DB: ares_frontier
     ports:
       - "5432:5432"
     volumes:
@@ -19,7 +19,7 @@ services:
     build:
       context: ./ml
       dockerfile: Dockerfile
-    container_name: martian_map_ml
+    container_name: ares_frontier_ml
     restart: unless-stopped
     ports:
       - "8000:8000"
@@ -30,7 +30,7 @@ services:
     build:
       context: ./science
       dockerfile: Dockerfile
-    container_name: martian_map_science
+    container_name: ares_frontier_science
     restart: unless-stopped
     ports:
       - "8001:8001"
@@ -41,13 +41,13 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: martian_map_backend
+    container_name: ares_frontier_backend
     restart: unless-stopped
     ports:
       - "5000:5000"
     environment:
       - PORT=5000
-      - DATABASE_URL=postgresql://postgres:postgres@db:5432/martian_map
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/ares_frontier
       - ML_SERVICE_URL=http://ml-service:8000
       - ENABLE_ML_SERVICE=true
       - SCIENCE_SERVICE_URL=http://science-service:8001
@@ -62,7 +62,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    container_name: martian_map_frontend
+    container_name: ares_frontier_frontend
     restart: unless-stopped
     ports:
       - "80:80"

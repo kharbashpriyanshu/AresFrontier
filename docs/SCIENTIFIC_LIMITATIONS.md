@@ -2,7 +2,7 @@
 
 ## 1. Overview & Transparency Mandate
 
-Scientific integrity requires stating what a system cannot do as clearly as what it can do. Martian Map does not fabricate real-time connections to active rovers on Mars. Below are the documented boundaries of the current models and data abstractions.
+Scientific integrity requires stating what a system cannot do as clearly as what it can do. Ares Frontier does not fabricate real-time connections to active rovers on Mars. Below are the documented boundaries of the current models and data abstractions.
 
 ---
 

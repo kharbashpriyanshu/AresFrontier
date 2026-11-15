@@ -1,16 +1,16 @@
-# MARTIAN MAP — INITIAL REPOSITORY AUDIT
+# ARES FRONTIER — INITIAL REPOSITORY AUDIT
 
 **Audit Date**: November 12, 2026  
 **Auditor**: Antigravity Technical Audit Agent  
 **Repository**: https://github.com/shrutirai29/nasa  
-**Project Path**: `martian-map`  
-**Working Directory**: `F:\Projects\NASA\martian-map`  
+**Project Path**: `ares-frontier`  
+**Working Directory**: `F:\Projects\NASA\ares-frontier`  
 
 ---
 
 ## 1. Executive Summary
 
-Martian Map is a full-stack planetary exploration, mission-planning, scientific intelligence, and multi-agent operations platform built for Mars surface missions. The codebase represents a mature prototype with strong architectural scaffolding, comprehensive unit/integration test coverage (121 passing tests across 30 suites), and clean type definitions.
+Ares Frontier is a full-stack planetary exploration, mission-planning, scientific intelligence, and multi-agent operations platform built for Mars surface missions. The codebase represents a mature prototype with strong architectural scaffolding, comprehensive unit/integration test coverage (121 passing tests across 30 suites), and clean type definitions.
 
 However, an in-depth code audit reveals significant divergence between documented capabilities and actual runtime implementation:
 - **ML/AI and Science Subsystems** are purely architectural adapters (`mlEngineAdapter.ts`, `scienceEngineAdapter.ts`) relying on deterministic fallback heuristics and hardcoded datasets. External microservices do not exist in the repository.
@@ -27,7 +27,7 @@ However, an in-depth code audit reveals significant divergence between documente
 | Parameter | Value | Evidence |
 | :--- | :--- | :--- |
 | **Repository URL** | `https://github.com/shrutirai29/nasa` | Git origin remote |
-| **Local Directory** | `F:\Projects\NASA\martian-map` | Workspace path |
+| **Local Directory** | `F:\Projects\NASA\ares-frontier` | Workspace path |
 | **Current Branch** | `main` | `git branch` |
 | **Tracking Branch** | `origin/main` (up to date) | `git status` |
 | **Latest Commit Hash** | `d50be5b84dcfc96cf1548e6fb1bf679b3986a7ff` | `git log -1` |

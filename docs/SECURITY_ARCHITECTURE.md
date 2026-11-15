@@ -1,4 +1,4 @@
-# Martian Map — Phase 3 Cybersecurity & Governance Architecture
+# Ares Frontier — Phase 3 Cybersecurity & Governance Architecture
 
 ## 1. Threat Model & Operational Risk Scenarios
 

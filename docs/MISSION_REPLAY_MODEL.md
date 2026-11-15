@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-The Martian Map Replay Engine provides deterministic, step-by-step reconstruction of any executed Mars surface mission. Rather than playing back static video or lossy logs, the engine re-evaluates the mission's immutable event ledger into full digital twin states.
+The Ares Frontier Replay Engine provides deterministic, step-by-step reconstruction of any executed Mars surface mission. Rather than playing back static video or lossy logs, the engine re-evaluates the mission's immutable event ledger into full digital twin states.
 
 ## 2. Replay State Model
 

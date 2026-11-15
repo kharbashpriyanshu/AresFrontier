@@ -1,6 +1,6 @@
 # Safety Invariants (S1 – S8) — Verified Operational Rules
 
-Martian Map enforces eight non-negotiable safety invariants to guarantee mission integrity:
+Ares Frontier enforces eight non-negotiable safety invariants to guarantee mission integrity:
 
 | Invariant | Title | Rule Formulation | Enforcement Subsystem |
 | :--- | :--- | :--- | :--- |

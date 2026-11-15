@@ -1,4 +1,4 @@
-# Martian Map — Copilot Mission Reasoning & Natural Language Parser
+# Ares Frontier — Copilot Mission Reasoning & Natural Language Parser
 
 ## 1. Structured Mission Copilot Architecture
 

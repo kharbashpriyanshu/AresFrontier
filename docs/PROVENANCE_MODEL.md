@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-In scientific planetary exploration, data pedigree is paramount. Martian Map embeds a Data Provenance Registry that exposes full acquisition metadata, processing pipelines, uncertainty bounds, and truthfulness levels for every dataset utilized by the platform.
+In scientific planetary exploration, data pedigree is paramount. Ares Frontier embeds a Data Provenance Registry that exposes full acquisition metadata, processing pipelines, uncertainty bounds, and truthfulness levels for every dataset utilized by the platform.
 
 ## 2. Truthfulness Levels & Evidence Categorization
 

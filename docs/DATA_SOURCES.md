@@ -1,6 +1,6 @@
-# Martian Map — NASA Planetary Data Sources
+# Ares Frontier — NASA Planetary Data Sources
 
-This catalog documents the official NASA planetary mission data products integrated into the Martian Map platform.
+This catalog documents the official NASA planetary mission data products integrated into the Ares Frontier platform.
 
 ---
 

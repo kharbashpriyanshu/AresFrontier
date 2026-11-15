@@ -1,7 +1,7 @@
 {
-  "name": "martian-map-root",
+  "name": "ares-frontier-root",
   "version": "1.0.0",
-  "description": "Interplanetary Survival Guide: Martian Map - NASA Space Apps Challenge",
+  "description": "Interplanetary Survival Guide: Ares Frontier - NASA Space Apps Challenge",
   "private": true,
   "workspaces": [
     "backend",
@@ -24,6 +24,6 @@
     "mola",
     "hirise"
   ],
-  "author": "Martian Map Engineering Team",
+  "author": "Ares Frontier Engineering Team",
   "license": "Apache-2.0"
 }

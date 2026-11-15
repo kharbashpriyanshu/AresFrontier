@@ -173,7 +173,7 @@ export const MethodologyPage: React.FC = () => {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "martian-map-provenance-audit.json";
+    a.download = "ares-frontier-provenance-audit.json";
     a.click();
     URL.revokeObjectURL(url);
   };

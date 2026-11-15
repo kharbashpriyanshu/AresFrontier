@@ -81,7 +81,7 @@ export const Navbar: React.FC = () => {
           <div className="flex flex-col">
             <div className="flex items-center space-x-2">
               <span className="font-display font-bold text-sm tracking-wide text-atlas-text">
-                MARTIAN MAP
+                ARES FRONTIER
               </span>
               <span className="text-[10px] px-1.5 py-0.2 bg-atlas-elevated text-atlas-accent border border-atlas-border font-mono tracking-tight font-semibold">
                 ATLAS INTELLIGENCE
@@ -238,7 +238,7 @@ export const Navbar: React.FC = () => {
 
               <div className="space-y-3 font-sans text-xs text-atlas-muted leading-relaxed">
                 <p>
-                  Martian Map synthesizes primary NASA/JPL planetary datasets for high-fidelity terrain modeling,
+                  Ares Frontier synthesizes primary NASA/JPL planetary datasets for high-fidelity terrain modeling,
                   bioenergetic traversal validation, and scientific target identification in Jezero Crater.
                 </p>
 

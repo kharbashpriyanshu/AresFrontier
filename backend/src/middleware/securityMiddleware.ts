@@ -4,7 +4,7 @@ import { ZodSchema, ZodError } from "zod";
 import { APIResponse, AuditEvent, UserRole } from "../types/index.js";
 import { auditChainService } from "../services/security/auditChainService.js";
 
-const JWT_SECRET = process.env.JWT_SECRET || "martian-map-space-apps-secret-key-2026";
+const JWT_SECRET = process.env.JWT_SECRET || "ares-frontier-space-apps-secret-key-2026";
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
 const RATE_LIMIT_WINDOW_MS = Number(process.env.RATE_LIMIT_WINDOW_MS) || 60000;
 const RATE_LIMIT_MAX = Number(process.env.RATE_LIMIT_MAX) || 300;

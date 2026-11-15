@@ -1,4 +1,4 @@
-# Martian Map — Project Status
+# Ares Frontier — Project Status
 
 ## 1. Existing Stack
 - **Frontend**: React 18, TypeScript, Vite, Tailwind CSS, React Router v6, Leaflet (configured for Mars spherical/equirectangular coordinates with USGS WMS layers & OpenPlanetary tile services), Recharts for MOLA elevation profiling, Lucide React.

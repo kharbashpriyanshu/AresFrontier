@@ -1,7 +1,7 @@
 # Phase 5 Architecture — Autonomous Mission Intelligence & Verified Planetary Simulation
 
 ## 1. System Mission Statement
-Martian Map Phase 5 transforms the platform from a multi-agent demonstration into an evidence-driven, reproducible, security-enforced planetary operations simulator. Every telemetry stream, hazard assessment, and orbital pass is governed by explicit physical models, strict server-side role boundaries, and verifiable cryptographic audit trails.
+Ares Frontier Phase 5 transforms the platform from a multi-agent demonstration into an evidence-driven, reproducible, security-enforced planetary operations simulator. Every telemetry stream, hazard assessment, and orbital pass is governed by explicit physical models, strict server-side role boundaries, and verifiable cryptographic audit trails.
 
 ```mermaid
 graph TD

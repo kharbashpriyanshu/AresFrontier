@@ -1,4 +1,4 @@
-# Martian Map — API Documentation
+# Ares Frontier — API Documentation
 
 All endpoints return JSON wrapped in the standardized `APIResponse<T>` envelope:
 

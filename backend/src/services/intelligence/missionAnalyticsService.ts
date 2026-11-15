@@ -1004,7 +1004,7 @@ export class MissionAnalyticsService {
             : report,
       };
       return {
-        filename: `martian-map-${safeMission}-${section}-${stamp}.json`,
+        filename: `ares-frontier-${safeMission}-${section}-${stamp}.json`,
         contentType: "application/json",
         content: JSON.stringify(payload, null, 2),
       };
@@ -1123,7 +1123,7 @@ export class MissionAnalyticsService {
     }
 
     return {
-      filename: `martian-map-${safeMission}-${section}-${stamp}.csv`,
+      filename: `ares-frontier-${safeMission}-${section}-${stamp}.csv`,
       contentType: "text/csv; charset=utf-8",
       content: csvContent,
     };

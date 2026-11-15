@@ -1,6 +1,6 @@
 # Phase 3 Planetary Data & Grounding Audit
 
-**Project:** Martian Map — Interplanetary Survival Guide  
+**Project:** Ares Frontier — Interplanetary Survival Guide  
 **Audit Date:** Local System Time (Phase 3 Initiation)  
 **Evaluator:** Software / Planetary Full-Stack Engineer  
 **Objective:** Transparently evaluate all data sources, pipelines, assumptions, heuristics, synthetic models, and security boundaries across the codebase before implementing Phase 3.
@@ -9,7 +9,7 @@
 
 ## 1. Executive Summary
 
-Martian Map was developed to support human extravehicular activity (EVA) mission planning on Mars. While Phase 1 & 2 established an operational full-stack application (interactive Mars map, WMS tile layers, MOLA elevation profiles, and deterministic EVA feasibility), portions of the system relied on:
+Ares Frontier was developed to support human extravehicular activity (EVA) mission planning on Mars. While Phase 1 & 2 established an operational full-stack application (interactive Mars map, WMS tile layers, MOLA elevation profiles, and deterministic EVA feasibility), portions of the system relied on:
 1. **Synthetic planetary models** (e.g. mathematical approximations of MOLA topographic dichotomy without fine-grained local DEM raster querying).
 2. **Hardcoded confidence values** (e.g. arbitrary constants `0.92`, `0.94`, `0.95`, `0.88` placed on derived metrics without empirical uncertainty propagation).
 3. **Implicit data provenance** where derived, benchmark, and heuristic data were sometimes co-mingled in UI presentations.

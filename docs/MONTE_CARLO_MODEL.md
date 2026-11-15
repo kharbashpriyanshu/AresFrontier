@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-Mars surface operations are subject to planetary environmental uncertainties: terrain slope roughness, wheel slippage in scree, solar panel dust accumulation, thermal swings, and communication atmospheric attenuation. Martian Map includes a seeded 100-run Monte Carlo engine to evaluate mission risk profiles probabilistically.
+Mars surface operations are subject to planetary environmental uncertainties: terrain slope roughness, wheel slippage in scree, solar panel dust accumulation, thermal swings, and communication atmospheric attenuation. Ares Frontier includes a seeded 100-run Monte Carlo engine to evaluate mission risk profiles probabilistically.
 
 ## 2. Seeded Random Number Generator
 

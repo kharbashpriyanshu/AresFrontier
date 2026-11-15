@@ -2,7 +2,7 @@
 
 ## 1. Emergency Protocols & Scenarios
 
-Martian Map defines calibrated contingency procedures for three primary planetary emergency classes:
+Ares Frontier defines calibrated contingency procedures for three primary planetary emergency classes:
 
 ### Scenario A: Localized High-Gradient Terrain Hazard
 - **Detection**: Optical Hazcams or laser profiler detects slope gradient $\ge 22.0^\circ$ or boulder field exceeding $0.6\text{ m}$ height.

@@ -1,5 +1,5 @@
 -- ====================================================================
--- Martian Map — PostgreSQL & PostGIS Planetary Schema
+-- Ares Frontier — PostgreSQL & PostGIS Planetary Schema
 -- Coordinates stored in Planetocentric/Planetographic decimal degrees
 -- ====================================================================
 

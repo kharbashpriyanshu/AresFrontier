@@ -15,7 +15,7 @@ try {
   MissionPersistenceService.initialize();
   MissionStateCoordinator.initialize();
 } catch (err) {
-  console.warn("[Martian Map Engine] Warning during persistence initialization:", err);
+  console.warn("[Ares Frontier Engine] Warning during persistence initialization:", err);
 }
 
 export const app = express();
@@ -36,7 +36,7 @@ app.use(express.json({ limit: "2mb" }));
 // Root health & welcome endpoint
 app.get("/", (_req: Request, res: Response) => {
   res.json({
-    name: "Martian Map API",
+    name: "Ares Frontier API",
     tagline: "Interplanetary Survival Guide - NASA Space Apps",
     status: "online",
     version: "1.0.0",
@@ -61,7 +61,7 @@ app.use((req: Request, res: Response) => {
 
 // Global Error Handler
 app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
-  console.error("[Martian Map Error]", err);
+  console.error("[Ares Frontier Error]", err);
   const errorResponse: APIResponse<never> = {
     success: false,
     error: {
@@ -75,7 +75,7 @@ app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
 // Start server if not imported by test runner
 if (process.env.NODE_ENV !== "test") {
   app.listen(port, () => {
-    console.log(`🪐 Martian Map Mission Engine listening at http://localhost:${port}`);
+    console.log(`🪐 Ares Frontier Mission Engine listening at http://localhost:${port}`);
     console.log(`📡 Ready for NASA telemetry, Science, and AI/ML evaluation.`);
   });
 }

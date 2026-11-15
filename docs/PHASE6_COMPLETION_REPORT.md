@@ -2,7 +2,7 @@
 
 ## 1. Executive Summary
 
-Phase 6 of **Martian Map — Interplanetary Survival Guide** is complete. The system has evolved from an operational simulator into a **Reproducible Planetary Mission Digital Twin** with mission replay, what-if decision branching and comparative analysis, seeded Monte Carlo uncertainty analysis, failure injection, automated S1–S8 safety invariant validation, transparent mission health scoring, decision explanation lineage, and deep data provenance.
+Phase 6 of **Ares Frontier — Interplanetary Survival Guide** is complete. The system has evolved from an operational simulator into a **Reproducible Planetary Mission Digital Twin** with mission replay, what-if decision branching and comparative analysis, seeded Monte Carlo uncertainty analysis, failure injection, automated S1–S8 safety invariant validation, transparent mission health scoring, decision explanation lineage, and deep data provenance.
 
 ## 2. Quantitative Verification
 

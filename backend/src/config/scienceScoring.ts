@@ -1,7 +1,7 @@
 /**
  * Factorized Planetary Science Scoring Configuration
  * Defines configurable scoring weights across geological, astrobiological, and operational factors.
- * Reference: Martian Map Project Decision Model (not a NASA official standard).
+ * Reference: Ares Frontier Project Decision Model (not a NASA official standard).
  */
 export interface ScienceScoringConfig {
   version: string;

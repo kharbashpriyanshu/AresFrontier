@@ -1,9 +1,9 @@
 [
   {
-    "eventId": "mevt-1794678191374-1-ihp0",
+    "eventId": "mevt-1794760121877-1-xkih",
     "sequenceNumber": 1,
     "missionId": "MARSWALK-001",
-    "timestamp": "2026-11-14T16:43:11.374Z",
+    "timestamp": "2026-11-15T15:28:41.877Z",
     "simulationTime": 0,
     "actor": "MISSION_CONTROL",
     "eventType": "MISSION_STARTED",
@@ -17,13 +17,13 @@
       "dataMode": "BENCHMARK"
     },
     "previousEventHash": "0000000000000000000000000000000000000000000000000000000000000000",
-    "eventHash": "b443db1edf57f2fc40ba4656e40882448385a91118f96f992df86806b758a25a"
+    "eventHash": "4d13657b2913a5021f99803bfd9241d5192e773bce685d010bf228233bf7549a"
   },
   {
-    "eventId": "mevt-1794678191376-2-15d5",
+    "eventId": "mevt-1794760121878-2-405d",
     "sequenceNumber": 2,
     "missionId": "MARSWALK-001",
-    "timestamp": "2026-11-14T16:53:11.374Z",
+    "timestamp": "2026-11-15T15:38:41.877Z",
     "simulationTime": 600,
     "actor": "agent-rover-01",
     "eventType": "AGENT_ASSIGNED",
@@ -39,14 +39,14 @@
       "sourceName": "Ares Scout Telemetry",
       "dataMode": "SIMULATED"
     },
-    "previousEventHash": "b443db1edf57f2fc40ba4656e40882448385a91118f96f992df86806b758a25a",
-    "eventHash": "d5593d08728768f0393de449119f9a9e86cfa0530fb456ac47a67aef858690d7"
+    "previousEventHash": "4d13657b2913a5021f99803bfd9241d5192e773bce685d010bf228233bf7549a",
+    "eventHash": "a2aea81429481a3f0ef6761e06974ddab2a42e70befafb6897014c8fe3289e8c"
   },
   {
-    "eventId": "mevt-1794678191379-3-skla",
+    "eventId": "mevt-1794760121878-3-aumb",
     "sequenceNumber": 3,
     "missionId": "MARSWALK-001",
-    "timestamp": "2026-11-14T17:03:11.374Z",
+    "timestamp": "2026-11-15T15:48:41.877Z",
     "simulationTime": 1200,
     "actor": "agent-rover-01",
     "eventType": "SENSOR_OBSERVATION",
@@ -60,14 +60,14 @@
       "sourceName": "Stereo HazCam",
       "dataMode": "SIMULATED"
     },
-    "previousEventHash": "d5593d08728768f0393de449119f9a9e86cfa0530fb456ac47a67aef858690d7",
-    "eventHash": "4b5e58f2fe4257deeec1f88610c7332c1263fac257e5aa0a281c5d8329582c89"
+    "previousEventHash": "a2aea81429481a3f0ef6761e06974ddab2a42e70befafb6897014c8fe3289e8c",
+    "eventHash": "f631c0ff2e21b3fa22bc0b8cd40d295c17a797619df908fc07d49e8367ce58a0"
   },
   {
-    "eventId": "mevt-1794678191380-4-e2gm",
+    "eventId": "mevt-1794760121879-4-yc43",
     "sequenceNumber": 4,
     "missionId": "MARSWALK-001",
-    "timestamp": "2026-11-14T17:13:11.374Z",
+    "timestamp": "2026-11-15T15:58:41.877Z",
     "simulationTime": 1800,
     "actor": "agent-rover-01",
     "eventType": "HAZARD_DETECTED",
@@ -84,14 +84,14 @@
       "sourceName": "ObservationHazardFusion",
       "dataMode": "DERIVED"
     },
-    "previousEventHash": "4b5e58f2fe4257deeec1f88610c7332c1263fac257e5aa0a281c5d8329582c89",
-    "eventHash": "eeda08894f344deba0d0235ba05a22296b46cf37d098694c9fa90a22d2e700e7"
+    "previousEventHash": "f631c0ff2e21b3fa22bc0b8cd40d295c17a797619df908fc07d49e8367ce58a0",
+    "eventHash": "704cad939dc80a2d774ff41e7415619630b1390896f2bbecc6c219ca6769c29d"
   },
   {
-    "eventId": "mevt-1794678191382-5-erlc",
+    "eventId": "mevt-1794760121880-5-zipx",
     "sequenceNumber": 5,
     "missionId": "MARSWALK-001",
-    "timestamp": "2026-11-14T17:18:11.374Z",
+    "timestamp": "2026-11-15T16:03:41.877Z",
     "simulationTime": 2100,
     "actor": "agent-rover-01",
     "eventType": "COMMAND_EXECUTED",
@@ -104,14 +104,14 @@
       "sourceName": "DecisionEngine",
       "dataMode": "SIMULATED"
     },
-    "previousEventHash": "eeda08894f344deba0d0235ba05a22296b46cf37d098694c9fa90a22d2e700e7",
-    "eventHash": "d6eaddbca67bed9113cc97d533e6f39b7674769af4cf80d41ff82a9e25ea6d13"
+    "previousEventHash": "704cad939dc80a2d774ff41e7415619630b1390896f2bbecc6c219ca6769c29d",
+    "eventHash": "f66a7fcbae67a231db33296c8046769f54434db31936c771bb029b29e41e7469"
   },
   {
-    "eventId": "mevt-1794678191385-6-94pj",
+    "eventId": "mevt-1794760121880-6-x3g9",
     "sequenceNumber": 6,
     "missionId": "MARSWALK-001",
-    "timestamp": "2026-11-14T17:23:11.374Z",
+    "timestamp": "2026-11-15T16:08:41.877Z",
     "simulationTime": 2400,
     "actor": "MISSION_CONTROL",
     "eventType": "REPLAN_PROPOSED",
@@ -137,14 +137,14 @@
       "sourceName": "ReplanningEngine",
       "dataMode": "DERIVED"
     },
-    "previousEventHash": "d6eaddbca67bed9113cc97d533e6f39b7674769af4cf80d41ff82a9e25ea6d13",
-    "eventHash": "cc68a61589459da11521c83dcdfe8acca971f21e268889429f5558630364d559"
+    "previousEventHash": "f66a7fcbae67a231db33296c8046769f54434db31936c771bb029b29e41e7469",
+    "eventHash": "053535a5961a5a98559ed8e9b4e91840d10a306fa8efdad6146077337fb1773e"
   },
   {
-    "eventId": "mevt-1794678191387-7-2pce",
+    "eventId": "mevt-1794760121881-7-5lu4",
     "sequenceNumber": 7,
     "missionId": "MARSWALK-001",
-    "timestamp": "2026-11-14T17:28:11.374Z",
+    "timestamp": "2026-11-15T16:13:41.877Z",
     "simulationTime": 2700,
     "actor": "MISSION_CONTROL",
     "eventType": "REPLAN_APPROVED",
@@ -157,14 +157,14 @@
       "sourceName": "AuditChainService",
       "dataMode": "BENCHMARK"
     },
-    "previousEventHash": "cc68a61589459da11521c83dcdfe8acca971f21e268889429f5558630364d559",
-    "eventHash": "f231aa414ca023e2a92f1d1c2184467f9a7780760d30d6d3c6fd82032062883f"
+    "previousEventHash": "053535a5961a5a98559ed8e9b4e91840d10a306fa8efdad6146077337fb1773e",
+    "eventHash": "5f9cbabb2ed5fbf1447d991f1a943f4dd66fa7b94a7f379f5bf8f953f795469f"
   },
   {
-    "eventId": "mevt-1794678191390-8-5os7",
+    "eventId": "mevt-1794760121882-8-ixsw",
     "sequenceNumber": 8,
     "missionId": "MARSWALK-001",
-    "timestamp": "2026-11-14T17:38:11.374Z",
+    "timestamp": "2026-11-15T16:23:41.877Z",
     "simulationTime": 3300,
     "actor": "agent-rover-02",
     "eventType": "SCIENCE_TARGET_COMPLETED",
@@ -177,21 +177,21 @@
       "sourceName": "Raman Spectrometer",
       "dataMode": "SIMULATED"
     },
-    "previousEventHash": "f231aa414ca023e2a92f1d1c2184467f9a7780760d30d6d3c6fd82032062883f",
-    "eventHash": "7292546c8acdffb5edf55cf6d509b3f4433f1e93116fa2280841cdeb273d0224"
+    "previousEventHash": "5f9cbabb2ed5fbf1447d991f1a943f4dd66fa7b94a7f379f5bf8f953f795469f",
+    "eventHash": "2b56182d556425594a0bb5fcf840da2dc91f7a2c1ae45bb1fd3011c8465a9e5d"
   },
   {
-    "eventId": "mevt-1794678195061-9-71d2",
+    "eventId": "mevt-1794760122854-9-dhs4",
     "sequenceNumber": 9,
     "missionId": "MARSWALK-DRAFT-TEST",
-    "timestamp": "2026-11-14T17:43:15.061Z",
+    "timestamp": "2026-11-15T16:28:42.854Z",
     "actor": "SCIENCE_LEAD",
     "entityId": "tgt-oxia-planum",
-    "auditRef": "a8c22e6c2fad516862ade07dc1e60b5db843c7d5f9900ed088aef300ef52363d",
+    "auditRef": "75e779ed72ace28a0a520bac52971dd41fc091dbcc1766370ae82d45905f74a4",
     "eventType": "MISSION_UPDATED",
     "payload": {
       "action": "SCIENCE_TARGET_ASSIGNED",
-      "decisionId": "scidec-ba8b5e12",
+      "decisionId": "scidec-58eb0287",
       "targetId": "tgt-oxia-planum",
       "targetName": "Oxia Planum Fe/Mg-Phyllosilicate Plain",
       "region": "Oxia Planum",
@@ -200,7 +200,7 @@
     },
     "provenance": {
       "sourceType": "DERIVED",
-      "sourceName": "Martian Map Planetary Computation — Science Target Assignment: Oxia Planum Fe/Mg-Phyllosilicate Plain",
+      "sourceName": "Ares Frontier Planetary Computation — Science Target Assignment: Oxia Planum Fe/Mg-Phyllosilicate Plain",
       "processingMethod": "Mathematical calculation derived from [NASA MRO CRISM / HiRISE & ESA Mars Express OMEGA]: Human-approved scientific target association with mission planning workspace",
       "dataMode": "FALLBACK",
       "uncertainty": {
@@ -209,14 +209,14 @@
         "methodology": "Propagated uncertainty from input layers [NASA MRO CRISM / HiRISE & ESA Mars Express OMEGA]"
       }
     },
-    "previousEventHash": "7292546c8acdffb5edf55cf6d509b3f4433f1e93116fa2280841cdeb273d0224",
-    "eventHash": "59f68ffe82cc9dbc894aa2e4ff2810e26280d30614cb0cf901136cb9cc4a1d50"
+    "previousEventHash": "2b56182d556425594a0bb5fcf840da2dc91f7a2c1ae45bb1fd3011c8465a9e5d",
+    "eventHash": "c04b1b38d597719ac8654b35a42b07373bf4f6695c121bf42f34d7c054238971"
   },
   {
-    "eventId": "mevt-1794678196047-10-pf0e",
+    "eventId": "mevt-1794760123472-10-5i4z",
     "sequenceNumber": 10,
     "missionId": "MARSWALK-001",
-    "timestamp": "2026-11-14T17:43:16.047Z",
+    "timestamp": "2026-11-15T16:28:43.472Z",
     "actor": "agent-rover-01",
     "eventType": "TELEMETRY_LOGGED",
     "payload": {
@@ -226,7 +226,7 @@
     },
     "provenance": {
       "sourceType": "DERIVED",
-      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "sourceName": "Ares Frontier Planetary Computation — Mission Event Engine",
       "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
       "dataMode": "FALLBACK",
       "uncertainty": {
@@ -235,14 +235,14 @@
         "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
       }
     },
-    "previousEventHash": "59f68ffe82cc9dbc894aa2e4ff2810e26280d30614cb0cf901136cb9cc4a1d50",
-    "eventHash": "cd8ff51920a93e61087d98c0d557849735a3e66402920a7be8a785d5a1a32587"
+    "previousEventHash": "c04b1b38d597719ac8654b35a42b07373bf4f6695c121bf42f34d7c054238971",
+    "eventHash": "b84b0b5af7bf62487b267bbc73ade3551e237db4db771511699181a2150f6a8e"
   },
   {
-    "eventId": "mevt-1794678199474-11-sufa",
+    "eventId": "mevt-1794760124684-11-i3le",
     "sequenceNumber": 11,
     "missionId": "USER-TEST-B7-001",
-    "timestamp": "2026-11-14T17:43:19.474Z",
+    "timestamp": "2026-11-15T16:28:44.684Z",
     "actor": "TEST_HARNESS",
     "entityId": "USER-TEST-B7-001",
     "eventType": "TELEMETRY_UPDATED",
@@ -252,7 +252,7 @@
     },
     "provenance": {
       "sourceType": "DERIVED",
-      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "sourceName": "Ares Frontier Planetary Computation — Mission Event Engine",
       "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
       "dataMode": "FALLBACK",
       "uncertainty": {
@@ -261,16 +261,16 @@
         "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
       }
     },
-    "previousEventHash": "cd8ff51920a93e61087d98c0d557849735a3e66402920a7be8a785d5a1a32587",
-    "eventHash": "52697536d073148357f0ceff56da28882dbf31bb97c8ab42d0a03e0d012ac588"
+    "previousEventHash": "b84b0b5af7bf62487b267bbc73ade3551e237db4db771511699181a2150f6a8e",
+    "eventHash": "1e2a06a327f76c0e102ba5922af3f5ab44d0a12e09ad9bae2e2f861299dfc97a"
   },
   {
-    "eventId": "mevt-1794678199661-12-3cfd",
+    "eventId": "mevt-1794760124785-12-tnkr",
     "sequenceNumber": 12,
-    "missionId": "DEMO-NOMINAL-8D7704",
-    "timestamp": "2026-11-14T17:43:19.661Z",
+    "missionId": "DEMO-NOMINAL-CF4FDD",
+    "timestamp": "2026-11-15T16:28:44.785Z",
     "actor": "JUDGING_DEMO_ENGINE",
-    "entityId": "DEMO-NOMINAL-8D7704",
+    "entityId": "DEMO-NOMINAL-CF4FDD",
     "eventType": "MISSION_CREATED",
     "payload": {
       "simulated": true,
@@ -281,7 +281,7 @@
     },
     "provenance": {
       "sourceType": "DERIVED",
-      "sourceName": "Martian Map Planetary Computation — SIMULATED Judging Demo Engine",
+      "sourceName": "Ares Frontier Planetary Computation — SIMULATED Judging Demo Engine",
       "processingMethod": "Mathematical calculation derived from [JudgingDemoService]: Isolated demo mission creation (SIMULATED)",
       "dataMode": "FALLBACK",
       "uncertainty": {
@@ -290,21 +290,21 @@
         "methodology": "Propagated uncertainty from input layers [JudgingDemoService]"
       }
     },
-    "previousEventHash": "52697536d073148357f0ceff56da28882dbf31bb97c8ab42d0a03e0d012ac588",
-    "eventHash": "ccdfe7592b72c475edc761f0205fcdb30e337170876180d13bca4bcb72c4038c"
+    "previousEventHash": "1e2a06a327f76c0e102ba5922af3f5ab44d0a12e09ad9bae2e2f861299dfc97a",
+    "eventHash": "ac52ebf91214779ebc4245357f4f488082db34895049f92a1f8dd38313099613"
   },
   {
-    "eventId": "mevt-1794678199664-13-nchd",
+    "eventId": "mevt-1794760124788-13-9ej6",
     "sequenceNumber": 13,
-    "missionId": "DEMO-NOMINAL-8D7704",
-    "timestamp": "2026-11-14T17:43:19.664Z",
+    "missionId": "DEMO-NOMINAL-CF4FDD",
+    "timestamp": "2026-11-15T16:28:44.788Z",
     "actor": "SIMULATED_SCIENCE_LEAD",
     "entityId": "tgt-kodiak-butte",
-    "auditRef": "6e60e3d9f0a1c879fa5af9ad6ce47064dcaf0018b4fff51cf86dbd7a274481df",
+    "auditRef": "fca11b4d031245e4058954c6e7c879350ba0b2565b78211d8497e371261a4097",
     "eventType": "MISSION_UPDATED",
     "payload": {
       "action": "SCIENCE_TARGET_ASSIGNED",
-      "decisionId": "scidec-fa6a722e",
+      "decisionId": "scidec-881b56bc",
       "targetId": "tgt-kodiak-butte",
       "targetName": "Kodiak Butte Delta Remnant",
       "region": "Jezero Crater",
@@ -313,7 +313,7 @@
     },
     "provenance": {
       "sourceType": "DERIVED",
-      "sourceName": "Martian Map Planetary Computation — Science Target Assignment: Kodiak Butte Delta Remnant",
+      "sourceName": "Ares Frontier Planetary Computation — Science Target Assignment: Kodiak Butte Delta Remnant",
       "processingMethod": "Mathematical calculation derived from [NASA Perseverance Rover Mastcam-Z Long Distance Imaging & CRISM]: Human-approved scientific target association with mission planning workspace",
       "dataMode": "FALLBACK",
       "uncertainty": {
@@ -322,16 +322,16 @@
         "methodology": "Propagated uncertainty from input layers [NASA Perseverance Rover Mastcam-Z Long Distance Imaging & CRISM]"
       }
     },
-    "previousEventHash": "ccdfe7592b72c475edc761f0205fcdb30e337170876180d13bca4bcb72c4038c",
-    "eventHash": "77277dfe15b756b34c0b6e9d1fde1166f3653978956520a66b9f316e50572e6a"
+    "previousEventHash": "ac52ebf91214779ebc4245357f4f488082db34895049f92a1f8dd38313099613",
+    "eventHash": "39d58d1963a1ad65f214fa818914bd149898bc390abc6f1b1580d3250759d5ab"
   },
   {
-    "eventId": "mevt-1794678199714-14-if6z",
+    "eventId": "mevt-1794760124791-14-hoym",
     "sequenceNumber": 14,
-    "missionId": "DEMO-NOMINAL-8D7704",
-    "timestamp": "2026-11-14T17:43:19.714Z",
+    "missionId": "DEMO-NOMINAL-CF4FDD",
+    "timestamp": "2026-11-15T16:28:44.791Z",
     "actor": "SIMULATED_ROUTE_OPTIMIZER",
-    "entityId": "route-demo-8d7704",
+    "entityId": "route-demo-cf4fdd",
     "eventType": "ROUTE_SELECTED",
     "payload": {
       "simulated": true,
@@ -342,7 +342,7 @@
     },
     "provenance": {
       "sourceType": "DERIVED",
-      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "sourceName": "Ares Frontier Planetary Computation — Mission Event Engine",
       "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
       "dataMode": "FALLBACK",
       "uncertainty": {
@@ -351,18 +351,18 @@
         "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
       }
     },
-    "previousEventHash": "77277dfe15b756b34c0b6e9d1fde1166f3653978956520a66b9f316e50572e6a",
-    "eventHash": "0753b1a1036366dc79d5f7a863388b501c601ffbc9dc0c6d1460b1e557083504"
+    "previousEventHash": "39d58d1963a1ad65f214fa818914bd149898bc390abc6f1b1580d3250759d5ab",
+    "eventHash": "516c41c54f71e7614e7a42c0c15e644b15ee23f72fd865382530a6bdca57a4d2"
   },
   {
-    "eventId": "mevt-1794678199725-15-4d0u",
+    "eventId": "mevt-1794760124794-15-gr0p",
     "sequenceNumber": 15,
-    "missionId": "DEMO-NOMINAL-8D7704",
-    "timestamp": "2026-11-14T17:43:19.725Z",
+    "missionId": "DEMO-NOMINAL-CF4FDD",
+    "timestamp": "2026-11-15T16:28:44.794Z",
     "actor": "ASTRONAUT-01",
     "eventType": "COMMAND_EXECUTED",
     "payload": {
-      "evaSessionId": "eva-1794678199719-hgwd",
+      "evaSessionId": "eva-1794760124793-sar8",
       "action": "START",
       "previousStatus": "PLANNED",
       "nextStatus": "ACTIVE",
@@ -370,7 +370,7 @@
     },
     "provenance": {
       "sourceType": "DERIVED",
-      "sourceName": "Martian Map Planetary Computation — EVA Session Safety Controller",
+      "sourceName": "Ares Frontier Planetary Computation — EVA Session Safety Controller",
       "processingMethod": "Mathematical calculation derived from [Suit Telemetry Model, S1-S8 Invariants]: EVA START",
       "dataMode": "FALLBACK",
       "uncertainty": {
@@ -379,18 +379,18 @@
         "methodology": "Propagated uncertainty from input layers [Suit Telemetry Model, S1-S8 Invariants]"
       }
     },
-    "previousEventHash": "0753b1a1036366dc79d5f7a863388b501c601ffbc9dc0c6d1460b1e557083504",
-    "eventHash": "10f29699c4cc08974181b343d48a33bc5619ac1f58a8f6b62b85776e28c51cfc"
+    "previousEventHash": "516c41c54f71e7614e7a42c0c15e644b15ee23f72fd865382530a6bdca57a4d2",
+    "eventHash": "a9b2256d455cad9d387faa246036f3882c05eb4d7fffa670a2b551266736d427"
   },
   {
-    "eventId": "mevt-1794678199776-16-7lox",
+    "eventId": "mevt-1794760124813-16-03l8",
     "sequenceNumber": 16,
-    "missionId": "DEMO-NOMINAL-8D7704",
-    "timestamp": "2026-11-14T17:43:19.776Z",
+    "missionId": "DEMO-NOMINAL-CF4FDD",
+    "timestamp": "2026-11-15T16:28:44.813Z",
     "actor": "ASTRONAUT-01",
     "eventType": "COMMAND_EXECUTED",
     "payload": {
-      "evaSessionId": "eva-1794678199719-hgwd",
+      "evaSessionId": "eva-1794760124793-sar8",
       "action": "COMPLETE",
       "previousStatus": "ACTIVE",
       "nextStatus": "COMPLETED",
@@ -398,7 +398,7 @@
     },
     "provenance": {
       "sourceType": "DERIVED",
-      "sourceName": "Martian Map Planetary Computation — EVA Session Safety Controller",
+      "sourceName": "Ares Frontier Planetary Computation — EVA Session Safety Controller",
       "processingMethod": "Mathematical calculation derived from [Suit Telemetry Model, S1-S8 Invariants]: EVA COMPLETE",
       "dataMode": "FALLBACK",
       "uncertainty": {
@@ -407,27 +407,27 @@
         "methodology": "Propagated uncertainty from input layers [Suit Telemetry Model, S1-S8 Invariants]"
       }
     },
-    "previousEventHash": "10f29699c4cc08974181b343d48a33bc5619ac1f58a8f6b62b85776e28c51cfc",
-    "eventHash": "7b859b2f091e2ce87ad3e294fb4c4fb1485d7c962a91e4624c700a33ccf1dfbb"
+    "previousEventHash": "a9b2256d455cad9d387faa246036f3882c05eb4d7fffa670a2b551266736d427",
+    "eventHash": "504a38c6ed83314688ea59a4a1d779709c4e08dd89e58901036049ee0807674f"
   },
   {
-    "eventId": "mevt-1794678199829-17-86yr",
+    "eventId": "mevt-1794760124823-17-e06y",
     "sequenceNumber": 17,
-    "missionId": "DEMO-NOMINAL-8D7704",
-    "timestamp": "2026-11-14T17:43:19.829Z",
+    "missionId": "DEMO-NOMINAL-CF4FDD",
+    "timestamp": "2026-11-15T16:28:44.823Z",
     "actor": "SIMULATED_EVA_CREW",
-    "entityId": "eva-1794678199719-hgwd",
+    "entityId": "eva-1794760124793-sar8",
     "eventType": "TASK_TRANSITION",
     "payload": {
       "simulated": true,
       "status": "COMPLETED",
-      "evaSessionId": "eva-1794678199719-hgwd",
+      "evaSessionId": "eva-1794760124793-sar8",
       "elapsedMinutes": 0,
       "batteryPercent": 88
     },
     "provenance": {
       "sourceType": "DERIVED",
-      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "sourceName": "Ares Frontier Planetary Computation — Mission Event Engine",
       "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
       "dataMode": "FALLBACK",
       "uncertainty": {
@@ -436,16 +436,16 @@
         "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
       }
     },
-    "previousEventHash": "7b859b2f091e2ce87ad3e294fb4c4fb1485d7c962a91e4624c700a33ccf1dfbb",
-    "eventHash": "80bc87bcf04c88d4d0e90b5d516b92b9d542abd328edd9b4de21081f1aa8c1e6"
+    "previousEventHash": "504a38c6ed83314688ea59a4a1d779709c4e08dd89e58901036049ee0807674f",
+    "eventHash": "8a4b2dbea9d4461e0bd8cc32b778ec5c924695a511df4e1a764d26e6035a4647"
   },
   {
-    "eventId": "mevt-1794678199833-18-o4nh",
+    "eventId": "mevt-1794760124823-18-fice",
     "sequenceNumber": 18,
-    "missionId": "DEMO-NOMINAL-8D7704",
-    "timestamp": "2026-11-14T17:43:19.833Z",
+    "missionId": "DEMO-NOMINAL-CF4FDD",
+    "timestamp": "2026-11-15T16:28:44.823Z",
     "actor": "SIMULATED_COMMS_RELAY",
-    "entityId": "DEMO-NOMINAL-8D7704",
+    "entityId": "DEMO-NOMINAL-CF4FDD",
     "eventType": "PACKET_DELIVERED",
     "payload": {
       "simulated": true,
@@ -455,7 +455,7 @@
     },
     "provenance": {
       "sourceType": "DERIVED",
-      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "sourceName": "Ares Frontier Planetary Computation — Mission Event Engine",
       "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
       "dataMode": "FALLBACK",
       "uncertainty": {
@@ -464,16 +464,16 @@
         "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
       }
     },
-    "previousEventHash": "80bc87bcf04c88d4d0e90b5d516b92b9d542abd328edd9b4de21081f1aa8c1e6",
-    "eventHash": "749ecbb3f225a6c2811e2b1ad264cfd0b5a3a21adfb0337d390e89e2beac38b0"
+    "previousEventHash": "8a4b2dbea9d4461e0bd8cc32b778ec5c924695a511df4e1a764d26e6035a4647",
+    "eventHash": "ab4477b4cadcbc1f0e6a8cb9816af6154cf27718aa866ef21820fb8d396f5985"
   },
   {
-    "eventId": "mevt-1794678199915-19-jfu9",
+    "eventId": "mevt-1794760124847-19-txdv",
     "sequenceNumber": 19,
-    "missionId": "DEMO-FAILURE-0F1239",
-    "timestamp": "2026-11-14T17:43:19.915Z",
+    "missionId": "DEMO-FAILURE-2DE251",
+    "timestamp": "2026-11-15T16:28:44.847Z",
     "actor": "JUDGING_DEMO_ENGINE",
-    "entityId": "DEMO-FAILURE-0F1239",
+    "entityId": "DEMO-FAILURE-2DE251",
     "eventType": "MISSION_CREATED",
     "payload": {
       "simulated": true,
@@ -484,7 +484,7 @@
     },
     "provenance": {
       "sourceType": "DERIVED",
-      "sourceName": "Martian Map Planetary Computation — SIMULATED Judging Demo Engine",
+      "sourceName": "Ares Frontier Planetary Computation — SIMULATED Judging Demo Engine",
       "processingMethod": "Mathematical calculation derived from [JudgingDemoService]: Isolated demo mission creation (SIMULATED)",
       "dataMode": "FALLBACK",
       "uncertainty": {
@@ -493,16 +493,16 @@
         "methodology": "Propagated uncertainty from input layers [JudgingDemoService]"
       }
     },
-    "previousEventHash": "749ecbb3f225a6c2811e2b1ad264cfd0b5a3a21adfb0337d390e89e2beac38b0",
-    "eventHash": "8f991807f4e0e8a3316fbf084ab3d4a1b2d81304fdba000d438f0b6ad05f3959"
+    "previousEventHash": "ab4477b4cadcbc1f0e6a8cb9816af6154cf27718aa866ef21820fb8d396f5985",
+    "eventHash": "d0ac45783ebdd3990506a5aea5ec61443ac2d7778faa75ba4c4c4032df13ee35"
   },
   {
-    "eventId": "mevt-1794678199936-20-phmg",
+    "eventId": "mevt-1794760124856-20-t781",
     "sequenceNumber": 20,
-    "missionId": "DEMO-FAILURE-0F1239",
-    "timestamp": "2026-11-14T17:43:19.936Z",
+    "missionId": "DEMO-FAILURE-2DE251",
+    "timestamp": "2026-11-15T16:28:44.856Z",
     "actor": "SIMULATED_FAILURE_ENGINE",
-    "entityId": "DEMO-FAILURE-0F1239",
+    "entityId": "DEMO-FAILURE-2DE251",
     "eventType": "HAZARD_DETECTED",
     "payload": {
       "simulated": true,
@@ -516,7 +516,7 @@
     },
     "provenance": {
       "sourceType": "DERIVED",
-      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "sourceName": "Ares Frontier Planetary Computation — Mission Event Engine",
       "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
       "dataMode": "FALLBACK",
       "uncertainty": {
@@ -525,16 +525,16 @@
         "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
       }
     },
-    "previousEventHash": "8f991807f4e0e8a3316fbf084ab3d4a1b2d81304fdba000d438f0b6ad05f3959",
-    "eventHash": "2aea74987ee6548f106d18762a8198466bba7c60be110330c0499de6055a7a90"
+    "previousEventHash": "d0ac45783ebdd3990506a5aea5ec61443ac2d7778faa75ba4c4c4032df13ee35",
+    "eventHash": "63cc41337d15ea6bd794a3cb882c0a91dca0614350178694be740105e4f7b65e"
   },
   {
-    "eventId": "mevt-1794678199937-21-rfeu",
+    "eventId": "mevt-1794760124856-21-86f7",
     "sequenceNumber": 21,
-    "missionId": "DEMO-FAILURE-0F1239",
-    "timestamp": "2026-11-14T17:43:19.937Z",
+    "missionId": "DEMO-FAILURE-2DE251",
+    "timestamp": "2026-11-15T16:28:44.856Z",
     "actor": "SIMULATED_COMMS_RELAY",
-    "entityId": "DEMO-FAILURE-0F1239",
+    "entityId": "DEMO-FAILURE-2DE251",
     "eventType": "COMMUNICATION_LOST",
     "payload": {
       "simulated": true,
@@ -542,7 +542,7 @@
     },
     "provenance": {
       "sourceType": "DERIVED",
-      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "sourceName": "Ares Frontier Planetary Computation — Mission Event Engine",
       "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
       "dataMode": "FALLBACK",
       "uncertainty": {
@@ -551,14 +551,14 @@
         "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
       }
     },
-    "previousEventHash": "2aea74987ee6548f106d18762a8198466bba7c60be110330c0499de6055a7a90",
-    "eventHash": "8dac386322ca9fed62e0f1faf008f0a0674de73e29534aae52ac7571a2dd9b62"
+    "previousEventHash": "63cc41337d15ea6bd794a3cb882c0a91dca0614350178694be740105e4f7b65e",
+    "eventHash": "017fbed56aa830363817dc3d27a10cf2de4f84678f48207e992292feb7c138eb"
   },
   {
-    "eventId": "mevt-1794678220171-22-03qv",
+    "eventId": "mevt-1794760135722-22-4vu1",
     "sequenceNumber": 22,
     "missionId": "MARSWALK-001",
-    "timestamp": "2026-11-14T17:43:40.171Z",
+    "timestamp": "2026-11-15T16:28:55.722Z",
     "actor": "SIMULATION_ENGINE",
     "entityId": "sim-whatif-marswalk-001-battery_failure-1-a9000d07",
     "eventType": "WHAT_IF_EXECUTED",
@@ -567,7 +567,7 @@
     },
     "provenance": {
       "sourceType": "DERIVED",
-      "sourceName": "Martian Map Planetary Computation — Mission Event Engine",
+      "sourceName": "Ares Frontier Planetary Computation — Mission Event Engine",
       "processingMethod": "Mathematical calculation derived from [Audit Logger v5.0]: Cryptographic Chained Event Store",
       "dataMode": "FALLBACK",
       "uncertainty": {
@@ -576,7 +576,7 @@
         "methodology": "Propagated uncertainty from input layers [Audit Logger v5.0]"
       }
     },
-    "previousEventHash": "8dac386322ca9fed62e0f1faf008f0a0674de73e29534aae52ac7571a2dd9b62",
-    "eventHash": "1db271ace0f3d4cdac4a3c130281d4df01a5613968d6c3429e634f4d690bfa92"
+    "previousEventHash": "017fbed56aa830363817dc3d27a10cf2de4f84678f48207e992292feb7c138eb",
+    "eventHash": "d9cb2d637a220775995849495f291a7ecaf894ab03092c8149ff059f65d06a69"
   }
 ]

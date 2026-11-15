@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-To validate operational robustness without compromising production integrity, Martian Map incorporates a Failure Injection Testing Engine. The engine allows operators and judges to deliberately inject hardware, communication, environmental, and software faults into active or simulated missions.
+To validate operational robustness without compromising production integrity, Ares Frontier incorporates a Failure Injection Testing Engine. The engine allows operators and judges to deliberately inject hardware, communication, environmental, and software faults into active or simulated missions.
 
 ## 2. Supported Failure Types
 

@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import request from "supertest";
 import { app } from "../../backend/src/app.js";
 
-describe("Martian Map API Integration Endpoints", () => {
+describe("Ares Frontier API Integration Endpoints", () => {
   it("GET / returns status online", async () => {
     const res = await request(app).get("/");
     expect(res.status).toBe(200);

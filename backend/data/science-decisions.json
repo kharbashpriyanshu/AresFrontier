@@ -110,5 +110,37 @@
     "createdAt": "2026-11-14T17:43:15.059Z",
     "auditBlockHash": "a8c22e6c2fad516862ade07dc1e60b5db843c7d5f9900ed088aef300ef52363d",
     "eventId": "mevt-1794678195061-9-71d2"
+  },
+  {
+    "id": "scidec-7afdbdad",
+    "targetId": "tgt-oxia-planum",
+    "targetName": "Oxia Planum Fe/Mg-Phyllosilicate Plain",
+    "region": "Oxia Planum",
+    "missionId": "MARSWALK-DRAFT-TEST",
+    "objectiveId": "ASTROBIOLOGY_RELEVANCE",
+    "rationale": "Investigate Oxia Planum Fe/Mg phyllosilicates",
+    "actor": "SCIENCE_LEAD",
+    "provenanceClassification": "DERIVED",
+    "evidenceStatus": "orbital_only",
+    "dataSource": "NASA MRO CRISM / HiRISE & ESA Mars Express OMEGA",
+    "createdAt": "2026-11-15T16:27:40.631Z",
+    "auditBlockHash": "36ec2f6353ec6a94b89284b02b02c0db42500d0e356034607fd4010384ee1566",
+    "eventId": "mevt-1794760060634-9-1lv2"
+  },
+  {
+    "id": "scidec-58eb0287",
+    "targetId": "tgt-oxia-planum",
+    "targetName": "Oxia Planum Fe/Mg-Phyllosilicate Plain",
+    "region": "Oxia Planum",
+    "missionId": "MARSWALK-DRAFT-TEST",
+    "objectiveId": "ASTROBIOLOGY_RELEVANCE",
+    "rationale": "Investigate Oxia Planum Fe/Mg phyllosilicates",
+    "actor": "SCIENCE_LEAD",
+    "provenanceClassification": "DERIVED",
+    "evidenceStatus": "orbital_only",
+    "dataSource": "NASA MRO CRISM / HiRISE & ESA Mars Express OMEGA",
+    "createdAt": "2026-11-15T16:28:42.851Z",
+    "auditBlockHash": "75e779ed72ace28a0a520bac52971dd41fc091dbcc1766370ae82d45905f74a4",
+    "eventId": "mevt-1794760122854-9-dhs4"
   }
 ]

@@ -1,6 +1,6 @@
-# Martian Map Project Decision Model — Route Scoring & Pareto Optimization
+# Ares Frontier Project Decision Model — Route Scoring & Pareto Optimization
 
-**Status:** Martian Map Project Model (Not an official NASA-approved standard)  
+**Status:** Ares Frontier Project Model (Not an official NASA-approved standard)  
 **Version:** 3.0.0  
 **Context:** NASA Space Apps Challenge — Planetary Mission Decision Support  
 
@@ -10,7 +10,7 @@
 
 Planetary EVA traverse planning cannot be solved via naive single-metric optimization (such as minimizing distance or blindly maximizing rock sample count). A traverse that visits 4 high-priority outcrops is operationally unacceptable if it forces the crew along a loose $22^\circ$ delta scarp talus or reduces life-support oxygen reserves below flight-rule margins.
 
-The **Martian Map Project Decision Model** applies:
+The **Ares Frontier Project Decision Model** applies:
 1. **Multi-Attribute Utility Decomposition**: Evaluates safety, scientific return, efficiency, terrain accessibility, and data evidence independently.
 2. **Pareto Frontier Analysis**: Identifies non-dominated candidate routes where one attribute cannot be improved without degrading another.
 3. **Uncertainty-Adjusted Valuation**: Penalizes routes that cross poorly characterized or high-variance terrain corridors.

@@ -1,8 +1,8 @@
-# MARTIAN MAP — CRITICAL FINDINGS & ARCHITECTURAL RISKS
+# ARES FRONTIER — CRITICAL FINDINGS & ARCHITECTURAL RISKS
 
 **Audit Date**: November 12, 2026  
 **Auditor**: Antigravity Technical Audit Agent  
-**Repository**: `martian-map`  
+**Repository**: `ares-frontier`  
 
 ---
 

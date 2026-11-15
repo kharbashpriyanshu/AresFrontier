@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import request from "supertest";
 import { app } from "../../backend/src/app.js";
 
-describe("Martian Map — Complete End-to-End Mission Journey", () => {
+describe("Ares Frontier — Complete End-to-End Mission Journey", () => {
   it("executes the full user journey: Location -> Science -> Route -> EVA -> Assessment", async () => {
     // 1. Explore Mars: Get verified location (Jezero Crater)
     const locRes = await request(app).get("/api/locations/loc-jezero-crater");

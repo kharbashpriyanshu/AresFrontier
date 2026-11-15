@@ -2,7 +2,7 @@
 
 ## 1. Executive Summary
 
-Phase 7 of **Martian Map — Interplanetary Survival Guide** represents the final hardening, scientific verification, and judge-readiness pass. Rather than introducing sprawling new features, Phase 7 rigorously audited all scientific claims, eliminated misleading labels, enforced zero-trust cybersecurity bounds, verified persistence failure resilience, hardened the What-If simulation isolation, elevated the NASA Judging Demo console (`/demo`), and completed the end-to-end documentation suite.
+Phase 7 of **Ares Frontier — Interplanetary Survival Guide** represents the final hardening, scientific verification, and judge-readiness pass. Rather than introducing sprawling new features, Phase 7 rigorously audited all scientific claims, eliminated misleading labels, enforced zero-trust cybersecurity bounds, verified persistence failure resilience, hardened the What-If simulation isolation, elevated the NASA Judging Demo console (`/demo`), and completed the end-to-end documentation suite.
 
 ---
 

@@ -18,7 +18,7 @@ from ml_schemas import (
 from inference import ml_engine
 
 app = FastAPI(
-    title="Martian Map ML & AI Inference Service",
+    title="Ares Frontier ML & AI Inference Service",
     description="Microservice providing machine-learning inference for terrain hazard classification, route risk regression, traversability, and multi-factor Mars mission assessment.",
     version="1.0.0",
 )
@@ -36,7 +36,7 @@ app.add_middleware(
 def health_check():
     return HealthResponse(
         status="healthy" if ml_engine.is_ready else "degraded",
-        service="martian-map-ml-service",
+        service="ares-frontier-ml-service",
         version="1.0.0",
         models_loaded=ml_engine.is_ready,
         data_classification="synthetic-physics-constrained",

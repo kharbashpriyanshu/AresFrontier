@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-The Martian Map Analytics Engine (`/mission-analytics`) delivers continuous evaluation of surface operations across four pillars: Operations, Communications, Science Return, and Safety Invariants.
+The Ares Frontier Analytics Engine (`/mission-analytics`) delivers continuous evaluation of surface operations across four pillars: Operations, Communications, Science Return, and Safety Invariants.
 
 ## 2. Transparent Health Score Breakdown
 

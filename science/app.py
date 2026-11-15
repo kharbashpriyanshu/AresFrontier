@@ -15,7 +15,7 @@ from science_schemas import (
 from science_evaluator import science_evaluator
 
 app = FastAPI(
-    title="Martian Map Scientific Intelligence Service",
+    title="Ares Frontier Scientific Intelligence Service",
     description="Microservice providing MEPAG mission goal alignment, geological epoch mapping, mineralogical classification, and subsurface water-ice modeling.",
     version="1.0.0",
 )
@@ -33,7 +33,7 @@ app.add_middleware(
 def health():
     return HealthResponse(
         status="healthy",
-        service="martian-map-science-service",
+        service="ares-frontier-science-service",
         version="1.0.0",
         mepag_version="MEPAG Goals 2020",
         supported_regions=[p["name"] for p in science_evaluator.provinces],
